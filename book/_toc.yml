@@ -1,0 +1,14 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: index
+parts:
+- caption: Практикум
+  numbered: True
+  chapters:
+  - file: intro/index
+    sections:
+    - file: intro/float
+  # - file: intro/condition_number
+  # - file: intro/julia
