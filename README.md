@@ -4,7 +4,10 @@
 # Репозиторий курса "Практикум по вычислительной теплофизике"
 Книга расположена здесь https://stepanzh.github.io/computational_thermodynamics/.
 
-## Локальная установка для тестирования
+## Разработчикам
+
+Локальное тестирование сайта
+
 ```console
 git clone https://github.com/stepanzh/computational_thermodynamics.git
 virtualenv venv           # виртуальное окружение,
@@ -16,3 +19,6 @@ jupyter-book -h                         # или jb -h, проверка, что
 jb build book                           # билд статического сайта, стартовая страница
 open book/_build/html/index.html
 ```
+
+- документация jupyter{book} https://jupyterbook.org/intro.html;
+- мои заметки по использованию https://stepanzh.github.io/JuliaAndJupyterBook/intro.html.
