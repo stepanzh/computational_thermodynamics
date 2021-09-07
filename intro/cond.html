@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>1.2. Обусловленность задач &#8212; Практикум по вычислительной теплофизике</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="1.1. Числа с плавающей точкой" href="float.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Практикум по вычислительной теплофизике</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Практикум по вычислительной теплофизике
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Практикум
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   1. Введение
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="float.html">
+     1.1. Числа с плавающей точкой
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.2. Обусловленность задач
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/intro/cond.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/intro/cond.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/stepanzh/computational_thermodynamics"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fintro/cond.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/intro/cond.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/stepanzh/computational_thermodynamics/main?urlpath=tree/book/intro/cond.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1.2.1. Число обусловленности
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   1.2.2. Оценка ошибок
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1><span class="section-number">1.2. </span>Обусловленность задач<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>Рассмотрим простую вычислительную задачу.
+Необходимо вычислить значение функции</p>
+<div class="math notranslate nohighlight">
+\[f(x) = x + 1.\]</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>При этом не рассматривается погрешность, связанная со сложением.</p>
+</div>
+<p>Поскольку вычисления осуществляются в числах с плавающей точкой, то в реальности получится вычислить не <span class="math notranslate nohighlight">\(f(x)\)</span>, а <span class="math notranslate nohighlight">\(y(x)\)</span> следующего вида</p>
+<div class="math notranslate nohighlight">
+\[y(x) = \float(x) + 1 = (x + \delta x) + 1,\]</div>
+<p>единица при этом представима точно.</p>
+<p>Теперь рассмотрим относительную ошибку вычисления <span class="math notranslate nohighlight">\(f(x)\)</span></p>
+<div class="math notranslate nohighlight">
+\[\frac{|f(x) - y(x)|}{|f(x)|} = \frac{|(x + 1) - (x + \delta x + 1)|}{|x+1|} = \frac{|\delta x|}{|x+1|}.\]</div>
+<p>Отсюда видно, что относительная ошибка возрастает, если значение <span class="math notranslate nohighlight">\(x\)</span> близко к <span class="math notranslate nohighlight">\(-1\)</span>.</p>
+<p>Подобные ошибки являются следствием конечной точности используемых чисел <span class="math notranslate nohighlight">\(x \to \float(x)\)</span>. Если вычисления ведутся в таких числах, то этих ошибок не избежать <em>независимо от используемого алгоритма</em>. Поэтому, ещё до его написания можно оценить области входных данных, на которых алгоритм даёт большие ошибки.</p>
+<p>Кроме того, в случае <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, несмотря на точность в 16 десятичных знаков, не все они репрезентативны в конечном результате.</p>
+<p>Таким образом, задачам (и алгоритмам) можно сопоставить их чувствительность к входным данным. У некоторых задач теоретически сильная чувствительность (большая обусловленность), что в паре с вычислительной погрешностью приводит к ошибкам в расчётах. Для оценки чувствительности вводится число обусловленности.</p>
+<div class="section" id="id2">
+<h2><span class="section-number">1.2.1. </span>Число обусловленности<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>… <strong>скалярных функций</strong>.</p>
+<p>Если представить задачу как функцию <span class="math notranslate nohighlight">\(f: \real\to\real\)</span>, то число <strong>число обусловленности</strong> определяется как предел отношения относительного изменения значения функции к относительному изменению значения аргумента.</p>
+<div class="math notranslate nohighlight" id="equation-condscalar">
+<span class="eqno">(1.4)<a class="headerlink" href="#equation-condscalar" title="Permalink to this equation">¶</a></span>\[\kappa_f(x) = \lim_{\delta x \to 0} \frac{ \dfrac{ |f(x+\delta x)-f(x)| }{|f(x)|} }{ \dfrac{|\delta x|}{|x|} }.\]</div>
+<p>В случае дифференциируемой функции <span class="math notranslate nohighlight">\(f\)</span> из <a class="reference internal" href="#equation-condscalar">(1.4)</a> получаем</p>
+<div class="math notranslate nohighlight" id="equation-condscalardiff">
+<span class="eqno">(1.5)<a class="headerlink" href="#equation-condscalardiff" title="Permalink to this equation">¶</a></span>\[\kappa_f(x) = \left| \frac{x f'(x)}{f(x)}\right|.\]</div>
+<p>Число обусловленности сложной функции <span class="math notranslate nohighlight">\(h(x) = f(g(x))\)</span> имеет вид</p>
+<div class="math notranslate nohighlight">
+\[\kappa_h(x) = \kappa_f(g(x))\cdot\kappa_g(x),\]</div>
+<p>что показывает, как могут распространяться ошибки в алгоритмах.</p>
+<div class="tip admonition">
+<p class="admonition-title">Пример</p>
+<p>Сложение <span class="math notranslate nohighlight">\(\text{add}(x) = x + c\)</span> порождает ошибки из-за конечной точности</p>
+<div class="math notranslate nohighlight">
+\[
+\kappa_\text{add}(x) = \left|\frac{(x)(1)}{x+c}\right| = \left|\frac{x}{x+c}\right|
+\]</div>
+<p>около точек <span class="math notranslate nohighlight">\(x \approx -c\)</span>.</p>
+<p>Умножение <span class="math notranslate nohighlight">\(\text{mul}(x) = cx\)</span> не порождает новых, но “протаскивает” существующие</p>
+<div class="math notranslate nohighlight">
+\[
+\kappa_\text{mul}(x) = \left| \frac{(x)(c)}{cx} \right| = 1.
+\]</div>
+<p>А вот, скажем, извлечение корня <span class="math notranslate nohighlight">\(\text{sqrt}(x) = \sqrt x\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+\kappa_\text{sqrt}(x) = \left| \frac{(x)(1/(2\sqrt x))}{\sqrt x} \right| = \frac{1}{2}
+\]</div>
+<p>теоретически должно уменьшать ошибку в вычислениях, однако, на практике <span class="math notranslate nohighlight">\(\text{sqrt}(x)\)</span> реализован программно, и при его вычислении происходят операции, порождающие ошибки. Либо, в конечном итоге, произойдёт ошибка округления входных данных. Поэтому, на практике меньшее единицы число обусловленности <span class="math notranslate nohighlight">\(\kappa_f &lt; 1\)</span> можно “округлять” до единицы.</p>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">1.2.2. </span>Оценка ошибок<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Из определения числа обусловленности <a class="reference internal" href="#equation-condscalar">(1.4)</a> следует, что при малом <span class="math notranslate nohighlight">\(\delta x\)</span></p>
+<div class="math notranslate nohighlight">
+\[\frac{ |f(x+\delta x) - f(x)| }{|f(x)|} \approx \kappa_f(x) \frac{|\delta x|}{|x|}.\]</div>
+<p>Другими словами, это соотношение позволяет оценить возмущение в значении функции по возмущению входных данных.</p>
+<p>Например, в случае <span class="math notranslate nohighlight">\(\kappa_f \approx 10^d\)</span> можно ожидать, что <span class="math notranslate nohighlight">\(d\)</span> десятичных знаков (мантиссы) потеряны при вычислении <span class="math notranslate nohighlight">\(f(x)\)</span> из <span class="math notranslate nohighlight">\(x\)</span>. Таким образом, если <span class="math notranslate nohighlight">\(\kappa_f\approx 1/\macheps\)</span>, то вычислить <span class="math notranslate nohighlight">\(f\)</span> в числах с точностью <span class="math notranslate nohighlight">\(\macheps\)</span> не получится.</p>
+<p>Если задача имеет большое число обусловленности при некотором <span class="math notranslate nohighlight">\(x\)</span>, то говорят, что задача <strong>плохо обусловлена</strong> при этом <span class="math notranslate nohighlight">\(x\)</span>. В таких случаях ошибка в получаемом ответе уже <em>превышает ошибку округления</em>.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.5"
+        },
+        kernelOptions: {
+            kernelName: "julia-1.5",
+            path: "./intro"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.5'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="float.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">1.1. </span>Числа с плавающей точкой</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Степан Захаров и Василий Писарев<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
