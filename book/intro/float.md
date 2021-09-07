@@ -7,7 +7,7 @@ jupytext:
 kernelspec:
   display_name: Julia
   language: julia
-  name: julia-1.5
+  name: julia-1.6
 ---
 
 # Числа с плавающей точкой
