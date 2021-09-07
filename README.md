@@ -18,8 +18,8 @@
 % cd computational_thermodynamics
 % pip3 install -r book/requirements.txt   # установка необходимых библиотек
 % jupyter-book -h                         # или jb -h, проверка, что всё установилось
-% jb build book                           # билд статического сайта, стартовая страница
-% open book/_build/html/index.html
+% jb build book                           # билд статического сайта
+% open book/_build/html/index.html        # открытие локальной стартовой страницы сайта-книги
 ```
 
 - документация jupyter{book} https://jupyterbook.org/intro.html;
