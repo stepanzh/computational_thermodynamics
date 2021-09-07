@@ -10,5 +10,5 @@ parts:
   - file: intro/index
     sections:
     - file: intro/float
-  # - file: intro/condition_number
+    - file: intro/cond
   # - file: intro/julia
