@@ -11,4 +11,4 @@ parts:
     sections:
     - file: intro/float
     - file: intro/cond
-  # - file: intro/julia
+    - file: intro/julia
