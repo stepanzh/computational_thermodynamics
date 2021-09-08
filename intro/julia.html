@@ -42,6 +42,8 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -158,7 +160,10 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="../_sources/intro/julia.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/intro/julia.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -198,11 +203,66 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/stepanzh/computational_thermodynamics/main?urlpath=tree/book/intro/julia.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   1.3.1. Инструкции по установке
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#julia-repl">
+   1.3.2. Интерактивный режим: Julia REPL
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1.3.3. Числа и переменные
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   1.3.4. Функции
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   1.3.5. Вектора и матрицы
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multiple-dispatch">
+   1.3.6. Система типов и методы, multiple dispatch
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -213,6 +273,245 @@
                 
   <div class="section" id="julia">
 <h1><span class="section-number">1.3. </span>Основы языка программирования Julia<a class="headerlink" href="#julia" title="Permalink to this headline">¶</a></h1>
+<p>В данном разделе излагаются основные инструменты языка Julia, которые понадобятся в практикуме.</p>
+<p>Здесь и далее prompt-сообщение терминала помечается равняется <code class="docutils literal notranslate"><span class="pre">%</span></code>, например,</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">% </span><span class="nb">echo</span> <span class="nv">$HOME</span>
+<span class="go">/Users/stepanzh</span>
+</pre></div>
+</div>
+<p>Поэтому, когда вы встретите <code class="docutils literal notranslate"><span class="pre">%</span></code>, значит команда набиралась в терминале.</p>
+<div class="section" id="id1">
+<h2><span class="section-number">1.3.1. </span>Инструкции по установке<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Ниже расположены инструкции по установке исполнителя языка Julia для Linux-based операционных систем (ОС), MacOS и ОСWindows.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Инструкция для пользователей Linux-based ОС</p>
+<p>Инструкция появится позже.</p>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Инструкция для пользователей MacOS</p>
+<ol class="simple">
+<li><p>Скачать <code class="docutils literal notranslate"><span class="pre">Julia-1.6.app</span></code>-пакет с официального сайта языка ;</p></li>
+<li><p>Стандартно для <code class="docutils literal notranslate"><span class="pre">.app</span></code> приложений установить;</p></li>
+</ol>
+<p>Исполнитель языка находится здесь</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Julia</span><span class="o">-</span><span class="mf">1.6</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Resources</span><span class="o">/</span><span class="n">julia</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">julia</span>
+</pre></div>
+</div>
+<p>Вы можете доступиться до него через терминал и запустить <a class="reference internal" href="#repl-guide"><span class="std std-ref">Julia REPL</span></a>.</p>
+<p>Однако, чтобы в будущем не доступаться до Julia по абсолютному пути, добавьте <code class="docutils literal notranslate"><span class="pre">alias</span></code> в rc файл вашего терминала.</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Как найти rc файл</p>
+<p>Узнайте ваш <code class="docutils literal notranslate"><span class="pre">shell</span></code></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">% </span><span class="nb">echo</span> <span class="nv">$SHELL</span>
+<span class="go">/bin/zsh</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>Если это <code class="docutils literal notranslate"><span class="pre">zsh</span></code>, то файл для настройки <code class="docutils literal notranslate"><span class="pre">~/.zshrc</span></code>.</p>
+<ul>
+<li><p>Если файл отсутствует, создайте его <code class="docutils literal notranslate"><span class="pre">touch</span> <span class="pre">~/.zshrc</span></code>.</p></li>
+</ul>
+</li>
+<li><p>Если это <code class="docutils literal notranslate"><span class="pre">bash</span></code>, то файл для настройки <code class="docutils literal notranslate"><span class="pre">~/.bash_console</span></code>.</p>
+<ul>
+<li><p>Если файл отсутствует, создайте его <code class="docutils literal notranslate"><span class="pre">touch</span> <span class="pre">~/.bash_console</span></code>.</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<p>Добавление <code class="docutils literal notranslate"><span class="pre">alias</span></code> (пример для <code class="docutils literal notranslate"><span class="pre">zsh</span></code>, для <code class="docutils literal notranslate"><span class="pre">bash</span></code> аналогично):</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">% </span>open ~/.zshrc
+
+<span class="gp"># </span>в открывшемся редакторе будет содержимое <span class="sb">`</span>.zshrc<span class="sb">`</span>, добавьте в файл строчку
+<span class="go">alias julia=&#39;/Applications/Julia-1.6.app/Contents/Resources/julia/bin/julia&#39;</span>
+<span class="gp"># </span>сохраните .zshrc
+
+<span class="gp">% </span><span class="nb">source</span> ~/.zshrc  <span class="c1"># изменения вступят в силу (можно также просто перезапустить терминал)</span>
+<span class="gp">% </span>julia --version  <span class="c1"># проверка, всё ли работает</span>
+<span class="go">julia version 1.6.2</span>
+</pre></div>
+</div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Инструкция для пользователей ОС Windows</p>
+<p>Инструкция появится позже.</p>
+</div>
+</div>
+<div class="section" id="julia-repl">
+<span id="repl-guide"></span><h2><span class="section-number">1.3.2. </span>Интерактивный режим: Julia REPL<a class="headerlink" href="#julia-repl" title="Permalink to this headline">¶</a></h2>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Это аналогично интерактивному режиму работы в Python.</p>
+</div>
+<p>Знакомство языка начнём с интерактивного режима. Для этого необходимо запустить Julia REPL (Read-Evaluate-Print-Loop).</p>
+<p>На unix ОС (Linux-based, MacOS) в терминале необходимо набрать команду <code class="docutils literal notranslate"><span class="pre">julia</span></code></p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">% </span>julia
+<span class="go">               _</span>
+<span class="go">   _       _ _(_)_     |  Documentation: https://docs.julialang.org</span>
+<span class="go">  (_)     | (_) (_)    |</span>
+<span class="go">   _ _   _| |_  __ _   |  Type &quot;?&quot; for help, &quot;]?&quot; for Pkg help.</span>
+<span class="go">  | | | | | | |/ _` |  |</span>
+<span class="go">  | | |_| | | | (_| |  |  Version 1.6.2 (2021-07-14)</span>
+<span class="go"> _/ |\__&#39;_|_|_|\__&#39;_|  |  Official https://julialang.org/ release</span>
+<span class="go">|__/                   |</span>
+
+<span class="go">julia&gt;</span>
+</pre></div>
+</div>
+<p>Строки до <code class="docutils literal notranslate"><span class="pre">julia&gt;</span></code> это приветственное сообщение. Здесь есть ссылка на документацию к языку. Команды для получения помощи и версия релиза.</p>
+<p>Julia REPL обладает четыремя режимами работы. Режим отмечается prompt-строкой.</p>
+<p>Строка <code class="docutils literal notranslate"><span class="pre">julia&gt;</span></code> это prompt-сообщение в <strong>исполнительном режиме</strong> REPL-а. В нём вы можете исполнять команды языка и переходить в другие режимы.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">println</span><span class="p">(</span><span class="s">&quot;Hello, world&quot;</span><span class="p">)</span>
+<span class="go">Hello, world</span>
+
+<span class="gp">julia&gt;</span>
+</pre></div>
+</div>
+<p>Перейти в <strong>режим помощи</strong> по языку можно с помощью <code class="docutils literal notranslate"><span class="pre">?</span></code>, при этом prompt-сообщение сменится на <code class="docutils literal notranslate"><span class="pre">help?&gt;</span></code>.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Попробуйте также зайти в режим помощи и нажать <code class="docutils literal notranslate"><span class="pre">&lt;Enter&gt;</span></code>.</p>
+</div>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">help?&gt;</span> println
+<span class="go">search: println printstyled print sprint isprint</span>
+
+<span class="go">  println([io::IO], xs...)</span>
+
+<span class="go">  Print (using print) xs followed by a newline. If io is not supplied, prints to stdout.</span>
+
+<span class="go">  ...</span>
+</pre></div>
+</div>
+<p>Чтобы выйти из режима помощи, необходимо нажать <code class="docutils literal notranslate"><span class="pre">Backspace</span></code>. <em>Таким же способом можно вернуться и из других режимов в <strong>исполнительный</strong></em>.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Программный пакет (package) это библиотека кода.</p>
+</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Для знакомых с Python, этот режим сочетает в себе <code class="docutils literal notranslate"><span class="pre">pip</span></code> и <code class="docutils literal notranslate"><span class="pre">virtualenv</span></code>.</p>
+</div>
+<p>Третий режим посвящён работе со <strong>сторонними пакетами и окружениями</strong>. Команда перехода <code class="docutils literal notranslate"><span class="pre">]</span></code>, prompt-сообщение <code class="docutils literal notranslate"><span class="pre">(&#64;v1.6)</span> <span class="pre">pkg&gt;</span></code>, попробуйте набрать <code class="docutils literal notranslate"><span class="pre">help</span></code>. Этот режим нам пока не понадобится.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Бывает удобно, но есть особенности.</p>
+</div>
+<p>В четвёртом режиме можно работать в терминале, не выходя из Julia REPL. Команда перехода <code class="docutils literal notranslate"><span class="pre">;</span></code>, prompt-сообщение <code class="docutils literal notranslate"><span class="pre">shell&gt;</span></code>.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">shell&gt;</span> echo &#39;Привет, мир!&#39;
+<span class="go">Привет, мир!</span>
+
+<span class="gp">shell&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">1.3.3. </span>Числа и переменные<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>В Julia богатая система встроенных числовых типов, узнать тип переменной или литерала можно с помощью функции <code class="docutils literal notranslate"><span class="pre">typeof(x)</span></code></p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">typeof</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">Int64</span>
+
+<span class="gp">julia&gt;</span> <span class="n">typeof</span><span class="p">(</span><span class="mf">5.0</span><span class="p">)</span>
+<span class="go">Float64</span>
+
+<span class="gp">julia&gt;</span> <span class="n">typeof</span><span class="p">(</span><span class="mi">5</span><span class="nb">im</span><span class="p">)</span>
+<span class="go">Complex{Int64}</span>
+
+<span class="gp">julia&gt;</span> <span class="n">typeof</span><span class="p">(</span><span class="mf">2.3</span> <span class="o">+</span> <span class="mf">5.0</span><span class="nb">im</span><span class="p">)</span>
+<span class="go">ComplexF64 (alias for Complex{Float64})</span>
+
+<span class="gp">julia&gt;</span> <span class="n">typeof</span><span class="p">(</span><span class="mi">2</span><span class="o">//</span><span class="mi">3</span><span class="p">)</span>
+<span class="go">Rational{Int64}</span>
+
+<span class="gp">julia&gt;</span> <span class="n">typeof</span><span class="p">(</span><span class="mi">1</span><span class="o">//</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">2</span><span class="o">//</span><span class="mi">3</span><span class="nb">im</span><span class="p">)</span>
+<span class="go">Complex{Rational{Int64}}</span>
+</pre></div>
+</div>
+<p>Синтаксис присвоения значения переменной стандартный, также поддерживается параллельное присваивание и каскадное.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="go">5</span>
+
+<span class="gp">julia&gt;</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span>
+<span class="go">(1, 2)</span>
+
+<span class="gp">julia&gt;</span> <span class="n">x</span>
+<span class="go">1</span>
+
+<span class="gp">julia&gt;</span> <span class="n">y</span>
+<span class="go">2</span>
+
+<span class="gp">julia&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="go">1</span>
+
+<span class="gp">julia&gt;</span> <span class="n">x</span>
+<span class="go">1</span>
+
+<span class="gp">julia&gt;</span> <span class="n">y</span>
+<span class="go">1</span>
+</pre></div>
+</div>
+<p>В исполнительном режиме REPL печатает возращаемое значение, его можно опустить с помощью <code class="docutils literal notranslate"><span class="pre">;</span></code> в конце выражения.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+
+<span class="gp">julia&gt;</span> <span class="n">x</span>
+<span class="go">10</span>
+</pre></div>
+</div>
+<p>Имена переменных могут быть любыми Unicode символами, REPL позволяет набирать часто употребляемые с помощью LaTeX-подобного синтаксиса и <code class="docutils literal notranslate"><span class="pre">&lt;Tab&gt;</span></code>, например, так выглядит набор имени <code class="docutils literal notranslate"><span class="pre">α₁</span></code>:</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="o">\</span><span class="n">alpha</span>  <span class="c"># потом нажмите `&lt;Tab&gt;`, и ввод сменится на α</span>
+       <span class="n">α</span>
+       <span class="n">α</span><span class="o">\</span><span class="n">_1</span>  <span class="c"># `&lt;Tab&gt;`</span>
+       <span class="n">α₁</span>
+</pre></div>
+</div>
+<p>Доступны стандартные арифметические, алгебраические и тригонометрические операторы и функции</p>
+<ul class="simple">
+<li><p>бинарные <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">-</span> <span class="pre">*</span> <span class="pre">/</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">÷</span> <span class="pre">y,</span> <span class="pre">x</span> <span class="pre">%</span> <span class="pre">y</span></code> (<code class="docutils literal notranslate"><span class="pre">\div&lt;Tab&gt;</span></code>) или <code class="docutils literal notranslate"><span class="pre">div(x,</span> <span class="pre">y),</span> <span class="pre">rem(x,</span> <span class="pre">y),</span> <span class="pre">divrem(x,</span> <span class="pre">y)</span></code> частное и остаток от деления целых;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">^</span></code> возведение в степень;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">log(x),</span> <span class="pre">log2(x),</span> <span class="pre">log10(x)</span></code> <span class="math notranslate nohighlight">\(\ln(x), \log_2(x), \log_{10}(x)\)</span>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-x</span></code> унарный минус;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sin(x),</span> <span class="pre">cos(x)</span></code> <span class="math notranslate nohighlight">\(\sin(x), \cos(x)\)</span>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">sqrt(x)</span> <span class="pre">√x</span></code> (<code class="docutils literal notranslate"><span class="pre">\sqrt&lt;Tab&gt;</span></code>) <span class="math notranslate nohighlight">\(\sqrt{x}\)</span>, извлечение квадратного корня;</p></li>
+<li><p>…</p></li>
+</ul>
+<p>Стоит отметить, что (кажется, все) функции из списка определены для всех типов, перечисленных выше, но, иногда требуется аргумент подать в явном типе</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="gr">ERROR: DomainError with -1.0:</span>
+<span class="gr">sqrt will only return a complex result if called with a complex argument. Try sqrt(Complex(x)).</span>
+<span class="gr">...</span>
+
+<span class="gp">julia&gt;</span> <span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span> <span class="o">+</span> <span class="mi">0</span><span class="nb">im</span><span class="p">)</span>
+<span class="go">0.0 + 1.0im</span>
+</pre></div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Почему?</p>
+<p>Такое поведение языка задано по двум причинам.</p>
+<p>Во-первых, функция корня в математике определяется на разных множествах.</p>
+<p>Во-вторых, так удаётся сохранять <em>стабильность типов</em>. Если бы функция корня извлекая из <code class="docutils literal notranslate"><span class="pre">Float64</span></code> возвращала иногда <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, а иногда <code class="docutils literal notranslate"><span class="pre">Complex{Float64}</span></code>, то предсказать тип возвращаемого значения было бы невозможно. Предсказание типов позволяет <em>компилировать</em> участки исходного кода, не уступающие по скорости аналогам кода на статически типизируемых языках, например, <code class="docutils literal notranslate"><span class="pre">C/C++</span></code>.</p>
+</div>
+<p>Математические константы</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="nb">π</span>                    <span class="c"># \pi&lt;Tab&gt;</span>
+<span class="go">π = 3.1415926535897...</span>
+
+<span class="gp">julia&gt;</span> <span class="nb">ℯ</span>                    <span class="c"># \euler&lt;Tab&gt;</span>
+<span class="go">ℯ = 2.7182818284590...</span>
+
+<span class="gp">julia&gt;</span> <span class="n">typeof</span><span class="p">(</span><span class="nb">ℯ</span><span class="p">)</span>
+<span class="go">Irrational{:ℯ}</span>
+</pre></div>
+</div>
+<p>При применении операций к разным типам тип результата интуитивен: число из типа, соответствующего, математически “меньшему” множеству конвертируется в тип математически “большего” множества. Затем операция выполняется для одинаковых типов. Система типов в Julia это её позвоночник, о ней будет подробнее позже.</p>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">1.3.4. </span>Функции<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">1.3.5. </span>Вектора и матрицы<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="multiple-dispatch">
+<h2><span class="section-number">1.3.6. </span>Система типов и методы, multiple dispatch<a class="headerlink" href="#multiple-dispatch" title="Permalink to this headline">¶</a></h2>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -224,16 +523,16 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "julia-1.6"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "julia-1.6",
             path: "./intro"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'julia-1.6'</script>
 
               </div>
               
