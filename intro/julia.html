@@ -160,10 +160,7 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="../_sources/intro/julia.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+        
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/intro/julia.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -203,23 +200,6 @@
 
             <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/stepanzh/computational_thermodynamics/main?urlpath=tree/book/intro/julia.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
         </div>
 
         <!-- Table of contents -->
@@ -247,17 +227,22 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   1.3.4. Функции
+   1.3.4. Строки
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   1.3.5. Вектора и матрицы
+   1.3.5. Функции
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   1.3.6. Вектора и матрицы
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#multiple-dispatch">
-   1.3.6. Система типов и методы, multiple dispatch
+   1.3.7. Система типов и методы, multiple dispatch
   </a>
  </li>
 </ul>
@@ -291,7 +276,7 @@
 <p class="admonition-title">Инструкция для пользователей MacOS</p>
 <ol class="simple">
 <li><p>Скачать <code class="docutils literal notranslate"><span class="pre">Julia-1.6.app</span></code>-пакет с официального сайта языка ;</p></li>
-<li><p>Стандартно для <code class="docutils literal notranslate"><span class="pre">.app</span></code> приложений установить;</p></li>
+<li><p>Стандартно для <code class="docutils literal notranslate"><span class="pre">.app</span></code> приложений установить.</p></li>
 </ol>
 <p>Исполнитель языка находится здесь</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Julia</span><span class="o">-</span><span class="mf">1.6</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Resources</span><span class="o">/</span><span class="n">julia</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">julia</span>
@@ -463,18 +448,53 @@
        <span class="n">α₁</span>
 </pre></div>
 </div>
-<p>Доступны стандартные арифметические, алгебраические и тригонометрические операторы и функции</p>
+<p>Ниже в таблице перечислены некоторы арифметические, алгебраические и тригонометрические операторы и функции</p>
 <ul class="simple">
-<li><p>бинарные <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">-</span> <span class="pre">*</span> <span class="pre">/</span></code>;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">÷</span> <span class="pre">y,</span> <span class="pre">x</span> <span class="pre">%</span> <span class="pre">y</span></code> (<code class="docutils literal notranslate"><span class="pre">\div&lt;Tab&gt;</span></code>) или <code class="docutils literal notranslate"><span class="pre">div(x,</span> <span class="pre">y),</span> <span class="pre">rem(x,</span> <span class="pre">y),</span> <span class="pre">divrem(x,</span> <span class="pre">y)</span></code> частное и остаток от деления целых;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">^</span></code> возведение в степень;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">log(x),</span> <span class="pre">log2(x),</span> <span class="pre">log10(x)</span></code> <span class="math notranslate nohighlight">\(\ln(x), \log_2(x), \log_{10}(x)\)</span>;</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">-x</span></code> унарный минус;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">sin(x),</span> <span class="pre">cos(x)</span></code> <span class="math notranslate nohighlight">\(\sin(x), \cos(x)\)</span>;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">sqrt(x)</span> <span class="pre">√x</span></code> (<code class="docutils literal notranslate"><span class="pre">\sqrt&lt;Tab&gt;</span></code>) <span class="math notranslate nohighlight">\(\sqrt{x}\)</span>, извлечение квадратного корня;</p></li>
 <li><p>…</p></li>
 </ul>
-<p>Стоит отметить, что (кажется, все) функции из списка определены для всех типов, перечисленных выше, но, иногда требуется аргумент подать в явном типе</p>
+<table class="table">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Синтаксис</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Бинарные <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">-</span> <span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code> (также <code class="docutils literal notranslate"><span class="pre">&lt;num&gt;x</span></code>, <code class="docutils literal notranslate"><span class="pre">2.5x</span></code>), <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">/</span> <span class="pre">y</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Умножение на константу (ещё один способ)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&lt;num&gt;x</span></code>, например <code class="docutils literal notranslate"><span class="pre">2.5x</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Унарный минус</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-x</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Частное от деления целых</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">÷</span> <span class="pre">y</span></code> или <code class="docutils literal notranslate"><span class="pre">div(x,</span> <span class="pre">y)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Остаток от деления целых (также см. <code class="docutils literal notranslate"><span class="pre">divrem</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">%</span> <span class="pre">y</span></code> или <code class="docutils literal notranslate"><span class="pre">rem(x,</span> <span class="pre">y)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Возведение в степень</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">^</span> <span class="pre">y</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Логарифмы <span class="math notranslate nohighlight">\(\ln(x)\)</span>, <span class="math notranslate nohighlight">\(\log_2(x)\)</span>, <span class="math notranslate nohighlight">\(\log_{10}(x)\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">log(x)</span></code>, <code class="docutils literal notranslate"><span class="pre">log2(x)</span></code>, <code class="docutils literal notranslate"><span class="pre">log10(x)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Тригонометрия <span class="math notranslate nohighlight">\(\sin(x), \cos(x)\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sin(x),</span> <span class="pre">cos(x)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Квадратный корень <span class="math notranslate nohighlight">\(\sqrt{x}\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sqrt(x)</span></code> или <code class="docutils literal notranslate"><span class="pre">√x</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Стоит отметить, что (кажется, все) функции из таблицы определены для всех типов, перечисленных выше, но, иногда требуется аргумент подать в явном типе</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span>
 <span class="gr">ERROR: DomainError with -1.0:</span>
 <span class="gr">sqrt will only return a complex result if called with a complex argument. Try sqrt(Complex(x)).</span>
@@ -501,16 +521,132 @@
 <span class="go">Irrational{:ℯ}</span>
 </pre></div>
 </div>
-<p>При применении операций к разным типам тип результата интуитивен: число из типа, соответствующего, математически “меньшему” множеству конвертируется в тип математически “большего” множества. Затем операция выполняется для одинаковых типов. Система типов в Julia это её позвоночник, о ней будет подробнее позже.</p>
+<p>При применении операций к разным типам тип результата интуитивен: число из типа, соответствующего, математически “меньшему” множеству конвертируется в тип математически “большего” множества. Затем операция выполняется для одинаковых типов. Система типов в Julia это её позвоночник, см. раздел <a class="reference internal" href="#type-system"><span class="std std-ref">Система типов и методы, multiple dispatch</span></a>.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Однако, стоит избегать и потенциально предугадывать места, в которых переменная меняет свой тип. Компилятор вас поощрит.</p>
+</div>
+<p>В Julia <strong>динамическая</strong> типизация. Переменная может менять свой тип в процессе работы программы</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="go">5</span>
+
+<span class="gp">julia&gt;</span> <span class="n">typeof</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">Int64</span>
+
+<span class="gp">julia&gt;</span> <span class="n">x</span>  <span class="o">=</span> <span class="mf">5.0</span>
+<span class="go">5.0</span>
+
+<span class="gp">julia&gt;</span> <span class="n">typeof</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="go">Float64</span>
+</pre></div>
+</div>
+<p>В Julia нельзя указать, чтобы переменная имела постоянное значение, но можно указать, что переменная <em>не меняет свой тип</em></p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="k">const</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="go">10</span>
+
+<span class="gp">julia&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="mf">10.0</span>
+<span class="gr">ERROR: invalid redefinition of constant y</span>
+<span class="gr">Stacktrace:</span>
+<span class="gr"> [1] top-level scope</span>
+<span class="gr">   @ REPL[6]:1</span>
+
+<span class="gp">julia&gt;</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="go">WARNING: redefinition of constant y. This may fail, cause incorrect answers, or produce other errors.</span>
+<span class="go">20</span>
+</pre></div>
+</div>
+<p>Заметьте, Julia не допустила присвоение <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">10.0</span></code>, потому что оно меняет тип переменной <code class="docutils literal notranslate"><span class="pre">y::Int64</span></code>. Однако, присваивать значения <code class="docutils literal notranslate"><span class="pre">Int64</span></code> переменной <code class="docutils literal notranslate"><span class="pre">y</span></code> можно, Julia лишь <em>предупредит</em>, но не запретит.</p>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">1.3.4. </span>Функции<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.3.4. </span>Строки<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>В Julia богатая поддержка работы с текстом, встроенные текстовые типы работают с Unicode.</p>
+<p>Тип <code class="docutils literal notranslate"><span class="pre">Char</span></code> используется для работы с отдельными символами, его литерал две одинарные кавычки <code class="docutils literal notranslate"><span class="pre">'</span></code></p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span>julia&gt; &#39;a&#39;
+&#39;a&#39;: ASCII/Unicode U+0061 (category Ll: Letter, lowercase)
+
+julia&gt; &#39;α&#39;
+&#39;α&#39;: Unicode U+03B1 (category Ll: Letter, lowercase)
+
+julia&gt; &#39;aa&#39;
+ERROR: syntax: character literal contains multiple characters
+Stacktrace:
+ [1] top-level scope
+   @ none:1
+</pre></div>
+</div>
+<p>Тип <code class="docutils literal notranslate"><span class="pre">String</span></code> предназначен для строк, его литерал двойные кавычки <code class="docutils literal notranslate"><span class="pre">&quot;</span></code></p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="s">&quot;a&quot;</span>
+<span class="go">&quot;a&quot;</span>
+
+<span class="gp">julia&gt;</span> <span class="s">&quot;a&quot;</span> <span class="o">==</span> <span class="sc">&#39;a&#39;</span>
+<span class="go">false</span>
+
+<span class="gp">julia&gt;</span> <span class="s">&quot;aaaa&quot;</span>
+<span class="go">&quot;aaaa&quot;</span>
+
+<span class="gp">julia&gt;</span> <span class="n">typeof</span><span class="p">(</span><span class="s">&quot;aaaa&quot;</span><span class="p">)</span>
+<span class="go">String</span>
+</pre></div>
+</div>
+<p>Escape специальных символов производится привычным <code class="docutils literal notranslate"><span class="pre">\</span></code>, например <code class="docutils literal notranslate"><span class="pre">&quot;\n&quot;</span></code>, <code class="docutils literal notranslate"><span class="pre">&quot;\t&quot;</span></code>.</p>
+<table class="table" id="id6">
+<caption><span class="caption-number">Table 1.1 </span><span class="caption-text">Часто используемые операции над строками.</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Cинтаксис</p></th>
+<th class="head"><p>Пример</p></th>
+<th class="head"><p>Результат</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Конкатенация</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;ab&quot;</span> <span class="pre">*</span> <span class="pre">&quot;b&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;abb&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Дублирование</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">^</span> <span class="pre">i</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;a&quot;</span> <span class="pre">^</span> <span class="pre">6</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;aaaaaa&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Интерполяция значения переменной</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;$x&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">1.0;</span> <span class="pre">x</span> <span class="pre">=</span> <span class="pre">&quot;$y&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span></code> будет <code class="docutils literal notranslate"><span class="pre">&quot;1.0&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Интерполяция результата выражения</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;$(expr)&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;$(sin(π/2))&quot;</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;1.0&quot;</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Удаление whitespace окружения</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">strip(x)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">strip(&quot;</span> <span class="pre">\ta</span> <span class="pre">ba\n&quot;)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;a</span> <span class="pre">ba&quot;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Форматированная строка (<code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">Printf</span></code>)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;sprintf</span> <span class="pre">&quot;fmt&quot;</span> <span class="pre">x...</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;sprintf</span> <span class="pre">&quot;π</span> <span class="pre">≈</span> <span class="pre">%.2f,</span> <span class="pre">ℯ</span> <span class="pre">≈</span> <span class="pre">%.2f&quot;</span> <span class="pre">π</span> <span class="pre">ℯ</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;π</span> <span class="pre">≈</span> <span class="pre">3.14,</span> <span class="pre">ℯ</span> <span class="pre">≈</span> <span class="pre">2.72&quot;</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Для форматированного вывода</p>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">1.3.5. </span>Вектора и матрицы<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.3.5. </span>Функции<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">1.3.6. </span>Вектора и матрицы<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="multiple-dispatch">
-<h2><span class="section-number">1.3.6. </span>Система типов и методы, multiple dispatch<a class="headerlink" href="#multiple-dispatch" title="Permalink to this headline">¶</a></h2>
+<span id="type-system"></span><h2><span class="section-number">1.3.7. </span>Система типов и методы, multiple dispatch<a class="headerlink" href="#multiple-dispatch" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -523,16 +659,16 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "julia-1.6"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "julia-1.6",
+            kernelName: "python3",
             path: "./intro"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'julia-1.6'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
