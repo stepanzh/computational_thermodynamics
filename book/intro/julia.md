@@ -480,26 +480,298 @@ julia> function f(x, y)
 f (generic function with 1 method)
 ```
 
-Зачастую пригождается более краткий синтаксис
+Строго говоря, слово `return` необязательно, функция в Julia возвращает результат последнего выражения, однако, мы будем придерживаться [![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle).
+
+В теле функции может находится несколько слов `return`, в этом случае при вызове сработает только одно из них.
+
+Если необходимо, чтобы функция ничего не возвращала, тогда используется `return nothing`.
+
+Зачастую пригождается более краткий синтаксис (assignment form)
 
 ```julia-repl
 julia> f(x, y) = sqrt(x^2 + y^2)
 f (generic function with 1 method)
 ```
 
-Вызов осуществляется интуитивно
+В этом случае справа от `=` может находится составное выражение (compound expression) `begin ... end`.
+
+```julia-repl
+julia> g(x, y) = begin              # или g(x, y) = begin z = f(x, y); return 2*z end
+           z = f(x, y)
+           return 2*z
+       end
+g (generic function with 1 method)
+```
+
+Синтаксис вызова интуитивен
 
 ```julia-repl
 julia> f(3, 4)
 5.0
+
+julia> g(3, 4)
+10.0
 ```
+
+В Julia аргументы передаются по принципу *pass-by-sharing*. Т.е., аргументы функции внутри тела ведут себя как новые переменные. Однако, у изменяемых *mutable* аргументов (например, массив), можно поменять значения, и они будут видны извне.
+
+Функции являются **first-class** объектами, т.е. ими можно "распоряжаться", как переменными: присваивать их другим переменным, передавать в функции... 
+
+```julia-repl
+julia> φ = f;
+
+julia> φ(3, 4)
+5.0
+```
+
+Важно, что операторы в Julia также являются функциями
+
+```julia-repl
+julia> +(1, 2, 3) == 1 + 2 + 3
+true
+```
+
+Языковые конструкции, вроде доступа к элементу массива или полю структуры также являются операторами, а следовательно, и функциями.
+
+Можно создавать анонимные функции
+
+```julia-repl
+julia> x -> 2x                        # короткий синтаксис
+#1 (generic function with 1 method)
+
+julia> f4 = x -> 2x                   # анонимная функция x -> 2x присвоена переменной f4
+#3 (generic function with 1 method)
+
+julia> f4(8)
+16
+
+julia> function (x)                   # длинный синтаксис
+           return 3x
+       end
+#5 (generic function with 1 method)
+
+julia> map(x -> 3x, 1:4)              # пример применения
+4-element Vector{Int64}:              # map(f, c) применяет функцию f
+  3                                   # к каждому элементу коллекции c
+  6
+  9
+ 12
+```
+
+В Julia функция тесно связана с `Tuple`. Встроенный тип кортеж `Tuple` является неизменяемой коллекцией.
+
+```julia-repl
+julia> tup = (3, 4)
+(3, 4)
+
+julia> tup[1]
+3
+
+julia> (3,)  # tuple из одного значения
+(3,)
+```
+
+Таким образом, функция может возращать `Tuple`, т.е. возвращать несколько значений. Вообще, функция в Julia тогда это "преобразование" одного кортежа значений в другой.
+
+```julia-repl
+julia> function addmul(x, y)
+           return x + y, x * y
+       end
+addmul (generic function with 1 method)
+
+julia> a, b = addmul(3, 4)
+(7, 12)
+
+julia> a
+7
+
+julia> b
+12
+```
+
+Также существует `NamedTuple`, хранящий пары ключ-значение. На его основе создаются функции, принимающие аргументы по ключу.
+
+Больше информации в разделе мануала [Functions](https://docs.julialang.org/en/v1/manual/functions/).
 
 ## Управляющие конструкции
 
+Более подробно познакомиться можно здесь **[[url]](https://docs.julialang.org/en/v1/manual/control-flow/)**.
+
+### Составные выражения
+
+C двумя управляющими конструкциями мы уже встретились, это `begin`-блоки и `;`-цепочки.
+
+Блок `begin ... end` позволяет создавать составное выражение *compound expression*. Иногда удобно несколько выражений объединить в одно.
+
+```julia-repl
+julia> z = begin
+           x = 1
+           y = 2
+           x + y
+       end
+3
+```
+
+С помощью `;` можно поместить несколько выражений на одной строке, что часто используется для коротких составных выражений.
+
+```julia-repl
+julia> z = (x = 1; y = 2; x + y)
+3
+
+julia> z = begin x = 1; y = 2; x + y end
+3
+```
+
+### Условное исполнение
+
+Синтаксис `if-elseif-else` блока
+
+```julia-repl
+julia> x = 10; y = 20;
+
+julia> if x < y
+           println("x is less than y")
+       elseif x > y
+           println("x is greater than y")
+       else
+           println("x is equal to y")
+       end
+x is less than y
+```
+
+В `if` и `elseif` должно стоять boolean выражение. За это отвечает тип `Bool`, имеющий два значения: `true` и `false`. Основные операторы сравнения можете посмотреть здесь **[[url]](https://docs.julialang.org/en/v1/manual/mathematical-operations/#Numeric-Comparisons)**.
+
+Количество `elseif` не ограничено.
+
+Блок `if-elseif-else` подобно `begin-end` возвращает значение. В примере выше возвращается `nothing`, который вернулся от вызова `println("x is less than y")`. `Nothing` не печатается в языке.
+
+Также в вашем распоряжении тернарный оператор
+
+```julia
+x = cond ? a : b
+```
+
+### Циклы
+
+Julia предоставляет два цикла: `while` и `for`.
+
+```julia-repl
+julia> i = 1;
+
+julia> while i <= 5
+           println(i)
+           global i += 1
+       end
+1
+2
+3
+4
+5
+```
+
+Наличие `global` связано с созданием цикла `while` собственного пространства переменных *variable scope*. В REPL это значения не имеет, а вот в скриптах вы получите ошибку, попробуйте запустить в REPL `include_string(Main, "i = 1; while i < 2; i += 1; end")`.
+
+У цикла `for` синтаксис следующий
+
+```julia
+for var in iterator
+    ...
+end
+```
+
+Переменная цикла `var` создаётся внутри видимости цикла `for` автоматически. После исполнения цикла она недоступна, если не была объявлена во внешней области видимости.
+
+```julia-repl
+julia> for j in 1:3
+           println(j)
+       end
+1
+2
+3
+
+julia> j
+ERROR: UndefVarError: j not defined
+```
+
+Здесь использован *range operator*
+
+```julia-repl
+help?> 1:3
+  (:)(start, [step], stop)
+
+  Range operator. a:b constructs a range from a to b with a step size of 1 (a UnitRange),
+  and a:s:b is similar but uses a step size of s(a StepRange).
+```
+
+Итерировать можно и по коллекциям. Ниже пример для `Tuple`
+
+```julia-repl
+julia> for j in (1, 2, "hello")
+           println(j)
+       end
+1
+2
+hello
+```
+
 (type_system)=
 ## Система типов и методы, multiple dispatch
-% TODO "Вмещающий (больший)" тип можно посмотреть с помощью `promote`
-% динамическая, сильная...
+В Julia **сильная динамическая** система типов, являющейся центральной темой языка наряду с методами.
+
+### Декларация типов
+
+С помощью оператора `::` вы можете *декларировать* тип объекта. Обычно это делается для
+
+- переменных;
+- аргументов функции;
+- возвращаемоего значения функцией;
+- полей композитных типов (структур).
+
+Например, вы можете декларировать тип переменной внутри функции (или другой локальной области видимости), в таком случае при присвоении значения происходит конвертация (приведение) `convert(T, x)` к типу.
+
+```julia-repl
+julia> function foo()
+           x::Int8 = 100
+           return x
+       end
+foo (generic function with 1 method)
+
+julia> x = foo()
+100
+
+julia> typeof(x)
+Int8
+
+julia> typeof(100)
+Int64
+```
+
+Также вы можете декларировать тип возвращаемого значения функцией (хотя, делается это редко)
+
+```julia-repl
+julia> bar()::Int8 = 100
+bar (generic function with 1 method)
+
+julia> bar()
+100
+
+julia> typeof(bar())
+Int8
+```
+
+### Какие бывают типы
+
+Типы в Julia классифицируется по следующим признакам (указаны не все)
+
+- абстрактный *abstract* (`AbstractFloat`) и конкретный *concrete* (`Float64`);
+- примитивный *primitive* (`Float64`) и композитный *composite* (`Complex{InFloat64t64}`);
+- параметрический *parametric* (`Complex{Float64}`);
+- изменяемый (`Vector{Float64}`) и неизменяемый (`Tuple{Float64,Float64}`);
+- ...
+
+
+
+## Структуры
 
 ## Вектора и матрицы
 % броадкаст
