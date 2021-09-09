@@ -286,7 +286,7 @@
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id16">
-       1.3.7.4.1. Пример
+       1.3.7.4.1. Пример оптимизации
       </a>
      </li>
     </ul>
@@ -321,6 +321,11 @@
                 
   <div class="section" id="julia">
 <h1><span class="section-number">1.3. </span>Основы языка программирования Julia<a class="headerlink" href="#julia" title="Permalink to this headline">¶</a></h1>
+<blockquote class="epigraph">
+<div><p>Julia: come for the syntax, stay for the speed</p>
+<p class="attribution">—<em><a class="reference external" href="https://www.nature.com/articles/d41586-019-02310-3">Nature</a></em></p>
+</div></blockquote>
+<p>Язык Julia создавался как решение <em>two-languages problem</em> в научной и вычислительной среде: программы на языках с простым синтаксисом (<code class="docutils literal notranslate"><span class="pre">Python</span></code>) обычно медленно исполняются, быстрые же программы пишутся на языках со сложным синтаксисом (<code class="docutils literal notranslate"><span class="pre">C/C++</span></code>, <code class="docutils literal notranslate"><span class="pre">Fortran</span></code>).</p>
 <p>В данном разделе излагаются основные инструменты языка Julia, которые понадобятся в практикуме.</p>
 <ul class="simple">
 <li><p>Официальная документация языка находится здесь: <a class="reference external" href="https://docs.julialang.org/en/v1/">https://docs.julialang.org/en/v1/</a>.</p></li>
@@ -332,12 +337,6 @@
 </li>
 <li><p>Обзор синтаксиса <a class="reference external" href="https://learnxinyminutes.com/docs/ru-ru/julia-ru/">https://learnxinyminutes.com/docs/ru-ru/julia-ru/</a>.</p></li>
 </ul>
-<p>Здесь и далее prompt-сообщение терминала помечается равняется <code class="docutils literal notranslate"><span class="pre">%</span></code>, например,</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">% </span><span class="nb">echo</span> <span class="nv">$HOME</span>
-<span class="go">/Users/stepanzh</span>
-</pre></div>
-</div>
-<p>Поэтому, когда вы встретите <code class="docutils literal notranslate"><span class="pre">%</span></code>, значит команда набиралась в терминале.</p>
 <div class="section" id="id1">
 <h2><span class="section-number">1.3.1. </span>Инструкция по установке<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Ниже расположены краткие инструкции по установке исполнителя языка Julia для Linux-based операционных систем (ОС), MacOS и Windows 10. При возникновении неясностей, обратитесь к <a class="reference external" href="https://julialang.org/downloads/platform/">официальной инструкции</a> вашей ОС.</p>
@@ -355,6 +354,7 @@
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>tar -xzf julia-1.6.2-linux-x86_64.tar.gz
 </pre></div>
 </div>
+<p>(здесь и далее команды в терминале помечаются <code class="docutils literal notranslate"><span class="pre">$</span></code>)</p>
 <p>После этого в домашней директории должна появиться директория <code class="file docutils literal notranslate"><span class="pre">julia-1.6.2</span></code>, где находится исполняемый файл интерпретатора и необходимые для его работы библиотеки.</p>
 <p><strong>3. Добавить исполняемый файл в <code class="docutils literal notranslate"><span class="pre">PATH</span></code></strong></p>
 <p>Рекомендуется вместо добавления в <code class="docutils literal notranslate"><span class="pre">PATH</span></code> директории, в которой лежит исполняемый файл, добавить символьную ссылку на этот файл в директорию, которая уже в <code class="docutils literal notranslate"><span class="pre">PATH</span></code>. В большинстве дистрибутивов директория <code class="file docutils literal notranslate"><span class="pre">~/bin</span></code>, если она существует, автоматически добавляется в <code class="docutils literal notranslate"><span class="pre">PATH</span></code>, что позволяет добавить ссылку, даже не имея прав администратора. Если директории <code class="file docutils literal notranslate"><span class="pre">~/bin</span></code> нет, то её сначала нужно создать:</p>
@@ -377,11 +377,11 @@
 <li><p>Скачать <code class="docutils literal notranslate"><span class="pre">Julia-1.6.app</span></code>-пакет с официального сайта языка <strong><a class="reference external" href="https://julialang.org/downloads/">[url]</a></strong>, <span class="guilabel">MacOS → 64-bit</span>;</p></li>
 <li><p>Стандартно для <code class="docutils literal notranslate"><span class="pre">.app</span></code> приложений установить.</p></li>
 </ol>
-<p>Исполнитель языка находится здесь</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">%</span> <span class="o">/</span><span class="n">Applications</span><span class="o">/</span><span class="n">Julia</span><span class="o">-</span><span class="mf">1.6</span><span class="o">.</span><span class="n">app</span><span class="o">/</span><span class="n">Contents</span><span class="o">/</span><span class="n">Resources</span><span class="o">/</span><span class="n">julia</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">julia</span> <span class="o">--</span><span class="n">version</span>
-<span class="n">julia</span> <span class="n">version</span> <span class="mf">1.6.2</span>
+<p>Откройте терминал и исполните команду (далее команды терминала помечаются <code class="docutils literal notranslate"><span class="pre">%</span></code>)</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">% </span>/Applications/Julia-1.6.app/Contents/Resources/julia/bin/julia --version
 </pre></div>
 </div>
+<p>Если вы получили в ответ <code class="docutils literal notranslate"><span class="pre">julia</span> <span class="pre">version</span> <span class="pre">1.6.2</span></code>, то всё в порядке.</p>
 <p>Однако, чтобы в будущем не доступаться до Julia по абсолютному пути, добавьте <code class="docutils literal notranslate"><span class="pre">alias</span></code> в rc-файл вашего терминала.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Как найти rc-файл</p>
@@ -403,14 +403,16 @@
 </li>
 </ul>
 </div>
-<p>Добавление <code class="docutils literal notranslate"><span class="pre">alias</span></code> (для <code class="docutils literal notranslate"><span class="pre">bash</span></code> аналогично):</p>
+<p>3. Добавление <code class="docutils literal notranslate"><span class="pre">alias</span></code> (для <code class="docutils literal notranslate"><span class="pre">bash</span></code> аналогично):</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">% </span>open ~/.zshrc
-
-<span class="gp"># </span>в открывшемся редакторе будет содержимое <span class="sb">`</span>.zshrc<span class="sb">`</span>, добавьте в файл строчку
-<span class="go">alias julia=&#39;/Applications/Julia-1.6.app/Contents/Resources/julia/bin/julia&#39;</span>
-<span class="gp"># </span>сохраните .zshrc
-
-<span class="gp">% </span><span class="nb">source</span> ~/.zshrc  <span class="c1"># изменения вступят в силу (можно также просто перезапустить терминал)</span>
+</pre></div>
+</div>
+<p>В открывшемся редакторе будет содержимое <code class="file docutils literal notranslate"><span class="pre">~/.zshrc</span></code>, добавьте в файл строчку</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">alias julia=&#39;/Applications/Julia-1.6.app/Contents/Resources/julia/bin/julia&#39;</span>
+</pre></div>
+</div>
+<p>и сохраните <code class="file docutils literal notranslate"><span class="pre">~/.zshrc</span></code>. Далее сделайте завершение настройки.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">% </span><span class="nb">source</span> ~/.zshrc  <span class="c1"># изменения вступят в силу (можно также просто перезапустить терминал)</span>
 <span class="gp">% </span>julia --version  <span class="c1"># проверка, всё ли работает</span>
 <span class="go">julia version 1.6.2</span>
 </pre></div>
@@ -498,6 +500,16 @@
 </div>
 <div class="section" id="id4">
 <h2><span class="section-number">1.3.3. </span>Числа и переменные<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Данный раздел является <em>кратким</em> обзором следующих разделов манула</p>
+<ul class="simple">
+<li><p>Variables <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/variables/">[url]</a></strong>;</p></li>
+<li><p>Integers and Floating-Point Numbers <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/integers-and-floating-point-numbers/">[url]</a></strong>;</p></li>
+<li><p>Mathematical Operations and Elementary Functions <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/mathematical-operations/">[url]</a></strong>;</p></li>
+<li><p>Complex and Rational Numbers <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/complex-and-rational-numbers/">[url]</a></strong>.</p></li>
+</ul>
+</div>
 <p>В Julia богатая система встроенных числовых типов, узнать тип переменной или литерала можно с помощью функции <code class="docutils literal notranslate"><span class="pre">typeof(x)</span></code></p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">typeof</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="go">Int64</span>
@@ -749,6 +761,10 @@
 </tr>
 </tbody>
 </table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Подробнее о строках в мануале <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/strings/">[url]</a></strong>.</p>
+</div>
 </div>
 <div class="section" id="id6">
 <h2><span class="section-number">1.3.5. </span>Функции<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
@@ -760,14 +776,14 @@
 </pre></div>
 </div>
 <p>Строго говоря, слово <code class="docutils literal notranslate"><span class="pre">return</span></code> необязательно, функция в Julia возвращает результат последнего выражения, однако, мы будем придерживаться <a class="reference external" href="https://github.com/invenia/BlueStyle"><img alt="Code Style: Blue" src="https://img.shields.io/badge/code%20style-blue-4495d1.svg" /></a>.</p>
-<p>В теле функции может находится несколько слов <code class="docutils literal notranslate"><span class="pre">return</span></code>, в этом случае при вызове сработает только одно из них.</p>
-<p>Если необходимо, чтобы функция ничего не возвращала, тогда используется <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">nothing</span></code>.</p>
-<p>Зачастую пригождается более краткий синтаксис (assignment form)</p>
+<p>В теле функции может находится несколько слов <code class="docutils literal notranslate"><span class="pre">return</span></code>, в этом случае при вызове сработает только одно из них.
+Если необходимо, чтобы функция ничего не возвращала, тогда используется <code class="docutils literal notranslate"><span class="pre">return</span> <span class="pre">nothing</span></code>.</p>
+<p>Зачастую пригождается более краткий синтаксис создания функции (<em>assignment form</em>)</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
 <span class="go">f (generic function with 1 method)</span>
 </pre></div>
 </div>
-<p>В этом случае справа от <code class="docutils literal notranslate"><span class="pre">=</span></code> может находится составное выражение (compound expression) <code class="docutils literal notranslate"><span class="pre">begin</span> <span class="pre">...</span> <span class="pre">end</span></code>.</p>
+<p>В этом случае справа от <code class="docutils literal notranslate"><span class="pre">=</span></code> может находиться составное выражение (<em>compound expression</em>) <code class="docutils literal notranslate"><span class="pre">begin-end</span></code>.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="k">begin</span>              <span class="c"># или g(x, y) = begin z = f(x, y); return 2*z end</span>
            <span class="n">z</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
            <span class="k">return</span> <span class="mi">2</span><span class="o">*</span><span class="n">z</span>
@@ -783,8 +799,8 @@
 <span class="go">10.0</span>
 </pre></div>
 </div>
-<p>В Julia аргументы передаются по принципу <em>pass-by-sharing</em>. Т.е., аргументы функции внутри тела ведут себя как новые переменные. Однако, у изменяемых <em>mutable</em> аргументов (например, массив), можно поменять значения, и они будут видны извне. По соглашению, функции, меняющие свои аргументы, оканчиваются на <code class="docutils literal notranslate"><span class="pre">!</span></code>, например, <code class="docutils literal notranslate"><span class="pre">map!(f,</span> <span class="pre">A,</span> <span class="pre">B)</span></code>, <code class="docutils literal notranslate"><span class="pre">push!(A,</span> <span class="pre">a)</span></code>.</p>
-<p>Функции являются <strong>first-class</strong> объектами, т.е. ими можно “распоряжаться”, как переменными: присваивать их другим переменным, передавать в функции…</p>
+<p>В Julia аргументы передаются по принципу <em>pass-by-sharing</em>. Т.е. аргументы функции внутри тела ведут себя как новые переменные. Однако, у изменяемых <em>mutable</em> аргументов (например, массив), можно поменять значения, и они будут видны извне. По соглашению, если функция меняет свой аргумент, то в её имя добавляется <code class="docutils literal notranslate"><span class="pre">!</span></code> в конце, например, <code class="docutils literal notranslate"><span class="pre">map!(f,</span> <span class="pre">A,</span> <span class="pre">B)</span></code>, <code class="docutils literal notranslate"><span class="pre">push!(A,</span> <span class="pre">a)</span></code>.</p>
+<p>Функции являются <strong>first-class</strong> объектами. Ими можно “распоряжаться”, как переменными: присваивать их другим переменным, передавать как аргумент…</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">φ</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span>
 
 <span class="gp">julia&gt;</span> <span class="n">φ</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
@@ -796,7 +812,7 @@
 <span class="go">true</span>
 </pre></div>
 </div>
-<p>Языковые конструкции, вроде доступа к элементу массива или полю структуры также являются операторами, а следовательно, и функциями.</p>
+<p>Языковые конструкции, вроде доступа к элементу массива (<code class="docutils literal notranslate"><span class="pre">A[i]</span></code>) или полю структуры (<code class="docutils literal notranslate"><span class="pre">S.x</span></code>) также являются операторами, а следовательно, и функциями.</p>
 <p>Можно создавать анонимные функции</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="mi">2</span><span class="n">x</span>                        <span class="c"># короткий синтаксис</span>
 <span class="go">#1 (generic function with 1 method)</span>
@@ -813,14 +829,14 @@
 <span class="go">#5 (generic function with 1 method)</span>
 
 <span class="gp">julia&gt;</span> <span class="n">map</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="mi">3</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span><span class="mi">4</span><span class="p">)</span>              <span class="c"># пример применения</span>
-<span class="go">4-element Vector{Int64}:              # map(f, c) применяет функцию f</span>
-<span class="go">  3                                   # к каждому элементу коллекции c</span>
-<span class="go">  6</span>
+<span class="go">4-element Vector{Int64}:              # map здесь создает массив</span>
+<span class="go">  3                                   # из утроенных значений</span>
+<span class="go">  6                                   # арифм. прогрессии от 1 до 4</span>
 <span class="go">  9</span>
 <span class="go"> 12</span>
 </pre></div>
 </div>
-<p>В Julia функция тесно связана с <code class="docutils literal notranslate"><span class="pre">Tuple</span></code>. Встроенный тип кортеж <code class="docutils literal notranslate"><span class="pre">Tuple</span></code> является неизменяемой коллекцией.</p>
+<p>В Julia тип, соответствующий аргументам функции, является кортежем <code class="docutils literal notranslate"><span class="pre">Tuple</span></code>. Кортеж неизменная коллекция.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">tup</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="go">(3, 4)</span>
 
@@ -831,7 +847,7 @@
 <span class="go">(3,)</span>
 </pre></div>
 </div>
-<p>Таким образом, функция может возращать <code class="docutils literal notranslate"><span class="pre">Tuple</span></code>, т.е. возвращать несколько значений. Вообще, функция в Julia тогда это “преобразование” одного кортежа значений в другой.</p>
+<p>Функция, конечно, может и возращать <code class="docutils literal notranslate"><span class="pre">Tuple</span></code>, т.е. возвращать несколько значений. Если абстрагироваться, функция в Julia создаёт из одного кортежа значений другой кортеж.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="k">function</span> <span class="n">addmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
            <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span><span class="p">,</span> <span class="n">x</span> <span class="o">*</span> <span class="n">y</span>
        <span class="k">end</span>
@@ -847,16 +863,23 @@
 <span class="go">12</span>
 </pre></div>
 </div>
-<p>Также существует <code class="docutils literal notranslate"><span class="pre">NamedTuple</span></code>, хранящий пары ключ-значение. На его основе создаются функции, принимающие аргументы по ключу.</p>
-<p>Больше информации в разделе мануала <a class="reference external" href="https://docs.julialang.org/en/v1/manual/functions/">Functions</a>.</p>
+<p>Также существует именованный кортеж <code class="docutils literal notranslate"><span class="pre">NamedTuple</span></code>, хранящий пары ключ-значение. На его основе создаются функции, принимающие аргументы по ключу.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Больше информации в мануале <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/functions/">[url]</a></strong>.</p>
+</div>
 </div>
 <div class="section" id="id7">
 <h2><span class="section-number">1.3.6. </span>Управляющие конструкции<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<p>Более подробно познакомиться можно здесь <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/control-flow/">[url]</a></strong>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Подробнее в мануале <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/control-flow/">[url]</a></strong>.
+Здесь освещены не все конструкции и не так подробно.</p>
+</div>
 <div class="section" id="id8">
 <h3><span class="section-number">1.3.6.1. </span>Составные выражения<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>C двумя управляющими конструкциями мы уже встретились, это <code class="docutils literal notranslate"><span class="pre">begin</span></code>-блоки и <code class="docutils literal notranslate"><span class="pre">;</span></code>-цепочки.</p>
-<p>Блок <code class="docutils literal notranslate"><span class="pre">begin</span> <span class="pre">...</span> <span class="pre">end</span></code> позволяет создавать составное выражение <em>compound expression</em>. Иногда удобно несколько выражений объединить в одно.</p>
+<p>Блок <code class="docutils literal notranslate"><span class="pre">begin-end</span></code> позволяет объединять несколько выражений в одно, составное выражение (<em>compound expression</em>).</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">z</span> <span class="o">=</span> <span class="k">begin</span>
            <span class="n">x</span> <span class="o">=</span> <span class="mi">1</span>
            <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span>
@@ -889,9 +912,15 @@
 <span class="go">x is less than y</span>
 </pre></div>
 </div>
-<p>В <code class="docutils literal notranslate"><span class="pre">if</span></code> и <code class="docutils literal notranslate"><span class="pre">elseif</span></code> должно стоять boolean выражение. За это отвечает тип <code class="docutils literal notranslate"><span class="pre">Bool</span></code>, имеющий два значения: <code class="docutils literal notranslate"><span class="pre">true</span></code> и <code class="docutils literal notranslate"><span class="pre">false</span></code>. Основные операторы сравнения можете посмотреть здесь <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/mathematical-operations/#Numeric-Comparisons">[url]</a></strong>.</p>
+<p>В <code class="docutils literal notranslate"><span class="pre">if</span></code> и <code class="docutils literal notranslate"><span class="pre">elseif</span></code> должно стоять boolean выражение.
+За это отвечает тип <code class="docutils literal notranslate"><span class="pre">Bool</span></code>, имеющий два значения: <code class="docutils literal notranslate"><span class="pre">true</span></code> и <code class="docutils literal notranslate"><span class="pre">false</span></code>.
+Основные операторы сравнения можете посмотреть здесь <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/mathematical-operations/#Numeric-Comparisons">[url]</a></strong>.</p>
 <p>Количество <code class="docutils literal notranslate"><span class="pre">elseif</span></code> не ограничено.</p>
-<p>Блок <code class="docutils literal notranslate"><span class="pre">if-elseif-else</span></code> подобно <code class="docutils literal notranslate"><span class="pre">begin-end</span></code> возвращает значение. В примере выше возвращается <code class="docutils literal notranslate"><span class="pre">nothing</span></code>, который вернулся от вызова <code class="docutils literal notranslate"><span class="pre">println(&quot;x</span> <span class="pre">is</span> <span class="pre">less</span> <span class="pre">than</span> <span class="pre">y&quot;)</span></code>. <code class="docutils literal notranslate"><span class="pre">Nothing</span></code> не печатается в языке.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Раз есть тип <code class="docutils literal notranslate"><span class="pre">Nothing</span></code>, есть и <code class="docutils literal notranslate"><span class="pre">Something</span></code>!</p>
+</div>
+<p>Блок <code class="docutils literal notranslate"><span class="pre">if-elseif-else</span></code> подобно <code class="docutils literal notranslate"><span class="pre">begin-end</span></code> возвращает значение. В примере выше возвращается <code class="docutils literal notranslate"><span class="pre">nothing</span></code>, который вернулся от вызова <code class="docutils literal notranslate"><span class="pre">println(&quot;x</span> <span class="pre">is</span> <span class="pre">less</span> <span class="pre">than</span> <span class="pre">y&quot;)</span></code>. Значение <code class="docutils literal notranslate"><span class="pre">nothing</span></code> не печатается в языке и является абстракцией отсутствия какого-либо значения.</p>
 <p>Также в вашем распоряжении тернарный оператор</p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">cond</span> <span class="o">?</span> <span class="n">a</span> <span class="o">:</span> <span class="n">b</span>
 </pre></div>
@@ -913,14 +942,14 @@
 <span class="go">5</span>
 </pre></div>
 </div>
-<p>Наличие <code class="docutils literal notranslate"><span class="pre">global</span></code> связано с созданием цикла <code class="docutils literal notranslate"><span class="pre">while</span></code> собственного пространства переменных <em>variable scope</em>. В REPL это значения не имеет, а вот в скриптах вы получите ошибку, попробуйте запустить в REPL <code class="docutils literal notranslate"><span class="pre">include_string(Main,</span> <span class="pre">&quot;i</span> <span class="pre">=</span> <span class="pre">1;</span> <span class="pre">while</span> <span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">2;</span> <span class="pre">i</span> <span class="pre">+=</span> <span class="pre">1;</span> <span class="pre">end&quot;)</span></code>.</p>
-<p>У цикла <code class="docutils literal notranslate"><span class="pre">for</span></code> синтаксис следующий</p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">var</span> <span class="k">in</span> <span class="n">iterator</span>
+<p>Наличие слова <code class="docutils literal notranslate"><span class="pre">global</span></code> связано с созданием циклом <code class="docutils literal notranslate"><span class="pre">while</span></code> собственного пространства видимости (<em>variable scope</em>). В REPL это значения не имеет, поскольку в нём глобальное пространство. А вот в скриптах вы получите ошибку. Попробуйте запустить в REPL <code class="docutils literal notranslate"><span class="pre">include_string(Main,</span> <span class="pre">&quot;i</span> <span class="pre">=</span> <span class="pre">1;</span> <span class="pre">while</span> <span class="pre">i</span> <span class="pre">&lt;</span> <span class="pre">2;</span> <span class="pre">i</span> <span class="pre">+=</span> <span class="pre">1;</span> <span class="pre">end&quot;)</span></code>.</p>
+<p>У цикла <code class="docutils literal notranslate"><span class="pre">for</span></code> следующий синтаксис</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">item</span> <span class="k">in</span> <span class="n">iterator</span>
     <span class="o">...</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-<p>Переменная цикла <code class="docutils literal notranslate"><span class="pre">var</span></code> создаётся внутри видимости цикла <code class="docutils literal notranslate"><span class="pre">for</span></code> автоматически. После исполнения цикла она недоступна, если не была объявлена во внешней области видимости.</p>
+<p>Переменная цикла <code class="docutils literal notranslate"><span class="pre">item</span></code> создаётся внутри видимости цикла <code class="docutils literal notranslate"><span class="pre">for</span></code> автоматически. После исполнения цикла она недоступна, если не была объявлена во внешней области видимости.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="mi">3</span>
            <span class="n">println</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
        <span class="k">end</span>
@@ -932,7 +961,7 @@
 <span class="gr">ERROR: UndefVarError: j not defined</span>
 </pre></div>
 </div>
-<p>Здесь использован <em>range operator</em></p>
+<p>Здесь использован <em>range operator</em> <code class="docutils literal notranslate"><span class="pre">start:stop</span></code></p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">help?&gt;</span> 1:3
 <span class="go">  (:)(start, [step], stop)</span>
 
@@ -953,7 +982,11 @@
 </div>
 <div class="section" id="type-system">
 <span id="id11"></span><h2><span class="section-number">1.3.7. </span>Система типов<a class="headerlink" href="#type-system" title="Permalink to this headline">¶</a></h2>
-<p>В Julia <strong>сильная динамическая</strong> система типов, являющейся центральной темой языка наряду с методами. Подробнее, как всегда, в мануале к языку <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/types/">[url]</a></strong>.</p>
+<p>В Julia <strong>сильная динамическая</strong> система типов, являющаяся центральной темой языка наряду с методами.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Подробнее, как всегда, в мануале к языку <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/types/">[url]</a></strong>.</p>
+</div>
 <div class="section" id="id12">
 <h3><span class="section-number">1.3.7.1. </span>Декларация типов<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <p>С помощью оператора <code class="docutils literal notranslate"><span class="pre">::</span></code> вы можете <em>декларировать</em> тип объекта. Обычно это делается для</p>
@@ -963,7 +996,11 @@
 <li><p>возвращаемоего значения функцией;</p></li>
 <li><p>полей композитных типов (структур).</p></li>
 </ul>
-<p>Например, вы можете декларировать тип переменной внутри функции (или другой локальной области видимости), в таком случае при присвоении значения происходит конвертация (приведение) <code class="docutils literal notranslate"><span class="pre">convert(T,</span> <span class="pre">x)</span></code> к типу.</p>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Конвертацию делает функция <code class="docutils literal notranslate"><span class="pre">convert(T,</span> <span class="pre">x)</span></code>. Правила конвертации можно задавать.</p>
+</div>
+<p>Например, вы можете декларировать тип переменной внутри функции (или другой локальной области видимости). В таком случае при присвоении значения происходит конвертация.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="k">function</span> <span class="n">foo</span><span class="p">()</span>
            <span class="n">x</span><span class="o">::</span><span class="kt">Int8</span> <span class="o">=</span> <span class="mi">100</span>
            <span class="k">return</span> <span class="n">x</span>
@@ -994,7 +1031,7 @@
 </div>
 <div class="section" id="id13">
 <h3><span class="section-number">1.3.7.2. </span>Какие бывают типы<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
-<p>Типы в Julia классифицируется по следующим признакам (указаны не все)</p>
+<p>Типы в Julia классифицируются по следующим признакам (указаны не все)</p>
 <ul class="simple">
 <li><p>абстрактный <em>abstract</em> (<code class="docutils literal notranslate"><span class="pre">AbstractFloat</span></code>) и конкретный <em>concrete</em> (<code class="docutils literal notranslate"><span class="pre">Float64</span></code>);</p></li>
 <li><p>примитивный <em>primitive</em> (<code class="docutils literal notranslate"><span class="pre">Float64</span></code>) и композитный <em>composite</em> (<code class="docutils literal notranslate"><span class="pre">Complex{Float64}</span></code>);</p></li>
@@ -1003,7 +1040,16 @@
 <li><p>…</p></li>
 </ul>
 <p>В Julia система типов является деревом, корень которого тип <code class="docutils literal notranslate"><span class="pre">Any</span></code>. Листьями дерева типов являются <strong>конкретные типы</strong>. У значения такого типа известна структура в памяти. <strong>Абстрактные</strong> типы нужны в качестве промежуточных узлов дерева типов.</p>
-<p>Например, так выглядит часть дерева с числовыми и строчными типами, при этом конкретные типы указаны в округлённых рамках, а абстрактные в прямоугольных</p>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<p>Кроме того, объявление неабстрактного параметрического типа <code class="docutils literal notranslate"><span class="pre">T1{T2}</span></code>  создаёт <strong>UnionAll</strong> тип <code class="docutils literal notranslate"><span class="pre">T1</span></code>. Последний ведёт себя как супертип для параметризованных потомков. Например, <code class="docutils literal notranslate"><span class="pre">Rational{T}</span></code> порождает UnionAll <code class="docutils literal notranslate"><span class="pre">Rational</span></code>, и <code class="docutils literal notranslate"><span class="pre">Rational</span></code> будет супертипом для всех <code class="docutils literal notranslate"><span class="pre">Rational{T}</span></code>: <code class="docutils literal notranslate"><span class="pre">Rational{Int64}</span></code>, <code class="docutils literal notranslate"><span class="pre">Rational{Int8}</span></code>…</p>
+<p>В дереве ниже UnionAll типы помещены в параллелограммы.</p>
+</div>
+<p>Например, так выглядит часть дерева с числовыми и строчными типами, при этом</p>
+<ul class="simple">
+<li><p>конкретные типы указаны в округлённых рамках;</p></li>
+<li><p>абстрактные в прямоугольных.</p></li>
+</ul>
 <div class="mermaid">
             flowchart TB
     Any --&gt; Number --&gt; Real --&gt; Integer
@@ -1042,11 +1088,11 @@
 </div>
 <div class="section" id="julia-composite">
 <span id="id14"></span><h3><span class="section-number">1.3.7.3. </span>Композитные типы<a class="headerlink" href="#julia-composite" title="Permalink to this headline">¶</a></h3>
-<p><strong>Композитный</strong> тип имеет более сложную структуру в памяти. Этот тип является набором именнованных полей, а экземпляром такого типа можно распоряжаться как одним значением. В других языках им соответствуют объекты <em>objects</em> или структуры <em>structs</em>. Примерами встроенных композитых типов являются <code class="docutils literal notranslate"><span class="pre">Tuple</span></code>, <code class="docutils literal notranslate"><span class="pre">String</span></code>, <code class="docutils literal notranslate"><span class="pre">Array</span></code>, <code class="docutils literal notranslate"><span class="pre">IO</span></code>.</p>
-<p>Классический пример - структура для точки в пространстве.</p>
+<p><strong>Композитный</strong> тип имеет более сложную структуру в памяти. Этот тип является набором именнованных полей, а экземпляром такого типа можно манипулирвовать как одним значением. В других языках им соответствуют объекты (<em>objects</em>) или структуры (<em>structs</em>). Примерами встроенных композитых типов являются <code class="docutils literal notranslate"><span class="pre">Tuple</span></code>, <code class="docutils literal notranslate"><span class="pre">String</span></code>, <code class="docutils literal notranslate"><span class="pre">Array</span></code>, <code class="docutils literal notranslate"><span class="pre">IO</span></code>…</p>
+<p>Классический пример – структура для точки в пространстве.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="k">struct</span> <span class="kt">Point</span>
            <span class="n">x</span>
-           <span class="n">y</span><span class="o">::</span><span class="kt">Int64</span>
+           <span class="n">y</span><span class="o">::</span><span class="kt">Int64</span>       <span class="c"># так указывается тип (можно и абстрактный)</span>
        <span class="k">end</span>
 
 <span class="gp">julia&gt;</span> <span class="n">p1</span> <span class="o">=</span> <span class="n">Point</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -1063,8 +1109,7 @@
 <span class="gr">...</span>
 </pre></div>
 </div>
-<p>Для поля <code class="docutils literal notranslate"><span class="pre">Point.y</span></code> указан тип.</p>
-<p>Присвоение можно разрешить, если сделать структуру <code class="docutils literal notranslate"><span class="pre">mutable</span></code></p>
+<p>Присвоение можно разрешить, сделав структуру <code class="docutils literal notranslate"><span class="pre">mutable</span></code></p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="k">mutable struct</span> <span class="kt">MPoint</span>
            <span class="n">x</span>
            <span class="n">y</span>
@@ -1081,8 +1126,8 @@
 </pre></div>
 </div>
 <p>Иногда это может приводить к замедлению работы, поскольку <code class="docutils literal notranslate"><span class="pre">mutable</span> <span class="pre">struct</span></code> выделяется в куче, а не на стеке.</p>
-<p>Тем не менее, в поле обычной структуры можно хранить значение изменяемого типа. В таком случае в поле хранится ссылка на изменяемый объект. Саму же ссылку поменять нельзя.</p>
-<p>Конструктор <em>constructor</em> <code class="docutils literal notranslate"><span class="pre">Point(x,</span> <span class="pre">y)</span></code> для композитного типа можно поменять. Более того, можно создать несколько конструкторов.</p>
+<p>Тем не менее, в поле обычной структуры можно хранить значение изменяемого типа. В таком случае поле хранит <em>ссылку на изменяемый объект</em>. Объект поменять можно, а ссылку – нет.</p>
+<p>Конструктор (<em>constructor</em>) <code class="docutils literal notranslate"><span class="pre">Point(x,</span> <span class="pre">y)</span></code> для композитного типа можно поменять. Более того, можно создать несколько конструкторов.</p>
 </div>
 <div class="section" id="id15">
 <h3><span class="section-number">1.3.7.4. </span>Параметрические композитные типы<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
@@ -1090,7 +1135,7 @@
 <p class="sidebar-title"></p>
 <p>Абстрактные параметрические типы тоже существуют.</p>
 </div>
-<p><strong>Параметрический</strong> тип это тип, который в своём объявлении содержит дополнительную информацию. Например, тип <code class="docutils literal notranslate"><span class="pre">Complex</span></code> в языке объявлен следующим образом <strong><a class="reference external" href="https://github.com/JuliaLang/julia/blob/1326e4b00e6f27a4120c30eb12b578a6cee28039/base/complex.jl#L3">[url]</a></strong></p>
+<p><strong>Параметрический</strong> тип это тип, который в своём объявлении содержит дополнительную информацию. Например, тип <code class="docutils literal notranslate"><span class="pre">Complex</span></code> в языке объявлен следующим образом <strong><a class="reference external" href="https://github.com/JuliaLang/julia/blob/1326e4b00e6f27a4120c30eb12b578a6cee28039/base/complex.jl#L3">[source]</a></strong></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="kt">Complex</span><span class="p">{</span><span class="kt">T</span><span class="o">&lt;:</span><span class="kt">Real</span><span class="p">}</span> <span class="o">&lt;:</span> <span class="kt">Number</span>
     <span class="n">re</span><span class="o">::</span><span class="kt">T</span>
     <span class="nb">im</span><span class="o">::</span><span class="kt">T</span>
@@ -1100,24 +1145,24 @@
 <p>Это объявление значит</p>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
-<p><code class="docutils literal notranslate"><span class="pre">Complex</span></code> в данном случае не будет ни абстрактным, ни конкретным. В таких объявлениях создаются <code class="docutils literal notranslate"><span class="pre">UnionAll</span></code> типы.</p>
+<p><code class="docutils literal notranslate"><span class="pre">Complex</span></code> в данном случае ни абстрактный, ни конкретный.</p>
 </div>
 <ul class="simple">
-<li><p>создать тип <code class="docutils literal notranslate"><span class="pre">Complex</span></code>, который будет вести себя как супертип для <code class="docutils literal notranslate"><span class="pre">Complex{T}</span></code>;</p></li>
-<li><p>тип <code class="docutils literal notranslate"><span class="pre">Complex{T}</span></code> является параметрическим типом,</p></li>
-<li><p>где тип <code class="docutils literal notranslate"><span class="pre">T</span></code> является подтипом типа <code class="docutils literal notranslate"><span class="pre">Real</span></code>,</p></li>
-<li><p>при этом сам тип <code class="docutils literal notranslate"><span class="pre">Complex{T}</span></code> является подтипом <code class="docutils literal notranslate"><span class="pre">Number</span></code>.</p></li>
+<li><p>создать UnionAll-тип <code class="docutils literal notranslate"><span class="pre">Complex</span></code>, который будет вести себя как супертип для <code class="docutils literal notranslate"><span class="pre">Complex{T}</span></code>;</p></li>
+<li><p>создать параметрический тип <code class="docutils literal notranslate"><span class="pre">Complex{T}</span></code>,</p></li>
+<li><p>где параметр <code class="docutils literal notranslate"><span class="pre">T</span></code> является подтипом типа <code class="docutils literal notranslate"><span class="pre">Real</span></code>,</p></li>
+<li><p>при этом типы <code class="docutils literal notranslate"><span class="pre">Complex</span></code> и <code class="docutils literal notranslate"><span class="pre">Complex{T}</span></code> являются подтипами <code class="docutils literal notranslate"><span class="pre">Number</span></code>;</p></li>
+<li><p>у <code class="docutils literal notranslate"><span class="pre">Complex{T}</span></code> два поля: <code class="docutils literal notranslate"><span class="pre">re</span></code> и <code class="docutils literal notranslate"><span class="pre">im</span></code>, каждое из них имеет тип <code class="docutils literal notranslate"><span class="pre">T</span></code>.</p></li>
 </ul>
-<p>При этом указано, что поля типа <code class="docutils literal notranslate"><span class="pre">Complex</span></code> имеют одинаковый тип <code class="docutils literal notranslate"><span class="pre">T</span></code>.</p>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>Это не значит, что массив в Julia может хранить только значения одного типа. Ведь есть абстрактные типы: <code class="docutils literal notranslate"><span class="pre">Any</span></code>, <code class="docutils literal notranslate"><span class="pre">Number</span></code>…</p>
 </div>
 <p>В качестве параметров могут быть типы и значения примитивных типов. Например в Julia объявлен тип для массивов <code class="docutils literal notranslate"> <span class="pre">AbstractArray{T,N}</span></code>, где под <code class="docutils literal notranslate"><span class="pre">T</span></code> подразумевается тип значений, а под <code class="docutils literal notranslate"><span class="pre">N</span></code> размерность.</p>
-<p>Параметрические типы порождают целое семество типов. Член такого семейства - <em>любая  комбинация разрешенных значений</em> параметров типа.</p>
-<p>Таким образом, с помощью параметризации композитного типа, мы можем дать подсказки для компилятора, чтобы тот создавал оптимизированный код.</p>
+<p>Параметрические типы порождают целое семейство типов. Член такого семейства – <em>любая  комбинация разрешенных значений</em> параметров типа.</p>
+<p>Таким образом, с помощью параметризации композитного типа мы можем дать подсказки для компилятора, чтобы тот создавал оптимизированный код.</p>
 <div class="section" id="id16">
-<h4><span class="section-number">1.3.7.4.1. </span>Пример<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.3.7.4.1. </span>Пример оптимизации<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
 <p>Рассмотрим две версии <code class="docutils literal notranslate"><span class="pre">Point</span></code></p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="k">struct</span> <span class="kt">APoint</span>
            <span class="n">x</span>
@@ -1160,7 +1205,7 @@
 <span class="go">  0.001816 seconds (4 allocations: 7.630 MiB)</span>
 </pre></div>
 </div>
-<p>Серьёзный бенчмарк также показывает разницу в два порядка</p>
+<p>Точный бенчмарк также показывает разницу времени работы в два порядка</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="k">using</span> <span class="n">BenchmarkTools</span>
 
 <span class="gp">julia&gt;</span> <span class="nd">@btime</span> <span class="n">dist</span><span class="o">.</span><span class="p">(</span><span class="n">AA</span><span class="p">);</span>
@@ -1172,7 +1217,7 @@
 </div>
 <div class="dropdown admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Поисследовать, может ли комплялтор предугадать типы в теле вызова можно с помощью <code class="docutils literal notranslate"><span class="pre">&#64;code_warntype</span></code></p>
+<p>Поисследовать, может ли компилятор предугадать типы в теле вызова можно с помощью макроса <code class="docutils literal notranslate"><span class="pre">&#64;code_warntype</span></code></p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="nd">@code_warntype</span> <span class="n">dist</span><span class="p">(</span><span class="n">APoint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
 <span class="go">Variables</span>
 <span class="go">  #self#::Core.Const(dist)</span>
@@ -1216,8 +1261,7 @@
 </div>
 <div class="section" id="multiple-dispatch">
 <h2><span class="section-number">1.3.8. </span>Методы и multiple dispatch<a class="headerlink" href="#multiple-dispatch" title="Permalink to this headline">¶</a></h2>
-<p>Для каждой функции в Julia можно определить сколько угодно методов <em>methods</em>. Это способ полиформизма в языке.</p>
-<p>Вы уже с этим сталкивались, например, <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span></code> и <code class="docutils literal notranslate"><span class="pre">1.0</span> <span class="pre">+</span> <span class="pre">2.0</span></code> совершенно разные вызовы. В первом случае вызывается метод <code class="docutils literal notranslate"><span class="pre">+(x,</span> <span class="pre">y)</span></code> для  <code class="docutils literal notranslate"><span class="pre">Int64</span></code>, а во втором метод <code class="docutils literal notranslate"><span class="pre">+(x,</span> <span class="pre">y)</span></code> для сложения <code class="docutils literal notranslate"><span class="pre">Float64</span></code>.</p>
+<p>Для каждой функции в Julia можно определить сколько угодно методов (<em>methods</em>). Это способ полиформизма в языке. Вы уже с ним сталкивались, например, <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span></code> и <code class="docutils literal notranslate"><span class="pre">1.0</span> <span class="pre">+</span> <span class="pre">2.0</span></code> совершенно разные вызовы. В первом случае вызывается метод <code class="docutils literal notranslate"><span class="pre">+(x,</span> <span class="pre">y)</span></code> для  <code class="docutils literal notranslate"><span class="pre">Int64</span></code>, а во втором метод <code class="docutils literal notranslate"><span class="pre">+(x,</span> <span class="pre">y)</span></code> для сложения <code class="docutils literal notranslate"><span class="pre">Float64</span></code>.</p>
 <p>У сложения <code class="docutils literal notranslate"><span class="pre">+</span></code> в Julia 190 методов</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">methods</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
 <span class="go"># 190 methods for generic function &quot;+&quot;:</span>
@@ -1236,8 +1280,8 @@
 <span class="go">+(x::Number, y::Number) in Base at promotion.jl:321</span>
 </pre></div>
 </div>
-<p>Процесс выбора нужного метода называется <strong>диспетчеризацией</strong> <em>dispatch</em>. В Julia диспетчеризация производится <strong>по типам всех позиционных аргументов функции</strong>. Этот механизм называется <em>multiple dispatch</em>. Он гибче и продуктивне, нежели диспетчеризация по одному типу, например, как в Python (<code class="docutils literal notranslate"><span class="pre">type(x).__add__(x,</span> <span class="pre">y)</span></code>).</p>
-<p>Строго говоря, функция <em>generic function</em> одна, а методов у неё много. Однако, всё же принято называть методы функциями, если контекст позволяет.</p>
+<p>Процесс выбора нужного метода называется <strong>диспетчеризацией</strong> (<em>dispatch</em>). В Julia диспетчеризация производится <strong>по типам <em>всех</em> позиционных аргументов функции</strong>. Этот механизм называется <em>multiple dispatch</em>. Он гибче и продуктивнее, нежели диспетчеризация по одному типу, например, как в Python (<code class="docutils literal notranslate"><span class="pre">type(x).__add__(x,</span> <span class="pre">y)</span></code>).</p>
+<p>Строго говоря, <em>generic function</em> единственна, а методов у неё много. Однако, всё же принято называть методы функциями, если контекст позволяет.</p>
 <p>Методы создаются как функции, но с указанием типа хотя бы одного аргумента.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span><span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 <span class="go">f (generic function with 1 method)</span>
@@ -1268,11 +1312,14 @@
 <span class="go">2.5 + 3.0im</span>
 </pre></div>
 </div>
-<p>При диспетчеризации может возникать коллизия: два или более методов подходят для вызова. В этом случае Julia сообщит об ошибке <code class="docutils literal notranslate"><span class="pre">MethodError</span></code>.</p>
-<p>На методах, основаны интерфейсы в языке. Например, вы можете создавать собственные структуры данных, у которых будет поведение массивов. Как только вы создадите методы интерфейса для своего типа, вы сможете пользоваться всеми функциями, определенными для <code class="docutils literal notranslate"><span class="pre">AbstractArray{T,N}</span></code>. Или, скажем, вы можете встроить свои структуры данных в интерфейс цикла <code class="docutils literal notranslate"><span class="pre">for</span></code>.</p>
+<p>При диспетчеризации может возникать коллизия: два или более метода подходят для вызова. В этом случае Julia выдаст ошибку <code class="docutils literal notranslate"><span class="pre">MethodError</span></code>.</p>
+<p>На методах основаны интерфейсы в языке. Например, вы можете создавать собственные структуры данных, у которых будет поведение массивов. Как только вы создадите методы интерфейса для своего типа, вы сможете пользоваться всеми функциями, определенными для <code class="docutils literal notranslate"><span class="pre">AbstractArray{T,N}</span></code>. Или, скажем, вы можете встроить свои структуры данных в интерфейс цикла <code class="docutils literal notranslate"><span class="pre">for</span></code>.</p>
 <p>Помимо этого, методы могут быть параметрическими, и в их теле вам будет доступен тип аргумента <em>без вызова</em> <code class="docutils literal notranslate"><span class="pre">typeof(x)</span></code>, т.е. на этапе компиляции, а не в runtime.</p>
-<p>С помощью методов создаются также создаются типы, ведущие себя как функции. Их можно вызывать. На этом основаны замыкания <em>closures</em> в Julia.</p>
+<p>С помощью методов также создаются типы, ведущие себя как функции: их можно вызывать (<em>callable</em>). На этом основаны замыкания (<em>closures</em>) в Julia.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
 <p>Изобретено множество дизайн-паттернов с использованием методов и типов. За подробностями по теме методов обращайтесь в мануал <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/methods/">[url]</a></strong>.</p>
+</div>
 </div>
 <div class="section" id="id17">
 <h2><span class="section-number">1.3.9. </span>Линейная алгебра<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
