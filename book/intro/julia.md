@@ -1,4 +1,7 @@
-% substitutions: urldownload
+---
+substitutions:
+  urldownload: "**[[url]](https://julialang.org/downloads/)**"
+---
 
 # Основы языка программирования Julia
 
@@ -32,14 +35,13 @@
 Исполнитель языка находится здесь
 
 :::
-/Applications/Julia-1.6.app/Contents/Resources/julia/bin/julia
+% /Applications/Julia-1.6.app/Contents/Resources/julia/bin/julia --version
+julia version 1.6.2
 :::
 
-Вы можете доступиться до него через терминал и запустить [Julia REPL](repl_guide).
+Однако, чтобы в будущем не доступаться до Julia по абсолютному пути, добавьте `alias` в rc-файл вашего терминала.
 
-Однако, чтобы в будущем не доступаться до Julia по абсолютному пути, добавьте `alias` в rc файл вашего терминала.
-
-::::{admonition} Как найти rc файл
+::::{admonition} Как найти rc-файл
 :class: dropdown
 
 Узнайте ваш `shell`
@@ -51,11 +53,11 @@
 
 - Если это `zsh`, то файл для настройки `~/.zshrc`.
     - Если файл отсутствует, создайте его `touch ~/.zshrc`.
-- Если это `bash`, то файл для настройки `~/.bash_console`.
-    - Если файл отсутствует, создайте его `touch ~/.bash_console`.
+- Если это `bash`, то файл для настройки `~/.bashrc`.
+    - Если файл отсутствует, создайте его `touch ~/.bashrc`.
 ::::
 
-Добавление `alias` (пример для `zsh`, для `bash` аналогично):
+Добавление `alias` (для `bash` аналогично):
 
 :::console
 % open ~/.zshrc
