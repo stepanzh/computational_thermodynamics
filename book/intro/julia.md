@@ -716,7 +716,7 @@ hello
 
 (type_system)=
 ## Система типов
-В Julia **сильная динамическая** система типов, являющейся центральной темой языка наряду с методами.
+В Julia **сильная динамическая** система типов, являющейся центральной темой языка наряду с методами. Подробнее, как всегда, в мануале к языку **[[url]](https://docs.julialang.org/en/v1/manual/types/)**.
 
 ### Декларация типов
 
@@ -966,8 +966,126 @@ julia> @btime dist.(TA);
   1.290 ms (5 allocations: 7.63 MiB)
 ```
 
+```{tip}
+:class: dropdown
+
+Поисследовать, может ли комплялтор предугадать типы в теле вызова можно с помощью `@code_warntype`
+
+:::julia-repl
+julia> @code_warntype dist(APoint(1, 2))
+Variables
+  #self#::Core.Const(dist)
+  p::APoint
+
+Body::Any
+1 ─ %1  = Base.getproperty(p, :x)::Any
+│   %2  = Core.apply_type(Base.Val, 2)::Core.Const(Val{2})
+│   %3  = (%2)()::Core.Const(Val{2}())
+│   %4  = Base.literal_pow(Main.:^, %1, %3)::Any
+│   %5  = Base.getproperty(p, :y)::Any
+│   %6  = Core.apply_type(Base.Val, 2)::Core.Const(Val{2})
+│   %7  = (%6)()::Core.Const(Val{2}())
+│   %8  = Base.literal_pow(Main.:^, %5, %7)::Any
+│   %9  = (%4 + %8)::Any
+│   %10 = Main.sqrt(%9)::Any
+└──       return %10
+
+julia> @code_warntype dist(TPoint(1, 2))
+Variables
+  #self#::Core.Const(dist)
+  p::TPoint{Int64}
+
+Body::Float64
+1 ─ %1  = Base.getproperty(p, :x)::Int64
+│   %2  = Core.apply_type(Base.Val, 2)::Core.Const(Val{2})
+│   %3  = (%2)()::Core.Const(Val{2}())
+│   %4  = Base.literal_pow(Main.:^, %1, %3)::Int64
+│   %5  = Base.getproperty(p, :y)::Int64
+│   %6  = Core.apply_type(Base.Val, 2)::Core.Const(Val{2})
+│   %7  = (%6)()::Core.Const(Val{2}())
+│   %8  = Base.literal_pow(Main.:^, %5, %7)::Int64
+│   %9  = (%4 + %8)::Int64
+│   %10 = Main.sqrt(%9)::Float64
+└──       return %10
+:::
+```
+
 ## Методы и multiple dispatch
 
+Для каждой функции в Julia можно определить сколько угодно методов *methods*. Это способ полиформизма в языке.
 
-## Вектора и матрицы
+Вы уже с этим сталкивались, например, `1 + 2` и `1.0 + 2.0` совершенно разные вызовы. В первом случае вызывается метод `+(x, y)` для  `Int64`, а во втором метод `+(x, y)` для сложения `Float64`.
+
+У сложения `+` в Julia 190 методов
+
+```julia-repl
+julia> methods(+)
+# 190 methods for generic function "+":
+[1] +(x::T, y::T) where T<:Union{Int128, Int16, Int32, Int64, Int8, UInt128, UInt16, UInt32, UInt64, UInt8} in Base at int.jl:87
+[2] +(c::Union{UInt16, UInt32, UInt64, UInt8}, x::BigInt) in Base.GMP at gmp.jl:528
+[3] +(c::Union{Int16, Int32, Int64, Int8}, x::BigInt) in Base.GMP at gmp.jl:534
+...
+
+julia> @which 1 + 2
++(x::T, y::T) where T<:Union{Int128, Int16, Int32, Int64, Int8, UInt128, UInt16, UInt32, UInt64, UInt8} in Base at int.jl:87
+
+julia> @which 1.0 + 2.0
++(x::Float64, y::Float64) in Base at float.jl:326
+
+julia> @which 1.0 + 2
++(x::Number, y::Number) in Base at promotion.jl:321
+```
+
+Процесс выбора нужного метода называется **диспетчеризацией** *dispatch*. В Julia диспетчеризация производится **по типам всех позиционных аргументов функции**. Этот механизм называется *multiple dispatch*. Он гибче и продуктивне, нежели диспетчеризация по одному типу, например, как в Python (`type(x).__add__(x, y)`).
+
+Строго говоря, функция *generic function* одна, а методов у неё много. Однако, всё же принято называть методы функциями, если контекст позволяет.
+
+Методы создаются как функции, но с указанием типа хотя бы одного аргумента.
+
+```julia-repl
+julia> f(x, y) = 2x + y
+f (generic function with 1 method)
+
+julia> f(x::Float64, y::Float64) = 3x + y
+f (generic function with 2 methods)
+```
+
+Здесь же посмотрим на диспетчеризацию
+```julia-repl
+julia> f(1, 1)
+3
+
+julia> f(1.0, 1.0)  # два Float64, подходит f(x::Float64, y::Float64)
+4.0
+
+julia> f(1.0, 1)    # Float64 и Int64, подходит лучше f(x, y)
+3.0
+```
+
+Конечно, использование не конкретных типов разрешено
+
+```julia-repl
+julia> f(x::Complex, y::Complex) = 5x + y*im
+f (generic function with 3 methods)
+
+julia> f(1.5im, 2.5im)
+-2.5 + 7.5im
+
+julia> f(1.5im, 2.5)
+2.5 + 3.0im
+```
+
+При диспетчеризации может возникать коллизия: два или более методов подходят для вызова. В этом случае Julia сообщит об ошибке `MethodError`.
+
+На методах, основаны интерфейсы в языке. Например, вы можете создавать собственные структуры данных, у которых будет поведение массивов. Как только вы создадите методы интерфейса для своего типа, вы сможете пользоваться всеми функциями, определенными для `AbstractArray{T,N}`. Или, скажем, вы можете встроить свои структуры данных в интерфейс цикла `for`.
+
+Помимо этого, методы могут быть параметрическими, и в их теле вам будет доступен тип аргумента *без вызова* `typeof(x)`, т.е. на этапе компиляции, а не в runtime.
+
+С помощью методов создаются также создаются типы, ведущие себя как функции. Их можно вызывать. На этом основаны замыкания *closures* в Julia.
+
+Изобретено множество дизайн-паттернов с использованием методов и типов. За подробностями по теме методов обращайтесь в мануал **[[url]](https://docs.julialang.org/en/v1/manual/methods/)**.
+
+## Линейная алгебра
 % броадкаст
+
+## Модули
