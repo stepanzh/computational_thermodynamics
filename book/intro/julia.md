@@ -8,6 +8,12 @@ substitutions:
 
 В данном разделе излагаются основные инструменты языка Julia, которые понадобятся в практикуме.
 
+- Официальная документация языка находится здесь: https://docs.julialang.org/en/v1/.
+- Самостоятельно можно обучиться по
+  - мануалу https://docs.julialang.org/en/v1/manual/getting-started/;
+  - разделу с материалами https://julialang.org/learning/.
+- Обзор синтаксиса https://learnxinyminutes.com/docs/ru-ru/julia-ru/.
+
 Здесь и далее prompt-сообщение терминала помечается равняется `%`, например,
 
 ```console
