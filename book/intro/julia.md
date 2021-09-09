@@ -771,16 +771,16 @@ Int8
 
 В Julia система типов является деревом, корень которого тип `Any`. Листьями дерева типов являются **конкретные типы**. У значения такого типа известна структура в памяти. **Абстрактные** типы нужны в качестве промежуточных узлов дерева типов.
 
-Например, так выглядит часть дерева с числовыми и строчными типами, при этом конкретные типы указаны в округлённых рамках
+Например, так выглядит часть дерева с числовыми и строчными типами, при этом конкретные типы указаны в округлённых рамках, а абстрактные в прямоугольных
 
 ```{mermaid}
 flowchart TB
     Any --> Number --> Real --> Integer
     Any --> AbstractString --> String([String])
-            AbstractString --> SubString
-    Number --> Complex
+            AbstractString --> SubString[/SubString/]
+    Number --> Complex[/Complex/]
     Real --> AbstractFloat
-    Real --> Rational
+    Real --> Rational[/Rational/]
     Rational --> RationalInt64(["Rational{Int64}"])
     Rational --> RationalInt32(["Rational{Int32}"])
     Integer --> Int64([Int64])
