@@ -1131,7 +1131,127 @@ julia> f(1.5im, 2.5)
 Изобретено множество дизайн-паттернов с использованием методов и типов. За подробностями по теме методов обращайтесь в мануал **[[url]](https://docs.julialang.org/en/v1/manual/methods/)**.
 ```
 
+## Модули
+
+В Julia можно разбивать исходный код программы на модули (*modules*).
+
+1. Каждый модуль создаёт собственное глобальное пространство имён;
+2. Модулям предоставляется управление над системой имён внутри. Модуль определяет, какие имена им экспортируются (`export`), в тоже время модуль может использовать имена из других модулей (`using`, `import`);
+3. Модули могут быть прекомпилированы.
+
+Модуль создаётся в блоке `module-end`
+
+```{tab} v1
+---
+---
+:::julia
+# Points.jl
+module Points
+
+# экспортируемые имена
+export dist
+export Point
+
+# основной код
+struct Point{T}
+    x::T
+    y::T
+end
+
+dist(p::Point) = sqrt(p.x^2 + p.y^2)
+random_point() = Point(rand(2)...)
+
+end # module
+
+# импортирование имён: Points, Point, dist
+# через Points доступны все имена: Points.Point, Points.dist, Points.random_point
+using .Points
+
+println(dist(Point(3, 4)))
+println(Points.random_point())
+:::
+```
+```{tab} v2
+---
+---
+:::julia
+# Points.jl
+module Points
+
+import LinearAlgebra    # импортирование имени LinearAlgebra (стандартный модуль)
+
+export dist
+export Point
+
+struct Point{T}
+    x::T
+    y::T
+end
+
+dist(p::Point) = sqrt(p.x^2 + p.y^2)
+random_point() = Point(rand(2)...)
+
+# добавление метода к скалярному произведению
+LinearAlgebra.dot(p1::Point, p2::Point) = p1.x * p2.x + p1.y * p2.y
+
+end # module
+
+
+using LinearAlgebra
+using .Points
+
+println(dist(Point(3, 4)))
+println(Points.random_point())
+
+println(Point(-1, 2) ⋅ Point(-2, -3))   # \cdot<Tab>, `⋅` синоним `LinearAlgebra.dot(x, y)`
+:::
+```
+```{tab} v3
+---
+---
+:::julia
+# Points.jl
+module Points
+
+import LinearAlgebra
+
+export dist
+export Point
+
+struct Point{T}
+    x::T
+    y::T
+end
+
+dist(p::Point) = sqrt(p.x^2 + p.y^2)
+random_point() = Point(rand(2)...)
+
+LinearAlgebra.dot(p1::Point, p2::Point) = p1.x * p2.x + p1.y * p2.y
+
+# так расширяется стандартная библиотека языка Base
+# `+` коммутативно
+Base.:+(p1::Point, p2::Point) = Point(p1.x + p2.x, p1.y + p2.y)
+# `*` не коммутативно
+Base.:*(α::Number, p::Point) = Point(α * p.x, α * p.y)
+Base.:*(p::Point, α::Number) = α * p
+
+end # module
+
+
+using LinearAlgebra
+using .Points
+
+println(dist(Point(3, 4)))
+println(Points.random_point())
+
+println(Point(-1, 2) ⋅ Point(-2, -3))
+
+println(2 * Point(1, 2))
+println(Point(1, 2) * 2.0)
+println(Point(1, 2) + Point(3.0, 4.1))
+:::
+```
+
 ## Линейная алгебра
 % броадкаст
 
-## Модули
