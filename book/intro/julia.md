@@ -1457,7 +1457,6 @@ julia> [[1, 2], [3, 4]]
 Скажем, задана блочная матрица
 
 :::{math}
-\require{physics}
 \mathcal{M} = \left[\begin{array}{ccc|ccc}
 1 & 2 & 3 & 1 & 0 & 0 \\
 4 & 5 & 6 & 0 & 1 & 0 \\
