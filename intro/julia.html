@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1.3. Основы языка программирования Julia &#8212; Практикум по вычислительной теплофизике</title>
+    <title>1.5. Основы языка программирования Julia &#8212; Практикум по вычислительной теплофизике</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -45,7 +45,7 @@
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -57,7 +57,7 @@
     <script >mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="1.2. Обусловленность задач" href="cond.html" />
+    <link rel="prev" title="1.4. Обусловленность задач" href="cond.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -110,17 +110,17 @@
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="float.html">
-     1.1. Числа с плавающей точкой
+     1.3. Числа с плавающей точкой
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="cond.html">
-     1.2. Обусловленность задач
+     1.4. Обусловленность задач
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.3. Основы языка программирования Julia
+     1.5. Основы языка программирования Julia
     </a>
    </li>
   </ul>
@@ -216,79 +216,79 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   1.3.1. Инструкция по установке
+   1.5.1. Инструкция по установке
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#repl-guide">
-   1.3.2. Интерактивный режим
+   1.5.2. Интерактивный режим
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   1.3.3. Числа и переменные
+   1.5.3. Числа и переменные
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   1.3.4. Строки
+   1.5.4. Строки
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   1.3.5. Функции
+   1.5.5. Функции
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
-   1.3.6. Управляющие конструкции
+   1.5.6. Управляющие конструкции
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id8">
-     1.3.6.1. Составные выражения
+     1.5.6.1. Составные выражения
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id9">
-     1.3.6.2. Условное исполнение
+     1.5.6.2. Условное исполнение
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id10">
-     1.3.6.3. Циклы
+     1.5.6.3. Циклы
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#type-system">
-   1.3.7. Система типов
+   1.5.7. Система типов
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id12">
-     1.3.7.1. Декларация типов
+     1.5.7.1. Декларация типов
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id13">
-     1.3.7.2. Какие бывают типы
+     1.5.7.2. Какие бывают типы
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#julia-composite">
-     1.3.7.3. Композитные типы
+     1.5.7.3. Композитные типы
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id15">
-     1.3.7.4. Параметрические композитные типы
+     1.5.7.4. Параметрические композитные типы
     </a>
     <ul class="nav section-nav flex-column">
      <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#id16">
-       1.3.7.4.1. Пример
+       1.5.7.4.1. Пример
       </a>
      </li>
     </ul>
@@ -297,61 +297,61 @@
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#multiple-dispatch">
-   1.3.8. Методы и multiple dispatch
+   1.5.8. Методы и multiple dispatch
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id17">
-   1.3.9. Модули
+   1.5.9. Модули
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id18">
-     1.3.9.1. Пример разработки модуля
+     1.5.9.1. Пример разработки модуля
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id19">
-     1.3.9.2. Разбиение исходного файла
+     1.5.9.2. Разбиение исходного файла
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id20">
-   1.3.10. Массивы
+   1.5.10. Массивы
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id21">
-     1.3.10.1. Массивы
+     1.5.10.1. Массивы
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id22">
-     1.3.10.2. Индексирование
+     1.5.10.2. Индексирование
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id23">
-     1.3.10.3. Присваивание значений
+     1.5.10.3. Присваивание значений
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id24">
-     1.3.10.4. Вспомогательные функции
+     1.5.10.4. Вспомогательные функции
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#arrays-linops">
-     1.3.10.5. Линейная алгебра
+     1.5.10.5. Линейная алгебра
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#broadcasting">
-   1.3.11. Векторизация функций
+   1.5.11. Векторизация функций
   </a>
  </li>
 </ul>
@@ -366,7 +366,7 @@
               <div>
                 
   <div class="section" id="julia">
-<h1><span class="section-number">1.3. </span>Основы языка программирования Julia<a class="headerlink" href="#julia" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">1.5. </span>Основы языка программирования Julia<a class="headerlink" href="#julia" title="Permalink to this headline">¶</a></h1>
 <blockquote class="epigraph">
 <div><p>Julia: come for the syntax, stay for the speed</p>
 <p class="attribution">—<em><a class="reference external" href="https://www.nature.com/articles/d41586-019-02310-3">Nature</a></em></p>
@@ -384,7 +384,7 @@
 <li><p>Обзор синтаксиса <a class="reference external" href="https://learnxinyminutes.com/docs/ru-ru/julia-ru/">https://learnxinyminutes.com/docs/ru-ru/julia-ru/</a>.</p></li>
 </ul>
 <div class="section" id="id1">
-<h2><span class="section-number">1.3.1. </span>Инструкция по установке<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5.1. </span>Инструкция по установке<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>Ниже расположены краткие инструкции по установке исполнителя языка Julia для Linux-based операционных систем (ОС), MacOS и Windows 10. При возникновении неясностей, обратитесь к <a class="reference external" href="https://julialang.org/downloads/platform/">официальной инструкции</a> вашей ОС.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Инструкция для пользователей Linux-based ОС</p>
@@ -478,7 +478,7 @@
 </div>
 </div>
 <div class="section" id="repl-guide">
-<span id="id2"></span><h2><span class="section-number">1.3.2. </span>Интерактивный режим<a class="headerlink" href="#repl-guide" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2><span class="section-number">1.5.2. </span>Интерактивный режим<a class="headerlink" href="#repl-guide" title="Permalink to this headline">¶</a></h2>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>Это аналогично интерактивному режиму работы в Python.</p>
@@ -545,7 +545,7 @@
 </div>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">1.3.3. </span>Числа и переменные<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5.3. </span>Числа и переменные<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Данный раздел является <em>кратким</em> обзором следующих разделов манула</p>
@@ -715,10 +715,10 @@
 <span class="go">20</span>
 </pre></div>
 </div>
-<p>Заметьте, Julia не допустила присвоение <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">10.0</span></code>, потому что оно меняет тип переменной <code class="docutils literal notranslate"><span class="pre">y::Int64</span></code>. Однако, присваивать значения <code class="docutils literal notranslate"><span class="pre">Int64</span></code> переменной <code class="docutils literal notranslate"><span class="pre">y</span></code> можно, Julia лишь <em>предупредит</em>, но не запретит.</p>
+<p>Julia не допустила присвоение <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">10.0</span></code>, потому что оно меняет тип переменной <code class="docutils literal notranslate"><span class="pre">y::Int64</span></code>. Однако, присваивать значения <code class="docutils literal notranslate"><span class="pre">Int64</span></code> переменной <code class="docutils literal notranslate"><span class="pre">y</span></code> всё-таки можно, но не стоит этого делать.</p>
 </div>
 <div class="section" id="id5">
-<h2><span class="section-number">1.3.4. </span>Строки<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5.4. </span>Строки<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Подробнее о строках в мануале <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/strings/">[url]</a></strong>.</p>
@@ -818,7 +818,7 @@
 </table>
 </div>
 <div class="section" id="id6">
-<h2><span class="section-number">1.3.5. </span>Функции<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5.5. </span>Функции<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Больше информации в мануале <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/functions/">[url]</a></strong>.</p>
@@ -854,7 +854,7 @@
 <span class="go">10.0</span>
 </pre></div>
 </div>
-<p>В Julia аргументы передаются по принципу <em>pass-by-sharing</em>. Т.е. аргументы функции внутри тела ведут себя как новые переменные. Однако, у изменяемых <em>mutable</em> аргументов (например, массив), можно поменять значения, и они будут видны извне. По соглашению, если функция меняет свой аргумент, то в её имя добавляется <code class="docutils literal notranslate"><span class="pre">!</span></code> в конце, например, <code class="docutils literal notranslate"><span class="pre">map!(f,</span> <span class="pre">A,</span> <span class="pre">B)</span></code>, <code class="docutils literal notranslate"><span class="pre">push!(A,</span> <span class="pre">a)</span></code>.</p>
+<p>В Julia аргументы передаются по принципу <em>pass-by-sharing</em>. Т.е. аргументы функции внутри тела ведут себя как новые переменные. Однако, у изменяемых <em>mutable</em> аргументов (например, массив), можно поменять значения, и они будут видны извне. По соглашению, если функция меняет свой аргумент, то в её имя добавляется <code class="docutils literal notranslate"><span class="pre">!</span></code> в конце, например, <code class="docutils literal notranslate"><span class="pre">map!(f,</span> <span class="pre">A,</span> <span class="pre">B)</span></code>, <code class="docutils literal notranslate"><span class="pre">push!(A,</span> <span class="pre">x)</span></code> (исключение составляют функции, работающие с вводом-выводом <code class="docutils literal notranslate"><span class="pre">print</span></code>, <code class="docutils literal notranslate"><span class="pre">write</span></code>,..).</p>
 <p>Функции являются <strong>first-class</strong> объектами. Ими можно “распоряжаться”, как переменными: присваивать их другим переменным, передавать как аргумент…</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">φ</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span>
 
@@ -921,14 +921,14 @@
 <p>Также существует именованный кортеж <code class="docutils literal notranslate"><span class="pre">NamedTuple</span></code>, хранящий пары ключ-значение. На его основе создаются функции, принимающие аргументы по ключу.</p>
 </div>
 <div class="section" id="id7">
-<h2><span class="section-number">1.3.6. </span>Управляющие конструкции<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5.6. </span>Управляющие конструкции<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Подробнее в мануале <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/control-flow/">[url]</a></strong>.
 Здесь освещены не все конструкции и не так подробно.</p>
 </div>
 <div class="section" id="id8">
-<h3><span class="section-number">1.3.6.1. </span>Составные выражения<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.5.6.1. </span>Составные выражения<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <p>C двумя управляющими конструкциями мы уже встретились, это <code class="docutils literal notranslate"><span class="pre">begin</span></code>-блоки и <code class="docutils literal notranslate"><span class="pre">;</span></code>-цепочки.</p>
 <p>Блок <code class="docutils literal notranslate"><span class="pre">begin-end</span></code> позволяет объединять несколько выражений в одно, составное выражение (<em>compound expression</em>).</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">z</span> <span class="o">=</span> <span class="k">begin</span>
@@ -949,7 +949,7 @@
 </div>
 </div>
 <div class="section" id="id9">
-<h3><span class="section-number">1.3.6.2. </span>Условное исполнение<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.5.6.2. </span>Условное исполнение<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <p>Синтаксис <code class="docutils literal notranslate"><span class="pre">if-elseif-else</span></code> блока</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">x</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span> <span class="n">y</span> <span class="o">=</span> <span class="mi">20</span><span class="p">;</span>
 
@@ -978,7 +978,7 @@
 </div>
 </div>
 <div class="section" id="id10">
-<h3><span class="section-number">1.3.6.3. </span>Циклы<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.5.6.3. </span>Циклы<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
 <p>Julia предоставляет два цикла: <code class="docutils literal notranslate"><span class="pre">while</span></code> и <code class="docutils literal notranslate"><span class="pre">for</span></code>.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
 
@@ -1042,14 +1042,14 @@
 </div>
 </div>
 <div class="section" id="type-system">
-<span id="id11"></span><h2><span class="section-number">1.3.7. </span>Система типов<a class="headerlink" href="#type-system" title="Permalink to this headline">¶</a></h2>
+<span id="id11"></span><h2><span class="section-number">1.5.7. </span>Система типов<a class="headerlink" href="#type-system" title="Permalink to this headline">¶</a></h2>
 <p>В Julia <strong>сильная динамическая</strong> система типов, являющаяся центральной темой языка наряду с методами.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Подробнее, как всегда, в мануале к языку <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/types/">[url]</a></strong>.</p>
 </div>
 <div class="section" id="id12">
-<h3><span class="section-number">1.3.7.1. </span>Декларация типов<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.5.7.1. </span>Декларация типов<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
 <p>С помощью оператора <code class="docutils literal notranslate"><span class="pre">::</span></code> вы можете <em>декларировать</em> тип объекта. Обычно это делается для</p>
 <ul class="simple">
 <li><p>переменных;</p></li>
@@ -1091,7 +1091,7 @@
 </div>
 </div>
 <div class="section" id="id13">
-<h3><span class="section-number">1.3.7.2. </span>Какие бывают типы<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.5.7.2. </span>Какие бывают типы<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
 <p>Типы в Julia классифицируются по следующим признакам (указаны не все)</p>
 <ul class="simple">
 <li><p>абстрактный <em>abstract</em> (<code class="docutils literal notranslate"><span class="pre">AbstractFloat</span></code>) и конкретный <em>concrete</em> (<code class="docutils literal notranslate"><span class="pre">Float64</span></code>);</p></li>
@@ -1149,7 +1149,7 @@
 </div>
 </div>
 <div class="section" id="julia-composite">
-<span id="id14"></span><h3><span class="section-number">1.3.7.3. </span>Композитные типы<a class="headerlink" href="#julia-composite" title="Permalink to this headline">¶</a></h3>
+<span id="id14"></span><h3><span class="section-number">1.5.7.3. </span>Композитные типы<a class="headerlink" href="#julia-composite" title="Permalink to this headline">¶</a></h3>
 <p><strong>Композитный</strong> тип имеет более сложную структуру в памяти. Этот тип является набором именнованных полей, а экземпляром такого типа можно манипулирвовать как одним значением. В других языках им соответствуют объекты (<em>objects</em>) или структуры (<em>structs</em>). Примерами встроенных композитых типов являются <code class="docutils literal notranslate"><span class="pre">Tuple</span></code>, <code class="docutils literal notranslate"><span class="pre">String</span></code>, <code class="docutils literal notranslate"><span class="pre">Array</span></code>, <code class="docutils literal notranslate"><span class="pre">IO</span></code>…</p>
 <p>Классический пример – структура для точки на плоскости.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="k">struct</span> <span class="kt">Point</span>
@@ -1192,7 +1192,7 @@
 <p>Конструктор (<em>constructor</em>) <code class="docutils literal notranslate"><span class="pre">Point(x,</span> <span class="pre">y)</span></code> для композитного типа можно поменять. Более того, можно создать несколько конструкторов.</p>
 </div>
 <div class="section" id="id15">
-<h3><span class="section-number">1.3.7.4. </span>Параметрические композитные типы<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.5.7.4. </span>Параметрические композитные типы<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h3>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>Абстрактные параметрические типы тоже существуют.</p>
@@ -1224,7 +1224,7 @@
 <p>Параметрические типы порождают целое семейство типов. Член такого семейства – <em>любая  комбинация разрешенных значений</em> параметров типа.</p>
 <p>Таким образом, с помощью параметризации композитного типа мы можем дать подсказки для компилятора, чтобы тот создавал оптимизированный код.</p>
 <div class="section" id="id16">
-<h4><span class="section-number">1.3.7.4.1. </span>Пример<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
+<h4><span class="section-number">1.5.7.4.1. </span>Пример<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
 <p>Рассмотрим две версии <code class="docutils literal notranslate"><span class="pre">Point</span></code></p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="k">struct</span> <span class="kt">APoint</span>
            <span class="n">x</span>
@@ -1322,7 +1322,7 @@
 </div>
 </div>
 <div class="section" id="multiple-dispatch">
-<h2><span class="section-number">1.3.8. </span>Методы и multiple dispatch<a class="headerlink" href="#multiple-dispatch" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5.8. </span>Методы и multiple dispatch<a class="headerlink" href="#multiple-dispatch" title="Permalink to this headline">¶</a></h2>
 <p>Для каждой функции в Julia можно определить сколько угодно методов (<em>methods</em>). Это способ полиформизма в языке. Вы уже с ним сталкивались, например, <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span></code> и <code class="docutils literal notranslate"><span class="pre">1.0</span> <span class="pre">+</span> <span class="pre">2.0</span></code> совершенно разные вызовы. В первом случае вызывается метод <code class="docutils literal notranslate"><span class="pre">+(x,</span> <span class="pre">y)</span></code> для  <code class="docutils literal notranslate"><span class="pre">Int64</span></code>, а во втором метод <code class="docutils literal notranslate"><span class="pre">+(x,</span> <span class="pre">y)</span></code> для сложения <code class="docutils literal notranslate"><span class="pre">Float64</span></code>.</p>
 <p>У сложения <code class="docutils literal notranslate"><span class="pre">+</span></code> в Julia 1.6.2 190 методов</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">methods</span><span class="p">(</span><span class="o">+</span><span class="p">)</span>
@@ -1389,7 +1389,7 @@
 </div>
 </div>
 <div class="section" id="id17">
-<h2><span class="section-number">1.3.9. </span>Модули<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5.9. </span>Модули<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
 <p>В Julia можно разбивать исходный код программы на модули (<em>modules</em>).</p>
 <ol class="simple">
 <li><p>Каждый модуль создаёт собственное глобальное пространство имён;</p></li>
@@ -1417,7 +1417,7 @@
 <li><p>Экспортирование имён из модуля осуществляется командной <code class="docutils literal notranslate"><span class="pre">export</span></code>.</p></li>
 </ul>
 <div class="section" id="id18">
-<h3><span class="section-number">1.3.9.1. </span>Пример разработки модуля<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.5.9.1. </span>Пример разработки модуля<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
 <p>Ниже показана разработка модуля в несколько этапов. В нём привычная структура <code class="docutils literal notranslate"><span class="pre">Point{T}</span></code>, а её интерфейс оборачивается в модуль. Затем, для примера, структура встраивается в существующую экосистему языка: можно скалярно умножать точки, складывать или умножать на скаляр.</p>
 <div class="tab-set docutils">
 <input checked="True" class="tab-input" id="tab-set--0-input--1" name="tab-set--0" type="radio"><label class="tab-label" for="tab-set--0-input--1">Базовая разработка</label><div class="tab-content docutils">
@@ -1532,7 +1532,7 @@
 </div>
 </div>
 <div class="section" id="id19">
-<h3><span class="section-number">1.3.9.2. </span>Разбиение исходного файла<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.5.9.2. </span>Разбиение исходного файла<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
 <p>Функция <code class="docutils literal notranslate"><span class="pre">include(&quot;filename.jl&quot;)</span></code> вставляет содержимое <code class="file docutils literal notranslate"><span class="pre">filename.jl</span></code> в исходный код туда, где <code class="docutils literal notranslate"><span class="pre">include</span></code> был вызван.</p>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
@@ -1613,9 +1613,9 @@
 </div>
 </div>
 <div class="section" id="id20">
-<h2><span class="section-number">1.3.10. </span>Массивы<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">1.5.10. </span>Массивы<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="id21">
-<h3><span class="section-number">1.3.10.1. </span>Массивы<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.5.10.1. </span>Массивы<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
 <p>В Julia для массивов существует абстрактный тип <code class="docutils literal notranslate"><span class="pre">AbstractArray{T,N}</span></code>, где <code class="docutils literal notranslate"><span class="pre">T</span></code> тип элемента массива (<code class="docutils literal notranslate"><span class="pre">Int64</span></code>, <code class="docutils literal notranslate"><span class="pre">String</span></code>, <code class="docutils literal notranslate"><span class="pre">Complex{Int64}</span></code>, <code class="docutils literal notranslate"><span class="pre">Number</span></code>, <code class="docutils literal notranslate"><span class="pre">Any</span></code>…), а <code class="docutils literal notranslate"><span class="pre">N</span></code> размерность. При написании собственных типов с поведением массива в объявлении следует указать, что ваш тип является подтипом <code class="docutils literal notranslate"><span class="pre">AbstractArray</span></code>.</p>
 <p>Встроенным типом для массивом является <code class="docutils literal notranslate"><span class="pre">Array{T,N}</span></code>. Это изменяемый массив динамического размера с <em>column-major</em> хранением элементов. Существуют два часто используемых синонима</p>
 <ul class="simple">
@@ -1725,8 +1725,7 @@
 <p class="admonition-title">Создание блочной матрицы</p>
 <p>Скажем, задана блочная матрица</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\require{physics}
-\mathcal{M} = \left[\begin{array}{ccc|ccc}
+\[\begin{split}\mathcal{M} = \left[\begin{array}{ccc|ccc}
 1 &amp; 2 &amp; 3 &amp; 1 &amp; 0 &amp; 0 \\
 4 &amp; 5 &amp; 6 &amp; 0 &amp; 1 &amp; 0 \\
 7 &amp; 8 &amp; 9 &amp; 0 &amp; 0 &amp; 1 \\ \hline
@@ -1773,7 +1772,7 @@ A &amp; I \\ \hline
 </div>
 </div>
 <div class="section" id="id22">
-<h3><span class="section-number">1.3.10.2. </span>Индексирование<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.5.10.2. </span>Индексирование<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h3>
 <p>Наиболее употребляемыми индексами являются <code class="docutils literal notranslate"><span class="pre">LinearIndex</span></code> и размерный <code class="docutils literal notranslate"><span class="pre">CartesianIndex</span></code>.</p>
 <p>Синтаксис первого <code class="docutils literal notranslate"><span class="pre">A[i]</span></code>. Позволяет получить <code class="docutils literal notranslate"><span class="pre">i</span></code>-ый <em>по счёту в памяти</em> элемент массива.  Синтаксис второго (для матриц) <code class="docutils literal notranslate"><span class="pre">A[i,</span> <span class="pre">j]</span></code>. Позволяет получить <span class="math notranslate nohighlight">\(A_{ij}\)</span>.</p>
 <p>Индексами могут быть и коллекции элементов. Часто используется <em>range operator</em> <code class="docutils literal notranslate"><span class="pre">start:[step:]stop</span></code>, чтобы обращаться к отдельным строкам и столбцам или их пересечению.</p>
@@ -1870,7 +1869,7 @@ A &amp; I \\ \hline
 </div>
 </div>
 <div class="section" id="id23">
-<h3><span class="section-number">1.3.10.3. </span>Присваивание значений<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.5.10.3. </span>Присваивание значений<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Array{T,N}</span></code> изменяемый тип, можно перезаписывать его элементы. Это делается с помощью оператора присваивания <code class="docutils literal notranslate"><span class="pre">=</span></code>, при этом по обе стороны должны находиться объекты одинаковых размерностей.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span> <span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">;</span> <span class="mi">4</span> <span class="mi">5</span> <span class="mi">6</span><span class="p">;</span> <span class="mi">7</span> <span class="mi">8</span> <span class="mi">9</span><span class="p">];</span>
 
@@ -1911,7 +1910,7 @@ A &amp; I \\ \hline
 </div>
 </div>
 <div class="section" id="id24">
-<h3><span class="section-number">1.3.10.4. </span>Вспомогательные функции<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">1.5.10.4. </span>Вспомогательные функции<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
 <p>Интроспекция массива</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">length(A)</span></code>: количество элементов;</p></li>
@@ -1938,7 +1937,7 @@ A &amp; I \\ \hline
 </ul>
 </div>
 <div class="section" id="arrays-linops">
-<span id="id25"></span><h3><span class="section-number">1.3.10.5. </span>Линейная алгебра<a class="headerlink" href="#arrays-linops" title="Permalink to this headline">¶</a></h3>
+<span id="id25"></span><h3><span class="section-number">1.5.10.5. </span>Линейная алгебра<a class="headerlink" href="#arrays-linops" title="Permalink to this headline">¶</a></h3>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Больше информации тут <strong><a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/">[url]</a></strong>.</p>
@@ -2040,7 +2039,7 @@ A &amp; I \\ \hline
 </div>
 </div>
 <div class="section" id="broadcasting">
-<span id="id26"></span><h2><span class="section-number">1.3.11. </span>Векторизация функций<a class="headerlink" href="#broadcasting" title="Permalink to this headline">¶</a></h2>
+<span id="id26"></span><h2><span class="section-number">1.5.11. </span>Векторизация функций<a class="headerlink" href="#broadcasting" title="Permalink to this headline">¶</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Соответствующий раздел мануала <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/arrays/#man-array-and-vectorized-operators-and-functions">[url]</a></strong>.</p>
@@ -2238,7 +2237,7 @@ A &amp; I \\ \hline
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">1.2. </span>Обусловленность задач</p>
+                <p class="prevnext-title"><span class="section-number">1.4. </span>Обусловленность задач</p>
             </div>
         </a>
     </div>
