@@ -60,10 +60,11 @@ sphinx:
     mathjax_config:
         TeX:
           Macros:
-            "real": "\\mathbb{R}"
-            "floatset": "\\mathbb{F}"
-            "integer": "\\mathbb{Z}"
-            "macheps": "\\epsilon_{\\text{mach}}"
-            "float": "\\text{float}"
+            "real"      : "\\mathbb{R}"
+            "floatset"  : "\\mathbb{F}"
+            "integer"   : "\\mathbb{Z}"
+            "macheps"   : "\\epsilon_{\\text{mach}}"
+            "float"     : "\\text{float}"
+            "diff"      : "\\mathrm{d}"
         HTML-CSS:
           fonts: ["Latin-Modern"]
