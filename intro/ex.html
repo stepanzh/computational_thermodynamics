@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1. Введение &#8212; Практикум по вычислительной теплофизике</title>
+    <title>1.4. Задачи &#8212; Практикум по вычислительной теплофизике</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -55,8 +55,7 @@
     <script >mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.1. Числа с плавающей точкой" href="float.html" />
-    <link rel="prev" title="Практикум по вычислительной теплофизике" href="../index.html" />
+    <link rel="prev" title="1.3. Основы языка программирования Julia" href="julia.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -98,7 +97,7 @@
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+  <a class="reference internal" href="index.html">
    1. Введение
   </a>
   <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
@@ -106,7 +105,7 @@
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="float.html">
      1.1. Числа с плавающей точкой
@@ -122,8 +121,8 @@
      1.3. Основы языка программирования Julia
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ex.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      1.4. Задачи
     </a>
    </li>
@@ -170,7 +169,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/intro/index.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/intro/ex.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -190,10 +189,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fintro/index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fintro/ex.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/intro/index.md"><button
+        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/intro/ex.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -213,6 +212,19 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1.4.1. Точки
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -222,15 +234,44 @@
               <div>
                 
   <div class="section" id="id1">
-<h1><span class="section-number">1. </span>Введение<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>Данный раздел включает следующие темы</p>
+<h1><span class="section-number">1.4. </span>Задачи<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2><span class="section-number">1.4.1. </span>Точки<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p><em>Данное задание можно выполнять в парах. В таком случае один человек в команде реализует интерфейс для <code class="docutils literal notranslate"><span class="pre">CartesianPoint</span></code>, а второй для <code class="docutils literal notranslate"><span class="pre">PolarPoint</span></code></em>.</p>
+<p>Создайте модуль <code class="docutils literal notranslate"><span class="pre">Points</span></code>, предназначенный для работы с точками на плоскости. Реализуйте описанные ниже структуры данных и интерфейс к ним.</p>
+<p>Создайте две структуры данных для точки на плоскости</p>
 <ol class="simple">
-<li><p>Числа с плавающей точкой. Их внутреннее устройство и влияние на точность вычислений.</p></li>
-<li><p>Обусловленность задач и <em>a-priori</em> оценка точности расчёта в числах с плавающей точкой.</p></li>
-<li><p>Введение в язык программирования Julia.</p></li>
+<li><p>Композитный тип <code class="docutils literal notranslate"><span class="pre">CartesianPoint</span></code>: хранит декартовы координаты точки;</p></li>
+<li><p>Композитный тип <code class="docutils literal notranslate"><span class="pre">PolarPoint</span></code>: хранит полярные координаты точки.</p></li>
 </ol>
-<p>В первых двух темах встречаются конструкции языка Julia, однако они не используют особенности синтаксиса и могут быть прочитаны как псевдокод.</p>
-<div class="toctree-wrapper compound">
+<p>Оба типа должны быть подтипом абстрактного типа <code class="docutils literal notranslate"><span class="pre">AbstractPoint</span></code>.</p>
+<p>К каждой структуре данных имплементируйте следующий интерфейс</p>
+<dl class="simple myst">
+<dt>Сложение <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">+</span> <span class="pre">q</span></code></dt><dd><p>Вовзращает новую точку как результат векторного сложения точек <code class="docutils literal notranslate"><span class="pre">p</span></code> и <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p>
+</dd>
+<dt>Вычитание <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">-</span> <span class="pre">q</span></code></dt><dd><p>Возвращает новую точку как результат векторного вычитания из точки <code class="docutils literal notranslate"><span class="pre">p</span></code> точки <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p>
+</dd>
+<dt>Длина <code class="docutils literal notranslate"><span class="pre">norm(p)</span></code></dt><dd><p>Вовзращает длину радиус-вектора точки <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
+</dd>
+<dt>Аргумент <code class="docutils literal notranslate"><span class="pre">arg(p)</span></code></dt><dd><p>Возвращает угол (в радианах) между радиус вектором точки и осью абсцисс.</p>
+</dd>
+<dt>Растяжение <code class="docutils literal notranslate"><span class="pre">α</span> <span class="pre">*</span> <span class="pre">p</span></code></dt><dd><p>Возвращает новую точку, получающуюся в результате центрального растяжения (<code class="docutils literal notranslate"><span class="pre">α</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>) или сжатия (<code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">&lt;</span> <span class="pre">α</span> <span class="pre">&lt;</span> <span class="pre">1</span></code>) радиус вектора точки <code class="docutils literal notranslate"><span class="pre">p</span></code> в <code class="docutils literal notranslate"><span class="pre">α::Real</span></code> раз. Например, точка <code class="docutils literal notranslate"><span class="pre">(5,</span> <span class="pre">6)</span></code> при <code class="docutils literal notranslate"><span class="pre">α</span> <span class="pre">=</span> <span class="pre">2.5</span></code> переходит в точку <code class="docutils literal notranslate"><span class="pre">(12.5,</span> <span class="pre">15.0)</span></code>.</p>
+</dd>
+<dt>Поворот <code class="docutils literal notranslate"><span class="pre">rotate(p,</span> <span class="pre">φ)</span></code></dt><dd><p>Возвращает новую точку, получающуюся поворотом точки <code class="docutils literal notranslate"><span class="pre">p</span></code> на угол <code class="docutils literal notranslate"><span class="pre">φ</span></code> против часовой стрелки.</p>
+</dd>
+</dl>
+<p>А также имплементируйте интерфейс перевода из точки из одного типа во второй (см. <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/constructors/#man-outer-constructor-methods">[url]</a></strong>)</p>
+<dl class="simple myst">
+<dt><code class="docutils literal notranslate"><span class="pre">CartesianPoint(p::PolarPoint)</span></code></dt><dd><p>Создает соответствующую точку типа <code class="docutils literal notranslate"><span class="pre">CartesianPoint</span></code> из точки типа <code class="docutils literal notranslate"><span class="pre">PolarPoint</span></code>.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">PolarPoint(p::CartesianPoint)</span></code></dt><dd><p>Создает соответствующую точку типа <code class="docutils literal notranslate"><span class="pre">PolarPoint</span></code> из точки типа <code class="docutils literal notranslate"><span class="pre">CartesianPoint</span></code>.</p>
+</dd>
+</dl>
+<p>В качестве ответа требуется:</p>
+<ul class="simple">
+<li><p>исходные файлы модуля <code class="docutils literal notranslate"><span class="pre">Points</span></code>;</p></li>
+<li><p>файл, импортирующий модуль <code class="docutils literal notranslate"><span class="pre">Points</span></code> и демонстрирующий весь рабочий интерфейс.</p></li>
+</ul>
 </div>
 </div>
 
@@ -264,23 +305,14 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../index.html" title="previous page">
+        <a class="left-prev" href="julia.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Практикум по вычислительной теплофизике</p>
+                <p class="prevnext-title"><span class="section-number">1.3. </span>Основы языка программирования Julia</p>
             </div>
         </a>
     </div>
-     <div id="next">
-        <a class="right-next" href="float.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">1.1. </span>Числа с плавающей точкой</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
 
 </div>
         
