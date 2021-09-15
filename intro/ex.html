@@ -237,7 +237,10 @@
 <h1><span class="section-number">1.4. </span>Задачи<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
 <h2><span class="section-number">1.4.1. </span>Точки<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p><em>Данное задание можно выполнять в парах. В таком случае один человек в команде реализует интерфейс для <code class="docutils literal notranslate"><span class="pre">CartesianPoint</span></code>, а второй для <code class="docutils literal notranslate"><span class="pre">PolarPoint</span></code></em>.</p>
+<ul class="simple">
+<li><p><em>Задание предназначено для изучения языка Julia</em>.</p></li>
+<li><p><em>Задание можно выполнять в парах. В таком случае один человек в команде реализует интерфейс для <code class="docutils literal notranslate"><span class="pre">CartesianPoint</span></code>, а второй для <code class="docutils literal notranslate"><span class="pre">PolarPoint</span></code></em>.</p></li>
+</ul>
 <p>Создайте модуль <code class="docutils literal notranslate"><span class="pre">Points</span></code>, предназначенный для работы с точками на плоскости. Реализуйте описанные ниже структуры данных и интерфейс к ним.</p>
 <p>Создайте две структуры данных для точки на плоскости</p>
 <ol class="simple">
@@ -245,23 +248,26 @@
 <li><p>Композитный тип <code class="docutils literal notranslate"><span class="pre">PolarPoint</span></code>: хранит полярные координаты точки.</p></li>
 </ol>
 <p>Оба типа должны быть подтипом абстрактного типа <code class="docutils literal notranslate"><span class="pre">AbstractPoint</span></code>.</p>
-<p>К каждой структуре данных имплементируйте следующий интерфейс (точки <code class="docutils literal notranslate"><span class="pre">p</span></code> и <code class="docutils literal notranslate"><span class="pre">q</span></code> одного типа)</p>
+<p>К каждой структуре данных имплементируйте следующий интерфейс</p>
 <dl class="simple myst">
-<dt>Сложение <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">+</span> <span class="pre">q</span></code></dt><dd><p>Вовзращает новую точку как результат векторного сложения точек <code class="docutils literal notranslate"><span class="pre">p</span></code> и <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p>
+<dt>Сложение <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">+</span> <span class="pre">q</span></code></dt><dd><p>Вовзращает новую точку как результат векторного сложения точек <code class="docutils literal notranslate"><span class="pre">p::T</span></code> и <code class="docutils literal notranslate"><span class="pre">q::T</span></code>.</p>
 </dd>
-<dt>Вычитание <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">-</span> <span class="pre">q</span></code></dt><dd><p>Возвращает новую точку как результат векторного вычитания из точки <code class="docutils literal notranslate"><span class="pre">p</span></code> точки <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p>
+<dt>Вычитание <code class="docutils literal notranslate"><span class="pre">p</span> <span class="pre">-</span> <span class="pre">q</span></code></dt><dd><p>Возвращает новую точку как результат векторного вычитания из точки <code class="docutils literal notranslate"><span class="pre">p::T</span></code> точки <code class="docutils literal notranslate"><span class="pre">q::T</span></code>.</p>
 </dd>
 <dt>Длина <code class="docutils literal notranslate"><span class="pre">norm(p)</span></code></dt><dd><p>Вовзращает длину радиус-вектора точки <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
 </dd>
 <dt>Аргумент <code class="docutils literal notranslate"><span class="pre">arg(p)</span></code></dt><dd><p>Возвращает угол (в радианах) между радиус вектором точки и осью абсцисс.</p>
 </dd>
-<dt>Угол между радиус-векторами <code class="docutils literal notranslate"><span class="pre">angle(p,</span> <span class="pre">q)</span></code> и <code class="docutils literal notranslate"><span class="pre">∠(p,</span> <span class="pre">q)</span></code></dt><dd><p>Возвращает угол между радиус-векторами точек <code class="docutils literal notranslate"><span class="pre">p</span></code> и <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p>
+<dt>Угол между радиус-векторами <code class="docutils literal notranslate"><span class="pre">angle(p::AbstractPoint,</span> <span class="pre">q::AbstractPoint)</span></code></dt><dd><p>Возвращает угол между радиус-векторами точек <code class="docutils literal notranslate"><span class="pre">p</span></code> и <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p>
+</dd>
+<dt>Скалярное произведение радиус-векторов <code class="docutils literal notranslate"><span class="pre">dot(p::AbstractPoint,</span> <span class="pre">q::AbstractPoint)</span></code></dt><dd><p>Возвращает скалярное произведение радиус-векторов точек <code class="docutils literal notranslate"><span class="pre">p</span></code> и <code class="docutils literal notranslate"><span class="pre">q</span></code>.</p>
 </dd>
 <dt>Растяжение <code class="docutils literal notranslate"><span class="pre">α</span> <span class="pre">*</span> <span class="pre">p</span></code></dt><dd><p>Возвращает новую точку, получающуюся в результате центрального растяжения (<code class="docutils literal notranslate"><span class="pre">α</span> <span class="pre">&gt;</span> <span class="pre">1</span></code>) или сжатия (<code class="docutils literal notranslate"><span class="pre">0</span> <span class="pre">&lt;</span> <span class="pre">α</span> <span class="pre">&lt;</span> <span class="pre">1</span></code>) радиус вектора точки <code class="docutils literal notranslate"><span class="pre">p</span></code> в <code class="docutils literal notranslate"><span class="pre">α::Real</span></code> раз. Например, точка <code class="docutils literal notranslate"><span class="pre">(5,</span> <span class="pre">6)</span></code> при <code class="docutils literal notranslate"><span class="pre">α</span> <span class="pre">=</span> <span class="pre">2.5</span></code> переходит в точку <code class="docutils literal notranslate"><span class="pre">(12.5,</span> <span class="pre">15.0)</span></code>.</p>
 </dd>
 <dt>Поворот <code class="docutils literal notranslate"><span class="pre">rotate(p,</span> <span class="pre">φ)</span></code></dt><dd><p>Возвращает новую точку, получающуюся поворотом точки <code class="docutils literal notranslate"><span class="pre">p</span></code> на угол <code class="docutils literal notranslate"><span class="pre">φ</span></code> против часовой стрелки.</p>
 </dd>
 </dl>
+<p><em>Заметьте, в случае функций <code class="docutils literal notranslate"><span class="pre">angle</span></code> и <code class="docutils literal notranslate"><span class="pre">dot</span></code> точки могут иметь разный тип.</em></p>
 <p>Также имплементируйте интерфейс перевода из точки из одного типа во второй (см. <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/constructors/#man-outer-constructor-methods">[url]</a></strong>)</p>
 <dl class="simple myst">
 <dt><code class="docutils literal notranslate"><span class="pre">CartesianPoint(p::PolarPoint)</span></code></dt><dd><p>Создает соответствующую точку типа <code class="docutils literal notranslate"><span class="pre">CartesianPoint</span></code> из точки типа <code class="docutils literal notranslate"><span class="pre">PolarPoint</span></code>.</p>
