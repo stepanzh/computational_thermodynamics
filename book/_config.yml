@@ -66,5 +66,6 @@ sphinx:
             "macheps"   : "\\epsilon_{\\text{mach}}"
             "float"     : "\\text{float}"
             "diff"      : "\\mathrm{d}"
+            "diag"      : "\\text{diag}"
         HTML-CSS:
           fonts: ["Latin-Modern"]
