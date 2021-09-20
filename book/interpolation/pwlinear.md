@@ -104,6 +104,8 @@ plt
 Поскольку hat-функции обладают свойством
 
 ```{math}
+:label: cardinality
+
 \varphi_k(t_l) = \begin{cases}
 1, & k = l,\\
 0, & k \ne l.
