@@ -1,3 +1,21 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Julia
+  language: julia
+  name: julia-1.6
+---
+
+```{code-cell}
+:tags: [remove-cell]
+
+include("interpolation.jl")
+```
+
 # Кубические сплайны
 
 Кусочно-линейный интерполянт непрерывен, но имеет разрывную производную. Можно построить интерполянт с более гладкими свойствами.
@@ -256,7 +274,6 @@ function spinterp(t, y)
             return first(y)
         else
             k = findlast(x .> t)  # k такое, что x ∈ (tₖ₋₁, tₖ)
-            @info x k
             return S[k](x - t[k])
         end
     end
@@ -266,4 +283,77 @@ end
 
 ## Сходимость
 
+В случае сплайнов, подобно кусочно-линейной интерполяции, справедливо утверждение
 
+```{admonition} Утверждение: сходимость кубического сплайна.
+:class: note
+
+Для функции $f(x)$, имеющей четвёртую непрерывную производную на отрезке $[a,b]$ и её кубического сплайна $S_h(x)$, узлы которого определены на равномерной сетке $\omega_h$, найдётся число $C$, такое что, справедлива оценка
+
+$$
+\|f - S_h\|_\infty \le C h^4.
+$$
+```
+
+Итак, кубический сплайн сходится к функции с четвёртым порядком.
+
+Ниже демонстрация сходимости на функции $f(x)=\exp(\sin(2x)) + 0.05\sin(15x)$.
+
+Построение по 7 выбранным точкам.
+
+```{code-cell}
+foo(x) = exp(sin(2x)) + 0.05*sin(15x)
+ts = [1.0, 1.5, 3.0, 3.5, 4.1, 4.5, 5.5]
+
+ys = foo.(ts)
+
+interpolant = spinterp(ts, ys)
+
+scatter(ts, ys; label="узлы интерполяции", legend=:top, xlabel=L"x")
+xs = range(first(ts), last(ts); length=200)
+plot!(xs, foo.(xs); label="exp(sin(2x)) + 0.05*sin(15x)")
+plot!(xs, interpolant.(xs); label="кубический сплайн")
+```
+
+Случай равноотстоящих точек.
+
+```{code-cell}
+foo(x) = exp(sin(2x)) + 0.05*sin(15x)
+ts = range(1, 5.5; length=15)
+
+ys = foo.(ts)
+
+interpolant = spinterp(ts, ys)
+
+scatter(ts, ys; label="узлы интерполяции", legend=:topleft, xlabel=L"x")
+xs = range(first(ts), last(ts); length=200)
+plot!(xs, foo.(xs); label="exp(sin(2x)) + 0.05*sin(15x)")
+plot!(xs, interpolant.(xs); label="кубический сплайн")
+```
+
+Наконец, оценка порядка сходимости. В этом случае мы ожидаем увидеть прямую с наклоном 4 в log-log осях.
+
+```{code-cell}
+foo(x) = exp(sin(2x)) + 0.05*sin(15x)
+a, b = [1, 5.5]
+xs = range(a, b; length=10000)
+mesh_h = []
+err = []
+for n in (20, 40, 400, 1000, 2000)
+    ts = range(a, b; length=n)
+    h = (b - a) / (n - 1)
+    ys = foo.(ts)
+    interpolant = spinterp(ts, ys)
+    Δ = norm(foo.(xs) - interpolant.(xs), Inf)
+    push!(mesh_h, h)
+    push!(err, Δ)
+end
+plot(log10.(mesh_h), log10.(err);
+    m=:o, label="ошибка", leg=:left, xlabel=L"h", ylabel=L"||f-S_h||_\infty",
+)
+plot!([-2.5, -0.7], [-10, -2.8]; line=:dash, label=L"O(h^4)")
+xticks!(
+    [-2.5, -2, -1.5, -1.0],
+    [L"5\times10^{-3}", L"10^{-2}", L"5\times10^{-2}", L"10^{-1}"]
+)
+```
