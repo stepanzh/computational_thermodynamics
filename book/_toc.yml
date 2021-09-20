@@ -17,5 +17,5 @@ parts:
     sections:
     - file: interpolation/polynomial
     - file: interpolation/pwlinear
-    # - file: interpolation/cubic_spline
+    - file: interpolation/cubic_spline
     # - file: interpolation/ex
