@@ -51,6 +51,11 @@ function pwlininterp(t, y)
     return x -> sum(y[k]*basis[k](x) for k in 1:size(y, 1))
 end
 
+
+"Возвращает полином вида `c[1] + c[2]*x + c[3]*x^2 + ...`."
+polynomial(c) = x -> horner(c, x)
+
+
 "Возвращает кубический сплайн, проходящий через точки (`t[i]`, `y[i]`)"
 function spinterp(t, y)
     n = size(t, 1) - 1
