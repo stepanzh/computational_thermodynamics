@@ -107,7 +107,6 @@ function spinterp(t, y)
             return first(y)
         else
             k = findlast(x .> t)  # k такое, что x ∈ (tₖ₋₁, tₖ)
-            @info x k
             return S[k](x - t[k])
         end
     end
