@@ -17,19 +17,30 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-x = 0.601;
-@show A = [1.0 + x 2.0; 4.0 5.0];  # 1.601 представимо точно
-@show det(A);
+let
+    ts = [1.0, 1.3, 3.1, 4.0]
+    xs = range(first(ts), last(ts); length=200)
+    plt = plot(layout=(4,1),xlabel=L"x", ylims=[-0.1,1.1], ytick=[1], leg=:top)
+    for k in 1:size(ts, 1)
+        φₖ = hatfunc(ts, k)
+        plot!(xs, φₖ.(xs); label="", subplot=k)
+        scatter!(ts, φₖ.(ts); label="", subplot=k)
+        annotate!(ts[k], 0.5, text("φ_$k", 10); subplot=k)
+    end
+    plt
+end
 ------------------
 
-UndefVarError: det not defined
+LoadError: UndefVarError: @L_str not defined
+in expression starting at In[1]:4
 
 Stacktrace:
  [1] top-level scope
-   @ show.jl:955
+   @ :0
  [2] eval
    @ ./boot.jl:360 [inlined]
  [3] include_string(mapexpr::typeof(REPL.softscope), mod::Module, code::String, filename::String)
    @ Base ./loading.jl:1116
-LoadError: UndefVarError: det not defined
+LoadError: LoadError: UndefVarError: @L_str not defined
+in expression starting at In[1]:4
 

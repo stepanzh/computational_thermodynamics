@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1.2. dad &#8212; Практикум по вычислительной теплофизике</title>
+    <title>2. Интерполяция &#8212; Практикум по вычислительной теплофизике</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -40,6 +41,7 @@
     <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -49,9 +51,12 @@
         const thebe_selector_output = ".output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script >mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="prev" title="1.1. Числа с плавающей точкой" href="float.html" />
+    <link rel="next" title="2.1. Полиномиальная интерполяция" href="polynomial.html" />
+    <link rel="prev" title="1.4. Задачи" href="../intro/ex.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -92,24 +97,66 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="index.html">
-   1. intro/index
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro/index.html">
+   1. Введение
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="float.html">
+    <a class="reference internal" href="../intro/float.html">
      1.1. Числа с плавающей точкой
     </a>
    </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     1.2. dad
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/cond.html">
+     1.2. Обусловленность задач
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/julia.html">
+     1.3. Основы языка программирования Julia
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/ex.html">
+     1.4. Задачи
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   2. Интерполяция
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="polynomial.html">
+     2.1. Полиномиальная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pwlinear.html">
+     2.2. Кусочно-линейная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cubic_spline.html">
+     2.3. Кубические сплайны
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     2.4. Задания
     </a>
    </li>
   </ul>
@@ -155,7 +202,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/intro/float1.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/interpolation/index.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -171,14 +218,14 @@
         aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
     <div class="dropdown-buttons sourcebuttons">
         <a class="repository-button"
-            href="hhttps://github.com/stepanzh/computational_thermodynamics"><button type="button" class="btn btn-secondary topbarbtn"
+            href="https://github.com/stepanzh/computational_thermodynamics"><button type="button" class="btn btn-secondary topbarbtn"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="hhttps://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fintro/float1.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Finterpolation/index.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/master/intro/float1.md"><button
+        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/interpolation/index.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -206,8 +253,10 @@
         
               <div>
                 
-  <div class="section" id="dad">
-<h1><span class="section-number">1.2. </span>dad<a class="headerlink" href="#dad" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="id1">
+<h1><span class="section-number">2. </span>Интерполяция<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -223,7 +272,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./intro"
+            path: "./interpolation"
         },
         predefinedOutput: true
     }
@@ -240,14 +289,23 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="float.html" title="previous page">
+        <a class="left-prev" href="../intro/ex.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">1.1. </span>Числа с плавающей точкой</p>
+                <p class="prevnext-title"><span class="section-number">1.4. </span>Задачи</p>
             </div>
         </a>
     </div>
+     <div id="next">
+        <a class="right-next" href="polynomial.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">2.1. </span>Полиномиальная интерполяция</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
 </div>
         

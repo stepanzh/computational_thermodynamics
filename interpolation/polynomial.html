@@ -1,0 +1,574 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2.1. Полиномиальная интерполяция &#8212; Практикум по вычислительной теплофизике</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script >mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.2. Кусочно-линейная интерполяция" href="pwlinear.html" />
+    <link rel="prev" title="2. Интерполяция" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Практикум по вычислительной теплофизике</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Практикум по вычислительной теплофизике
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Практикум
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro/index.html">
+   1. Введение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/float.html">
+     1.1. Числа с плавающей точкой
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/cond.html">
+     1.2. Обусловленность задач
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/julia.html">
+     1.3. Основы языка программирования Julia
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/ex.html">
+     1.4. Задачи
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   2. Интерполяция
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.1. Полиномиальная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="pwlinear.html">
+     2.2. Кусочно-линейная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cubic_spline.html">
+     2.3. Кубические сплайны
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     2.4. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/interpolation/polynomial.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/interpolation/polynomial.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/stepanzh/computational_thermodynamics"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Finterpolation/polynomial.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/interpolation/polynomial.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/stepanzh/computational_thermodynamics/main?urlpath=tree/book/interpolation/polynomial.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   2.1.1. Алгоритм решения
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   2.1.2. Пример интерполяции
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#poly-equalspaced">
+   2.1.3. Случай равноотстоящих точек
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1><span class="section-number">2.1. </span>Полиномиальная интерполяция<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>Задача <strong>полиномиальной интерполяции</strong> по точкам <span class="math notranslate nohighlight">\((t_1, y_1), (t_2,y_2), ..., (t_n, y_n)\)</span>, где все <span class="math notranslate nohighlight">\(t_i\)</span> различны, заключается в построении полинома степени не выше <span class="math notranslate nohighlight">\(n\)</span>, проходящего через все данные точки, т.е.</p>
+<div class="math notranslate nohighlight" id="equation-polyinterpcond">
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-polyinterpcond" title="Permalink to this equation">¶</a></span>\[p(t_i)=y_i,\quad i=1, ..., n.\]</div>
+<p>Такой полином можно получить, рассматривая задачу интерполяции как линейную систему. Однако, существуют и другие способы, например, построение полинома в форме Лагранжа или Ньютона.</p>
+<p>Полинома степени не выше <span class="math notranslate nohighlight">\(n\)</span> имеет вид</p>
+<div class="math notranslate nohighlight" id="equation-polyinterppoly">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-polyinterppoly" title="Permalink to this equation">¶</a></span>\[p(x) = c_1 + c_2 x + c_3 x^2 + ... + c_n x^{n-1}.\]</div>
+<p>Воспользуемся условием <a class="reference internal" href="#equation-polyinterpcond">(2.1)</a> и получим систему на коэффициенты <span class="math notranslate nohighlight">\(c_i\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+c_1 + c_2 t_1 + c_3 + t^2_1 + ... + c_n t^{n-1}_1 &amp;= y_1\\
+c_1 + c_2 t_2 + c_3 + t^2_2 + ... + c_n t^{n-1}_2 &amp;= y_2\\
+&amp;\vdots\\
+c_1 + c_2 t_i + c_3 + t^2_i + ... + c_n t^{n-1}_i &amp;= y_i\\
+&amp;\vdots\\
+c_1 + c_2 t_n + c_3 + t^2_n + ... + c_n t^{n-1}_n &amp;= y_n\\
+\end{align*}\end{split}\]</div>
+<p>Данная система записывается в виде <span class="math notranslate nohighlight">\(\mathbf{V}\mathbf{c}=\mathbf{y}\)</span></p>
+<div class="math notranslate nohighlight" id="equation-polyinterpsys">
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-polyinterpsys" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{bmatrix}
+1 &amp; t_1 &amp; ... &amp; t_1^{n-2} &amp; t_1^{n-1} \\
+1 &amp; t_2 &amp; ... &amp; t_2^{n-2} &amp; t_2^{n-1} \\
+\vdots &amp; \vdots &amp; &amp; \vdots &amp; \vdots   \\
+1 &amp; t_{n-1} &amp; ... &amp; t_{n-1}^{n-2} &amp; t_{n-1}^{n-1}
+\end{bmatrix}
+\begin{bmatrix}
+c_1 \\c_2 \\ \vdots \\ c_n
+\end{bmatrix}
+=
+\begin{bmatrix}
+y_1 \\ y_2 \\ \vdots \\ y_n
+\end{bmatrix}.\end{split}\]</div>
+<p>Матрица <span class="math notranslate nohighlight">\(\mathbf{V}\)</span> называется <a class="reference external" href="https://en.wikipedia.org/wiki/Vandermonde_matrix">матрицей Вандермонда</a>.</p>
+<p>Итак, для решения задачи полиномиальной интерполяции, необходимо</p>
+<ol class="simple">
+<li><p>Составить систему <a class="reference internal" href="#equation-polyinterpsys">(2.3)</a>;</p></li>
+<li><p>Решить систему <a class="reference internal" href="#equation-polyinterpsys">(2.3)</a>, таким образом, получив коэффициенты <span class="math notranslate nohighlight">\(c_i\)</span>;</p></li>
+<li><p>Решением же задачи будет функция <a class="reference internal" href="#equation-polyinterppoly">(2.2)</a>.</p></li>
+</ol>
+<div class="section" id="id2">
+<h2><span class="section-number">2.1.1. </span>Алгоритм решения<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Основная функция имеет вид</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;Возвращает полиномиальный интерполянт, проходящий через точки (`t[i]`, `y[i]`).&quot;</span>
+<span class="k">function</span> <span class="n">polyinterp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="n">vandermonde</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">V</span> <span class="o">\</span> <span class="n">y</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">horner</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>Процедура <code class="docutils literal notranslate"><span class="pre">polyinterp(t,</span> <span class="pre">y)</span></code> вычисляет коэффициенты <code class="docutils literal notranslate"><span class="pre">c</span></code> полинома  <a class="reference internal" href="#equation-polyinterppoly">(2.2)</a>, а затем создаёт и возвращает анонимную функцию, которая вычисляет значение полинома <a class="reference internal" href="#equation-polyinterppoly">(2.2)</a> с помощью функции <code class="docutils literal notranslate"><span class="pre">horner(x)</span></code>. Поскольку здесь реализуется <a class="reference external" href="https://en.wikipedia.org/wiki/Closure_(computer_programming)">замыкание</a>, то вектор коэффициентов вычисляется только один раз, при вызове <code class="docutils literal notranslate"><span class="pre">polyinterp(t,</span> <span class="pre">y)</span></code>.</p>
+<p>Процедура <code class="docutils literal notranslate"><span class="pre">vandermonde(t)</span></code> возвращает матрицу Вандермонда из системы <a class="reference internal" href="#equation-polyinterpsys">(2.3)</a></p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;Возвращает матрицу Вандермонда.&quot;</span>
+<span class="k">function</span> <span class="n">vandermonde</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">eltype</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">size</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">V</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">.=</span> <span class="n">x</span> <span class="o">.^</span> <span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">V</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>В теле цикла вектор <code class="docutils literal notranslate"><span class="pre">x</span></code> поэлементно возводится в степень, а затем присваивается в <code class="docutils literal notranslate"><span class="pre">j</span></code>-ый столбец матрицы <code class="docutils literal notranslate"><span class="pre">V</span></code>.</p>
+<p>Наконец, функция <code class="docutils literal notranslate"><span class="pre">horner(c,</span> <span class="pre">x)</span></code> вычисляет полином <a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%A1%D1%85%D0%B5%D0%BC%D0%B0_%D0%93%D0%BE%D1%80%D0%BD%D0%B5%D1%80%D0%B0">методом Горнера</a></p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;Вычисляет полином `c[1] + c[2]*x + c[3]*x^2 + ...` алгоритмом Горнера.&quot;</span>
+<span class="k">function</span> <span class="n">horner</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">ans</span> <span class="o">=</span> <span class="n">last</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">lastindex</span><span class="p">(</span><span class="n">c</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="o">:-</span><span class="mi">1</span><span class="o">:</span><span class="mi">1</span>
+        <span class="n">ans</span> <span class="o">=</span> <span class="p">(</span><span class="n">ans</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">ans</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">2.1.2. </span>Пример интерполяции<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Для примера мы посмотрим на полиномиальную интерполяцию известной нам функции <code class="docutils literal notranslate"><span class="pre">foo(x)</span></code>, в реальных же данных <code class="docutils literal notranslate"><span class="pre">foo(x)</span></code> неизвестна.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">))</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">]</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+
+<span class="n">interpolant</span> <span class="o">=</span> <span class="n">polyinterp</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
+
+<span class="n">scatter</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">ys</span><span class="p">;</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;узлы интерполяции&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:top</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="n">first</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span> <span class="n">last</span><span class="p">(</span><span class="n">ts</span><span class="p">);</span> <span class="n">length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">foo</span><span class="o">.</span><span class="p">(</span><span class="n">xs</span><span class="p">);</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;exp(sin(2x))&quot;</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">interpolant</span><span class="o">.</span><span class="p">(</span><span class="n">xs</span><span class="p">);</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;интерполянт&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/polynomial_2_0.svg" src="../_images/polynomial_2_0.svg" /></div>
+</div>
+<p>В целом выглядит неплохо, однако стоит добавить одну точку <span class="math notranslate nohighlight">\(t_i = 4.1\)</span> во входные данные, и интерполянт сильно поменяется.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">))</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">4.1</span><span class="p">,</span> <span class="mf">4.5</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">]</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+
+<span class="n">interpolant</span> <span class="o">=</span> <span class="n">polyinterp</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
+
+<span class="n">scatter</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">ys</span><span class="p">;</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;узлы интерполяции&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:top</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="n">first</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span> <span class="n">last</span><span class="p">(</span><span class="n">ts</span><span class="p">);</span> <span class="n">length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">foo</span><span class="o">.</span><span class="p">(</span><span class="n">xs</span><span class="p">);</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;exp(sin(2x))&quot;</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">interpolant</span><span class="o">.</span><span class="p">(</span><span class="n">xs</span><span class="p">);</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;интерполянт&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/polynomial_4_0.svg" src="../_images/polynomial_4_0.svg" /></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Такое поведение в реальности требует дополнительных проверок, иначе можно с большой ошибкой задать табличные данные. Ошибку интерполяции стоит оценивать хотя бы на глаз.</p>
+</div>
+</div>
+<div class="section" id="poly-equalspaced">
+<span id="id4"></span><h2><span class="section-number">2.1.3. </span>Случай равноотстоящих точек<a class="headerlink" href="#poly-equalspaced" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Полиномиальная интерполяция <em>плохо обусловлена</em> в случае равноотстоящих узлов интерполяции.</p>
+</div>
+<p>Возьмём функцию из предыдущего примера, но добавим в неё небольшой шум. В реальных данных этот шум вносится погрешностями измерений.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="mf">0.05</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">15</span><span class="n">x</span><span class="p">)</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">;</span> <span class="n">length</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+
+<span class="n">scatter</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">ys</span><span class="p">;</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;данные&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:topleft</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="n">first</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span> <span class="n">last</span><span class="p">(</span><span class="n">ts</span><span class="p">);</span> <span class="n">length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">foo</span><span class="o">.</span><span class="p">(</span><span class="n">xs</span><span class="p">);</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;exp(sin(2x)) + 0.05*sin(15x)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/polynomial_6_0.svg" src="../_images/polynomial_6_0.svg" /></div>
+</div>
+<p>Посмотрим на интерполянт.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="mf">0.05</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">15</span><span class="n">x</span><span class="p">)</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">;</span> <span class="n">length</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+
+<span class="n">interpolant</span> <span class="o">=</span> <span class="n">polyinterp</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
+
+<span class="n">scatter</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">ys</span><span class="p">;</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;данные&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:topleft</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="n">first</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span> <span class="n">last</span><span class="p">(</span><span class="n">ts</span><span class="p">);</span> <span class="n">length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">interpolant</span><span class="o">.</span><span class="p">(</span><span class="n">xs</span><span class="p">);</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;интерполянт&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/polynomial_8_0.svg" src="../_images/polynomial_8_0.svg" /></div>
+</div>
+<p>Что будет, если взять 15 точек? Данные с шумом не сильно изменились: это всё тот же “холм”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="mf">0.05</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">15</span><span class="n">x</span><span class="p">)</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">;</span> <span class="n">length</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+
+<span class="n">scatter</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">ys</span><span class="p">;</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;данные&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:topleft</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/polynomial_10_0.svg" src="../_images/polynomial_10_0.svg" /></div>
+</div>
+<p>Но интерполянт выглядит так.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="mf">0.05</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">15</span><span class="n">x</span><span class="p">)</span>
+<span class="n">ts</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">;</span> <span class="n">length</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span>
+<span class="n">ys</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="p">(</span><span class="n">ts</span><span class="p">)</span>
+
+<span class="n">interpolant</span> <span class="o">=</span> <span class="n">polyinterp</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">ys</span><span class="p">)</span>
+
+<span class="n">scatter</span><span class="p">(</span><span class="n">ts</span><span class="p">,</span> <span class="n">ys</span><span class="p">;</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;данные&quot;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:topleft</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="n">first</span><span class="p">(</span><span class="n">ts</span><span class="p">),</span> <span class="n">last</span><span class="p">(</span><span class="n">ts</span><span class="p">);</span> <span class="n">length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">interpolant</span><span class="o">.</span><span class="p">(</span><span class="n">xs</span><span class="p">);</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;интерполянт&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/polynomial_12_0.svg" src="../_images/polynomial_12_0.svg" /></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Таким образом, если полиномиальная интерполяция и используется на практике, то применяются полиномы не больших степеней, при этом узлы интерполяции тщательно выбираются, если есть возможность.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.6"
+        },
+        kernelOptions: {
+            kernelName: "julia-1.6",
+            path: "./interpolation"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.6'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="index.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">2. </span>Интерполяция</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="pwlinear.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">2.2. </span>Кусочно-линейная интерполяция</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Степан Захаров и Василий Писарев<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
