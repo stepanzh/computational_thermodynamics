@@ -1,6 +1,8 @@
 using LaTeXStrings
 using LinearAlgebra
 using Plots
+using PrettyTables
+using Markdown
 
 
 "Возвращает полиномиальный интерполянт, проходящий через точки (`t[i]`, `y[i]`)."
