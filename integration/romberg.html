@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1. Введение &#8212; Практикум по вычислительной теплофизике</title>
+    <title>3.2. Метод Ромберга &#8212; Практикум по вычислительной теплофизике</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -44,6 +44,8 @@
     <script src="../_static/tabs.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -55,8 +57,7 @@
     <script >mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.1. Числа с плавающей точкой" href="float.html" />
-    <link rel="prev" title="Предмет практикума" href="../index.html" />
+    <link rel="prev" title="3.1. Формулы Ньютона-Котеса" href="newton_cotes.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -97,33 +98,33 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro/index.html">
    1. Введение
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="float.html">
+    <a class="reference internal" href="../intro/float.html">
      1.1. Числа с плавающей точкой
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="cond.html">
+    <a class="reference internal" href="../intro/cond.html">
      1.2. Обусловленность задач
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="julia.html">
+    <a class="reference internal" href="../intro/julia.html">
      1.3. Основы языка программирования Julia
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="ex.html">
+    <a class="reference internal" href="../intro/ex.html">
      1.4. Задания
     </a>
    </li>
@@ -161,23 +162,23 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../integration/index.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
    3. Численное интегрирование
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../integration/newton_cotes.html">
+    <a class="reference internal" href="newton_cotes.html">
      3.1. Формулы Ньютона-Котеса
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../integration/romberg.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      3.2. Метод Ромберга
     </a>
    </li>
@@ -224,7 +225,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/intro/index.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/integration/romberg.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -244,10 +245,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fintro/index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fintegration/romberg.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/intro/index.md"><button
+        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/integration/romberg.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -267,6 +268,19 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
             
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   3.2.1. Удвоение числа узлов
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -276,15 +290,59 @@
               <div>
                 
   <div class="section" id="id1">
-<h1><span class="section-number">1. </span>Введение<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>Данный раздел включает следующие темы</p>
-<ol class="simple">
-<li><p>Числа с плавающей точкой. Их внутреннее устройство и влияние на точность вычислений.</p></li>
-<li><p>Обусловленность задач и <em>a-priori</em> оценка точности расчёта в числах с плавающей точкой.</p></li>
-<li><p>Введение в язык программирования Julia.</p></li>
-</ol>
-<p>В первых двух темах встречаются конструкции языка Julia, однако они не используют особенности синтаксиса и могут быть прочитаны как псевдокод.</p>
-<div class="toctree-wrapper compound">
+<h1><span class="section-number">3.2. </span>Метод Ромберга<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>Метод Ромберга (Romberg’s method) повзоляет быстро интегрировать с заданной точностью. Метод основывается на формуле трапеций и удвоении числа узлов.</p>
+<div class="section" id="id2">
+<h2><span class="section-number">3.2.1. </span>Удвоение числа узлов<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Рассмотрим равномерную сетку <span class="math notranslate nohighlight">\(a = x_0 &lt; x_1 &lt; x_2 &lt; x_3 &lt; x_4 = b\)</span> из <span class="math notranslate nohighlight">\(n=4\)</span> интервалов с шагом <span class="math notranslate nohighlight">\(h_4\)</span> и сетку из <span class="math notranslate nohighlight">\(n=2\)</span> интервалов <span class="math notranslate nohighlight">\(a = x_0 &lt; x_2 &lt; x_4 =b\)</span> с шагом <span class="math notranslate nohighlight">\(2h_4\)</span>.</p>
+<p>На крупной сетке формула трапеций даёт</p>
+<div class="math notranslate nohighlight" id="equation-doubling-tf2">
+<span class="eqno">(3.6)<a class="headerlink" href="#equation-doubling-tf2" title="Permalink to this equation">¶</a></span>\[T_f(n=2) = 2h_4 \Big[0.5 \big(f(x_0) + f(x_4)\big) + f(x_2)\Big].\]</div>
+<p>А на сетке вдвое мельче</p>
+<div class="math notranslate nohighlight" id="equation-doubling-tf4">
+<span class="eqno">(3.7)<a class="headerlink" href="#equation-doubling-tf4" title="Permalink to this equation">¶</a></span>\[T_f(n=4) = h_4 \Big[ 0.5 \big(f(x_0) + f(x_4)\big) + f(x_1) + f(x_3) \Big].\]</div>
+<p>Сравнивая <a class="reference internal" href="#equation-doubling-tf2">(3.6)</a> и <a class="reference internal" href="#equation-doubling-tf4">(3.7)</a>, обнаруживаем их связь</p>
+<div class="math notranslate nohighlight">
+\[T_f(n=4) = 0.5 T_f(n=2) + h_4 \big(f(x_1) + f(x_3)\big).\]</div>
+<p>Таким образом, мы в частном случае получили, что вычислив интеграл на крупной сетке, мы можем вычислить его на сетке вдвое мельче, используя только значения в <em>новых узлах</em> (<span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_3\)</span>).</p>
+<p>Это верно и в общем случае</p>
+<div class="math notranslate nohighlight">
+\[T_f(2n) = 0.5 T_f(n) + h_{2n} \sum_{i=1}^n f(x_{2i-1}), \quad h_{2n} = \frac{b-a}{2n},\quad x_{2i-1} = a + h_{2n} (2i-1).\]</div>
+<p>Данная формула позволяет вычислить интеграл с заданной точностью. Под точностью здесь понимается разница между новой аппроксимацией и старой</p>
+<div class="math notranslate nohighlight" id="equation-doubling-tol">
+<span class="eqno">(3.8)<a class="headerlink" href="#equation-doubling-tol" title="Permalink to this equation">¶</a></span>\[|T_f(2n) - T_f(n)| &lt; \text{tol}.\]</div>
+<p>Например, при <span class="math notranslate nohighlight">\(\text{tol} = 10^{-6}\)</span> мы можем добиться точности до 6 знаков после запятой. Конечно, ошибки округления и обусловленность задачи никуда не делись.</p>
+<p>Также отметим, что выражение <a class="reference internal" href="#equation-doubling-tol">(3.8)</a> является абсолютной, а не относительной точностью.</p>
+<p>Реализация может быть такой</p>
+<div class="admonition-trapezoid-tol admonition">
+<p class="admonition-title">Функция : <code class="docutils literal notranslate"><span class="pre">trapezoid_tol</span></code></p>
+<p><strong>Формула трапеций с контролем точности.</strong></p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">Вычисляет интеграл ∫`f`dx на [`a`, `b`] с точностью `tol` по формуле трапеций,</span>
+<span class="s">удваивая число разбиений интервала, но не более `maxstep` раз.</span>
+<span class="s">Возвращает значение интеграла.</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="k">function</span> <span class="n">trapezoid_tol</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">maxstep</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span>
+    <span class="n">nc</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">hc</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">nc</span>
+    <span class="n">Tc</span> <span class="o">=</span> <span class="n">hc</span> <span class="o">*</span> <span class="p">(</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">))</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">hc</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">step</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">maxstep</span>
+        <span class="n">Tp</span><span class="p">,</span> <span class="n">np</span> <span class="o">=</span> <span class="n">Tc</span><span class="p">,</span> <span class="n">nc</span>
+        <span class="n">hc</span> <span class="o">/=</span> <span class="mi">2</span>
+        <span class="n">nc</span> <span class="o">*=</span> <span class="mi">2</span>
+        <span class="n">Tc</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">Tp</span> <span class="o">+</span> <span class="p">((</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">nc</span><span class="p">)</span> <span class="o">*</span> <span class="n">sum</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">hc</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span> <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">np</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">abs</span><span class="p">(</span><span class="n">Tc</span> <span class="o">-</span> <span class="n">Tp</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span>
+            <span class="k">return</span> <span class="n">Tc</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">Tc</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<!-- Бывает так, что вычисление функции в точке $f(x)$ &ndash; трудоёмкая операция, при этом хпоэтому требуется как можно чаще избегать перевычислений.
+ -->
+<!-- ## Метод Ромберга -->
 </div>
 </div>
 
@@ -301,7 +359,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./intro"
+            path: "./integration"
         },
         predefinedOutput: true
     }
@@ -318,23 +376,14 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../index.html" title="previous page">
+        <a class="left-prev" href="newton_cotes.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Предмет практикума</p>
+                <p class="prevnext-title"><span class="section-number">3.1. </span>Формулы Ньютона-Котеса</p>
             </div>
         </a>
     </div>
-     <div id="next">
-        <a class="right-next" href="float.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">1.1. </span>Числа с плавающей точкой</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
 
 </div>
         

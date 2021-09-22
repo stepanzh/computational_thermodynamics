@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1. Введение &#8212; Практикум по вычислительной теплофизике</title>
+    <title>3. Численное интегрирование &#8212; Практикум по вычислительной теплофизике</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -44,6 +44,8 @@
     <script src="../_static/tabs.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -55,8 +57,8 @@
     <script >mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1.1. Числа с плавающей точкой" href="float.html" />
-    <link rel="prev" title="Предмет практикума" href="../index.html" />
+    <link rel="next" title="3.1. Формулы Ньютона-Котеса" href="newton_cotes.html" />
+    <link rel="prev" title="2.4. Задания" href="../interpolation/ex.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -97,33 +99,33 @@
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro/index.html">
    1. Введение
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="float.html">
+    <a class="reference internal" href="../intro/float.html">
      1.1. Числа с плавающей точкой
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="cond.html">
+    <a class="reference internal" href="../intro/cond.html">
      1.2. Обусловленность задач
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="julia.html">
+    <a class="reference internal" href="../intro/julia.html">
      1.3. Основы языка программирования Julia
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="ex.html">
+    <a class="reference internal" href="../intro/ex.html">
      1.4. Задания
     </a>
    </li>
@@ -161,23 +163,23 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../integration/index.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    3. Численное интегрирование
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../integration/newton_cotes.html">
+    <a class="reference internal" href="newton_cotes.html">
      3.1. Формулы Ньютона-Котеса
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../integration/romberg.html">
+    <a class="reference internal" href="romberg.html">
      3.2. Метод Ромберга
     </a>
    </li>
@@ -224,7 +226,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/intro/index.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/integration/index.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -244,10 +246,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fintro/index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fintegration/index.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/intro/index.md"><button
+        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/integration/index.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -276,14 +278,28 @@
               <div>
                 
   <div class="section" id="id1">
-<h1><span class="section-number">1. </span>Введение<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>Данный раздел включает следующие темы</p>
-<ol class="simple">
-<li><p>Числа с плавающей точкой. Их внутреннее устройство и влияние на точность вычислений.</p></li>
-<li><p>Обусловленность задач и <em>a-priori</em> оценка точности расчёта в числах с плавающей точкой.</p></li>
-<li><p>Введение в язык программирования Julia.</p></li>
-</ol>
-<p>В первых двух темах встречаются конструкции языка Julia, однако они не используют особенности синтаксиса и могут быть прочитаны как псевдокод.</p>
+<h1><span class="section-number">3. </span>Численное интегрирование<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>В математическом анализе рассматривается задача нахождения определённого интеграла</p>
+<div class="math notranslate nohighlight" id="equation-int">
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-int" title="Permalink to this equation">¶</a></span>\[I = \int_a^b f(x)\diff x,\]</div>
+<p>где <span class="math notranslate nohighlight">\(f(x)\)</span> будем считать непрерывной и без особенностей на <span class="math notranslate nohighlight">\([a, b]\)</span>.</p>
+<p>Однако, не для любой подынтегральной функции существует первообразная, выражаемая через элементарные функции.</p>
+<p>Задача численного интегрирования сводится к приближённому вычислению интеграла <a class="reference internal" href="#equation-int">(3.1)</a> и выражается в виде <em>квадратурной формулы</em></p>
+<div class="math notranslate nohighlight">
+\[\int_a^b f(x)\diff x \approx \sum_{i=0}^n c_i f(x_i),\]</div>
+<p>здесь отрезок <span class="math notranslate nohighlight">\([a, b]\)</span> был разбит <span class="math notranslate nohighlight">\(n+1\)</span> точкой на <span class="math notranslate nohighlight">\(n\)</span> интервалов. Точки <span class="math notranslate nohighlight">\(x_i \in [a, b]\)</span> называют <em>узлами квадратурной формулы</em>, а <span class="math notranslate nohighlight">\(c_i\)</span> – <em>коэффициентами квадратурной формулы</em>.</p>
+<p>Разность</p>
+<div class="math notranslate nohighlight">
+\[\tau_f(n) = \int_a^b f(x)\diff x - \sum_{i=0}^n c_i f(x_i)\]</div>
+<p>называют <em>погрешностью квадратурной формулы</em> (truncation error). Погрешность зависит от числа узлов, их расположения и выбора коэффициентов <span class="math notranslate nohighlight">\(c_i\)</span>.</p>
+<p>Введём равномерную сетку <span class="math notranslate nohighlight">\(\omega_h = \{x_i = a + i h,\:i=0,...,n,\: hn = b-a\}\)</span>, тогда интеграл <a class="reference internal" href="#equation-int">(3.1)</a> можно разбить на сумму интегралов по отрезкам <span class="math notranslate nohighlight">\([x_{i-1}, x_i]\)</span></p>
+<div class="math notranslate nohighlight" id="equation-intsum">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-intsum" title="Permalink to this equation">¶</a></span>\[\int_a^b f(x)\diff x = \sum_{i=1}^n \int_{x_{i-1}}^{x_i} f(x)\diff x.\]</div>
+<p>Отсюда же видно, что для вывода квадратурных формул необходимо рассмотреть</p>
+<div class="math notranslate nohighlight">
+\[\int_{x_{i-1}}^{x_i} f(x)\diff x,\]</div>
+<p>а затем воспользоваться <a class="reference internal" href="#equation-intsum">(3.2)</a>.</p>
+<p>В этом разделе рассмотрены некоторые из квадратурных формул.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -301,7 +317,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./intro"
+            path: "./integration"
         },
         predefinedOutput: true
     }
@@ -318,19 +334,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../index.html" title="previous page">
+        <a class="left-prev" href="../interpolation/ex.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Предмет практикума</p>
+                <p class="prevnext-title"><span class="section-number">2.4. </span>Задания</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="float.html" title="next page">
+        <a class="right-next" href="newton_cotes.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">1.1. </span>Числа с плавающей точкой</p>
+                <p class="prevnext-title"><span class="section-number">3.1. </span>Формулы Ньютона-Котеса</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
