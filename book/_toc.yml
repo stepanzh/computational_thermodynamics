@@ -22,6 +22,6 @@ parts:
   - file: integration/index
     sections:
     - file: integration/newton_cotes
+    - file: integration/romberg
     # - file: integration/gauss
-    # - file: integration/romberg
     # - file: integration/adaptive
