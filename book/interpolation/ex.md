@@ -9,8 +9,8 @@ kernelspec:
   language: julia
   name: julia-1.6
 substitutions:
-  url_omega22_table: "<a href=\"https://github.com/stepanzh/computational_thermodynamics/tree/main/book/static/golubev1971_omega22.pdf\" target=\"_blank\">[ссылка]</a>"
-  url_feta_table: "<a href=\"https://github.com/stepanzh/computational_thermodynamics/tree/main/book/static/golubev1971_feta.pdf\" target=\"_blank\">[ссылка]</a>"
+  url_omega22_table: "<a href=\"https://raw.githubusercontent.com/stepanzh/computational_thermodynamics/main/book/static/golubev1971_omega22.pdf\" target=\"_blank\">[ссылка]</a>"
+  url_feta_table: "<a href=\"https://raw.githubusercontent.com/stepanzh/computational_thermodynamics/main/book/static/golubev1971_feta.pdf\" target=\"_blank\">[ссылка]</a>"
 ---
 
 ```{code-cell}
