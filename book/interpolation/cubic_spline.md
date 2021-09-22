@@ -247,7 +247,7 @@ function spinterp(t, y)
     v1 = zeros(n-1)
 
     # 3. Непрерывность второй производной
-    A2 = E * [Z Z J 3*H]
+    A2 = E * [Z Z J 6*H]
     v2 = zeros(n-1)
     
     # 4. Not-a-knot
