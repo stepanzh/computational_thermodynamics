@@ -7,7 +7,7 @@ author: Степан Захаров и Василий Писарев
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: auto
+  execute_notebooks: off
 
 # # Define the name of the latex output file for PDF builds
 # latex:
@@ -55,6 +55,7 @@ sphinx:
   extra_extensions:
     - sphinxcontrib.mermaid
     - sphinx_inline_tabs
+    - sphinxcontrib.proof
   local_extensions          :   # A list of local extensions to load by sphinx specified by "name: path" items
   config                    :   # key-value pairs to directly over-ride the Sphinx configuration
     mathjax_config:
@@ -69,3 +70,15 @@ sphinx:
             "diag"      : "\\text{diag}"
         HTML-CSS:
           fonts: ["Latin-Modern"]
+    proof_theorem_types:  # see https://sphinxcontrib-proof.readthedocs.io/en/latest/usage/#configuration-options
+      "algorithm": "Algorithm"
+      "conjecture": "Conjecture"
+      "corollary": "Corollary"
+      "definition": "Определение"
+      "function": "Функция"
+      "example": "Example"
+      "lemma": "Lemma"
+      "observation": "Observation"
+      "proof": "Proof"
+      "property": "Property"
+      "theorem": "Теорема"

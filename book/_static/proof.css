@@ -1,0 +1,48 @@
+:root {
+  --proof-color-default: var(--pst-color-admonition-default);
+  --proof-color-function: 255, 0, 102;
+}
+
+.proof {
+ margin:1.5625em auto;
+ padding:0 .6rem .8rem!important;
+ overflow:hidden;
+ page-break-inside:avoid;
+ border-left:.2rem solid;
+ border-left-color:rgba(var(--proof-color-default),1);
+ border-bottom-color:rgba(var(--proof-color-default),1);
+ border-right-color:rgba(var(--proof-color-default),1);
+ border-top-color:rgba(var(--proof-color-default),1);
+ border-radius:.1rem;
+ box-shadow:0 .2rem .5rem rgba(0,0,0,.05),0 0 .05rem rgba(0,0,0,.1);
+ transition:color .25s,background-color .25s,border-color .25s
+}
+.proof :last-child {
+ margin-bottom:0
+}
+.proof .proof-title ~ * {
+ padding: 0 1.4rem
+}
+.proof>ol,
+.proof>ul {
+ margin-left:1em
+}
+.proof .proof-title {
+ position:relative;
+ margin:0 -.6rem!important;
+ padding:.4rem .6rem .4rem 2rem;
+ font-weight:700;
+ background-color:rgba(var(--proof-color-default),.1)
+}
+.proof .proof-title + * {
+ margin-top:.4em
+}
+.proof-type-function {
+  border-left-color:rgba(var(--proof-color-function), 1);
+}
+.proof-type-function .proof-title {
+  background: rgba(var(--proof-color-function), .1);
+}
+.proof-type-function .proof-title-name {
+  font-family: var(--jp-code-font-family);
+}

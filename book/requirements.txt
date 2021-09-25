@@ -3,3 +3,4 @@ matplotlib
 numpy
 sphinxcontrib-mermaid
 sphinx-inline-tabs
+sphinxcontrib-proof
