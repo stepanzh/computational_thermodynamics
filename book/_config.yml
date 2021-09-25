@@ -83,4 +83,5 @@ sphinx:
       "proof": "Доказательство"
       "property": "Property"
       "theorem": "Теорема"
+      "proposition": "Утверждение"
     proof_html_nonumbers: ["proof", "observation"]
