@@ -79,8 +79,8 @@ sphinx:
       "function": "Функция"
       "example": "Пример"
       "lemma": "Lemma"
-      "observation": "Observation"
+      "observation": "Наблюдение"
       "proof": "Доказательство"
       "property": "Property"
       "theorem": "Теорема"
-    proof_html_nonumbers: ["proof"]
+    proof_html_nonumbers: ["proof", "observation"]
