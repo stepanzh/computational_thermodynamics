@@ -29,6 +29,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -42,6 +44,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/tabs.js"></script>
+    <script src="../_static/proof.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -303,13 +306,6 @@
   <a class="reference internal nav-link" href="#id3">
    1.1.2. Числа двойной точности
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#float64-julia">
-     1.1.2.1. Float64 в Julia
-    </a>
-   </li>
-  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
@@ -333,6 +329,14 @@
 Однако, в вычислительной практике используется множество <em>чисел с плавающей точкой</em> <span class="math notranslate nohighlight">\(\floatset\subset\real\)</span>, которое ограничено и дискретно.</p>
 <div class="section" id="id2">
 <h2><span class="section-number">1.1.1. </span>Множество чисел с плавающей точкой<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="proof proof-type-definition" id="id5">
+
+    <div class="proof-title">
+        <span class="proof-type">Определение 1.1</span>
+        
+            <span class="proof-title-name">(Число с плавающей точкой)</span>
+        
+    </div><div class="proof-content">
 <p>Множество <strong>чисел с плавающей точкой</strong> <span class="math notranslate nohighlight">\(\floatset\)</span> состоит из нуля и чисел вида</p>
 <div class="math notranslate nohighlight" id="equation-floatpoint">
 <span class="eqno">(1.1)<a class="headerlink" href="#equation-floatpoint" title="Permalink to this equation">¶</a></span>\[\pm (1 + f) \times 2^n,\]</div>
@@ -344,14 +348,18 @@
 <div class="math notranslate nohighlight" id="equation-mantissa">
 <span class="eqno">(1.2)<a class="headerlink" href="#equation-mantissa" title="Permalink to this equation">¶</a></span>\[f = \sum_{i=1}^d b_i \, 2^{-i}, \quad b_i\in\{0,1\},\]</div>
 <p>где натуральное <span class="math notranslate nohighlight">\(d\)</span> называют (в данном случае) двоичной <strong>точностью</strong>.</p>
-<p>Используя нотацию из позиционных систем счисления, можно записать <em>в двоичной системе</em></p>
+</div></div><p>Используя нотацию из позиционных систем счисления, можно записать <em>в двоичной системе</em></p>
 <div class="math notranslate nohighlight">
 \[1 + f = 1 + \overline{b_1 b_2 ... b_d} = 1.\overline{b_1 b_2 ... b_d} \in [1,2).\]</div>
 <p>Отсюда видно, что ближайшие мантисcы отстоят друг от друга на <span class="math notranslate nohighlight">\(2^{-d}\)</span> (последний бит <span class="math notranslate nohighlight">\(b_d\)</span>).
 Поэтому, между числами <span class="math notranslate nohighlight">\(2^n\)</span> и <span class="math notranslate nohighlight">\(2^{n+1}\)</span> находится <span class="math notranslate nohighlight">\(2^d\)</span> равномерно распределённых чисел.
 В свою очередь, отсюда следует, что числа с плавающей точной <em>распределены неравномерно</em> на числовой оси.</p>
-<div class="tip admonition">
-<p class="admonition-title">Пример: числа с плавающей точкой</p>
+<div class="proof proof-type-example" id="id6">
+
+    <div class="proof-title">
+        <span class="proof-type">Пример 1.2</span>
+        
+    </div><div class="proof-content">
 <p>Рассмотрим числа с точностью <span class="math notranslate nohighlight">\(d = 3\)</span>. Для <span class="math notranslate nohighlight">\(n=0\)</span> получим <span class="math notranslate nohighlight">\(8\)</span> чисел</p>
 <div class="math notranslate nohighlight">
 \[
@@ -367,8 +375,7 @@
 , \quad ..., \quad \bigg(1 + \frac{1}{2} + \frac{1}{4} + \frac{1}{8}\bigg) \times 2^1 = 3 + \frac{3}{4}.
 \]</div>
 <p>Аналогично, для <span class="math notranslate nohighlight">\(n=-1\)</span> получим <span class="math notranslate nohighlight">\(8\)</span> чисел в полуинтервале <span class="math notranslate nohighlight">\([1/2,1)\)</span> с промежуком <span class="math notranslate nohighlight">\(2^{-1}2^{-3}=1/16\)</span>.</p>
-</div>
-<div class="margin sidebar">
+</div></div><div class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>Для чисел с плавающей точкой верно равенство <span class="math notranslate nohighlight">\(1 + \macheps / 2 = 1\)</span>.</p>
 </div>
@@ -403,8 +410,13 @@
 <p>Да, на ноль делить можно.</p>
 </div>
 <p>Кроме того, существует ещё одно специальное значение <strong>Not a Number</strong>, <code class="docutils literal notranslate"><span class="pre">NaN</span></code>. Оно появляется в результате неопределённых операций: <code class="docutils literal notranslate"><span class="pre">±0/±0</span></code>, <code class="docutils literal notranslate"><span class="pre">±Inf/±Inf</span></code> и операций, в которых участвует <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, что приводит к распространению <code class="docutils literal notranslate"><span class="pre">NaN</span></code> в вычислениях.</p>
-<div class="section" id="float64-julia">
-<h3><span class="section-number">1.1.2.1. </span>Float64 в Julia<a class="headerlink" href="#float64-julia" title="Permalink to this headline">¶</a></h3>
+<div class="proof proof-type-demo" id="id7">
+
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 1.3</span>
+        
+    </div><div class="proof-content">
+</div></div><div class="demo"><p><strong><code class="docutils literal notranslate"><span class="pre">Float64</span></code> в Julia</strong></p>
 <p>Битовое представление <code class="docutils literal notranslate"><span class="pre">Float64</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -486,7 +498,10 @@
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>eps() = 2.220446049250313e-16
-log2(eps()) = -52.0
+log2(eps()) = 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>-52.0
 </pre></div>
 </div>
 </div>
@@ -558,14 +573,18 @@ nextfloat(2.0) = 2.0000000000000004
 </div>
 </div>
 </div>
-</div>
-</div>
+</div></div>
 <div class="section" id="id4">
 <h2><span class="section-number">1.1.3. </span>Особенности арифметики чисел с плавающей точкой<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>Конечная точность чисел с плавающей точкой приводит к <strong>ошибкам округления</strong>.
 Рассмотрим на примерах ниже.</p>
-<div class="tip admonition">
-<p class="admonition-title">Пример: ошибки округления</p>
+<div class="proof proof-type-example" id="id8">
+
+    <div class="proof-title">
+        <span class="proof-type">Пример 1.4</span>
+        
+    </div><div class="proof-content">
+<p><strong>Oшибки округления</strong></p>
 <p>Пусть требуется сложить <span class="math notranslate nohighlight">\(2.25 + 1.125\)</span> c двоичной точностью <span class="math notranslate nohighlight">\(d=3\)</span>
 Тогда сложение представится в виде</p>
 <div class="math notranslate nohighlight">
@@ -585,8 +604,7 @@ nextfloat(2.0) = 2.0000000000000004
 \bigg(1+ \frac{1}{2}+\frac{1}{8}\bigg)\times 2^1 = 3.25,
 \]</div>
 <p>который не равен сложению в действительныйх числах <span class="math notranslate nohighlight">\(2.25 + 1.125 = 3.375\)</span>.</p>
-</div>
-<p>В случае <code class="docutils literal notranslate"><span class="pre">Float64</span></code> демонстрация ошибок округления может быть такой</p>
+</div></div><p>В случае <code class="docutils literal notranslate"><span class="pre">Float64</span></code> демонстрация ошибок округления может быть такой</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@show</span> <span class="mf">2.0</span> <span class="o">+</span> <span class="n">nextfloat</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span>
@@ -661,8 +679,14 @@ exact = 0.1 .* ks = [1.0, 10.0, 100.0, 1000.0]
 </div>
 </div>
 </div>
-<p>Этот пример демонстрирует <strong>неассоциативность</strong> операций в числах с плавающей точкой.</p>
-<p>Более прикладным примером является работа с числами разных порядков</p>
+<div class="proof proof-type-observation">
+
+    <div class="proof-title">
+        <span class="proof-type">Наблюдение </span>
+        
+    </div><div class="proof-content">
+<p>Сложение в числах с плавающей точкой  <em>неассоциативно</em>.</p>
+</div></div><p>Более прикладным примером является работа с числами разных порядков</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">ϵ</span> <span class="o">=</span> <span class="mf">1e-6</span>

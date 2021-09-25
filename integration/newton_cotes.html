@@ -29,6 +29,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -42,6 +44,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/tabs.js"></script>
+    <script src="../_static/proof.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -336,8 +339,14 @@
 <p>Составная формула прямоугольников имеет вид</p>
 <div class="math notranslate nohighlight">
 \[\int_a^b f(x)\diff x \approx \sum_{i=1}^n f(x_{i-1/2}) h.\]</div>
-<div class="admonition-midpoint admonition">
-<p class="admonition-title">Функция : <code class="docutils literal notranslate"><span class="pre">midpoint</span></code></p>
+<div class="proof proof-type-function" id="id5">
+
+    <div class="proof-title">
+        <span class="proof-type">Функция 3.1</span>
+        
+            <span class="proof-title-name">(midpoint)</span>
+        
+    </div><div class="proof-content">
 <p><strong>Формула прямоугольников.</strong></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">Вычисляет по формуле прямоугольников интеграл ∫`f`dx на отрезке [`a`, `b`]</span>
@@ -353,9 +362,13 @@
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-<p><strong>Демонстрация.</strong></p>
-<p>Ниже представлены графики численного интеграла</p>
+</div></div><div class="proof proof-type-demo" id="id6">
+
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 3.2</span>
+        
+    </div><div class="proof-content">
+</div></div><div class="demo"><p>Ниже представлены графики численного интеграла</p>
 <div class="math notranslate nohighlight">
 \[\int_0^3 x e^{\sin 2x}\]</div>
 <p>для разного числа точек.</p>
@@ -382,7 +395,7 @@
 <div class="cell_output docutils container">
 <img alt="../_images/newton_cotes_2_0.svg" src="../_images/newton_cotes_2_0.svg" /></div>
 </div>
-<p>Можно показать, что формула прямоугольников имеет второй порядок сходимости</p>
+</div><p>Можно показать, что формула прямоугольников имеет второй порядок сходимости</p>
 <div class="math notranslate nohighlight">
 \[|\tau_f(h)| \le \frac{h^2(b-a)}{24} \max_{x\in [a,b]} |f''(x)| \sim O(h^2).\]</div>
 <p>При этом отсюда видно, что ошибка становится <em>нулевой</em> для линейных функций (для них <span class="math notranslate nohighlight">\(f'' \equiv 0\)</span>).</p>
@@ -397,8 +410,14 @@
 <div class="math notranslate nohighlight">
 \[\int_a^b f(x)\diff x \approx T_f = h \left(\frac{1}{2} f(x_0) + f(x_1) + f(x_2) + ... + f(x_{n-1}) + \frac{1}{2}f(x_n)\right).\]</div>
 <p>Из формулу трапеций выводятся многие усовершенствованные методы. Ниже дана реализация.</p>
-<div class="admonition-trapezoid admonition">
-<p class="admonition-title">Функция : <code class="docutils literal notranslate"><span class="pre">trapezoid</span></code></p>
+<div class="proof proof-type-function" id="id7">
+<span id="function-trapezoid"></span>
+    <div class="proof-title">
+        <span class="proof-type">Функция 3.3</span>
+        
+            <span class="proof-title-name">(trapezoid)</span>
+        
+    </div><div class="proof-content">
 <p><strong>Формула трапеций.</strong></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">Вычисляет по формуле трапеций интеграл ∫`f`dx на отрезке [`a`, `b`]</span>
@@ -414,9 +433,13 @@
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-<p><strong>Демонстрация.</strong></p>
-<div class="cell docutils container">
+</div></div><div class="proof proof-type-demo" id="id8">
+
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 3.4</span>
+        
+    </div><div class="proof-content">
+</div></div><div class="demo"><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">))</span>
 <span class="n">plt</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">leg</span><span class="o">=</span><span class="ss">:none</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
@@ -433,7 +456,7 @@
 <div class="cell_output docutils container">
 <img alt="../_images/newton_cotes_4_0.svg" src="../_images/newton_cotes_4_0.svg" /></div>
 </div>
-<p>Для формулы трапеций можно показать, что</p>
+</div><p>Для формулы трапеций можно показать, что</p>
 <div class="math notranslate nohighlight">
 \[|I - T_f| \le \frac{h^2(b-a)}{12} \max_{x\in[a,b]} f''(x) \sim O(h^2).\]</div>
 <p>Таким образом, она обладает вторым порядком точности, как и формула прямоугольников. И также точно приближает интеграл от линейной функции.</p>
@@ -468,9 +491,15 @@
 \int_a^b f(x) \diff x \approx S_f(h) &amp;= \sum_{i=1}{n} \frac{h}{6}(f_{i-1} + 4 f_{i-1/2} + f_i) \\
 &amp;= \frac{h}{6}\big[f_0 + f_n + 2 (f_1 + f_2 + ... + f_{n-1}) + 4 (f_{1/2} + f_{3/2} + ... + f_{n-1/2}) \big].
 \end{align}\end{split}\]</div>
-<p>Ниже дана реализация на основе функции <code class="docutils literal notranslate"><span class="pre">trapezoid</span></code>.</p>
-<div class="admonition-simpson admonition">
-<p class="admonition-title">Функция : <code class="docutils literal notranslate"><span class="pre">simpson</span></code></p>
+<p>Ниже дана реализация на основе <a class="reference internal" href="#function-trapezoid"><span class="std std-numref">Функции 3.3</span></a>.</p>
+<div class="proof proof-type-function" id="id9">
+
+    <div class="proof-title">
+        <span class="proof-type">Функция 3.5</span>
+        
+            <span class="proof-title-name">(simpson)</span>
+        
+    </div><div class="proof-content">
 <p><strong>Формула Симпсона.</strong></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">Вычисляет по формуле Симпсона интеграл ∫`f`dx на отрезке [`a`, `b`]</span>
@@ -482,8 +511,13 @@
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-<p><strong>Сравнение формул.</strong></p>
+</div></div><div class="proof proof-type-demo" id="id10">
+
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 3.6</span>
+        
+    </div><div class="proof-content">
+</div></div><div class="demo"><p><strong>Сравнение формул.</strong></p>
 <p>Ниже представлены графики численного интеграла</p>
 <div class="math notranslate nohighlight">
 \[\int_0^3 x e^{\sin 2x}\]</div>
@@ -505,7 +539,7 @@
 <div class="cell_output docutils container">
 <img alt="../_images/newton_cotes_6_0.svg" src="../_images/newton_cotes_6_0.svg" /></div>
 </div>
-</div>
+</div></div>
 </div>
 
     <script type="text/x-thebe-config">

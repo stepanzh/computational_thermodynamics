@@ -29,6 +29,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -42,6 +44,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/tabs.js"></script>
+    <script src="../_static/proof.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -328,11 +331,20 @@
   <div class="section" id="id1">
 <h1><span class="section-number">2.3. </span>Кубические сплайны<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>Кусочно-линейный интерполянт непрерывен, но имеет разрывную производную. Можно построить интерполянт с более гладкими свойствами.</p>
+<div class="proof proof-type-definition" id="id6">
+<span id="definition-cubicspline"></span>
+    <div class="proof-title">
+        <span class="proof-type">Определение 2.19</span>
+        
+            <span class="proof-title-name">(Кубический сплайн)</span>
+        
+    </div><div class="proof-content">
 <p><strong>Кубический сплайн</strong> <span class="math notranslate nohighlight">\(S(x)\)</span> это кусочно-кубическая функция, при этом дважды непрерывно-дифференцируемая на всём интервале интерполяции.</p>
-<p>Допустим, задана <span class="math notranslate nohighlight">\(n+1\)</span> абсцисса <span class="math notranslate nohighlight">\(t_0 &lt; t_1 &lt; ... &lt; t_n\)</span> с соответствующими значениями <span class="math notranslate nohighlight">\(y_0, y_1, ..., y_n\)</span>. На каждом из <span class="math notranslate nohighlight">\(n\)</span> отрезков <span class="math notranslate nohighlight">\([t_{k-1}, t_k]\)</span> сплайн <span class="math notranslate nohighlight">\(S_k(x)\)</span> имеет вид</p>
+</div></div><p>Допустим, задана <span class="math notranslate nohighlight">\(n+1\)</span> абсцисса <span class="math notranslate nohighlight">\(t_0 &lt; t_1 &lt; ... &lt; t_n\)</span> с соответствующими значениями <span class="math notranslate nohighlight">\(y_0, y_1, ..., y_n\)</span>. На каждом из <span class="math notranslate nohighlight">\(n\)</span> отрезков <span class="math notranslate nohighlight">\([t_{k-1}, t_k]\)</span> сплайн <span class="math notranslate nohighlight">\(S_k(x)\)</span> имеет вид</p>
 <div class="math notranslate nohighlight" id="equation-spline">
-<span class="eqno">(2.8)<a class="headerlink" href="#equation-spline" title="Permalink to this equation">¶</a></span>\[S_k(x) = a_k + (x-t_{k-1})b_k + (x-t_{k-1})^2 c_k + (x-t_{k-1})^3 d_k, \quad k = 1,...,n.\]</div>
-<p>Таким образом, для построения сплайна необходимо знать <span class="math notranslate nohighlight">\(4n\)</span> коэффициентов <span class="math notranslate nohighlight">\(a_k\)</span>, <span class="math notranslate nohighlight">\(b_k\)</span>, <span class="math notranslate nohighlight">\(c_k\)</span> и <span class="math notranslate nohighlight">\(d_k\)</span>. Из определения сплайна можно составить систему уравнений на непрерывность сплайна, а именно на</p>
+<span class="eqno">(2.9)<a class="headerlink" href="#equation-spline" title="Permalink to this equation">¶</a></span>\[S_k(x) = a_k + (x-t_{k-1})b_k + (x-t_{k-1})^2 c_k + (x-t_{k-1})^3 d_k, \quad k = 1,...,n.\]</div>
+<p>Таким образом, для построения сплайна необходимо знать <span class="math notranslate nohighlight">\(4n\)</span> коэффициентов <span class="math notranslate nohighlight">\(a_k\)</span>, <span class="math notranslate nohighlight">\(b_k\)</span>, <span class="math notranslate nohighlight">\(c_k\)</span> и <span class="math notranslate nohighlight">\(d_k\)</span>.</p>
+<p>Из <a class="reference internal" href="#definition-cubicspline"><span class="std std-numref">Определения 2.19</span></a> сплайна можно составить систему уравнений из условий на</p>
 <ol class="simple">
 <li><p>Значения сплайна в узлах;</p></li>
 <li><p>Гладкость первой производной;</p></li>
@@ -343,12 +355,12 @@
 <h2><span class="section-number">2.3.1. </span>Условия непрерывности сплайна<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p><strong>1. Непрерывность в узлах интерполяции.</strong></p>
 <p>Сама задача интерполяции требует <span class="math notranslate nohighlight">\(S(t_k) = y_k\)</span>, <span class="math notranslate nohighlight">\(k=0,...,n\)</span>. Это условие достигается при <span class="math notranslate nohighlight">\(S_k(t_{k-1}) = y_{k-1}\)</span>, <span class="math notranslate nohighlight">\(S_k(t_k) = y_k\)</span>, где <span class="math notranslate nohighlight">\(k=1,...,n\)</span>.</p>
-<p>1.а. Условие <span class="math notranslate nohighlight">\(S_k(t_{k-1}) = y_{k-1}\)</span> при подстановке в <a class="reference internal" href="#equation-spline">(2.8)</a> приводит к</p>
+<p><strong>1.а.</strong> Условие <span class="math notranslate nohighlight">\(S_k(t_{k-1}) = y_{k-1}\)</span> при подстановке в <a class="reference internal" href="#equation-spline">(2.9)</a> приводит к</p>
 <div class="math notranslate nohighlight">
 \[a_k = y_{k-1}, \quad k = 1, ..., n.\]</div>
 <p>Матричный вид этого условия</p>
 <div class="math notranslate nohighlight" id="equation-spline-nodes-a">
-<span class="eqno">(2.9)<a class="headerlink" href="#equation-spline-nodes-a" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{bmatrix}
+<span class="eqno">(2.10)<a class="headerlink" href="#equation-spline-nodes-a" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{bmatrix}
 \mathbf{I} &amp; \mathbf{0} &amp; \mathbf{0} &amp; \mathbf{0}
 \end{bmatrix}
 \begin{bmatrix}
@@ -359,12 +371,12 @@
 y_0 \\ y_1 \\ \vdots \\ y_{n-1}
 \end{bmatrix},\end{split}\]</div>
 <p>где <span class="math notranslate nohighlight">\(\mathbf{I}\)</span> единичная <span class="math notranslate nohighlight">\(n\times n\)</span> матрица, <span class="math notranslate nohighlight">\(\mathbf{0}\)</span> нулевая <span class="math notranslate nohighlight">\(n\times n\)</span> матрица; <span class="math notranslate nohighlight">\(\mathbf{a}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{b}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{c}\)</span> и <span class="math notranslate nohighlight">\(\mathbf{d}\)</span> векторы <span class="math notranslate nohighlight">\(n\times 1\)</span> искомых коэффициентов <span class="math notranslate nohighlight">\(a_k\)</span>, <span class="math notranslate nohighlight">\(b_k\)</span>, <span class="math notranslate nohighlight">\(c_k\)</span> и <span class="math notranslate nohighlight">\(d_k\)</span> соответственно.</p>
-<p>1.б. Условие <span class="math notranslate nohighlight">\(S_k(t_k) = y_k\)</span> приводит к</p>
+<p><strong>1.б.</strong> Условие <span class="math notranslate nohighlight">\(S_k(t_k) = y_k\)</span> приводит к</p>
 <div class="math notranslate nohighlight">
 \[a_k + h_k b_k + h^2_k c_k + h^3_k d_k = y_k,\quad h_k = y_k - y_{k-1},\: k=1,...,n.\]</div>
 <p>В матричном виде</p>
 <div class="math notranslate nohighlight" id="equation-spline-nodes-b">
-<span class="eqno">(2.10)<a class="headerlink" href="#equation-spline-nodes-b" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{bmatrix}
+<span class="eqno">(2.11)<a class="headerlink" href="#equation-spline-nodes-b" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{bmatrix}
 \mathbf{I} &amp; \mathbf{H} &amp; \mathbf{H}^2 &amp; \mathbf{H}^3
 \end{bmatrix}
 \begin{bmatrix}
@@ -375,9 +387,9 @@ y_0 \\ y_1 \\ \vdots \\ y_{n-1}
 y_1 \\ y_2 \\ \vdots \\ y_n
 \end{bmatrix},\end{split}\]</div>
 <p>где <span class="math notranslate nohighlight">\(\mathbf{H} = \diag(h_1, h_2, ..., h_n)\)</span> – диагольная матрица из <span class="math notranslate nohighlight">\(h_k\)</span>.</p>
-<p>Итак, системы <a class="reference internal" href="#equation-spline-nodes-a">(2.9)</a> и <a class="reference internal" href="#equation-spline-nodes-b">(2.10)</a> дают <span class="math notranslate nohighlight">\(2n\)</span> уравнений.</p>
+<p>Итак, системы <a class="reference internal" href="#equation-spline-nodes-a">(2.10)</a> и <a class="reference internal" href="#equation-spline-nodes-b">(2.11)</a> дают <span class="math notranslate nohighlight">\(2n\)</span> уравнений.</p>
 <p><strong>2. Непрерывность первой производной.</strong></p>
-<p>Чтобы добиться гладкости первой производной <span class="math notranslate nohighlight">\(S(x)\)</span> сплайна, потребуем сшивку производных в узловых точках для соседних кусков <span class="math notranslate nohighlight">\(S'_k(t_k) = S'_{k+1}(t_k)\)</span>. Тогда, из <a class="reference internal" href="#equation-spline">(2.8)</a> получим</p>
+<p>Чтобы добиться гладкости первой производной <span class="math notranslate nohighlight">\(S(x)\)</span> сплайна, потребуем сшивку производных в узловых точках для соседних кусков <span class="math notranslate nohighlight">\(S'_k(t_k) = S'_{k+1}(t_k)\)</span>. Тогда, из <a class="reference internal" href="#equation-spline">(2.9)</a> получим</p>
 <div class="math notranslate nohighlight">
 \[b_k + 2 h_k\cdot c_k + 3h^2_k\cdot d_k = b_{k+1},\quad k=1,...,n-1.\]</div>
 <p>В явном матричном виде это записывается так</p>
@@ -397,7 +409,7 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_{n-1} \\ c_1 \\ \vdots \\ c_{n-1}
 \mathbf{0}_{(n-1)\times 1}\end{split}\]</div>
 <p>В этой записи блоки в матрице имеют размер <span class="math notranslate nohighlight">\((n-1)\times(n-1)\)</span>, а вектор неизвестных не имеет коэффициентов <span class="math notranslate nohighlight">\(a_n\)</span>, <span class="math notranslate nohighlight">\(b_n\)</span>, <span class="math notranslate nohighlight">\(c_n\)</span> и <span class="math notranslate nohighlight">\(d_n\)</span>. Чтобы встроить эту систему в общую, мы формально увеличим матрицы до <span class="math notranslate nohighlight">\(n\times n\)</span>, а вектор неизвестных до <span class="math notranslate nohighlight">\(4n\)</span>. Чтобы получить эквивалентную систему, нужно будет только “удалить” <span class="math notranslate nohighlight">\(n\)</span>-ую строку</p>
 <div class="math notranslate nohighlight" id="equation-spline-deriv">
-<span class="eqno">(2.11)<a class="headerlink" href="#equation-spline-deriv" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{E}
+<span class="eqno">(2.12)<a class="headerlink" href="#equation-spline-deriv" title="Permalink to this equation">¶</a></span>\[\begin{split}\mathbf{E}
 \begin{bmatrix}
 \mathbf{0} &amp; \mathbf{J} &amp; 2 \mathbf{H} &amp; 3 \mathbf{H}^2
 \end{bmatrix}
@@ -424,14 +436,14 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_{n-1} \\ c_1 \\ \vdots \\ c_{n-1}
   &amp;    &amp;  \ddots &amp; -1 \\
   &amp; &amp; &amp; 1
 \end{bmatrix}.\end{split}\]</div>
-<p>Итак, система <a class="reference internal" href="#equation-spline-deriv">(2.11)</a> содержит <span class="math notranslate nohighlight">\(n-1\)</span> уравнение.</p>
+<p>Итак, система <a class="reference internal" href="#equation-spline-deriv">(2.12)</a> содержит <span class="math notranslate nohighlight">\(n-1\)</span> уравнение.</p>
 <p><strong>3. Непрерывность второй производной.</strong></p>
-<p>Аналогично условию на первую производную, требуем для второй <span class="math notranslate nohighlight">\(S''_k(t_k) = S''_{k+1}(t_k)\)</span>. Из определения <span class="math notranslate nohighlight">\(S_k\)</span> <a class="reference internal" href="#equation-spline">(2.8)</a> получаем</p>
+<p>Аналогично условию на первую производную, требуем для второй <span class="math notranslate nohighlight">\(S''_k(t_k) = S''_{k+1}(t_k)\)</span>. Из определения <span class="math notranslate nohighlight">\(S_k\)</span> <a class="reference internal" href="#equation-spline">(2.9)</a> получаем</p>
 <div class="math notranslate nohighlight">
 \[2 c_k  + 6h_k d_k = 2 c_{k+1},\quad k=1,...,n-1.\]</div>
 <p>Матричный вид системы</p>
 <div class="math notranslate nohighlight" id="equation-spline-dderiv">
-<span class="eqno">(2.12)<a class="headerlink" href="#equation-spline-dderiv" title="Permalink to this equation">¶</a></span>\[\mathbf{E}
+<span class="eqno">(2.13)<a class="headerlink" href="#equation-spline-dderiv" title="Permalink to this equation">¶</a></span>\[\mathbf{E}
 \begin{bmatrix}
 \mathbf{0} &amp; \mathbf{0} &amp; \mathbf{J} &amp; 3 \mathbf{H}
 \end{bmatrix}
@@ -446,23 +458,35 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_{n-1} \\ c_1 \\ \vdots \\ c_{n-1}
 \[S'''_1(t_1) = S_2'''(t_1),\quad S'''_{n-1}(t_{n-1}) = S'''_n(t_{n-1}).\]</div>
 <p>Что приводит к уравнениям</p>
 <div class="math notranslate nohighlight" id="equation-spline-edge">
-<span class="eqno">(2.13)<a class="headerlink" href="#equation-spline-edge" title="Permalink to this equation">¶</a></span>\[d_1 = d_2, \quad d_{n-1} = d_n.\]</div>
+<span class="eqno">(2.14)<a class="headerlink" href="#equation-spline-edge" title="Permalink to this equation">¶</a></span>\[d_1 = d_2, \quad d_{n-1} = d_n.\]</div>
 <p>Которым можно сопоставить соответствующие строки, и встроить их в уже существующую систему.</p>
-<p>Итак, уравнения <a class="reference internal" href="#equation-spline-nodes-a">(2.9)</a>, <a class="reference internal" href="#equation-spline-nodes-b">(2.10)</a>, <a class="reference internal" href="#equation-spline-deriv">(2.11)</a>, <a class="reference internal" href="#equation-spline-dderiv">(2.12)</a> и <a class="reference internal" href="#equation-spline-edge">(2.13)</a> формируют систему для <span class="math notranslate nohighlight">\(4n\)</span> неизвестных, с квадратной матрицей размера <span class="math notranslate nohighlight">\((4n) \times (4n)\)</span>. В отличие от кусочно-линейной интерполяции, интерполяция сплайнами требует решения линейной системы. Оказывается, для сплайнов всё-таки можно найти базис, но он не будет обладать свойством <a class="reference internal" href="pwlinear.html#equation-cardinality">(2.7)</a>.</p>
+<p>Итак, уравнения <a class="reference internal" href="#equation-spline-nodes-a">(2.10)</a>, <a class="reference internal" href="#equation-spline-nodes-b">(2.11)</a>, <a class="reference internal" href="#equation-spline-deriv">(2.12)</a>, <a class="reference internal" href="#equation-spline-dderiv">(2.13)</a> и <a class="reference internal" href="#equation-spline-edge">(2.14)</a> формируют систему для <span class="math notranslate nohighlight">\(4n\)</span> неизвестных, с квадратной матрицей размера <span class="math notranslate nohighlight">\((4n) \times (4n)\)</span>. В отличие от кусочно-линейной интерполяции, интерполяция сплайнами требует решения линейной системы. Оказывается, для сплайнов всё-таки можно найти базис, но он не будет обладать свойством <a class="reference internal" href="pwlinear.html#equation-cardinality">(2.8)</a>.</p>
 </div>
 <div class="section" id="id4">
 <h2><span class="section-number">2.3.3. </span>Реализация<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<div class="admonition-polynomial admonition">
-<p class="admonition-title">Функция : <code class="docutils literal notranslate"><span class="pre">polynomial</span></code></p>
+<div class="proof proof-type-function" id="id7">
+
+    <div class="proof-title">
+        <span class="proof-type">Функция 2.20</span>
+        
+            <span class="proof-title-name">(polynomial)</span>
+        
+    </div><div class="proof-content">
 <p><strong>Полином общего вида</strong> <span class="math notranslate nohighlight">\(c_1 + c_2 x + c_3 x^2 + ...\)</span> <strong>.</strong></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;Возвращает полином вида `c[1] + c[2]*x + c[3]*x^2 + ...`.&quot;</span>
 <span class="n">polynomial</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">horner</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-<div class="note admonition">
-<p class="admonition-title">Функция : <code class="docutils literal notranslate"><span class="pre">pwlininterp(t,</span> <span class="pre">y)</span></code></p>
-<p><strong>Кубический сплайн</strong> <span class="math notranslate nohighlight">\(S(x)\)</span><strong>.</strong></p>
+</div></div><div class="proof proof-type-function" id="id8">
+
+    <div class="proof-title">
+        <span class="proof-type">Функция 2.21</span>
+        
+            <span class="proof-title-name">(pwlininterp)</span>
+        
+    </div><div class="proof-content">
+<p><strong>Кубический сплайн</strong> <span class="math notranslate nohighlight">\(S(x)\)</span></p>
+<p>Создание блочной матрицы смотрите в <a class="reference internal" href="../intro/julia.html#demo-create-block-matrix"><span class="std std-numref">Демонстрации 1.9</span></a>.</p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;Возвращает кубический сплайн, проходящий через точки (`t[i]`, `y[i]`)&quot;</span>
 <span class="k">function</span> <span class="n">spinterp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="n">n</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>
@@ -487,7 +511,7 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_{n-1} \\ c_1 \\ \vdots \\ c_{n-1}
     <span class="n">v1</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
 
     <span class="c"># 3. Непрерывность второй производной</span>
-    <span class="n">A2</span> <span class="o">=</span> <span class="n">E</span> <span class="o">*</span> <span class="p">[</span><span class="n">Z</span> <span class="n">Z</span> <span class="n">J</span> <span class="mi">3</span><span class="o">*</span><span class="n">H</span><span class="p">]</span>
+    <span class="n">A2</span> <span class="o">=</span> <span class="n">E</span> <span class="o">*</span> <span class="p">[</span><span class="n">Z</span> <span class="n">Z</span> <span class="n">J</span> <span class="mi">6</span><span class="o">*</span><span class="n">H</span><span class="p">]</span>
     <span class="n">v2</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
     
     <span class="c"># 4. Not-a-knot</span>
@@ -520,21 +544,31 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_{n-1} \\ c_1 \\ \vdots \\ c_{n-1}
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-</div>
+</div></div></div>
 <div class="section" id="id5">
 <h2><span class="section-number">2.3.4. </span>Сходимость<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
 <p>В случае сплайнов, подобно кусочно-линейной интерполяции, справедливо утверждение</p>
-<div class="note admonition">
-<p class="admonition-title">Утверждение: сходимость кубического сплайна.</p>
+<div class="proof proof-type-proposition" id="id9">
+
+    <div class="proof-title">
+        <span class="proof-type">Утверждение 2.22</span>
+        
+            <span class="proof-title-name">(Cходимость кубического сплайна)</span>
+        
+    </div><div class="proof-content">
 <p>Для функции <span class="math notranslate nohighlight">\(f(x)\)</span>, имеющей четвёртую непрерывную производную на отрезке <span class="math notranslate nohighlight">\([a,b]\)</span> и её кубического сплайна <span class="math notranslate nohighlight">\(S_h(x)\)</span>, узлы которого определены на равномерной сетке <span class="math notranslate nohighlight">\(\omega_h\)</span>, найдётся число <span class="math notranslate nohighlight">\(C\)</span>, такое что, справедлива оценка</p>
 <div class="math notranslate nohighlight">
 \[
 \|f - S_h\|_\infty \le C h^4.
 \]</div>
-</div>
-<p>Итак, кубический сплайн сходится к функции с четвёртым порядком.</p>
-<p>Ниже демонстрация сходимости на функции <span class="math notranslate nohighlight">\(f(x)=\exp(\sin(2x)) + 0.05\sin(15x)\)</span>.</p>
+<p>Т.е. кубический сплайн сходится к функции с <em>четвёртым</em> порядком.</p>
+</div></div><div class="proof proof-type-demo" id="id10">
+
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 2.23</span>
+        
+    </div><div class="proof-content">
+</div></div><div class="demo"><p>Функция <span class="math notranslate nohighlight">\(f(x)=\exp(\sin(2x)) + 0.05\sin(15x)\)</span>.</p>
 <p>Построение по 7 выбранным точкам.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -555,7 +589,7 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_{n-1} \\ c_1 \\ \vdots \\ c_{n-1}
 <div class="cell_output docutils container">
 <img alt="../_images/cubic_spline_2_0.svg" src="../_images/cubic_spline_2_0.svg" /></div>
 </div>
-<p>Случай равноотстоящих точек.</p>
+<p><strong>Случай равноотстоящих точек</strong></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="mf">0.05</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">15</span><span class="n">x</span><span class="p">)</span>
@@ -575,7 +609,8 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_{n-1} \\ c_1 \\ \vdots \\ c_{n-1}
 <div class="cell_output docutils container">
 <img alt="../_images/cubic_spline_4_0.svg" src="../_images/cubic_spline_4_0.svg" /></div>
 </div>
-<p>Наконец, оценка порядка сходимости. В этом случае мы ожидаем увидеть прямую с наклоном 4 в log-log осях.</p>
+<p><strong>Оценка порядка сходимости</strong></p>
+<p>В этом случае мы ожидаем увидеть прямую с наклоном 4 в log-log осях.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="mf">0.05</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">15</span><span class="n">x</span><span class="p">)</span>
@@ -606,7 +641,7 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_{n-1} \\ c_1 \\ \vdots \\ c_{n-1}
 <div class="cell_output docutils container">
 <img alt="../_images/cubic_spline_6_0.svg" src="../_images/cubic_spline_6_0.svg" /></div>
 </div>
-</div>
+</div></div>
 </div>
 
     <script type="text/x-thebe-config">

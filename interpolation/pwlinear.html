@@ -29,6 +29,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -42,6 +44,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/tabs.js"></script>
+    <script src="../_static/proof.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -323,29 +326,61 @@
   <div class="section" id="id1">
 <h1><span class="section-number">2.2. </span>Кусочно-линейная интерполяция<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>Что самое простое можно сделать с набором точек? Соединить отрезками. В этом и состоит кусочно-линейная интерполяция.</p>
-<p>Математически: на каждом отрезке <span class="math notranslate nohighlight">\([t_k, t_{k+1}]\)</span> интерполянт является отрезком прямой, соединяющей точки <span class="math notranslate nohighlight">\((t_k, y_k)\)</span> и <span class="math notranslate nohighlight">\((t_{k+1}, y_{k+1})\)</span></p>
+<div class="proof proof-type-definition" id="id4">
+
+    <div class="proof-title">
+        <span class="proof-type">Определение 2.8</span>
+        
+            <span class="proof-title-name">(Кусочно-линейная интерполяция)</span>
+        
+    </div><div class="proof-content">
+<p>На каждом отрезке <span class="math notranslate nohighlight">\([t_k, t_{k+1}]\)</span> <strong>кусочно-линейный интерполянт</strong> является отрезком прямой, соединяющей точки <span class="math notranslate nohighlight">\((t_k, y_k)\)</span> и <span class="math notranslate nohighlight">\((t_{k+1}, y_{k+1})\)</span></p>
 <div class="math notranslate nohighlight" id="equation-pwlin">
 <span class="eqno">(2.4)<a class="headerlink" href="#equation-pwlin" title="Permalink to this equation">¶</a></span>\[p(x) = y_k + \frac{y_{k+1} - y_k}{t_{k+1} - t_k} (x - t_k),\quad x \in [t_k, t_{k+1}]\]</div>
-<p>Простой способ реализации формулы <a class="reference internal" href="#equation-pwlin">(2.4)</a> заключается в поиске отрезка <span class="math notranslate nohighlight">\([t_k, t_{k+1}]\)</span>, которому принадлежит <span class="math notranslate nohighlight">\(x\)</span>, а затем уже в применении <a class="reference internal" href="#equation-pwlin">(2.4)</a>.</p>
+</div></div><p>Простой способ реализации формулы <a class="reference internal" href="#equation-pwlin">(2.4)</a> заключается в поиске отрезка <span class="math notranslate nohighlight">\([t_k, t_{k+1}]\)</span>, которому принадлежит <span class="math notranslate nohighlight">\(x\)</span>, а затем уже в применении <a class="reference internal" href="#equation-pwlin">(2.4)</a>.</p>
 <p>Мы же поступим более общим способом.</p>
 <div class="section" id="hat">
 <h2><span class="section-number">2.2.1. </span>Hat-функции<a class="headerlink" href="#hat" title="Permalink to this headline">¶</a></h2>
 <p>Искомый интерполянт лишь одна из <em>непрерывных кусочно-линейных</em> функций, которые образуют <em>линейное пространство</em>. В этом пространстве функция выражается в виде</p>
 <div class="math notranslate nohighlight" id="equation-pwlin-decomp">
 <span class="eqno">(2.5)<a class="headerlink" href="#equation-pwlin-decomp" title="Permalink to this equation">¶</a></span>\[p(x) = \sum_{k=1}^n c_k \varphi_k(x),\quad x \in [t_1, t_n].\]</div>
-<p>Где набор функций <span class="math notranslate nohighlight">\(\{\varphi_k(x)\}\)</span> является <em>базисом</em> пространства, а коэффициенты (веса, координаты) <span class="math notranslate nohighlight">\(c_k\)</span> однозначно задают <span class="math notranslate nohighlight">\(p(x)\)</span>. В качестве такого базиса широко используются hat-функции.</p>
-<p>Hat-функция <span class="math notranslate nohighlight">\(\varphi_k\)</span> это функция треугольного вида, задающаяся аналитически в виде</p>
+<p>Где набор функций <span class="math notranslate nohighlight">\(\{\varphi_k(x)\}_{k=1}^n\)</span> является <em>базисом</em> пространства, а коэффициенты (веса, координаты) <span class="math notranslate nohighlight">\(c_k\)</span> однозначно задают <span class="math notranslate nohighlight">\(p(x)\)</span>. В качестве такого базиса широко используются hat-функции.</p>
+<div class="proof proof-type-definition" id="id5">
+
+    <div class="proof-title">
+        <span class="proof-type">Определение 2.9</span>
+        
+            <span class="proof-title-name">(Hat-функция)</span>
+        
+    </div><div class="proof-content">
+<p><strong>Полная hat-функция</strong> <span class="math notranslate nohighlight">\(\varphi_k\)</span> это функция треугольного вида, задающаяся аналитически в виде</p>
 <div class="math notranslate nohighlight" id="equation-hatfunc">
 <span class="eqno">(2.6)<a class="headerlink" href="#equation-hatfunc" title="Permalink to this equation">¶</a></span>\[\begin{split}\varphi_k(x) = \begin{cases}
 \dfrac{x-t_{k-1}}{t_k - t_{k-1}},&amp; x \in [t_k, t_{k-1}],\\
-\dfrac{t_{k+1}-x}{t_{k+1} - t_k},&amp; x \in [t_{k+1}, t_k],\\
+\dfrac{t_{k+1}-x}{t_{k+1} - t_k},&amp; x \in [t_k, t_{k+1}],\\
 0, &amp; иначе.
-\end{cases},\quad k = 2,...,n-1\end{split}\]</div>
-<p>Мы здесь не будем специально выписывать формулы для <span class="math notranslate nohighlight">\(\varphi_1\)</span> и <span class="math notranslate nohighlight">\(\varphi_n\)</span>, которые являются половинчатыми hat-функциями.</p>
-<p>Реализуем hat-функции через замыкание.</p>
-<div class="note admonition">
-<p class="admonition-title">Функция : <code class="docutils literal notranslate"><span class="pre">hatfunc</span></code></p>
-<p><strong>Hat-функция</strong> <span class="math notranslate nohighlight">\(\varphi_k(x)\)</span>.</p>
+\end{cases},\quad k = 2,...,n-1.\end{split}\]</div>
+<p><strong>Половинчатые hat-функции</strong> задаются на краях и имеют вид</p>
+<div class="math notranslate nohighlight" id="equation-hatfunchalf">
+<span class="eqno">(2.7)<a class="headerlink" href="#equation-hatfunchalf" title="Permalink to this equation">¶</a></span>\[\begin{split}\varphi_1 = \begin{cases}
+\dfrac{t_2-x}{t_2 - t_1},&amp; x \in [t_1, t_2],\\
+0, &amp; иначе.
+\end{cases}
+\quad
+\varphi_n(x) = \begin{cases}
+\dfrac{x-t_n}{t_{n-1} - t_n},&amp; x \in [t_{n-1}, t_n],\\
+0, &amp; иначе.
+\end{cases}\end{split}\]</div>
+</div></div><p>Реализуем hat-функции через замыкание.</p>
+<div class="proof proof-type-function" id="id6">
+<span id="function-hatfunc"></span>
+    <div class="proof-title">
+        <span class="proof-type">Функция 2.10</span>
+        
+            <span class="proof-title-name">(hatfunc)</span>
+        
+    </div><div class="proof-content">
+<p><strong>Hat-функция</strong> <span class="math notranslate nohighlight">\(\varphi_k(x)\)</span></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">Возращает hat-функцию φ_k(x) для отсортированной сетки абсцисс `t`.</span>
 <span class="s">Индекс `k ∈ [1, size(t, 1)]`.</span>
@@ -364,8 +399,13 @@
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-<p>Допустим, интерполяция производится по четырём точкам <span class="math notranslate nohighlight">\(t_1 = 1.0, t_2 = 1.3, t_3 = 3.1, t_4 = 4.0\)</span> (абсциссы), соответствующий базис имеет вид.</p>
+</div></div><div class="proof proof-type-demo" id="id7">
+
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 2.11</span>
+        
+    </div><div class="proof-content">
+</div></div><div class="demo"><p>Допустим, интерполяция производится по четырём точкам <span class="math notranslate nohighlight">\(t_1 = 1.0, t_2 = 1.3, t_3 = 3.1, t_4 = 4.0\)</span> (абсциссы), соответствующий базис имеет вид.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">ts</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.3</span><span class="p">,</span> <span class="mf">3.1</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">]</span>
@@ -383,22 +423,34 @@
 <div class="cell_output docutils container">
 <img alt="../_images/pwlinear_2_0.svg" src="../_images/pwlinear_2_0.svg" /></div>
 </div>
-</div>
+</div></div>
 <div class="section" id="id2">
 <h2><span class="section-number">2.2.2. </span>Интерполяция<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>Поскольку hat-функции обладают свойством</p>
+<div class="proof proof-type-observation">
+
+    <div class="proof-title">
+        <span class="proof-type">Наблюдение </span>
+        
+    </div><div class="proof-content">
+<p>Определение интерполянта <span class="math notranslate nohighlight">\(p(x)\)</span> в виде <a class="reference internal" href="#equation-pwlin-decomp">(2.5)</a> делает нахождение коэффициентов <span class="math notranslate nohighlight">\(c_k\)</span> и базиса <span class="math notranslate nohighlight">\(\varphi_k(x)\)</span> <em>независимыми</em> задачами.</p>
+</div></div><p>Поскольку hat-функции обладают свойством</p>
 <div class="math notranslate nohighlight" id="equation-cardinality">
-<span class="eqno">(2.7)<a class="headerlink" href="#equation-cardinality" title="Permalink to this equation">¶</a></span>\[\begin{split}\varphi_k(t_l) = \begin{cases}
+<span class="eqno">(2.8)<a class="headerlink" href="#equation-cardinality" title="Permalink to this equation">¶</a></span>\[\begin{split}\varphi_k(t_l) = \begin{cases}
 1, &amp; k = l,\\
 0, &amp; k \ne l.
 \end{cases}\end{split}\]</div>
 <p>То коэффициенты <span class="math notranslate nohighlight">\(c_k\)</span> в разложении <a class="reference internal" href="#equation-pwlin-decomp">(2.5)</a> равняются <span class="math notranslate nohighlight">\(y_k\)</span></p>
 <div class="math notranslate nohighlight">
 \[p(x) = \sum_{k=1}^n y_k \varphi_k(x),\quad x \in [t_1, t_n].\]</div>
-<p>Ниже реализация</p>
-<div class="note admonition">
-<p class="admonition-title">Функция : <code class="docutils literal notranslate"><span class="pre">pwlininterp(t,</span> <span class="pre">y)</span></code></p>
-<p><strong>Кусочно-линейная интерполяция.</strong></p>
+<div class="proof proof-type-function" id="id8">
+
+    <div class="proof-title">
+        <span class="proof-type">Функция 2.12</span>
+        
+            <span class="proof-title-name">(pwlininterp)</span>
+        
+    </div><div class="proof-content">
+<p><strong>Кусочно-линейная интерполяция</strong></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;Возвращает кусочно-линейный интерполянт для точек (`t[i]`, `y[i]`).&quot;</span>
 <span class="k">function</span> <span class="n">pwlininterp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="n">basis</span> <span class="o">=</span> <span class="p">[</span><span class="n">hatfunc</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">size</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">1</span><span class="p">)]</span>
@@ -406,9 +458,8 @@
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-<div class="dropdown admonition note">
-<p class="admonition-title">Note</p>
+<div class="dropdown tip admonition">
+<p class="admonition-title">Пояснение по синтаксису</p>
 <blockquote>
 <div><p><code class="docutils literal notranslate"><span class="pre">basis</span> <span class="pre">=</span> <span class="pre">[hatfunc(t,</span> <span class="pre">k)</span> <span class="pre">for</span> <span class="pre">k</span> <span class="pre">in</span> <span class="pre">1:size(t,</span> <span class="pre">1)]</span></code></p>
 </div></blockquote>
@@ -421,7 +472,13 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">basis[k](x)</span></code> стоит читать как <code class="docutils literal notranslate"><span class="pre">(basis[k])(x)</span></code>: извлечение <code class="docutils literal notranslate"><span class="pre">k</span></code>-го элемента массива <code class="docutils literal notranslate"><span class="pre">basis</span></code>, что является функцией и затем вызов этой функции с аргументом <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p></li>
 </ul>
 </div>
-<p>Рассмотрим пример кусочно-линейной интерполяции на функции из раздела <a class="reference internal" href="polynomial.html#poly-equalspaced"><span class="std std-ref">Случай равноотстоящих точек</span></a>.</p>
+</div></div><div class="proof proof-type-demo" id="id9">
+
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 2.13</span>
+        
+    </div><div class="proof-content">
+</div></div><div class="demo"><p>Рассмотрим пример кусочно-линейной интерполяции на функции из раздела <a class="reference internal" href="polynomial.html#poly-equalspaced"><span class="std std-ref">Случай равноотстоящих точек</span></a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="mf">0.05</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">15</span><span class="n">x</span><span class="p">)</span>
@@ -460,32 +517,67 @@
 <img alt="../_images/pwlinear_6_0.svg" src="../_images/pwlinear_6_0.svg" /></div>
 </div>
 <p>Похоже, интерполянт стремится к некоторому пределу…</p>
-</div>
+</div></div>
 <div class="section" id="id3">
 <h2><span class="section-number">2.2.3. </span>Сходимость<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>Можно рассмотреть, как меняется ошибка приближения функции интерполянтом в зависимости от количества использующихся точек. Нам понадобятся несколько инструментов.</p>
+<div class="proof proof-type-definition" id="id10">
+
+    <div class="proof-title">
+        <span class="proof-type">Определение 2.14</span>
+        
+            <span class="proof-title-name">(<span class="math notranslate nohighlight">\(\infty\)</span>-норма функции)</span>
+        
+    </div><div class="proof-content">
 <p>Для измерения величины ошибки введём <span class="math notranslate nohighlight">\(\infty\)</span>-<strong>норму функции</strong>. Эта норма показывает насколько сильно отклоняется функция <span class="math notranslate nohighlight">\(f\)</span> от нуля на отрезке <span class="math notranslate nohighlight">\([a, b]\)</span></p>
 <div class="math notranslate nohighlight">
 \[\|f\|_\infty = \max_{x\in[a,b]} |f(x)|.\]</div>
+</div></div><div class="proof proof-type-definition" id="id11">
+
+    <div class="proof-title">
+        <span class="proof-type">Определение 2.15</span>
+        
+            <span class="proof-title-name">(Равномерная одномерная сетка)</span>
+        
+    </div><div class="proof-content">
 <p>Введём также <em>равномерную</em> <strong>сетку</strong> из узлов</p>
 <div class="math notranslate nohighlight">
 \[\omega_h = \{t_i\!: \: t_i = a + (i-1) h, \: h = (b-a)/n, \: i=1,...,n\},\]</div>
 <p>где число <span class="math notranslate nohighlight">\(n\)</span> называют <strong>размером сетки</strong>, а <span class="math notranslate nohighlight">\(h\)</span> её <strong>мелкостью</strong> (или шагом).</p>
-<p>Каждой сетке <span class="math notranslate nohighlight">\(\omega_h\)</span> поставим в соответствие интерполянт <span class="math notranslate nohighlight">\(p_h(x)\)</span> функции <span class="math notranslate nohighlight">\(f(x)\)</span>:</p>
+</div></div><p>Каждой сетке <span class="math notranslate nohighlight">\(\omega_h\)</span> поставим в соответствие интерполянт <span class="math notranslate nohighlight">\(p_h(x)\)</span> функции <span class="math notranslate nohighlight">\(f(x)\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[p_h(t_i) = f(t_i), t_i \in \omega_h.\]</div>
 <p>Теперь есть всё, чтобы представить утверждение.</p>
-<div class="note admonition">
-<p class="admonition-title">Утверждение: сходимость кусочно-линейной интерполяции.</p>
+<div class="proof proof-type-proposition" id="id12">
+
+    <div class="proof-title">
+        <span class="proof-type">Утверждение 2.16</span>
+        
+            <span class="proof-title-name">(Cходимость кусочно-линейной интерполяции)</span>
+        
+    </div><div class="proof-content">
 <p>Дважды непрерывно-дифференцируемую на <span class="math notranslate nohighlight">\([a, b]\)</span> функцию <span class="math notranslate nohighlight">\(f(x)\)</span> кусочно-линейный интерполянт <span class="math notranslate nohighlight">\(p_h(x)\)</span> приближает с оценкой</p>
 <div class="math notranslate nohighlight">
 \[
 \|f - p_h\|_\infty = \max_{x\in[a,b]}|f(x) - p_h(x)| \le M h^2,\quad M = \|f''\|_\infty.
 \]</div>
-</div>
-<p>Из утверждения видно, что при уменьшении шага сетки <span class="math notranslate nohighlight">\(h \to 0\)</span> ошибка интерполяции составляет <span class="math notranslate nohighlight">\(O(h^2)\)</span>.
-Если ошибка приближения составляет <span class="math notranslate nohighlight">\(O(h^m)\)</span> при <span class="math notranslate nohighlight">\(h \to 0\)</span>, то говорят о <strong>сходимости</strong> приближения с <strong>порядком</strong> <span class="math notranslate nohighlight">\(m\)</span>.</p>
-<p>Ниже демонстрация сходимости на функции <span class="math notranslate nohighlight">\(f(x)=\exp(\sin(2x)) + 0.05\sin(15x)\)</span>.</p>
+</div></div><p>При уменьшении шага сетки <span class="math notranslate nohighlight">\(h \to 0\)</span> ошибка интерполяции составляет <span class="math notranslate nohighlight">\(O(h^2)\)</span>.</p>
+<div class="proof proof-type-definition" id="id13">
+
+    <div class="proof-title">
+        <span class="proof-type">Определение 2.17</span>
+        
+            <span class="proof-title-name">(Сходимость и порядок сходимости)</span>
+        
+    </div><div class="proof-content">
+<p>Если ошибка приближения составляет <span class="math notranslate nohighlight">\(O(h^m)\)</span> при <span class="math notranslate nohighlight">\(h \to 0\)</span>, то говорят о <strong>сходимости</strong> приближения с <strong>порядком</strong> <span class="math notranslate nohighlight">\(m\)</span>.</p>
+</div></div><div class="proof proof-type-demo" id="id14">
+
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 2.18</span>
+        
+    </div><div class="proof-content">
+</div></div><div class="demo"><p>Функция <span class="math notranslate nohighlight">\(f(x)=\exp(\sin(2x)) + 0.05\sin(15x)\)</span>.</p>
 <p>Сгенерируем несколько равномерных сеток <span class="math notranslate nohighlight">\(\omega_h\)</span>, построим на них интерполянт и посчитаем норму ошибки. Тогда, поскольку <span class="math notranslate nohighlight">\(\|f - p_h \|_\infty \approx C h^2\)</span>, то</p>
 <div class="math notranslate nohighlight">
 \[\log \|f - p_h \|_\infty \approx 2\cdot\log h + \log C.\]</div>
@@ -520,7 +612,7 @@
 <div class="cell_output docutils container">
 <img alt="../_images/pwlinear_8_0.svg" src="../_images/pwlinear_8_0.svg" /></div>
 </div>
-</div>
+</div></div>
 </div>
 
     <script type="text/x-thebe-config">

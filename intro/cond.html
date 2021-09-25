@@ -29,6 +29,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -42,6 +44,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/tabs.js"></script>
+    <script src="../_static/proof.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -304,18 +307,6 @@
    1.2.2. Оценка ошибок
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   1.2.3. Примеры плохой обусловленности
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id5">
-     1.2.3.1. Детерминант
-    </a>
-   </li>
-  </ul>
- </li>
 </ul>
 
             </nav>
@@ -350,19 +341,31 @@
 <p>Таким образом, задачам (и алгоритмам) можно сопоставить их чувствительность к входным данным. У некоторых задач теоретически сильная чувствительность (большая обусловленность), что в паре с вычислительной погрешностью приводит к ошибкам в расчётах. Для оценки чувствительности вводится число обусловленности.</p>
 <div class="section" id="id2">
 <h2><span class="section-number">1.2.1. </span>Число обусловленности<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>… <strong>скалярных функций</strong>.</p>
-<p>Если представить задачу как функцию <span class="math notranslate nohighlight">\(f: \real\to\real\)</span>, то число <strong>число обусловленности</strong> определяется как предел отношения относительного изменения значения функции к относительному изменению значения аргумента.</p>
+<p>… <strong>скалярных функций</strong></p>
+<div class="proof proof-type-definition" id="id4">
+
+    <div class="proof-title">
+        <span class="proof-type">Определение 1.5</span>
+        
+            <span class="proof-title-name">(Число обусловленности скалярной функции)</span>
+        
+    </div><div class="proof-content">
+<p>Относительным <strong>числом обусловленности</strong> называют предел отношения относительного изменения значения функции к относительному изменению значения аргумента.</p>
 <div class="math notranslate nohighlight" id="equation-condscalar">
 <span class="eqno">(1.4)<a class="headerlink" href="#equation-condscalar" title="Permalink to this equation">¶</a></span>\[\kappa_f(x) = \lim_{\delta x \to 0} \frac{ \dfrac{ |f(x+\delta x)-f(x)| }{|f(x)|} }{ \dfrac{|\delta x|}{|x|} }.\]</div>
-<p>В случае дифференциируемой функции <span class="math notranslate nohighlight">\(f\)</span> из <a class="reference internal" href="#equation-condscalar">(1.4)</a> получаем</p>
+</div></div><p>В случае дифференциируемой функции <span class="math notranslate nohighlight">\(f\)</span> из <a class="reference internal" href="#equation-condscalar">(1.4)</a> получаем</p>
 <div class="math notranslate nohighlight" id="equation-condscalardiff">
 <span class="eqno">(1.5)<a class="headerlink" href="#equation-condscalardiff" title="Permalink to this equation">¶</a></span>\[\kappa_f(x) = \left| \frac{x f'(x)}{f(x)}\right|.\]</div>
 <p>Число обусловленности сложной функции <span class="math notranslate nohighlight">\(h(x) = f(g(x))\)</span> имеет вид</p>
 <div class="math notranslate nohighlight">
 \[\kappa_h(x) = \kappa_f(g(x))\cdot\kappa_g(x),\]</div>
 <p>что показывает, как могут распространяться ошибки в алгоритмах.</p>
-<div class="tip admonition">
-<p class="admonition-title">Пример</p>
+<div class="proof proof-type-example" id="id5">
+
+    <div class="proof-title">
+        <span class="proof-type">Пример 1.6</span>
+        
+    </div><div class="proof-content">
 <p>Сложение <span class="math notranslate nohighlight">\(\text{add}(x) = x + c\)</span> порождает ошибки из-за конечной точности</p>
 <div class="math notranslate nohighlight">
 \[
@@ -380,8 +383,7 @@
 \kappa_\text{sqrt}(x) = \left| \frac{(x)(1/(2\sqrt x))}{\sqrt x} \right| = \frac{1}{2}
 \]</div>
 <p>теоретически должно уменьшать ошибку в вычислениях, однако, на практике <span class="math notranslate nohighlight">\(\text{sqrt}(x)\)</span> реализован программно, и при его вычислении происходят операции, порождающие ошибки. Либо, в конечном итоге, произойдёт ошибка округления входных данных. Поэтому, на практике меньшее единицы число обусловленности <span class="math notranslate nohighlight">\(\kappa_f &lt; 1\)</span> можно “округлять” до единицы.</p>
-</div>
-</div>
+</div></div></div>
 <div class="section" id="id3">
 <h2><span class="section-number">1.2.2. </span>Оценка ошибок<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>Из определения числа обусловленности <a class="reference internal" href="#equation-condscalar">(1.4)</a> следует, что при малом <span class="math notranslate nohighlight">\(\delta x\)</span></p>
@@ -389,13 +391,22 @@
 <span class="eqno">(1.6)<a class="headerlink" href="#equation-conderr" title="Permalink to this equation">¶</a></span>\[\frac{ |f(x+\delta x) - f(x)| }{|f(x)|} \approx \kappa_f(x) \frac{|\delta x|}{|x|}.\]</div>
 <p>Другими словами, это соотношение позволяет оценить возмущение в значении функции по возмущению входных данных.</p>
 <p>Например, в случае <span class="math notranslate nohighlight">\(\kappa_f \approx 10^d\)</span> можно ожидать, что <span class="math notranslate nohighlight">\(d\)</span> десятичных знаков (мантиссы) потеряны при вычислении <span class="math notranslate nohighlight">\(f(x)\)</span> из <span class="math notranslate nohighlight">\(x\)</span>. Таким образом, если <span class="math notranslate nohighlight">\(\kappa_f\approx 1/\macheps\)</span>, то вычислить <span class="math notranslate nohighlight">\(f\)</span> в числах с точностью <span class="math notranslate nohighlight">\(\macheps\)</span> не получится.</p>
+<div class="proof proof-type-definition" id="id6">
+
+    <div class="proof-title">
+        <span class="proof-type">Определение 1.7</span>
+        
+            <span class="proof-title-name">(Плохая обусловленность задачи)</span>
+        
+    </div><div class="proof-content">
 <p>Если задача имеет большое число обусловленности при некотором <span class="math notranslate nohighlight">\(x\)</span>, то говорят, что задача <strong>плохо обусловлена</strong> при этом <span class="math notranslate nohighlight">\(x\)</span>. В таких случаях ошибка в получаемом ответе уже <em>превышает ошибку округления</em>.</p>
-</div>
-<div class="section" id="id4">
-<h2><span class="section-number">1.2.3. </span>Примеры плохой обусловленности<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="id5">
-<h3><span class="section-number">1.2.3.1. </span>Детерминант<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
-<p>Вычисление детерминанта является плохо обусловленной задачей для почти сингулярных матриц.
+</div></div><div class="proof proof-type-demo" id="id7">
+
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 1.8</span>
+        
+    </div><div class="proof-content">
+</div></div><div class="demo"><p>Вычисление детерминанта является плохо обусловленной задачей для почти сингулярных матриц.
 Рассмотрим пример</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}A(x) = \begin{bmatrix}
@@ -455,8 +466,7 @@ det(A) =
 </div>
 </div>
 <p>Видно, что ошибка вычислений <code class="docutils literal notranslate"><span class="pre">err</span></code> совпадает с оценкой ошибки <code class="docutils literal notranslate"><span class="pre">err_estimate</span></code> по выражению <a class="reference internal" href="#equation-conderr">(1.6)</a>.</p>
-</div>
-</div>
+</div></div>
 </div>
 
     <script type="text/x-thebe-config">

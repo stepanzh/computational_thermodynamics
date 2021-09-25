@@ -29,6 +29,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -42,6 +44,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/tabs.js"></script>
+    <script src="../_static/proof.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -296,17 +299,12 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   2.1.1. Алгоритм решения
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   2.1.2. Пример интерполяции
+   2.1.1. Реализация
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#poly-equalspaced">
-   2.1.3. Случай равноотстоящих точек
+   2.1.2. Случай равноотстоящих точек
   </a>
  </li>
 </ul>
@@ -322,10 +320,18 @@
                 
   <div class="section" id="id1">
 <h1><span class="section-number">2.1. </span>Полиномиальная интерполяция<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>Задача <strong>полиномиальной интерполяции</strong> по точкам <span class="math notranslate nohighlight">\((t_1, y_1), (t_2,y_2), ..., (t_n, y_n)\)</span>, где все <span class="math notranslate nohighlight">\(t_i\)</span> различны, заключается в построении полинома степени не выше <span class="math notranslate nohighlight">\(n\)</span>, проходящего через все данные точки, т.е.</p>
+<div class="proof proof-type-definition" id="id4">
+
+    <div class="proof-title">
+        <span class="proof-type">Определение 2.1</span>
+        
+            <span class="proof-title-name">(Полиномиальная интерполяция)</span>
+        
+    </div><div class="proof-content">
+<p><strong>Полиномиальная интерполяция</strong> по точкам <span class="math notranslate nohighlight">\((t_1, y_1), (t_2,y_2), ..., (t_n, y_n)\)</span>, где все <span class="math notranslate nohighlight">\(t_i\)</span> различны, заключается в построении полинома <span class="math notranslate nohighlight">\(p(x)\)</span> степени не выше <span class="math notranslate nohighlight">\(n\)</span>, проходящего через все данные точки, т.е.</p>
 <div class="math notranslate nohighlight" id="equation-polyinterpcond">
 <span class="eqno">(2.1)<a class="headerlink" href="#equation-polyinterpcond" title="Permalink to this equation">¶</a></span>\[p(t_i)=y_i,\quad i=1, ..., n.\]</div>
-<p>Такой полином можно получить, рассматривая задачу интерполяции как линейную систему. Однако, существуют и другие способы, например, построение полинома в форме Лагранжа или Ньютона.</p>
+</div></div><p>Такой полином можно получить, рассматривая задачу интерполяции как линейную систему. Однако, существуют и другие способы, например, построение полинома в форме Лагранжа или Ньютона.</p>
 <p>Полинома степени не выше <span class="math notranslate nohighlight">\(n\)</span> имеет вид</p>
 <div class="math notranslate nohighlight" id="equation-polyinterppoly">
 <span class="eqno">(2.2)<a class="headerlink" href="#equation-polyinterppoly" title="Permalink to this equation">¶</a></span>\[p(x) = c_1 + c_2 x + c_3 x^2 + ... + c_n x^{n-1}.\]</div>
@@ -362,8 +368,16 @@ y_1 \\ y_2 \\ \vdots \\ y_n
 <li><p>Решением же задачи будет функция <a class="reference internal" href="#equation-polyinterppoly">(2.2)</a>.</p></li>
 </ol>
 <div class="section" id="id2">
-<h2><span class="section-number">2.1.1. </span>Алгоритм решения<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>Основная функция имеет вид</p>
+<h2><span class="section-number">2.1.1. </span>Реализация<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="proof proof-type-function" id="id5">
+<span id="function-polyinterp"></span>
+    <div class="proof-title">
+        <span class="proof-type">Функция 2.2</span>
+        
+            <span class="proof-title-name">(polyinterp)</span>
+        
+    </div><div class="proof-content">
+<p><strong>Полиномиальная интерполяция</strong></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;Возвращает полиномиальный интерполянт, проходящий через точки (`t[i]`, `y[i]`).&quot;</span>
 <span class="k">function</span> <span class="n">polyinterp</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     <span class="n">V</span> <span class="o">=</span> <span class="n">vandermonde</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
@@ -372,8 +386,14 @@ y_1 \\ y_2 \\ \vdots \\ y_n
 <span class="k">end</span>
 </pre></div>
 </div>
-<p>Процедура <code class="docutils literal notranslate"><span class="pre">polyinterp(t,</span> <span class="pre">y)</span></code> вычисляет коэффициенты <code class="docutils literal notranslate"><span class="pre">c</span></code> полинома  <a class="reference internal" href="#equation-polyinterppoly">(2.2)</a>, а затем создаёт и возвращает анонимную функцию, которая вычисляет значение полинома <a class="reference internal" href="#equation-polyinterppoly">(2.2)</a> с помощью функции <code class="docutils literal notranslate"><span class="pre">horner(x)</span></code>. Поскольку здесь реализуется <a class="reference external" href="https://en.wikipedia.org/wiki/Closure_(computer_programming)">замыкание</a>, то вектор коэффициентов вычисляется только один раз, при вызове <code class="docutils literal notranslate"><span class="pre">polyinterp(t,</span> <span class="pre">y)</span></code>.</p>
-<p>Процедура <code class="docutils literal notranslate"><span class="pre">vandermonde(t)</span></code> возвращает матрицу Вандермонда из системы <a class="reference internal" href="#equation-polyinterpsys">(2.3)</a></p>
+</div></div><div class="proof proof-type-function" id="id6">
+<span id="function-vandermonde"></span>
+    <div class="proof-title">
+        <span class="proof-type">Функция 2.3</span>
+        
+            <span class="proof-title-name">(vandermonde)</span>
+        
+    </div><div class="proof-content">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;Возвращает матрицу Вандермонда.&quot;</span>
 <span class="k">function</span> <span class="n">vandermonde</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">V</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">eltype</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
@@ -384,8 +404,14 @@ y_1 \\ y_2 \\ \vdots \\ y_n
 <span class="k">end</span>
 </pre></div>
 </div>
-<p>В теле цикла вектор <code class="docutils literal notranslate"><span class="pre">x</span></code> поэлементно возводится в степень, а затем присваивается в <code class="docutils literal notranslate"><span class="pre">j</span></code>-ый столбец матрицы <code class="docutils literal notranslate"><span class="pre">V</span></code>.</p>
-<p>Наконец, функция <code class="docutils literal notranslate"><span class="pre">horner(c,</span> <span class="pre">x)</span></code> вычисляет полином <a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%A1%D1%85%D0%B5%D0%BC%D0%B0_%D0%93%D0%BE%D1%80%D0%BD%D0%B5%D1%80%D0%B0">методом Горнера</a></p>
+</div></div><div class="proof proof-type-function" id="id7">
+<span id="function-horner"></span>
+    <div class="proof-title">
+        <span class="proof-type">Функция 2.4</span>
+        
+            <span class="proof-title-name">(horner)</span>
+        
+    </div><div class="proof-content">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;Вычисляет полином `c[1] + c[2]*x + c[3]*x^2 + ...` алгоритмом Горнера.&quot;</span>
 <span class="k">function</span> <span class="n">horner</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
     <span class="n">ans</span> <span class="o">=</span> <span class="n">last</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
@@ -396,10 +422,18 @@ y_1 \\ y_2 \\ \vdots \\ y_n
 <span class="k">end</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="id3">
-<h2><span class="section-number">2.1.2. </span>Пример интерполяции<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>Для примера мы посмотрим на полиномиальную интерполяцию известной нам функции <code class="docutils literal notranslate"><span class="pre">foo(x)</span></code>, в реальных же данных <code class="docutils literal notranslate"><span class="pre">foo(x)</span></code> неизвестна.</p>
+</div></div><p><a class="reference internal" href="#function-polyinterp"><span class="std std-numref">Функция 2.2</span></a> <code class="docutils literal notranslate"><span class="pre">polyinterp</span></code> вычисляет коэффициенты <code class="docutils literal notranslate"><span class="pre">c</span></code> полинома  <a class="reference internal" href="#equation-polyinterppoly">(2.2)</a>, а затем создаёт и возвращает анонимную функцию, которая при вызове вычисляет значение полинома <a class="reference internal" href="#equation-polyinterppoly">(2.2)</a> с помощью <a class="reference internal" href="#function-horner"><span class="std std-numref">Функции 2.4</span></a> <code class="docutils literal notranslate"><span class="pre">horner</span></code>. Поскольку здесь реализуется <a class="reference external" href="https://en.wikipedia.org/wiki/Closure_(computer_programming)">замыкание</a>, то вектор коэффициентов вычисляется только один раз, при вызове <code class="docutils literal notranslate"><span class="pre">polyinterp</span></code>.</p>
+<p><a class="reference internal" href="#function-vandermonde"><span class="std std-numref">Функция 2.3</span></a> <code class="docutils literal notranslate"><span class="pre">vandermonde</span></code> строит матрицу Вандермонда для системы <a class="reference internal" href="#equation-polyinterpsys">(2.3)</a>. В теле её цикла вектор <code class="docutils literal notranslate"><span class="pre">x</span></code> поэлементно возводится в степень, а затем присваивается в <code class="docutils literal notranslate"><span class="pre">j</span></code>-ый столбец матрицы <code class="docutils literal notranslate"><span class="pre">V</span></code>.</p>
+<p>Наконец, <a class="reference internal" href="#function-horner"><span class="std std-numref">Функция 2.4</span></a> <code class="docutils literal notranslate"><span class="pre">horner</span></code> вычисляет полином <a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%A1%D1%85%D0%B5%D0%BC%D0%B0_%D0%93%D0%BE%D1%80%D0%BD%D0%B5%D1%80%D0%B0">методом Горнера</a></p>
+<div class="proof proof-type-demo" id="id8">
+
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 2.5</span>
+        
+            <span class="proof-title-name">(Полиномиальная интерполяция)</span>
+        
+    </div><div class="proof-content">
+</div></div><div class="demo"><p>Для примера мы посмотрим на полиномиальную интерполяцию известной нам функции <code class="docutils literal notranslate"><span class="pre">foo(x)</span></code>, в реальных же данных <code class="docutils literal notranslate"><span class="pre">foo(x)</span></code> неизвестна.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">))</span>
@@ -437,18 +471,31 @@ y_1 \\ y_2 \\ \vdots \\ y_n
 <div class="cell_output docutils container">
 <img alt="../_images/polynomial_4_0.svg" src="../_images/polynomial_4_0.svg" /></div>
 </div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Такое поведение в реальности требует дополнительных проверок, иначе можно с большой ошибкой задать табличные данные. Ошибку интерполяции стоит оценивать хотя бы на глаз.</p>
-</div>
-</div>
+</div><div class="proof proof-type-observation">
+
+    <div class="proof-title">
+        <span class="proof-type">Наблюдение </span>
+        
+    </div><div class="proof-content">
+<p>Сильная зависимость от расположения точек требует дополнительных проверок, иначе можно с большой ошибкой задать табличные данные. Ошибку интерполяции стоит оценивать хотя бы на глаз.</p>
+<p>Так, можно заложить в модель не только крупные численные ошибки, но и <em>качественные</em>, например, нефизическое поведение.</p>
+</div></div></div>
 <div class="section" id="poly-equalspaced">
-<span id="id4"></span><h2><span class="section-number">2.1.3. </span>Случай равноотстоящих точек<a class="headerlink" href="#poly-equalspaced" title="Permalink to this headline">¶</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Полиномиальная интерполяция <em>плохо обусловлена</em> в случае равноотстоящих узлов интерполяции.</p>
-</div>
-<p>Возьмём функцию из предыдущего примера, но добавим в неё небольшой шум. В реальных данных этот шум вносится погрешностями измерений.</p>
+<span id="id3"></span><h2><span class="section-number">2.1.2. </span>Случай равноотстоящих точек<a class="headerlink" href="#poly-equalspaced" title="Permalink to this headline">¶</a></h2>
+<div class="proof proof-type-proposition" id="id9">
+
+    <div class="proof-title">
+        <span class="proof-type">Утверждение 2.6</span>
+        
+    </div><div class="proof-content">
+<p>Полиномиальная интерполяция <strong>плохо обусловлена</strong> в случае равноотстоящих узлов интерполяции.</p>
+</div></div><div class="proof proof-type-demo" id="id10">
+
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 2.7</span>
+        
+    </div><div class="proof-content">
+</div></div><div class="demo"><p>Возьмём функцию из предыдущего примера, но добавим в неё небольшой шум. В реальных данных этот шум вносится погрешностями измерений.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="mf">0.05</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">15</span><span class="n">x</span><span class="p">)</span>
@@ -514,11 +561,14 @@ y_1 \\ y_2 \\ \vdots \\ y_n
 <div class="cell_output docutils container">
 <img alt="../_images/polynomial_12_0.svg" src="../_images/polynomial_12_0.svg" /></div>
 </div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
+</div><div class="proof proof-type-observation">
+
+    <div class="proof-title">
+        <span class="proof-type">Наблюдение </span>
+        
+    </div><div class="proof-content">
 <p>Таким образом, если полиномиальная интерполяция и используется на практике, то применяются полиномы не больших степеней, при этом узлы интерполяции тщательно выбираются, если есть возможность.</p>
-</div>
-</div>
+</div></div></div>
 </div>
 
     <script type="text/x-thebe-config">

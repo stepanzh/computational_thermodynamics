@@ -29,6 +29,8 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
@@ -42,6 +44,7 @@
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
     <script src="../_static/tabs.js"></script>
+    <script src="../_static/proof.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
@@ -327,7 +330,7 @@
 <p>Уравнение модели получено из физической кинетики. Выведено для низкоплотного состояния неполярного газа. Модель учитывает кинетическое взаимодействие и взаимодействие по <a class="reference external" href="https://en.wikipedia.org/wiki/Lennard-Jones_potential">потенциалу Ленарда-Джонса</a> (Л-Ж) между частицами вещества.</p>
 <p>Модель даёт уравнение</p>
 <div class="math notranslate nohighlight" id="equation-dilute">
-<span class="eqno">(2.14)<a class="headerlink" href="#equation-dilute" title="Permalink to this equation">¶</a></span>\[\eta_{0\text{c}}(T) = 8.44107\times 10^{-5}\cdot\frac{\sqrt{M T}f_\eta(T^*)}{\sigma^2 \Omega^{(2,2)*}(T^*)},\]</div>
+<span class="eqno">(2.15)<a class="headerlink" href="#equation-dilute" title="Permalink to this equation">¶</a></span>\[\eta_{0\text{c}}(T) = 8.44107\times 10^{-5}\cdot\frac{\sqrt{M T}f_\eta(T^*)}{\sigma^2 \Omega^{(2,2)*}(T^*)},\]</div>
 <p>где</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(\eta_{0\text{c}}\)</span>: вязкость разреженного газа [Па с];</p></li>
@@ -340,15 +343,15 @@
 <li><p><span class="math notranslate nohighlight">\(\Omega^{(2,2)*}(T^*)\)</span>: приведённый интеграл столкновения;</p></li>
 <li><p>численный множитель получается после подстановки значений физических констант.</p></li>
 </ul>
-<p>В уравнении <a class="reference internal" href="#equation-dilute">(2.14)</a> вещество <span class="math notranslate nohighlight">\(\text{c}\)</span> определяется тремя параметрами <span class="math notranslate nohighlight">\(M\)</span>, <span class="math notranslate nohighlight">\(\sigma\)</span> и <span class="math notranslate nohighlight">\(\varepsilon/k\)</span>.</p>
+<p>В уравнении <a class="reference internal" href="#equation-dilute">(2.15)</a> вещество <span class="math notranslate nohighlight">\(\text{c}\)</span> определяется тремя параметрами <span class="math notranslate nohighlight">\(M\)</span>, <span class="math notranslate nohighlight">\(\sigma\)</span> и <span class="math notranslate nohighlight">\(\varepsilon/k\)</span>.</p>
 <p>Функции <span class="math notranslate nohighlight">\(f_\eta(T^*)\)</span> и <span class="math notranslate nohighlight">\(\Omega^{(2,2)*}(T^*)\)</span> в (Голубев и Гнездилов, 1971) приводятся в табличном виде, ссылки на таблицы приведены ниже</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(f_\eta(T^*)\)</span>: <strong><a href="https://raw.githubusercontent.com/stepanzh/computational_thermodynamics/main/book/static/golubev1971_feta.pdf" target="_blank">[ссылка]</a></strong>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(\Omega^{(2,2)*}(T^*)\)</span>: <strong><a href="https://raw.githubusercontent.com/stepanzh/computational_thermodynamics/main/book/static/golubev1971_omega22.pdf" target="_blank">[ссылка]</a></strong>.</p></li>
 </ul>
-<p>Таким образом, при реализации модели <a class="reference internal" href="#equation-dilute">(2.14)</a> возникает задача интерполяции.</p>
+<p>Таким образом, при реализации модели <a class="reference internal" href="#equation-dilute">(2.15)</a> возникает задача интерполяции.</p>
 <p><strong>Задание.</strong></p>
-<p>Вам необходимо реализовать модель разреженного газа <a class="reference internal" href="#equation-dilute">(2.14)</a> и посчитать вязкости для веществ из таблицы ниже в диапазоне температур <span class="math notranslate nohighlight">\(T\in[T_\min, T_\max]\)</span>.</p>
+<p>Вам необходимо реализовать модель разреженного газа <a class="reference internal" href="#equation-dilute">(2.15)</a> и посчитать вязкости для веществ из таблицы ниже в диапазоне температур <span class="math notranslate nohighlight">\(T\in[T_\min, T_\max]\)</span>.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
 <div class="output text_html"><!DOCTYPE html>

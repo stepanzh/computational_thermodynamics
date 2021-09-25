@@ -39,7 +39,7 @@ include("../src.jl")
 \int_a^b f(x)\diff x \approx \sum_{i=1}^n f(x_{i-1/2}) h.
 ```
 
-:::{admonition} Функция : `midpoint`
+:::{proof:function} midpoint
 
 **Формула прямоугольников.**
 
@@ -60,8 +60,12 @@ end
 :::
 
 %%% demo
+:::{proof:demo}
+:::
 
-**Демонстрация.**
+```{raw} html
+<div class="demo">
+```
 
 Ниже представлены графики численного интеграла
 
@@ -87,6 +91,9 @@ for (i, n) in enumerate((8, 16))
     scatter!(x, y; subplot=i, marker=:o, markercolor=:lightblue)
 end
 plt
+```
+```{raw} html
+</div>
 ```
 
 % ref samarskiy
@@ -116,7 +123,8 @@ plt
 
 Из формулу трапеций выводятся многие усовершенствованные методы. Ниже дана реализация.
 
-:::{admonition} Функция : `trapezoid`
+(function-trapezoid)=
+:::{proof:function} trapezoid
 
 **Формула трапеций.**
 
@@ -136,10 +144,11 @@ end
 ```
 :::
 
-%%% demo
-
-**Демонстрация.**
-
+:::{proof:demo}
+:::
+```{raw} html
+<div class="demo">
+```
 ```{code-cell}
 foo(x) = x * exp(sin(2x))
 plt = plot(layout=(2,1), leg=:none, xlabel=L"x")
@@ -150,6 +159,9 @@ for (i, n) in enumerate((4, 8))
     scatter!(x, y; subplot=i, marker=:o, markercolor=:lightblue)
 end
 plt
+```
+```{raw} html
+</div>
 ```
 
 % ref samarskiy
@@ -218,11 +230,9 @@ S_f(2n) = \frac{1}{3} \big[4 T_f(2n) - T_f(n)\big].
 \end{align}
 ```
 
-%%% funcref
+Ниже дана реализация на основе {numref}`Функции {number} <function-trapezoid>`.
 
-Ниже дана реализация на основе функции `trapezoid`.
-
-:::{admonition} Функция : `simpson`
+:::{proof:function} simpson
 
 **Формула Симпсона.**
 
@@ -238,6 +248,11 @@ end
 ```
 :::
 
+:::{proof:demo}
+:::
+```{raw} html
+<div class="demo">
+```
 **Сравнение формул.**
 
 Ниже представлены графики численного интеграла
@@ -258,4 +273,7 @@ n = 6:2:50
 plot(n, trap.(n); label="формула трапеций", xlabel="число отрезков", ylabel="интеграл")
 plot!(n, simp.(n); label="формула Симпсона")
 plot!(n, midp.(n); label="формула прямоугольников")
+```
+```{raw} html
+</div>
 ```
