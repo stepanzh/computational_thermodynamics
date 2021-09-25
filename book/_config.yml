@@ -75,10 +75,12 @@ sphinx:
       "conjecture": "Conjecture"
       "corollary": "Corollary"
       "definition": "Определение"
+      "demo": "Демонстрация"
       "function": "Функция"
       "example": "Example"
       "lemma": "Lemma"
       "observation": "Observation"
-      "proof": "Proof"
+      "proof": "Доказательство"
       "property": "Property"
       "theorem": "Теорема"
+    proof_html_nonumbers: ["proof"]
