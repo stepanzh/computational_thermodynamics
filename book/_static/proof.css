@@ -2,6 +2,7 @@
   --proof-color-default: var(--pst-color-admonition-default);
   --proof-color-function: 255, 0, 102;
   --proof-color-demo: 0, 153, 153;
+  --proof-color-example: var(--proof-color-demo);
 }
 
 .proof, .demo {
@@ -46,6 +47,12 @@
 }
 .proof-type-function .proof-title-name {
   font-family: var(--jp-code-font-family);
+}
+.proof-type-example {
+  border-left-color:rgba(var(--proof-color-example), 1);
+}
+.proof-type-example .proof-title {
+  background: rgba(var(--proof-color-example), .1);
 }
 .proof.proof-type-demo {
   margin-bottom: 0;
