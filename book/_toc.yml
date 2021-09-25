@@ -25,3 +25,6 @@ parts:
     - file: integration/romberg
     # - file: integration/gauss
     # - file: integration/adaptive
+- caption: Приложения
+  chapters:
+  - file: genindex
