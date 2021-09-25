@@ -123,6 +123,7 @@ plt
 
 Из формулу трапеций выводятся многие усовершенствованные методы. Ниже дана реализация.
 
+(function-trapezoid)=
 :::{proof:function} trapezoid
 
 **Формула трапеций.**
@@ -229,9 +230,7 @@ S_f(2n) = \frac{1}{3} \big[4 T_f(2n) - T_f(n)\big].
 \end{align}
 ```
 
-%%% funcref
-
-Ниже дана реализация на основе функции `trapezoid`.
+Ниже дана реализация на основе {numref}`Функции {number} <function-trapezoid>`.
 
 :::{proof:function} simpson
 
