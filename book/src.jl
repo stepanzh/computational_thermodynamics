@@ -135,9 +135,8 @@ end
 function midpoint(f, a, b, n)
     h = (b-a)/n
     x = [h/2 + i * h for i in 0:n-1]
-    y = f.(x)
-    int = h * sum(y)
-    return int, x, y
+    int = h * sum(f, x)
+    return int
 end
 
 
@@ -147,11 +146,10 @@ end
 Возвращает значение интеграла, узлы и значения функции в узлах.
 """
 function trapezoid(f, a, b, n)
-    h = (b-a)/n
-    x = collect(range(a, b; length=n+1))
-    y = f.(x)
-    int = h * (sum(y[2:n]) + 0.5*(y[1] + y[n+1]))
-    return int, x, y
+    x = range(a, b; length=n + 1)
+    h = step(x)
+    int = h * (sum(f, x[2:n]) + (f(x[1]) + f(x[n+1])) / 2)
+    return int
 end
 
 """
@@ -160,5 +158,5 @@ end
 Возвращает значение интеграла.
 """
 function simpson(f, a, b, n)
-    return (1/3) * (4*trapezoid(f, a, b, n)[1] - trapezoid(f, a, b, n÷2)[1])
+    return (1/3) * (4*trapezoid(f, a, b, n) - trapezoid(f, a, b, n÷2))
 end

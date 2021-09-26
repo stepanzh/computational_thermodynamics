@@ -52,14 +52,12 @@ include("../src.jl")
 function midpoint(f, a, b, n)
     h = (b-a)/n
     x = [h/2 + i * h for i in 0:n-1]
-    y = f.(x)
-    int = h * sum(y)
-    return int, x, y
+    int = h * sum(f, x)
+    return int
 end
 ```
 :::
 
-%%% demo
 :::{proof:demo}
 :::
 
@@ -79,9 +77,11 @@ end
 foo(x) = x * exp(sin(2x))
 plt = plot(layout=(2,1), leg=:none, xlabel=L"x")
 for (i, n) in enumerate((8, 16))
-    _, x, y = midpoint(foo, 0, 3, n)
     plot!(foo, 0, 3; subplot=i, linewidth=2, linecolor=:red)
-
+    
+    h = 3/n
+    x = [h/2 + i * h for i in 0:n-1]
+    y = foo.(x)
     for (px, py) in zip(x, y)
         h = 3 / n
         plot!([px-h/2, px+h/2], [py, py];
@@ -135,11 +135,10 @@ plt
 Возвращает значение интеграла, узлы и значения функции в узлах.
 """
 function trapezoid(f, a, b, n)
-    h = (b-a)/n
-    x = collect(range(a, b; length=n+1))
-    y = f.(x)
-    int = h * (sum(y[2:n]) + 0.5*(y[1] + y[n+1]))
-    return int, x, y
+    x = range(a, b; length=n + 1)
+    h = step(x)
+    int = h * (sum(f, x[2:n]) + (f(x[1]) + f(x[n+1])) / 2)
+    return int
 end
 ```
 :::
@@ -151,10 +150,12 @@ end
 ```
 ```{code-cell}
 foo(x) = x * exp(sin(2x))
+a, b = 0, 3
 plt = plot(layout=(2,1), leg=:none, xlabel=L"x")
 for (i, n) in enumerate((4, 8))
-    _, x, y = trapezoid(foo, 0, 3, n)
-    plot!(foo, 0, 3; subplot=i,linewidth=2, linecolor=:red)
+    x = range(a, b; length=n+1)
+    y = foo.(x)
+    plot!(foo, a, b; subplot=i,linewidth=2, linecolor=:red)
     plot!(x, y; subplot=i, fill=(0, 0.1, :blue), linecolor=:blue, linewidth=2)
     scatter!(x, y; subplot=i, marker=:o, markercolor=:lightblue)
 end
@@ -243,7 +244,7 @@ S_f(2n) = \frac{1}{3} \big[4 T_f(2n) - T_f(n)\big].
 Возвращает значение интеграла.
 """
 function simpson(f, a, b, n)
-    return (1/3) * (4*trapezoid(f, a, b, n)[1] - trapezoid(f, a, b, n÷2)[1])
+    return (1/3) * (4*trapezoid(f, a, b, n) - trapezoid(f, a, b, n÷2))
 end
 ```
 :::
@@ -267,12 +268,12 @@ end
 foo(x) = x * exp(sin(2x))
 a, b = 0, 3
 simp(n) = simpson(foo, a, b, n)
-trap(n) = trapezoid(foo, a, b, n)[1]
-midp(n) = midpoint(foo, a, b, n)[1]
-n = 6:2:50
-plot(n, trap.(n); label="формула трапеций", xlabel="число отрезков", ylabel="интеграл")
-plot!(n, simp.(n); label="формула Симпсона")
-plot!(n, midp.(n); label="формула прямоугольников")
+trap(n) = trapezoid(foo, a, b, n)
+midp(n) = midpoint(foo, a, b, n)
+n = 4:2:26
+plot(n, trap.(n); marker=:o, label="формула трапеций", xlabel="число отрезков", ylabel="интеграл")
+plot!(n, simp.(n); marker=:o, label="формула Симпсона")
+plot!(n, midp.(n); marker=:o, label="формула прямоугольников")
 ```
 ```{raw} html
 </div>
