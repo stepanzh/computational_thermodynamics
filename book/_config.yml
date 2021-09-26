@@ -15,8 +15,8 @@ execute:
 #     targetname: book.tex
 
 # Add a bibtex file so that we can create citations
-# bibtex_bibfiles:
-  # - references.bib
+bibtex_bibfiles:
+  - praktikum.bib
 
 # Information about where the book exists on the web
 repository:
@@ -85,3 +85,6 @@ sphinx:
       "theorem": "Теорема"
       "proposition": "Утверждение"
     proof_html_nonumbers: ["proof", "observation"]
+    # see https://sphinxcontrib-bibtex.readthedocs.io/en/latest/usage.html#configuration
+    bibtex_default_style: "alpha"
+    bibtex_reference_style: "label"

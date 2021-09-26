@@ -28,3 +28,4 @@ parts:
 - caption: Приложения
   chapters:
   - file: genindex
+  - file: bibliography
