@@ -25,3 +25,5 @@
 - документация jupyter{book} https://jupyterbook.org/intro.html;
 - мои заметки по использованию https://stepanzh.github.io/JuliaAndJupyterBook/intro.html;
 - утилиты по тестированию и публикации изменений: `make` в корне репозитория. 
+
+Некоторые часто используемые команды вынесены в `make`.
