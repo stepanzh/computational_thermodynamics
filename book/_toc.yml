@@ -23,8 +23,9 @@ parts:
     sections:
     - file: integration/newton_cotes
     - file: integration/romberg
-    # - file: integration/gauss
-    # - file: integration/adaptive
+    - file: integration/gauss
+    - file: integration/adaptive
+    - file: integration/ex
 - caption: Приложения
   chapters:
   - file: genindex
