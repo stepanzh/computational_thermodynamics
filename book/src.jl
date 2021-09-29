@@ -1,3 +1,4 @@
+using BenchmarkTools
 using LaTeXStrings
 using LinearAlgebra
 using Plots
@@ -159,4 +160,43 @@ end
 """
 function simpson(f, a, b, n)
     return (1/3) * (4*trapezoid(f, a, b, n) - trapezoid(f, a, b, n÷2))
+end
+
+"""
+Вычисляет интеграл ∫`f`dx на [`a`, `b`] с точностью `atol` по формуле трапеций,
+удваивая число разбиений интервала, но не более `maxstep` раз.
+Возвращает значение интеграла.
+"""
+function trapezoid_tol(f, a, b; atol=1e-3, maxstep::Integer=100)
+    nc, hc::Float64 = 1, b - a
+    Tc = hc * (f(a) + f(b)) / 2
+    for step in 1:maxstep
+        Tp, np = Tc, nc
+        hc /= 2
+        nc *= 2
+        Tc = Tp / 2 + hc * sum(f, (a + hc*(2i-1) for i in 1:np))
+        abs(Tc - Tp) < atol && return Tc
+    end
+    error("Точность не удовлетворена.")
+end
+
+"""
+Вычисляет интеграл ∫`f`dx на отрезке [`a`, `b`] методом Ромберга.
+Разбивает отрезок пополам не более `maxstep` раз.
+Возвращает значение интеграла, если приближения отличаются не более чем на `atol`.
+"""
+function romberg(f, a, b; atol=1e-6, maxstep::Integer=100)
+    maxstep = max(2, maxstep)
+    I = Matrix{Float64}(undef, maxstep+1, maxstep+1)
+    I[1, 1] = (b - a) * (f(a) + f(b)) / 2
+    for i in 2:maxstep+1
+        let hc = (b - a) / 2^(i-1), np = 2^(i-2)
+            I[i, 1] = I[i-1, 1] / 2 + hc * sum(f, (a + hc * (2i-1) for i in 1:np))
+        end
+        for k in i-1:-1:1
+            I[k, i-k+1] = (2^i*I[k+1, i-k] - I[k, i-k]) / (2^i - 1)
+        end
+        abs(I[1, i] - I[2, i-1]) < atol && return I[1, i]
+    end
+    error("Точность не удовлетворена.")
 end
