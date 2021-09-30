@@ -216,3 +216,36 @@ function rombergwstep(f, a, b; atol=1e-6, maxstep::Integer=100)
     end
     error("Точность не удовлетворена.")
 end
+
+"""
+    intadapt(f, a, b, tol[, xtol=eps()])
+
+Адаптивно вычисляет ∫`f`dx на отрезке [`a`, `b`], подстраивая сетку. Точность приближения `E` на подотрезке контролируется `tol`: `|E| < tol * (1 + tol * |int_i|)`. Сетка не может быть мельче `xtol`. Возвращает величину интеграла и сетку. Если точность не может быть достигнута, вызывает ошибку.
+"""
+function intadapt(f, a, b, tol, xtol=eps(), fa=f(a), fb=f(b), m=(b-a)/2, fm=f(m))
+    if a > b; a, b = b, a; end
+
+    xl = (a + m)/2; fl = f(xl)  # расположение:
+    xr = (m + b)/2; fr = f(xr)  # a -- xl -- m -- xr -- b
+
+    T = Vector{Float64}(undef, 3)
+    h = b - a
+    T[1] = h * (fa + fb)/2
+    T[2] = T[1]/2 + h/2 * fm
+    T[3] = T[2]/2 + h/4 * (fl + fr)
+    S = (4*T[2:end] - T[1:2]) / 3
+
+    err = (S[2] - S[1]) / 15
+
+    if abs(err) < tol * (1 + tol * abs(S[2]))
+        Q = S[2]
+        nodes = [a, xl, m, xr, b]
+    else
+        b - a ≤ xtol && error("Достигнут предел точности отрезка интегрирования.")
+        Ql, nodesl = intadapt(f, a, m, tol, xtol, fa, fm, xl, fl)
+        Qr, nodesr = intadapt(f, m, b, tol, xtol, fm, fb, xr, fr)
+        Q = Ql + Qr
+        nodes = [nodesl; nodesr[2:end]]
+    end
+    return (Q, nodes)
+end
