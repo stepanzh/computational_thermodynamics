@@ -1,3 +1,4 @@
+using BenchmarkTools
 using LaTeXStrings
 using LinearAlgebra
 using Plots
@@ -159,4 +160,92 @@ end
 """
 function simpson(f, a, b, n)
     return (1/3) * (4*trapezoid(f, a, b, n) - trapezoid(f, a, b, n÷2))
+end
+
+"""
+Вычисляет интеграл ∫`f`dx на [`a`, `b`] с точностью `atol` по формуле трапеций,
+удваивая число разбиений интервала, но не более `maxstep` раз.
+Возвращает значение интеграла.
+"""
+function trapezoid_tol(f, a, b; atol=1e-3, maxstep::Integer=100)
+    nc, hc::Float64 = 1, b - a
+    Tc = hc * (f(a) + f(b)) / 2
+    for step in 1:maxstep
+        Tp, np = Tc, nc
+        hc /= 2
+        nc *= 2
+        Tc = Tp / 2 + hc * sum(f, (a + hc*(2i-1) for i in 1:np))
+        abs(Tc - Tp) < atol && return Tc
+    end
+    error("Точность не удовлетворена.")
+end
+
+"""
+Вычисляет интеграл ∫`f`dx на отрезке [`a`, `b`] методом Ромберга.
+Разбивает отрезок пополам не более `maxstep` раз.
+Возвращает значение интеграла, если приближения отличаются не более чем на `atol`.
+"""
+function romberg(f, a, b; atol=1e-6, maxstep::Integer=100)
+    maxstep = max(2, maxstep)
+    I = Matrix{Float64}(undef, maxstep+1, maxstep+1)
+    I[1, 1] = (b - a) * (f(a) + f(b)) / 2
+    for i in 2:maxstep+1
+        let hc = (b - a) / 2^(i-1), np = 2^(i-2)
+            I[i, 1] = I[i-1, 1] / 2 + hc * sum(f, (a + hc * (2i-1) for i in 1:np))
+        end
+        for k in i-1:-1:1
+            I[k, i-k+1] = (2^i*I[k+1, i-k] - I[k, i-k]) / (2^i - 1)
+        end
+        abs(I[1, i] - I[2, i-1]) < atol && return I[1, i]
+    end
+    error("Точность не удовлетворена.")
+end
+
+function rombergwstep(f, a, b; atol=1e-6, maxstep::Integer=100)
+    maxstep = max(2, maxstep)
+    I = Matrix{Float64}(undef, maxstep+1, maxstep+1)
+    I[1, 1] = (b - a) * (f(a) + f(b)) / 2
+    for i in 2:maxstep+1
+        let hc = (b - a) / 2^(i-1), np = 2^(i-2)
+            I[i, 1] = I[i-1, 1] / 2 + hc * sum(f, (a + hc * (2i-1) for i in 1:np))
+        end
+        for k in i-1:-1:1
+            I[k, i-k+1] = (2^i*I[k+1, i-k] - I[k, i-k]) / (2^i - 1)
+        end
+        abs(I[1, i] - I[2, i-1]) < atol && return I[1, i], i
+    end
+    error("Точность не удовлетворена.")
+end
+
+"""
+    intadapt(f, a, b, tol[, xtol=eps()])
+
+Адаптивно вычисляет ∫`f`dx на отрезке [`a`, `b`], подстраивая сетку. Точность приближения `E` на подотрезке контролируется `tol`: `|E| < tol * (1 + tol * |int_i|)`. Сетка не может быть мельче `xtol`. Возвращает величину интеграла и сетку. Если точность не может быть достигнута, вызывает ошибку.
+"""
+function intadapt(f, a, b, tol, xtol=eps(), fa=f(a), fb=f(b), m=(b-a)/2, fm=f(m))
+    if a > b; a, b = b, a; end
+
+    xl = (a + m)/2; fl = f(xl)  # расположение:
+    xr = (m + b)/2; fr = f(xr)  # a -- xl -- m -- xr -- b
+
+    T = Vector{Float64}(undef, 3)
+    h = b - a
+    T[1] = h * (fa + fb)/2
+    T[2] = T[1]/2 + h/2 * fm
+    T[3] = T[2]/2 + h/4 * (fl + fr)
+    S = (4*T[2:end] - T[1:2]) / 3
+
+    err = (S[2] - S[1]) / 15
+
+    if abs(err) < tol * (1 + tol * abs(S[2]))
+        Q = S[2]
+        nodes = [a, xl, m, xr, b]
+    else
+        b - a ≤ xtol && error("Достигнут предел точности отрезка интегрирования.")
+        Ql, nodesl = intadapt(f, a, m, tol, xtol, fa, fm, xl, fl)
+        Qr, nodesr = intadapt(f, m, b, tol, xtol, fm, fb, xr, fr)
+        Q = Ql + Qr
+        nodes = [nodesl; nodesr[2:end]]
+    end
+    return (Q, nodes)
 end
