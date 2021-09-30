@@ -135,7 +135,7 @@ end
 """
 function midpoint(f, a, b, n)
     h = (b-a)/n
-    x = [h/2 + i * h for i in 0:n-1]
+    x = range(a + h/2, b; step=h)
     int = h * sum(f, x)
     return int
 end
@@ -147,9 +147,13 @@ end
 Возвращает значение интеграла, узлы и значения функции в узлах.
 """
 function trapezoid(f, a, b, n)
-    x = range(a, b; length=n + 1)
+    x = range(a, b; length=n+1)
     h = step(x)
-    int = h * (sum(f, x[2:n]) + (f(x[1]) + f(x[n+1])) / 2)
+    if isone(n)
+        int = h * (f(x[1]) + f(x[2])) / 2
+    else
+        @views int = h * (sum(f, x[2:n]) + (f(x[1]) + f(x[n+1])) / 2)
+    end
     return int
 end
 
