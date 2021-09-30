@@ -87,15 +87,15 @@ w_N
 Существуют также формулы левых и правых прямоугольников, но у них хуже точность.
 ```
 ```{math}
-\int_{0}^{1} f(x)\diff x \approx f(1/2), 
+\int_{x_{i-1}}^{x_i} f(x)\diff x \approx (x_i - x_{i-1})f(x_{i-1/2}),\quad x_{i-1/2} = \frac{x_{i-1} + x_i}{2}.
 ```
 
 Эту формулу называют формулой **средних прямоугольников** (*midpoint rule*).
 
-Составная формула прямоугольников имеет вид
+**Составная формула прямоугольников** имеет вид
 
 ```{math}
-\int_a^b f(x)\diff x \approx \sum_{i=1}^n h \cdot f(x_i),\quad x_i = a + (i - 1/2)h, \quad h = \frac{b - a}{n}
+\int_a^b f(x)\diff x \approx \sum_{i=1}^n h \cdot f(x_i),\quad x_i = a + (i - 1/2)h, \quad h = \frac{b - a}{n}.
 ```
 
 ```{margin}
@@ -105,7 +105,7 @@ w_N
 ```
 :::{proof:function} midpoint
 
-**Формула прямоугольников.**
+**Формула прямоугольников**
 
 ```julia
 """
@@ -115,7 +115,7 @@ w_N
 """
 function midpoint(f, a, b, n)
     h = (b - a) / n
-    x = a + h/2 : h : b
+    x = range(a + h/2, b; step=h)
     int = h * sum(f, x)
     return int
 end
@@ -139,8 +139,8 @@ end
 
 ```{code-cell}
 foo(x) = x * exp(sin(2x))
-plt = plot(layout=(2,1), leg=:none, xlabel=L"x")
-for (i, n) in enumerate((8, 16))
+plt = plot(layout=(3,1), leg=:none, xlabel=L"x")
+for (i, n) in enumerate((1, 4, 8))
     plot!(foo, 0, 3; subplot=i, linewidth=2, linecolor=:red)
     
     h = 3/n
@@ -221,27 +221,36 @@ w_2
 
 Из формулы трапеций выводятся многие усовершенствованные методы. Ниже дана реализация.
 
-```{margin}
-`@views expr` означает, что внутри выражения `expr` срезы массивов (`x[m:n]`) должны пониматься не как копии, 
-а как подмассивы, ссылающиеся на ту же область памяти, что и родительский массив.
-```
 (function-trapezoid)=
 :::{proof:function} trapezoid
 
-**Формула трапеций.**
+**Формула трапеций**
 
 ```julia
 """
 Вычисляет по формуле трапеций интеграл ∫`f`dx на отрезке [`a`, `b`]
 с равномерной сеткой из `n` интервалов.
-Возвращает значение интеграла, узлы и значения функции в узлах.
+Возвращает значение интеграла.
 """
 function trapezoid(f, a, b, n)
     x = range(a, b; length=n+1)
     h = step(x)
-    @views int = h * (sum(f, x[2:n]) + (f(x[1]) + f(x[n+1])) / 2)
+    if isone(n)
+        int = h * (f(x[1]) + f(x[2])) / 2
+    else
+        @views int = h * (sum(f, x[2:n]) + (f(x[1]) + f(x[n+1])) / 2)
+    end
     return int
 end
+```
+```{note}
+:class: dropdown
+
+Макрос `@view x[m:n]` создаёт вместо среза массива объект-подмассив, ссылающийся на ту же область памяти, что и `x` (см. [Views](https://docs.julialang.org/en/v1/base/arrays/#Views-(SubArrays-and-other-view-types))).
+
+Макрос `@views expr` преобразовывает все "срезы" внутри выражения `expr` во view-объекты.
+
+Чтобы избежать ветвления, можно написать `int = h * (sum(f, x) - (f(x[1]) + f(x[2])) / 2)`.
 ```
 :::
 
@@ -253,8 +262,8 @@ end
 ```{code-cell}
 foo(x) = x * exp(sin(2x))
 a, b = 0, 3
-plt = plot(layout=(2,1), leg=:none, xlabel=L"x")
-for (i, n) in enumerate((4, 8))
+plt = plot(layout=(3,1), leg=:none, xlabel=L"x")
+for (i, n) in enumerate((1, 4, 8))
     x = range(a, b; length=n+1)
     y = foo.(x)
     plot!(foo, a, b; subplot=i,linewidth=2, linecolor=:red)
@@ -329,7 +338,7 @@ h\frac{\tilde{f}(0) + \tilde{f}(h)}{2}
 ```
 
 Веса в {eq}`simp_final` в точности совпадают с решением {eq}`NewtonCotesGeneral` для $x_1 = 0, x_2 = 1/2, x_3 = 1$. 
-Полученное приближение называется квадратурной **формулой Симпсона**. Из вывода {eq}`simp_step1`--{eq}`simp_bigo` видно, 
+Полученное приближение называется **квадратурной формулой Симпсона** (*Simpson's rule*). Из вывода {eq}`simp_step1`--{eq}`simp_bigo` видно, 
 что она имеет чётвертый порядок сходимости. Более точная оценка {cite}`SamarskiyGulin1989`
 
 ```{math}
@@ -355,7 +364,7 @@ h\frac{\tilde{f}(0) + \tilde{f}(h)}{2}
 
 :::{proof:function} simpson
 
-**Формула Симпсона.**
+**Формула Симпсона**
 
 ```julia
 """
@@ -374,7 +383,7 @@ end
 ```{raw} html
 <div class="demo">
 ```
-**Сравнение формул.**
+**Сравнение формул**
 
 Ниже представлены графики численного интеграла
 
