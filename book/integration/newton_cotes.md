@@ -45,7 +45,7 @@ I = \int\limits_{0}^{1} f(x) \diff x
  1  &  1  & \dots & 1 \\
 x_1 & x_2 & \dots & x_N \\
 x_1^2 & x_2^2 & \dots & x_N^2 \\
- & & \ddots & \\
+\vdots & \vdots&  & \vdots\\
 x_1^{N-1} & x_2^{N-1} & \dots & x_N^{N-1}
 \end{array}
 \right) 
