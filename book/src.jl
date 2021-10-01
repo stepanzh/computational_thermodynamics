@@ -190,7 +190,7 @@ end
 Возвращает значение интеграла, если приближения отличаются не более чем на `atol`.
 """
 function romberg(f, a, b; atol=1e-6, maxstep::Integer=100)
-    maxstep = max(2, maxstep)
+    maxstep = max(1, maxstep)  # хотя бы одно разбиение
     I = Matrix{Float64}(undef, maxstep+1, maxstep+1)
     I[1, 1] = (b - a) * (f(a) + f(b)) / 2
     for i in 2:maxstep+1
