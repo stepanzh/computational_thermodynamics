@@ -60,7 +60,7 @@
     <script >mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.1. Формулы Ньютона-Котеса" href="newton_cotes.html" />
+    <link rel="next" title="3.1. Формулы Ньютона-Котса" href="newton_cotes.html" />
     <link rel="prev" title="2.4. Задания" href="../interpolation/ex.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -178,7 +178,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="newton_cotes.html">
-     3.1. Формулы Ньютона-Котеса
+     3.1. Формулы Ньютона-Котса
     </a>
    </li>
    <li class="toctree-l2">
@@ -186,7 +186,39 @@
      3.2. Метод Ромберга
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gauss.html">
+     3.3. Формулы Гаусса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="adaptive.html">
+     3.4. Адаптивное интегрирование
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     3.5. Задания
+    </a>
+   </li>
   </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Приложения
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../genindex.html">
+   Указатель
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography.html">
+   Литература
+  </a>
  </li>
 </ul>
 
@@ -287,22 +319,48 @@
 <span class="eqno">(3.1)<a class="headerlink" href="#equation-int" title="Permalink to this equation">¶</a></span>\[I = \int_a^b f(x)\diff x,\]</div>
 <p>где <span class="math notranslate nohighlight">\(f(x)\)</span> будем считать непрерывной и без особенностей на <span class="math notranslate nohighlight">\([a, b]\)</span>.</p>
 <p>Однако, не для любой подынтегральной функции существует первообразная, выражаемая через элементарные функции.</p>
-<p>Задача численного интегрирования сводится к приближённому вычислению интеграла <a class="reference internal" href="#equation-int">(3.1)</a> и выражается в виде <em>квадратурной формулы</em></p>
-<div class="math notranslate nohighlight">
-\[\int_a^b f(x)\diff x \approx \sum_{i=0}^n c_i f(x_i),\]</div>
-<p>здесь отрезок <span class="math notranslate nohighlight">\([a, b]\)</span> был разбит <span class="math notranslate nohighlight">\(n+1\)</span> точкой на <span class="math notranslate nohighlight">\(n\)</span> интервалов. Точки <span class="math notranslate nohighlight">\(x_i \in [a, b]\)</span> называют <em>узлами квадратурной формулы</em>, а <span class="math notranslate nohighlight">\(c_i\)</span> – <em>коэффициентами квадратурной формулы</em>.</p>
+<span class="target" id="index-0"></span><div class="proof proof-type-definition" id="id2">
+<span id="index-1"></span>
+    <div class="proof-title">
+        <span class="proof-type">Определение 3.1</span>
+        
+            <span class="proof-title-name">(Квадратурная формула)</span>
+        
+    </div><div class="proof-content">
+<p>Задача численного интегрирования сводится к приближённому вычислению интеграла <a class="reference internal" href="#equation-int">(3.1)</a> и выражается в виде <strong>квадратурной формулы</strong></p>
+<div class="math notranslate nohighlight" id="equation-quadrature">
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-quadrature" title="Permalink to this equation">¶</a></span>\[\int_a^b f(x)\diff x \approx \sum_{i=0}^n w_i f(x_i),\]</div>
+<p>здесь отрезок <span class="math notranslate nohighlight">\([a, b]\)</span> был разбит <span class="math notranslate nohighlight">\(n+1\)</span> точкой на <span class="math notranslate nohighlight">\(n\)</span> интервалов. Точки <span class="math notranslate nohighlight">\(x_i \in [a, b]\)</span> называют <strong>узлами</strong> (<em>nodes</em>), а <span class="math notranslate nohighlight">\(w_i\)</span> – <strong>весами</strong> (<em>weights</em>) или <em>коэффициентами</em> квадратурной формулы.</p>
+</div></div><div class="proof proof-type-definition" id="id3">
+<span id="index-2"></span>
+    <div class="proof-title">
+        <span class="proof-type">Определение 3.2</span>
+        
+            <span class="proof-title-name">(Погрешность квадратурной формулы)</span>
+        
+    </div><div class="proof-content">
 <p>Разность</p>
 <div class="math notranslate nohighlight">
-\[\tau_f(n) = \int_a^b f(x)\diff x - \sum_{i=0}^n c_i f(x_i)\]</div>
-<p>называют <em>погрешностью квадратурной формулы</em> (truncation error). Погрешность зависит от числа узлов, их расположения и выбора коэффициентов <span class="math notranslate nohighlight">\(c_i\)</span>.</p>
-<p>Введём равномерную сетку <span class="math notranslate nohighlight">\(\omega_h = \{x_i = a + i h,\:i=0,...,n,\: hn = b-a\}\)</span>, тогда интеграл <a class="reference internal" href="#equation-int">(3.1)</a> можно разбить на сумму интегралов по отрезкам <span class="math notranslate nohighlight">\([x_{i-1}, x_i]\)</span></p>
-<div class="math notranslate nohighlight" id="equation-intsum">
-<span class="eqno">(3.2)<a class="headerlink" href="#equation-intsum" title="Permalink to this equation">¶</a></span>\[\int_a^b f(x)\diff x = \sum_{i=1}^n \int_{x_{i-1}}^{x_i} f(x)\diff x.\]</div>
-<p>Отсюда же видно, что для вывода квадратурных формул необходимо рассмотреть</p>
+\[\tau_f(n) = \int_a^b f(x)\diff x - \sum_{i=0}^n w_i f(x_i)\]</div>
+<p>называют <strong>погрешностью квадратурной формулы</strong> (<em>truncation error</em>). Погрешность зависит от числа узлов, их расположения и выбора весовых коэффициентов <span class="math notranslate nohighlight">\(w_i\)</span>.</p>
+</div></div><p>Введём сетку <span class="math notranslate nohighlight">\(\omega_h = \{x_0 = a &lt; x_1 &lt; \dots &lt; x_N = b\}\)</span>, тогда интеграл <a class="reference internal" href="#equation-int">(3.1)</a> можно разбить на сумму интегралов по отрезкам <span class="math notranslate nohighlight">\([x_{i-1}, x_i]\)</span></p>
+<div class="math notranslate nohighlight" id="equation-quadrature-composite">
+<span class="eqno">(3.3)<a class="headerlink" href="#equation-quadrature-composite" title="Permalink to this equation">¶</a></span>\[\int_a^b f(x)\diff x = \sum_{i=1}^n \int_{x_{i-1}}^{x_i} f(x)\diff x.\]</div>
+<div class="proof proof-type-definition" id="id4">
+<span id="index-3"></span>
+    <div class="proof-title">
+        <span class="proof-type">Определение 3.3</span>
+        
+            <span class="proof-title-name">(Составная квадратурная формула)</span>
+        
+    </div><div class="proof-content">
+<p>Если на каждом из отрезков <span class="math notranslate nohighlight">\([x_{i-1}, x_i]\)</span> интеграл приближается квадратурной формулой в форме <a class="reference internal" href="#equation-quadrature">(3.2)</a>, то выражение <a class="reference internal" href="#equation-quadrature-composite">(3.3)</a> называют <strong>составной квадратурной формулой</strong>.</p>
+</div></div><p>Популярны составные квадратурные формулы для частного случая равномерной сетки <span class="math notranslate nohighlight">\(\omega_h = \{x_i = a + ih, i = 1, \dots, N, h = \frac{b - a}{N}\}\)</span>.</p>
+<p>Видно, что для вывода квадратурных формул достаточно рассмотреть в качестве базового случая интегрирование по отрезку <a class="reference internal" href="#equation-quadrature">(3.2)</a>, а затем при необходимости воспользоваться формулой <a class="reference internal" href="#equation-quadrature-composite">(3.3)</a>.</p>
+<p>Также для вывода квадратурных формул зачастую удобно рассматривать интегрирование на отрезках <span class="math notranslate nohighlight">\([0, 1]\)</span> или <span class="math notranslate nohighlight">\([-d/2, d/2]\)</span>, а для интегрирования на произвольном отрезке <span class="math notranslate nohighlight">\([a, b]\)</span> применять преобразование</p>
 <div class="math notranslate nohighlight">
-\[\int_{x_{i-1}}^{x_i} f(x)\diff x,\]</div>
-<p>а затем воспользоваться <a class="reference internal" href="#equation-intsum">(3.2)</a>.</p>
-<p>В этом разделе рассмотрены некоторые из квадратурных формул.</p>
+\[\int\limits_{a}^{b} f(x)\diff x = (b - a)\int\limits_{0}^{1} f(a + x(b - a)) \diff x = \frac{b - a}{d}\int\limits_{-d/2}^{d/2} f\Big(a + (x + 1)\frac{b - a}{d}\Big) \diff x,\]</div>
+<p>В этом разделе рассмотрим некоторые из квадратурных формул.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -349,7 +407,7 @@
         <a class="right-next" href="newton_cotes.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">3.1. </span>Формулы Ньютона-Котеса</p>
+                <p class="prevnext-title"><span class="section-number">3.1. </span>Формулы Ньютона-Котса</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

@@ -178,7 +178,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../integration/newton_cotes.html">
-     3.1. Формулы Ньютона-Котеса
+     3.1. Формулы Ньютона-Котса
     </a>
    </li>
    <li class="toctree-l2">
@@ -186,7 +186,39 @@
      3.2. Метод Ромберга
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/gauss.html">
+     3.3. Формулы Гаусса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/adaptive.html">
+     3.4. Адаптивное интегрирование
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/ex.html">
+     3.5. Задания
+    </a>
+   </li>
   </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Приложения
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../genindex.html">
+   Указатель
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography.html">
+   Литература
+  </a>
  </li>
 </ul>
 
@@ -303,12 +335,12 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
+  <a class="reference internal nav-link" href="#id3">
    2.2.2. Интерполяция
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
+  <a class="reference internal nav-link" href="#id4">
    2.2.3. Сходимость
   </a>
  </li>
@@ -326,8 +358,8 @@
   <div class="section" id="id1">
 <h1><span class="section-number">2.2. </span>Кусочно-линейная интерполяция<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>Что самое простое можно сделать с набором точек? Соединить отрезками. В этом и состоит кусочно-линейная интерполяция.</p>
-<div class="proof proof-type-definition" id="id4">
-
+<div class="proof proof-type-definition" id="id5">
+<span id="index-0"></span>
     <div class="proof-title">
         <span class="proof-type">Определение 2.8</span>
         
@@ -338,15 +370,15 @@
 <div class="math notranslate nohighlight" id="equation-pwlin">
 <span class="eqno">(2.4)<a class="headerlink" href="#equation-pwlin" title="Permalink to this equation">¶</a></span>\[p(x) = y_k + \frac{y_{k+1} - y_k}{t_{k+1} - t_k} (x - t_k),\quad x \in [t_k, t_{k+1}]\]</div>
 </div></div><p>Простой способ реализации формулы <a class="reference internal" href="#equation-pwlin">(2.4)</a> заключается в поиске отрезка <span class="math notranslate nohighlight">\([t_k, t_{k+1}]\)</span>, которому принадлежит <span class="math notranslate nohighlight">\(x\)</span>, а затем уже в применении <a class="reference internal" href="#equation-pwlin">(2.4)</a>.</p>
-<p>Мы же поступим более общим способом.</p>
+<p>Мы же поступим более общим способом <span id="id2">[<a class="reference internal" href="../bibliography.html#id3">LeV02</a>]</span>.</p>
 <div class="section" id="hat">
 <h2><span class="section-number">2.2.1. </span>Hat-функции<a class="headerlink" href="#hat" title="Permalink to this headline">¶</a></h2>
 <p>Искомый интерполянт лишь одна из <em>непрерывных кусочно-линейных</em> функций, которые образуют <em>линейное пространство</em>. В этом пространстве функция выражается в виде</p>
 <div class="math notranslate nohighlight" id="equation-pwlin-decomp">
 <span class="eqno">(2.5)<a class="headerlink" href="#equation-pwlin-decomp" title="Permalink to this equation">¶</a></span>\[p(x) = \sum_{k=1}^n c_k \varphi_k(x),\quad x \in [t_1, t_n].\]</div>
 <p>Где набор функций <span class="math notranslate nohighlight">\(\{\varphi_k(x)\}_{k=1}^n\)</span> является <em>базисом</em> пространства, а коэффициенты (веса, координаты) <span class="math notranslate nohighlight">\(c_k\)</span> однозначно задают <span class="math notranslate nohighlight">\(p(x)\)</span>. В качестве такого базиса широко используются hat-функции.</p>
-<div class="proof proof-type-definition" id="id5">
-
+<span class="target" id="index-1"></span><div class="proof proof-type-definition" id="id6">
+<span id="index-2"></span>
     <div class="proof-title">
         <span class="proof-type">Определение 2.9</span>
         
@@ -360,7 +392,7 @@
 \dfrac{t_{k+1}-x}{t_{k+1} - t_k},&amp; x \in [t_k, t_{k+1}],\\
 0, &amp; иначе.
 \end{cases},\quad k = 2,...,n-1.\end{split}\]</div>
-<p><strong>Половинчатые hat-функции</strong> задаются на краях и имеют вид</p>
+<p id="index-3"><strong>Половинчатые hat-функции</strong> задаются на краях и имеют вид</p>
 <div class="math notranslate nohighlight" id="equation-hatfunchalf">
 <span class="eqno">(2.7)<a class="headerlink" href="#equation-hatfunchalf" title="Permalink to this equation">¶</a></span>\[\begin{split}\varphi_1 = \begin{cases}
 \dfrac{t_2-x}{t_2 - t_1},&amp; x \in [t_1, t_2],\\
@@ -372,7 +404,7 @@
 0, &amp; иначе.
 \end{cases}\end{split}\]</div>
 </div></div><p>Реализуем hat-функции через замыкание.</p>
-<div class="proof proof-type-function" id="id6">
+<div class="proof proof-type-function" id="id7">
 <span id="function-hatfunc"></span>
     <div class="proof-title">
         <span class="proof-type">Функция 2.10</span>
@@ -399,7 +431,7 @@
 <span class="k">end</span>
 </pre></div>
 </div>
-</div></div><div class="proof proof-type-demo" id="id7">
+</div></div><div class="proof proof-type-demo" id="id8">
 
     <div class="proof-title">
         <span class="proof-type">Демонстрация 2.11</span>
@@ -424,8 +456,8 @@
 <img alt="../_images/pwlinear_2_0.svg" src="../_images/pwlinear_2_0.svg" /></div>
 </div>
 </div></div>
-<div class="section" id="id2">
-<h2><span class="section-number">2.2.2. </span>Интерполяция<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h2><span class="section-number">2.2.2. </span>Интерполяция<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <div class="proof proof-type-observation">
 
     <div class="proof-title">
@@ -442,7 +474,7 @@
 <p>То коэффициенты <span class="math notranslate nohighlight">\(c_k\)</span> в разложении <a class="reference internal" href="#equation-pwlin-decomp">(2.5)</a> равняются <span class="math notranslate nohighlight">\(y_k\)</span></p>
 <div class="math notranslate nohighlight">
 \[p(x) = \sum_{k=1}^n y_k \varphi_k(x),\quad x \in [t_1, t_n].\]</div>
-<div class="proof proof-type-function" id="id8">
+<div class="proof proof-type-function" id="id9">
 
     <div class="proof-title">
         <span class="proof-type">Функция 2.12</span>
@@ -472,7 +504,7 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">basis[k](x)</span></code> стоит читать как <code class="docutils literal notranslate"><span class="pre">(basis[k])(x)</span></code>: извлечение <code class="docutils literal notranslate"><span class="pre">k</span></code>-го элемента массива <code class="docutils literal notranslate"><span class="pre">basis</span></code>, что является функцией и затем вызов этой функции с аргументом <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p></li>
 </ul>
 </div>
-</div></div><div class="proof proof-type-demo" id="id9">
+</div></div><div class="proof proof-type-demo" id="id10">
 
     <div class="proof-title">
         <span class="proof-type">Демонстрация 2.13</span>
@@ -518,11 +550,11 @@
 </div>
 <p>Похоже, интерполянт стремится к некоторому пределу…</p>
 </div></div>
-<div class="section" id="id3">
-<h2><span class="section-number">2.2.3. </span>Сходимость<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id4">
+<h2><span class="section-number">2.2.3. </span>Сходимость<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
 <p>Можно рассмотреть, как меняется ошибка приближения функции интерполянтом в зависимости от количества использующихся точек. Нам понадобятся несколько инструментов.</p>
-<div class="proof proof-type-definition" id="id10">
-
+<span class="target" id="index-4"></span><div class="proof proof-type-definition" id="id11">
+<span id="index-5"></span>
     <div class="proof-title">
         <span class="proof-type">Определение 2.14</span>
         
@@ -532,8 +564,8 @@
 <p>Для измерения величины ошибки введём <span class="math notranslate nohighlight">\(\infty\)</span>-<strong>норму функции</strong>. Эта норма показывает насколько сильно отклоняется функция <span class="math notranslate nohighlight">\(f\)</span> от нуля на отрезке <span class="math notranslate nohighlight">\([a, b]\)</span></p>
 <div class="math notranslate nohighlight">
 \[\|f\|_\infty = \max_{x\in[a,b]} |f(x)|.\]</div>
-</div></div><div class="proof proof-type-definition" id="id11">
-
+</div></div><div class="proof proof-type-definition" id="id12">
+<span id="index-6"></span>
     <div class="proof-title">
         <span class="proof-type">Определение 2.15</span>
         
@@ -543,13 +575,13 @@
 <p>Введём также <em>равномерную</em> <strong>сетку</strong> из узлов</p>
 <div class="math notranslate nohighlight">
 \[\omega_h = \{t_i\!: \: t_i = a + (i-1) h, \: h = (b-a)/n, \: i=1,...,n\},\]</div>
-<p>где число <span class="math notranslate nohighlight">\(n\)</span> называют <strong>размером сетки</strong>, а <span class="math notranslate nohighlight">\(h\)</span> её <strong>мелкостью</strong> (или шагом).</p>
+<span class="target" id="index-7"></span><p id="index-8">где число <span class="math notranslate nohighlight">\(n\)</span> называют <strong>размером сетки</strong>, а <span class="math notranslate nohighlight">\(h\)</span> её <strong>мелкостью</strong> (или шагом).</p>
 </div></div><p>Каждой сетке <span class="math notranslate nohighlight">\(\omega_h\)</span> поставим в соответствие интерполянт <span class="math notranslate nohighlight">\(p_h(x)\)</span> функции <span class="math notranslate nohighlight">\(f(x)\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[p_h(t_i) = f(t_i), t_i \in \omega_h.\]</div>
 <p>Теперь есть всё, чтобы представить утверждение.</p>
-<div class="proof proof-type-proposition" id="id12">
-
+<div class="proof proof-type-proposition" id="id13">
+<span id="index-9"></span>
     <div class="proof-title">
         <span class="proof-type">Утверждение 2.16</span>
         
@@ -562,8 +594,8 @@
 \|f - p_h\|_\infty = \max_{x\in[a,b]}|f(x) - p_h(x)| \le M h^2,\quad M = \|f''\|_\infty.
 \]</div>
 </div></div><p>При уменьшении шага сетки <span class="math notranslate nohighlight">\(h \to 0\)</span> ошибка интерполяции составляет <span class="math notranslate nohighlight">\(O(h^2)\)</span>.</p>
-<div class="proof proof-type-definition" id="id13">
-
+<div class="proof proof-type-definition" id="id14">
+<span id="index-10"></span>
     <div class="proof-title">
         <span class="proof-type">Определение 2.17</span>
         
@@ -571,7 +603,7 @@
         
     </div><div class="proof-content">
 <p>Если ошибка приближения составляет <span class="math notranslate nohighlight">\(O(h^m)\)</span> при <span class="math notranslate nohighlight">\(h \to 0\)</span>, то говорят о <strong>сходимости</strong> приближения с <strong>порядком</strong> <span class="math notranslate nohighlight">\(m\)</span>.</p>
-</div></div><div class="proof proof-type-demo" id="id14">
+</div></div><div class="proof proof-type-demo" id="id15">
 
     <div class="proof-title">
         <span class="proof-type">Демонстрация 2.18</span>

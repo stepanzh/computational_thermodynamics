@@ -178,7 +178,7 @@
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="../integration/newton_cotes.html">
-     3.1. Формулы Ньютона-Котеса
+     3.1. Формулы Ньютона-Котса
     </a>
    </li>
    <li class="toctree-l2">
@@ -186,7 +186,39 @@
      3.2. Метод Ромберга
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/gauss.html">
+     3.3. Формулы Гаусса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/adaptive.html">
+     3.4. Адаптивное интегрирование
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/ex.html">
+     3.5. Задания
+    </a>
+   </li>
   </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Приложения
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../genindex.html">
+   Указатель
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography.html">
+   Литература
+  </a>
  </li>
 </ul>
 
@@ -298,22 +330,22 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
+  <a class="reference internal nav-link" href="#id3">
    2.3.1. Условия непрерывности сплайна
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
+  <a class="reference internal nav-link" href="#id4">
    2.3.2. Граничные условия
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
+  <a class="reference internal nav-link" href="#id5">
    2.3.3. Реализация
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id5">
+  <a class="reference internal nav-link" href="#id6">
    2.3.4. Сходимость
   </a>
  </li>
@@ -331,8 +363,8 @@
   <div class="section" id="id1">
 <h1><span class="section-number">2.3. </span>Кубические сплайны<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>Кусочно-линейный интерполянт непрерывен, но имеет разрывную производную. Можно построить интерполянт с более гладкими свойствами.</p>
-<div class="proof proof-type-definition" id="id6">
-<span id="definition-cubicspline"></span>
+<span class="target" id="index-0"></span><div class="proof proof-type-definition" id="id7">
+<span id="definition-cubicspline"></span><span id="index-1"></span>
     <div class="proof-title">
         <span class="proof-type">Определение 2.19</span>
         
@@ -350,9 +382,9 @@
 <li><p>Гладкость первой производной;</p></li>
 <li><p>Гладкость второй производной.</p></li>
 </ol>
-<p>Также, как оказывается, понадобятся ещё граничные условия. Ниже приведён вывод системы.</p>
-<div class="section" id="id2">
-<h2><span class="section-number">2.3.1. </span>Условия непрерывности сплайна<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Также, как оказывается, понадобятся ещё граничные условия. Ниже приведён вывод системы <span id="id2">[<a class="reference internal" href="../bibliography.html#id4">ADJB17</a>]</span>.</p>
+<div class="section" id="id3">
+<h2><span class="section-number">2.3.1. </span>Условия непрерывности сплайна<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p><strong>1. Непрерывность в узлах интерполяции.</strong></p>
 <p>Сама задача интерполяции требует <span class="math notranslate nohighlight">\(S(t_k) = y_k\)</span>, <span class="math notranslate nohighlight">\(k=0,...,n\)</span>. Это условие достигается при <span class="math notranslate nohighlight">\(S_k(t_{k-1}) = y_{k-1}\)</span>, <span class="math notranslate nohighlight">\(S_k(t_k) = y_k\)</span>, где <span class="math notranslate nohighlight">\(k=1,...,n\)</span>.</p>
 <p><strong>1.а.</strong> Условие <span class="math notranslate nohighlight">\(S_k(t_{k-1}) = y_{k-1}\)</span> при подстановке в <a class="reference internal" href="#equation-spline">(2.9)</a> приводит к</p>
@@ -451,9 +483,9 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_{n-1} \\ c_1 \\ \vdots \\ c_{n-1}
 \mathbf{0}_{(n-1)\times 1}.\]</div>
 <p>В итоге получаем <span class="math notranslate nohighlight">\(n-1\)</span> уравнение.</p>
 </div>
-<div class="section" id="id3">
-<h2><span class="section-number">2.3.2. </span>Граничные условия<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>На данном этапе у нас есть <span class="math notranslate nohighlight">\(4n\)</span> неизвестных и <span class="math notranslate nohighlight">\(2n + 2(n-1) = 4n - 2\)</span> уравнения. Чтобы замкнуть систему, понадобятся граничные условия. Бывает так, что они известны, т.е. известны <span class="math notranslate nohighlight">\(S'\)</span> и/или <span class="math notranslate nohighlight">\(S''\)</span> на концах отрезка. Если они не известны, то популярными являются условия <em>not-a-knot</em></p>
+<div class="section" id="id4">
+<h2><span class="section-number">2.3.2. </span>Граничные условия<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p id="index-2">На данном этапе у нас есть <span class="math notranslate nohighlight">\(4n\)</span> неизвестных и <span class="math notranslate nohighlight">\(2n + 2(n-1) = 4n - 2\)</span> уравнения. Чтобы замкнуть систему, понадобятся граничные условия. Бывает так, что они известны, т.е. известны <span class="math notranslate nohighlight">\(S'\)</span> и/или <span class="math notranslate nohighlight">\(S''\)</span> на концах отрезка. Если они не известны, то популярными являются условия <em>not-a-knot</em></p>
 <div class="math notranslate nohighlight">
 \[S'''_1(t_1) = S_2'''(t_1),\quad S'''_{n-1}(t_{n-1}) = S'''_n(t_{n-1}).\]</div>
 <p>Что приводит к уравнениям</p>
@@ -462,9 +494,9 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_{n-1} \\ c_1 \\ \vdots \\ c_{n-1}
 <p>Которым можно сопоставить соответствующие строки, и встроить их в уже существующую систему.</p>
 <p>Итак, уравнения <a class="reference internal" href="#equation-spline-nodes-a">(2.10)</a>, <a class="reference internal" href="#equation-spline-nodes-b">(2.11)</a>, <a class="reference internal" href="#equation-spline-deriv">(2.12)</a>, <a class="reference internal" href="#equation-spline-dderiv">(2.13)</a> и <a class="reference internal" href="#equation-spline-edge">(2.14)</a> формируют систему для <span class="math notranslate nohighlight">\(4n\)</span> неизвестных, с квадратной матрицей размера <span class="math notranslate nohighlight">\((4n) \times (4n)\)</span>. В отличие от кусочно-линейной интерполяции, интерполяция сплайнами требует решения линейной системы. Оказывается, для сплайнов всё-таки можно найти базис, но он не будет обладать свойством <a class="reference internal" href="pwlinear.html#equation-cardinality">(2.8)</a>.</p>
 </div>
-<div class="section" id="id4">
-<h2><span class="section-number">2.3.3. </span>Реализация<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<div class="proof proof-type-function" id="id7">
+<div class="section" id="id5">
+<h2><span class="section-number">2.3.3. </span>Реализация<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="proof proof-type-function" id="id8">
 
     <div class="proof-title">
         <span class="proof-type">Функция 2.20</span>
@@ -477,7 +509,7 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_{n-1} \\ c_1 \\ \vdots \\ c_{n-1}
 <span class="n">polynomial</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">horner</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
-</div></div><div class="proof proof-type-function" id="id8">
+</div></div><div class="proof proof-type-function" id="id9">
 
     <div class="proof-title">
         <span class="proof-type">Функция 2.21</span>
@@ -545,11 +577,11 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_{n-1} \\ c_1 \\ \vdots \\ c_{n-1}
 </pre></div>
 </div>
 </div></div></div>
-<div class="section" id="id5">
-<h2><span class="section-number">2.3.4. </span>Сходимость<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h2><span class="section-number">2.3.4. </span>Сходимость<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
 <p>В случае сплайнов, подобно кусочно-линейной интерполяции, справедливо утверждение</p>
-<div class="proof proof-type-proposition" id="id9">
-
+<div class="proof proof-type-proposition" id="id10">
+<span id="index-3"></span>
     <div class="proof-title">
         <span class="proof-type">Утверждение 2.22</span>
         
@@ -562,7 +594,7 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_{n-1} \\ c_1 \\ \vdots \\ c_{n-1}
 \|f - S_h\|_\infty \le C h^4.
 \]</div>
 <p>Т.е. кубический сплайн сходится к функции с <em>четвёртым</em> порядком.</p>
-</div></div><div class="proof proof-type-demo" id="id10">
+</div></div><div class="proof proof-type-demo" id="id11">
 
     <div class="proof-title">
         <span class="proof-type">Демонстрация 2.23</span>

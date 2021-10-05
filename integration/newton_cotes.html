@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3.1. Формулы Ньютона-Котеса &#8212; Практикум по вычислительной теплофизике</title>
+    <title>3.1. Формулы Ньютона-Котса &#8212; Практикум по вычислительной теплофизике</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -178,7 +178,7 @@
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     3.1. Формулы Ньютона-Котеса
+     3.1. Формулы Ньютона-Котса
     </a>
    </li>
    <li class="toctree-l2">
@@ -186,7 +186,39 @@
      3.2. Метод Ромберга
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gauss.html">
+     3.3. Формулы Гаусса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="adaptive.html">
+     3.4. Адаптивное интегрирование
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     3.5. Задания
+    </a>
+   </li>
   </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Приложения
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../genindex.html">
+   Указатель
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography.html">
+   Литература
+  </a>
  </li>
 </ul>
 
@@ -303,13 +335,18 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
+  <a class="reference internal nav-link" href="#id4">
    3.1.2. Формула трапеций
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
+  <a class="reference internal nav-link" href="#sec-quadrature-simpson">
    3.1.3. Формула Симпсона
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   3.1.4. Упражения
   </a>
  </li>
 </ul>
@@ -323,49 +360,92 @@
         
               <div>
                 
-  <div class="section" id="id1">
-<h1><span class="section-number">3.1. </span>Формулы Ньютона-Котеса<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>Идея вывода формул Ньютона-Котеса заключаются в <em>кусочной полиномиальной интерполяции</em> подыинтегральной функции <span class="math notranslate nohighlight">\(f\)</span>.</p>
+  <div class="section" id="chapters-integration-newton-cotes">
+<span id="id1"></span><h1><span class="section-number">3.1. </span>Формулы Ньютона-Котса<a class="headerlink" href="#chapters-integration-newton-cotes" title="Permalink to this headline">¶</a></h1>
+<p>Рассмотрим задачу приближения интеграла</p>
+<div class="math notranslate nohighlight">
+\[I = \int\limits_{0}^{1} f(x) \diff x\]</div>
+<p>Очевидный способ – ввести равномерную сетку <span class="math notranslate nohighlight">\(\{x_i = \frac{i-1}{N-1}, i = 1, \dots, N\}\)</span> или <span class="math notranslate nohighlight">\(\{x_i = \frac{i - 1/2}{N}, i = 1, \dots, N\}\)</span>, вычислить полиномиальную интерполяцию подынтегральной функции по значениям в этих точках и взять значение интеграла от полиномиальной интерполяции за приближение к интегралу <span class="math notranslate nohighlight">\(I\)</span>.</p>
+<p id="index-0">Получаемые таким образом квадратурные формулы называются <strong>формулами Ньютона-Котса</strong>. Два выбора узлов интерполяции соответствуют <em>закрытым</em> (концы отрезка входят в множество узлов) и <em>открытым</em> (концы отрезка не входят во множество узлов) формулам.</p>
+<p>Веса формул Ньютона-Котса определяются из условия, что формула с <span class="math notranslate nohighlight">\(N\)</span> узлами должна давать точное значение интеграла для всех многочленов степени ниже <span class="math notranslate nohighlight">\(N\)</span>, в частности, для “чистых” степеней <span class="math notranslate nohighlight">\(x^p\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\sum\limits_{i=1}^{N} w_i x_i^p = \int\limits_{0}^{1} x^p \diff x = \frac{1}{p + 1} \quad\forall p \in \{0, \dots, N-1\}\]</div>
+<p>Это условие дает линейную систему:</p>
+<div class="math notranslate nohighlight" id="equation-newtoncotesgeneral">
+<span class="eqno">(3.4)<a class="headerlink" href="#equation-newtoncotesgeneral" title="Permalink to this equation">¶</a></span>\[\begin{split}\left(
+\begin{array}{cccc}
+ 1  &amp;  1  &amp; \dots &amp; 1 \\
+x_1 &amp; x_2 &amp; \dots &amp; x_N \\
+x_1^2 &amp; x_2^2 &amp; \dots &amp; x_N^2 \\
+\vdots &amp; \vdots&amp;  &amp; \vdots\\
+x_1^{N-1} &amp; x_2^{N-1} &amp; \dots &amp; x_N^{N-1}
+\end{array}
+\right) 
+\left(
+\begin{array}{c}
+w_1 \\
+w_2 \\
+w_3 \\
+\vdots \\
+w_N
+\end{array}
+\right) = 
+\left(
+\begin{array}{c}
+1 \\
+1 / 2 \\
+1 / 3 \\
+\vdots \\
+1 / N
+\end{array}
+\right)\end{split}\]</div>
+<p id="index-1">Говорят, что квадратурная формула имеет <strong>алгебраический порядок</strong> <span class="math notranslate nohighlight">\(p\)</span>, если она точна для всех многочленов степени <span class="math notranslate nohighlight">\(p\)</span> и меньше. Из формулы для вычисления весов видно, что квадратура Ньютона-Котса с <span class="math notranslate nohighlight">\(N\)</span> узлами имеет алгебраический порядок как минимум <span class="math notranslate nohighlight">\(N-1\)</span>. Однако из симметрии задачи легко показать, что веса удовлетворяют условию <span class="math notranslate nohighlight">\(w_i = w_{N-i+1}\)</span>. Это приводит к тому, что формулы с нечетным <span class="math notranslate nohighlight">\(N\)</span> приобретают “дополнительный” порядок точности и имеют алгебраический порядок <span class="math notranslate nohighlight">\(N\)</span> (это легко видеть, заметив, что для отрезка <span class="math notranslate nohighlight">\([-1; 1]\)</span> квадратурная формула дает ноль для нечётных функций, т.е. интегрирует их точно, а функция <span class="math notranslate nohighlight">\(f(x) = x^N\)</span> – нечётная при нечётном <span class="math notranslate nohighlight">\(N\)</span>).</p>
+<p>Кажется, что точность формул Ньютона-Котса растет с повышением порядка, но при расчетах с конечной точностью это не так. При повышении степени в этих формулах появляются отрицательные веса, что приводит к численной неустойчивости. Поэтому в основном применяются формулы Ньютона-Котса низких порядков. В этом случае лучше брать закрытые формулы, т.к. конечная точка одного подотрезка является начальной точкой следующего, что экономит одно вычисление подынтегральной функции по сравнению с открытыми формулами того же порядка точности. Тем не менее, если на одном из концов отрезка функция имеет особенность, применение открытых формул позволяет избежать её вычисления в этой точке.</p>
+<p>Ниже приведены некоторые составные квадратурные формулы Ньютона-Котса.</p>
 <div class="section" id="id2">
 <h2><span class="section-number">3.1.1. </span>Формула прямоугольников<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>В формуле прямоугольников функция на отрезке <span class="math notranslate nohighlight">\([x_{i-1}, x_i]\)</span> считается постоянной:</p>
-<div class="margin sidebar">
+<p>Для открытой формулы с 1 узлом (т.е. подынтегральная функция приближается константой):</p>
+<div class="margin sidebar" id="index-2">
 <p class="sidebar-title"></p>
-<p>Существуют также левый и правый варианты, но у них хуже точность.</p>
+<p>Существуют также формулы левых и правых прямоугольников, но у них хуже точность.</p>
 </div>
 <div class="math notranslate nohighlight">
-\[\int_{x_{i-1}}^{x_i} f(x)\diff x \approx f(x_{i-1/2}) h, \quad x_{i-1/2} = \frac{x_i - x_{i-1}}{2}.\]</div>
-<p>Также эту формулу называют <em>midpoint rule</em>.</p>
-<p>Составная формула прямоугольников имеет вид</p>
+\[\int_{x_{i-1}}^{x_i} f(x)\diff x \approx (x_i - x_{i-1})f(x_{i-1/2}),\quad x_{i-1/2} = \frac{x_{i-1} + x_i}{2}.\]</div>
+<p>Эту формулу называют формулой <strong>средних прямоугольников</strong> (<em>midpoint rule</em>).</p>
+<p><strong>Составная формула прямоугольников</strong> имеет вид</p>
 <div class="math notranslate nohighlight">
-\[\int_a^b f(x)\diff x \approx \sum_{i=1}^n f(x_{i-1/2}) h.\]</div>
-<div class="proof proof-type-function" id="id5">
+\[\int_a^b f(x)\diff x \approx \sum_{i=1}^n h \cdot f(x_i),\quad x_i = a + (i - 1/2)h, \quad h = \frac{b - a}{n}.\]</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><code class="docutils literal notranslate"><span class="pre">start:step:stop</span></code> означает диапазон точек с шагом <code class="docutils literal notranslate"><span class="pre">step</span></code>, начинающийся со <code class="docutils literal notranslate"><span class="pre">start</span></code>, последнее значение в котором меньше или равно <code class="docutils literal notranslate"><span class="pre">stop</span></code>.</p>
+<p><code class="docutils literal notranslate"><span class="pre">sum(f,</span> <span class="pre">x)</span></code> вычисляет сумму значений функции <code class="docutils literal notranslate"><span class="pre">f</span></code> на массиве <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+</div>
+<div class="proof proof-type-function" id="id9">
 
     <div class="proof-title">
-        <span class="proof-type">Функция 3.1</span>
+        <span class="proof-type">Функция 3.4</span>
         
             <span class="proof-title-name">(midpoint)</span>
         
     </div><div class="proof-content">
-<p><strong>Формула прямоугольников.</strong></p>
+<p><strong>Формула прямоугольников</strong></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">Вычисляет по формуле прямоугольников интеграл ∫`f`dx на отрезке [`a`, `b`]</span>
 <span class="s">с равномерной сеткой из `n` интервалов.</span>
 <span class="s">Возвращает значение интеграла, узлы и значения функции в узлах.</span>
 <span class="s">&quot;&quot;&quot;</span>
 <span class="k">function</span> <span class="n">midpoint</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">h</span> <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">int</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">int</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span> <span class="n">step</span><span class="o">=</span><span class="n">h</span><span class="p">)</span>
+    <span class="n">int</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="n">sum</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">int</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div></div><div class="proof proof-type-demo" id="id6">
+</div></div><div class="proof proof-type-demo" id="id10">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация 3.2</span>
+        <span class="proof-type">Демонстрация 3.5</span>
         
     </div><div class="proof-content">
 </div></div><div class="demo"><p>Ниже представлены графики численного интеграла</p>
@@ -375,11 +455,13 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">))</span>
-<span class="n">plt</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">leg</span><span class="o">=</span><span class="ss">:none</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">in</span> <span class="n">enumerate</span><span class="p">((</span><span class="mi">8</span><span class="p">,</span> <span class="mi">16</span><span class="p">))</span>
-    <span class="n">_</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">midpoint</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">plt</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">leg</span><span class="o">=</span><span class="ss">:none</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">in</span> <span class="n">enumerate</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
     <span class="n">plot!</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">;</span> <span class="n">subplot</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linecolor</span><span class="o">=</span><span class="ss">:red</span><span class="p">)</span>
-
+    
+    <span class="n">h</span> <span class="o">=</span> <span class="mi">3</span><span class="o">/</span><span class="n">n</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">h</span> <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">0</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">for</span> <span class="p">(</span><span class="n">px</span><span class="p">,</span> <span class="n">py</span><span class="p">)</span> <span class="k">in</span> <span class="n">zip</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
         <span class="n">h</span> <span class="o">=</span> <span class="mi">3</span> <span class="o">/</span> <span class="n">n</span>
         <span class="n">plot!</span><span class="p">([</span><span class="n">px</span><span class="o">-</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">px</span><span class="o">+</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="n">py</span><span class="p">,</span> <span class="n">py</span><span class="p">];</span>
@@ -395,57 +477,99 @@
 <div class="cell_output docutils container">
 <img alt="../_images/newton_cotes_2_0.svg" src="../_images/newton_cotes_2_0.svg" /></div>
 </div>
-</div><p>Можно показать, что формула прямоугольников имеет второй порядок сходимости</p>
+</div><p>Можно показать <span id="id3">[<a class="reference internal" href="../bibliography.html#id7">89</a>]</span>, что составная формула прямоугольников имеет <em>второй порядок сходимости</em></p>
 <div class="math notranslate nohighlight">
 \[|\tau_f(h)| \le \frac{h^2(b-a)}{24} \max_{x\in [a,b]} |f''(x)| \sim O(h^2).\]</div>
 <p>При этом отсюда видно, что ошибка становится <em>нулевой</em> для линейных функций (для них <span class="math notranslate nohighlight">\(f'' \equiv 0\)</span>).</p>
 </div>
-<div class="section" id="id3">
-<h2><span class="section-number">3.1.2. </span>Формула трапеций<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
-<p>На отрезке формула трапеций имеет вид</p>
-<div class="math notranslate nohighlight">
+<div class="section" id="id4">
+<h2><span class="section-number">3.1.2. </span>Формула трапеций<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<p>Если аппроксимировать функцию на отрезке <span class="math notranslate nohighlight">\([x_{i-1}, x_{i}]\)</span> прямой, проходящей через значения на концах отрезка, то получим <strong>формулу трапеций</strong> (<em>trapezoidal rule</em>)</p>
+<div class="math notranslate nohighlight" id="index-3">
 \[\int_{x_{i-1}}^{x_i} f(x)\diff x \approx \frac{f(x_{i-1}) + f(x_i)}{2} h.\]</div>
-<p>Она получается приближением <span class="math notranslate nohighlight">\(f(x)\)</span> прямой на отрезке <span class="math notranslate nohighlight">\([x_{i-1}, x_i]\)</span>.</p>
-<p>Просуммировав <a class="reference internal" href="index.html#equation-intsum">(3.2)</a>, получим квадратурную формулу на всём отрезке</p>
+<p>Та же формула получается из <a class="reference internal" href="#equation-newtoncotesgeneral">(3.4)</a>, если взять узлы <span class="math notranslate nohighlight">\(x_1=0\)</span> и <span class="math notranslate nohighlight">\(x_2=1\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\left(
+\begin{array}{cc}
+ 1 &amp; 1 \\
+ 0 &amp; 1
+\end{array}
+\right)
+\left(
+\begin{array}{c}
+w_1 \\
+w_2
+\end{array}
+\right) = 
+\left(
+\begin{array}{c}
+1 \\
+1 / 2
+\end{array}
+\right) \Rightarrow
+\left(
+\begin{array}{c}
+w_1 \\
+w_2
+\end{array}
+\right) = 
+\left(
+\begin{array}{c}
+1 / 2 \\
+1 / 2
+\end{array}
+\right)\end{split}\]</div>
+<p id="index-4">Просуммировав <a class="reference internal" href="index.html#equation-quadrature-composite">(3.3)</a>, получим <strong>составную формулу трапеций</strong> для отрезка <span class="math notranslate nohighlight">\([a, b]\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\int_a^b f(x)\diff x \approx T_f = h \left(\frac{1}{2} f(x_0) + f(x_1) + f(x_2) + ... + f(x_{n-1}) + \frac{1}{2}f(x_n)\right).\]</div>
-<p>Из формулу трапеций выводятся многие усовершенствованные методы. Ниже дана реализация.</p>
-<div class="proof proof-type-function" id="id7">
+<p>Из формулы трапеций выводятся многие усовершенствованные методы. Ниже дана реализация.</p>
+<div class="proof proof-type-function" id="id11">
 <span id="function-trapezoid"></span>
     <div class="proof-title">
-        <span class="proof-type">Функция 3.3</span>
+        <span class="proof-type">Функция 3.6</span>
         
             <span class="proof-title-name">(trapezoid)</span>
         
     </div><div class="proof-content">
-<p><strong>Формула трапеций.</strong></p>
+<p><strong>Формула трапеций</strong></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">Вычисляет по формуле трапеций интеграл ∫`f`dx на отрезке [`a`, `b`]</span>
 <span class="s">с равномерной сеткой из `n` интервалов.</span>
-<span class="s">Возвращает значение интеграла, узлы и значения функции в узлах.</span>
+<span class="s">Возвращает значение интеграла.</span>
 <span class="s">&quot;&quot;&quot;</span>
 <span class="k">function</span> <span class="n">trapezoid</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-    <span class="n">h</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">n</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">collect</span><span class="p">(</span><span class="n">range</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span> <span class="n">length</span><span class="o">=</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">int</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="n">sum</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">2</span><span class="o">:</span><span class="n">n</span><span class="p">])</span> <span class="o">+</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span>
-    <span class="k">return</span> <span class="n">int</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span> <span class="n">length</span><span class="o">=</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="n">step</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">isone</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">int</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">else</span>
+        <span class="nd">@views</span> <span class="n">int</span> <span class="o">=</span> <span class="n">h</span> <span class="o">*</span> <span class="p">(</span><span class="n">sum</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="o">:</span><span class="n">n</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]))</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">int</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div></div><div class="proof proof-type-demo" id="id8">
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<p>Макрос <code class="docutils literal notranslate"><span class="pre">&#64;view</span> <span class="pre">x[m:n]</span></code> создаёт вместо среза массива объект-подмассив, ссылающийся на ту же область памяти, что и <code class="docutils literal notranslate"><span class="pre">x</span></code> (см. <a class="reference external" href="https://docs.julialang.org/en/v1/base/arrays/#Views-(SubArrays-and-other-view-types)">Views</a>).</p>
+<p>Макрос <code class="docutils literal notranslate"><span class="pre">&#64;views</span> <span class="pre">expr</span></code> преобразовывает все “срезы” внутри выражения <code class="docutils literal notranslate"><span class="pre">expr</span></code> во view-объекты.</p>
+<p>Чтобы избежать ветвления, можно написать <code class="docutils literal notranslate"><span class="pre">int</span> <span class="pre">=</span> <span class="pre">h</span> <span class="pre">*</span> <span class="pre">(sum(f,</span> <span class="pre">x)</span> <span class="pre">-</span> <span class="pre">(f(x[1])</span> <span class="pre">+</span> <span class="pre">f(x[2]))</span> <span class="pre">/</span> <span class="pre">2)</span></code>.</p>
+</div>
+</div></div><div class="proof proof-type-demo" id="id12">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация 3.4</span>
+        <span class="proof-type">Демонстрация 3.7</span>
         
     </div><div class="proof-content">
 </div></div><div class="demo"><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">))</span>
-<span class="n">plt</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">leg</span><span class="o">=</span><span class="ss">:none</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">in</span> <span class="n">enumerate</span><span class="p">((</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
-    <span class="n">_</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">trapezoid</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-    <span class="n">plot!</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">;</span> <span class="n">subplot</span><span class="o">=</span><span class="n">i</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linecolor</span><span class="o">=</span><span class="ss">:red</span><span class="p">)</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">plt</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">layout</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">leg</span><span class="o">=</span><span class="ss">:none</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;x&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">in</span> <span class="n">enumerate</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span> <span class="n">length</span><span class="o">=</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">foo</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">plot!</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">;</span> <span class="n">subplot</span><span class="o">=</span><span class="n">i</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">linecolor</span><span class="o">=</span><span class="ss">:red</span><span class="p">)</span>
     <span class="n">plot!</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span> <span class="n">subplot</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">fill</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="ss">:blue</span><span class="p">),</span> <span class="n">linecolor</span><span class="o">=</span><span class="ss">:blue</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
     <span class="n">scatter!</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">;</span> <span class="n">subplot</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:o</span><span class="p">,</span> <span class="n">markercolor</span><span class="o">=</span><span class="ss">:lightblue</span><span class="p">)</span>
 <span class="k">end</span>
@@ -456,68 +580,82 @@
 <div class="cell_output docutils container">
 <img alt="../_images/newton_cotes_4_0.svg" src="../_images/newton_cotes_4_0.svg" /></div>
 </div>
-</div><p>Для формулы трапеций можно показать, что</p>
+</div><p>Для составной формулы трапеций можно показать <span id="id5">[<a class="reference internal" href="../bibliography.html#id7">89</a>]</span>, что</p>
 <div class="math notranslate nohighlight">
 \[|I - T_f| \le \frac{h^2(b-a)}{12} \max_{x\in[a,b]} f''(x) \sim O(h^2).\]</div>
 <p>Таким образом, она обладает вторым порядком точности, как и формула прямоугольников. И также точно приближает интеграл от линейной функции.</p>
 </div>
-<div class="section" id="id4">
-<h2><span class="section-number">3.1.3. </span>Формула Симпсона<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
-<p>Формулу Симпсона можно получить, интерполировав <span class="math notranslate nohighlight">\(f(x)\)</span> на отрезке <span class="math notranslate nohighlight">\([x_{i-1}, x_i]\)</span> параболой по точкам <span class="math notranslate nohighlight">\(x_{i-1}, x_{i-1/2}, x_i\)</span>. Однако мы здесь покажем вывод на основе экстраполяции Ричардсона.</p>
+<div class="section" id="sec-quadrature-simpson">
+<span id="id6"></span><h2><span class="section-number">3.1.3. </span>Формула Симпсона<a class="headerlink" href="#sec-quadrature-simpson" title="Permalink to this headline">¶</a></h2>
+<p>Формулу Симпсона несложно получить, решив <a class="reference internal" href="#equation-newtoncotesgeneral">(3.4)</a> для <span class="math notranslate nohighlight">\(x_1 = 0, x_2 = 1/2, x_3 = 1\)</span>,
+что соответствует интерполяции <span class="math notranslate nohighlight">\(f(x)\)</span> параболой по трём точкам.
+Однако можно взглянуть на вывод этой формулы с другой стороны, на основе экстраполяции Ричардсона.</p>
 <p>Для формулы трапеций на основе разложения Тейлора можно показать, что</p>
 <div class="math notranslate nohighlight" id="equation-simp-step1">
-<span class="eqno">(3.3)<a class="headerlink" href="#equation-simp-step1" title="Permalink to this equation">¶</a></span>\[I = T_f(h) + c_1 h^2 + O(h^4),\]</div>
+<span class="eqno">(3.6)<a class="headerlink" href="#equation-simp-step1" title="Permalink to this equation">¶</a></span>\[I = T_f(h) + c_1 h^2 + O(h^4),\]</div>
 <p>где <span class="math notranslate nohighlight">\(c_1\)</span> не зависит от <span class="math notranslate nohighlight">\(h\)</span>.</p>
 <p>Если мы проведём расчёт на сетке вдвое мельче, то получим</p>
 <div class="math notranslate nohighlight" id="equation-simp-step2">
-<span class="eqno">(3.4)<a class="headerlink" href="#equation-simp-step2" title="Permalink to this equation">¶</a></span>\[I = T_f(h/2) + c_1 \left(\frac{h}{2}\right)^2 + O(h^4).\]</div>
-<p>Комбинируя выражения <a class="reference internal" href="#equation-simp-step1">(3.3)</a> и <a class="reference internal" href="#equation-simp-step2">(3.4)</a> так, чтобы уничтожить квадратичный член <span class="math notranslate nohighlight">\(c_1 h^2\)</span>, получим</p>
+<span class="eqno">(3.7)<a class="headerlink" href="#equation-simp-step2" title="Permalink to this equation">¶</a></span>\[I = T_f(h/2) + c_1 \left(\frac{h}{2}\right)^2 + O(h^4).\]</div>
+<p>Комбинируя выражения <a class="reference internal" href="#equation-simp-step1">(3.6)</a> и <a class="reference internal" href="#equation-simp-step2">(3.7)</a> так, чтобы исключить главный член погрешности <span class="math notranslate nohighlight">\(c_1 h^2\)</span>, получим</p>
 <div class="math notranslate nohighlight" id="equation-simp-bigo">
-<span class="eqno">(3.5)<a class="headerlink" href="#equation-simp-bigo" title="Permalink to this equation">¶</a></span>\[I = \frac{1}{3} \big[4 T_f(h/2) - T_f(h)\big] + O(h^4).\]</div>
-<p>Обычно формулировка излагается относительно числа разбиений <span class="math notranslate nohighlight">\(n \propto h^{-1}\)</span>. Тогда  из выражения выше получаем формулу Симпсона</p>
+<span class="eqno">(3.8)<a class="headerlink" href="#equation-simp-bigo" title="Permalink to this equation">¶</a></span>\[I = \frac{1}{3} \big[4 T_f(h/2) - T_f(h)\big] + O(h^4).\]</div>
+<p>Таким образом получена уточнённая оценка интеграла. Если сумма <span class="math notranslate nohighlight">\(T_f(h)\)</span> вычислена для <span class="math notranslate nohighlight">\(h = b - a\)</span>, то</p>
+<div class="math notranslate nohighlight" id="equation-simp-final">
+<span id="index-5"></span><span class="eqno">(3.9)<a class="headerlink" href="#equation-simp-final" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{split}
+S_f(h) &amp;= \frac{1}{3} \big[4 T_f\left(\frac{h}{2}\right) - T_f(h)\big] \\
+&amp;= \frac{1}{3} \left[
+4 \left(\frac{\tilde{f}(0)}{2} + \tilde{f}\left(\frac{h}{2}\right) + \frac{\tilde{f}(h)}{2}\right)\frac{h}{2} - 
+h\frac{\tilde{f}(0) + \tilde{f}(h)}{2}
+\right] \\
+&amp;= \frac{h}{6} \big[ \tilde{f}(0) + 4 \tilde{f}\left(\frac{h}{2}\right) + \tilde{f}(h)\big],
+\end{split}\end{split}\]</div>
+<p>где введено обозначение</p>
 <div class="math notranslate nohighlight">
-\[S_f(2n) = \frac{1}{3} \big[4 T_f(2n) - T_f(n)\big].\]</div>
-<p>Из вывода <a class="reference internal" href="#equation-simp-bigo">(3.5)</a> видно, что формула Симпсона имеет чётвертый порядок сходимости. Более точная оценка</p>
+\[\tilde{f}(x) = f(a + x).\]</div>
+<p>Веса в <a class="reference internal" href="#equation-simp-final">(3.9)</a> в точности совпадают с решением <a class="reference internal" href="#equation-newtoncotesgeneral">(3.4)</a> для <span class="math notranslate nohighlight">\(x_1 = 0, x_2 = 1/2, x_3 = 1\)</span>.
+Полученное приближение называется <strong>квадратурной формулой Симпсона</strong> (<em>Simpson’s rule</em>). Из вывода <a class="reference internal" href="#equation-simp-step1">(3.6)</a>–<a class="reference internal" href="#equation-simp-bigo">(3.8)</a> видно,
+что она имеет чётвертый порядок сходимости. Более точная оценка <span id="id7">[<a class="reference internal" href="../bibliography.html#id7">89</a>]</span></p>
 <div class="math notranslate nohighlight">
 \[|I - S_f(h)| \le \frac{h^4 (b-a)}{2880} \sup_{x\in [a,b]} f^{IV}(x) \sim O(h^4).\]</div>
-<p>Отсюда видно, что формула Симпсона приближает точно многочлен степени не выше третьей.</p>
-<p>Также приведём её явный вид</p>
+<p>Отсюда видно, что формула Симпсона приближает точно интеграл от многочленов степени не выше третьей.</p>
+<p id="index-6">Приведём также явный вид <strong>составной формулы Симпсона</strong></p>
 <div class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>Можно избавиться от дробных индексов, если ввести сетку <span class="math notranslate nohighlight">\(x_i = a_i + 0.5 h i\)</span>, <span class="math notranslate nohighlight">\(i=0,..,2n\)</span>.</p>
 </div>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
-\int_a^b f(x) \diff x \approx S_f(h) &amp;= \sum_{i=1}{n} \frac{h}{6}(f_{i-1} + 4 f_{i-1/2} + f_i) \\
+\int_a^b f(x) \diff x \approx S_f(h) &amp;= \sum\limits_{i=1}^{n} \frac{h}{6}(f_{i-1} + 4 f_{i-1/2} + f_i) \\
 &amp;= \frac{h}{6}\big[f_0 + f_n + 2 (f_1 + f_2 + ... + f_{n-1}) + 4 (f_{1/2} + f_{3/2} + ... + f_{n-1/2}) \big].
 \end{align}\end{split}\]</div>
-<p>Ниже дана реализация на основе <a class="reference internal" href="#function-trapezoid"><span class="std std-numref">Функции 3.3</span></a>.</p>
-<div class="proof proof-type-function" id="id9">
+<p>Ниже дана реализация на основе <a class="reference internal" href="#function-trapezoid"><span class="std std-numref">Функции 3.6</span></a>.</p>
+<div class="proof proof-type-function" id="id13">
 
     <div class="proof-title">
-        <span class="proof-type">Функция 3.5</span>
+        <span class="proof-type">Функция 3.8</span>
         
             <span class="proof-title-name">(simpson)</span>
         
     </div><div class="proof-content">
-<p><strong>Формула Симпсона.</strong></p>
+<p><strong>Формула Симпсона</strong></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">Вычисляет по формуле Симпсона интеграл ∫`f`dx на отрезке [`a`, `b`]</span>
 <span class="s">с равномерной сеткой из `n` (чётное) интервалов.</span>
 <span class="s">Возвращает значение интеграла.</span>
 <span class="s">&quot;&quot;&quot;</span>
 <span class="k">function</span> <span class="n">simpson</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">trapezoid</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n÷2</span><span class="p">)[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">trapezoid</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">-</span> <span class="n">trapezoid</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n÷2</span><span class="p">))</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div></div><div class="proof proof-type-demo" id="id10">
+</div></div><div class="proof proof-type-demo" id="id14">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация 3.6</span>
+        <span class="proof-type">Демонстрация 3.9</span>
         
     </div><div class="proof-content">
-</div></div><div class="demo"><p><strong>Сравнение формул.</strong></p>
+</div></div><div class="demo"><p><strong>Сравнение формул</strong></p>
 <p>Ниже представлены графики численного интеграла</p>
 <div class="math notranslate nohighlight">
 \[\int_0^3 x e^{\sin 2x}\]</div>
@@ -527,12 +665,12 @@
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">))</span>
 <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span>
 <span class="n">simp</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="n">simpson</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
-<span class="n">trap</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="n">trapezoid</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">midp</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="n">midpoint</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)[</span><span class="mi">1</span><span class="p">]</span>
-<span class="n">n</span> <span class="o">=</span> <span class="mi">6</span><span class="o">:</span><span class="mi">2</span><span class="o">:</span><span class="mi">50</span>
-<span class="n">plot</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">trap</span><span class="o">.</span><span class="p">(</span><span class="n">n</span><span class="p">);</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;формула трапеций&quot;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s">&quot;число отрезков&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s">&quot;интеграл&quot;</span><span class="p">)</span>
-<span class="n">plot!</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">simp</span><span class="o">.</span><span class="p">(</span><span class="n">n</span><span class="p">);</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;формула Симпсона&quot;</span><span class="p">)</span>
-<span class="n">plot!</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">midp</span><span class="o">.</span><span class="p">(</span><span class="n">n</span><span class="p">);</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;формула прямоугольников&quot;</span><span class="p">)</span>
+<span class="n">trap</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="n">trapezoid</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">midp</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="n">midpoint</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">4</span><span class="o">:</span><span class="mi">2</span><span class="o">:</span><span class="mi">26</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">trap</span><span class="o">.</span><span class="p">(</span><span class="n">n</span><span class="p">);</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:o</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;формула трапеций&quot;</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s">&quot;число отрезков&quot;</span><span class="p">,</span> <span class="n">ylabel</span><span class="o">=</span><span class="s">&quot;интеграл&quot;</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">simp</span><span class="o">.</span><span class="p">(</span><span class="n">n</span><span class="p">);</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:o</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;формула Симпсона&quot;</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">midp</span><span class="o">.</span><span class="p">(</span><span class="n">n</span><span class="p">);</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:o</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;формула прямоугольников&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -540,6 +678,31 @@
 <img alt="../_images/newton_cotes_6_0.svg" src="../_images/newton_cotes_6_0.svg" /></div>
 </div>
 </div></div>
+<div class="section" id="id8">
+<h2><span class="section-number">3.1.4. </span>Упражения<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<ol>
+<li><p>Ниже приведена заготовка функции, находящей узлы и коэффициенты формулы Ньютона-Котса, точной для многочлена степени <span class="math notranslate nohighlight">\(p\)</span>.
+Заполните пропуски <code class="docutils literal notranslate"><span class="pre">⟨...⟩</span></code></p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">Находит узлы и веса формулы Ньютона-Котса с числом узлов `nnodes` на отрезке `[0; 1]`.</span>
+<span class="s">Если аргумент `closed=true` (по умолчанию), то расчет делается для </span>
+<span class="s">закрытых квадратурных формул, иначе - для открытых</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="k">function</span> <span class="n">newton_cotes_nodes_weights</span><span class="p">(</span><span class="n">nnodes</span><span class="o">::</span><span class="kt">Integer</span><span class="p">;</span> <span class="n">closed</span><span class="o">::</span><span class="kt">Bool</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">closed</span>
+<span class="hll">        <span class="n">nodes</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="n">⟨</span><span class="o">...</span><span class="n">⟩</span><span class="p">)</span>
+</span>    <span class="k">else</span>
+<span class="hll">        <span class="n">nodes</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="n">⟨</span><span class="o">...</span><span class="n">⟩</span><span class="p">)</span>
+</span>    <span class="k">end</span>
+<span class="hll">    <span class="n">rhp</span> <span class="o">=</span> <span class="n">⟨</span><span class="o">...</span><span class="n">⟩</span>
+</span>    <span class="n">w</span> <span class="o">=</span> <span class="p">(</span><span class="n">vandermonde</span><span class="p">(</span><span class="n">nodes</span><span class="p">))</span><span class="o">&#39;</span> <span class="o">\</span> <span class="n">rhp</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="n">nodes</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">w</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
