@@ -46,7 +46,7 @@ P_M(x) = \Omega_{N}(x) q_{M-N}(x) + r_{N-1}(x),
 :label: gauss_error
 
 \begin{split}
-\sum\limits_{i} w_i P_M(x_i) &- \int\limits_{-1}^{1} P_M(x) \diff(x) = \\
+\sum\limits_{i} w_i P_M(x_i) &- \int\limits_{-1}^{1} P_M(x) \diff x = \\
 & = \left(\sum\limits_{i} w_i \Omega_{N}(x_i) q_{M-N}(x_i) - \int\limits_{-1}^{1} \Omega_{N}(x) q_{M-N}(x) \diff x \right) + 
 \left(\sum\limits_{i} w_i r_{N-1}(x_i) - \int\limits_{-1}^{1} r_{N-1}(x) \diff x \right)
 \end{split}
