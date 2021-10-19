@@ -271,3 +271,20 @@ function fixedpoint(g, x₁; xtol=eps(), maxiter=25)
     end
     error("Число итераций превышено.")
 end
+
+"""
+Решает уравнение вида `f`(x) = 0 методом Ньютона. Требует производную функцию `df` и
+начальное приближение корня `x₁`. Выполняет не более `maxiter` итераций.
+"""
+function newton(f, df, x₁; maxiter=25, ftol=eps(), xtol=eps())
+    x = float(x₁)
+    for i in 1:maxiter
+        fx = f(x)
+        δx = - fx / df(x)
+        x += δx
+        if abs(fx) < ftol || abs(δx) < xtol
+            return x
+        end
+    end
+    error("Число итераций превышено.")
+end
