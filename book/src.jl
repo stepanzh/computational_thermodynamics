@@ -253,3 +253,21 @@ function intadapt(f, a, b, tol, xtol=eps(), fa=f(a), fb=f(b), m=(b-a)/2, fm=f(m)
     end
     return (Q, nodes)
 end
+
+#####
+##### Нелинейные уравнения
+#####
+
+"""
+Ищет неподвижную точку функции `g`, начиная с `x₁`. Выполняет итерации до тех пор,
+пока подшаг к ответу ≥ `xtol`, но не более `maxiter` раз.
+"""
+function fixedpoint(g, x₁; xtol=eps(), maxiter=25)
+    x = float(x₁)
+    for i in 1:maxiter
+        xprev = x
+        x = g(xprev)
+        abs(x - xprev) < xtol && return x
+    end
+    error("Число итераций превышено.")
+end
