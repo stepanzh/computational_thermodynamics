@@ -29,7 +29,7 @@ parts:
   - file: nlroot/index
     sections:
     - file: nlroot/simpleiter
-    # - file: nlroot/newton_secant
+    - file: nlroot/newton_secant
     # - file: nlroot/bisection_regula_falsi
     # - file: nlroot/ridders
     # - file: nlroot/itp
