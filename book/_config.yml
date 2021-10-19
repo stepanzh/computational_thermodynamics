@@ -71,7 +71,7 @@ sphinx:
         HTML-CSS:
           fonts: ["Latin-Modern"]
     proof_theorem_types:  # see https://sphinxcontrib-proof.readthedocs.io/en/latest/usage/#configuration-options
-      "algorithm": "Algorithm"
+      "algorithm": "Алгоритм"
       "conjecture": "Conjecture"
       "corollary": "Corollary"
       "definition": "Определение"
