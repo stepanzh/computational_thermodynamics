@@ -7,7 +7,7 @@ author: Степан Захаров и Василий Писарев
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: auto
+  execute_notebooks: cache
 
 # # Define the name of the latex output file for PDF builds
 # latex:
@@ -15,8 +15,8 @@ execute:
 #     targetname: book.tex
 
 # Add a bibtex file so that we can create citations
-# bibtex_bibfiles:
-  # - references.bib
+bibtex_bibfiles:
+  - praktikum.bib
 
 # Information about where the book exists on the web
 repository:
@@ -55,6 +55,7 @@ sphinx:
   extra_extensions:
     - sphinxcontrib.mermaid
     - sphinx_inline_tabs
+    - sphinxcontrib.proof
   local_extensions          :   # A list of local extensions to load by sphinx specified by "name: path" items
   config                    :   # key-value pairs to directly over-ride the Sphinx configuration
     mathjax_config:
@@ -69,3 +70,21 @@ sphinx:
             "diag"      : "\\text{diag}"
         HTML-CSS:
           fonts: ["Latin-Modern"]
+    proof_theorem_types:  # see https://sphinxcontrib-proof.readthedocs.io/en/latest/usage/#configuration-options
+      "algorithm": "Algorithm"
+      "conjecture": "Conjecture"
+      "corollary": "Corollary"
+      "definition": "Определение"
+      "demo": "Демонстрация"
+      "function": "Функция"
+      "example": "Пример"
+      "lemma": "Lemma"
+      "observation": "Наблюдение"
+      "proof": "Доказательство"
+      "property": "Property"
+      "theorem": "Теорема"
+      "proposition": "Утверждение"
+    proof_html_nonumbers: ["proof", "observation"]
+    # see https://sphinxcontrib-bibtex.readthedocs.io/en/latest/usage.html#configuration
+    bibtex_default_style: "alpha"
+    bibtex_reference_style: "label"
