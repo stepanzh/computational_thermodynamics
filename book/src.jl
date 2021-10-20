@@ -337,3 +337,35 @@ function bisection(f, x₁, x₂; xtol=eps(), ftol=eps())
     end
     return (x₂ + x₁)/2
 end
+
+"""
+Вычисляет корень уравнения `f`(x) = 0 методом ложной позиции.
+Начальный отрезок задаётся как [`x₁`, `x₂`]. Выполняет не более `maxiter`
+итераций. Если при этом интервал не уменьшился до `xtol` или абсолютное значение
+функции на нём до `ftol`, то выдаёт ошибку.
+"""
+function regulafalsi(f, x₁, x₂; maxiter=25, xtol=eps(), ftol=eps())
+    if x₁ > x₂; x₁, x₂ = x₂, x₁; end
+    y₁, y₂ = f.((x₁, x₂))
+    sign(y₁) == sign(y₂) && error("Функция должна иметь разные знаки в концах отрезка")
+    y₁ == 0 && return x₁
+    y₂ == 0 && return x₂
+
+    for i in 1:maxiter
+        y₂ = f(x₂)
+        xnew = (y₂*x₁ - y₁*x₂) / (y₂ - y₁)
+        ynew = f(xnew)
+
+        if sign(y₂) == sign(ynew)
+            x₂, y₂ = xnew, ynew
+        elseif sign(y₁) == sign(ynew)
+            x₁, y₁ = xnew, ynew
+        else
+            return xnew
+        end
+        if abs(ynew) < ftol || abs(x₂ - x₁) < xtol
+            return xnew
+        end
+    end
+    error("Число итераций превышено.")
+end
