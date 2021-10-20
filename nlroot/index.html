@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2. Интерполяция &#8212; Практикум по вычислительной теплофизике</title>
+    <title>4. Нелинейные уравнения &#8212; Практикум по вычислительной теплофизике</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -47,6 +47,8 @@
     <script src="../_static/proof.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -58,8 +60,8 @@
     <script >mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2.1. Полиномиальная интерполяция" href="polynomial.html" />
-    <link rel="prev" title="1.4. Задания" href="../intro/ex.html" />
+    <link rel="next" title="4.1. Метод простой итерации" href="simpleiter.html" />
+    <link rel="prev" title="3.5. Задания" href="../integration/ex.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -132,33 +134,33 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../interpolation/index.html">
    2. Интерполяция
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="polynomial.html">
+    <a class="reference internal" href="../interpolation/polynomial.html">
      2.1. Полиномиальная интерполяция
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="pwlinear.html">
+    <a class="reference internal" href="../interpolation/pwlinear.html">
      2.2. Кусочно-линейная интерполяция
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="cubic_spline.html">
+    <a class="reference internal" href="../interpolation/cubic_spline.html">
      2.3. Кубические сплайны
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="ex.html">
+    <a class="reference internal" href="../interpolation/ex.html">
      2.4. Задания
     </a>
    </li>
@@ -201,24 +203,29 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../nlroot/index.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    4. Нелинейные уравнения
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
   <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/simpleiter.html">
+    <a class="reference internal" href="simpleiter.html">
      4.1. Метод простой итерации
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/newton_secant.html">
-     4.2. Метод Ньютона и метод секущих
+    <a class="reference internal" href="newton_secant.html">
+     4.2. Методы Ньютона секущих
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bisection_regula_falsi.html">
+     4.3. Методы бисекции и regula falsi
     </a>
    </li>
   </ul>
@@ -281,7 +288,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/interpolation/index.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/nlroot/index.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -301,10 +308,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Finterpolation/index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fnlroot/index.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/interpolation/index.md"><button
+        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/nlroot/index.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -333,7 +340,46 @@
               <div>
                 
   <div class="section" id="id1">
-<h1><span class="section-number">2. </span>Интерполяция<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4. </span>Нелинейные уравнения<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>В этом разделе изучается задача поиска корня нелинейного уравнения</p>
+<div class="math notranslate nohighlight">
+\[f(x) = 0.\]</div>
+<p>Вычислительный аналог этой задачи мы определим следующим образом.</p>
+<div class="proof proof-type-definition" id="id5">
+
+    <div class="proof-title">
+        <span class="proof-type">Определение 4.1</span>
+        
+            <span class="proof-title-name">(Задача поиска корня нелинейного уравнения)</span>
+        
+    </div><div class="proof-content">
+<p>Пусть дана непрерывная функция <span class="math notranslate nohighlight">\(f\)</span>, и параметры <span class="math notranslate nohighlight">\(\text{xtol}\)</span> и <span class="math notranslate nohighlight">\(\text{ftol}\)</span>. Пусть корень уравнения <span class="math notranslate nohighlight">\(f(x) = 0\)</span> единственен и равен <span class="math notranslate nohighlight">\(x = x^*\)</span>.</p>
+<p>Необходимо найти <span class="math notranslate nohighlight">\(x = r\)</span> такой, что выполнится либо <em>гарантия локализации корня</em></p>
+<div class="math notranslate nohighlight">
+\[
+r: |x^* - r| &lt; \text{xtol},
+\]</div>
+<p>либо <em>гарантия малости функции</em></p>
+<div class="math notranslate nohighlight">
+\[
+r: |f(r)| &lt; \text{ftol}.
+\]</div>
+</div></div><p>Первое условие подходит для методов, пользующихся тем, что непрерывная функция, имеющая разные знаки на концах отрезка <span class="math notranslate nohighlight">\(f(a) f(b) &lt; 0\)</span> содержит корень <span class="math notranslate nohighlight">\(x^* \in [a, b]\)</span>. Второе условие подходит для остальных методов.</p>
+<p>Для задачи поиска корня можно показать.</p>
+<div class="proof proof-type-proposition" id="id6">
+
+    <div class="proof-title">
+        <span class="proof-type">Утверждение 4.2</span>
+        
+            <span class="proof-title-name">(Число обусловленности задачи поиска корня)</span>
+        
+    </div><div class="proof-content">
+<p><span id="id2">[<a class="reference internal" href="../bibliography.html#id4">ADJB17</a>]</span> Для дифференцируемой в корне <span class="math notranslate nohighlight">\(x^*\)</span> функции <span class="math notranslate nohighlight">\(f\)</span> число обусловленности задачи поиска корня <span class="math notranslate nohighlight">\(f(x) = 0\)</span> имеет вид</p>
+<div class="math notranslate nohighlight">
+\[
+\kappa_r = |f'(r)|^{-1}.
+\]</div>
+</div></div><p>Также добавим, что в случае нескольких корней можно сначала найти первый корень <span class="math notranslate nohighlight">\(x^*_1\)</span> функции <span class="math notranslate nohighlight">\(f\)</span>, а затем продолжить поиск других корней, но уже для функции <span class="math notranslate nohighlight">\(f(x)/(x-x^*_1)\)</span> <span id="id3">[<a class="reference internal" href="../bibliography.html#id7">89</a>]</span>. Кроме того, существуют процедуры по локализации корней функции, после чего задача сводится к поиску корня на каждом из интервалов по отдельности <span id="id4">[<a class="reference internal" href="../bibliography.html#id8">PTVF07</a>]</span>.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -351,7 +397,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./interpolation"
+            path: "./nlroot"
         },
         predefinedOutput: true
     }
@@ -368,19 +414,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../intro/ex.html" title="previous page">
+        <a class="left-prev" href="../integration/ex.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">1.4. </span>Задания</p>
+                <p class="prevnext-title"><span class="section-number">3.5. </span>Задания</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="polynomial.html" title="next page">
+        <a class="right-next" href="simpleiter.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">2.1. </span>Полиномиальная интерполяция</p>
+                <p class="prevnext-title"><span class="section-number">4.1. </span>Метод простой итерации</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
