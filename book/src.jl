@@ -288,3 +288,24 @@ function newton(f, df, x₁; maxiter=25, ftol=eps(), xtol=eps())
     end
     error("Число итераций превышено.")
 end
+
+"""
+Ищет корень уравнения `f`(x) = 0 методом секущих, начиная с приближений `x₁`, `x₂`.
+Выполняет не более `maxiter` итераций, пока не будет выполнено либо
+|`x₁` - `x₂`| < `xtol`, либо |`f(x₂)`| < `ftol`.
+"""
+function secant(f, x₁, x₂; maxiter=25, ftol=eps(), xtol=eps())
+    y₁ = f(x₁)
+    for i in 1:maxiter
+        y₂ = f(x₂)
+        xnew = (y₂ * x₁ - y₁*x₂) / (y₂ - y₁)
+        x₁, y₁ = x₂, y₂
+        x₂ = xnew
+
+        if abs(y₂) < ftol || abs(x₂ - x₁) < xtol
+            return x₂
+        end
+    end
+    error("Число итераций превышено.")
+end
+
