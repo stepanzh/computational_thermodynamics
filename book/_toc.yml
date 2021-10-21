@@ -31,7 +31,7 @@ parts:
     - file: nlroot/simpleiter
     - file: nlroot/newton_secant
     - file: nlroot/bisection_regula_falsi
-    # - file: nlroot/ridders
+    - file: nlroot/ridders
     # - file: nlroot/itp
     # - file: nlroot/ex
 - caption: Приложения

@@ -369,3 +369,37 @@ function regulafalsi(f, x₁, x₂; maxiter=25, xtol=eps(), ftol=eps())
     end
     error("Число итераций превышено.")
 end
+
+"""
+    ridders(f, x₁, x₂[; maxiter=25, xtol=eps(), ftol=eps()])
+
+Решает уравнение `f`(x) = 0 методом Риддерса на отрезке [`x₁`, `x₂`].
+Если отрезок не уменьшится до `xtol`, или функция не уменьшится до `ftol`
+за ≤ `maxiter` итераций, выдаёт ошибку.
+"""
+function ridders(f, x₁, x₂; maxiter=25, xtol=eps(), ftol=eps())
+    if x₁ > x₂; x₁, x₂ = x₂, x₁; end
+    y₁, y₂ = f.((x₁, x₂))
+    y₁ * y₂ > 0 && error("Функция должна иметь разные знаки в концах отрезка")
+    y₁ == 0 && return x₁
+    y₂ == 0 && return x₂
+
+    for i in 1:maxiter
+        xmid = (x₁ + x₂) / 2
+        ymid = f(xmid)
+        xnew = xmid + (xmid - x₁) * sign(y₁) * ymid / sqrt(ymid^2 - y₁*y₂)
+        ynew = f(xnew)
+
+        ynew == 0 && return xnew
+
+        if sign(ynew) == sign(y₂)
+            x₂, y₂ = xnew, ynew
+        elseif sign(ynew) == sign(y₁)
+            x₁, y₁ = xnew, ynew
+        end
+        if abs(ynew) < ftol || abs(x₁ - x₂) < xtol
+            return xnew
+        end
+    end
+    error("Число итераций превышено.")
+end
