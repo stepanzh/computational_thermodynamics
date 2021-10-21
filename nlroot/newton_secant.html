@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>4.2. Методы Ньютона секущих &#8212; Практикум по вычислительной теплофизике</title>
+    <title>4.2. Метод Ньютона и секущих &#8212; Практикум по вычислительной теплофизике</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -48,7 +48,7 @@
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -220,12 +220,17 @@
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     4.2. Методы Ньютона секущих
+     4.2. Метод Ньютона и секущих
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="bisection_regula_falsi.html">
      4.3. Методы бисекции и regula falsi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ridders.html">
+     4.4. Метод Риддерса
     </a>
    </li>
   </ul>
@@ -378,7 +383,7 @@
               <div>
                 
   <div class="section" id="id1">
-<h1><span class="section-number">4.2. </span>Методы Ньютона секущих<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<h1><span class="section-number">4.2. </span>Метод Ньютона и секущих<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
 <h2><span class="section-number">4.2.1. </span>Метод Ньютона<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
 <p>В методе Ньютона (<em>Newton’s method</em>) функция приближается прямой. Т.е. через текущее приближение корня <span class="math notranslate nohighlight">\(x_k\)</span> проводится касательная <span class="math notranslate nohighlight">\(q(x)\)</span> и корень касательной <span class="math notranslate nohighlight">\(q(x_{k+1}) = 0\)</span> берётся за новое приближение.</p>

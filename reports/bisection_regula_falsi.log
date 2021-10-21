@@ -17,18 +17,35 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-@show bisection(x -> -x^2 + x, 0.5, 1.6; xtol=1e-6)
-@show bisection(x -> -x^2 + x, 0.5, 1.6; xtol=1e-10)
+f = (x) -> -x^2 + x + 10
+path = [
+    -4 2;
+    -4 -0.6666666666666666;
+    -4 -2.235294117647059;
+]
+root = regulafalsi(f, -4, 2; ftol=1e-6)
+plot(f;
+    xlim=(-4.5, 3),
+    label=L"-x^2 + x + 10",
+    leg=:bottomright,
+    lw=2,
+    xlabel=L"x",
+    ylabel=L"f(x)",
+)
+for (i, p) in eachrow(path) |> enumerate
+    plot!(p, f.(p); label="секущая $i", marker=:o)
+end
+scatter!([root], [f(root)]; label="найденный корень", color=:red, marker=:square)
 ------------------
 
-UndefVarError: bisection not defined
+UndefVarError: regulafalsi not defined
 
 Stacktrace:
  [1] top-level scope
-   @ show.jl:955
+   @ In[3]:7
  [2] eval
    @ ./boot.jl:360 [inlined]
  [3] include_string(mapexpr::typeof(REPL.softscope), mod::Module, code::String, filename::String)
    @ Base ./loading.jl:1116
-LoadError: UndefVarError: bisection not defined
+LoadError: UndefVarError: regulafalsi not defined
 

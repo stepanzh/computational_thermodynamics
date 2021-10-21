@@ -48,7 +48,7 @@
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -60,8 +60,8 @@
     <script >mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Указатель" href="../genindex.html" />
-    <link rel="prev" title="4.2. Методы Ньютона секущих" href="newton_secant.html" />
+    <link rel="next" title="4.4. Метод Риддерса" href="ridders.html" />
+    <link rel="prev" title="4.2. Метод Ньютона и секущих" href="newton_secant.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -220,12 +220,17 @@
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="newton_secant.html">
-     4.2. Методы Ньютона секущих
+     4.2. Метод Ньютона и секущих
     </a>
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      4.3. Методы бисекции и regula falsi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ridders.html">
+     4.4. Метод Риддерса
     </a>
    </li>
   </ul>
@@ -361,6 +366,11 @@
    4.3.1. Метод бисекции
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   4.3.2. Regula falsi
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -388,7 +398,7 @@
 <p>то получим необходимое число итераций</p>
 <div class="math notranslate nohighlight">
 \[k_\max = \Big\lceil \log_2\Big(\frac{\Delta_0}{\text{xtol}}\Big) \Big\rceil.\]</div>
-<div class="proof proof-type-function" id="id2">
+<div class="proof proof-type-function" id="id4">
 
     <div class="proof-title">
         <span class="proof-type">Функция 4.15</span>
@@ -443,6 +453,100 @@ bisection(f, 0.5, 1.6; xtol = 1.0e-10) = 1.0000000000145521
 </div>
 </div>
 </div>
+<div class="section" id="id2">
+<h2><span class="section-number">4.3.2. </span>Regula falsi<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>В методе ложной позиции (<em>regula falsi</em>, <em>false position</em>) по двум приближениям корня <span class="math notranslate nohighlight">\(x_1\)</span> и <span class="math notranslate nohighlight">\(x_2\)</span>, на которых функция имеет разные знаки <span class="math notranslate nohighlight">\(f(x_1)f(x_2) &lt; 0\)</span>, проводится секущая. Затем вычисляется точка пересечения секущей с осью абсцисс <span class="math notranslate nohighlight">\(x_3\)</span>. После чего, подобно методу бисекции, по <span class="math notranslate nohighlight">\(f(x_3)\)</span> выбирается новый интервал, локализующий корень.</p>
+<p>Для многих функций и начальных интервалов, метод regula falsi имеет <em>сверхлинейную сходимость</em> <span id="id3">[<a class="reference internal" href="../bibliography.html#id8">PTVF07</a>]</span>.</p>
+<p>Метод очень напоминает метод секущих. Разница лишь в том, что метод секущих всегда строит новое приближение корня по двум предыдущим, тогда как regula falsi, поддерживая разные знаки функции на концах отрезка, заменяет один из концов новым приближением.</p>
+<div class="proof proof-type-algorithm" id="id5">
+
+    <div class="proof-title">
+        <span class="proof-type">Алгоритм 4.16</span>
+        
+            <span class="proof-title-name">(Метод regula falsi)</span>
+        
+    </div><div class="proof-content">
+<p>Пусть задан отрезок <span class="math notranslate nohighlight">\([x_l, x_r]\)</span>, такой что, <span class="math notranslate nohighlight">\(f(x_l)f(x_r)&lt;0\)</span>.</p>
+<ol>
+<li><p>Вычислим <span class="math notranslate nohighlight">\(x_f\)</span></p>
+<div class="math notranslate nohighlight">
+\[
+    x_f = \frac{f(x_r)x_l - f(x_l)x_r}{f(x_r) - f(x_l)}.
+    \]</div>
+</li>
+<li><p>Из двух <span class="math notranslate nohighlight">\([x_l, x_f]\)</span>, <span class="math notranslate nohighlight">\([x_f, x_r]\)</span> в качестве нового выберем тот, на котором функция имеет разные знаки.</p></li>
+</ol>
+</div></div><div class="proof proof-type-function" id="id6">
+
+    <div class="proof-title">
+        <span class="proof-type">Функция 4.17</span>
+        
+            <span class="proof-title-name">(regulafalsi)</span>
+        
+    </div><div class="proof-content">
+<p><strong>Метод ложной позиции (regula falsi)</strong></p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">Вычисляет корень уравнения `f`(x) = 0 методом ложной позиции.</span>
+<span class="s">Начальный отрезок задаётся как [`x₁`, `x₂`]. Выполняет не более `maxiter`</span>
+<span class="s">итераций. Если при этом интервал не уменьшился до `xtol` или абсолютное значение </span>
+<span class="s">функции на нём до `ftol`, то выдаёт ошибку.</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="k">function</span> <span class="n">regulafalsi</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x₁</span><span class="p">,</span> <span class="n">x₂</span><span class="p">;</span> <span class="n">maxiter</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="n">eps</span><span class="p">(),</span> <span class="n">ftol</span><span class="o">=</span><span class="n">eps</span><span class="p">())</span>
+    <span class="k">if</span> <span class="n">x₁</span> <span class="o">&gt;</span> <span class="n">x₂</span><span class="p">;</span> <span class="n">x₁</span><span class="p">,</span> <span class="n">x₂</span> <span class="o">=</span> <span class="n">x₂</span><span class="p">,</span> <span class="n">x₁</span><span class="p">;</span> <span class="k">end</span>
+    <span class="n">y₁</span><span class="p">,</span> <span class="n">y₂</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="p">((</span><span class="n">x₁</span><span class="p">,</span> <span class="n">x₂</span><span class="p">))</span>
+    <span class="n">sign</span><span class="p">(</span><span class="n">y₁</span><span class="p">)</span> <span class="o">==</span> <span class="n">sign</span><span class="p">(</span><span class="n">y₂</span><span class="p">)</span> <span class="o">&amp;&amp;</span> <span class="n">error</span><span class="p">(</span><span class="s">&quot;Функция должна иметь разные знаки в концах отрезка&quot;</span><span class="p">)</span>
+    <span class="n">y₁</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="k">return</span> <span class="n">x₁</span>
+    <span class="n">y₂</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">&amp;&amp;</span> <span class="k">return</span> <span class="n">x₂</span>
+    
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">maxiter</span>
+        <span class="n">y₂</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x₂</span><span class="p">)</span>
+        <span class="n">xnew</span> <span class="o">=</span> <span class="p">(</span><span class="n">y₂</span><span class="o">*</span><span class="n">x₁</span> <span class="o">-</span> <span class="n">y₁</span><span class="o">*</span><span class="n">x₂</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">y₂</span> <span class="o">-</span> <span class="n">y₁</span><span class="p">)</span>
+        <span class="n">ynew</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">xnew</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">sign</span><span class="p">(</span><span class="n">y₂</span><span class="p">)</span> <span class="o">==</span> <span class="n">sign</span><span class="p">(</span><span class="n">ynew</span><span class="p">)</span>
+            <span class="n">x₂</span><span class="p">,</span> <span class="n">y₂</span> <span class="o">=</span> <span class="n">xnew</span><span class="p">,</span> <span class="n">ynew</span>
+        <span class="k">elseif</span> <span class="n">sign</span><span class="p">(</span><span class="n">y₁</span><span class="p">)</span> <span class="o">==</span> <span class="n">sign</span><span class="p">(</span><span class="n">ynew</span><span class="p">)</span>
+            <span class="n">x₁</span><span class="p">,</span> <span class="n">y₁</span> <span class="o">=</span> <span class="n">xnew</span><span class="p">,</span> <span class="n">ynew</span>
+        <span class="k">else</span>
+            <span class="k">return</span> <span class="n">xnew</span>
+        <span class="k">end</span>
+        <span class="k">if</span> <span class="n">abs</span><span class="p">(</span><span class="n">ynew</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">ftol</span> <span class="o">||</span> <span class="n">abs</span><span class="p">(</span><span class="n">x₂</span> <span class="o">-</span> <span class="n">x₁</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">xtol</span>
+            <span class="k">return</span> <span class="n">xnew</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="n">error</span><span class="p">(</span><span class="s">&quot;Число итераций превышено.&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div></div><p>Ниже показаны несколько первых секущих, порождающихся методом regula falsi для функции <span class="math notranslate nohighlight">\(-x^2 + x + 10\)</span> с начальным отрезком <span class="math notranslate nohighlight">\([-4, 2]\)</span>. Заметьте, как одна из точек отрезка для данной функции остаётся фиксированной.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">f</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">10</span>
+<span class="n">path</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="o">-</span><span class="mi">4</span> <span class="mi">2</span><span class="p">;</span>
+    <span class="o">-</span><span class="mi">4</span> <span class="o">-</span><span class="mf">0.6666666666666666</span><span class="p">;</span>
+    <span class="o">-</span><span class="mi">4</span> <span class="o">-</span><span class="mf">2.235294117647059</span><span class="p">;</span>
+<span class="p">]</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">regulafalsi</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">;</span> <span class="n">ftol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">f</span><span class="p">;</span>
+    <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">4.5</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span>
+    <span class="n">label</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;-x^2 + x + 10&quot;</span><span class="p">,</span>
+    <span class="n">leg</span><span class="o">=</span><span class="ss">:bottomright</span><span class="p">,</span>
+    <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;x&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;f(x)&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">p</span><span class="p">)</span> <span class="k">in</span> <span class="n">eachrow</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="o">|&gt;</span> <span class="n">enumerate</span>
+    <span class="n">plot!</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="p">(</span><span class="n">p</span><span class="p">);</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;секущая </span><span class="si">$i</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:o</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="n">scatter!</span><span class="p">([</span><span class="n">root</span><span class="p">],</span> <span class="p">[</span><span class="n">f</span><span class="p">(</span><span class="n">root</span><span class="p">)];</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;найденный корень&quot;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="ss">:red</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:square</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/bisection_regula_falsi_4_0.svg" src="../_images/bisection_regula_falsi_4_0.svg" /></div>
+</div>
+</div></div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -479,15 +583,15 @@ bisection(f, 0.5, 1.6; xtol = 1.0e-10) = 1.0000000000145521
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">4.2. </span>Методы Ньютона секущих</p>
+                <p class="prevnext-title"><span class="section-number">4.2. </span>Метод Ньютона и секущих</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="../genindex.html" title="next page">
+        <a class="right-next" href="ridders.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Указатель</p>
+                <p class="prevnext-title"><span class="section-number">4.4. </span>Метод Риддерса</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
