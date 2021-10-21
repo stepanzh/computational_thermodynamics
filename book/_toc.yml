@@ -33,7 +33,7 @@ parts:
     - file: nlroot/bisection_regula_falsi
     - file: nlroot/ridders
     # - file: nlroot/itp
-    # - file: nlroot/ex
+    - file: nlroot/ex
 - caption: Приложения
   chapters:
   - file: genindex
