@@ -301,7 +301,10 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="../_sources/nlroot/ex.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/nlroot/ex.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -341,6 +344,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/stepanzh/computational_thermodynamics/main?urlpath=tree/book/nlroot/ex.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -354,6 +374,11 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
    4.6.1. Нули полинома Лежандра
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   4.6.2. Бинодаль уравнения состояния ван дер Ваальса
   </a>
  </li>
 </ul>
@@ -379,6 +404,65 @@
 <div class="math notranslate nohighlight">
 \[L_7(x) = \frac{1}{16}(429 x^7 - 693 x^5 + 315 x^3 - 35 x).\]</div>
 </div>
+<div class="section" id="id3">
+<h2><span class="section-number">4.6.2. </span>Бинодаль уравнения состояния ван дер Ваальса<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>В этом задании вам предстоит найти область двухфазного равновесия для уравнения состояния ван дер Ваальса.</p>
+</div>
+<p>В приведённых величинах <span class="math notranslate nohighlight">\(P_r = P / P_c\)</span>, <span class="math notranslate nohighlight">\(V_r = V / V_c\)</span>, <span class="math notranslate nohighlight">\(T_r = T / T_c\)</span> уравнение ван дер Ваальса имеет вид</p>
+<div class="math notranslate nohighlight">
+\[P_r(V_r, T_r) = \frac{8 T_r}{3 V_r - 1} - \frac{3}{V_r^2}.\]</div>
+<p>Несложно построить набор изотерм.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">pressure</span><span class="p">(</span><span class="n">Vr</span><span class="o">::</span><span class="kt">Real</span><span class="p">,</span> <span class="n">Tr</span><span class="o">::</span><span class="kt">Real</span><span class="p">)</span> <span class="o">=</span> <span class="mi">8</span><span class="n">Tr</span> <span class="o">/</span> <span class="p">(</span><span class="mi">3</span><span class="n">Vr</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">/</span> <span class="n">Vr</span><span class="o">^</span><span class="mi">2</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="mf">0.34</span><span class="p">,</span> <span class="mi">5</span><span class="p">;</span> <span class="n">length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">plt</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(;</span>
+    <span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;V/V_c&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;P/P_c&quot;</span><span class="p">,</span>
+    <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">for</span> <span class="n">Tr</span> <span class="k">in</span> <span class="p">(</span><span class="mf">0.85</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">,</span> <span class="mf">0.95</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">)</span>
+    <span class="n">plot!</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">pressure</span><span class="o">.</span><span class="p">(</span><span class="n">V</span><span class="p">,</span> <span class="n">Tr</span><span class="p">);</span> <span class="n">label</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;T_r = %</span><span class="si">$</span><span class="p">(</span><span class="n">Tr</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="n">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/ex_2_0.svg" src="../_images/ex_2_0.svg" /></div>
+</div>
+<p>Рассмотрим подробнее изотерму для докритической температуры <span class="math notranslate nohighlight">\(T^* \in (0, T_c)\)</span>.</p>
+<div class="figure align-default" id="id5">
+<a class="reference internal image-reference" href="../_images/vdw_isotherm.png"><img alt="../_images/vdw_isotherm.png" src="../_images/vdw_isotherm.png" style="height: 480px;" /></a>
+<p class="caption"><span class="caption-number">Fig. 4.2 </span><span class="caption-text">Изотерма ван дер Ваальса при температуре ниже критической.</span><a class="headerlink" href="#id5" title="Permalink to this image">¶</a></p>
+</div>
+<p>Красный участок на изотерме соответствует запрещённым термодинамическим состояниям, поскольку <span class="math notranslate nohighlight">\(\partial P_r / \partial V_r &gt; 0\)</span>. Жёлтый участок изобары <span class="math notranslate nohighlight">\(P_X\)</span> соответствует давлению, при котором при данной температуре <span class="math notranslate nohighlight">\(T^*\)</span> жидкая и газовая фазы сосуществуют. При объёмах <span class="math notranslate nohighlight">\(V_r &lt; V_L\)</span> всё вещество находится в жидком состоянии, а при объёмах <span class="math notranslate nohighlight">\(V_r &gt; V_G\)</span> в газовом. Синий и зелёный участки изотермы соответствуют метастабильным состояниям.</p>
+<p>Можно вычилисть ряд величин <span class="math notranslate nohighlight">\(V_L\)</span> и <span class="math notranslate nohighlight">\(V_G\)</span> для диапазона температур, тогда получим границу двухфазной области.</p>
+<div class="figure align-default" id="vdw-task-answer">
+<a class="reference internal image-reference" href="../_images/vdw_task_answer.svg"><img alt="../_images/vdw_task_answer.svg" height="480px" src="../_images/vdw_task_answer.svg" /></a>
+<p class="caption"><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Уравнение ван дер Ваальса. Сплошными линиями показаны изотермы для ряда температур. Красная линия с точками соответствует бинодали: это граница значений давлений и объёмов <span class="math notranslate nohighlight">\(V_L\)</span>, <span class="math notranslate nohighlight">\(V_G\)</span>, при которых возможно двухфазное состояние. Красная область под бинодалью – двухфазная область.</span><a class="headerlink" href="#vdw-task-answer" title="Permalink to this image">¶</a></p>
+</div>
+<p>Чтобы для данной температуры <span class="math notranslate nohighlight">\(T^*\)</span> определить равновесные объёмы <span class="math notranslate nohighlight">\(V_G\)</span>, <span class="math notranslate nohighlight">\(V_L\)</span> и давление <span class="math notranslate nohighlight">\(P_X\)</span>, требуется находить минимум потенциала Гельмгольца. Это требует решения нелинейной системы, но можно поступить иначе.</p>
+<p>Лекнером <span id="id4">[<a class="reference internal" href="../bibliography.html#id11">Lek82</a>]</span> предложена параметризация величин для двухфазного равновесия. В качестве параметра используется <span class="math notranslate nohighlight">\(y = \Delta s / 2\)</span>, где <span class="math notranslate nohighlight">\(\Delta s\)</span> представляет собой скачок энтропии на частицу между газовой и жидкой фазами в единицах <span class="math notranslate nohighlight">\(k_B\)</span>. Для параметризации используются функции <span class="math notranslate nohighlight">\(f(y)\)</span> и <span class="math notranslate nohighlight">\(g(y)\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+f(y) &amp;= \frac{y \cosh{y} - \sinh{y}}{\sinh{y}\cosh{y}-y},\\
+g(y) &amp;= 1 + 2 f(y) \cosh{y} + f^2(y),
+\end{align}\end{split}\]</div>
+<p>через которые выражаются термодинамические величины.</p>
+<p>Так, приведённые температура <span class="math notranslate nohighlight">\(T_X\)</span> и давление <span class="math notranslate nohighlight">\(P_X\)</span> задают <span class="math notranslate nohighlight">\((P, T)\)</span>-границу двухфазного равновесия. Функции параметризованы следующим образом</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+T_X(y) &amp;= \frac{27 f(y)[f(y) + \cosh{y}]}{4g^2(y)},\\
+P_X(y) &amp;= \frac{27 f^2(y)[1 - f^2(y)]}{g^2(y)}.\\
+\end{align}\end{split}\]</div>
+<p><strong>Задание</strong></p>
+<p>Ваша задача состоит в том, чтобы определить <span class="math notranslate nohighlight">\(V_L\)</span> и <span class="math notranslate nohighlight">\(V_G\)</span> для ряда температур <span class="math notranslate nohighlight">\(T_r \in [0.85, 1]\)</span> и соответствующих им давлений, получив таким образом границу фазового равновесия. Нанесите полученные точки <span class="math notranslate nohighlight">\((P_X, V_L)\)</span> и <span class="math notranslate nohighlight">\((P_X, V_G)\)</span> поверх изотерм, как на <a class="reference internal" href="#vdw-task-answer"><span class="std std-numref">Рисунке 4.3</span></a>.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -390,16 +474,16 @@
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "julia-1.6"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "julia-1.6",
             path: "./nlroot"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'julia-1.6'</script>
 
               </div>
               
