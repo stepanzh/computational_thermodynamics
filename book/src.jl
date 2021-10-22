@@ -253,3 +253,196 @@ function intadapt(f, a, b, tol, xtol=eps(), fa=f(a), fb=f(b), m=(b-a)/2, fm=f(m)
     end
     return (Q, nodes)
 end
+
+#####
+##### Нелинейные уравнения
+#####
+
+"""
+Ищет неподвижную точку функции `g`, начиная с `x₁`. Выполняет итерации до тех пор,
+пока подшаг к ответу ≥ `xtol`, но не более `maxiter` раз.
+"""
+function fixedpoint(g, x₁; xtol=eps(), maxiter=25)
+    x = float(x₁)
+    for i in 1:maxiter
+        xprev = x
+        x = g(xprev)
+        abs(x - xprev) < xtol && return x
+    end
+    error("Число итераций превышено.")
+end
+
+"""
+Решает уравнение вида `f`(x) = 0 методом Ньютона. Требует производную функцию `df` и
+начальное приближение корня `x₁`. Выполняет не более `maxiter` итераций.
+"""
+function newton(f, df, x₁; maxiter=25, ftol=eps(), xtol=eps())
+    x = float(x₁)
+    for i in 1:maxiter
+        fx = f(x)
+        δx = - fx / df(x)
+        x += δx
+        if abs(fx) < ftol || abs(δx) < xtol
+            return x
+        end
+    end
+    error("Число итераций превышено.")
+end
+
+"""
+Ищет корень уравнения `f`(x) = 0 методом секущих, начиная с приближений `x₁`, `x₂`.
+Выполняет не более `maxiter` итераций, пока не будет выполнено либо
+|`x₁` - `x₂`| < `xtol`, либо |`f(x₂)`| < `ftol`.
+"""
+function secant(f, x₁, x₂; maxiter=25, ftol=eps(), xtol=eps())
+    y₁ = f(x₁)
+    for i in 1:maxiter
+        y₂ = f(x₂)
+        xnew = (y₂ * x₁ - y₁*x₂) / (y₂ - y₁)
+        x₁, y₁ = x₂, y₂
+        x₂ = xnew
+
+        if abs(y₂) < ftol || abs(x₂ - x₁) < xtol
+            return x₂
+        end
+    end
+    error("Число итераций превышено.")
+end
+
+"""
+Ищет корень уравнения `f`(x) = 0 бисекцией с точностью локализации корня `xtol`.
+Итерации заканчиваются досрочно, если `f`(xₖ) < `ftol`.
+"""
+function bisection(f, x₁, x₂; xtol=eps(), ftol=eps())
+    if x₁ > x₂; x₁, x₂ = x₂, x₁; end
+    y₁, y₂ = f(x₁), f(x₂)
+    sign(y₁) == sign(y₂) && error("Функция должна иметь разные знаки в концах отрезка")
+    y₁ == 0 && return x₁
+    y₂ == 0 && return x₂
+
+    maxiter = ceil(Int, log2((x₂-x₁)/(xtol)))
+
+    for i in 1:maxiter
+        xnew = (x₂ + x₁) / 2
+        ynew = f(xnew)
+
+        if sign(y₂) == sign(ynew)
+            x₂, y₂ = xnew, ynew
+        elseif sign(y₁) == sign(ynew)
+            x₁, y₁ = xnew, ynew
+        else
+            return xnew
+        end
+        abs(ynew) < ftol && return xnew
+    end
+    return (x₂ + x₁)/2
+end
+
+"""
+Вычисляет корень уравнения `f`(x) = 0 методом ложной позиции.
+Начальный отрезок задаётся как [`x₁`, `x₂`]. Выполняет не более `maxiter`
+итераций. Если при этом интервал не уменьшился до `xtol` или абсолютное значение
+функции на нём до `ftol`, то выдаёт ошибку.
+"""
+function regulafalsi(f, x₁, x₂; maxiter=25, xtol=eps(), ftol=eps())
+    if x₁ > x₂; x₁, x₂ = x₂, x₁; end
+    y₁, y₂ = f.((x₁, x₂))
+    sign(y₁) == sign(y₂) && error("Функция должна иметь разные знаки в концах отрезка")
+    y₁ == 0 && return x₁
+    y₂ == 0 && return x₂
+
+    for i in 1:maxiter
+        y₂ = f(x₂)
+        xnew = (y₂*x₁ - y₁*x₂) / (y₂ - y₁)
+        ynew = f(xnew)
+
+        if sign(y₂) == sign(ynew)
+            x₂, y₂ = xnew, ynew
+        elseif sign(y₁) == sign(ynew)
+            x₁, y₁ = xnew, ynew
+        else
+            return xnew
+        end
+        if abs(ynew) < ftol || abs(x₂ - x₁) < xtol
+            return xnew
+        end
+    end
+    error("Число итераций превышено.")
+end
+
+"""
+    ridders(f, x₁, x₂[; maxiter=25, xtol=eps(), ftol=eps()])
+
+Решает уравнение `f`(x) = 0 методом Риддерса на отрезке [`x₁`, `x₂`].
+Если отрезок не уменьшится до `xtol`, или функция не уменьшится до `ftol`
+за ≤ `maxiter` итераций, выдаёт ошибку.
+"""
+function ridders(f, x₁, x₂; maxiter=25, xtol=eps(), ftol=eps())
+    if x₁ > x₂; x₁, x₂ = x₂, x₁; end
+    y₁, y₂ = f.((x₁, x₂))
+    y₁ * y₂ > 0 && error("Функция должна иметь разные знаки в концах отрезка")
+    y₁ == 0 && return x₁
+    y₂ == 0 && return x₂
+
+    for i in 1:maxiter
+        xmid = (x₁ + x₂) / 2
+        ymid = f(xmid)
+        xnew = xmid + (xmid - x₁) * sign(y₁) * ymid / sqrt(ymid^2 - y₁*y₂)
+        ynew = f(xnew)
+
+        ynew == 0 && return xnew
+
+        if sign(ynew) == sign(y₂)
+            x₂, y₂ = xnew, ynew
+        elseif sign(ynew) == sign(y₁)
+            x₁, y₁ = xnew, ynew
+        end
+        if abs(ynew) < ftol || abs(x₁ - x₂) < xtol
+            return xnew
+        end
+    end
+    error("Число итераций превышено.")
+end
+
+"""
+Метод ITP поиска корня `f`(x) = 0 c точностью `xtol`.
+"""
+function itproot(f, x₁, x₂; xtol=eps(), ftol=eps(), κ₁=0.1, κ₂=2, n₀=1)
+    if x₁ > x₂; x₁, x₂ = x₂, x₁; end
+    y₁, y₂ = f(x₁), f(x₂)
+    y₁ * y₂ > 0 && error("Функция должна иметь разные знаки в концах отрезка")
+    y₁ == 0 && return x₁
+    y₂ == 0 && return x₂
+
+    nbisect = ceil(Int, log2((x₂-x₁)/xtol))
+    maxiter = nbisect + n₀
+    brackorig = x₂ - x₁
+
+    for i in 1:maxiter
+        # interpolate
+        xf = (y₂*x₁ - y₁*x₂)/(y₂ - y₁)
+
+        # truncate
+        xmid = (x₁ + x₂)/2
+        σ = sign(xmid - xf)
+        δ = κ₁ * (x₂ - x₁)^κ₂ / brackorig
+        xt = δ ≤ abs(xmid - xf) ? xf + copysign(δ, σ) : xmid
+
+        # project
+        r = xtol * 2.0^(maxiter - i) - (x₂ - x₁)/2
+        xnew = abs(xt - xmid) ≤ r ? xt : xmid - copysign(r, σ)
+
+        ynew = f(xnew)
+        if sign(y₂) == sign(ynew)
+            x₂, y₂ = xnew, ynew
+        elseif sign(y₁) == sign(ynew)
+            x₁, y₁ = xnew, ynew
+        else  # ynew == 0
+            return xnew
+        end
+        if abs(ynew) < ftol || abs(x₂ - x₁) < xtol
+            return (x₁ + x₂)/2
+        end
+    end
+    return (x₁ + x₂)/2
+end
