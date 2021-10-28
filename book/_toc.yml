@@ -34,6 +34,10 @@ parts:
     - file: nlroot/ridders
     - file: nlroot/itp
     - file: nlroot/ex
+  - file: syslinear/index
+    sections:
+    - file: syslinear/triangular
+    # - file: syslinear/lu
 - caption: Приложения
   chapters:
   - file: genindex

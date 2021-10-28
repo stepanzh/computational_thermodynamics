@@ -446,3 +446,33 @@ function itproot(f, x₁, x₂; xtol=eps(), ftol=eps(), κ₁=0.1, κ₂=2, n₀
     end
     return (x₁ + x₂)/2
 end
+
+
+#=
+==
+== Линейные системы
+==
+=#
+
+"Возвращает решение системы `L`x = `b`, где `L` - нижнетреугольная квадратная матрица."
+function forwardsub(L::AbstractMatrix, b::AbstractVector)
+    x = float(similar(b))
+    x[1] = b[1] / L[1, 1]
+    for i in 2:size(L, 1)
+        s = sum(L[i, j]*x[j] for j in 1:i-1)
+        x[i] = (b[i] - s) / L[i, i]
+    end
+    return x
+end
+
+"Возвращает решение системы `U`x = `b`, где `U` - верхнетреугольная квадратная матрица."
+function backwardsub(U::AbstractMatrix, b::AbstractVector)
+    n = size(U, 1)
+    x = float(similar(b))
+    x[n] = b[n] / U[n, n]
+    for i in size(U, 1)-1:-1:1
+        s = sum(U[i, j] * x[j] for j in i+1:n)
+        x[i] = (b[i] - s) / U[i, i]
+    end
+    return x
+end
