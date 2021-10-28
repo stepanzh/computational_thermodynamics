@@ -476,3 +476,19 @@ function backwardsub(U::AbstractMatrix, b::AbstractVector)
     end
     return x
 end
+
+"Нестабильное LU-разложение квадратной матрицы `A`. Возвращает `L`, `U`."
+function lufact(A::AbstractMatrix)
+    n = size(A, 1)
+    L = diagm(0 => ones(n))
+    U = zeros(n, n)
+    Aₖ = float(copy(A))
+
+    for k in 1:n-1
+        U[k, :] .= Aₖ[k, :]
+        L[:, k] .= Aₖ[:, k] ./ U[k, k]
+        Aₖ .-= L[:, k] * U[k, :]'
+    end
+    U[n, n] = Aₖ[n, n]
+    return LowerTriangular(L), UpperTriangular(U)
+end
