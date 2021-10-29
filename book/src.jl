@@ -492,3 +492,26 @@ function lufact(A::AbstractMatrix)
     U[n, n] = Aₖ[n, n]
     return LowerTriangular(L), UpperTriangular(U)
 end
+
+"PLU-разложение матрицы `A`. Возвращает `L`, `U` и вектор-перестановку."
+function plufact(A::AbstractMatrix)
+    n = size(A, 1)
+    p = zeros(Int, n)
+
+    U = float(similar(A))
+    L = similar(U)
+    Aₖ = float(copy(A))
+
+    for k in 1:n-1
+        p[k] = argmax(abs.(Aₖ[:, k]))
+        U[k, :] .= Aₖ[p[k], :]
+        L[:, k] .= Aₖ[:, k] ./ U[k, k]
+        Aₖ .-= L[:, k] * U[k, :]'
+    end
+
+    p[n] = argmax(abs.(Aₖ[:, n]))
+    U[n, n] = Aₖ[p[n], n]
+    L[:, n] = Aₖ[:, n] / U[n, n]
+
+    return LowerTriangular(L[p, :]), UpperTriangular(U), p
+end
