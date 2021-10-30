@@ -39,6 +39,7 @@ parts:
     - file: syslinear/triangular
     - file: syslinear/lu
     - file: syslinear/plu
+    - file: syslinear/decompose_overview
 - caption: Приложения
   chapters:
   - file: genindex
