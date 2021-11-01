@@ -40,6 +40,9 @@ parts:
     - file: syslinear/lu
     - file: syslinear/plu
     - file: syslinear/decompose_overview
+  - file: sysnonlinear/index
+    sections:
+    - file: sysnonlinear/newton
 - caption: Приложения
   chapters:
   - file: genindex
