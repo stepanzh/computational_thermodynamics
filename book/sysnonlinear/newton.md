@@ -141,7 +141,7 @@ x_1^2 - 2 x_2^2 - x_1 x_2 + 2x_1 - x_2 + 1\\
 :tags: [remove-output]
 
 function f(x)
-    x₁, x₂ = x[1], x[2]
+    x₁, x₂ = x
     return [
         x₁^2 - 2x₂^2 - x₁*x₂ + 2x₁ - x₂ + 1,
         2x₁^2 - x₂^2 + x₁*x₂ + 3x₂ - 5,
@@ -149,7 +149,7 @@ function f(x)
 end
 
 function J(x)
-    x₁, x₂ = x[1], x[2]
+    x₁, x₂ = x
     return [
         2x₁-x₂+2 -4x₂-x₁-1;
         4x₁+x₂   -2x₂+x₁+3
