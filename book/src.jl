@@ -544,3 +544,49 @@ function newtonsys(f, x, J; maxiter=50, xtol=1e-6, ftol=1e-6)
     end
     error("Превышено число итераций.")
 end
+
+"""
+    jacobianfd(f, x[; y, δ])
+
+Вычисляет якобиан функции `f` в точке `x` через конечную разность в точках `x` и `x + δ
+I[:, j]`, где `δ::Number` - скаляр. Опционально можно подать `y == f(x)`.
+"""
+function jacobianfd(f, x; y=f(x), δ=sqrt(eps())*max(norm(x), 1))
+    m, n = size(y, 1), size(x, 1)
+    J = zeros(m, n)
+    x = float(copy(x))
+    for j in 1:n
+        x[j] += δ
+        J[:, j] .= (f(x) .- y) ./ δ
+        x[j] -= δ
+    end
+    return J
+end
+
+"""
+    broydensys(f, x, J[; maxiter, xtol, ftol])
+
+Решает нелинейную систему уравнений `f`(x) = 0 методом Бройдена.
+Требует начального приближения корня `x` уравнения и якобиана `J` в этой точке.
+Выполняет итерации, пока норма решения `> xtol` или норма функции `> ftol`.
+В случае превышения числа итераций `maxiter` вызывает ошибку.
+"""
+function broydensys(f, x, J; maxiter=50, xtol=1e-6, ftol=1e-6)
+    δx = float(similar(x))
+    yp, yn = similar.((δx, δx))
+    x = float(copy(x))
+    B = float(copy(J))
+    yn .= f(x)
+    for i in 1:maxiter
+        yp .= yn
+        δx .= .- (B \ yp)
+        x .+= δx
+        yn .= f(x)
+        if norm(δx) < xtol || norm(yn) < ftol
+            return x
+        end
+        g = B * δx
+        B .+= (1 / dot(δx, δx)) .* (yn .- yp .- g) .* δx'
+    end
+    error("Превышено число итераций.")
+end

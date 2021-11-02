@@ -108,6 +108,7 @@ end
 :::
 ```
 
+(demo_sysnonlinear_newton)=
 ```{proof:demo}
 ```
 ```{raw} html

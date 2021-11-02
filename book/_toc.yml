@@ -43,6 +43,7 @@ parts:
   - file: sysnonlinear/index
     sections:
     - file: sysnonlinear/newton
+    - file: sysnonlinear/quasinewton
 - caption: Приложения
   chapters:
   - file: genindex
