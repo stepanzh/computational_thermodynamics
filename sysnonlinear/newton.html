@@ -1,0 +1,698 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6.1. Метод Ньютона &#8212; Практикум по вычислительной теплофизике</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
+    <script src="../_static/proof.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script >mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.2. Метод Бройдена" href="quasinewton.html" />
+    <link rel="prev" title="6. Нелинейные системы уравнений" href="index.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Практикум по вычислительной теплофизике</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Предмет практикума
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Практикум
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro/index.html">
+   1. Введение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/float.html">
+     1.1. Числа с плавающей точкой
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/cond.html">
+     1.2. Обусловленность задач
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/julia.html">
+     1.3. Основы языка программирования Julia
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/ex.html">
+     1.4. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../interpolation/index.html">
+   2. Интерполяция
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/polynomial.html">
+     2.1. Полиномиальная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/pwlinear.html">
+     2.2. Кусочно-линейная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/cubic_spline.html">
+     2.3. Кубические сплайны
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/ex.html">
+     2.4. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../integration/index.html">
+   3. Численное интегрирование
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/newton_cotes.html">
+     3.1. Формулы Ньютона-Котса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/romberg.html">
+     3.2. Метод Ромберга
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/gauss.html">
+     3.3. Формулы Гаусса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/adaptive.html">
+     3.4. Адаптивное интегрирование
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/ex.html">
+     3.5. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../nlroot/index.html">
+   4. Нелинейные уравнения
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/simpleiter.html">
+     4.1. Метод простой итерации
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/newton_secant.html">
+     4.2. Метод Ньютона и секущих
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/bisection_regula_falsi.html">
+     4.3. Методы бисекции и regula falsi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ridders.html">
+     4.4. Метод Риддерса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/itp.html">
+     4.5. ITP метод
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ex.html">
+     4.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../syslinear/index.html">
+   5. Линейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/triangular.html">
+     5.1. Треугольные системы
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/lu.html">
+     5.2. LU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/plu.html">
+     5.3. PLU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/decompose_overview.html">
+     5.4. Обзор других разложений и задач
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   6. Нелинейные системы уравнений
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.1. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quasinewton.html">
+     6.2. Метод Бройдена
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     6.3. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Приложения
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../genindex.html">
+   Указатель
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography.html">
+   Литература
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/sysnonlinear/newton.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/sysnonlinear/newton.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/stepanzh/computational_thermodynamics"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fsysnonlinear/newton.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/sysnonlinear/newton.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/stepanzh/computational_thermodynamics/main?urlpath=tree/book/sysnonlinear/newton.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   6.1.1. Реализация
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1><span class="section-number">6.1. </span>Метод Ньютона<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>Одним из простых методов решения является обобщение метода Ньютона (Ньютона-Рафсона, <em>Newton-Raphson method</em>) на случай многомерной функции <span class="math notranslate nohighlight">\(\mathbf{f}\)</span>.</p>
+<p>Как и для скалярного метода, представим <span class="math notranslate nohighlight">\(\mathbf{f}\)</span> линейной моделью</p>
+<div class="math notranslate nohighlight" id="equation-sysnonlinear-taylor">
+<span class="eqno">(6.2)<a class="headerlink" href="#equation-sysnonlinear-taylor" title="Permalink to this equation">¶</a></span>\[f_i(\mathbf{x} + \mathbf{\delta x})
+= f_i(\mathbf{x}) + \sum_{j=1}^n \frac{\partial f_i}{\partial x_j}(\mathbf{x}) \delta x_j + O(\mathbf{\delta x}^2)\]</div>
+<div class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>В русскоязычной литературе якобианом называют, как правило, детерминант матрицы Якоби.</p>
+</div>
+<span class="target" id="index-0"></span><p id="index-1">Матрицу <span class="math notranslate nohighlight">\(\mathbf{J}(\mathbf{x})\)</span> с элементами <span class="math notranslate nohighlight">\(J_{ij}(\mathbf{x}) = \frac{\partial f_i}{\partial x_j}(\mathbf{x})\)</span> называют <strong>матрицей Якоби</strong>, мы же, для краткости, будем называть её просто <strong>якобианом</strong>.</p>
+<p>С помощью якобиана система <a class="reference internal" href="#equation-sysnonlinear-taylor">(6.2)</a> записывается в виде</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{f}(\mathbf{x} + \mathbf{\delta x})
+= \mathbf{f}(\mathbf{x}) + \mathbf{J}(\mathbf{x}) \delta \mathbf{x} + O(\mathbf{\delta x^2}).\]</div>
+<p>Положим теперь <span class="math notranslate nohighlight">\(\mathbf{f}(\mathbf{x} + \mathbf{\delta x}) = \mathbf{0}\)</span> и отбросим квадратичную поправку. Тогда получим условие</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{J}(\mathbf{x}) \delta \mathbf{x} = - \mathbf{f}(\mathbf{x}),\]</div>
+<p>которое для <em>фиксированного</em> <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> является линейной системой.</p>
+<p>Так, метод Ньютона строит серию приближений</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{x}_\text{new} = \mathbf{x}_\text{old} - \mathbf{J}^{-1}(\mathbf{x}_\text{old})\mathbf{f}(\mathbf{x}_\text{old}).\]</div>
+<div class="proof proof-type-algorithm" id="id3">
+<span id="index-2"></span>
+    <div class="proof-title">
+        <span class="proof-type">Алгоритм 6.1</span>
+        
+            <span class="proof-title-name">(Многомерный метод Ньютона)</span>
+        
+    </div><div class="proof-content">
+<p>Пусть дана функция <span class="math notranslate nohighlight">\(\mathbf{f}(\mathbf{x})\)</span>, её якобиан <span class="math notranslate nohighlight">\(\mathbf{J}(\mathbf{x})\)</span> и начальное приближение корня <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span>. Последующие <span class="math notranslate nohighlight">\(\mathbf{x}_k\)</span>, <span class="math notranslate nohighlight">\(k=2, 3, 4, \ldots\)</span> приближения корня строятся следующим образом.</p>
+<ol class="simple">
+<li><p>Вычислить значение функции <span class="math notranslate nohighlight">\(\mathbf{f}_k = \mathbf{f}(\mathbf{x}_k)\)</span> и якобиан <span class="math notranslate nohighlight">\(\mathbf{J}_k = \mathbf{J}(\mathbf{x}_k)\)</span>;</p></li>
+<li><p>Решить линейную систему <span class="math notranslate nohighlight">\(\mathbf{J}_k \delta \mathbf{x} = - \mathbf{f}_k\)</span> на шаг <span class="math notranslate nohighlight">\(\delta \mathbf{x}\)</span>;</p></li>
+<li><p>Построить новое приближение корня <span class="math notranslate nohighlight">\(\mathbf{x}_{k+1} = \mathbf{x}_k + \delta \mathbf{x}\)</span>.</p></li>
+</ol>
+</div></div><div class="section" id="id2">
+<h2><span class="section-number">6.1.1. </span>Реализация<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="proof proof-type-function" id="id4">
+
+    <div class="proof-title">
+        <span class="proof-type">Функция 6.2</span>
+        
+            <span class="proof-title-name">(newtonsys)</span>
+        
+    </div><div class="proof-content">
+<p><strong>Метод Ньютона-Рафсона решения системы нелинейных уравнений</strong></p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">    newtonsys(f, x, J[; maxiter=50, xtol=1e-6, ftol=1e-6])</span>
+
+<span class="s">Решает нелинейную систему `f`(x) = 0 методом Ньютона-Рафсона, начиная с приближения `x`.</span>
+<span class="s">Функция `J`(x) должна возвращать матрицу Якоби системы. Работа метода ограничена</span>
+<span class="s">числом итераций `maxiter`, досрочное завершение происходит при достижении</span>
+<span class="s">`norm(x) &lt; xtol` или `norm(f(x)) &lt; ftol`. При превышении числа итераций вызывает</span>
+<span class="s">ошибку. Возвращает найденный корень.</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="k">function</span> <span class="n">newtonsys</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">J</span><span class="p">;</span> <span class="n">maxiter</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">ftol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">float</span><span class="p">(</span><span class="n">copy</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">δx</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">similar</span><span class="o">.</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">maxiter</span>
+        <span class="n">y</span> <span class="o">.=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">δx</span> <span class="o">.=</span> <span class="o">.-</span> <span class="p">(</span><span class="n">J</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">\</span> <span class="n">y</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">.+=</span> <span class="n">δx</span>
+        <span class="k">if</span> <span class="n">norm</span><span class="p">(</span><span class="n">δx</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">xtol</span> <span class="o">||</span> <span class="n">norm</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">ftol</span>
+            <span class="k">return</span> <span class="n">x</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="n">error</span><span class="p">(</span><span class="s">&quot;Превышено число итераций.&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>В данной реализации необходимая память выделяется до цикла, а затем переиспользуется с помощью механизма броадкаста. Единственное место, всё ещё выделяющее память алгоритмом, является операция <code class="docutils literal notranslate"><span class="pre">\</span></code> решения линейной системы. Поскольку <code class="docutils literal notranslate"><span class="pre">J(x)</span></code> возвращает квадратную матрицу, <code class="docutils literal notranslate"><span class="pre">\</span></code>-операция сначала совершает LU-разложение, требующее аллоцирования. Чтобы избежать этой аллокации, смотрите <code class="docutils literal notranslate"><span class="pre">LinearAlgebra.ldiv!</span></code>.</p>
+</div>
+</div></div><div class="proof proof-type-demo" id="id5">
+<span id="demo-sysnonlinear-newton"></span>
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 6.3</span>
+        
+    </div><div class="proof-content">
+</div></div><div class="demo"><p>Рассмотрим в качестве примера решение системы</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{f}(\mathbf{x})
+= \begin{bmatrix}
+x_1^2 - 2 x_2^2 - x_1 x_2 + 2x_1 - x_2 + 1\\
+2x_1^2 - x_2^2 + x_1 x_2 + 3 x_2 - 5
+\end{bmatrix}
+= \mathbf{0}\end{split}\]</div>
+<p>Якобиан данной функции имеет вид</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{J}(\mathbf{x})
+= \begin{bmatrix}
+2x_1 - x_2 + 2 &amp; -4x_2 - x_1 - 1 \\
+4x_1 + x_2     &amp; -2x_2 + x_1 + 3 
+\end{bmatrix}\end{split}\]</div>
+<p>Для решения заведём две функции <code class="docutils literal notranslate"><span class="pre">f</span></code> и <code class="docutils literal notranslate"><span class="pre">J</span></code> для функции <span class="math notranslate nohighlight">\(\mathbf{f}\)</span> и якобиана <span class="math notranslate nohighlight">\(\mathbf{J}\)</span> соответственно</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x₁</span><span class="p">,</span> <span class="n">x₂</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="n">x₁</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="n">x₂</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x₁</span><span class="o">*</span><span class="n">x₂</span> <span class="o">+</span> <span class="mi">2</span><span class="n">x₁</span> <span class="o">-</span> <span class="n">x₂</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="mi">2</span><span class="n">x₁</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x₂</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x₁</span><span class="o">*</span><span class="n">x₂</span> <span class="o">+</span> <span class="mi">3</span><span class="n">x₂</span> <span class="o">-</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="n">J</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x₁</span><span class="p">,</span> <span class="n">x₂</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="mi">2</span><span class="n">x₁</span><span class="o">-</span><span class="n">x₂</span><span class="o">+</span><span class="mi">2</span> <span class="o">-</span><span class="mi">4</span><span class="n">x₂</span><span class="o">-</span><span class="n">x₁</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="mi">4</span><span class="n">x₁</span><span class="o">+</span><span class="n">x₂</span>   <span class="o">-</span><span class="mi">2</span><span class="n">x₂</span><span class="o">+</span><span class="n">x₁</span><span class="o">+</span><span class="mi">3</span>
+    <span class="p">]</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>При наборе якобиана будьте внимательны. В Julia знак пробела или табуляция в литерале массивов означает горизонтальную конкатенацию. И в некоторых версиях языка <code class="docutils literal notranslate"><span class="pre">[x+y</span> <span class="pre">0;]</span></code> (матрица <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">×</span> <span class="pre">2</span></code>) может не быть эквивалентом <code class="docutils literal notranslate"><span class="pre">[x</span> <span class="pre">+</span> <span class="pre">y</span> <span class="pre">0;]</span></code>.</p>
+<p>Попробуем запустить метод из разных начальных приближений.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">root</span> <span class="o">=</span> <span class="n">newtonsys</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">],</span> <span class="n">J</span><span class="p">)</span>
+<span class="n">root</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([1.0000000000000258, 1.0], [7.72715225139109e-14, 1.2878587085651816e-13])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">root</span> <span class="o">=</span> <span class="n">newtonsys</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">],</span> <span class="n">J</span><span class="p">)</span>
+<span class="n">root</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([-1.5, 0.5000000000000001], [0.0, 0.0])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">root</span> <span class="o">=</span> <span class="n">newtonsys</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="mf">10.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">10.0</span><span class="p">],</span> <span class="n">J</span><span class="p">)</span>
+<span class="n">root</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([-1.5, 0.5000000000000002], [-2.220446049250313e-16, 0.0])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">root</span> <span class="o">=</span> <span class="n">newtonsys</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="p">[</span><span class="o">-</span><span class="mf">10.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">10.0</span><span class="p">],</span> <span class="n">J</span><span class="p">)</span>
+<span class="n">root</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([-1.6666666666666665, -0.33333333333333315], [1.1102230246251565e-16, 0.0])
+</pre></div>
+</div>
+</div>
+</div>
+<p>Так, найдено три корня системы.</p>
+</div></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.6"
+        },
+        kernelOptions: {
+            kernelName: "julia-1.6",
+            path: "./sysnonlinear"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.6'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="index.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">6. </span>Нелинейные системы уравнений</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="quasinewton.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">6.2. </span>Метод Бройдена</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Степан Захаров и Василий Писарев<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

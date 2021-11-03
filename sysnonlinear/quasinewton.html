@@ -1,0 +1,870 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>6.2. Метод Бройдена &#8212; Практикум по вычислительной теплофизике</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
+    <script src="../_static/proof.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script >mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.3. Задания" href="ex.html" />
+    <link rel="prev" title="6.1. Метод Ньютона" href="newton.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Практикум по вычислительной теплофизике</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Предмет практикума
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Практикум
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro/index.html">
+   1. Введение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/float.html">
+     1.1. Числа с плавающей точкой
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/cond.html">
+     1.2. Обусловленность задач
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/julia.html">
+     1.3. Основы языка программирования Julia
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/ex.html">
+     1.4. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../interpolation/index.html">
+   2. Интерполяция
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/polynomial.html">
+     2.1. Полиномиальная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/pwlinear.html">
+     2.2. Кусочно-линейная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/cubic_spline.html">
+     2.3. Кубические сплайны
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/ex.html">
+     2.4. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../integration/index.html">
+   3. Численное интегрирование
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/newton_cotes.html">
+     3.1. Формулы Ньютона-Котса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/romberg.html">
+     3.2. Метод Ромберга
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/gauss.html">
+     3.3. Формулы Гаусса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/adaptive.html">
+     3.4. Адаптивное интегрирование
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/ex.html">
+     3.5. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../nlroot/index.html">
+   4. Нелинейные уравнения
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/simpleiter.html">
+     4.1. Метод простой итерации
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/newton_secant.html">
+     4.2. Метод Ньютона и секущих
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/bisection_regula_falsi.html">
+     4.3. Методы бисекции и regula falsi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ridders.html">
+     4.4. Метод Риддерса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/itp.html">
+     4.5. ITP метод
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ex.html">
+     4.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../syslinear/index.html">
+   5. Линейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/triangular.html">
+     5.1. Треугольные системы
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/lu.html">
+     5.2. LU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/plu.html">
+     5.3. PLU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/decompose_overview.html">
+     5.4. Обзор других разложений и задач
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   6. Нелинейные системы уравнений
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="newton.html">
+     6.1. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.2. Метод Бройдена
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     6.3. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Приложения
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../genindex.html">
+   Указатель
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography.html">
+   Литература
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        <a class="dropdown-buttons"
+            href="../_sources/sysnonlinear/quasinewton.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/sysnonlinear/quasinewton.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/stepanzh/computational_thermodynamics"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fsysnonlinear/quasinewton.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/sysnonlinear/quasinewton.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/stepanzh/computational_thermodynamics/main?urlpath=tree/book/sysnonlinear/quasinewton.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   6.2.1. Приближение якобиана конечной разностью
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   6.2.2. Метод
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   6.2.3. Реализация
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   6.2.4. Другие версии метода
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1><span class="section-number">6.2. </span>Метод Бройдена<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>Метод Ньютона послужил основой для многих других методов. Недостатком метода является требовательное по времени вычисление якобиана на каждой итерации. Для некоторых приложений это неприемлимо. Вместо прямого вычисления якобиана, <strong>квазиньютоновские</strong> методы заменяют якобиан некоторым приближением.</p>
+<div class="section" id="id2">
+<h2><span class="section-number">6.2.1. </span>Приближение якобиана конечной разностью<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>В <a class="reference internal" href="../nlroot/newton_secant.html#chapter-nlroot-secant"><span class="std std-numref">4.2.2 Методе секущих</span></a> мы фактически сталкивались с приближением производной функции в точке <span class="math notranslate nohighlight">\(f'(x_{k+1})\)</span></p>
+<div class="math notranslate nohighlight">
+\[\frac{f(x_{k+1}) - f(x_k)}{x_{k+1} - x_k}.\]</div>
+<p>Численный метод, приближающий производную “из определения” (<span class="math notranslate nohighlight">\(\lim_{\Delta x \to 0} \Delta f / \Delta x\)</span>) называется методом конечной разности. Формулу замены производной её численным аналогом называют <em>разностной схемой</em>. Эти методы распространнены в решении дифференциальных уравнений.</p>
+<p>Подобным образом можно поступить для приближения якобиана. В общем случае для <span class="math notranslate nohighlight">\(\mathbf{f}: \real^n \to \real^m\)</span> якобиан преобразования имеет размер <span class="math notranslate nohighlight">\(m \times n\)</span>. Выпишем его <span class="math notranslate nohighlight">\(j\)</span>-ый столбец</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{J}(\mathbf{x}) \mathbf{e}_j
+= \begin{bmatrix}
+\frac{\partial f_1}{\partial x_j}\\
+\frac{\partial f_2}{\partial x_j}\\
+\vdots\\
+\frac{\partial f_m}{\partial x_j}
+\end{bmatrix},\end{split}\]</div>
+<p>где <span class="math notranslate nohighlight">\(\mathbf{e}_j\)</span> – <span class="math notranslate nohighlight">\(j\)</span>-ый столбец единичной матрицы.</p>
+<p>Якобиан состоит из частных производных, таким образом, можно выписать его приближение через конечные разности</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{J}(\mathbf{x}) \mathbf{e}_j
+\approx \frac{\mathbf{f}(\mathbf{x} + \delta \mathbf{e}_j) - \mathbf{f}(\mathbf{x})}{\delta},\quad \delta \in \real.\]</div>
+<p>Значение <span class="math notranslate nohighlight">\(\delta\)</span> выбирают, по умолчанию, близким к <span class="math notranslate nohighlight">\(\sqrt{\macheps}\)</span> как предел численной стабильности метода конечных разностей. Этот предел берётся из сопоставления ошибки, даваемой самим методом и ошибкой округления при вычислениях.</p>
+<div class="proof proof-type-function" id="id7">
+
+    <div class="proof-title">
+        <span class="proof-type">Функция 6.4</span>
+        
+            <span class="proof-title-name">(jacobianfd)</span>
+        
+    </div><div class="proof-content">
+<p><strong>Приближение якобиана конечной разностью</strong></p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">    jacobianfd(f, x[; y, δ])</span>
+
+<span class="s">Вычисляет якобиан функции `f` в точке `x` через конечную разность в точках `x` и `x + δ</span>
+<span class="s">I[:, j]`, где `δ::Number` - скаляр. Опционально можно подать `y == f(x)`. </span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="k">function</span> <span class="n">jacobianfd</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">;</span> <span class="n">y</span><span class="o">=</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">δ</span><span class="o">=</span><span class="n">sqrt</span><span class="p">(</span><span class="n">eps</span><span class="p">())</span><span class="o">*</span><span class="n">max</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="mi">1</span><span class="p">))</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">size</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">J</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">float</span><span class="p">(</span><span class="n">copy</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">n</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="n">δ</span>
+        <span class="n">J</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">.=</span> <span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">.-</span> <span class="n">y</span><span class="p">)</span> <span class="o">./</span> <span class="n">δ</span>
+        <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">-=</span> <span class="n">δ</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">J</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div></div><div class="proof proof-type-demo" id="id8">
+
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 6.5</span>
+        
+    </div><div class="proof-content">
+</div></div><div class="demo"><p>Сравним на небольшом примере точность приближения якобиана. В качестве функции и точки приближения возьмём</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathbf{f}(\mathbf{x})
+= \begin{bmatrix}
+x_2 \exp{x_1} + \sin{x_1}\\
+\cos{x_2} + x_1 x_3\\
+\log{x_3} + x_2^2
+\end{bmatrix}
+,\quad
+\mathbf{x}
+= \begin{bmatrix}
+\frac{2}{3}\\
+-1\\
+\sqrt{2}
+\end{bmatrix}.\end{split}\]</div>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x₁</span><span class="p">,</span> <span class="n">x₂</span><span class="p">,</span> <span class="n">x₃</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="n">x₂</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="n">x₁</span><span class="p">)</span> <span class="o">+</span> <span class="n">sin</span><span class="p">(</span><span class="n">x₁</span><span class="p">),</span>
+        <span class="n">cos</span><span class="p">(</span><span class="n">x₂</span><span class="p">)</span> <span class="o">+</span> <span class="n">x₁</span><span class="o">*</span><span class="n">x₃</span><span class="p">,</span>
+        <span class="n">log</span><span class="p">(</span><span class="n">x₃</span><span class="p">)</span> <span class="o">+</span> <span class="n">x₂</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="n">J</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x₁</span><span class="p">,</span> <span class="n">x₂</span><span class="p">,</span> <span class="n">x₃</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="n">x₂</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="n">x₁</span><span class="p">)</span><span class="o">+</span><span class="n">cos</span><span class="p">(</span><span class="n">x₁</span><span class="p">)</span>   <span class="n">exp</span><span class="p">(</span><span class="n">x₁</span><span class="p">)</span>  <span class="mi">0</span>    <span class="p">;</span>
+        <span class="n">x₃</span>                  <span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">x₂</span><span class="p">)</span>  <span class="n">x₁</span>   <span class="p">;</span>
+        <span class="mi">0</span>                    <span class="mi">2</span><span class="n">x₂</span>      <span class="mi">1</span><span class="o">/</span><span class="n">x₃</span> <span class="p">;</span>
+    <span class="p">]</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Вычислим якобиан напрямую <code class="docutils literal notranslate"><span class="pre">Jexact</span></code>, и через конченые раности <code class="docutils literal notranslate"><span class="pre">Jfd</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)]</span>
+<span class="n">Jexact</span><span class="p">,</span> <span class="n">Jfd</span> <span class="o">=</span> <span class="n">J</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">jacobianfd</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+<span class="n">Jexact</span> <span class="o">|&gt;</span> <span class="n">display</span>
+<span class="n">Jfd</span> <span class="o">|&gt;</span> <span class="n">display</span>
+<span class="nd">@show</span> <span class="n">norm</span><span class="p">(</span><span class="n">Jexact</span> <span class="o">-</span> <span class="n">Jfd</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3×3 Matrix{Float64}:
+ -1.16185   1.94773   0.0
+  1.41421   0.841471  0.666667
+  0.0      -2.0       0.707107
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3×3 Matrix{Float64}:
+ -1.16185   1.94773   0.0
+  1.41421   0.841471  0.666667
+  0.0      -2.0       0.707107
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>norm(Jexact - Jfd) = 4.4920040357185245e-8
+</pre></div>
+</div>
+</div>
+</div>
+<p>Отличие в данной точке получилось небольшим. В качестве меры невязки здесь приведена норма Фробениуса для матриц <span class="math notranslate nohighlight">\(\sqrt{\sum A_{ij}^2}\)</span>.</p>
+</div></div>
+<div class="section" id="id3">
+<h2><span class="section-number">6.2.2. </span>Метод<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Обозначим приближение якобиана в точке <span class="math notranslate nohighlight">\(\mathbf{x}_k\)</span> через <span class="math notranslate nohighlight">\(\mathbf{B}_k\)</span>, т.е.</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{J}(\mathbf{x}_k) \approx \mathbf{B}_k.\]</div>
+<p>На <span class="math notranslate nohighlight">\(k\)</span>-ой итерации шаг квазиньютоновского метода будем находить из системы</p>
+<div class="math notranslate nohighlight" id="equation-sysnonlinear-quasi-step">
+<span class="eqno">(6.3)<a class="headerlink" href="#equation-sysnonlinear-quasi-step" title="Permalink to this equation">¶</a></span>\[\mathbf{B}_k \delta \mathbf{x}_k = - \mathbf{f}_k,\]</div>
+<p>здесь обозначены <span class="math notranslate nohighlight">\(\delta \mathbf{x}_k = \mathbf{x}_{k+1} - \mathbf{x}_k\)</span>, а <span class="math notranslate nohighlight">\(\mathbf{f}_k = \mathbf{f}(\mathbf{x}_k)\)</span>.</p>
+<p>Квазиньютоновское условие на новое приближение якобиана <span class="math notranslate nohighlight">\(\mathbf{B}_{k+1}\)</span> состоит в</p>
+<div class="math notranslate nohighlight" id="equation-sysnonlinear-quasi-cond">
+<span class="eqno">(6.4)<a class="headerlink" href="#equation-sysnonlinear-quasi-cond" title="Permalink to this equation">¶</a></span>\[\mathbf{B}_{k+1} \delta \mathbf{x}_k = \mathbf{f}_{k+1} - \mathbf{f}_k.\]</div>
+<p>Выбор <span class="math notranslate nohighlight">\(\mathbf{B}_{k+1}\)</span> не однозначен. На практике хорошие результаты показывает правило Бройдена, выведенное из минимальной в смысле нормы Фробениуса поправки к <span class="math notranslate nohighlight">\(\mathbf{B}_k\)</span></p>
+<div class="math notranslate nohighlight" id="equation-sysnonlinear-broyden-cond">
+<span class="eqno">(6.5)<a class="headerlink" href="#equation-sysnonlinear-broyden-cond" title="Permalink to this equation">¶</a></span>\[\min \|\mathbf{B}_{k+1} - \mathbf{B}_k \|_\text{F},\quad \| \mathbf{A} \|_\text{F}
+= \big( \sum_{i, j} |A_{ij}|^2 \big)^{1/2},\]</div>
+<p>такой, что условие <a class="reference internal" href="#equation-sysnonlinear-quasi-cond">(6.4)</a> удовлетворится.</p>
+<div class="proof proof-type-definition" id="id9">
+
+    <div class="proof-title">
+        <span class="proof-type">Определение 6.6</span>
+        
+            <span class="proof-title-name">(Правило Бройдена)</span>
+        
+    </div><div class="proof-content">
+<div class="math notranslate nohighlight" id="equation-sysnonlinear-broyden-update">
+<span class="eqno">(6.6)<a class="headerlink" href="#equation-sysnonlinear-broyden-update" title="Permalink to this equation">¶</a></span>\[\mathbf{B}_{k+1} = \mathbf{B}_k + \frac{1}{\delta \mathbf{x}^\top_k \delta \mathbf{x}_k}
+(\mathbf{f}_{k+1} - \mathbf{f}_k - \mathbf{B}_k \delta \mathbf{x}_k)
+\delta \mathbf{x}^\top_k.\]</div>
+</div></div><p>Самыми ресурсоемкими операциями в правиле Бройдена является матричное умножение (<span class="math notranslate nohighlight">\(\mathbf{B}_k \delta \mathbf{x}_k\)</span>) и внешнее произведение (<span class="math notranslate nohighlight">\(\square \cdot \delta \mathbf{x}^\top_k\)</span>). При этом при использовании <a class="reference internal" href="../syslinear/decompose_overview.html#chapter-syslinear-qr"><span class="std std-ref">QR-разложения</span></a> получается сэкономить часть операций (для этого разложения <span class="math notranslate nohighlight">\(\text{QR}(\mathbf{A} + \mathbf{a}\mathbf{b}^\top)\)</span> выражается через <span class="math notranslate nohighlight">\(\text{QR}(\mathbf{A})\)</span>).</p>
+<div class="proof proof-type-algorithm" id="id10">
+<span id="index-0"></span>
+    <div class="proof-title">
+        <span class="proof-type">Алгоритм 6.7</span>
+        
+            <span class="proof-title-name">(Метод Бройдена)</span>
+        
+    </div><div class="proof-content">
+<p>Пусть дана функция <span class="math notranslate nohighlight">\(\mathbf{f}\)</span>, начальная точка <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span> и приближение якобиана в этой точке <span class="math notranslate nohighlight">\(\mathbf{B}_1\)</span>. Последующие приближения <span class="math notranslate nohighlight">\(k = 2, 3, \ldots\)</span> получаются примением действий</p>
+<ol class="simple">
+<li><p>Решить систему <a class="reference internal" href="#equation-sysnonlinear-quasi-step">(6.3)</a>, найдя таким образом шаг <span class="math notranslate nohighlight">\(\delta \mathbf{x}_k\)</span>;</p></li>
+<li><p>Построить новое приближение корня <span class="math notranslate nohighlight">\(\mathbf{x}_{k+1} = \mathbf{x}_k + \delta \mathbf{x}_k\)</span> и вычислить значение функции в нём <span class="math notranslate nohighlight">\(\mathbf{f}_{k+1} = \mathbf{f}(\mathbf{x}_{k+1})\)</span>;</p></li>
+<li><p>Получить новое приближение для якобиана <span class="math notranslate nohighlight">\(\mathbf{B}_{k+1}\)</span> из формулы <a class="reference internal" href="#equation-sysnonlinear-broyden-update">(6.6)</a>.</p></li>
+</ol>
+</div></div><p>В качестве начального приближения якобиана можно использовать как его конечную разность, так и настоящий якобиан.</p>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">6.2.3. </span>Реализация<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="proof proof-type-function" id="id11">
+
+    <div class="proof-title">
+        <span class="proof-type">Функция 6.8</span>
+        
+            <span class="proof-title-name">(broydensys)</span>
+        
+    </div><div class="proof-content">
+<p><strong>Метод Бройдена</strong></p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">    broydensys(f, x, J[; maxiter, xtol, ftol])</span>
+
+<span class="s">Решает нелинейную систему уравнений `f`(x) = 0 методом Бройдена.</span>
+<span class="s">Требует начального приближения корня `x` уравнения и якобиана `J` в этой точке.</span>
+<span class="s">Выполняет итерации, пока норма решения `&gt; xtol` или норма функции `&gt; ftol`.</span>
+<span class="s">В случае превышения числа итераций `maxiter` вызывает ошибку.</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="k">function</span> <span class="n">broydensys</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">J</span><span class="p">;</span> <span class="n">maxiter</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">xtol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">,</span> <span class="n">ftol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span>
+    <span class="n">δx</span> <span class="o">=</span> <span class="n">float</span><span class="p">(</span><span class="n">similar</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">yp</span><span class="p">,</span> <span class="n">yn</span> <span class="o">=</span> <span class="n">similar</span><span class="o">.</span><span class="p">((</span><span class="n">δx</span><span class="p">,</span> <span class="n">δx</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">float</span><span class="p">(</span><span class="n">copy</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">float</span><span class="p">(</span><span class="n">copy</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>
+    <span class="n">yn</span> <span class="o">.=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">maxiter</span>
+        <span class="n">yp</span> <span class="o">.=</span> <span class="n">yn</span>
+        <span class="n">δx</span> <span class="o">.=</span> <span class="o">.-</span> <span class="p">(</span><span class="n">B</span> <span class="o">\</span> <span class="n">yp</span><span class="p">)</span>
+        <span class="n">x</span> <span class="o">.+=</span> <span class="n">δx</span>
+        <span class="n">yn</span> <span class="o">.=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">norm</span><span class="p">(</span><span class="n">δx</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">xtol</span> <span class="o">||</span> <span class="n">norm</span><span class="p">(</span><span class="n">yn</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">ftol</span>
+            <span class="k">return</span> <span class="n">x</span>
+        <span class="k">end</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">B</span> <span class="o">*</span> <span class="n">δx</span>
+        <span class="n">B</span> <span class="o">.+=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">/</span> <span class="n">dot</span><span class="p">(</span><span class="n">δx</span><span class="p">,</span> <span class="n">δx</span><span class="p">))</span> <span class="o">.*</span> <span class="p">(</span><span class="n">yn</span> <span class="o">.-</span> <span class="n">yp</span> <span class="o">.-</span> <span class="n">g</span><span class="p">)</span> <span class="o">.*</span> <span class="n">δx</span><span class="o">&#39;</span>
+    <span class="k">end</span>
+    <span class="n">error</span><span class="p">(</span><span class="s">&quot;Превышено число итераций.&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>В данной реализации для простоты изложения явно не использовано QR-разложение, имеющее преимещуство перед LU-разложением при обновлении <code class="docutils literal notranslate"><span class="pre">B</span></code>.</p>
+</div></div><div class="proof proof-type-demo" id="id12">
+
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 6.9</span>
+        
+    </div><div class="proof-content">
+</div></div><div class="demo"><p>Рассмотрим пример использования метода Бройдена. Возьмём функцию и якобиан из <a class="reference internal" href="newton.html#demo-sysnonlinear-newton"><span class="std std-numref">Демонстрации 6.3</span></a>, где использовался метод Ньютона</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x₁</span><span class="p">,</span> <span class="n">x₂</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="n">x₁</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="mi">2</span><span class="n">x₂</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x₁</span><span class="o">*</span><span class="n">x₂</span> <span class="o">+</span> <span class="mi">2</span><span class="n">x₁</span> <span class="o">-</span> <span class="n">x₂</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="mi">2</span><span class="n">x₁</span><span class="o">^</span><span class="mi">2</span> <span class="o">-</span> <span class="n">x₂</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="n">x₁</span><span class="o">*</span><span class="n">x₂</span> <span class="o">+</span> <span class="mi">3</span><span class="n">x₂</span> <span class="o">-</span> <span class="mi">5</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="n">J</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x₁</span><span class="p">,</span> <span class="n">x₂</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="mi">2</span><span class="n">x₁</span><span class="o">-</span><span class="n">x₂</span><span class="o">+</span><span class="mi">2</span> <span class="o">-</span><span class="mi">4</span><span class="n">x₂</span><span class="o">-</span><span class="n">x₁</span><span class="o">-</span><span class="mi">1</span><span class="p">;</span>
+        <span class="mi">4</span><span class="n">x₁</span><span class="o">+</span><span class="n">x₂</span>   <span class="o">-</span><span class="mi">2</span><span class="n">x₂</span><span class="o">+</span><span class="n">x₁</span><span class="o">+</span><span class="mi">3</span>
+    <span class="p">]</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Сравним решения методом Бройдена, где в качестве <span class="math notranslate nohighlight">\(\mathbf{B}_1\)</span> сначала используется истинный якобиан, а затем его конечная разность</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">]</span>
+<span class="n">rjac</span> <span class="o">=</span> <span class="n">broydensys</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">J</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">rfdjac</span> <span class="o">=</span> <span class="n">broydensys</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">jacobianfd</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+<span class="nd">@show</span> <span class="n">rjac</span>
+<span class="nd">@show</span> <span class="n">rfdjac</span>
+<span class="nd">@show</span> <span class="n">f</span><span class="p">(</span><span class="n">rjac</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>rjac = [0.9999999480032709, 1.0000000136175218]
+rfdjac = [0.9999999480032629, 1.0000000136175238]
+f(rjac) = [-2.3769531543038624e-7, -2.327485972841714e-7]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Поищем также другие корни, не используя подлинный якобиан</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">10.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">]</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">broydensys</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">jacobianfd</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+<span class="n">root</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([-1.4999998826044423, 0.5000004907722759], [-9.122522761639829e-7, -4.002895854782196e-7])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="mf">10.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">10.0</span><span class="p">]</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">broydensys</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">jacobianfd</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+<span class="n">root</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([-1.4999999895175518, 0.5000000339688467], [-6.667694529838286e-8, -4.066904324417919e-8])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mf">10.0</span><span class="p">,</span> <span class="o">-</span><span class="mf">10.0</span><span class="p">]</span>
+<span class="n">root</span> <span class="o">=</span> <span class="n">broydensys</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">jacobianfd</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="p">))</span>
+<span class="n">root</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">root</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([-1.6666666787349111, -0.3333330286952693], [6.213441907654271e-7, 6.937537433415741e-7])
+</pre></div>
+</div>
+</div>
+</div>
+</div></div>
+<div class="section" id="id5">
+<h2><span class="section-number">6.2.4. </span>Другие версии метода<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>Изложенная выше версия метода <a class="reference internal" href="#equation-sysnonlinear-broyden-update">(6.6)</a> требует решения линейной системы <a class="reference internal" href="#equation-sysnonlinear-quasi-step">(6.3)</a>. Однако, она сочетается с линейным поиском, обеспечивающим глобальную сходимость метода, т.е. сходимостью к корню из произвольного начального приближения <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span>, если корень существует. Правда, для этого необходимо переформулировать постановку задачи <span class="math notranslate nohighlight">\(\mathbf{f}(\mathbf{x}) = \mathbf{0}\)</span> под задачу минимизации <span id="id6">[<a class="reference internal" href="../bibliography.html#id8">PTVF07</a>]</span>.</p>
+<p>Если же линейный поиск не используется, распространены две версии алгоритма, использующие вместо матрицы <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> обратную к ней <span class="math notranslate nohighlight">\(\mathbf{B}^{-1}\)</span>, полученную аналитически. Использование <span class="math notranslate nohighlight">\(\mathbf{B}^{-1}\)</span> позволяет не решать систему <a class="reference internal" href="#equation-sysnonlinear-quasi-step">(6.3)</a>, а сразу вычислять шаг</p>
+<div class="math notranslate nohighlight">
+\[\delta \mathbf{x}_k = - \mathbf{B}^{-1}_k \mathbf{f}_k.\]</div>
+<p>Самим Бройденом была предложена формула для <span class="math notranslate nohighlight">\(\mathbf{B}^{-1}\)</span> на основе применения <a class="reference external" href="https://en.wikipedia.org/wiki/Sherman%E2%80%93Morrison_formula">формулы Шермана-Моррисона</a> к <a class="reference internal" href="#equation-sysnonlinear-broyden-update">(6.6)</a></p>
+<div class="math notranslate nohighlight">
+\[\mathbf{B}^{-1}_{k+1}
+= \mathbf{B}^{-1}_k
++ \frac{\delta \mathbf{x}_k - \mathbf{B}^{-1}_k \delta \mathbf{f}_k}{
+    \delta \mathbf{x}_k^\top \mathbf{B}^{-1}_k \delta \mathbf{f}_k
+  }
+\delta \mathbf{x}_k^\top \mathbf{B}^{-1}_k,\]</div>
+<p>здесь <span class="math notranslate nohighlight">\(\delta \mathbf{f}_k = \mathbf{f}_{k+1} - \mathbf{f}_k\)</span>. Как и формула <a class="reference internal" href="#equation-sysnonlinear-broyden-update">(6.6)</a>, данная формула минимизирует поправку <a class="reference internal" href="#equation-sysnonlinear-broyden-cond">(6.5)</a> для “прямой” матрицы <span class="math notranslate nohighlight">\(\mathbf{B}_{k+1}\)</span>. Метод, основанный на данной формуле ещё называют “хорошим методом Бройдена” (<em>good Broyden’s method</em>).</p>
+<p>Вторая версия метода на основе обратной матрицы <span class="math notranslate nohighlight">\(\mathbf{B}^{-1}\)</span> использует формулу</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{B}^{-1}_{k+1}
+= \mathbf{B}^{-1}_k
++ \frac{\delta \mathbf{x}_k - \mathbf{B}^{-1}_k \delta \mathbf{f}_k}{\delta \mathbf{f}_k^\top \delta \mathbf{f}_k}
+\delta \mathbf{f}_k^\top,\]</div>
+<p>которая минимизирует норму Фробениуса уже между обратными приближениями якобиана</p>
+<div class="math notranslate nohighlight">
+\[\min \|\mathbf{B}^{-1}_{k+1} - \mathbf{B}^{-1}_k \|_\text{F}.\]</div>
+<p>Эта версия распространилась под названием “плохого метода Бройдена” (<em>bad Broyden’s method</em>). Хотя, слова “плохой” и “хороший” в названии методов имеют нейтральную коннотацию.</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.6"
+        },
+        kernelOptions: {
+            kernelName: "julia-1.6",
+            path: "./sysnonlinear"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.6'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="newton.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">6.1. </span>Метод Ньютона</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="ex.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">6.3. </span>Задания</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Степан Захаров и Василий Писарев<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

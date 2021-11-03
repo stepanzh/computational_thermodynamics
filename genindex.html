@@ -234,6 +234,65 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="syslinear/index.html">
+   5. Линейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="syslinear/triangular.html">
+     5.1. Треугольные системы
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="syslinear/lu.html">
+     5.2. LU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="syslinear/plu.html">
+     5.3. PLU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="syslinear/decompose_overview.html">
+     5.4. Обзор других разложений и задач
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="sysnonlinear/index.html">
+   6. Нелинейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sysnonlinear/newton.html">
+     6.1. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sysnonlinear/quasinewton.html">
+     6.2. Метод Бройдена
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="sysnonlinear/ex.html">
+     6.3. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -330,6 +389,7 @@
 <div class="genindex-jumpbox">
  <a href="#H"><strong>H</strong></a>
  | <a href="#А"><strong>А</strong></a>
+ | <a href="#Б"><strong>Б</strong></a>
  | <a href="#И"><strong>И</strong></a>
  | <a href="#К"><strong>К</strong></a>
  | <a href="#М"><strong>М</strong></a>
@@ -341,6 +401,7 @@
  | <a href="#Ф"><strong>Ф</strong></a>
  | <a href="#Ч"><strong>Ч</strong></a>
  | <a href="#Э"><strong>Э</strong></a>
+ | <a href="#Я"><strong>Я</strong></a>
  
 </div>
 <h2 id="H">H</h2>
@@ -365,6 +426,14 @@
         <li><a href="integration/adaptive.html#index-0">адаптивный</a>
 </li>
       </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Б">Б</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="sysnonlinear/quasinewton.html#index-0">Бройдена метод</a>
+</li>
   </ul></td>
 </tr></table>
 
@@ -433,6 +502,8 @@
       <ul>
         <li><a href="interpolation/polynomial.html#index-1">Вандермонда</a>
 </li>
+        <li><a href="sysnonlinear/newton.html#index-1">Якоби</a>
+</li>
       </ul></li>
       <li><a href="intro/float.html#index-3">машинный ноль</a>
 </li>
@@ -450,6 +521,10 @@
     метод
 
       <ul>
+        <li><a href="sysnonlinear/quasinewton.html#index-0">Бройдена</a>
+</li>
+        <li><a href="sysnonlinear/newton.html#index-2">Ньютона многомерный</a>
+</li>
         <li><a href="nlroot/simpleiter.html#index-0">простой итерации</a>
 </li>
         <li><a href="integration/romberg.html#index-1">Ромберга</a>
@@ -497,10 +572,30 @@
 </li>
       </ul></li>
   </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    подстановка
+
+      <ul>
+        <li><a href="syslinear/triangular.html#index-1">обратная</a>
+</li>
+        <li><a href="syslinear/triangular.html#index-0">прямая</a>
+</li>
+      </ul></li>
+  </ul></td>
 </tr></table>
 
 <h2 id="Р">Р</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    разложение
+
+      <ul>
+        <li><a href="syslinear/plu.html#index-0">PLU</a>
+</li>
+      </ul></li>
+  </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="integration/romberg.html#index-2">Ромберга метод</a>
 </li>
@@ -610,6 +705,23 @@
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="integration/romberg.html#index-0">экстраполяция Ричардсона</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Я">Я</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    Якоби
+
+      <ul>
+        <li><a href="sysnonlinear/newton.html#index-1">матрица</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="sysnonlinear/newton.html#index-0">якобиан</a>
 </li>
   </ul></td>
 </tr></table>

@@ -245,6 +245,65 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../syslinear/index.html">
+   5. Линейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/triangular.html">
+     5.1. Треугольные системы
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/lu.html">
+     5.2. LU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/plu.html">
+     5.3. PLU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/decompose_overview.html">
+     5.4. Обзор других разложений и задач
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../sysnonlinear/index.html">
+   6. Нелинейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/newton.html">
+     6.1. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/quasinewton.html">
+     6.2. Метод Бройдена
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/ex.html">
+     6.3. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -373,11 +432,11 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   4.2.1. Метод Ньютона
+   4.2.1. Метод Ньютона-Рафсона
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
+  <a class="reference internal nav-link" href="#chapter-nlroot-secant">
    4.2.2. Метод секущих
   </a>
  </li>
@@ -395,8 +454,8 @@
   <div class="section" id="id1">
 <h1><span class="section-number">4.2. </span>Метод Ньютона и секущих<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id2">
-<h2><span class="section-number">4.2.1. </span>Метод Ньютона<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<p>В методе Ньютона (<em>Newton’s method</em>) функция приближается прямой. Т.е. через текущее приближение корня <span class="math notranslate nohighlight">\(x_k\)</span> проводится касательная <span class="math notranslate nohighlight">\(q(x)\)</span> и корень касательной <span class="math notranslate nohighlight">\(q(x_{k+1}) = 0\)</span> берётся за новое приближение.</p>
+<h2><span class="section-number">4.2.1. </span>Метод Ньютона-Рафсона<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>В методе Ньютона (также, Ньютона-Рафсона <em>Newton–Raphson method</em>) функция приближается прямой. Т.е. через текущее приближение корня <span class="math notranslate nohighlight">\(x_k\)</span> проводится касательная <span class="math notranslate nohighlight">\(q(x)\)</span> и корень касательной <span class="math notranslate nohighlight">\(q(x_{k+1}) = 0\)</span> берётся за новое приближение.</p>
 <p>Уравнение касательной в точке <span class="math notranslate nohighlight">\(x_k\)</span>  функции <span class="math notranslate nohighlight">\(f\)</span> имеет вид</p>
 <div class="math notranslate nohighlight">
 \[q(x) = f(x_k) + f'(k) (x - x_k).\]</div>
@@ -502,8 +561,8 @@ r2 = -5.396595270071815e-16
 <img alt="../_images/newton_secant_4_0.svg" src="../_images/newton_secant_4_0.svg" /></div>
 </div>
 </div></div>
-<div class="section" id="id3">
-<h2><span class="section-number">4.2.2. </span>Метод секущих<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="chapter-nlroot-secant">
+<span id="id3"></span><h2><span class="section-number">4.2.2. </span>Метод секущих<a class="headerlink" href="#chapter-nlroot-secant" title="Permalink to this headline">¶</a></h2>
 <p>Метод секущих основывается на интерполяции функции прямой.</p>
 <p>Пусть есть два приближения корня <span class="math notranslate nohighlight">\(x_1\)</span> и <span class="math notranslate nohighlight">\(x_2\)</span>. Проведём секущую <span class="math notranslate nohighlight">\(q(x)\)</span> через точки <span class="math notranslate nohighlight">\((x_1, f(x_1))\)</span> и <span class="math notranslate nohighlight">\((x_2, f(x_2))\)</span></p>
 <div class="math notranslate nohighlight">
