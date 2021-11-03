@@ -34,6 +34,17 @@ parts:
     - file: nlroot/ridders
     - file: nlroot/itp
     - file: nlroot/ex
+  - file: syslinear/index
+    sections:
+    - file: syslinear/triangular
+    - file: syslinear/lu
+    - file: syslinear/plu
+    - file: syslinear/decompose_overview
+  - file: sysnonlinear/index
+    sections:
+    - file: sysnonlinear/newton
+    - file: sysnonlinear/quasinewton
+    - file: sysnonlinear/ex
 - caption: Приложения
   chapters:
   - file: genindex

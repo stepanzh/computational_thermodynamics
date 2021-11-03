@@ -446,3 +446,147 @@ function itproot(f, x₁, x₂; xtol=eps(), ftol=eps(), κ₁=0.1, κ₂=2, n₀
     end
     return (x₁ + x₂)/2
 end
+
+
+#=
+==
+== Линейные системы
+==
+=#
+
+"Возвращает решение системы `L`x = `b`, где `L` - нижнетреугольная квадратная матрица."
+function forwardsub(L::AbstractMatrix, b::AbstractVector)
+    x = float(similar(b))
+    x[1] = b[1] / L[1, 1]
+    for i in 2:size(L, 1)
+        s = sum(L[i, j]*x[j] for j in 1:i-1)
+        x[i] = (b[i] - s) / L[i, i]
+    end
+    return x
+end
+
+"Возвращает решение системы `U`x = `b`, где `U` - верхнетреугольная квадратная матрица."
+function backwardsub(U::AbstractMatrix, b::AbstractVector)
+    n = size(U, 1)
+    x = float(similar(b))
+    x[n] = b[n] / U[n, n]
+    for i in size(U, 1)-1:-1:1
+        s = sum(U[i, j] * x[j] for j in i+1:n)
+        x[i] = (b[i] - s) / U[i, i]
+    end
+    return x
+end
+
+"Нестабильное LU-разложение квадратной матрицы `A`. Возвращает `L`, `U`."
+function lufact(A::AbstractMatrix)
+    n = size(A, 1)
+    L = diagm(0 => ones(n))
+    U = zeros(n, n)
+    Aₖ = float(copy(A))
+
+    for k in 1:n-1
+        U[k, :] .= Aₖ[k, :]
+        L[:, k] .= Aₖ[:, k] ./ U[k, k]
+        Aₖ .-= L[:, k] * U[k, :]'
+    end
+    U[n, n] = Aₖ[n, n]
+    return LowerTriangular(L), UpperTriangular(U)
+end
+
+"PLU-разложение матрицы `A`. Возвращает `L`, `U` и вектор-перестановку."
+function plufact(A::AbstractMatrix)
+    n = size(A, 1)
+    p = zeros(Int, n)
+
+    U = float(similar(A))
+    L = similar(U)
+    Aₖ = float(copy(A))
+
+    for k in 1:n-1
+        p[k] = argmax(abs.(Aₖ[:, k]))
+        U[k, :] .= Aₖ[p[k], :]
+        L[:, k] .= Aₖ[:, k] ./ U[k, k]
+        Aₖ .-= L[:, k] * U[k, :]'
+    end
+
+    p[n] = argmax(abs.(Aₖ[:, n]))
+    U[n, n] = Aₖ[p[n], n]
+    L[:, n] = Aₖ[:, n] / U[n, n]
+
+    return LowerTriangular(L[p, :]), UpperTriangular(U), p
+end
+
+#=
+==
+== Нелинейные системы
+==
+=#
+
+"""
+    newtonsys(f, x, J[; maxiter=50, xtol=1e-6, ftol=1e-6])
+
+Решает нелинейную систему `f`(x) = 0 методом Ньютона, начиная с приближения `x`.
+Функция `J`(x) должна возвращать матрицу Якоби системы. Работа метода ограничена
+числом итераций `maxiter`, досрочное завершение происходит при достижении
+`norm(x) < xtol` или `norm(f(x)) < ftol`. При превышении числа итераций вызывает
+ошибку. Возвращает найденный корень.
+"""
+function newtonsys(f, x, J; maxiter=50, xtol=1e-6, ftol=1e-6)
+    x = float(copy(x))
+    δx, y = similar.((x, x))
+    for i in 1:maxiter
+        y .= f(x)
+        δx .= .- (J(x) \ y)
+        x .+= δx
+        if norm(δx) < xtol || norm(y) < ftol
+            return x
+        end
+    end
+    error("Превышено число итераций.")
+end
+
+"""
+    jacobianfd(f, x[; y, δ])
+
+Вычисляет якобиан функции `f` в точке `x` через конечную разность в точках `x` и `x + δ
+I[:, j]`, где `δ::Number` - скаляр. Опционально можно подать `y == f(x)`.
+"""
+function jacobianfd(f, x; y=f(x), δ=sqrt(eps())*max(norm(x), 1))
+    m, n = size(y, 1), size(x, 1)
+    J = zeros(m, n)
+    x = float(copy(x))
+    for j in 1:n
+        x[j] += δ
+        J[:, j] .= (f(x) .- y) ./ δ
+        x[j] -= δ
+    end
+    return J
+end
+
+"""
+    broydensys(f, x, J[; maxiter, xtol, ftol])
+
+Решает нелинейную систему уравнений `f`(x) = 0 методом Бройдена.
+Требует начального приближения корня `x` уравнения и якобиана `J` в этой точке.
+Выполняет итерации, пока норма решения `> xtol` или норма функции `> ftol`.
+В случае превышения числа итераций `maxiter` вызывает ошибку.
+"""
+function broydensys(f, x, J; maxiter=50, xtol=1e-6, ftol=1e-6)
+    δx = float(similar(x))
+    yp, yn = similar.((δx, δx))
+    x = float(copy(x))
+    B = float(copy(J))
+    yn .= f(x)
+    for i in 1:maxiter
+        yp .= yn
+        δx .= .- (B \ yp)
+        x .+= δx
+        yn .= f(x)
+        if norm(δx) < xtol || norm(yn) < ftol
+            return x
+        end
+        g = B * δx
+        B .+= (1 / dot(δx, δx)) .* (yn .- yp .- g) .* δx'
+    end
+    error("Превышено число итераций.")
+end
