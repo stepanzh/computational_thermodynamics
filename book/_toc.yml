@@ -44,6 +44,7 @@ parts:
     sections:
     - file: sysnonlinear/newton
     - file: sysnonlinear/quasinewton
+    - file: sysnonlinear/ex
 - caption: Приложения
   chapters:
   - file: genindex
