@@ -45,6 +45,13 @@ parts:
     - file: sysnonlinear/newton
     - file: sysnonlinear/quasinewton
     - file: sysnonlinear/ex
+  - file: ode/index
+    sections:
+    - file: ode/euler
+    # - file: ode/rungekutta
+    # - file: ode/adaptive_rungekutta
+    # - file: ode/multistep
+    # - file: ode/ex
 - caption: Приложения
   chapters:
   - file: genindex
