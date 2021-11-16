@@ -48,7 +48,7 @@ parts:
   - file: ode/index
     sections:
     - file: ode/euler
-    # - file: ode/rungekutta
+    - file: ode/rungekutta
     # - file: ode/adaptive_rungekutta
     # - file: ode/multistep
     # - file: ode/ex
