@@ -21,7 +21,7 @@ y_0 &= u_0.
 
 ```{index} разностный метод; Эйлера явный
 ```
-```{proof:definition} Явный метод Эйлера
+```{proof:algorithm} Явный метод Эйлера
 Пусть дана задача Коши для функции $u$. Значения $u(t)$ при $t>0$ находим из рекуррентной формулы
 
 :::{math}
@@ -58,7 +58,7 @@ y_{i+1} = y_i + \tau f(t_i, y_i),\quad y_0 = u_0,\quad i = 0, 1, 2, \ldots.
 ```{math}
 :label: ode_euler_residual
 
-\psi_i = \frac{u_{i+1} - u_i}{\tau} - f(t_i, u_i).
+\psi_i = - \frac{u_{i+1} - u_i}{\tau} + f(t_i, u_i).
 ```
 
 ```{index} разностный метод; аппроксимация
@@ -90,7 +90,7 @@ u_{i+1} - u_i = u(t_i + \tau) - u(t_i) = u(t_i) + \tau u'(t_i) - u(t_i) + O(\tau
 Подставим полученное соотношение в невязку {eq}`ode_euler_residual`
 
 ```{math}
-\psi_i = u'(t_i) - f(t_i, u_i) + O(\tau).
+\psi_i = - u'(t_i) + f(t_i, u_i) + O(\tau).
 ```
 
 Таким образом, метод Эйлера имеет первый порядок аппроксимации.
