@@ -1,0 +1,761 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>7.2. Методы Рунге-Кутта &#8212; Практикум по вычислительной теплофизике</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/tabs.js"></script>
+    <script src="../_static/proof.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script >mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.3. Адаптивные методы" href="adaptive_rungekutta.html" />
+    <link rel="prev" title="7.1. Метод Эйлера" href="euler.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      <h1 class="site-logo" id="site-title">Практикум по вычислительной теплофизике</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Предмет практикума
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Практикум
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro/index.html">
+   1. Введение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/float.html">
+     1.1. Числа с плавающей точкой
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/cond.html">
+     1.2. Обусловленность задач
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/julia.html">
+     1.3. Основы языка программирования Julia
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/ex.html">
+     1.4. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../interpolation/index.html">
+   2. Интерполяция
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/polynomial.html">
+     2.1. Полиномиальная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/pwlinear.html">
+     2.2. Кусочно-линейная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/cubic_spline.html">
+     2.3. Кубические сплайны
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/ex.html">
+     2.4. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../integration/index.html">
+   3. Численное интегрирование
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/newton_cotes.html">
+     3.1. Формулы Ньютона-Котса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/romberg.html">
+     3.2. Метод Ромберга
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/gauss.html">
+     3.3. Формулы Гаусса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/adaptive.html">
+     3.4. Адаптивное интегрирование
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/ex.html">
+     3.5. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../nlroot/index.html">
+   4. Нелинейные уравнения
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/simpleiter.html">
+     4.1. Метод простой итерации
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/newton_secant.html">
+     4.2. Метод Ньютона и секущих
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/bisection_regula_falsi.html">
+     4.3. Методы бисекции и regula falsi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ridders.html">
+     4.4. Метод Риддерса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/itp.html">
+     4.5. ITP метод
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ex.html">
+     4.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../syslinear/index.html">
+   5. Линейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/triangular.html">
+     5.1. Треугольные системы
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/lu.html">
+     5.2. LU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/plu.html">
+     5.3. PLU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/decompose_overview.html">
+     5.4. Обзор других разложений и задач
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../sysnonlinear/index.html">
+   6. Нелинейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/newton.html">
+     6.1. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/quasinewton.html">
+     6.2. Метод Бройдена
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/ex.html">
+     6.3. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   7. Обыкновенные дифференциальные уравнения
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="euler.html">
+     7.1. Метод Эйлера
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.2. Методы Рунге-Кутта
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="adaptive_rungekutta.html">
+     7.3. Адаптивные методы
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Приложения
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../genindex.html">
+   Указатель
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../bibliography.html">
+   Литература
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/ode/rungekutta.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/stepanzh/computational_thermodynamics"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fode/rungekutta.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/ode/rungekutta.md"><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ode-rk-rk2-derivation">
+   7.2.1. Пример вывода 2-этапного метода
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   7.2.2. Сходимость
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   7.2.3. РК4
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id7">
+   7.2.4. Неявные методы Рунге-Кутта
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   7.2.5. Реализация
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="id1">
+<h1><span class="section-number">7.2. </span>Методы Рунге-Кутта<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>В отличие от метода Эйлера, методы Рунге-Кутты (<em>Runge-Kutta</em>) используют информацию о правой части не в одной точке на отрезке <span class="math notranslate nohighlight">\([t_i, t_{i+1}]\)</span>, а в нескольких. Подобные методы называют <strong>многоэтапными</strong> (<em>multistage</em>).</p>
+<p id="index-0">Для задачи Коши</p>
+<div class="math notranslate nohighlight" id="equation-ode-rk-cauchy">
+<span class="eqno">(7.5)<a class="headerlink" href="#equation-ode-rk-cauchy" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{split}
+u' &amp;= f(t, u),\quad t \in (0, T]\\
+u(0) &amp;= u_0
+\end{split}\end{split}\]</div>
+<p><em>явный <span class="math notranslate nohighlight">\(m\)</span>-этапный метод Рунге-Кутты</em> определяется следующим образом.</p>
+<p>В исходном уравнении производная заменяется разностным соотношением, а правая часть – взвешенной суммой</p>
+<div class="math notranslate nohighlight" id="equation-ode-rk-sum">
+<span class="eqno">(7.6)<a class="headerlink" href="#equation-ode-rk-sum" title="Permalink to this equation">¶</a></span>\[\frac{y_{i+1} - y_i}{\tau} = \sum_{s=1}^m \sigma_s k_s,\]</div>
+<p>где <span class="math notranslate nohighlight">\(\sigma_s\)</span>, <span class="math notranslate nohighlight">\(s=1,\ldots,m\)</span> – коэффициенты метода, а <span class="math notranslate nohighlight">\(k_s\)</span> задаются рекуррентно последовательностью</p>
+<div class="math notranslate nohighlight" id="equation-ode-rk-k">
+<span class="eqno">(7.7)<a class="headerlink" href="#equation-ode-rk-k" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{split}
+k_1 &amp;= f(t_i, y_i),\\
+k_2 &amp;= f(t_i + a_2 \tau, y_i + b_{21} \tau k_1),\\
+k_3 &amp;= f(t_i + a_3 \tau, y_i + b_{31}\tau k_1 + b_{32} \tau k_2),\\
+\ldots\\
+k_m &amp;= f\bigg(t_i + a_m \tau, y_i + \tau\sum_{s=1}^{m-1} b_{m,s}k_s\bigg),
+\end{split}\end{split}\]</div>
+<p>где <span class="math notranslate nohighlight">\(a_s\)</span> и <span class="math notranslate nohighlight">\(b_{sj}\)</span> <span class="math notranslate nohighlight">\(s = 2, 3 \ldots, m\)</span>, <span class="math notranslate nohighlight">\(j=1,2,\ldots,m-1\)</span> – также коэффициенты метода наряду с <span class="math notranslate nohighlight">\(\sigma_s\)</span>. Для явного метода матрица <span class="math notranslate nohighlight">\(b_{sj}\)</span> является нижнетреугольной с нулевой диагональю.</p>
+<p>Коэффициенты <span class="math notranslate nohighlight">\(a_s\)</span>, <span class="math notranslate nohighlight">\(b_{sj}\)</span> и <span class="math notranslate nohighlight">\(\sigma_s\)</span> выбираются из соображений точности. Так, для выполнения аппроксимации требуется условие <span class="math notranslate nohighlight">\(\sum \sigma_s = 1\)</span>.</p>
+<p>Набор коэффициентов <span class="math notranslate nohighlight">\(\sigma_s\)</span>, <span class="math notranslate nohighlight">\(a_s\)</span>, <span class="math notranslate nohighlight">\(b_{sj}\)</span> часто записывают в виде <strong>таблицы Бутчера</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{r|cccc}
+   0   &amp;        &amp;        &amp;        &amp;           \\
+   a_2 &amp; b_{21} &amp;        &amp;        &amp;           \\
+   a_3 &amp; b_{31} &amp; b_{32} &amp;        &amp;           \\
+\vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp;           \\
+   a_m &amp; b_{m1} &amp; b_{m2} &amp; \cdots &amp; b_{m,m-1} \\
+   \hline
+       &amp; \sigma_1 &amp; \sigma_2 &amp; \cdots &amp; \sigma_m
+\end{array}\end{split}\]</div>
+<p>Методы Рунге-Кутты обобщаются на векторный случай задачи Коши</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{split}
+\mathbf{u}' &amp;= \mathbf{f}(t, \mathbf{u}),\quad t \in (0, T]\\
+\mathbf{u}(0) &amp;= \mathbf{u}_0
+\end{split}\end{split}\]</div>
+<p>При этом метод использует те же коэффициенты, что и скалярный аналог</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{split}
+\frac{\mathbf{u}_{i+1} - \mathbf{u}_i}{\tau} &amp;= \sum_{s=1}^m \sigma_s \mathbf{k}_s, \\
+\mathbf{k}_1 &amp;= \mathbf{f}(t_i, \mathbf{y}_i),\\
+\mathbf{k}_2 &amp;= \mathbf{f}(t_i + a_2 \tau, \mathbf{y}_i + b_{21} \tau \mathbf{k}_1),\\
+\mathbf{k}_3 &amp;= \mathbf{f}(t_i + a_3 \tau, \mathbf{y}_i + b_{31}\tau \mathbf{k}_1 + b_{32} \tau \mathbf{k}_2),\\
+\ldots\\
+\mathbf{k}_m &amp;= \mathbf{f}\bigg(t_i + a_m \tau, \mathbf{y}_i + \tau\sum_{s=1}^{m-1} b_{m,s}\mathbf{k}_s\bigg),
+\end{split}\end{split}\]</div>
+<p>В дальнейшем мы будем излагать скалярный случай.</p>
+<div class="section" id="ode-rk-rk2-derivation">
+<span id="id2"></span><h2><span class="section-number">7.2.1. </span>Пример вывода 2-этапного метода<a class="headerlink" href="#ode-rk-rk2-derivation" title="Permalink to this headline">¶</a></h2>
+<p>Рассмотрим отдельно два метода. При <span class="math notranslate nohighlight">\(m=1\)</span> получаем явный метод Эйлера. При <span class="math notranslate nohighlight">\(m=2\)</span> имеем семейство методов</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{split}
+k_1 &amp;= f(t_i, y_i),\\
+k_2 &amp;= f(t_i + a_2\tau, y_i + b_{21}\tau k_1),\\
+y_{i+1} &amp;= y_i + \tau (\sigma_1 k_1 + \sigma_2 k_2).
+\end{split}\end{split}\]</div>
+<p>Исследуем аппроксимацию этого метода. В начале исключим <span class="math notranslate nohighlight">\(k_1\)</span> и <span class="math notranslate nohighlight">\(k_2\)</span></p>
+<div class="math notranslate nohighlight">
+\[\frac{y_{i+1} - y_i}{\tau} = y_i +\sigma_1 f(t_i, y_i) + \sigma_2 f(t_i + a_2\tau, y_i + b_{21}\tau f(t_i, y_i)).\]</div>
+<p>Рассмотрим невязку и определим порядок аппроксимации метода. Для этого подставим в качестве <span class="math notranslate nohighlight">\(y_i\)</span> точное решение задачи <span class="math notranslate nohighlight">\(u_i\)</span></p>
+<div class="math notranslate nohighlight">
+\[\psi = -\frac{u_{i+1} - u_i}{\tau} + \sigma_1 f(t_i, u_i) + \sigma_2 f(t_i + a_2\tau, u_i + b_{21}\tau f(t_i, u_i)),\]</div>
+<p>и разложим все величины по формуле Тейлора в <span class="math notranslate nohighlight">\(t_i\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{split}
+\frac{u_{i+1} - u_i}{\tau} &amp;= u'(t_i) + \frac{\tau}{2} u''(t_i) + O(\tau^2),\\
+f(t_i + a_2\tau, u_i + b_{21}\tau f(t_i, u_i))
+    &amp;= f(t_i, u_i) + a_2\tau \frac{\partial f}{\partial t}(t_i, u_i)
+       + b_{21}\tau f(t_i, u_i) \frac{\partial f}{\partial u}(t_i, u_i) + O(\tau^2).
+\end{split}\end{split}\]</div>
+<p>Согласно исходной задачи <a class="reference internal" href="#equation-ode-rk-cauchy">(7.5)</a></p>
+<div class="math notranslate nohighlight">
+\[u'' = \frac{\diff f}{\diff t} = \frac{\part f}{\part t} + \frac{\part f}{\part u} u'.\]</div>
+<p>Подставим всё в невязку и получим</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{split}
+\psi &amp;= -u'(t_i) \\
+     &amp;+ (\sigma_1 + \sigma_2) f(t_i, u_i)\\
+     &amp;+ \tau \bigg[
+            (\sigma_2 b_{21} - 0.5) f(t_i, y_i) \frac{\part f}{\part u}(t_i, y_i)
+            + (\sigma_2 a_2 - 0.5) \frac{\part f}{\part t}(t_i, u_i)
+        \bigg] \\
+     &amp;+ O(\tau^2).
+\end{split}\end{split}\]</div>
+<p>Таким образом, при <span class="math notranslate nohighlight">\(\sigma_1 + \sigma_2 = 1\)</span> получаем метод первого порядка аппроксимации. А если дополнительно потребовать <span class="math notranslate nohighlight">\(\sigma_2 a_2 = \sigma_2 b_{21} = 0.5\)</span>, то получаем семество методов второго порядка аппроксимации.</p>
+<p>Одним из таких используемых методов имеет коэффициенты <span class="math notranslate nohighlight">\(a_2 = 0.5\)</span>, <span class="math notranslate nohighlight">\(b_{21} = 0.5\)</span>, <span class="math notranslate nohighlight">\(\sigma_1 = 0\)</span>, <span class="math notranslate nohighlight">\(\sigma_2 = 1\)</span>, т.е.</p>
+<div class="math notranslate nohighlight">
+\[y_{i+1} = y_i + \tau f(t_i + 0.5\tau, y_i + 0.5 \tau f(t_i, y_i)).\]</div>
+<p>Таблица Бутчера для этого метода имеет вид</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{r|cc}
+0   &amp;     &amp;    \\
+0.5 &amp; 0.5 &amp;    \\
+\hline
+    &amp; 0   &amp; 1
+\end{array}\end{split}\]</div>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">7.2.2. </span>Сходимость<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Приведём сначала утверждение о сходимости.</p>
+<div class="proof proof-type-proposition" id="id9">
+
+    <div class="proof-title">
+        <span class="proof-type">Утверждение 7.6</span>
+        
+            <span class="proof-title-name">(Сходимость явных методов Рунге-Кутта)</span>
+        
+    </div><div class="proof-content">
+<p><span id="id4">[<a class="reference internal" href="../bibliography.html#id7">89</a>]</span> Если явный метод Рунге-Кутта аппроксимирует исходное уравнение, то он сходится при <span class="math notranslate nohighlight">\(\tau \to 0\)</span>, причём порядок точности совпадает с порядком аппроксимации.</p>
+</div></div><p>Отметим, что данное утверждение не связывает этапность метода <span class="math notranslate nohighlight">\(m\)</span> и порядок аппроксимации.
+В случае методов с числом этапов <span class="math notranslate nohighlight">\(1\)</span>, <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(3\)</span>, <span class="math notranslate nohighlight">\(4\)</span> порядок аппроксимации (и точности) совпадает с числом этапов, однако, при <span class="math notranslate nohighlight">\(m=5\)</span> система на коэффициенты метода уже не является совместной в предположении о пятом порядке аппроксимации. Данное утверждение было доказано Бутчером и носит название <em>первого барьера</em>.</p>
+<div class="proof proof-type-proposition" id="id10">
+
+    <div class="proof-title">
+        <span class="proof-type">Утверждение 7.7</span>
+        
+            <span class="proof-title-name">(Первый барьер Бутчера)</span>
+        
+    </div><div class="proof-content">
+<p>Среди явных методов Рунге-Кутты с числом этапов <span class="math notranslate nohighlight">\(m = 5\)</span> не существует методов пятого порядка аппроксимации.</p>
+</div></div><p>Так, достижение пятого порядка аппроксимации реализуемо для явного <span class="math notranslate nohighlight">\(6\)</span>-ти этапного метода Рунге-Кутты. Более того, при поиске методов с большим порядком аппроксимации требуется всё больше этапов и возникают новые барьеры Бутчера. С другой стороны, вместе с этапностью метода растёт и количество вычислений правой части <span class="math notranslate nohighlight">\(f(t, u)\)</span>. Поэтому, на практике явные методы Рунге-Кутта с порядком <span class="math notranslate nohighlight">\(m &gt; 5\)</span> используются реже <span id="id5">[<a class="reference internal" href="../bibliography.html#id7">89</a>]</span>.</p>
+</div>
+<div class="section" id="id6">
+<h2><span class="section-number">7.2.3. </span>РК4<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>Наибольшее распространение получил метод 4-го порядка, задаваемый следующей таблицей Бутчера</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{array}{r|cccc}
+0           &amp;             &amp; &amp; &amp; \\
+\frac{1}{2} &amp; \frac{1}{2} &amp; &amp; &amp; \\
+\frac{1}{2} &amp; 0           &amp; \frac{1}{2} &amp;   &amp; \\
+1           &amp; 0           &amp; 0           &amp; 1 &amp; \\
+\hline
+            &amp; \frac{1}{6} &amp; \frac{1}{3} &amp; \frac{1}{3}&amp; \frac{1}{6}
+\end{array}\end{split}\]</div>
+<p>Этот метод также сокращённо называют <em>РК4</em> (<em>RK4</em>).</p>
+<p>На практике каждый метод реализуют отдельно, последовательно вычисляя <span class="math notranslate nohighlight">\(k_s\)</span>, вместо использования общего алгоритма, принимающего на вход таблицу Бутчера. Оказывается, что такой подход вычислительно более выгоден.</p>
+<div class="proof proof-type-algorithm" id="id11">
+
+    <div class="proof-title">
+        <span class="proof-type">Алгоритм 7.8</span>
+        
+            <span class="proof-title-name">(РК4, явный 4-этапный метод Рунге-Кутты)</span>
+        
+    </div><div class="proof-content">
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{split}
+k_1 &amp;= f(t_i, y_i), \\
+k_2 &amp;= f(t_i + \tau / 2, y_i + \tau k_1 / 2), \\
+k_3 &amp;= f(t_i + \tau / 2, y_i + \tau k_2 / 2), \\
+k_4 &amp;= f(t_i + \tau, y_i + \tau k_3), \\
+y_{i+1} &amp;= y_i + \tau \bigg( \frac{1}{6} k_1 + \frac{1}{3} k_2 + \frac{1}{3} k_3 + \frac{1}{3} k_4 \bigg).
+\end{split}\end{split}\]</div>
+</div></div></div>
+<div class="section" id="id7">
+<h2><span class="section-number">7.2.4. </span>Неявные методы Рунге-Кутта<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p><strong>Комментарий</strong>. Причиной разработки неявных методов послужило плохое решение (потеря устойчивости) явными методами жёстких систем уравнений. В жёстких системах компоненты решения <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> изменяются со значительно разными скоростями. В случае явных систем шаг интегрирования <span class="math notranslate nohighlight">\(\tau\)</span> лимитируется самой быстро меняющейся компонентой, что приводит к выбору мелкого шага, а в перспективе к накоплению ошибок на больших масштабах <span class="math notranslate nohighlight">\(T\)</span>. Для неявных методов, как правило ограничения на шаг более мягкие или почти отсутствуют. В теории решения жёстких систем вводятся специальные определения устойчивости, которые требуют отдельного рассмотрения. Жёсткие системы появляются, например, в задачах прикладной химии по расчёту динамики многостадийных реакций.</p>
+<p>Неявными методами Рунге-Кутта называют методы, для которых <span class="math notranslate nohighlight">\(k_j\)</span> зависит не только от предыдущих <span class="math notranslate nohighlight">\(k\)</span>, но и от следующих. То есть,</p>
+<div class="math notranslate nohighlight" id="equation-ode-rk-impl-k">
+<span class="eqno">(7.8)<a class="headerlink" href="#equation-ode-rk-impl-k" title="Permalink to this equation">¶</a></span>\[k_j = f\bigg(t_i + a_m \tau, y_i + \tau\sum_{s=1}^m b_{j,s}k_s\bigg),\quad j = 1,\ldots,m,\]</div>
+<p>но матрица коэффициентов <span class="math notranslate nohighlight">\(b_{j,s}\)</span>, в отличие от явных методов, уже не имеет нижнетреугольный вид.</p>
+<p>Простейшим среди таких методов является <strong>неявный метод Эйлера</strong> (<em>implicit/backward Euler method</em>)</p>
+<div class="math notranslate nohighlight">
+\[\frac{y_{i+1} - y_i}{\tau} = f(t_i+\tau, y_{i+1}).\]</div>
+<p>Неявные методы требуют в общем случае решения нелинейной системы на <span class="math notranslate nohighlight">\(k_j\)</span> <a class="reference internal" href="#equation-ode-rk-impl-k">(7.8)</a>. Однако, в некоторых случаях показано, что достаточно использовать <a class="reference internal" href="../nlroot/simpleiter.html#chapter-nlroot-simpleiter"><span class="std std-ref">метод простой итерации</span></a> для решения такой системы, т.е. явным образом итеративно вычислять</p>
+<div class="math notranslate nohighlight">
+\[k^{(n+1)}_j = f\bigg(t_i + a_m \tau, y_i + \tau\sum_{s=1}^m b_{j,s}k^{(n)}_s\bigg),\quad j = 1,\ldots,m,\]</div>
+<p>пока два приближения системы <span class="math notranslate nohighlight">\(k^{(n+1)}\)</span> и <span class="math notranslate nohighlight">\(k^{(n)}\)</span> не станут сильно отличаться.</p>
+<p>Существуют <span class="math notranslate nohighlight">\(m\)</span>-этапные неявные методы Рунге-Кутты с порядком аппроксимации <span class="math notranslate nohighlight">\(2m\)</span>. Хотя, неявный метод Эйлера к таким не относится.</p>
+</div>
+<div class="section" id="id8">
+<h2><span class="section-number">7.2.5. </span>Реализация<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<div class="proof proof-type-function" id="id12">
+
+    <div class="proof-title">
+        <span class="proof-type">Функция 7.9</span>
+        
+            <span class="proof-title-name">(rk4)</span>
+        
+    </div><div class="proof-content">
+<p><strong>Явный метод Рунге-Кутта 4-го порядка</strong></p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">    rk4(problem; nsteps)</span>
+
+<span class="s">Решает задачу Коши `problem` явным 4-этапным методом Рунге-Кутта за `nsteps` шагов.</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="k">function</span> <span class="n">rk4</span><span class="p">(</span><span class="n">problem</span><span class="o">::</span><span class="kt">CauchyODEProblem</span><span class="p">;</span> <span class="n">nsteps</span><span class="o">::</span><span class="kt">Integer</span><span class="p">)</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="kt">Vector</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span> <span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">u₀</span>
+    <span class="n">tstart</span><span class="p">,</span> <span class="n">tend</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">bound</span>
+    <span class="n">trange</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="n">tstart</span><span class="p">,</span> <span class="n">tend</span><span class="p">;</span> <span class="n">length</span><span class="o">=</span><span class="n">nsteps</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">τ</span> <span class="o">=</span> <span class="n">step</span><span class="p">(</span><span class="n">trange</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">nsteps</span>
+        <span class="n">tᵢ</span><span class="p">,</span> <span class="n">uᵢ</span> <span class="o">=</span> <span class="n">trange</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        
+        <span class="n">k₁</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">tᵢ</span><span class="p">,</span> <span class="n">uᵢ</span><span class="p">)</span>
+        <span class="n">k₂</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">tᵢ</span> <span class="o">+</span> <span class="n">τ</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">uᵢ</span> <span class="o">+</span> <span class="n">τ</span><span class="o">*</span><span class="n">k₁</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">k₃</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">tᵢ</span> <span class="o">+</span> <span class="n">τ</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">uᵢ</span> <span class="o">+</span> <span class="n">τ</span><span class="o">*</span><span class="n">k₂</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">k₄</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">tᵢ</span> <span class="o">+</span> <span class="n">τ</span><span class="p">,</span> <span class="n">uᵢ</span> <span class="o">+</span> <span class="n">τ</span> <span class="o">*</span> <span class="n">k₃</span><span class="p">)</span>
+
+        <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">uᵢ</span> <span class="o">+</span> <span class="n">τ</span> <span class="o">*</span> <span class="p">(</span><span class="n">k₁</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">k₂</span> <span class="o">+</span> <span class="n">k₃</span><span class="p">)</span> <span class="o">+</span> <span class="n">k₄</span><span class="p">)</span><span class="o">/</span><span class="mi">6</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">trange</span><span class="p">,</span> <span class="n">u</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div></div></div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./ode"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="euler.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title"><span class="section-number">7.1. </span>Метод Эйлера</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="adaptive_rungekutta.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title"><span class="section-number">7.3. </span>Адаптивные методы</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Степан Захаров и Василий Писарев<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

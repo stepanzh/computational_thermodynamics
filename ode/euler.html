@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5.1. Треугольные системы &#8212; Практикум по вычислительной теплофизике</title>
+    <title>7.1. Метод Эйлера &#8212; Практикум по вычислительной теплофизике</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -60,8 +60,8 @@
     <script >mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.2. LU-разложение" href="lu.html" />
-    <link rel="prev" title="5. Линейные системы уравнений" href="index.html" />
+    <link rel="next" title="7.2. Методы Рунге-Кутта" href="rungekutta.html" />
+    <link rel="prev" title="7. Обыкновенные дифференциальные уравнения" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -245,33 +245,33 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="index.html">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../syslinear/index.html">
    5. Линейные системы уравнений
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="current">
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/triangular.html">
      5.1. Треугольные системы
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lu.html">
+    <a class="reference internal" href="../syslinear/lu.html">
      5.2. LU-разложение
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="plu.html">
+    <a class="reference internal" href="../syslinear/plu.html">
      5.3. PLU-разложение
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="decompose_overview.html">
+    <a class="reference internal" href="../syslinear/decompose_overview.html">
      5.4. Обзор других разложений и задач
     </a>
    </li>
@@ -304,28 +304,28 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ode/index.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
    7. Обыкновенные дифференциальные уравнения
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ode/euler.html">
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      7.1. Метод Эйлера
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ode/rungekutta.html">
+    <a class="reference internal" href="rungekutta.html">
      7.2. Методы Рунге-Кутта
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ode/adaptive_rungekutta.html">
+    <a class="reference internal" href="adaptive_rungekutta.html">
      7.3. Адаптивные методы
     </a>
    </li>
@@ -387,12 +387,9 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        <a class="dropdown-buttons"
-            href="../_sources/syslinear/triangular.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+        
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/syslinear/triangular.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/ode/euler.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -412,10 +409,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fsyslinear/triangular.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fode/euler.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/syslinear/triangular.md"><button
+        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/ode/euler.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -430,23 +427,6 @@
 
             <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/stepanzh/computational_thermodynamics/main?urlpath=tree/book/syslinear/triangular.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
         </div>
 
         <!-- Table of contents -->
@@ -458,8 +438,8 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   5.1.1. Реализация
+  <a class="reference internal nav-link" href="#id6">
+   7.1.1. Реализация
   </a>
  </li>
 </ul>
@@ -474,138 +454,126 @@
               <div>
                 
   <div class="section" id="id1">
-<h1><span class="section-number">5.1. </span>Треугольные системы<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>Прежде всего рассмотрим решение треугольной системы.</p>
-<p>Рассмотрим частный случай для системы <span class="math notranslate nohighlight">\(\mathbf{L}\mathbf{x}=\mathbf{b}\)</span>, где <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> – <strong>нижнетреугольная</strong> матрица размера 4</p>
+<h1><span class="section-number">7.1. </span>Метод Эйлера<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>Простейшим методом решения <a class="reference internal" href="index.html#equation-ode-cauchy-scalar">(7.1)</a></p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\begin{bmatrix}
-L_{11} &amp; 0 &amp; 0 &amp; 0 \\
-L_{21} &amp; L_{22} &amp; 0 &amp; 0 \\
-L_{31} &amp; L_{32} &amp; L_{33} &amp; 0 \\
-L_{41} &amp; L_{42} &amp; L_{43} &amp; L_{44}
-\end{bmatrix}
-\begin{bmatrix}
-x_1 \\ x_2 \\ x_3 \\ x_4
-\end{bmatrix}
-=
-\begin{bmatrix}
-b_1 \\ b_2 \\ b_3 \\ b_4
-\end{bmatrix}\end{split}\]</div>
-<p id="index-0">Эта система может быть решена итерационно, начиная с <span class="math notranslate nohighlight">\(x_1\)</span></p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{split}
-x_1 &amp;= \frac{b_1}{L_{11}}\\
-x_2 &amp;= \frac{b_2 - L_{21}x_1}{L_{22}}\\
-x_3 &amp;= \frac{b_3 - (L_{31}x_1 + L_{32}x_2)}{L_{33}}\\
-x_4 &amp;= \frac{b_4 - (L_{41}x_1 + L_{42}x_2 + L_{43}x_3)}{L_{44}}
+\[u' = f(t, u)\]</div>
+<p>является метод Эйлера. В этом методе производная <span class="math notranslate nohighlight">\(u'\)</span> заменяется <em>конечной разностью</em></p>
+<div class="math notranslate nohighlight" id="equation-ode-euler-explicit">
+<span class="eqno">(7.3)<a class="headerlink" href="#equation-ode-euler-explicit" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{split}
+\frac{y_{i+1} - y_i}{\tau} &amp;= f(t, y_i),\quad i = 0, 1, 2, \ldots, \\
+y_0 &amp;= u_0.
 \end{split}\end{split}\]</div>
-<p>Алгоритм, который здесь применён называют <strong>прямой подстановкой</strong> (<em>forward substitution</em>).</p>
-<p id="index-1">Аналогично, система <span class="math notranslate nohighlight">\(\mathbf{U}\mathbf{x}=\mathbf{b}\)</span>, где <span class="math notranslate nohighlight">\(\mathbf{U}\)</span> – <strong>верхнетреугольная</strong> матрица, может быть решена алгоритмом <strong>обратной подстановки</strong> (<em>backward substitution</em>). Например, для случая <span class="math notranslate nohighlight">\(\mathbf{U}\)</span> размера 4</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{bmatrix}
-U_{11} &amp; U_{12} &amp; U_{13} &amp; U_{14} \\
-0 &amp; U_{22} &amp; U_{23} &amp; U_{24} \\
-0 &amp; 0 &amp; U_{33} &amp; U_{34} \\
-0 &amp; 0 &amp; 0 &amp; U_{44}
-\end{bmatrix}
-\begin{bmatrix}
-x_1 \\ x_2 \\ x_3 \\ x_4
-\end{bmatrix}
-=
-\begin{bmatrix}
-b_1 \\ b_2 \\ b_3 \\ b_4
-\end{bmatrix}\end{split}\]</div>
-<p>алгоритм обратной подстановки начинается с <span class="math notranslate nohighlight">\(x_4\)</span> и включает следующие шаги</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\begin{split}
-x_4 &amp;= \frac{b_4}{U_{44}}\\
-x_3 &amp;= \frac{b_3 - U_{34}x_4}{U_{33}}\\
-x_2 &amp;= \frac{b_2 - (U_{23}x_3 + U_{24}x_4)}{U_{22}}\\
-x_1 &amp;= \frac{b_1 - (U_{12} x_2 + U_{13}x_3 + U_{14}x_4)}{U_{11}}.
-\end{split}\end{split}\]</div>
-<p>Алгоритм постановки показывает следующее утверждение.</p>
-<div class="proof proof-type-proposition" id="id3">
-
+<p>В геометрической интерпретации это означает, что метод приближает <span class="math notranslate nohighlight">\(y_{i+1}\)</span> значением касательной через <span class="math notranslate nohighlight">\((t_i, y_i)\)</span> в точке <span class="math notranslate nohighlight">\(t_i + \tau\)</span>.</p>
+<div class="proof proof-type-algorithm" id="id7">
+<span id="index-0"></span>
     <div class="proof-title">
-        <span class="proof-type">Утверждение 5.1</span>
+        <span class="proof-type">Алгоритм 7.1</span>
+        
+            <span class="proof-title-name">(Явный метод Эйлера)</span>
         
     </div><div class="proof-content">
-<p>Треугольная матрица вырождена тогда и только тогда, когда хотя бы один ёё диагональнй элемент нулевой.</p>
-</div></div><div class="section" id="id2">
-<h2><span class="section-number">5.1.1. </span>Реализация<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
-<div class="proof proof-type-function" id="id4">
-
+<p>Пусть дана задача Коши для функции <span class="math notranslate nohighlight">\(u\)</span>. Значения <span class="math notranslate nohighlight">\(u(t)\)</span> при <span class="math notranslate nohighlight">\(t&gt;0\)</span> находим из рекуррентной формулы</p>
+<div class="math notranslate nohighlight">
+\[y_{i+1} = y_i + \tau f(t_i, y_i),\quad y_0 = u_0,\quad i = 0, 1, 2, \ldots.\]</div>
+</div></div><p>На примере метода Эйлера введём несколько понятий, применяющихся к разностным схемам <span id="id2">[<a class="reference internal" href="../bibliography.html#id7">89</a>]</span>.</p>
+<div class="proof proof-type-definition" id="id8">
+<span id="index-1"></span>
     <div class="proof-title">
-        <span class="proof-type">Функция 5.2</span>
+        <span class="proof-type">Определение 7.2</span>
         
-            <span class="proof-title-name">(forwardsub)</span>
+            <span class="proof-title-name">(Сходимость разностного метода)</span>
         
     </div><div class="proof-content">
-<p><strong>Алгоритм прямой подстановки</strong></p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;Возвращает решение системы `L`x = `b`, где `L` - нижнетреугольная квадратная матрица.&quot;</span>
-<span class="k">function</span> <span class="n">forwardsub</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="kt">AbstractMatrix</span><span class="p">,</span> <span class="n">b</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">float</span><span class="p">(</span><span class="n">similar</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
-    <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">2</span><span class="o">:</span><span class="n">size</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-        <span class="n">s</span> <span class="o">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span> <span class="o">/</span> <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span>
+<p>Фиксируем точку <span class="math notranslate nohighlight">\(t\)</span> и построим последовательность сеток <span class="math notranslate nohighlight">\(\omega_\tau\)</span> <a class="reference internal" href="index.html#equation-ode-grid">(7.2)</a> таких, что <span class="math notranslate nohighlight">\(\tau \to 0\)</span> и <span class="math notranslate nohighlight">\(t_i = i \tau = t\)</span>. Говорят, что <em>метод сходится в точке</em> <span class="math notranslate nohighlight">\(t\)</span>, если</p>
+<div class="math notranslate nohighlight">
+\[|y_i - u(t_i)| \to 0,\quad \tau \to 0,\: t_i = t.\]</div>
+<p>Метод называют <em>сходящимся на отрезке</em> <span class="math notranslate nohighlight">\((0, T]\)</span>, если он сходится в каждой точке отрезка.</p>
+<p>Если при этом</p>
+<div class="math notranslate nohighlight">
+\[|y_i - u(t_i)| = O(\tau^p),\quad p&gt;0,\: \tau \to 0,\]</div>
+<p>то говорят, что метод имеет <span class="math notranslate nohighlight">\(p\)</span>-ый <em>порядок точности</em>.</p>
+</div></div><p>Альтернативное определение сходимости <span id="id3">[<a class="reference internal" href="../bibliography.html#id13">16</a>]</span> заключается в рассмотрении <span class="math notranslate nohighlight">\(y_\tau\)</span> и проекции <span class="math notranslate nohighlight">\(u_\tau\)</span> как сеточных функций (т.е. функций, определённых на <span class="math notranslate nohighlight">\(\omega_\tau\)</span>), тогда требуют <span class="math notranslate nohighlight">\(\|y_\tau - u_\tau\|_{F_\tau} \to 0\)</span>, где <span class="math notranslate nohighlight">\(F_\tau\)</span> – пространство сеточных функций.</p>
+<p>При подстановке решения <span class="math notranslate nohighlight">\(u\)</span> в численный метод получается выражение для <em>погрешности аппроксимации разностного уравнения на решении исходного уравнения</em>, или <em>невязки</em>. Например, для метода Эйлера <a class="reference internal" href="#equation-ode-euler-explicit">(7.3)</a> получим вид невязки <span class="math notranslate nohighlight">\(\psi_i\)</span></p>
+<div class="math notranslate nohighlight" id="equation-ode-euler-residual">
+<span class="eqno">(7.4)<a class="headerlink" href="#equation-ode-euler-residual" title="Permalink to this equation">¶</a></span>\[\psi_i = - \frac{u_{i+1} - u_i}{\tau} + f(t_i, u_i).\]</div>
+<div class="proof proof-type-definition" id="id9">
+<span id="index-2"></span>
+    <div class="proof-title">
+        <span class="proof-type">Определение 7.3</span>
+        
+            <span class="proof-title-name">(Аппроксимация)</span>
+        
+    </div><div class="proof-content">
+<p>Если невязка</p>
+<div class="math notranslate nohighlight">
+\[|\psi_i| \to 0,\quad \tau \to 0,\]</div>
+<p>то говорят, что разностный метод <em>аппроксимирует</em> исходное дифференциальное уравнение.</p>
+<p>При этом, если невязка имеет вид</p>
+<div class="math notranslate nohighlight">
+\[\psi_i = O(\tau^p), \tau \to 0,\]</div>
+<p>то говорят о <span class="math notranslate nohighlight">\(p\)</span>-ом <em>порядке аппроксимации</em>.</p>
+</div></div><p>Несложно найти порядок аппроксимации метода Эйлера. Сама невязка имеет вид <a class="reference internal" href="#equation-ode-euler-residual">(7.4)</a>, для её получения разложим <span class="math notranslate nohighlight">\(u_{i+1}-u_i\)</span> по формуле Тейлора</p>
+<div class="math notranslate nohighlight">
+\[u_{i+1} - u_i = u(t_i + \tau) - u(t_i) = u(t_i) + \tau u'(t_i) - u(t_i) + O(\tau) = \tau u'(t_i) + O(\tau).\]</div>
+<p>Подставим полученное соотношение в невязку <a class="reference internal" href="#equation-ode-euler-residual">(7.4)</a></p>
+<div class="math notranslate nohighlight">
+\[\psi_i = - u'(t_i) + f(t_i, u_i) + O(\tau).\]</div>
+<p>Таким образом, метод Эйлера имеет первый порядок аппроксимации.</p>
+<p id="index-3">Помимо сходимости и аппроксимации, вводят различные понятия <em>устойчивости</em>. Одной из обобщённых является <strong>устойчивость по правой части</strong>. Данная устойчивость <span id="id4">[<a class="reference internal" href="../bibliography.html#id13">16</a>]</span> означает, что при малом возмущении правой части уравнения <span class="math notranslate nohighlight">\(f + \epsilon\)</span> разностный метод будет иметь (а) единственное решение <span class="math notranslate nohighlight">\(z_\tau\)</span>, (б) решение <span class="math notranslate nohighlight">\(z_\tau\)</span> будет не сильно отличаться от невозмущённого, т.е. <span class="math notranslate nohighlight">\(\|z_\tau - y_\tau\| \le c \|\epsilon_\tau\|\)</span>.</p>
+<div class="proof proof-type-proposition" id="id10">
+
+    <div class="proof-title">
+        <span class="proof-type">Утверждение 7.4</span>
+        
+    </div><div class="proof-content">
+<p>Показано <span id="id5">[<a class="reference internal" href="../bibliography.html#id13">16</a>]</span>, что из аппроксимации и устойчивости по правой части следует сходимость метода с порядком точности, совпадающем с порядком аппроксимации.</p>
+</div></div><div class="section" id="id6">
+<h2><span class="section-number">7.1.1. </span>Реализация<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<p>В этой главе для постановки задачи Коши (скалярной) мы будем пользоваться структурой данных <code class="docutils literal notranslate"><span class="pre">CauchyODEProblem</span></code>.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="kt">CauchyODEProblem</span><span class="p">{</span><span class="kt">T</span><span class="o">&lt;:</span><span class="kt">Real</span><span class="p">,</span><span class="kt">F</span><span class="o">&lt;:</span><span class="kt">Function</span><span class="p">}</span>
+    <span class="n">bound</span><span class="o">::</span><span class="kt">Tuple</span><span class="p">{</span><span class="kt">T</span><span class="p">,</span><span class="kt">T</span><span class="p">}</span>   <span class="c"># отрезок интегрирования</span>
+    <span class="n">u₀</span><span class="o">::</span><span class="kt">T</span>               <span class="c"># начальное значение интегрируемой функции</span>
+    <span class="n">f</span><span class="o">::</span><span class="kt">F</span>                <span class="c"># правая часть ОДУ</span>
+    <span class="k">function</span> <span class="n">CauchyODEProblem</span><span class="p">(;</span> <span class="n">f</span><span class="o">::</span><span class="kt">Function</span><span class="p">,</span> <span class="n">tstart</span><span class="o">::</span><span class="kt">Real</span><span class="p">,</span> <span class="n">tend</span><span class="o">::</span><span class="kt">Real</span><span class="p">,</span> <span class="n">u₀</span><span class="o">::</span><span class="kt">Real</span><span class="p">)</span>
+        <span class="kt">new</span><span class="p">{</span><span class="kt">Float64</span><span class="p">,</span> <span class="kt">typeof</span><span class="p">(</span><span class="kt">f</span><span class="p">)}(</span>
+            <span class="n">float</span><span class="o">.</span><span class="p">(</span><span class="n">tuple</span><span class="p">(</span><span class="n">tstart</span><span class="p">,</span> <span class="n">tend</span><span class="p">)),</span>
+            <span class="n">float</span><span class="p">(</span><span class="n">u₀</span><span class="p">),</span>
+            <span class="n">f</span><span class="p">,</span>
+        <span class="p">)</span>
     <span class="k">end</span>
-    <span class="k">return</span> <span class="n">x</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-<p>Конструкция <code class="docutils literal notranslate"><span class="pre">similar(b)</span></code> создаёт неинициализированный массив того же типа и размера, что и <code class="docutils literal notranslate"><span class="pre">b</span></code>.
-Вектор <code class="docutils literal notranslate"><span class="pre">b</span></code> может содержать, например, и целые числа <code class="docutils literal notranslate"><span class="pre">::Integer</span></code>.
-Поскольку в алгоритме деление приведёт к появлению чисел с плавающей точкой, массив <code class="docutils literal notranslate"><span class="pre">x</span></code> сразу приводится к массиву на основе <code class="docutils literal notranslate"><span class="pre">::Float</span></code>-чисел конструкцией <code class="docutils literal notranslate"><span class="pre">float(similar(b))</span></code>.</p>
-</div></div><div class="proof proof-type-function" id="id5">
+<div class="proof proof-type-function" id="id11">
 
     <div class="proof-title">
-        <span class="proof-type">Функция 5.3</span>
+        <span class="proof-type">Функция 7.5</span>
         
-            <span class="proof-title-name">(backwardsub)</span>
+            <span class="proof-title-name">(euler)</span>
         
     </div><div class="proof-content">
-<p><strong>Алгоритм обратной подстановки</strong></p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;Возвращает решение системы `U`x = `b`, где `U` - верхнетреугольная квадратная матрица.&quot;</span>
-<span class="k">function</span> <span class="n">backwardsub</span><span class="p">(</span><span class="n">U</span><span class="o">::</span><span class="kt">AbstractMatrix</span><span class="p">,</span> <span class="n">b</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">)</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">float</span><span class="p">(</span><span class="n">similar</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
-    <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">b</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">/</span> <span class="n">U</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="n">size</span><span class="p">(</span><span class="n">U</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="o">:-</span><span class="mi">1</span><span class="o">:</span><span class="mi">1</span>
-        <span class="n">s</span> <span class="o">=</span> <span class="n">sum</span><span class="p">(</span><span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="p">)</span>
-        <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">s</span><span class="p">)</span> <span class="o">/</span> <span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="p">]</span>
+<p><strong>Явный метод Эйлера</strong></p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
+<span class="s">    euler(problem; nsteps)</span>
+
+<span class="s">Решает задачу Коши `problem` явным методом Эйлера за `nsteps` шагов.</span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="k">function</span> <span class="n">euler</span><span class="p">(</span><span class="n">problem</span><span class="o">::</span><span class="kt">CauchyODEProblem</span><span class="p">;</span> <span class="n">nsteps</span><span class="o">::</span><span class="kt">Integer</span><span class="p">)</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="kt">Vector</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}(</span><span class="nb">undef</span><span class="p">,</span> <span class="n">nsteps</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">u₀</span>
+    <span class="n">tstart</span><span class="p">,</span> <span class="n">tend</span> <span class="o">=</span> <span class="n">problem</span><span class="o">.</span><span class="n">bound</span>
+    <span class="n">trange</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="n">tstart</span><span class="p">,</span> <span class="n">tend</span><span class="p">;</span> <span class="n">length</span><span class="o">=</span><span class="n">nsteps</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">τ</span> <span class="o">=</span> <span class="n">step</span><span class="p">(</span><span class="n">trange</span><span class="p">)</span>
+    <span class="nd">@inbounds</span> <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">nsteps</span>
+        <span class="n">tᵢ</span><span class="p">,</span> <span class="n">uᵢ</span> <span class="o">=</span> <span class="n">trange</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="n">u</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">uᵢ</span> <span class="o">+</span> <span class="n">τ</span> <span class="o">*</span> <span class="n">problem</span><span class="o">.</span><span class="n">f</span><span class="p">(</span><span class="n">tᵢ</span><span class="p">,</span> <span class="n">uᵢ</span><span class="p">)</span>
     <span class="k">end</span>
-    <span class="k">return</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">trange</span><span class="p">,</span> <span class="n">u</span>
 <span class="k">end</span>
 </pre></div>
 </div>
-</div></div><div class="proof proof-type-demo" id="id6">
-
-    <div class="proof-title">
-        <span class="proof-type">Демонстрация 5.4</span>
-        
-    </div><div class="proof-content">
-</div></div><div class="demo"><p>Применение прямой подстановки</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="mi">1</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="mi">2</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">;</span>
-    <span class="mi">4</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">;</span>
-<span class="p">]</span>
-<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">forwardsub</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-<span class="n">x</span><span class="p">,</span> <span class="n">A</span><span class="o">*</span><span class="n">x</span> <span class="o">-</span> <span class="n">b</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([2.0, -1.0, -0.3333333333333333], [0.0, 0.0, 0.0])
-</pre></div>
-</div>
-</div>
-</div>
-</div></div>
+</div></div></div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -617,16 +585,16 @@ x_1 &amp;= \frac{b_1 - (U_{12} x_2 + U_{13}x_3 + U_{14}x_4)}{U_{11}}.
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "julia-1.6"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "julia-1.6",
-            path: "./syslinear"
+            kernelName: "python3",
+            path: "./ode"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'julia-1.6'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
@@ -642,15 +610,15 @@ x_1 &amp;= \frac{b_1 - (U_{12} x_2 + U_{13}x_3 + U_{14}x_4)}{U_{11}}.
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">5. </span>Линейные системы уравнений</p>
+                <p class="prevnext-title"><span class="section-number">7. </span>Обыкновенные дифференциальные уравнения</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="lu.html" title="next page">
+        <a class="right-next" href="rungekutta.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">5.2. </span>LU-разложение</p>
+                <p class="prevnext-title"><span class="section-number">7.2. </span>Методы Рунге-Кутта</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

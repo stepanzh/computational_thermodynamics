@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5. Линейные системы уравнений &#8212; Практикум по вычислительной теплофизике</title>
+    <title>7. Обыкновенные дифференциальные уравнения &#8212; Практикум по вычислительной теплофизике</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -60,8 +60,8 @@
     <script >mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="5.1. Треугольные системы" href="triangular.html" />
-    <link rel="prev" title="4.6. Задания" href="../nlroot/ex.html" />
+    <link rel="next" title="7.1. Метод Эйлера" href="euler.html" />
+    <link rel="prev" title="6.3. Задания" href="../sysnonlinear/ex.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -245,33 +245,33 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../syslinear/index.html">
    5. Линейные системы уравнений
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
   <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="triangular.html">
+    <a class="reference internal" href="../syslinear/triangular.html">
      5.1. Треугольные системы
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="lu.html">
+    <a class="reference internal" href="../syslinear/lu.html">
      5.2. LU-разложение
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="plu.html">
+    <a class="reference internal" href="../syslinear/plu.html">
      5.3. PLU-разложение
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="decompose_overview.html">
+    <a class="reference internal" href="../syslinear/decompose_overview.html">
      5.4. Обзор других разложений и задач
     </a>
    </li>
@@ -304,28 +304,28 @@
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ode/index.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
    7. Обыкновенные дифференциальные уравнения
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
   <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ode/euler.html">
+    <a class="reference internal" href="euler.html">
      7.1. Метод Эйлера
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ode/rungekutta.html">
+    <a class="reference internal" href="rungekutta.html">
      7.2. Методы Рунге-Кутта
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../ode/adaptive_rungekutta.html">
+    <a class="reference internal" href="adaptive_rungekutta.html">
      7.3. Адаптивные методы
     </a>
    </li>
@@ -389,7 +389,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/syslinear/index.md"><button type="button"
+        <a class="dropdown-buttons" href="../_sources/ode/index.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -409,10 +409,10 @@
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fsyslinear/index.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fode/index.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/syslinear/index.md"><button
+        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/ode/index.md"><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
     </div>
@@ -441,30 +441,34 @@
               <div>
                 
   <div class="section" id="id1">
-<h1><span class="section-number">5. </span>Линейные системы уравнений<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>В этом разделе рассматривается решение линейной системы уравнений</p>
+<h1><span class="section-number">7. </span>Обыкновенные дифференциальные уравнения<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<p>В данном разделе рассматривается решение обыкновенных дифференциальных уравнений. В частности, мы рассмотрим <strong>задачу Коши</strong> для уравнения</p>
+<div class="math notranslate nohighlight" id="equation-ode-cauchy-scalar">
+<span id="index-0"></span><span class="eqno">(7.1)<a class="headerlink" href="#equation-ode-cauchy-scalar" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{split}
+\frac{\diff u}{\diff t}(t) &amp;= f(t, u(t)),\quad t \in (0, T],\\
+u(0) &amp;= u_0.
+\end{split}\end{split}\]</div>
+<p>и для системы уравнений</p>
 <div class="math notranslate nohighlight">
-\[\mathbf{A}\mathbf{x}=\mathbf{b},\]</div>
-<p>которая в явном виде представляет собой</p>
+\[\begin{split}\frac{\diff \mathbf{u}}{\diff t}(t) &amp;= \mathbf{f}(t, \mathbf{u}(t)), \quad t \in (0, T],\\
+\mathbf{u}(0) &amp;= \mathbf{u}_0.\end{split}\]</div>
+<p>Для краткости, мы будем также использовать запись</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{split}
-  A_{11} x_1 + A_{12} x_2 + \cdots + A_{1n} x_n &amp;= b_1 \\
-  A_{21} x_1 + A_{22} x_2 + \cdots + A_{2n} x_n &amp;= b_2 \\
-  \vdots  \\
-  A_{n1} x_1 + A_{n2} x_2 + \cdots + A_{nn} x_n &amp;= b_n.
+u'(t) &amp;= f(t, u(t)),\\
+\mathbf{u}'(t) &amp;= \mathbf{f}(t, \mathbf{u}(t)).
 \end{split}\end{split}\]</div>
-<p>В курсе линейно алгебры решение системы записывается в виде</p>
+<p>Существует несколько классов методов численного решения задачи Коши. Среди них можно выделить многошаговые методы и методы Рунге-Кутты.</p>
+<p>Будем обозначать <span class="math notranslate nohighlight">\(u(t)\)</span> (точное) решение задачи Коши <a class="reference internal" href="#equation-ode-cauchy-scalar">(7.1)</a>, а <span class="math notranslate nohighlight">\(y(t)\)</span> <em>приближённое</em> решение той же задачи.</p>
+<p>Также введём <em>равномерную сетку</em> по переменной <span class="math notranslate nohighlight">\(t\)</span> с шагом <span class="math notranslate nohighlight">\(\tau &gt; 0\)</span></p>
+<div class="math notranslate nohighlight" id="equation-ode-grid">
+<span class="eqno">(7.2)<a class="headerlink" href="#equation-ode-grid" title="Permalink to this equation">¶</a></span>\[\omega_t = \{t_i = i \tau,\: i = 0, 1, 2, \ldots \}.\]</div>
+<p>С помощью сетки введём обозначения для точного и приближённого решения в точке <span class="math notranslate nohighlight">\(t_i\)</span></p>
 <div class="math notranslate nohighlight">
-\[\mathbf{x} = \mathbf{A}^{-1} \mathbf{b},\]</div>
-<p>если обратная матрица <span class="math notranslate nohighlight">\(\mathbf{A}^{-1}\)</span> существует.</p>
-<p>Так, задачу решения линейной системы можно свести к нахождению обратной матрицы системы. Однако, существуют более эффективные способы, о которых и пойдёт речь в данном разделе.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Для некоторых примеров данного раздела требуется подключение стандартной библиотеки <code class="docutils literal notranslate"><span class="pre">LinearAlgebra</span></code>. Для этого в начале файла с исходным кодом или в REPL напишите строчку.</p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">LinearAlgebra</span>
-</pre></div>
-</div>
-</div>
+\[\begin{split}\begin{split}
+u_i &amp;= u(t_i),\\
+y_i &amp;= y(t_i).
+\end{split}\end{split}\]</div>
 <div class="toctree-wrapper compound">
 </div>
 </div>
@@ -482,7 +486,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./syslinear"
+            path: "./ode"
         },
         predefinedOutput: true
     }
@@ -499,19 +503,19 @@
 <div class='prev-next-bottom'>
     
     <div id="prev">
-        <a class="left-prev" href="../nlroot/ex.html" title="previous page">
+        <a class="left-prev" href="../sysnonlinear/ex.html" title="previous page">
             <i class="prevnext-label fas fa-angle-left"></i>
             <div class="prevnext-info">
                 <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">4.6. </span>Задания</p>
+                <p class="prevnext-title"><span class="section-number">6.3. </span>Задания</p>
             </div>
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="triangular.html" title="next page">
+        <a class="right-next" href="euler.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">5.1. </span>Треугольные системы</p>
+                <p class="prevnext-title"><span class="section-number">7.1. </span>Метод Эйлера</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>

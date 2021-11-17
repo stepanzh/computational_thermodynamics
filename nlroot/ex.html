@@ -48,7 +48,7 @@
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -304,6 +304,33 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ode/index.html">
+   7. Обыкновенные дифференциальные уравнения
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode/euler.html">
+     7.1. Метод Эйлера
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode/rungekutta.html">
+     7.2. Методы Рунге-Кутта
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode/adaptive_rungekutta.html">
+     7.3. Адаптивные методы
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -501,9 +528,9 @@
 </div>
 <p>Красный участок на изотерме соответствует запрещённым термодинамическим состояниям, поскольку <span class="math notranslate nohighlight">\(\partial P_r / \partial V_r &gt; 0\)</span>. Жёлтый участок изобары <span class="math notranslate nohighlight">\(P_X\)</span> соответствует давлению, при котором при данной температуре <span class="math notranslate nohighlight">\(T^*\)</span> жидкая и газовая фазы сосуществуют. При объёмах <span class="math notranslate nohighlight">\(V_r &lt; V_L\)</span> всё вещество находится в жидком состоянии, а при объёмах <span class="math notranslate nohighlight">\(V_r &gt; V_G\)</span> в газовом. Синий и зелёный участки изотермы соответствуют метастабильным состояниям.</p>
 <p>Можно вычилисть ряд величин <span class="math notranslate nohighlight">\(V_L\)</span> и <span class="math notranslate nohighlight">\(V_G\)</span> для диапазона температур, тогда получим границу двухфазной области.</p>
-<div class="figure align-default" id="vdw-task-answer">
+<div class="figure align-default" id="nlroot-vdw-task-answer">
 <a class="reference internal image-reference" href="../_images/vdw_task_answer.svg"><img alt="../_images/vdw_task_answer.svg" height="480px" src="../_images/vdw_task_answer.svg" /></a>
-<p class="caption"><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Уравнение ван дер Ваальса. Сплошными линиями показаны изотермы для ряда температур. Красная линия с точками соответствует бинодали: это граница значений давлений и объёмов <span class="math notranslate nohighlight">\(V_L\)</span>, <span class="math notranslate nohighlight">\(V_G\)</span>, при которых возможно двухфазное состояние. Красная область под бинодалью – двухфазная область.</span><a class="headerlink" href="#vdw-task-answer" title="Permalink to this image">¶</a></p>
+<p class="caption"><span class="caption-number">Fig. 4.3 </span><span class="caption-text">Уравнение ван дер Ваальса. Сплошными линиями показаны изотермы для ряда температур. Красная линия с точками соответствует бинодали: это граница значений давлений и объёмов <span class="math notranslate nohighlight">\(V_L\)</span>, <span class="math notranslate nohighlight">\(V_G\)</span>, при которых возможно двухфазное состояние. Красная область под бинодалью – двухфазная область.</span><a class="headerlink" href="#nlroot-vdw-task-answer" title="Permalink to this image">¶</a></p>
 </div>
 <p>Чтобы для данной температуры <span class="math notranslate nohighlight">\(T^*\)</span> определить равновесные объёмы <span class="math notranslate nohighlight">\(V_G\)</span>, <span class="math notranslate nohighlight">\(V_L\)</span> и давление <span class="math notranslate nohighlight">\(P_X\)</span>, требуется находить минимум потенциала Гельмгольца. Это требует решения нелинейной системы, но можно поступить иначе.</p>
 <p>Лекнером <span id="id4">[<a class="reference internal" href="../bibliography.html#id11">Lek82</a>]</span> предложена параметризация величин для двухфазного равновесия. В качестве параметра используется <span class="math notranslate nohighlight">\(y = \Delta s / 2\)</span>, где <span class="math notranslate nohighlight">\(\Delta s\)</span> представляет собой скачок энтропии на частицу между газовой и жидкой фазами в единицах <span class="math notranslate nohighlight">\(k_B\)</span>. Для параметризации используются функции <span class="math notranslate nohighlight">\(f(y)\)</span> и <span class="math notranslate nohighlight">\(g(y)\)</span></p>
@@ -520,7 +547,7 @@ T_X(y) &amp;= \frac{27 f(y)[f(y) + \cosh{y}]}{4g^2(y)},\\
 P_X(y) &amp;= \frac{27 f^2(y)[1 - f^2(y)]}{g^2(y)}.\\
 \end{align}\end{split}\]</div>
 <p><strong>Задание</strong></p>
-<p>Ваша задача состоит в том, чтобы определить <span class="math notranslate nohighlight">\(V_L\)</span> и <span class="math notranslate nohighlight">\(V_G\)</span> для ряда температур <span class="math notranslate nohighlight">\(T_r \in [0.85, 1]\)</span> и соответствующих им давлений, получив таким образом границу фазового равновесия. Нанесите полученные точки <span class="math notranslate nohighlight">\((P_X, V_L)\)</span> и <span class="math notranslate nohighlight">\((P_X, V_G)\)</span> поверх изотерм, как на <a class="reference internal" href="#vdw-task-answer"><span class="std std-numref">Рисунке 4.3</span></a>.</p>
+<p>Ваша задача состоит в том, чтобы определить <span class="math notranslate nohighlight">\(V_L\)</span> и <span class="math notranslate nohighlight">\(V_G\)</span> для ряда температур <span class="math notranslate nohighlight">\(T_r \in [0.85, 1]\)</span> и соответствующих им давлений, получив таким образом границу фазового равновесия. Нанесите полученные точки <span class="math notranslate nohighlight">\((P_X, V_L)\)</span> и <span class="math notranslate nohighlight">\((P_X, V_G)\)</span> поверх изотерм, как на <a class="reference internal" href="#nlroot-vdw-task-answer"><span class="std std-numref">Рисунке 4.3</span></a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Подробную информацию об уравнении ван дер Ваальса можно получить из статьи <span id="id5">[<a class="reference internal" href="../bibliography.html#id12">Joh14</a>]</span>.</p>
