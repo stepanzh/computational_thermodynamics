@@ -102,3 +102,47 @@ u_{i+1} - u_i = u(t_i + \tau) - u(t_i) = u(t_i) + \tau u'(t_i) - u(t_i) + O(\tau
 ```{proof:proposition}
 Показано {cite}`Ryabenkiy2016`, что из аппроксимации и устойчивости по правой части следует сходимость метода с порядком точности, совпадающем с порядком аппроксимации.
 ```
+
+## Реализация
+
+В этой главе для постановки задачи Коши (скалярной) мы будем пользоваться структурой данных `CauchyODEProblem`.
+
+```julia
+struct CauchyODEProblem{T<:Real,F<:Function}
+    bound::Tuple{T,T}   # отрезок интегрирования
+    u₀::T               # начальное значение интегрируемой функции
+    f::F                # правая часть ОДУ
+    function CauchyODEProblem(; f::Function, tstart::Real, tend::Real, u₀::Real)
+        new{Float64, typeof(f)}(
+            float.(tuple(tstart, tend)),
+            float(u₀),
+            f,
+        )
+    end
+end
+```
+
+```{proof:function} euler
+
+**Явный метод Эйлера**
+
+:::julia
+"""
+    euler(problem; nsteps)
+
+Решает задачу Коши `problem` явным методом Эйлера за `nsteps` шагов.
+"""
+function euler(problem::CauchyODEProblem; nsteps::Integer)
+    u = Vector{Float64}(undef, nsteps + 1)
+    u[1] = problem.u₀
+    tstart, tend = problem.bound
+    trange = range(tstart, tend; length=nsteps+1)
+    τ = step(trange)
+    @inbounds for i in 1:nsteps
+        tᵢ, uᵢ = trange[i], u[i]
+        u[i+1] = uᵢ + τ * problem.f(tᵢ, uᵢ)
+    end
+    return trange, u
+end
+:::
+```

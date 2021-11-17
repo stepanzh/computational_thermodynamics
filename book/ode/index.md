@@ -9,7 +9,7 @@
 :label: ode_cauchy_scalar
 
 \begin{split}
-\frac{\diff u}{\diff t}(t) &= f(t, u(t)),\quad t \in [0, T],\\
+\frac{\diff u}{\diff t}(t) &= f(t, u(t)),\quad t \in (0, T],\\
 u(0) &= u_0.
 \end{split}
 ```
@@ -17,7 +17,7 @@ u(0) &= u_0.
 и для системы уравнений
 
 ```{math}
-\frac{\diff \mathbf{u}}{\diff t}(t) &= \mathbf{f}(t, \mathbf{u}(t)), \quad t \in [0, T],\\
+\frac{\diff \mathbf{u}}{\diff t}(t) &= \mathbf{f}(t, \mathbf{u}(t)), \quad t \in (0, T],\\
 \mathbf{u}(0) &= \mathbf{u}_0.
 ```
 

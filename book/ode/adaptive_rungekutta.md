@@ -1,3 +1,21 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Julia
+  language: julia
+  name: julia-1.6
+---
+
+```{code-cell}
+:tags: [remove-cell]
+
+include("../src.jl")
+```
+
 # Адаптивные методы
 
 Анализ большинства методов предполагает фиксированный шаг интегрирования $\tau$, поэтому и поведение методов предсказывается локально. Однако, мы уже сталкивались с проблемами ({numref}`%s Адаптивное интегрирование <chapter_integration_adaptive>`), в которых локальное поведение сильно отличается. Для решения ОДУ также существуют методы, подстраивающие шаг интегрирования в зависимости от локального поведения решения.
@@ -89,3 +107,116 @@ y^{(3)}_{i+1} &= y_i + \frac{7}{24}\tau k_1 + \frac{1}{4}\tau k_2 + \frac{1}{3}\
 Данное свойство называют *first same as last* (FSAL). Это позволяет уменьшить количество вычислений $f(t, u)$, и в итоге получаем одно вычисление при инициализации алгоритма и по три вычисления за шаг.
 
 Наиболее популярным является [метод Дорманда-Принса](https://en.wikipedia.org/wiki/Dormand%E2%80%93Prince_method) (*Dormand-Prince*), использующий методы Рунге-Кутты четвёртого и пятого порядка аппроксимации и ту же идею для оценки ошибки.
+
+## Реализация
+
+```{proof:function} rk23
+
+**Метод Богацкого-Шампина**
+
+:::julia
+"""
+    rk23(problem; tol[, maxsteps, maxadjuststeps])
+
+Решает задачу Коши `problem` адаптивным методом Богацкого-Шампина.
+Погрешность вычислений задаётся `tol`, а максимальное количество шагов
+интегрирования `maxsteps`. Число шагов, разрешённое для адаптации шага `maxadjuststeps`.
+"""
+function rk23(problem::CauchyODEProblem;
+    tol::Real,
+    maxsteps::Integer=10000,
+    maxadjuststeps::Integer=20,
+)
+    t₀, T = problem.bound
+    trange = [t₀]
+    u = [problem.u₀]
+    k₁ = problem.f(t₀, problem.u₀)
+    τ = 0.5 * tol^(1/3)
+
+    for i in 1:maxsteps
+        tᵢ, uᵢ = trange[i], u[i]
+        
+        tᵢ == T && break
+        
+        if tᵢ + τ == tᵢ
+            @warn "Достигнут предел машинной точности по τ"
+            break
+        end
+
+        for j in 1:maxadjuststeps
+            k₂ = problem.f(tᵢ + τ/2, uᵢ + τ*k₁/2)
+            k₃ = problem.f(tᵢ + 3τ/4, uᵢ + 3τ*k₂/4)
+            unew2 = uᵢ + τ*(2k₁ + 3k₂ + 4k₃)/9  # РК2 приближение
+            k₄ = problem.f(tᵢ + τ, unew2)
+
+            Δ = τ * (-5k₁/72 + k₂/12 + k₃/9 - k₄/8)  # разница РК2 и РК3 приближений
+            err = norm(Δ, Inf)
+            maxerr = tol * (1 + norm(uᵢ, Inf))
+
+            accepted = err < maxerr
+            if accepted
+                push!(trange, tᵢ + τ)
+                push!(u, unew2)
+                k₁ = k₄  # FSAL: k₄ = f(tᵢ + τ, uᵢ₊₁) == new k₁
+            end
+            
+            # подбор нового шага
+            q = 0.8 * (maxerr/err)^(1/3)    # оценка шага из погрешности
+            q = min(q, 4.0)                 # ограничиваем максимальное увеличение
+            τ = min(q*τ, T - trange[end])   # не выходим за предел T
+
+            accepted && break
+            
+            j == maxadjuststeps && error("Число шагов по подбору τ превышено.")
+        end
+        
+        i == maxsteps && @warn "Число шагов превышено, конечное время не достигнуто"
+    end
+    return trange, u
+end
+:::
+```
+
+```{proof:demo}
+```
+```{raw} html
+<div class="demo">
+```
+
+Ниже представлен пример решения задачи Коши
+
+```{math}
+\begin{split}
+u' &= e^{t - u \sin u}, \quad t \in (0, 5],\\
+u(0) &= 0.
+\end{split}
+```
+
+```{code-cell}
+problem = CauchyODEProblem(
+    f=(t, u) -> exp(t - u*sin(u)),
+    tstart=0,
+    tend=5,
+    u₀=0,
+)
+plt = plot(;
+    title=L"u' = e^{t - u \sin{u}},\quad u(0) = 0,\quad t\in [0, 5]",
+    leg=:topleft,
+    layout=(2,1),
+)
+t, u = rk23(problem; tol=1e-5, maxsteps=1000)
+plot!(t, u; label="РК23", marker=:o, subplot=1, ylabel=L"u", xlim=(-0.1, 5.1))
+plot!(t[1:end-1], diff(t);
+    subplot=2,
+    title="",
+    yaxis=(:log10, L"\tau"),
+    label="",
+    xlabel=L"t",
+    xlim=(-0.1, 5.1),
+)
+plt
+```
+
+```{raw} html
+</div>
+```

@@ -234,3 +234,36 @@ k^{(n+1)}_j = f\bigg(t_i + a_m \tau, y_i + \tau\sum_{s=1}^m b_{j,s}k^{(n)}_s\big
 пока два приближения системы $k^{(n+1)}$ и $k^{(n)}$ не станут сильно отличаться.
 
 Существуют $m$-этапные неявные методы Рунге-Кутты с порядком аппроксимации $2m$. Хотя, неявный метод Эйлера к таким не относится.
+
+## Реализация
+
+```{proof:function} rk4
+
+**Явный метод Рунге-Кутта 4-го порядка**
+
+:::julia
+"""
+    rk4(problem; nsteps)
+
+Решает задачу Коши `problem` явным 4-этапным методом Рунге-Кутта за `nsteps` шагов.
+"""
+function rk4(problem::CauchyODEProblem; nsteps::Integer)
+    u = Vector{Float64}(undef, nsteps + 1)
+    u[1] = problem.u₀
+    tstart, tend = problem.bound
+    trange = range(tstart, tend; length=nsteps+1)
+    τ = step(trange)
+    for i in 1:nsteps
+        tᵢ, uᵢ = trange[i], u[i]
+        
+        k₁ = problem.f(tᵢ, uᵢ)
+        k₂ = problem.f(tᵢ + τ/2, uᵢ + τ*k₁/2)
+        k₃ = problem.f(tᵢ + τ/2, uᵢ + τ*k₂/2)
+        k₄ = problem.f(tᵢ + τ, uᵢ + τ * k₃)
+
+        u[i+1] = uᵢ + τ * (k₁ + 2*(k₂ + k₃) + k₄)/6
+    end
+    return trange, u
+end
+:::
+```
