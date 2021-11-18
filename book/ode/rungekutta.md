@@ -305,6 +305,7 @@ residual_euler = residual(problem, euler, nsteps, uexact)
 residual_rk4 = residual(problem, rk4, nsteps, uexact)
 
 plot(; xaxis=(:log10, L"n"), yaxis=(:log10, "норма невязки"), leg=:bottomleft)
+yticks!([10.0^(-n) for n in 0:2:14])
 plot!(nsteps, residual_euler; marker=(:o, :red), line=:red, label="явный м. Эйлера")
 plot!(nsteps, 5e-2*(nsteps).^(-1); line=(:dash, 2, :red), label=L"O(n^{-1})")
 plot!(nsteps, residual_rk4; marker=(:o, :blue), label="явный м. РК4", line=(:blue))
