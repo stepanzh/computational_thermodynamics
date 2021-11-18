@@ -1,3 +1,21 @@
+---
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+kernelspec:
+  display_name: Julia
+  language: julia
+  name: julia-1.6
+---
+
+```{code-cell}
+:tags: [remove-cell]
+
+include("../src.jl")
+```
+
 # Метод Эйлера
 
 Простейшим методом решения {eq}`ode_cauchy_scalar`
@@ -145,4 +163,42 @@ function euler(problem::CauchyODEProblem; nsteps::Integer)
     return trange, u
 end
 :::
+```
+
+(ode_euler_demo_cauchy)=
+```{proof:demo}
+```
+```{raw} html
+<div class="demo">
+```
+
+Решим задачу Коши
+
+```{math}
+\begin{split}
+u &= -u + 2 e^t,\quad t \in (0, 1],\\
+u(0) &= 2
+\end{split}
+```
+
+явным методом Эйлера и сравним с точным решением $u = 2 \cosh t$.
+
+```{code-cell}
+problem = CauchyODEProblem(
+    f=(t, u) -> -u + 2exp(t),
+    tstart=0,
+    tend=1,
+    u₀=2,
+)
+plt = plot(; xlabel="time", leg=:topleft)
+plot!((t) -> 2cosh(t); label=L"2\cosh t", lw=2, xlabel=L"t")
+for n in (1, 2, 3, 10)
+    t, u = euler(problem; nsteps=n)
+    plot!(t, u; label="euler, nsteps = $n", marker=:o)
+end
+plt
+```
+
+```{raw} html
+</div>
 ```
