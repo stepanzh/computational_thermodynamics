@@ -305,6 +305,7 @@ residual_euler = residual(problem, euler, nsteps, uexact)
 residual_rk4 = residual(problem, rk4, nsteps, uexact)
 
 plot(; xaxis=(:log10, L"n"), yaxis=(:log10, "норма невязки"), leg=:bottomleft)
+yticks!([10.0^(-n) for n in 0:2:14])
 plot!(nsteps, residual_euler; marker=(:o, :red), line=:red, label="явный м. Эйлера")
 plot!(nsteps, 5e-2*(nsteps).^(-1); line=(:dash, 2, :red), label=L"O(n^{-1})")
 plot!(nsteps, residual_rk4; marker=(:o, :blue), label="явный м. РК4", line=(:blue))
@@ -326,7 +327,7 @@ plot!(nsteps, 5e-3*(nsteps).^(-4); line=(:dash, 2, :blue), label=L"O(n^{-4})")
 ```{math}
 :label: ode_rk_impl_k
 
-k_j = f\bigg(t_i + a_m \tau, y_i + \tau\sum_{s=1}^m b_{j,s}k_s\bigg),\quad j = 1,\ldots,m,
+k_j = f\bigg(t_i + a_j \tau, y_i + \tau\sum_{s=1}^m b_{j,s}k_s\bigg),\quad j = 1,\ldots,m,
 ```
 
 но матрица коэффициентов $b_{j,s}$, в отличие от явных методов, уже не имеет нижнетреугольный вид.
@@ -340,9 +341,9 @@ k_j = f\bigg(t_i + a_m \tau, y_i + \tau\sum_{s=1}^m b_{j,s}k_s\bigg),\quad j = 1
 Неявные методы требуют в общем случае решения нелинейной системы на $k_j$ {eq}`ode_rk_impl_k`. Однако, в некоторых случаях показано, что достаточно использовать {ref}`метод простой итерации <chapter_nlroot_simpleiter>` для решения такой системы, т.е. явным образом итеративно вычислять 
 
 ```{math}
-k^{(n+1)}_j = f\bigg(t_i + a_m \tau, y_i + \tau\sum_{s=1}^m b_{j,s}k^{(n)}_s\bigg),\quad j = 1,\ldots,m,
+k^{(n+1)}_j = f\bigg(t_i + a_j \tau, y_i + \tau\sum_{s=1}^m b_{j,s}k^{(n)}_s\bigg),\quad j = 1,\ldots,m,
 ```
 
-пока два приближения системы $k^{(n+1)}$ и $k^{(n)}$ не станут сильно отличаться.
+пока два приближения системы $k^{(n+1)}_j$ и $k^{(n)}_j$ не станут сильно отличаться.
 
 Существуют $m$-этапные неявные методы Рунге-Кутты с порядком аппроксимации $2m$. Хотя, неявный метод Эйлера к таким не относится.
