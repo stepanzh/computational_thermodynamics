@@ -387,7 +387,10 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="../_sources/ode/rungekutta.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/ode/rungekutta.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -427,6 +430,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/stepanzh/computational_thermodynamics/main?urlpath=tree/book/ode/rungekutta.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -455,11 +475,6 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id7">
    7.2.4. Неявные методы Рунге-Кутта
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id8">
-   7.2.5. Реализация
   </a>
  </li>
 </ul>
@@ -578,10 +593,10 @@ f(t_i + a_2\tau, u_i + b_{21}\tau f(t_i, u_i))
 <div class="section" id="id3">
 <h2><span class="section-number">7.2.2. </span>Сходимость<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
 <p>Приведём сначала утверждение о сходимости.</p>
-<div class="proof proof-type-proposition" id="id9">
+<div class="proof proof-type-proposition" id="id8">
 
     <div class="proof-title">
-        <span class="proof-type">Утверждение 7.6</span>
+        <span class="proof-type">Утверждение 7.7</span>
         
             <span class="proof-title-name">(Сходимость явных методов Рунге-Кутта)</span>
         
@@ -589,10 +604,10 @@ f(t_i + a_2\tau, u_i + b_{21}\tau f(t_i, u_i))
 <p><span id="id4">[<a class="reference internal" href="../bibliography.html#id7">89</a>]</span> Если явный метод Рунге-Кутта аппроксимирует исходное уравнение, то он сходится при <span class="math notranslate nohighlight">\(\tau \to 0\)</span>, причём порядок точности совпадает с порядком аппроксимации.</p>
 </div></div><p>Отметим, что данное утверждение не связывает этапность метода <span class="math notranslate nohighlight">\(m\)</span> и порядок аппроксимации.
 В случае методов с числом этапов <span class="math notranslate nohighlight">\(1\)</span>, <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(3\)</span>, <span class="math notranslate nohighlight">\(4\)</span> порядок аппроксимации (и точности) совпадает с числом этапов, однако, при <span class="math notranslate nohighlight">\(m=5\)</span> система на коэффициенты метода уже не является совместной в предположении о пятом порядке аппроксимации. Данное утверждение было доказано Бутчером и носит название <em>первого барьера</em>.</p>
-<div class="proof proof-type-proposition" id="id10">
+<div class="proof proof-type-proposition" id="id9">
 
     <div class="proof-title">
-        <span class="proof-type">Утверждение 7.7</span>
+        <span class="proof-type">Утверждение 7.8</span>
         
             <span class="proof-title-name">(Первый барьер Бутчера)</span>
         
@@ -614,10 +629,10 @@ f(t_i + a_2\tau, u_i + b_{21}\tau f(t_i, u_i))
 \end{array}\end{split}\]</div>
 <p>Этот метод также сокращённо называют <em>РК4</em> (<em>RK4</em>).</p>
 <p>На практике каждый метод реализуют отдельно, последовательно вычисляя <span class="math notranslate nohighlight">\(k_s\)</span>, вместо использования общего алгоритма, принимающего на вход таблицу Бутчера. Оказывается, что такой подход вычислительно более выгоден.</p>
-<div class="proof proof-type-algorithm" id="id11">
+<div class="proof proof-type-algorithm" id="id10">
 
     <div class="proof-title">
-        <span class="proof-type">Алгоритм 7.8</span>
+        <span class="proof-type">Алгоритм 7.9</span>
         
             <span class="proof-title-name">(РК4, явный 4-этапный метод Рунге-Кутты)</span>
         
@@ -628,31 +643,12 @@ k_1 &amp;= f(t_i, y_i), \\
 k_2 &amp;= f(t_i + \tau / 2, y_i + \tau k_1 / 2), \\
 k_3 &amp;= f(t_i + \tau / 2, y_i + \tau k_2 / 2), \\
 k_4 &amp;= f(t_i + \tau, y_i + \tau k_3), \\
-y_{i+1} &amp;= y_i + \tau \bigg( \frac{1}{6} k_1 + \frac{1}{3} k_2 + \frac{1}{3} k_3 + \frac{1}{3} k_4 \bigg).
+y_{i+1} &amp;= y_i + \tau \bigg( \frac{1}{6} k_1 + \frac{1}{3} k_2 + \frac{1}{3} k_3 + \frac{1}{6} k_4 \bigg).
 \end{split}\end{split}\]</div>
-</div></div></div>
-<div class="section" id="id7">
-<h2><span class="section-number">7.2.4. </span>Неявные методы Рунге-Кутта<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
-<p><strong>Комментарий</strong>. Причиной разработки неявных методов послужило плохое решение (потеря устойчивости) явными методами жёстких систем уравнений. В жёстких системах компоненты решения <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> изменяются со значительно разными скоростями. В случае явных систем шаг интегрирования <span class="math notranslate nohighlight">\(\tau\)</span> лимитируется самой быстро меняющейся компонентой, что приводит к выбору мелкого шага, а в перспективе к накоплению ошибок на больших масштабах <span class="math notranslate nohighlight">\(T\)</span>. Для неявных методов, как правило ограничения на шаг более мягкие или почти отсутствуют. В теории решения жёстких систем вводятся специальные определения устойчивости, которые требуют отдельного рассмотрения. Жёсткие системы появляются, например, в задачах прикладной химии по расчёту динамики многостадийных реакций.</p>
-<p>Неявными методами Рунге-Кутта называют методы, для которых <span class="math notranslate nohighlight">\(k_j\)</span> зависит не только от предыдущих <span class="math notranslate nohighlight">\(k\)</span>, но и от следующих. То есть,</p>
-<div class="math notranslate nohighlight" id="equation-ode-rk-impl-k">
-<span class="eqno">(7.8)<a class="headerlink" href="#equation-ode-rk-impl-k" title="Permalink to this equation">¶</a></span>\[k_j = f\bigg(t_i + a_m \tau, y_i + \tau\sum_{s=1}^m b_{j,s}k_s\bigg),\quad j = 1,\ldots,m,\]</div>
-<p>но матрица коэффициентов <span class="math notranslate nohighlight">\(b_{j,s}\)</span>, в отличие от явных методов, уже не имеет нижнетреугольный вид.</p>
-<p>Простейшим среди таких методов является <strong>неявный метод Эйлера</strong> (<em>implicit/backward Euler method</em>)</p>
-<div class="math notranslate nohighlight">
-\[\frac{y_{i+1} - y_i}{\tau} = f(t_i+\tau, y_{i+1}).\]</div>
-<p>Неявные методы требуют в общем случае решения нелинейной системы на <span class="math notranslate nohighlight">\(k_j\)</span> <a class="reference internal" href="#equation-ode-rk-impl-k">(7.8)</a>. Однако, в некоторых случаях показано, что достаточно использовать <a class="reference internal" href="../nlroot/simpleiter.html#chapter-nlroot-simpleiter"><span class="std std-ref">метод простой итерации</span></a> для решения такой системы, т.е. явным образом итеративно вычислять</p>
-<div class="math notranslate nohighlight">
-\[k^{(n+1)}_j = f\bigg(t_i + a_m \tau, y_i + \tau\sum_{s=1}^m b_{j,s}k^{(n)}_s\bigg),\quad j = 1,\ldots,m,\]</div>
-<p>пока два приближения системы <span class="math notranslate nohighlight">\(k^{(n+1)}\)</span> и <span class="math notranslate nohighlight">\(k^{(n)}\)</span> не станут сильно отличаться.</p>
-<p>Существуют <span class="math notranslate nohighlight">\(m\)</span>-этапные неявные методы Рунге-Кутты с порядком аппроксимации <span class="math notranslate nohighlight">\(2m\)</span>. Хотя, неявный метод Эйлера к таким не относится.</p>
-</div>
-<div class="section" id="id8">
-<h2><span class="section-number">7.2.5. </span>Реализация<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
-<div class="proof proof-type-function" id="id12">
+</div></div><div class="proof proof-type-function" id="id11">
 
     <div class="proof-title">
-        <span class="proof-type">Функция 7.9</span>
+        <span class="proof-type">Функция 7.10</span>
         
             <span class="proof-title-name">(rk4)</span>
         
@@ -683,7 +679,90 @@ y_{i+1} &amp;= y_i + \tau \bigg( \frac{1}{6} k_1 + \frac{1}{3} k_2 + \frac{1}{3}
 <span class="k">end</span>
 </pre></div>
 </div>
-</div></div></div>
+</div></div><div class="proof proof-type-demo" id="id12">
+
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 7.11</span>
+        
+            <span class="proof-title-name">(Аппроксимация РК4 и явного метода Эйлера)</span>
+        
+    </div><div class="proof-content">
+</div></div><div class="demo"><p>Рассмотрим решение задачи Коши из <a class="reference internal" href="euler.html#ode-euler-demo-cauchy"><span class="std std-numref">Демонстрации 7.6</span></a> 4-этапным методом Рунге-Кутты.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span> <span class="o">=</span> <span class="n">CauchyODEProblem</span><span class="p">(;</span>
+    <span class="n">f</span><span class="o">=</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="n">u</span> <span class="o">+</span> <span class="mi">2</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">),</span>
+    <span class="n">tstart</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">tend</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">u₀</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(;</span> <span class="n">xlabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;t&quot;</span><span class="p">,</span> <span class="n">leg</span><span class="o">=</span><span class="ss">:topleft</span><span class="p">,</span> <span class="n">layout</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="k">in</span> <span class="n">enumerate</span><span class="p">((</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="n">rk4</span><span class="p">(</span><span class="n">problem</span><span class="p">;</span> <span class="n">nsteps</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">plot!</span><span class="p">((</span><span class="n">t</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="mi">2</span><span class="n">cosh</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;&quot;</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">subplot</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+    <span class="n">plot!</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">;</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;nsteps = </span><span class="si">$n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:o</span><span class="p">,</span> <span class="n">subplot</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="n">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/rungekutta_2_0.svg" src="../_images/rungekutta_2_0.svg" /></div>
+</div>
+<p>Невооруженным глазом видно, насколько лучше РК4 справляется с этой задачей, чем метод Эйлера (см. <a class="reference internal" href="euler.html#ode-euler-demo-cauchy"><span class="std std-numref">Демонстрация 7.6</span></a>).</p>
+<p>Проверим также порядок аппроксимации РК4 и явного метода Эйлера на той же задаче.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">residual</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">method</span><span class="o">::</span><span class="kt">Function</span><span class="p">,</span> <span class="n">nsteps</span><span class="p">,</span> <span class="n">exact</span><span class="o">::</span><span class="kt">Function</span><span class="p">)</span>
+    <span class="n">err</span> <span class="o">=</span> <span class="kt">Float64</span><span class="p">[]</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="k">in</span> <span class="n">nsteps</span>
+        <span class="n">t</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="n">method</span><span class="p">(</span><span class="n">problem</span><span class="p">;</span> <span class="n">nsteps</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">push!</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">norm</span><span class="p">(</span><span class="n">u</span> <span class="o">.-</span> <span class="n">exact</span><span class="o">.</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="nb">Inf</span><span class="p">))</span>
+    <span class="k">end</span>
+    <span class="k">return</span> <span class="n">err</span>
+<span class="k">end</span>
+
+<span class="n">problem</span> <span class="o">=</span> <span class="n">CauchyODEProblem</span><span class="p">(</span>
+    <span class="n">f</span><span class="o">=</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="n">u</span> <span class="o">+</span> <span class="mi">2</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">),</span>
+    <span class="n">tstart</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">tend</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">u₀</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">uexact</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span><span class="n">cosh</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+
+<span class="n">nsteps</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+<span class="n">residual_euler</span> <span class="o">=</span> <span class="n">residual</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">euler</span><span class="p">,</span> <span class="n">nsteps</span><span class="p">,</span> <span class="n">uexact</span><span class="p">)</span>
+<span class="n">residual_rk4</span> <span class="o">=</span> <span class="n">residual</span><span class="p">(</span><span class="n">problem</span><span class="p">,</span> <span class="n">rk4</span><span class="p">,</span> <span class="n">nsteps</span><span class="p">,</span> <span class="n">uexact</span><span class="p">)</span>
+
+<span class="n">plot</span><span class="p">(;</span> <span class="n">xaxis</span><span class="o">=</span><span class="p">(</span><span class="ss">:log10</span><span class="p">,</span> <span class="sa">L</span><span class="s">&quot;n&quot;</span><span class="p">),</span> <span class="n">yaxis</span><span class="o">=</span><span class="p">(</span><span class="ss">:log10</span><span class="p">,</span> <span class="s">&quot;норма невязки&quot;</span><span class="p">),</span> <span class="n">leg</span><span class="o">=</span><span class="ss">:bottomleft</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">nsteps</span><span class="p">,</span> <span class="n">residual_euler</span><span class="p">;</span> <span class="n">marker</span><span class="o">=</span><span class="p">(</span><span class="ss">:o</span><span class="p">,</span> <span class="ss">:red</span><span class="p">),</span> <span class="n">line</span><span class="o">=</span><span class="ss">:red</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;явный м. Эйлера&quot;</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">nsteps</span><span class="p">,</span> <span class="mf">5e-2</span><span class="o">*</span><span class="p">(</span><span class="n">nsteps</span><span class="p">)</span><span class="o">.^</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span> <span class="n">line</span><span class="o">=</span><span class="p">(</span><span class="ss">:dash</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="ss">:red</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;O(n^{-1})&quot;</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">nsteps</span><span class="p">,</span> <span class="n">residual_rk4</span><span class="p">;</span> <span class="n">marker</span><span class="o">=</span><span class="p">(</span><span class="ss">:o</span><span class="p">,</span> <span class="ss">:blue</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;явный м. РК4&quot;</span><span class="p">,</span> <span class="n">line</span><span class="o">=</span><span class="p">(</span><span class="ss">:blue</span><span class="p">))</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">nsteps</span><span class="p">,</span> <span class="mf">5e-3</span><span class="o">*</span><span class="p">(</span><span class="n">nsteps</span><span class="p">)</span><span class="o">.^</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">);</span> <span class="n">line</span><span class="o">=</span><span class="p">(</span><span class="ss">:dash</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="ss">:blue</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;O(n^{-4})&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/rungekutta_4_0.svg" src="../_images/rungekutta_4_0.svg" /></div>
+</div>
+<p>Построение нормы невязки подтверждает, что метод Эйлера обладает первым порядком сходимости, а метод РК4 – четвёртым.</p>
+</div></div>
+<div class="section" id="id7">
+<h2><span class="section-number">7.2.4. </span>Неявные методы Рунге-Кутта<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<p><strong>Комментарий</strong>. Причиной разработки неявных методов послужило плохое решение (потеря устойчивости) явными методами жёстких систем уравнений. В жёстких системах компоненты решения <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> изменяются со значительно разными скоростями. В случае явных систем шаг интегрирования <span class="math notranslate nohighlight">\(\tau\)</span> лимитируется самой быстро меняющейся компонентой, что приводит к выбору мелкого шага, а в перспективе к накоплению ошибок на больших масштабах <span class="math notranslate nohighlight">\(T\)</span>. Для неявных методов, как правило ограничения на шаг более мягкие или почти отсутствуют. В теории решения жёстких систем вводятся специальные определения устойчивости, которые требуют отдельного рассмотрения. Жёсткие системы появляются, например, в задачах прикладной химии по расчёту динамики многостадийных реакций.</p>
+<p>Неявными методами Рунге-Кутта называют методы, для которых <span class="math notranslate nohighlight">\(k_j\)</span> зависит не только от предыдущих <span class="math notranslate nohighlight">\(k\)</span>, но и от следующих. То есть,</p>
+<div class="math notranslate nohighlight" id="equation-ode-rk-impl-k">
+<span class="eqno">(7.8)<a class="headerlink" href="#equation-ode-rk-impl-k" title="Permalink to this equation">¶</a></span>\[k_j = f\bigg(t_i + a_m \tau, y_i + \tau\sum_{s=1}^m b_{j,s}k_s\bigg),\quad j = 1,\ldots,m,\]</div>
+<p>но матрица коэффициентов <span class="math notranslate nohighlight">\(b_{j,s}\)</span>, в отличие от явных методов, уже не имеет нижнетреугольный вид.</p>
+<p>Простейшим среди таких методов является <strong>неявный метод Эйлера</strong> (<em>implicit/backward Euler method</em>)</p>
+<div class="math notranslate nohighlight">
+\[\frac{y_{i+1} - y_i}{\tau} = f(t_i+\tau, y_{i+1}).\]</div>
+<p>Неявные методы требуют в общем случае решения нелинейной системы на <span class="math notranslate nohighlight">\(k_j\)</span> <a class="reference internal" href="#equation-ode-rk-impl-k">(7.8)</a>. Однако, в некоторых случаях показано, что достаточно использовать <a class="reference internal" href="../nlroot/simpleiter.html#chapter-nlroot-simpleiter"><span class="std std-ref">метод простой итерации</span></a> для решения такой системы, т.е. явным образом итеративно вычислять</p>
+<div class="math notranslate nohighlight">
+\[k^{(n+1)}_j = f\bigg(t_i + a_m \tau, y_i + \tau\sum_{s=1}^m b_{j,s}k^{(n)}_s\bigg),\quad j = 1,\ldots,m,\]</div>
+<p>пока два приближения системы <span class="math notranslate nohighlight">\(k^{(n+1)}\)</span> и <span class="math notranslate nohighlight">\(k^{(n)}\)</span> не станут сильно отличаться.</p>
+<p>Существуют <span class="math notranslate nohighlight">\(m\)</span>-этапные неявные методы Рунге-Кутты с порядком аппроксимации <span class="math notranslate nohighlight">\(2m\)</span>. Хотя, неявный метод Эйлера к таким не относится.</p>
+</div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -695,16 +774,16 @@ y_{i+1} &amp;= y_i + \tau \bigg( \frac{1}{6} k_1 + \frac{1}{3} k_2 + \frac{1}{3}
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "julia-1.6"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "julia-1.6",
             path: "./ode"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'julia-1.6'</script>
 
               </div>
               

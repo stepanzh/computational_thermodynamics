@@ -387,7 +387,10 @@
 
     <div class="dropdown-buttons">
         <!-- ipynb file if we had a myst markdown file -->
-        
+        <a class="dropdown-buttons"
+            href="../_sources/ode/euler.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download notebook file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
         <!-- Download raw file -->
         <a class="dropdown-buttons" href="../_sources/ode/euler.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
@@ -427,6 +430,23 @@
 
             <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/stepanzh/computational_thermodynamics/main?urlpath=tree/book/ode/euler.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
         </div>
 
         <!-- Table of contents -->
@@ -461,7 +481,7 @@
 <p>является метод Эйлера. В этом методе производная <span class="math notranslate nohighlight">\(u'\)</span> заменяется <em>конечной разностью</em></p>
 <div class="math notranslate nohighlight" id="equation-ode-euler-explicit">
 <span class="eqno">(7.3)<a class="headerlink" href="#equation-ode-euler-explicit" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{split}
-\frac{y_{i+1} - y_i}{\tau} &amp;= f(t, y_i),\quad i = 0, 1, 2, \ldots, \\
+\frac{y_{i+1} - y_i}{\tau} &amp;= f(t_i, y_i),\quad i = 0, 1, 2, \ldots, \\
 y_0 &amp;= u_0.
 \end{split}\end{split}\]</div>
 <p>В геометрической интерпретации это означает, что метод приближает <span class="math notranslate nohighlight">\(y_{i+1}\)</span> значением касательной через <span class="math notranslate nohighlight">\((t_i, y_i)\)</span> в точке <span class="math notranslate nohighlight">\(t_i + \tau\)</span>.</p>
@@ -573,7 +593,41 @@ y_0 &amp;= u_0.
 <span class="k">end</span>
 </pre></div>
 </div>
-</div></div></div>
+</div></div><div class="proof proof-type-demo" id="id12">
+<span id="ode-euler-demo-cauchy"></span>
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 7.6</span>
+        
+    </div><div class="proof-content">
+</div></div><div class="demo"><p>Решим задачу Коши</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{split}
+u &amp;= -u + 2 e^t,\quad t \in (0, 1],\\
+u(0) &amp;= 2
+\end{split}\end{split}\]</div>
+<p>явным методом Эйлера и сравним с точным решением <span class="math notranslate nohighlight">\(u = 2 \cosh t\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">problem</span> <span class="o">=</span> <span class="n">CauchyODEProblem</span><span class="p">(</span>
+    <span class="n">f</span><span class="o">=</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="n">u</span> <span class="o">+</span> <span class="mi">2</span><span class="n">exp</span><span class="p">(</span><span class="n">t</span><span class="p">),</span>
+    <span class="n">tstart</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">tend</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">u₀</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(;</span> <span class="n">xlabel</span><span class="o">=</span><span class="s">&quot;time&quot;</span><span class="p">,</span> <span class="n">leg</span><span class="o">=</span><span class="ss">:topleft</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">((</span><span class="n">t</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="mi">2</span><span class="n">cosh</span><span class="p">(</span><span class="n">t</span><span class="p">);</span> <span class="n">label</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;2\cosh t&quot;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;t&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">n</span> <span class="k">in</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">t</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="n">euler</span><span class="p">(</span><span class="n">problem</span><span class="p">;</span> <span class="n">nsteps</span><span class="o">=</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">plot!</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">;</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;euler, nsteps = </span><span class="si">$n</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:o</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="n">plt</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/euler_2_0.svg" src="../_images/euler_2_0.svg" /></div>
+</div>
+</div></div>
 </div>
 
     <script type="text/x-thebe-config">
@@ -585,16 +639,16 @@ y_0 &amp;= u_0.
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "python"
+            mode: "julia-1.6"
         },
         kernelOptions: {
-            kernelName: "python3",
+            kernelName: "julia-1.6",
             path: "./ode"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'python3'</script>
+    <script>kernelName = 'julia-1.6'</script>
 
               </div>
               

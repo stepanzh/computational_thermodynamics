@@ -506,7 +506,7 @@
 <div class="proof proof-type-algorithm" id="id5">
 <span id="ode-adaptive-algo-outline"></span>
     <div class="proof-title">
-        <span class="proof-type">Алгоритм 7.10</span>
+        <span class="proof-type">Алгоритм 7.12</span>
         
             <span class="proof-title-name">(Адаптивное решение ОДУ)</span>
         
@@ -550,7 +550,7 @@ y^{(2)}_{i+1} &amp;= y_i + \frac{2}{9}\tau k_1 +  \frac{1}{3}\tau k_2 +  \frac{4
 k_4 &amp;= f(t_i + \tau, y^{(2)}_{i+1}),\\
 y^{(3)}_{i+1} &amp;= y_i + \frac{7}{24}\tau k_1 + \frac{1}{4}\tau k_2 + \frac{1}{3}\tau k_3 + \frac{1}{8}\tau k_4.
 \end{split}\end{split}\]</div>
-<p>Заметьте, что если в качестве <span class="math notranslate nohighlight">\(y_{i+1}\)</span> брать второе приближение <span class="math notranslate nohighlight">\(y^{(2)}_{i+1}\)</span> на шаге 2 <a class="reference internal" href="#ode-adaptive-algo-outline"><span class="std std-numref">Алгоритма 7.10</span></a>, то <span class="math notranslate nohighlight">\(k_4\)</span> равняется <span class="math notranslate nohighlight">\(k_1\)</span> на итерации <span class="math notranslate nohighlight">\(i+1\)</span>.
+<p>Заметьте, что если в качестве <span class="math notranslate nohighlight">\(y_{i+1}\)</span> брать второе приближение <span class="math notranslate nohighlight">\(y^{(2)}_{i+1}\)</span> на шаге 2 <a class="reference internal" href="#ode-adaptive-algo-outline"><span class="std std-numref">Алгоритма 7.12</span></a>, то <span class="math notranslate nohighlight">\(k_4\)</span> равняется <span class="math notranslate nohighlight">\(k_1\)</span> на итерации <span class="math notranslate nohighlight">\(i+1\)</span>.
 Данное свойство называют <em>first same as last</em> (FSAL). Это позволяет уменьшить количество вычислений <span class="math notranslate nohighlight">\(f(t, u)\)</span>, и в итоге получаем одно вычисление при инициализации алгоритма и по три вычисления за шаг.</p>
 <p>Наиболее популярным является <a class="reference external" href="https://en.wikipedia.org/wiki/Dormand%E2%80%93Prince_method">метод Дорманда-Принса</a> (<em>Dormand-Prince</em>), использующий методы Рунге-Кутты четвёртого и пятого порядка аппроксимации и ту же идею для оценки ошибки.</p>
 </div>
@@ -559,7 +559,7 @@ y^{(3)}_{i+1} &amp;= y_i + \frac{7}{24}\tau k_1 + \frac{1}{4}\tau k_2 + \frac{1}
 <div class="proof proof-type-function" id="id6">
 
     <div class="proof-title">
-        <span class="proof-type">Функция 7.11</span>
+        <span class="proof-type">Функция 7.13</span>
         
             <span class="proof-title-name">(rk23)</span>
         
@@ -629,7 +629,7 @@ y^{(3)}_{i+1} &amp;= y_i + \frac{7}{24}\tau k_1 + \frac{1}{4}\tau k_2 + \frac{1}
 </div></div><div class="proof proof-type-demo" id="id7">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация 7.12</span>
+        <span class="proof-type">Демонстрация 7.14</span>
         
     </div><div class="proof-content">
 </div></div><div class="demo"><p>Ниже представлен пример решения задачи Коши</p>
