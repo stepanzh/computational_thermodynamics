@@ -12,7 +12,7 @@ u' = f(t, u)
 :label: ode_euler_explicit
 
 \begin{split}
-\frac{y_{i+1} - y_i}{\tau} &= f(t, y_i),\quad i = 0, 1, 2, \ldots, \\
+\frac{y_{i+1} - y_i}{\tau} &= f(t_i, y_i),\quad i = 0, 1, 2, \ldots, \\
 y_0 &= u_0.
 \end{split}
 ```
