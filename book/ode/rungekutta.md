@@ -200,7 +200,7 @@ k_1 &= f(t_i, y_i), \\
 k_2 &= f(t_i + \tau / 2, y_i + \tau k_1 / 2), \\
 k_3 &= f(t_i + \tau / 2, y_i + \tau k_2 / 2), \\
 k_4 &= f(t_i + \tau, y_i + \tau k_3), \\
-y_{i+1} &= y_i + \tau \bigg( \frac{1}{6} k_1 + \frac{1}{3} k_2 + \frac{1}{3} k_3 + \frac{1}{3} k_4 \bigg).
+y_{i+1} &= y_i + \tau \bigg( \frac{1}{6} k_1 + \frac{1}{3} k_2 + \frac{1}{3} k_3 + \frac{1}{6} k_4 \bigg).
 \end{split}
 :::
 ```
