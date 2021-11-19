@@ -60,7 +60,7 @@
     <script >mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Указатель" href="../genindex.html" />
+    <link rel="next" title="7.4. Задания" href="ex.html" />
     <link rel="prev" title="7.2. Методы Рунге-Кутта" href="rungekutta.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -329,6 +329,11 @@
      7.3. Адаптивные методы
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     7.4. Задания
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -500,7 +505,7 @@
 \[\epsilon = E_i(q \tau) \approx C q^{p+1} \tau^{p+1} \approx E_i(\tau) q^{p+1},\]</div>
 <p>откуда</p>
 <div class="math notranslate nohighlight" id="equation-ode-adaptive-q-choice">
-<span class="eqno">(7.9)<a class="headerlink" href="#equation-ode-adaptive-q-choice" title="Permalink to this equation">¶</a></span>\[q \approx \bigg(\frac{\epsilon}{E_i(\tau)}\bigg)^{1/(p+1)}.\]</div>
+<span class="eqno">(7.10)<a class="headerlink" href="#equation-ode-adaptive-q-choice" title="Permalink to this equation">¶</a></span>\[q \approx \bigg(\frac{\epsilon}{E_i(\tau)}\bigg)^{1/(p+1)}.\]</div>
 <p>Заметим также, что <span class="math notranslate nohighlight">\(q\)</span> может быть как меньше <span class="math notranslate nohighlight">\(1\)</span> (требуется шаг мельче), так и больше 1 (можно увеличить шаг). Во втором случае <span class="math notranslate nohighlight">\(q\)</span> следует ограничивать сверху, иначе можно проскочить участки, где требуется мелкий шаг.</p>
 <p>Теперь можно составить алгоритм решения.</p>
 <div class="proof proof-type-algorithm" id="id5">
@@ -515,7 +520,7 @@
 <ol class="simple">
 <li><p>Подсчитать два приближения решения <span class="math notranslate nohighlight">\(y^{(p)}_{i+1}\)</span>, <span class="math notranslate nohighlight">\(y^{(p+1)}_{i+1}\)</span> и оценить ошибку.</p></li>
 <li><p>Если ошибка мала (меньше заданной пользователем), то принять в качестве решения в <span class="math notranslate nohighlight">\(t=t_i + \tau\)</span> <span class="math notranslate nohighlight">\(y_{i+1} = y^{(p+1)}_{i+1}\)</span>.</p></li>
-<li><p>Подстроить шаг <span class="math notranslate nohighlight">\(\tau\)</span>, заменив на <span class="math notranslate nohighlight">\(q\tau\)</span> <a class="reference internal" href="#equation-ode-adaptive-q-choice">(7.9)</a>.</p></li>
+<li><p>Подстроить шаг <span class="math notranslate nohighlight">\(\tau\)</span>, заменив на <span class="math notranslate nohighlight">\(q\tau\)</span> <a class="reference internal" href="#equation-ode-adaptive-q-choice">(7.10)</a>.</p></li>
 <li><p>Повторять, пока <span class="math notranslate nohighlight">\(t\)</span> не достигнет <span class="math notranslate nohighlight">\(T\)</span>.</p></li>
 </ol>
 </div></div></div>
@@ -710,10 +715,10 @@ u(0) &amp;= 0.
         </a>
     </div>
      <div id="next">
-        <a class="right-next" href="../genindex.html" title="next page">
+        <a class="right-next" href="ex.html" title="next page">
             <div class="prevnext-info">
                 <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Указатель</p>
+                <p class="prevnext-title"><span class="section-number">7.4. </span>Задания</p>
             </div>
             <i class="prevnext-label fas fa-angle-right"></i>
         </a>
