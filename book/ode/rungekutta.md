@@ -88,6 +88,8 @@ k_m &= f\bigg(t_i + a_m \tau, y_i + \tau\sum_{s=1}^{m-1} b_{m,s}k_s\bigg),
 При этом метод использует те же коэффициенты, что и скалярный аналог
 
 ```{math}
+:label: ode_rk_system_k
+
 \begin{split}
 \frac{\mathbf{u}_{i+1} - \mathbf{u}_i}{\tau} &= \sum_{s=1}^m \sigma_s \mathbf{k}_s, \\
 \mathbf{k}_1 &= \mathbf{f}(t_i, \mathbf{y}_i),\\

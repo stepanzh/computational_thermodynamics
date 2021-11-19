@@ -51,7 +51,7 @@ parts:
     - file: ode/rungekutta
     - file: ode/adaptive_rungekutta
     # - file: ode/multistep
-    # - file: ode/ex
+    - file: ode/ex
 - caption: Приложения
   chapters:
   - file: genindex
