@@ -590,3 +590,124 @@ function broydensys(f, x, J; maxiter=50, xtol=1e-6, ftol=1e-6)
     end
     error("Превышено число итераций.")
 end
+
+#=
+==
+== ОДУ
+==
+=#
+
+struct CauchyODEProblem{T<:Real,F<:Function}
+    bound::Tuple{T,T}   # отрезок интегрирования
+    u₀::T               # начальное значение интегрируемой функции
+    f::F                # правая часть ОДУ
+    function CauchyODEProblem(; f::Function, tstart::Real, tend::Real, u₀::Real)
+        new{Float64, typeof(f)}(
+            float.(tuple(tstart, tend)),
+            float(u₀),
+            f,
+        )
+    end
+end
+
+"""
+    euler(problem; nsteps)
+
+Решает задачу Коши `problem` явным методом Эйлера за `nsteps` шагов.
+"""
+function euler(problem::CauchyODEProblem; nsteps::Integer)
+    u = Vector{Float64}(undef, nsteps + 1)
+    u[1] = problem.u₀
+    tstart, tend = problem.bound
+    trange = range(tstart, tend; length=nsteps+1)
+    τ = step(trange)
+    @inbounds for i in 1:nsteps
+        tᵢ, uᵢ = trange[i], u[i]
+        u[i+1] = uᵢ + τ * problem.f(tᵢ, uᵢ)
+    end
+    return trange, u
+end
+
+"""
+    rk4(problem; nsteps)
+
+Решает задачу Коши `problem` явным 4-этапным методом Рунге-Кутта за `nsteps` шагов.
+"""
+function rk4(problem::CauchyODEProblem; nsteps::Integer)
+    u = Vector{Float64}(undef, nsteps + 1)
+    u[1] = problem.u₀
+    tstart, tend = problem.bound
+    trange = range(tstart, tend; length=nsteps+1)
+    τ = step(trange)
+    for i in 1:nsteps
+        tᵢ, uᵢ = trange[i], u[i]
+
+        k₁ = problem.f(tᵢ, uᵢ)
+        k₂ = problem.f(tᵢ + τ/2, uᵢ + τ*k₁/2)
+        k₃ = problem.f(tᵢ + τ/2, uᵢ + τ*k₂/2)
+        k₄ = problem.f(tᵢ + τ, uᵢ + τ * k₃)
+
+        u[i+1] = uᵢ + τ * (k₁ + 2*(k₂ + k₃) + k₄)/6
+    end
+    return trange, u
+end
+
+"""
+    rk23(problem; tol[, maxsteps, maxadjuststeps])
+
+Решает задачу Коши `problem` адаптивным методом Богацкого-Шампина.
+Погрешность вычислений задаётся `tol`, а максимальное количество шагов
+интегрирования `maxsteps`. Число шагов, разрешённое для адаптации шага `maxadjuststeps`.
+"""
+function rk23(problem::CauchyODEProblem;
+    tol::Real,
+    maxsteps::Integer=10000,
+    maxadjuststeps::Integer=20,
+)
+    t₀, T = problem.bound
+    trange = [t₀]
+    u = [problem.u₀]
+    k₁ = problem.f(t₀, problem.u₀)
+    τ = 0.5 * tol^(1/3)
+
+    for i in 1:maxsteps
+        tᵢ, uᵢ = trange[i], u[i]
+
+        tᵢ == T && break
+
+        if tᵢ + τ == tᵢ
+            @warn "Достигнут предел машинной точности по τ"
+            break
+        end
+
+        for j in 1:maxadjuststeps
+            k₂ = problem.f(tᵢ + τ/2, uᵢ + τ*k₁/2)
+            k₃ = problem.f(tᵢ + 3τ/4, uᵢ + 3τ*k₂/4)
+            unew2 = uᵢ + τ*(2k₁ + 3k₂ + 4k₃)/9  # РК2 приближение
+            k₄ = problem.f(tᵢ + τ, unew2)
+
+            Δ = τ * (-5k₁/72 + k₂/12 + k₃/9 - k₄/8)  # разница РК2 и РК3 приближений
+            err = norm(Δ, Inf)
+            maxerr = tol * (1 + norm(uᵢ, Inf))
+
+            accepted = err < maxerr
+            if accepted
+                push!(trange, tᵢ + τ)
+                push!(u, unew2)
+                k₁ = k₄  # FSAL: k₄ = f(tᵢ + τ, uᵢ₊₁) == new k₁
+            end
+
+            # подбор нового шага
+            q = 0.8 * (maxerr/err)^(1/3)    # оценка шага из погрешности
+            q = min(q, 4.0)                 # ограничиваем максимальное увеличение
+            τ = min(q*τ, T - trange[end])   # не выходим за предел T
+
+            accepted && break
+
+            j == maxadjuststeps && error("Число шагов по подбору τ превышено.")
+        end
+
+        i == maxsteps && @warn "Число шагов превышено, конечное время не достигнуто"
+    end
+    return trange, u
+end
