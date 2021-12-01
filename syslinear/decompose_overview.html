@@ -48,7 +48,7 @@
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial", "lto": "\\leftarrow"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe"
@@ -336,6 +336,43 @@
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../optim/index.html">
+   8. Методы оптимизации
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optim/intro.html">
+     8.1. Предварительные сведения
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optim/linesearch.html">
+     8.2. Линейный поиск
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optim/newton.html">
+     8.3. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optim/bfgs.html">
+     8.4. Квазиньютоновские методы
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optim/ex.html">
+     8.5. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -343,6 +380,11 @@
  </span>
 </p>
 <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/cholesky.html">
+   Разложение Холецкого
+  </a>
+ </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../genindex.html">
    Указатель
@@ -473,7 +515,7 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
+  <a class="reference internal nav-link" href="#syslinear-ch-cholesky">
    5.4.3. Разложение Холецкого
   </a>
  </li>
@@ -539,8 +581,8 @@ p = [2, 3, 4, 1]
 <p>В одном из вариантов метода Бройдена решения нелинейной системы уравнений эффективней (по времени работы) использовать QR-разложение. Подобная ситуация встречается и в других алгоритмах, где-то одно разложение несёт больше необходимой алгоритму информации, а где-то подходящее разложение экономит время вычислений.</p>
 <p>Вычислительная сложность <span class="math notranslate nohighlight">\(\propto 2mn^2 - \frac{2}{3} n^3\)</span>.</p>
 </div>
-<div class="section" id="id2">
-<h2><span class="section-number">5.4.3. </span>Разложение Холецкого<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="syslinear-ch-cholesky">
+<span id="id2"></span><h2><span class="section-number">5.4.3. </span>Разложение Холецкого<a class="headerlink" href="#syslinear-ch-cholesky" title="Permalink to this headline">¶</a></h2>
 <p>Данное разложение применяется для квадратной симметричной положительно-определённой матрицы <span class="math notranslate nohighlight">\(\mathbf{x}^\top \mathbf{A} \mathbf{x} &gt; 0\)</span></p>
 <div class="math notranslate nohighlight">
 \[\mathbf{A}_{n\times n} = \mathbf{L}\mathbf{L}^\top,\]</div>
