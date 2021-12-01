@@ -52,7 +52,15 @@ parts:
     - file: ode/adaptive_rungekutta
     # - file: ode/multistep
     - file: ode/ex
+  - file: optim/index
+    sections:
+    - file: optim/intro
+    - file: optim/linesearch
+    - file: optim/newton
+    # - file: optim/bfgs
+    # - file: optim/ex
 - caption: Приложения
   chapters:
+  - file: appendix/cholesky.md
   - file: genindex
   - file: bibliography
