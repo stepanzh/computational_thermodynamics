@@ -73,7 +73,7 @@ end
 
 Возвращает `NewtonResult` - результат оптимизации.
 """
-function newton(
+function newtontemplate(
     f::Function,
     ∇f::Function,
     hess::Function,
@@ -88,12 +88,12 @@ function newton(
     # ... && return NewtonResult(true, x, 0)
 
     for i in 1:maxiter
-        # выбор направления δx из модифицированного Гессина Hᵐ
+        # выбор направления d из модифицированного Гессиана Hᵐ
         # см. mcholesky!, LinearAlgebra.ldiv!
         # ...
-        # δx = ...
+        # d = ...
 
-        # выбор шага вдоль δx
+        # выбор шага вдоль d
         # α = ...
         # ... && return NewtonResult(false, x, i)  # α не найдено
         
