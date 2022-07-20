@@ -1,6 +1,6 @@
 ---
 substitutions:
-  urldownload: "**[[url]](https://julialang.org/downloads/)**"
+  urldownload: "https://julialang.org/downloads/"
   wintermdwnld: "<img src=\"https://www.microsoft.com/favicon.ico%3Fv2\" style=\"height: 1em;\" alt=\"⊞\"> [Windows Terminal](https://aka.ms/terminal)"
   julia_logo: "<img src=\"https://raw.githubusercontent.com/JuliaLang/julia-logo-graphics/master/images/julia-dots.svg\" style=\"height: 1em;\">"
 ---
@@ -47,7 +47,7 @@ $ tar -xzf julia-1.6.2-linux-x86_64.tar.gz
 
 После этого в домашней директории должна появиться директория {file}`julia-1.6.2`, где находится исполняемый файл интерпретатора и необходимые для его работы библиотеки.
 
-**3. Добавить исполняемый файл в `PATH`**
+**3. Добавление ссылки для удобного вызова**
 
 Рекомендуется вместо добавления в `PATH` директории, в которой лежит исполняемый файл, добавить символьную ссылку на этот файл в директорию, которая уже в `PATH`. В большинстве дистрибутивов директория {file}`~/bin`, если она существует, автоматически добавляется в `PATH`, что позволяет добавить ссылку, даже не имея прав администратора. Если директории {file}`~/bin` нет, то её сначала нужно создать:
 
@@ -73,10 +73,17 @@ $ ln -s ~/julia-1.6.2/bin/julia ~/bin/julia
 ```{admonition} Инструкция для пользователей MacOS
 :class: dropdown
 
-1. Скачать `Julia-1.6.app`-пакет с официального сайта языка {{ urldownload }}, {guilabel}`MacOS → 64-bit`;
-2. Стандартно для `.app` приложений установить.
+**1. Скачайте последнюю версию интерпретатора**
 
-Откройте терминал и исполните команду (далее команды терминала помечаются `%`)
+Скачайте .dmg-пакет с официального сайта загрузок {{ urldownload }}, {guilabel}`MacOS → 64-bit`;
+
+**2. Установить интерпретатор**
+
+Стандартно для .dmg-пакетов установите (перетащить .app-файл в директорию Applications).
+
+Julia уже установлена, её можно вызвать стандартным способом, но лучше настроить работу через Terminal.app.
+
+Откройте Terminal.app и вызовите Julia по абсолютному пути (далее команды терминала помечаются `%`, инструкция для Julia 1.6, для других версий аналогично):
 
 :::console
 % /Applications/Julia-1.6.app/Contents/Resources/julia/bin/julia --version
@@ -84,7 +91,11 @@ $ ln -s ~/julia-1.6.2/bin/julia ~/bin/julia
 
 Если вы получили в ответ `julia version 1.6.2`, то всё в порядке.
 
-Однако, чтобы в будущем не доступаться до Julia по абсолютному пути, добавьте `alias` в rc-файл вашего терминала.
+**3. Настройка для быстрого вызова интерпретатора**
+
+Чтобы в будущем доступаться до Julia по короткой команде `julia`, можно добавить либо [ссылку](https://julialang.org/downloads/platform/#macos), либо создать для Julia alias в rc-файле командной оболочки.
+
+Ниже показан способ с alias.
 
 ::::{admonition} Как найти rc-файл
 :class: dropdown
@@ -102,7 +113,7 @@ $ ln -s ~/julia-1.6.2/bin/julia ~/bin/julia
     - Если файл отсутствует, создайте его `touch ~/.bashrc`.
 ::::
 
-3\. Добавление `alias` (для `bash` аналогично):
+Добавление `alias` (для `bash` аналогично):
 
 :::console
 % open ~/.zshrc
@@ -111,14 +122,15 @@ $ ln -s ~/julia-1.6.2/bin/julia ~/bin/julia
 В открывшемся редакторе будет содержимое {file}`~/.zshrc`, добавьте в файл строчку
 
 :::console
+# Alias для быстрого доступа к julia
 alias julia='/Applications/Julia-1.6.app/Contents/Resources/julia/bin/julia'
 :::
 
 и сохраните {file}`~/.zshrc`. Далее сделайте завершение настройки.
 
 :::console
-% source ~/.zshrc  # изменения вступят в силу (можно также просто перезапустить терминал)
-% julia --version  # проверка, всё ли работает
+% source ~/.zshrc
+% julia --version
 julia version 1.6.2
 :::
 ```
@@ -126,7 +138,7 @@ julia version 1.6.2
 ```{admonition} Инструкция для пользователей ОС Windows 10
 :class: dropdown
 
-**1. Скачать последнюю версию интерпретатора**
+**1. Скачайте последнюю версию интерпретатора**
 
 На сайте загрузок {{ urldownload }} найти в таблице свою систему и архитектуру
 (скорее всего, подойдет {guilabel}`Windows → 64-bit (installer)`)
