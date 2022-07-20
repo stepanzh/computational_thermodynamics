@@ -2,6 +2,7 @@
 substitutions:
   urldownload: "**[[url]](https://julialang.org/downloads/)**"
   wintermdwnld: "<img src=\"https://www.microsoft.com/favicon.ico%3Fv2\" style=\"height: 1em;\" alt=\"⊞\"> [Windows Terminal](https://aka.ms/terminal)"
+  julia_logo: "<img src=\"https://raw.githubusercontent.com/JuliaLang/julia-logo-graphics/master/images/julia-dots.svg\" style=\"height: 1em;\">"
 ---
 
 # Основы языка программирования Julia
@@ -12,19 +13,15 @@ Julia: come for the syntax, stay for the speed
 -- *[Nature](https://www.nature.com/articles/d41586-019-02310-3)*
 ```
 
-Язык Julia создавался как решение *two-languages problem* в научной и вычислительной среде: программы на языках с простым синтаксисом (`Python`) обычно медленно исполняются, быстрые же программы пишутся на языках со сложным синтаксисом (`C/C++`, `Fortran`).
+**Почему {{ julia_logo }} Julia?**
+
+Язык [Julia](https://julialang.org/) создавался как решение *two-languages problem* в научной и вычислительной среде {cite}`Julia2017`. На одних языках просто писать программы, но они медленно исполняются (например, на Python), с другой стороны, в языках с быстрым исполнением программ сложный синтаксис (например, C/C++, Fortran).
 
 В данном разделе излагаются основные инструменты языка Julia, которые понадобятся в практикуме.
 
-- Официальная документация языка находится здесь: https://docs.julialang.org/en/v1/.
-- Самостоятельно можно обучиться по
-  - мануалу https://docs.julialang.org/en/v1/manual/getting-started/;
-  - разделу с материалами https://julialang.org/learning/.
-- Обзор синтаксиса https://learnxinyminutes.com/docs/ru-ru/julia-ru/.
-
 ## Инструкция по установке
 
-Ниже расположены краткие инструкции по установке исполнителя языка Julia для Linux-based операционных систем (ОС), MacOS и Windows 10. При возникновении неясностей, обратитесь к [официальной инструкции](https://julialang.org/downloads/platform/) вашей ОС.
+Ниже расположены краткие инструкции по установке исполнителя языка Julia для Linux-based операционных систем (ОС), MacOS и Windows. При возникновении неясностей, обратитесь к [официальной инструкции](https://julialang.org/downloads/platform/) для вашей ОС.
 
 ```{admonition} Инструкция для пользователей Linux-based ОС
 :class: dropdown

@@ -9,9 +9,9 @@ parts:
   chapters:
   - file: intro/index
     sections:
+    - file: intro/julia
     - file: intro/float
     - file: intro/cond
-    - file: intro/julia
     - file: intro/ex
   - file: interpolation/index
     sections:
