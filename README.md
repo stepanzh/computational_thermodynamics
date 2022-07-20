@@ -12,14 +12,12 @@
 
 ```console
 % git clone https://github.com/stepanzh/computational_thermodynamics.git
-% virtualenv venv           # виртуальное окружение,
-% source venv/bin/activate  # если необходимо не мусорить
-% pip3 freeze               # в библиотеках python3
 % cd computational_thermodynamics
-% pip3 install -r book/requirements.txt   # установка необходимых библиотек
-% jupyter-book -h                         # или jb -h, проверка, что всё установилось
-% jb build book                           # билд статического сайта
-% open book/_build/html/index.html        # открытие локальной стартовой страницы сайта-книги
+%   virtualenv venv           # виртуальное окружение,
+%   source venv/bin/activate  # если необходимо не мусорить в библиотеках python3
+% pip3 install -r requirements.txt   # установка необходимых библиотек
+% make build                         # билд локальной версии
+% open book/_build/html/index.html   # открытие стартовой страницы
 ```
 
 - документация jupyter{book} https://jupyterbook.org/intro.html;
