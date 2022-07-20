@@ -59,9 +59,9 @@ sphinx:
     - sphinxcontrib.proof
   local_extensions          :   # A list of local extensions to load by sphinx specified by "name: path" items
   config                    :   # key-value pairs to directly over-ride the Sphinx configuration
-    mathjax_config:
-        TeX:
-          Macros:
+    mathjax3_config:
+        tex:
+          macros:
             "real"      : "\\mathbb{R}"
             "floatset"  : "\\mathbb{F}"
             "integer"   : "\\mathbb{Z}"
