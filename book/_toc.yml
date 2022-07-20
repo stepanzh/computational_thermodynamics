@@ -61,6 +61,7 @@ parts:
     - file: optim/ex
 - caption: Приложения
   chapters:
-  - file: appendix/cholesky.md
-  - file: genindex
-  - file: bibliography
+  - file: appendix/genindex
+  - file: appendix/bibliography
+  - file: appendix/cholesky
+  - file: appendix/materials
