@@ -1,5 +1,6 @@
 # Дополнительные материалы
 
+(materials_julia)=
 ## Язык Julia
 
 - [Julia100Exercises](https://github.com/RoyiAvital/Julia100Exercises).
