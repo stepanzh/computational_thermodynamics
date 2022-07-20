@@ -71,6 +71,7 @@ sphinx:
             "diag"      : "\\text{diag}"
             "sign"      : "\\text{sign}"
             "part"      : "\\partial"
+            "lto"       : "\\leftarrow"
         HTML-CSS:
           fonts: ["Latin-Modern"]
     proof_theorem_types:  # see https://sphinxcontrib-proof.readthedocs.io/en/latest/usage/#configuration-options
