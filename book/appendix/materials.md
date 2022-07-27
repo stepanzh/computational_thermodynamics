@@ -13,7 +13,7 @@
 
 - https://julialang.org/learning/
     - https://julialang.org/learning/books/
-        - Tom Kwong. Hands-on Design Patterns and Best Practices with Julia. Packt Publishing, January 2020.
+        - Tom Kwong. Hands-on Design Patterns and Best Practices with Julia. Packt Publishing, January 2020 {cite}`Kwong2020`.
         - Avik Sengupta. Julia High Performance, 2nd Ed.. Packt Publishing, June 2019.
 
 - [Документация Julia](https://docs.julialang.org/). Делится на несколько уровней
