@@ -1302,223 +1302,16 @@ julia> f(1.5im, 2.5)
 
 Кроме того, до запуска скрипта (*compilation time*) Julia просматривает методы и некоторые из них может прекомпилировать.
 
-Методы могут быть параметрическими, и в их теле вам будет доступен тип аргумента *без вызова* `typeof(x)`, т.е. на этапе компиляции, а не в runtime.
+Методы могут быть параметрическими, и в их теле вам будет доступен тип аргумента на этапе компиляции (`typeof(x)` не нужен).
+
+```{tip}
+:class: dropdown
 
 На методах основаны интерфейсы в языке. Например, вы можете создавать собственные структуры данных, у которых будет поведение массивов. Как только вы объявите методы интерфейса для своего типа, вы сможете пользоваться всеми функциями, определенными для `AbstractArray{T,N}`. Или, скажем, вы можете встроить свои структуры данных в интерфейс цикла `for`.
 
 С помощью методов также создаются типы, ведущие себя как функции: их можно вызывать (*callable*). На этом основаны замыкания (*closures*) в Julia.
 
-```{tip}
 Изобретено множество дизайн-паттернов с использованием методов и типов. За подробностями по теме методов обращайтесь в мануал **[[url]](https://docs.julialang.org/en/v1/manual/methods/)**. Много паттернов описано в книге {cite}`Kwong2020`.
-```
-
-## Модули
-
-В Julia можно разбивать исходный код программы на модули (*modules*).
-
-1. Каждый модуль создаёт собственное глобальное пространство имён;
-2. Модулям предоставляется управление над системой имён внутри. Модуль определяет, какие имена им экспортируются (`export`), в тоже время модуль может использовать имена из других модулей (`using`, `import`);
-3. Модули могут быть прекомпилированы.
-
-Краткая сводка по синтаксису
-
-- Модуль создаётся в блоке `module-end`.
-- Модуль, в котором программа запускается, называется `Main`.
-- Импортирование имён в модуль.
-  - `using M` вносит в область видимости:
-    1. Имя модуля `M`.
-    2. Все имена, которые модуль `M` экспортирует.
-    3. Также, через `M` доступны все имена внутри `M`: `M.MyType`, `M.my_const`...
-  - `import M` вносит в область видимости только имя модуля `M`. Однако, все имена внутри `M` также доступны, через `M.name` синтаксис.
-  - Можно импортировать отдельные имена: `using LinearAlgebra: norm`.
-  - Можно импортировать с переименованием: `using LinearAlgebra: norm as nrm`.
-- Экспортирование имён из модуля осуществляется командной `export`.
-
-### Пример разработки модуля
-
-Ниже показана разработка модуля в несколько этапов. В нём привычная структура `Point{T}`, а её интерфейс оборачивается в модуль. Затем, для примера, структура встраивается в существующую экосистему языка: можно скалярно умножать точки, складывать или умножать на скаляр.
-
-```{tab} Базовая разработка
----
----
-:::julia
-# Points.jl
-module Points
-
-export dist   # экспортируемые имена
-export Point  #
-
-#= 
-  Основной код
-=#
-
-struct Point{T}
-    x::T
-    y::T
-end
-
-dist(p::Point) = sqrt(p.x^2 + p.y^2)
-random_point() = Point(rand(2)...)
-
-end # module
-
-
-#=
-  Использование модуля
-=#
-
-using .Points  # импортирование имён
-
-println(dist(Point(3, 4)))
-println(Points.random_point())
-:::
-```
-```{tab} Скалярное произведение
----
----
-:::julia
-# Points.jl
-module Points
-
-import LinearAlgebra    # импортирование LinearAlgebra (стандартный модуль)
-
-export dist
-export Point
-
-struct Point{T}
-    x::T
-    y::T
-end
-
-dist(p::Point) = sqrt(p.x^2 + p.y^2)
-random_point() = Point(rand(2)...)
-
-# добавление метода к скалярному произведению LinearAlgebra.dot
-LinearAlgebra.dot(p1::Point, p2::Point) = p1.x * p2.x + p1.y * p2.y
-
-end # module
-
-
-using LinearAlgebra
-using .Points
-
-println(dist(Point(3, 4)))
-println(Points.random_point())
-
-println(Point(-1, 2) ⋅ Point(-2, -3))   # \cdot<Tab>, `⋅` синоним `LinearAlgebra.dot`
-:::
-```
-```{tab} Линейные операции
----
----
-:::julia
-# Points.jl
-module Points
-
-import LinearAlgebra
-
-export dist
-export Point
-
-struct Point{T}
-    x::T
-    y::T
-end
-
-dist(p::Point) = sqrt(p.x^2 + p.y^2)
-random_point() = Point(rand(2)...)
-
-LinearAlgebra.dot(p1::Point, p2::Point) = p1.x * p2.x + p1.y * p2.y
-
-# Расширяение стандартной библиотеки языка, модуля Base
-# `+` коммутативно
-Base.:+(p1::Point, p2::Point) = Point(p1.x + p2.x, p1.y + p2.y)
-# `*` не коммутативно
-Base.:*(α::Number, p::Point) = Point(α * p.x, α * p.y)
-Base.:*(p::Point, α::Number) = α * p
-
-end # module
-
-
-using LinearAlgebra
-using .Points
-
-println(dist(Point(3, 4)))
-println(Points.random_point())
-
-println(Point(-1, 2) ⋅ Point(-2, -3))
-
-println(Point(1, 2) + Point(3.0, 4.1))
-println(2 * Point(1, 2))
-println(Point(1, 2) * 2.0)
-:::
-```
-
-### Разбиение исходного файла
-
-Функция `include("filename.jl")` вставляет содержимое {file}`filename.jl` в исходный код туда, где `include` был вызван.
-
-```{margin}
-От реальной структуры отличается только отстутсвием файла с зависимостями пакета.
-```
-Ниже показана типичная структура исходного когда библиотеки.
-
-```{panels}
-Структура библиотеки и {file}`Points.jl`
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Структура директории с исходным кодом
-
-:::
-src/
-    operators.jl
-    interface.jl
-    types.jl
-    Points.jl
-:::
-
-Содержимое файла {file}`Points.jl`
-
-:::julia
-module Points
-
-import LinearAlgebra
-
-export dist
-export Point
-
-include("types.jl")
-include("interface.jl")
-include("operators.jl")
-
-end # module
-:::
----
-Остальной исходный код
-^^^^^^^^^^^^^^^^^^^^^^
-::::{tab} types.jl
-:::julia
-struct Point{T}
-    x::T
-    y::T
-end
-:::
-::::
-::::{tab} interface.jl
-:::julia
-dist(p::Point) = sqrt(p.x^2 + p.y^2)
-random_point() = Point(rand(2)...)
-:::
-::::
-::::{tab} operators.jl
-:::julia
-LinearAlgebra.dot(p1::Point, p2::Point) = p1.x * p2.x + p1.y * p2.y
-
-Base.:+(p1::Point, p2::Point) = Point(p1.x + p2.x, p1.y + p2.y)
-
-Base.:*(α::Number, p::Point) = Point(α * p.x, α * p.y)
-Base.:*(p::Point, α::Number) = α * p
-:::
-::::
 ```
 
 ## Массивы
@@ -1532,11 +1325,9 @@ Base.:*(p::Point, α::Number) = α * p
 - `Vector{T} == Array{T,1}` для одномерных вектор-столбцов;
 - `Matrix{T} == Array{T,2}` для матриц и вектор-строк.
 
-Литералом `Array{T,N}` являются квадратные скобки `[]`. Создание массива с помощью литерала осуществляется посредством вертикальной и горизонтальной *конкатенации*.
+Литералом `Array{T,N}` являются квадратные скобки `[]`, при этом можно явно указать тип `T[]` (`Int[1, 2]`, `Float64[1, 2]`). Создание массива с помощью литерала осуществляется посредством вертикальной и горизонтальной *конкатенации*.
 
-Для **вертикальной конкатенации** используется `;` или новая строка.
-
-Если конкатенация не нужна, используйте запятую `,`. Для скаляров результат будет одинаковый, а вот для `Array`-типов результат будет отличаться.
+Для **вертикальной конкатенации** используется `;` или новая строка. Если конкатенация не нужна, используйте запятую `,`. Для скаляров результат будет одинаковый, а вот для `Array`-типов результат будет отличаться.
 
 ```{panels}
 Вертикальная конкатенация скаляров
@@ -2113,3 +1904,246 @@ BenchmarkTools.Trial: 5360 samples with 1 evaluation.
 
 На векторах размера 100 разница среднего времени исполнения составляла $\approx 4$ раза, а на больших векторах уменьшилась до $\approx 2$ раз. 
 ```
+
+## Модули
+
+```{tip}
+Подробнее в секции мануала **[url](https://docs.julialang.org/en/v1/manual/modules/)**.
+```
+
+В Julia можно разбивать исходный код программы на модули (*modules*). Модуль создаёт собственное пространство имён и может быть прекомпилирован.
+
+Основной синтаксис выглядит так.
+
+```julia
+module Points
+
+using LinearAlgebra
+
+export dist, Point
+
+include("types.jl")
+include("functions.jl")
+
+private_foo() = println("Hello!")
+
+end # module
+```
+
+Всё, что между командами `module ... end` представляет собой модуль. В данном примере создаётся модуль `Points`. 
+
+Инструкция `using LinearAlgebra` импортирует публичные имена из модуля `LinearAlgebra`. При таком вызове, например, функция `LinearAlgebra.norm` из модуля доступна просто по имени `norm`. Фактически, программист так указывает зависимости модуля.
+
+Модуль `Points` также делает имена `dist` и `Point` публичными. Т.е., когда кто-нибудь импортирует `Points` командой `using`, то ему будут доступны имена `dist` и `Point`. Точно также где-то в исходном коде модуля `LinearAlgebra` происходит экспорт имени `norm`.
+
+Функция `include("<path_to_file>")` делает подстановку содержимого файла в модуль. В Julia позднее связывание имён, поэтому вы можете спокойно экспортировать что-то, а объявить где-то позднее.
+
+Помимо этого, при импортировании есть следующие опции.
+
+```{list-table}
+:header-rows: 1
+
+* - Команда импорта
+  - Какие имена доступны
+* - `using Points`
+  - `Points`, `dist`, `Point`, остальные через точку: `Points.private_foo`
+* - `using Points: dist`
+  - `dist`
+* - `using Points: dist as d`
+  - `d`
+* - `import Points`
+  - `Points`, остальные через точку
+* - `import Points as Pnts`
+  - `Pnts`, остальные через точку
+```
+
+### Пример разработки модуля
+
+Ниже показана разработка модуля в несколько этапов. В нём привычная структура `Point{T}`, а её интерфейс оборачивается в модуль. Затем, для примера, структура встраивается в существующую экосистему языка: можно скалярно умножать точки, складывать или умножать на скаляр.
+
+::::{tab-set}
+
+:::{tab-item} Базовая разработка
+
+{file}`Points.jl`
+
+```julia
+module Points
+
+export dist
+export Point
+
+struct Point{T}
+    x::T
+    y::T
+end
+
+dist(p::Point) = sqrt(p.x^2 + p.y^2)
+random_point() = Point(rand(2)...)
+
+end # module
+```
+
+{file}`script.jl`
+
+```julia
+include("path/to/Points.jl")
+using .Points
+
+println(dist(Point(3, 4)))
+println(Points.random_point())
+```
+:::
+
+:::{tab-item} Скалярное произведение
+
+{file}`Points.jl`
+
+```julia
+module Points
+
+import LinearAlgebra  # для добавления метода к скалярному произведению
+
+export dist
+export Point
+
+struct Point{T}
+    x::T
+    y::T
+end
+
+dist(p::Point) = sqrt(p.x^2 + p.y^2)
+random_point() = Point(rand(2)...)
+
+# Добавление метода к скалярному произведению LinearAlgebra.dot
+LinearAlgebra.dot(p1::Point, p2::Point) = p1.x * p2.x + p1.y * p2.y
+
+end # module
+```
+
+{file}`script.jl`
+
+```julia
+include("path/to/Points.jl")
+using .Points
+using LinearAlbgebra  # Для dot(x, y)
+
+println(dot(Point(-1, 2), Point(-2, -3)))
+```
+:::
+
+:::{tab-item} Линейные операции
+
+{file}`Points.jl`
+
+```julia
+module Points
+
+import LinearAlgebra
+
+export dist
+export Point
+
+struct Point{T}
+    x::T
+    y::T
+end
+
+dist(p::Point) = sqrt(p.x^2 + p.y^2)
+random_point() = Point(rand(2)...)
+
+LinearAlgebra.dot(p1::Point, p2::Point) = p1.x * p2.x + p1.y * p2.y
+
+# Расширяение стандартной библиотеки языка, модуля Base
+# `+` коммутативно
+Base.:+(p1::Point, p2::Point) = Point(p1.x + p2.x, p1.y + p2.y)
+# `*` не коммутативно
+Base.:*(α::Number, p::Point) = Point(α * p.x, α * p.y)
+Base.:*(p::Point, α::Number) = α * p
+
+end # module
+```
+
+
+{file}`script.jl`
+```julia
+include("path/to/Points.jl")
+using .Points
+
+println(Point(1, 2) + Point(3.0, 4.1))
+println(2 * Point(1, 2))
+println(Point(1, 2) * 2.0)
+```
+:::
+::::
+
+### Разбиение исходного файла
+
+Функция `include("filename.jl")` вставляет содержимое {file}`filename.jl` в исходный код туда, где `include` был вызван.
+
+```{margin}
+От реальной структуры отличается только отстутсвием файла с зависимостями пакета.
+```
+Ниже показана типичная структура исходного когда библиотеки.
+
+::::{grid} 2
+
+:::{grid-item-card} Структура библиотеки и {file}`Points.jl`
+
+Структура директории.
+```
+src/
+  operators.jl
+  interface.jl
+  types.jl
+  Points.jl
+```
+
+Код модуля {file}`src/Points.jl`.
+
+```julia
+module Points
+
+import LinearAlgebra
+
+export dist
+export Point
+
+include("types.jl")
+include("interface.jl")
+include("operators.jl")
+
+end # module
+```
+
+:::
+
+:::{grid-item-card} Остальной код
+
+{file}`src/types.jl`
+```julia
+struct Point{T}
+    x::T
+    y::T
+end
+```
+
+{file}`src/interface.jl`
+
+```julia
+dist(p::Point) = sqrt(p.x^2 + p.y^2)
+random_point() = Point(rand(2)...)
+```
+
+{file}`src/operators.jl`
+
+```julia
+LinearAlgebra.dot(p1::Point, p2::Point) = p1.x * p2.x + p1.y * p2.y
+
+Base.:+(p1::Point, p2::Point) = Point(p1.x + p2.x, p1.y + p2.y)
+
+Base.:*(α::Number, p::Point) = Point(α * p.x, α * p.y)
+Base.:*(p::Point, α::Number) = α * p
+```
+:::
+::::
