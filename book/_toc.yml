@@ -7,12 +7,23 @@ parts:
 - caption: Практикум
   numbered: True
   chapters:
+  - file: julia/index
+    sections:
+    - file: julia/install
+    - file: julia/run
+    - file: julia/numbers
+    - file: julia/strings
+    - file: julia/controlflow
+    - file: julia/functions
+    - file: julia/types_methods_dispatch
+    - file: julia/arrays
+    - file: julia/linearalgebra
+    - file: julia/modules
+    - file: julia/ex
   - file: intro/index
     sections:
-    - file: intro/julia
     - file: intro/float
     - file: intro/cond
-    - file: intro/ex
   - file: interpolation/index
     sections:
     - file: interpolation/polynomial
