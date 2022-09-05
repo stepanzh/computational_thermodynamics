@@ -1,0 +1,720 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1.3. Числа, переменные, Bool &#8212; Практикум по вычислительной теплофизике</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script src="../_static/proof.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial", "lto": "\\leftarrow"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1.4. Строки" href="strings.html" />
+    <link rel="prev" title="1.2. Запуск программ" href="run.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Практикум по вычислительной теплофизике</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Предмет практикума
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Практикум
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   1. Основы языка программирования Julia
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="install.html">
+     1.1. Установка
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="run.html">
+     1.2. Запуск программ
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.3. Числа, переменные, Bool
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="strings.html">
+     1.4. Строки
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="controlflow.html">
+     1.5. Управляющие конструкции
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="functions.html">
+     1.6. Функции
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="types_methods_dispatch.html">
+     1.7. Типы, методы и multiple dispatch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="arrays.html">
+     1.8. Массивы и broadcast
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="linearalgebra.html">
+     1.9. Линейная алгебра
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="modules.html">
+     1.10. Модули
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     1.11. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Приложения
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/genindex.html">
+   Указатель
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/bibliography.html">
+   Литература
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/cholesky.html">
+   Разложение Холецкого
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/materials.html">
+   Дополнительные материалы
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/stepanzh/computational_thermodynamics"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fjulia/numbers.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/julia/numbers.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/julia/numbers.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   1.3.1. Числа и переменные
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1.3.2. Логические типы и сравнение величин
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Числа, переменные, Bool</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   1.3.1. Числа и переменные
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1.3.2. Логические типы и сравнение величин
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="bool">
+<h1><span class="section-number">1.3. </span>Числа, переменные, Bool<a class="headerlink" href="#bool" title="Permalink to this headline">#</a></h1>
+<p>Данный раздел является кратким обзором следующих разделов манула</p>
+<ul class="simple">
+<li><p>Variables <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/variables/">[url]</a></strong>;</p></li>
+<li><p>Integers and Floating-Point Numbers <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/integers-and-floating-point-numbers/">[url]</a></strong>;</p></li>
+<li><p>Mathematical Operations and Elementary Functions <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/mathematical-operations/">[url]</a></strong>;</p></li>
+<li><p>Complex and Rational Numbers <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/complex-and-rational-numbers/">[url]</a></strong>.</p></li>
+</ul>
+<section id="id1">
+<h2><span class="section-number">1.3.1. </span>Числа и переменные<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>В Julia богатая система встроенных числовых типов, узнать тип переменной или литерала можно с помощью функции <code class="docutils literal notranslate"><span class="pre">typeof(x)</span></code>.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"></span>
+<span class="go">Int64</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="mf">5.0</span><span class="p">)</span><span class="w"></span>
+<span class="go">Float64</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="mi">5</span><span class="nb">im</span><span class="p">)</span><span class="w"></span>
+<span class="go">Complex{Int64}</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="mf">2.3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">5.0</span><span class="nb">im</span><span class="p">)</span><span class="w"></span>
+<span class="go">ComplexF64 (alias for Complex{Float64})</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="mi">2</span><span class="o">//</span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
+<span class="go">Rational{Int64}</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="mi">1</span><span class="o">//</span><span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="o">//</span><span class="mi">3</span><span class="nb">im</span><span class="p">)</span><span class="w"></span>
+<span class="go">Complex{Rational{Int64}}</span>
+</pre></div>
+</div>
+<p>Синтаксис присвоения значения переменной стандартный, также поддерживается параллельное присваивание и каскадное.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+<span class="go">5</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="go">(1, 2)</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="go">1</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="go">2</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="go">1</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="go">(1, 1)</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">))</span><span class="w"></span>
+<span class="go">5</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="w"></span>
+<span class="go">(5, 2, 3)</span>
+</pre></div>
+</div>
+<p>В исполнительном режиме REPL печатает возращаемое значение, его можно опустить с помощью <code class="docutils literal notranslate"><span class="pre">;</span></code> в конце выражения.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="go">10</span>
+</pre></div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Список поддерживаемых для набора в REPL Unicode символов <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/unicode-input/">[url]</a></strong>.</p>
+</aside>
+<p>В имена переменных могут входить любые <a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%AE%D0%BD%D0%B8%D0%BA%D0%BE%D0%B4">Unicode</a> символы.
+REPL позволяет набирать часто употребляемые с помощью LaTeX-подобного синтаксиса и <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Tab</kbd> <kbd class="kbd docutils literal notranslate">⇥</kbd></kbd>, например, так выглядит набор символов <code class="docutils literal notranslate"><span class="pre">α₁</span></code>:</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="o">\</span><span class="n">alpha</span><span class="w">  </span><span class="c"># потом нажмите `&lt;Tab&gt;`, и ввод сменится на α</span><span class="w"></span>
+<span class="w">       </span><span class="n">α</span><span class="w"></span>
+<span class="w">       </span><span class="n">α</span><span class="o">\</span><span class="n">_1</span><span class="w">  </span><span class="c"># `&lt;Tab&gt;`</span><span class="w"></span>
+<span class="w">       </span><span class="n">α₁</span><span class="w"></span>
+</pre></div>
+</div>
+<table class="table" id="id3">
+<caption><span class="caption-number">Table 1.1 </span><span class="caption-text">Некоторые операторы и функции.</span><a class="headerlink" href="#id3" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Синтаксис</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Бинарные операторы <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">+</span> <span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">-</span> <span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">*</span> <span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">/</span> <span class="pre">y</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Функции <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">+(x,</span> <span class="pre">y,..)</span></code>, <code class="docutils literal notranslate"><span class="pre">-(x,</span> <span class="pre">y)</span></code>, <code class="docutils literal notranslate"><span class="pre">*(x,</span> <span class="pre">y,..)</span></code>, <code class="docutils literal notranslate"><span class="pre">/(x,</span> <span class="pre">y)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Унарный минус</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">-x</span></code> или <code class="docutils literal notranslate"><span class="pre">-(x)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Частное от деления целых</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">÷</span> <span class="pre">y</span></code> или <code class="docutils literal notranslate"><span class="pre">÷(x,</span> <span class="pre">y)</span></code> или <code class="docutils literal notranslate"><span class="pre">div(x,</span> <span class="pre">y)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Остаток от деления целых</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">%</span> <span class="pre">y</span></code> или <code class="docutils literal notranslate"><span class="pre">%(x,</span> <span class="pre">y)</span></code> или <code class="docutils literal notranslate"><span class="pre">rem(x,</span> <span class="pre">y)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Возведение в степень <span class="math notranslate nohighlight">\(x^y\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">^</span> <span class="pre">y</span></code> или <code class="docutils literal notranslate"><span class="pre">^(x,</span> <span class="pre">y)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Логарифмы <span class="math notranslate nohighlight">\(\ln(x)\)</span>, <span class="math notranslate nohighlight">\(\log_2(x)\)</span>, <span class="math notranslate nohighlight">\(\log_{10}(x)\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">log(x)</span></code>, <code class="docutils literal notranslate"><span class="pre">log2(x)</span></code>, <code class="docutils literal notranslate"><span class="pre">log10(x)</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Тригонометрия <span class="math notranslate nohighlight">\(\sin(x)\)</span>, <span class="math notranslate nohighlight">\(\cos(x)\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sin(x)</span></code>, <code class="docutils literal notranslate"><span class="pre">cos(x)</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Квадратный корень <span class="math notranslate nohighlight">\(\sqrt{x}\)</span></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">sqrt(x)</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Математические константы</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="nb">π</span><span class="w">                    </span><span class="c"># \pi&lt;Tab&gt;</span><span class="w"></span>
+<span class="go">π = 3.1415926535897...</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="nb">ℯ</span><span class="w">                    </span><span class="c"># \euler&lt;Tab&gt;</span><span class="w"></span>
+<span class="go">ℯ = 2.7182818284590...</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="nb">ℯ</span><span class="p">)</span><span class="w"></span>
+<span class="go">Irrational{:ℯ}</span>
+</pre></div>
+</div>
+<p>При применении операций к разным типам аргументов тип результата интуитивен: число из типа, соответствующего, математически “меньшему” множеству конвертируется в тип математически “большего” множества. Затем операция выполняется для одинаковых типов. Система типов в Julia это её позвоночник, см. раздел <a class="reference internal" href="types_methods_dispatch.html#type-system"><span class="std std-ref">Система типов</span></a>.</p>
+<p>Редко требуется аргумент подать в явном типе, например,</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="p">)</span><span class="w"></span>
+<span class="gr">ERROR: DomainError with -1.0:</span>
+<span class="gr">sqrt will only return a complex result if called with a complex argument. Try sqrt(Complex(x)).</span>
+<span class="gr">...</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="o">-</span><span class="mf">1.0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">0</span><span class="nb">im</span><span class="p">)</span><span class="w"></span>
+<span class="go">0.0 + 1.0im</span>
+</pre></div>
+</div>
+<div class="dropdown admonition">
+<p class="admonition-title">Почему?</p>
+<p>Во-первых, функция корня в математике определяется на разных множествах.</p>
+<p>Во-вторых, так удаётся сохранять <em>стабильность типов</em>: т.е. когда по типам аргументов функции можно определить тип возвращаемого значения. Если бы функция корня, извлекая из <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, возвращала иногда <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, а иногда <code class="docutils literal notranslate"><span class="pre">Complex{Float64}</span></code>, то предсказать тип возвращаемого значения было бы невозможно. Предсказание типов позволяет <em>компилировать</em> функции и методы, не уступающие по скорости аналогам кода на статически типизируемых языках, например, <code class="docutils literal notranslate"><span class="pre">C/C++</span></code>.</p>
+</div>
+</section>
+<section id="id2">
+<h2><span class="section-number">1.3.2. </span>Логические типы и сравнение величин<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>В Julia один логический тип <code class="docutils literal notranslate"><span class="pre">Bool</span></code>, имеющий два значения: <code class="docutils literal notranslate"><span class="pre">true</span></code> и <code class="docutils literal notranslate"><span class="pre">false</span></code>.
+Операторы сравнения как правило возвращают тип <code class="docutils literal notranslate"><span class="pre">Bool</span></code> и используются в логических конструкциях.</p>
+<table class="table" id="id4">
+<caption><span class="caption-number">Table 1.2 </span><span class="caption-text">Некоторые логические операторы и операторы сравнения (функциональные форма не приведена).</span><a class="headerlink" href="#id4" title="Permalink to this table">#</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Описание</p></th>
+<th class="head"><p>Синтаксис</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Логическое отрицание</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">!a</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Логическое И (short-circuit)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">&amp;&amp;</span> <span class="pre">b</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Логическое ИЛИ (short-circuit)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">||</span> <span class="pre">b</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Равенство по значению</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">isequal(x,</span> <span class="pre">y)</span></code> (не взаимозаменяемы)</p></td>
+</tr>
+<tr class="row-even"><td><p>Identity</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">===</span> <span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">≡</span> <span class="pre">y</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Неточное равенство по значению</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">≈</span> <span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">isapprox(x,</span> <span class="pre">y[;</span> <span class="pre">kwargs...])</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Меньше, чем</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">y</span></code> и <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;=</span> <span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">≤</span> <span class="pre">y</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Больше, чем</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code> и <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">≥</span> <span class="pre">y</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Кроме того, существует тип <code class="docutils literal notranslate"><span class="pre">Missing</span></code> со единственным значением <code class="docutils literal notranslate"><span class="pre">missing</span></code>. Он используюется с операторами <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> и <code class="docutils literal notranslate"><span class="pre">|</span></code>, реализующую троичную логику на <code class="docutils literal notranslate"><span class="pre">true</span></code>, <code class="docutils literal notranslate"><span class="pre">false</span></code> и <code class="docutils literal notranslate"><span class="pre">missing</span></code>.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./julia"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="run.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1.2. </span>Запуск программ</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="strings.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.4. </span>Строки</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Степан Захаров и Василий Писарев<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

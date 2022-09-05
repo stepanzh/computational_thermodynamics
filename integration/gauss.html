@@ -4,11 +4,13 @@
 <html>
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>3.3. Формулы Гаусса &#8212; Практикум по вычислительной теплофизике</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Формулы Гаусса &#8212; Практикум по вычислительной теплофизике</title>
     
-  <link href="../_static/css/theme.css" rel="stylesheet" />
-  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -18,12 +20,8 @@
   <link rel="preload" as="font" type="font/woff2" crossorigin
     href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
 
-    
-      
-
-    
-    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.e8f53015daec13862f6db5e763c41738.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -31,42 +29,60 @@
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
-  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
 
-    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/togglebutton.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
     <script src="../_static/tabs.js"></script>
     <script src="../_static/proof.js"></script>
-    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"TeX": {"Macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial", "lto": "\\leftarrow"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
-    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
-    <script >
-        const thebe_selector = ".thebe"
-        const thebe_selector_input = "pre"
-        const thebe_selector_output = ".output"
-    </script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial", "lto": "\\leftarrow"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-    <script >mermaid.initialize({startOnLoad:true});</script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="3.4. Адаптивное интегрирование" href="adaptive.html" />
-    <link rel="prev" title="3.2. Метод Ромберга" href="romberg.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
     
     <div class="container-fluid" id="banner"></div>
 
@@ -75,10 +91,12 @@
     <div class="container-xl">
       <div class="row">
           
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
+      
       
       
       <h1 class="site-logo" id="site-title">Практикум по вычислительной теплофизике</h1>
@@ -89,22 +107,23 @@
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
 </form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../index.html">
-   Предмет практикума
-  </a>
- </li>
-</ul>
-<p class="caption">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Предмет практикума
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Практикум
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../intro/index.html">
-   1. Введение
+  <a class="reference internal" href="../julia/index.html">
+   1. Основы языка программирования Julia
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
@@ -113,424 +132,375 @@
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../intro/float.html">
-     1.1. Числа с плавающей точкой
+    <a class="reference internal" href="../julia/install.html">
+     1.1. Установка
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../intro/cond.html">
-     1.2. Обусловленность задач
+    <a class="reference internal" href="../julia/run.html">
+     1.2. Запуск программ
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../intro/julia.html">
-     1.3. Основы языка программирования Julia
+    <a class="reference internal" href="../julia/numbers.html">
+     1.3. Числа, переменные, Bool
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../intro/ex.html">
-     1.4. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../interpolation/index.html">
-   2. Интерполяция
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../interpolation/polynomial.html">
-     2.1. Полиномиальная интерполяция
+    <a class="reference internal" href="../julia/strings.html">
+     1.4. Строки
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../interpolation/pwlinear.html">
-     2.2. Кусочно-линейная интерполяция
+    <a class="reference internal" href="../julia/controlflow.html">
+     1.5. Управляющие конструкции
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../interpolation/cubic_spline.html">
-     2.3. Кубические сплайны
+    <a class="reference internal" href="../julia/functions.html">
+     1.6. Функции
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../interpolation/ex.html">
-     2.4. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="index.html">
-   3. Численное интегрирование
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="newton_cotes.html">
-     3.1. Формулы Ньютона-Котса
+    <a class="reference internal" href="../julia/types_methods_dispatch.html">
+     1.7. Типы, методы и multiple dispatch
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="romberg.html">
-     3.2. Метод Ромберга
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     3.3. Формулы Гаусса
+    <a class="reference internal" href="../julia/arrays.html">
+     1.8. Массивы и broadcast
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="adaptive.html">
-     3.4. Адаптивное интегрирование
+    <a class="reference internal" href="../julia/linearalgebra.html">
+     1.9. Линейная алгебра
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="ex.html">
-     3.5. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../nlroot/index.html">
-   4. Нелинейные уравнения
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/simpleiter.html">
-     4.1. Метод простой итерации
+    <a class="reference internal" href="../julia/modules.html">
+     1.10. Модули
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/newton_secant.html">
-     4.2. Метод Ньютона и секущих
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/bisection_regula_falsi.html">
-     4.3. Методы бисекции и regula falsi
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/ridders.html">
-     4.4. Метод Риддерса
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/itp.html">
-     4.5. ITP метод
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/ex.html">
-     4.6. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../syslinear/index.html">
-   5. Линейные системы уравнений
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/triangular.html">
-     5.1. Треугольные системы
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/lu.html">
-     5.2. LU-разложение
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/plu.html">
-     5.3. PLU-разложение
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/decompose_overview.html">
-     5.4. Обзор других разложений и задач
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../sysnonlinear/index.html">
-   6. Нелинейные системы уравнений
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../sysnonlinear/newton.html">
-     6.1. Метод Ньютона
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../sysnonlinear/quasinewton.html">
-     6.2. Метод Бройдена
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../sysnonlinear/ex.html">
-     6.3. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ode/index.html">
-   7. Обыкновенные дифференциальные уравнения
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ode/euler.html">
-     7.1. Метод Эйлера
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ode/rungekutta.html">
-     7.2. Методы Рунге-Кутта
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ode/adaptive_rungekutta.html">
-     7.3. Адаптивные методы
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ode/ex.html">
-     7.4. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../optim/index.html">
-   8. Методы оптимизации
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../optim/intro.html">
-     8.1. Предварительные сведения
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../optim/linesearch.html">
-     8.2. Линейный поиск
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../optim/newton.html">
-     8.3. Метод Ньютона
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../optim/bfgs.html">
-     8.4. Квазиньютоновские методы
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../optim/ex.html">
-     8.5. Задания
+    <a class="reference internal" href="../julia/ex.html">
+     1.11. Задания
     </a>
    </li>
   </ul>
  </li>
 </ul>
-<p class="caption">
+<p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
   Приложения
  </span>
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/genindex.html">
+   Указатель
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/bibliography.html">
+   Литература
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="../appendix/cholesky.html">
    Разложение Холецкого
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../genindex.html">
-   Указатель
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../bibliography.html">
-   Литература
+  <a class="reference internal" href="../appendix/materials.html">
+   Дополнительные материалы
   </a>
  </li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
             
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../_sources/integration/gauss.md"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
-    </div>
-</div>
-
-            <!-- Source interaction buttons -->
-
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/stepanzh/computational_thermodynamics"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fintegration/gauss.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
-        <a class="edit-button" href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/integration/gauss.md"><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Edit this page"><i class="fas fa-pencil-alt"></i>suggest edit</button></a>
-    </div>
-</div>
-
-            <!-- Full screen (wrap in <a> to have style consistency -->
-
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
-
-            <!-- Launch buttons -->
-
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/stepanzh/computational_thermodynamics"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fintegration/gauss.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/integration/gauss.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/integration/gauss.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   3.3.1. Квадратуры гауссова типа с частично зафиксированными узлами
+   Квадратуры гауссова типа с частично зафиксированными узлами
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     3.3.1.1. Квадратуры Лобатто
+     Квадратуры Лобатто
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     3.3.1.2. Квадратуры Кронрода
+     Квадратуры Кронрода
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   3.3.2. Альтернативная система уравнений для вычисления весов квадратур
+   Альтернативная система уравнений для вычисления весов квадратур
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   3.3.3. Упражения
+   Упражения
   </a>
  </li>
 </ul>
 
-            </nav>
-        </div>
-    </div>
+    </nav>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Формулы Гаусса</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   Квадратуры гауссова типа с частично зафиксированными узлами
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     Квадратуры Лобатто
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id4">
+     Квадратуры Кронрода
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   Альтернативная система уравнений для вычисления весов квадратур
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id6">
+   Упражения
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
               <div>
                 
-  <div class="section" id="id1">
-<h1><span class="section-number">3.3. </span>Формулы Гаусса<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
-<p>В <a class="reference internal" href="newton_cotes.html#chapters-integration-newton-cotes"><span class="std std-numref">Разделе 3.1</span></a> мы видели, что веса квадратуры <span class="math notranslate nohighlight">\(\{w_i\}\)</span> с известными узлами <span class="math notranslate nohighlight">\(\{x_i\}\)</span> могут быть найдены решением линейной системы уравнений</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="id1">
+<h1>Формулы Гаусса<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<p>В <code class="xref std std-numref docutils literal notranslate"><span class="pre">Разделе</span> <span class="pre">{number}</span></code> мы видели, что веса квадратуры <span class="math notranslate nohighlight">\(\{w_i\}\)</span> с известными узлами <span class="math notranslate nohighlight">\(\{x_i\}\)</span> могут быть найдены решением линейной системы уравнений</p>
 <div class="math notranslate nohighlight">
 \[\sum\limits_{i=1}^{N} w_i x_i^p = \frac{1}{p + 1} \quad\forall p \in \{0, \dots, N-1\}.\]</div>
 <p>Хотя она была записана для формул Ньютона-Котса, её можно решить относительно весов для любого набора <em>различных</em> узлов <span class="math notranslate nohighlight">\(\{x_i\}\)</span>, не обязательно равномерно-распределённых.</p>
 <p>Но эти же условия можно рассматривать как условия на <em>веса и узлы</em> квадратуры, т.е. рассмотреть <em>нелинейную</em> систему уравнений</p>
 <div class="math notranslate nohighlight" id="equation-gauss-system">
-<span class="eqno">(3.19)<a class="headerlink" href="#equation-gauss-system" title="Permalink to this equation">¶</a></span>\[\sum\limits_{i=1}^{N} w_i x_i^p = \frac{1}{p + 1}, \quad\forall p \in \{0, \dots, M\}\]</div>
+<span class="eqno">()<a class="headerlink" href="#equation-gauss-system" title="Permalink to this equation">#</a></span>\[\sum\limits_{i=1}^{N} w_i x_i^p = \frac{1}{p + 1}, \quad\forall p \in \{0, \dots, M\}\]</div>
 <p>c <span class="math notranslate nohighlight">\(2N\)</span> неизвестными: <span class="math notranslate nohighlight">\(\{w_i\}_{i=1}^N\)</span> и <span class="math notranslate nohighlight">\(\{x_i\}_{i=1}^N\)</span>. Тогда можно надеяться, что система будет разрешима вплоть до <span class="math notranslate nohighlight">\(M = 2N-1\)</span>.
 Если это так, то мы получим квадратурную формулу с <span class="math notranslate nohighlight">\(N\)</span> узлами, точную для
 многочленов вплоть до степени <span class="math notranslate nohighlight">\(2N-1\)</span>.</p>
@@ -544,10 +514,10 @@
 <div class="math notranslate nohighlight">
 \[P_M(x) = \Omega_{N}(x) q_{M-N}(x) + r_{N-1}(x),\]</div>
 <p>где <span class="math notranslate nohighlight">\(q_{M-N}\)</span> – многочлен степени <span class="math notranslate nohighlight">\(M - N\)</span>, <span class="math notranslate nohighlight">\(r_{N-1}\)</span> – многочлен степени не выше <span class="math notranslate nohighlight">\(N - 1\)</span>.</p>
-<p>Запишем ошибку интегрирования <span class="math notranslate nohighlight">\(P_M\)</span> при условии, что веса квадратуры определены <span class="math notranslate nohighlight">\(w_i\)</span> из системы <a class="reference internal" href="newton_cotes.html#equation-newtoncotesgeneral">(3.4)</a>,
+<p>Запишем ошибку интегрирования <span class="math notranslate nohighlight">\(P_M\)</span> при условии, что веса квадратуры определены <span class="math notranslate nohighlight">\(w_i\)</span> из системы <a class="reference internal" href="newton_cotes.html#equation-newtoncotesgeneral">()</a>,
 т.е. квадратура точна для всех многочленов вплоть до степени <span class="math notranslate nohighlight">\(N-1\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-gauss-error">
-<span class="eqno">(3.20)<a class="headerlink" href="#equation-gauss-error" title="Permalink to this equation">¶</a></span>\[\begin{split}\begin{split}
+<span class="eqno">()<a class="headerlink" href="#equation-gauss-error" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{split}
 \sum\limits_{i} w_i P_M(x_i) &amp;- \int\limits_{-1}^{1} P_M(x) \diff x = \\
 &amp; = \left(\sum\limits_{i} w_i \Omega_{N}(x_i) q_{M-N}(x_i) - \int\limits_{-1}^{1} \Omega_{N}(x) q_{M-N}(x) \diff x \right) + 
 \left(\sum\limits_{i} w_i r_{N-1}(x_i) - \int\limits_{-1}^{1} r_{N-1}(x) \diff x \right)
@@ -556,33 +526,33 @@
 Сумма в первой скобке равна нулю, т.к. по своему определению <span class="math notranslate nohighlight">\(\Omega_{N}(x_i) = 0\)</span>.
 Остаётся лишь интеграл в первой скобке. Отсюда получаем вывод: ошибка интегрирования равна нулю, если</p>
 <div class="math notranslate nohighlight" id="equation-gauss-orthogonal">
-<span class="eqno">(3.21)<a class="headerlink" href="#equation-gauss-orthogonal" title="Permalink to this equation">¶</a></span>\[\int\limits_{-1}^{1} \Omega_{N}(x) q_{M-N}(x) \diff x = 0,\quad \forall q_{M-N}(x).\]</div>
+<span class="eqno">()<a class="headerlink" href="#equation-gauss-orthogonal" title="Permalink to this equation">#</a></span>\[\int\limits_{-1}^{1} \Omega_{N}(x) q_{M-N}(x) \diff x = 0,\quad \forall q_{M-N}(x).\]</div>
 <p>Т.е. многочлен <span class="math notranslate nohighlight">\(\Omega_{N}(x)\)</span> ортогонален всем многочленам вплоть до степени <span class="math notranslate nohighlight">\(M - N\)</span>, если скалярное произведение определено как</p>
 <div class="math notranslate nohighlight">
 \[f \cdot g = \int\limits_{-1}^{1} f(x) g(x) \diff x.\]</div>
 <p>Как известно из матанализа, для многочленов ортонормированный базис составляют <em>многочлены Лежандра</em></p>
 <div class="math notranslate nohighlight">
 \[L_k(x) = \frac{1}{2^n n!} \frac{d^k}{dx^k}(x^2 - 1)^k.\]</div>
-<p>Значит, в качестве <span class="math notranslate nohighlight">\(\Omega_N\)</span> возьмём <span class="math notranslate nohighlight">\(L_N\)</span>, чтобы удовлетворить <a class="reference internal" href="#equation-gauss-orthogonal">(3.21)</a> для полиномов <span class="math notranslate nohighlight">\(q_{M-N}\)</span> как можно более высокой степени. Тогда, если степень <span class="math notranslate nohighlight">\(q_{M-N}\)</span> не превосходит <span class="math notranslate nohighlight">\(M-N \le N-1\)</span>, т.е. <span class="math notranslate nohighlight">\(M \le 2N-1\)</span>, то <a class="reference internal" href="#equation-gauss-orthogonal">(3.21)</a> выполнится, т.е.</p>
+<p>Значит, в качестве <span class="math notranslate nohighlight">\(\Omega_N\)</span> возьмём <span class="math notranslate nohighlight">\(L_N\)</span>, чтобы удовлетворить <a class="reference internal" href="#equation-gauss-orthogonal">()</a> для полиномов <span class="math notranslate nohighlight">\(q_{M-N}\)</span> как можно более высокой степени. Тогда, если степень <span class="math notranslate nohighlight">\(q_{M-N}\)</span> не превосходит <span class="math notranslate nohighlight">\(M-N \le N-1\)</span>, т.е. <span class="math notranslate nohighlight">\(M \le 2N-1\)</span>, то <a class="reference internal" href="#equation-gauss-orthogonal">()</a> выполнится, т.е.</p>
 <div class="math notranslate nohighlight">
 \[\int\limits_{-1}^{1} \Omega_{N}(x) q_{M-N}(x) \diff x = 0,\quad \forall M \le 2N-1,\]</div>
 <p>а для <span class="math notranslate nohighlight">\(M &gt; 2N-1\)</span> получим наименьшее скалярное произведение.</p>
-<p>Поскольку <span class="math notranslate nohighlight">\(\Omega_N \equiv L_N\)</span>, то узлы интегрирования совпадают с нулями <span class="math notranslate nohighlight">\(L_N(x_i) = 0\)</span>, <span class="math notranslate nohighlight">\(i=1,\dots,N\)</span>. Зная узлы, мы решаем систему на веса <span class="math notranslate nohighlight">\(\{w_i\}_{i=1}^N\)</span> <a class="reference internal" href="newton_cotes.html#equation-newtoncotesgeneral">(3.4)</a> из <span class="math notranslate nohighlight">\(N\)</span> уравнений, получая квадратурную формулу.</p>
-<p>Из выражения для ошибки <a class="reference internal" href="#equation-gauss-error">(3.20)</a> и такого способа выбора узлов и весов приходим к выводу, что итоговая квадратурная формула будет точна для полиномов <span class="math notranslate nohighlight">\(P_M\)</span> степени не выше <span class="math notranslate nohighlight">\(M \le 2N-1\)</span>. Хотя узлов мы используем всего <span class="math notranslate nohighlight">\(N\)</span>.</p>
-<div class="margin sidebar">
+<p>Поскольку <span class="math notranslate nohighlight">\(\Omega_N \equiv L_N\)</span>, то узлы интегрирования совпадают с нулями <span class="math notranslate nohighlight">\(L_N(x_i) = 0\)</span>, <span class="math notranslate nohighlight">\(i=1,\dots,N\)</span>. Зная узлы, мы решаем систему на веса <span class="math notranslate nohighlight">\(\{w_i\}_{i=1}^N\)</span> <a class="reference internal" href="newton_cotes.html#equation-newtoncotesgeneral">()</a> из <span class="math notranslate nohighlight">\(N\)</span> уравнений, получая квадратурную формулу.</p>
+<p>Из выражения для ошибки <a class="reference internal" href="#equation-gauss-error">()</a> и такого способа выбора узлов и весов приходим к выводу, что итоговая квадратурная формула будет точна для полиномов <span class="math notranslate nohighlight">\(P_M\)</span> степени не выше <span class="math notranslate nohighlight">\(M \le 2N-1\)</span>. Хотя узлов мы используем всего <span class="math notranslate nohighlight">\(N\)</span>.</p>
+<aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>Стоит отметить, что алгебраический порядок и сходимость не обязательно связаны.</p>
-</div>
+</aside>
 <div class="proof proof-type-definition" id="id7">
 <span id="definition-gauss-quadrature"></span><span id="index-0"></span>
     <div class="proof-title">
-        <span class="proof-type">Определение 3.13</span>
+        <span class="proof-type">Определение </span>
         
             <span class="proof-title-name">(Квадратурная формула Гаусса)</span>
         
     </div><div class="proof-content">
 <p>Квадратурные формулы с узлами в нулях многочленов Лежандра называются <strong>квадратурными формулами Гаусса</strong>.
-Они имеют при заданном числе узлов (т.е. количестве вычислений подынтегральной функции) <em>максимальный алгебраический порядок точности</em> из всех квадратур вида <a class="reference internal" href="index.html#equation-quadrature">(3.2)</a>.</p>
+Они имеют при заданном числе узлов (т.е. количестве вычислений подынтегральной функции) <em>максимальный алгебраический порядок точности</em> из всех квадратур вида <a class="reference internal" href="index.html#equation-quadrature">()</a>.</p>
 </div></div><p>На практике для узлов и весов квадратур Гаусса различных порядков составлены таблицы, которыми можно пользоваться и не зная теории.
 При использовании таблиц нужно обратить внимание на два аспекта:</p>
 <ol class="simple">
@@ -591,41 +561,41 @@
 <li><p>В некоторых таблицах приводятся узлы и веса на отрезке <span class="math notranslate nohighlight">\([-1, 1]\)</span>, в некоторых – на <span class="math notranslate nohighlight">\([0, 1]\)</span>. В зависимости от этого
 формулы пересчёта на произвольный отрезок <span class="math notranslate nohighlight">\([a, b]\)</span> будут слегка отличаться.</p></li>
 </ol>
-<div class="section" id="id2">
-<h2><span class="section-number">3.3.1. </span>Квадратуры гауссова типа с частично зафиксированными узлами<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<section id="id2">
+<h2>Квадратуры гауссова типа с частично зафиксированными узлами<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>На практике иногда возникает потребность получить максимально точные квадратурные формулы при условии, что часть узлов
 <span class="math notranslate nohighlight">\(\{{\hat x}_1, \dots, {\hat x}_p\}\)</span>зафиксирована, а остальные <span class="math notranslate nohighlight">\(N - p\)</span> узлов можно выбрать свободно. В таком случае те же
 рассуждения, что и при выводе формул Гаусса, приводят к следующему условию максимальной степени квадратуры:</p>
 <div class="math notranslate nohighlight" id="equation-gausslike">
-<span class="eqno">(3.22)<a class="headerlink" href="#equation-gausslike" title="Permalink to this equation">¶</a></span>\[\int\limits_{-1}^{1} {\hat\Omega}_p(x) \Omega_{N-p}(x) q_{M-N}(x) \diff x = 0\]</div>
-<div class="section" id="id3">
-<h3><span class="section-number">3.3.1.1. </span>Квадратуры Лобатто<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<span class="eqno">()<a class="headerlink" href="#equation-gausslike" title="Permalink to this equation">#</a></span>\[\int\limits_{-1}^{1} {\hat\Omega}_p(x) \Omega_{N-p}(x) q_{M-N}(x) \diff x = 0\]</div>
+<section id="id3">
+<h3>Квадратуры Лобатто<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <p>Гауссовы квадратуры относятся к открытому типу, т.к. все нули многочленов Лежандра лежат внутри интервала <span class="math notranslate nohighlight">\((-1, 1)\)</span>. Если нужно
-построить формулу открытого типа, то положения двух узлов нужно зафиксировать в точках <span class="math notranslate nohighlight">\(x_1 = -1\)</span> и <span class="math notranslate nohighlight">\(x_N = 1\)</span>. Выражение <a class="reference internal" href="#equation-gausslike">(3.22)</a>
+построить формулу открытого типа, то положения двух узлов нужно зафиксировать в точках <span class="math notranslate nohighlight">\(x_1 = -1\)</span> и <span class="math notranslate nohighlight">\(x_N = 1\)</span>. Выражение <a class="reference internal" href="#equation-gausslike">()</a>
 приобретает вид</p>
 <div class="math notranslate nohighlight" id="equation-integ-lobatto">
-<span class="eqno">(3.23)<a class="headerlink" href="#equation-integ-lobatto" title="Permalink to this equation">¶</a></span>\[\int\limits_{-1}^{1} (1 - x^2) \Omega_{N-2}(x) q_{M-N}(x) \diff x = 0\]</div>
-<p>Поскольку функция <span class="math notranslate nohighlight">\({\hat\Omega}_p(x) = (1 - x^2)\)</span> положительна на интервале <span class="math notranslate nohighlight">\((-1, 1)\)</span>, выражение <a class="reference internal" href="#equation-integ-lobatto">(3.23)</a> можно
+<span class="eqno">()<a class="headerlink" href="#equation-integ-lobatto" title="Permalink to this equation">#</a></span>\[\int\limits_{-1}^{1} (1 - x^2) \Omega_{N-2}(x) q_{M-N}(x) \diff x = 0\]</div>
+<p>Поскольку функция <span class="math notranslate nohighlight">\({\hat\Omega}_p(x) = (1 - x^2)\)</span> положительна на интервале <span class="math notranslate nohighlight">\((-1, 1)\)</span>, выражение <a class="reference internal" href="#equation-integ-lobatto">()</a> можно
 рассматривать как скалярное произведение, а <span class="math notranslate nohighlight">\(\Omega_{N-2}(x)\)</span> должен принадлежать семейству ортогональных многочленов для
 такого скалярного произведения. Поиск коэффициентов таких многочленов можно производить через ортогонализацию Грама-Шмидта.
 Когда многочлен найден, каким-либо численным методом находятся его нули, которые будут дополнительными узлами, а затем веса.</p>
 <p>Для квадратур Лобатто дополнительные узлы определяются нулями <span class="math notranslate nohighlight">\(L_{N-1}'(x)\)</span>. Алгебраический порядок точности квадратуры равен
 <span class="math notranslate nohighlight">\(2N - 3\)</span> (выбор <span class="math notranslate nohighlight">\(N - 2\)</span> узлов и <span class="math notranslate nohighlight">\(N\)</span> весов позволяют получить точные решения для многочленов с <span class="math notranslate nohighlight">\(2N-2\)</span> коэффициентами).</p>
-</div>
-<div class="section" id="id4">
-<h3><span class="section-number">3.3.1.2. </span>Квадратуры Кронрода<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="id4">
+<h3>Квадратуры Кронрода<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <p>Гауссовы квадратуры обладают неприятным свойством – при повышении порядка аппроксимации полностью меняется набор узлов интегрирования.
 Это означает, что оценка фактической погрешности численного интегрирования требует расчёта подынтегральной функции в <span class="math notranslate nohighlight">\(N+1\)</span> точке, при
 этом уточнённая квадратура будет иметь порядок лишь на 2 выше, чем исходная. В случае, например, интегрирования методом Ромберга
 аналогичное удвоение количества точек удваивает и порядок квадратуры.</p>
 <p>В 1960-х Александр Семёнович Кронрод предложил “уточняющие” квадратуры, получаемые добавлением к <span class="math notranslate nohighlight">\(N\)</span> узлам гауссовой квадратуры ещё
 <span class="math notranslate nohighlight">\(N+1\)</span> узлов так, чтобы порядок получившейся квадратуры был максимален.</p>
-<p>Поскольку в <a class="reference internal" href="#equation-gausslike">(3.22)</a> теперь берётся не всюду положительный многочлен <span class="math notranslate nohighlight">\({\hat\Omega}_p(x) = L_p(x)\)</span>, этот интеграл уже нельзя
+<p>Поскольку в <a class="reference internal" href="#equation-gausslike">()</a> теперь берётся не всюду положительный многочлен <span class="math notranslate nohighlight">\({\hat\Omega}_p(x) = L_p(x)\)</span>, этот интеграл уже нельзя
 рассматривать как скалярное произведение, и поиск дополняющего многочлена нужно делать иначе.</p>
 <p>Записав многочлен в виде</p>
 <div class="math notranslate nohighlight" id="equation-kronrod-poly">
-<span class="eqno">(3.24)<a class="headerlink" href="#equation-kronrod-poly" title="Permalink to this equation">¶</a></span>\[K(x) = x^{N+1} + K_N x^N + \dots + K_1 x + K_0,\]</div>
-<p>и подставив в <a class="reference internal" href="#equation-gausslike">(3.22)</a> <span class="math notranslate nohighlight">\(q(x) = 1\)</span>, получаем</p>
+<span class="eqno">()<a class="headerlink" href="#equation-kronrod-poly" title="Permalink to this equation">#</a></span>\[K(x) = x^{N+1} + K_N x^N + \dots + K_1 x + K_0,\]</div>
+<p>и подставив в <a class="reference internal" href="#equation-gausslike">()</a> <span class="math notranslate nohighlight">\(q(x) = 1\)</span>, получаем</p>
 <div class="math notranslate nohighlight">
 \[\int\limits_{-1}^{1} L_N(x) (x^{N+1} + K_N x^N + \dots) \diff x = \int\limits_{-1}^{1} L_N(x) (x^{N+1} + K_N x^N) \diff x = 0,\]</div>
 <p>т.к. многочлен Лежандра <span class="math notranslate nohighlight">\(L_N(x)\)</span> ортогонален всем многочленам степени ниже <span class="math notranslate nohighlight">\(N\)</span>. Отсюда</p>
@@ -637,11 +607,11 @@
 <p>откуда уже можно найти <span class="math notranslate nohighlight">\(K_{N-1}\)</span> и т.д.</p>
 <p>Квадратура с <span class="math notranslate nohighlight">\(N\)</span> гауссовыми узлами и <span class="math notranslate nohighlight">\(N+1\)</span> узлами Кронрода точна для многочленов степени до <span class="math notranslate nohighlight">\(3N\)</span> при чётных <span class="math notranslate nohighlight">\(N\)</span> и <span class="math notranslate nohighlight">\(3N + 1\)</span> при
 нечётных <span class="math notranslate nohighlight">\(N\)</span> (как и для квадратур Ньютона-Котса, при нечётное число узлов даёт дополнительный порядок за счёт симметрии).</p>
-</div>
-</div>
-<div class="section" id="id5">
-<h2><span class="section-number">3.3.2. </span>Альтернативная система уравнений для вычисления весов квадратур<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
-<p>При выводе системы <a class="reference internal" href="newton_cotes.html#equation-newtoncotesgeneral">(3.4)</a> требовалось точное выполнение квадратурной формулы для степеней <span class="math notranslate nohighlight">\(x\)</span>. Можно вместо этого
+</section>
+</section>
+<section id="id5">
+<h2>Альтернативная система уравнений для вычисления весов квадратур<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<p>При выводе системы <a class="reference internal" href="newton_cotes.html#equation-newtoncotesgeneral">()</a> требовалось точное выполнение квадратурной формулы для степеней <span class="math notranslate nohighlight">\(x\)</span>. Можно вместо этого
 потребовать точное выполнение квадратурной формулы для многочленов Лежандра. Система в предположении, что узлы заданы на отрезке
 <span class="math notranslate nohighlight">\([-1, 1]\)</span>, принимает вид</p>
 <div class="math notranslate nohighlight">
@@ -679,9 +649,9 @@ w_N
 \[L_{M+1}(x) = \frac{2M + 1}{M + 1} x L_M(x) - \frac{M}{M + 1} L_{M-1}(x),\]</div>
 <p>вычисление матрицы в левой части не является особенно сложным. Этот метод может быть предпочтительнее вычисления весов через матрицу
 Вандермонда, т.к. имеет лучшую обусловленность.</p>
-</div>
-<div class="section" id="id6">
-<h2><span class="section-number">3.3.3. </span>Упражения<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="id6">
+<h2>Упражения<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
 <ol>
 <li><p>Ниже приведена заготовка функции, находящей узлы и коэффициенты формулы Ньютона-Котса, точной для многочлена степени <span class="math notranslate nohighlight">\(p\)</span>.
 Заполните пропуски <code class="docutils literal notranslate"><span class="pre">⟨...⟩</span></code></p>
@@ -689,31 +659,31 @@ w_N
 <span class="s">Находит узлы и веса формулы Ньютона-Котса с числом узлов `nnodes` на отрезке `[0; 1]`.</span>
 <span class="s">Если аргумент `closed=true` (по умолчанию), то расчет делается для </span>
 <span class="s">закрытых квадратурных формул, иначе - для открытых</span>
-<span class="s">&quot;&quot;&quot;</span>
-<span class="k">function</span> <span class="n">newton_cotes_nodes_weights</span><span class="p">(</span><span class="n">nnodes</span><span class="o">::</span><span class="kt">Integer</span><span class="p">;</span> <span class="n">closed</span><span class="o">::</span><span class="kt">Bool</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">closed</span>
-<span class="hll">        <span class="n">nodes</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="n">⟨</span><span class="o">...</span><span class="n">⟩</span><span class="p">)</span>
-</span>    <span class="k">else</span>
-<span class="hll">        <span class="n">nodes</span> <span class="o">=</span> <span class="n">range</span><span class="p">(</span><span class="n">⟨</span><span class="o">...</span><span class="n">⟩</span><span class="p">)</span>
-</span>    <span class="k">end</span>
-    <span class="n">rhp</span> <span class="o">=</span> <span class="n">zero</span><span class="o">.</span><span class="p">(</span><span class="n">nnodes</span><span class="p">)</span>
-    <span class="n">rhp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="n">w</span> <span class="o">=</span> <span class="n">legendre_matrix</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span> <span class="o">\</span> <span class="n">rhp</span>
-    <span class="k">return</span> <span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="n">nodes</span><span class="p">,</span> <span class="n">weights</span><span class="o">=</span><span class="n">w</span><span class="p">)</span>
-<span class="k">end</span>
+<span class="s">&quot;&quot;&quot;</span><span class="w"></span>
+<span class="k">function</span><span class="w"> </span><span class="n">newton_cotes_nodes_weights</span><span class="p">(</span><span class="n">nnodes</span><span class="o">::</span><span class="kt">Integer</span><span class="p">;</span><span class="w"> </span><span class="n">closed</span><span class="o">::</span><span class="kt">Bool</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">closed</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="n">nodes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">range</span><span class="p">(</span><span class="n">⟨</span><span class="o">...</span><span class="n">⟩</span><span class="p">)</span><span class="w"></span>
+</span><span class="w">    </span><span class="k">else</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="n">nodes</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">range</span><span class="p">(</span><span class="n">⟨</span><span class="o">...</span><span class="n">⟩</span><span class="p">)</span><span class="w"></span>
+</span><span class="w">    </span><span class="k">end</span><span class="w"></span>
+<span class="w">    </span><span class="n">rhp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">zero</span><span class="o">.</span><span class="p">(</span><span class="n">nnodes</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">rhp</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w">    </span><span class="n">w</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">legendre_matrix</span><span class="p">(</span><span class="n">nodes</span><span class="p">)</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="n">rhp</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">nodes</span><span class="o">=</span><span class="n">nodes</span><span class="p">,</span><span class="w"> </span><span class="n">weights</span><span class="o">=</span><span class="n">w</span><span class="p">)</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
 
-<span class="k">function</span> <span class="n">legendre_matrix</span><span class="p">(</span><span class="n">xs</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">)</span>
-    <span class="n">n</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-    <span class="n">m</span> <span class="o">=</span> <span class="n">similar</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="kt">Float64</span><span class="p">,</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
-    <span class="k">for</span> <span class="n">c</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">n</span>
-        <span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">c</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="hll">        <span class="n">⟨</span><span class="o">...</span><span class="n">⟩</span>
-</span>        <span class="k">for</span> <span class="n">r</span> <span class="k">in</span> <span class="mi">2</span><span class="o">:</span><span class="n">n</span>
-<span class="hll">            <span class="n">⟨</span><span class="o">...</span><span class="n">⟩</span>
-</span>        <span class="k">end</span>
-    <span class="k">end</span>
-    <span class="k">return</span> <span class="n">m</span>
-<span class="k">end</span>
+<span class="k">function</span><span class="w"> </span><span class="n">legendre_matrix</span><span class="p">(</span><span class="n">xs</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">length</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">m</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">similar</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span><span class="w"> </span><span class="kt">Float64</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">))</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="w"></span>
+<span class="w">        </span><span class="n">m</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="n">c</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="hll"><span class="w">        </span><span class="n">⟨</span><span class="o">...</span><span class="n">⟩</span><span class="w"></span>
+</span><span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">r</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="n">n</span><span class="w"></span>
+<span class="hll"><span class="w">            </span><span class="n">⟨</span><span class="o">...</span><span class="n">⟩</span><span class="w"></span>
+</span><span class="w">        </span><span class="k">end</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">m</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
 </pre></div>
 </div>
 </li>
@@ -730,8 +700,8 @@ w_N
 Даёт ли величина <span class="math notranslate nohighlight">\(\vert G_7 - K_{15}\vert\)</span> хорошую оценку погрешности численного интегрирования?</p>
 </li>
 </ol>
-</div>
-</div>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -755,54 +725,34 @@ w_N
 
               </div>
               
-        
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="romberg.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title"><span class="section-number">3.2. </span>Метод Ромберга</p>
-            </div>
-        </a>
-    </div>
-     <div id="next">
-        <a class="right-next" href="adaptive.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title"><span class="section-number">3.4. </span>Адаптивное интегрирование</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
 </div>
-        
+            </footer>
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
-    <div class="container">
-      <p>
-        
-          By Степан Захаров и Василий Писарев<br/>
-        
-            &copy; Copyright 2021.<br/>
-      </p>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Степан Захаров и Василий Писарев<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
     </div>
-  </footer>
-</main>
+    
+</div>
 
 
       </div>
     </div>
   
-  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
 
-  
+
   </body>
 </html>

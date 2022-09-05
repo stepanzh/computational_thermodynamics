@@ -1,0 +1,1029 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1.8. Массивы и broadcast &#8212; Практикум по вычислительной теплофизике</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script src="../_static/proof.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial", "lto": "\\leftarrow"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1.9. Линейная алгебра" href="linearalgebra.html" />
+    <link rel="prev" title="1.7. Типы, методы и multiple dispatch" href="types_methods_dispatch.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Практикум по вычислительной теплофизике</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Предмет практикума
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Практикум
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   1. Основы языка программирования Julia
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="install.html">
+     1.1. Установка
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="run.html">
+     1.2. Запуск программ
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="numbers.html">
+     1.3. Числа, переменные, Bool
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="strings.html">
+     1.4. Строки
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="controlflow.html">
+     1.5. Управляющие конструкции
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="functions.html">
+     1.6. Функции
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="types_methods_dispatch.html">
+     1.7. Типы, методы и multiple dispatch
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.8. Массивы и broadcast
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="linearalgebra.html">
+     1.9. Линейная алгебра
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="modules.html">
+     1.10. Модули
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     1.11. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Приложения
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/genindex.html">
+   Указатель
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/bibliography.html">
+   Литература
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/cholesky.html">
+   Разложение Холецкого
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/materials.html">
+   Дополнительные материалы
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/stepanzh/computational_thermodynamics"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fjulia/arrays.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/julia/arrays.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/julia/arrays.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   1.8.1. Индексирование
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1.8.2. Присваивание значений
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   1.8.3. Вспомогательные функции
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#broadcasting">
+   1.8.4. Векторизация функций
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Массивы и broadcast</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   1.8.1. Индексирование
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1.8.2. Присваивание значений
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   1.8.3. Вспомогательные функции
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#broadcasting">
+   1.8.4. Векторизация функций
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="broadcast">
+<h1><span class="section-number">1.8. </span>Массивы и broadcast<a class="headerlink" href="#broadcast" title="Permalink to this headline">#</a></h1>
+<p>В Julia для массивов существует абстрактный тип <code class="docutils literal notranslate"><span class="pre">AbstractArray{T,N}</span></code>, где <code class="docutils literal notranslate"><span class="pre">T</span></code> тип элемента массива (<code class="docutils literal notranslate"><span class="pre">Int64</span></code>, <code class="docutils literal notranslate"><span class="pre">String</span></code>, <code class="docutils literal notranslate"><span class="pre">Complex{Int64}</span></code>, <code class="docutils literal notranslate"><span class="pre">Number</span></code>, <code class="docutils literal notranslate"><span class="pre">Any</span></code>…), а <code class="docutils literal notranslate"><span class="pre">N</span></code> размерность. При написании собственных типов с поведением массива в объявлении следует указать, что ваш тип является подтипом <code class="docutils literal notranslate"><span class="pre">AbstractArray</span></code>.</p>
+<p>Встроенным типом для массивом является <code class="docutils literal notranslate"><span class="pre">Array{T,N}</span></code>. Это изменяемый массив динамического размера с <em>column-major</em> хранением элементов.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Поскольку в Julia массивы хранятся постолбично, то для быстродействия вложенный цикл должен проходится по строке, а внешний по столбцу. Вообще, если есть массив <code class="docutils literal notranslate"><span class="pre">A[i,</span> <span class="pre">j,</span> <span class="pre">k]</span></code>, то цикл должен выглядить так:</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">eachindex</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">eachindex</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="w">        </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">eachindex</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
+<span class="w">            </span><span class="o">...</span><span class="w"></span>
+<span class="w">        </span><span class="k">end</span><span class="w"></span>
+<span class="w">    </span><span class="k">end</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+</pre></div>
+</div>
+</div>
+<p>Существуют два часто используемых синонима</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Vector{T}</span> <span class="pre">==</span> <span class="pre">Array{T,1}</span></code> для одномерных вектор-столбцов;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Matrix{T}</span> <span class="pre">==</span> <span class="pre">Array{T,2}</span></code> для матриц и вектор-строк.</p></li>
+</ul>
+<p>Литералом <code class="docutils literal notranslate"><span class="pre">Array{T,N}</span></code> являются квадратные скобки <code class="docutils literal notranslate"><span class="pre">[]</span></code>, при этом можно явно указать тип <code class="docutils literal notranslate"><span class="pre">T[]</span></code> (<code class="docutils literal notranslate"><span class="pre">Int[1,</span> <span class="pre">2]</span></code>, <code class="docutils literal notranslate"><span class="pre">Float64[1,</span> <span class="pre">2]</span></code>). Создание массива с помощью литерала осуществляется посредством вертикальной и горизонтальной <em>конкатенации</em>.</p>
+<p>Для <strong>вертикальной конкатенации</strong> используется <code class="docutils literal notranslate"><span class="pre">;</span></code> или новая строка.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="54553e18-319c-4c3f-b18a-93d486f97de2" name="4d5969aa-1a56-481e-b633-f9721158afce" type="radio">
+</input><label class="sd-tab-label" for="54553e18-319c-4c3f-b18a-93d486f97de2">
+Вектор из скаляров</label><div class="sd-tab-content docutils">
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"></span>
+<span class="go">3-element Vector{Int64}:</span>
+<span class="go"> 1</span>
+<span class="go"> 2</span>
+<span class="go"> 3</span>
+</pre></div>
+</div>
+</div>
+<input id="41aa4fa5-5bfe-4844-8175-1837491d3f72" name="4d5969aa-1a56-481e-b633-f9721158afce" type="radio">
+</input><label class="sd-tab-label" for="41aa4fa5-5bfe-4844-8175-1837491d3f72">
+Вертикальная конкатенация</label><div class="sd-tab-content docutils">
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">];</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">]]</span><span class="w"></span>
+<span class="go">5-element Vector{Int64}:</span>
+<span class="go"> 1</span>
+<span class="go"> 2</span>
+<span class="go"> 3</span>
+<span class="go"> 7</span>
+<span class="go"> 8</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Для <strong>горизонтальной конкатенации</strong> используется пробел <code class="docutils literal notranslate"> </code> или табуляция. Запятая <code class="docutils literal notranslate"><span class="pre">,</span></code> означает отсутствие конкатенации.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="6f72d2c6-c675-44f9-a0b5-885cb69f6725" name="6a683965-812a-4b61-8f2e-432c905e8a27" type="radio">
+</input><label class="sd-tab-label" for="6f72d2c6-c675-44f9-a0b5-885cb69f6725">
+Вектор-строка</label><div class="sd-tab-content docutils">
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">]</span><span class="w"></span>
+<span class="go">1×4 Matrix{Int64}:</span>
+<span class="go"> 1  2  3  4</span>
+</pre></div>
+</div>
+</div>
+<input id="102299fe-717b-491f-ab5b-b503d20c02e4" name="6a683965-812a-4b61-8f2e-432c905e8a27" type="radio">
+</input><label class="sd-tab-label" for="102299fe-717b-491f-ab5b-b503d20c02e4">
+Горизонтальная конкатенация</label><div class="sd-tab-content docutils">
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]]</span><span class="w"></span>
+<span class="go">2×2 Matrix{Int64}:</span>
+<span class="go"> 1  3</span>
+<span class="go"> 2  4</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Если конкатенация не нужна, используйтся запятая <code class="docutils literal notranslate"><span class="pre">,</span></code>. В примере ниже показано создание вектора векторов.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">]]</span><span class="w"></span>
+<span class="go">2-element Vector{Vector{Int64}}:</span>
+<span class="go"> [1, 2, 3]</span>
+<span class="go"> [7, 8]</span>
+</pre></div>
+</div>
+<p>На первый взгляд, синтаксис может показаться запутанным. Однако, он позволяет создавать блочные матрицы и тензоры.</p>
+<div class="proof proof-type-demo" id="id5">
+<span id="demo-create-block-matrix"></span>
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 1.1</span>
+        
+            <span class="proof-title-name">(Создание блочной матрицы)</span>
+        
+    </div><div class="proof-content">
+<p>Скажем, задана блочная матрица</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\mathcal{M} = \left[\begin{array}{ccc|ccc}
+1 &amp; 2 &amp; 3 &amp; 1 &amp; 0 &amp; 0 \\
+4 &amp; 5 &amp; 6 &amp; 0 &amp; 1 &amp; 0 \\
+7 &amp; 8 &amp; 9 &amp; 0 &amp; 0 &amp; 1 \\ \hline
+0 &amp; 0 &amp; 0 &amp; 10 &amp; 11 &amp; 12 \\
+\end{array}\right]
+= \left[\begin{array}{c|c}
+A &amp; I \\ \hline
+0^\top &amp; b^\top
+\end{array}\right]\end{split}\]</div>
+<p>Соответствующий код будет</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">9</span><span class="p">]</span><span class="w"></span>
+<span class="go">3×3 Matrix{Int64}:</span>
+<span class="go"> 1  2  3</span>
+<span class="go"> 4  5  6</span>
+<span class="go"> 7  8  9</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">I</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"></span>
+<span class="go">3×3 Matrix{Int64}:</span>
+<span class="go"> 1  0  0</span>
+<span class="go"> 0  1  0</span>
+<span class="go"> 0  0  1</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">zero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span><span class="w"></span>
+<span class="go">3-element Vector{Int64}</span>
+<span class="go"> 0</span>
+<span class="go"> 0</span>
+<span class="go"> 0</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">]</span><span class="w"></span>
+<span class="go">3-element Vector{Int64}:</span>
+<span class="go"> 10</span>
+<span class="go"> 11</span>
+<span class="go"> 12</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">M</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">A</span><span class="w"> </span><span class="n">I</span><span class="p">;</span><span class="w"> </span><span class="n">zero</span><span class="o">&#39;</span><span class="w"> </span><span class="n">b</span><span class="o">&#39;</span><span class="p">]</span><span class="w"></span>
+<span class="go">4×6 Matrix{Int64}:</span>
+<span class="go"> 1  2  3   1   0   0</span>
+<span class="go"> 4  5  6   0   1   0</span>
+<span class="go"> 7  8  9   0   0   1</span>
+<span class="go"> 0  0  0  10  11  12</span>
+</pre></div>
+</div>
+<p>Оператор <code class="docutils literal notranslate"><span class="pre">'</span></code> (одинарная кавычка) выполняет <a class="reference internal" href="linearalgebra.html#arrays-linops"><span class="std std-ref">транспонирование</span></a>.</p>
+</div></div><section id="id1">
+<h2><span class="section-number">1.8.1. </span>Индексирование<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>В Julia встроено два вида индексов.</p>
+<p>Синтаксис первого <code class="docutils literal notranslate"><span class="pre">A[i]</span></code>, это линейный индекс <code class="docutils literal notranslate"><span class="pre">LinearIndex</span></code>. Он позволяет получить <code class="docutils literal notranslate"><span class="pre">i</span></code>-ый <em>по счёту в памяти</em> элемент массива. Например, для вектора <code class="docutils literal notranslate"><span class="pre">A[4]</span></code> это <span class="math notranslate nohighlight">\(A_4\)</span>, а для матрицы размера <span class="math notranslate nohighlight">\(2 \times 3\)</span> это <span class="math notranslate nohighlight">\(A_{1, 3}\)</span>.</p>
+<p>Синтаксис второго <code class="docutils literal notranslate"><span class="pre">A[i,</span> <span class="pre">j,</span> <span class="pre">k,..]</span></code>, это декартов индекс <code class="docutils literal notranslate"><span class="pre">CartesianIndex</span></code>. Данный индекс учитывает размерность массива. Например, для матрицы элемент <code class="docutils literal notranslate"><span class="pre">A[i,</span> <span class="pre">j]</span></code> это элемент <span class="math notranslate nohighlight">\(A_{i,j}\)</span> (<span class="math notranslate nohighlight">\(i\)</span>-ая строка, <span class="math notranslate nohighlight">\(j\)</span>-ый столбец).</p>
+<p>Индексом может быть и коллекция элементов, что позволяет обращаться к целым строкам, столцам, их пересечению, или просто некоторому набору элементов. Часто для этого используется <em>range operator</em> <code class="docutils literal notranslate"><span class="pre">start:[step:]stop</span></code>.</p>
+<p>Ниже показано несколько примеров для матрицы.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">9</span><span class="p">]</span><span class="w"></span>
+<span class="go">3×3 Matrix{Int64}:</span>
+<span class="go"> 1  2  3</span>
+<span class="go"> 4  5  6</span>
+<span class="go"> 7  8  9</span>
+</pre></div>
+</div>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="b2d79b4b-232a-4ebd-95be-4edc0fb1685f" name="162b9001-ba4e-4a3e-9975-587a5a97a7f7" type="radio">
+</input><label class="sd-tab-label" for="b2d79b4b-232a-4ebd-95be-4edc0fb1685f">
+Один элемент</label><div class="sd-tab-content docutils">
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w">     </span><span class="c"># линейный индекс</span><span class="w"></span>
+<span class="go">8</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c"># декартов индекс</span><span class="w"></span>
+<span class="go">8</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="k">end</span><span class="p">,</span><span class="w"> </span><span class="k">end</span><span class="p">]</span><span class="w"></span>
+<span class="go">9</span>
+</pre></div>
+</div>
+</div>
+<input id="e2eea202-3f26-4881-8c76-959240e4896e" name="162b9001-ba4e-4a3e-9975-587a5a97a7f7" type="radio">
+</input><label class="sd-tab-label" for="e2eea202-3f26-4881-8c76-959240e4896e">
+Целая строка/столбец</label><div class="sd-tab-content docutils">
+<p>Строка.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">:</span><span class="p">]</span><span class="w">  </span><span class="c"># A[строка 1, все столбцы]</span><span class="w"></span>
+<span class="mi">3</span><span class="o">-</span><span class="n">element</span><span class="w"> </span><span class="kt">Vector</span><span class="p">{</span><span class="kt">Int64</span><span class="p">}</span><span class="o">:</span><span class="w"></span>
+<span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="w"> </span><span class="mi">3</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Столбец.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w">  </span><span class="c"># A[все строки, столбец 2]</span><span class="w"></span>
+<span class="go">3-element Vector{Int64}:</span>
+<span class="go"> 2</span>
+<span class="go"> 5</span>
+<span class="go"> 8</span>
+</pre></div>
+</div>
+</div>
+<input id="4cc70fd5-65fe-4dd3-8ced-46080566affa" name="162b9001-ba4e-4a3e-9975-587a5a97a7f7" type="radio">
+</input><label class="sd-tab-label" for="4cc70fd5-65fe-4dd3-8ced-46080566affa">
+Подматрица</label><div class="sd-tab-content docutils">
+<p>“Пересечение” строк 1 и 2 со столбцами 2 и 3.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="mi">3</span><span class="p">]</span><span class="w"></span>
+<span class="go">2×2 Matrix{Int64}:</span>
+<span class="go"> 2  3</span>
+<span class="go"> 5  6</span>
+</pre></div>
+</div>
+<p>Угольные элементы.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">end</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="k">end</span><span class="p">]]</span><span class="w"></span>
+<span class="go">2×2 Matrix{Int64}:</span>
+<span class="go"> 1  3</span>
+<span class="go"> 7  9</span>
+</pre></div>
+</div>
+</div>
+<input id="ffbf154b-79f9-4259-a0ae-de366c4b04ab" name="162b9001-ba4e-4a3e-9975-587a5a97a7f7" type="radio">
+</input><label class="sd-tab-label" for="ffbf154b-79f9-4259-a0ae-de366c4b04ab">
+Диагонали</label><div class="sd-tab-content docutils">
+<p>Главная диагональ.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">4</span><span class="o">:</span><span class="k">end</span><span class="p">]</span><span class="w"></span>
+<span class="go">3-element Vector{Int64}:</span>
+<span class="go"> 1</span>
+<span class="go"> 5</span>
+<span class="go"> 9</span>
+</pre></div>
+</div>
+<p>Побочная диагональ.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">3</span><span class="o">:</span><span class="mi">2</span><span class="o">:</span><span class="mi">7</span><span class="p">]</span><span class="w"></span>
+<span class="go">3-element Vector{Int64}:</span>
+<span class="go"> 7</span>
+<span class="go"> 5</span>
+<span class="go"> 3</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h2><span class="section-number">1.8.2. </span>Присваивание значений<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>Массив <code class="docutils literal notranslate"><span class="pre">Array{T,N}</span></code> изменяемый тип, можно перезаписывать его элементы. Это делается с помощью оператора присваивания <code class="docutils literal notranslate"><span class="pre">=</span></code>, при этом по обе стороны должны находиться объекты одинаковых размерностей.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">9</span><span class="p">];</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"></span>
+<span class="go">3×3 Matrix{Int64}:</span>
+<span class="go"> 7  2  3</span>
+<span class="go"> 4  5  6</span>
+<span class="go"> 1  8  9</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">:</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">];</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"></span>
+<span class="go">3×3 Matrix{Int64}:</span>
+<span class="go"> -1  0  1</span>
+<span class="go">  4  5  6</span>
+<span class="go">  1  8  9</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"></span>
+<span class="go">3×3 Matrix{Int64}:</span>
+<span class="go"> -1  10  1</span>
+<span class="go">  4   5  6</span>
+<span class="go">  1   8  9</span>
+</pre></div>
+</div>
+<p>При присваивании можно использовать <a class="reference internal" href="#broadcasting"><span class="std std-ref">векторизацию</span></a>.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">:</span><span class="p">]</span><span class="w"> </span><span class="o">.=</span><span class="w"> </span><span class="mi">11</span><span class="p">;</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"></span>
+<span class="go">3×3 Matrix{Int64}:</span>
+<span class="go"> 11  11  11</span>
+<span class="go">  4   5   6</span>
+<span class="go">  1   8   9</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">1.8.3. </span>Вспомогательные функции<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<p>Интроспекция массива</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">length(A)</span></code>: количество элементов;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ndims(A)</span></code>: размерность;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size(A)</span></code>: кортеж из размеров каждой размерности <code class="docutils literal notranslate"><span class="pre">(число_строк,</span> <span class="pre">число_столбцов)</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">size(A,</span> <span class="pre">n)</span></code>: размер размерности <code class="docutils literal notranslate"><span class="pre">n</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">eachindex(A)</span></code>: итератор из индексов массива.</p></li>
+</ul>
+<p>Создание массивов</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">collect(c)</span></code>: создание массива из коллекции;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">zeros([T=Float64,]</span> <span class="pre">dims...)</span></code>: массив из нулей типа <code class="docutils literal notranslate"><span class="pre">T</span></code> размерности <code class="docutils literal notranslate"><span class="pre">dims...</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ones([T=Float64,]</span> <span class="pre">dims...)</span></code>: аналогично <code class="docutils literal notranslate"><span class="pre">zeros</span></code>, но массив из единиц;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">copy(A)</span></code>: нерекурсивная копия массива;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">similar(A)</span></code>: неинициализированный массив той же размерности и типа, что <code class="docutils literal notranslate"><span class="pre">A</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rand([T=Float64,]</span> <span class="pre">dims...)</span></code>: массив из равномерно-распределённых случайных чисел;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fill(x,</span> <span class="pre">dims...)</span></code>: массив размера <code class="docutils literal notranslate"><span class="pre">dims...</span></code> из <code class="docutils literal notranslate"><span class="pre">x</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">map(f,</span> <span class="pre">c)</span></code>: создание массива на основе применения функции <code class="docutils literal notranslate"><span class="pre">f</span></code> к каждому элементу коллекции <code class="docutils literal notranslate"><span class="pre">c</span></code>.</p></li>
+</ul>
+<p>Другие операции</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">push!(A,</span> <span class="pre">x...)</span></code>: добавление в конец <code class="docutils literal notranslate"><span class="pre">A</span></code> элемента <code class="docutils literal notranslate"><span class="pre">x</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pop!(A)</span></code>: извлечение элемента с конца <code class="docutils literal notranslate"><span class="pre">A</span></code>.</p></li>
+</ul>
+<p>Для чтения и записи в файл массивов в форматах с сепаратором (.csv, .tsv,..) есть встроенная библиотека <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/DelimitedFiles/">DelimitedFiles</a>.</p>
+</section>
+<section id="broadcasting">
+<span id="id4"></span><h2><span class="section-number">1.8.4. </span>Векторизация функций<a class="headerlink" href="#broadcasting" title="Permalink to this headline">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Соответствующий раздел мануала <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/arrays/#man-array-and-vectorized-operators-and-functions">[url]</a></strong>.</p>
+</div>
+<p>В Julia <em>любая функция</em> может быть векторизована. Т.е. вы можете создать функцию для скаляров и автоматически получаете её векторизованный аналог. Векторизация осуществляется через механизм <em>broadcasting</em>. При этом достаточно в конце имени функции дописать точку <code class="docutils literal notranslate"><span class="pre">.</span></code> (<em>dot-syntax</em>).</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">π</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="nb">π</span><span class="o">/</span><span class="mi">3</span><span class="p">];</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"></span>
+<span class="gr">ERROR: MethodError: no method matching sin(::Vector{Float64})</span>
+<span class="gr">  ...</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">sin</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"></span>
+<span class="go">3-element Vector{Float64}:</span>
+<span class="go"> 0.0</span>
+<span class="go"> 0.49999999999999994</span>
+<span class="go"> 0.8660254037844386</span>
+</pre></div>
+</div>
+<p>Механизм векторизации “насыщен” (<em>fused</em>). Для программиста это означает, что сложный вызов, например, <code class="docutils literal notranslate"><span class="pre">sin.(cos.(x))</span></code> <em>не медленнее</em> цикла, в котором к каждому элементу вектора <code class="docutils literal notranslate"><span class="pre">x</span></code> применили <code class="docutils literal notranslate"><span class="pre">sin(cos(x[i]))</span></code>.</p>
+<p>Автоматически векторизуются и пользовательские функции над стандартными типами.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<span class="go">f (generic function with 1 method)</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">])</span><span class="w"></span>
+<span class="go">3-element Vector{Int64}:</span>
+<span class="go">  2</span>
+<span class="go">  5</span>
+<span class="go"> 10</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"></span>
+<span class="go">g (generic function with 1 method)</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">g</span><span class="o">.</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">])</span><span class="w"></span>
+<span class="go">2-element Vector{Int64}:</span>
+<span class="go"> 12</span>
+<span class="go"> 22</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">g</span><span class="o">.</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"></span>
+<span class="go">2-element Vector{Int64}:</span>
+<span class="go"> 12</span>
+<span class="go"> 15</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">parse</span><span class="o">.</span><span class="p">(</span><span class="kt">Float64</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="s">&quot;1&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;2.5&quot;</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;-1.2e-9&quot;</span><span class="p">])</span><span class="w"></span>
+<span class="go">3-element Vector{Float64}:</span>
+<span class="go">  1.0</span>
+<span class="go">  2.5</span>
+<span class="go"> -1.2e-9</span>
+</pre></div>
+</div>
+<p>Для собственных типов нужно объявлять правила векторизации. Однако, если ваш тип должен вести себя как скаляр, можно воспользоваться <code class="docutils literal notranslate"><span class="pre">Ref(x)</span></code>. Ниже определяется модель идеального газа и его давление. Затем, с помощью <code class="docutils literal notranslate"><span class="pre">Ref</span></code> и векторизации вычисляется давление кислорода при фиксированной плотности для ряда температур.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">struct</span> <span class="kt">IdealGasComponent</span><span class="w"></span>
+<span class="w">           </span><span class="n">name</span><span class="o">::</span><span class="kt">String</span><span class="w"></span>
+<span class="w">           </span><span class="n">molarmass</span><span class="o">::</span><span class="kt">Float64</span><span class="w"></span>
+<span class="w">       </span><span class="k">end</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">pressure</span><span class="p">(</span><span class="n">c</span><span class="o">::</span><span class="kt">IdealGasComponent</span><span class="p">,</span><span class="w"> </span><span class="n">ρ</span><span class="p">,</span><span class="w"> </span><span class="n">T</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ρ</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mf">8.314</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">T</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">c</span><span class="o">.</span><span class="n">molarmass</span><span class="w"></span>
+<span class="go">pressure (generic function with 1 method)</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">oxygen</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">IdealGasComponent</span><span class="p">(</span><span class="s">&quot;oxygen&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">0.016</span><span class="p">)</span><span class="w"></span>
+<span class="go">IdealGasComponent(&quot;oxygen&quot;, 0.016)</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">pressure</span><span class="p">(</span><span class="n">oxygen</span><span class="p">,</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="mi">300</span><span class="p">)</span><span class="w"></span>
+<span class="go">7.794375e7</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">pressure</span><span class="o">.</span><span class="p">(</span><span class="kt">Ref</span><span class="p">(</span><span class="n">oxygen</span><span class="p">),</span><span class="w"> </span><span class="mi">500</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="mi">300</span><span class="p">,</span><span class="w"> </span><span class="mi">350</span><span class="p">,</span><span class="w"> </span><span class="mi">400</span><span class="p">])</span><span class="w"></span>
+<span class="go">3-element Vector{Float64}:</span>
+<span class="go"> 7.794375e7</span>
+<span class="go"> 9.0934375e7</span>
+<span class="go"> 1.03925e8</span>
+</pre></div>
+</div>
+<p>Операторы тоже функции. Так, broadcast порождает, например, поэлементные операции над векторами и матрицами (<code class="docutils literal notranslate"><span class="pre">.+</span></code>, <code class="docutils literal notranslate"><span class="pre">.*</span></code>, …).</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sin</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="n">cos</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">sin</span><span class="o">.</span><span class="p">(</span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"></span>
+<span class="go">true</span>
+</pre></div>
+</div>
+<div class="proof proof-type-observation">
+
+    <div class="proof-title">
+        <span class="proof-type">Наблюдение </span>
+        
+            <span class="proof-title-name">(Полиморфизм)</span>
+        
+    </div><div class="proof-content">
+<p>В этом примере несколько поэлементых видов умножений.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span> <span class="pre">*</span> <span class="pre">x</span></code>: умножение скаляра на вектор, оно и без броадкаста действует поэлементно;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">.*</span> <span class="pre">y</span></code>: поэлементное умножение векторов.</p></li>
+</ul>
+</div></div><p>Если вам надоедает ставить точки везде, воспользуйтесь макросом <code class="docutils literal notranslate"><span class="pre">&#64;.</span></code></p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="nb">π</span><span class="o">/</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="nb">π</span><span class="o">/</span><span class="mi">3</span><span class="p">];</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="nd">@.</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"></span>
+<span class="go">3-element Vector{Float64}:</span>
+<span class="go"> 0.0</span>
+<span class="go"> 0.8660254037844386</span>
+<span class="go"> 0.8660254037844388</span>
+</pre></div>
+</div>
+<p>Ещё одно важное применение броадкаста: <em>in-place</em> присваивание. Оно делает вашу программу менее прожорливой по памяти, а сборщик мусора не будет добавлять времени работы.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="nd">@allocated</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w">    </span><span class="c"># первый вызов включает компиляцию</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="nd">@allocated</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="go">896</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">similar</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w">          </span><span class="c"># выделили память под `z` один раз</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="nd">@allocated</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">.=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">.+</span><span class="w"> </span><span class="n">y</span><span class="p">;</span><span class="w">  </span><span class="c"># первый вызов включает компиляцию</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="nd">@allocated</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">.=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">.+</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="go">64</span>
+</pre></div>
+</div>
+<div class="proof proof-type-demo" id="id6">
+
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 1.2</span>
+        
+            <span class="proof-title-name">((Ещё один) бенчмарк)</span>
+        
+    </div><div class="proof-content">
+<p>На аллокации требуется время, а ещё время требуется для работы сборщика мусора. На данных небольшого размера время сборщика мусора существенно по сравнению с временем исполнения.</p>
+<p>Так, сложение двух векторов размера 100 с аллокацией требует в тесте в среднем 85 нс, а с использованием <em>in-place</em> операций 22 нс. Причём разницу, судя по бенчмарку, занимает сборщик мусора (<em>garbage collector</em>, <em>GC</em>).</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">BenchmarkTools</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">);</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">similar</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="nd">@benchmark</span><span class="w"> </span><span class="o">$</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">$</span><span class="n">y</span><span class="w"></span>
+<span class="go">BenchmarkTools.Trial: 10000 samples with 973 evaluations.</span>
+<span class="go"> Range (min … max):  75.194 ns … 619.990 ns  ┊ GC (min … max): 0.00% … 0.00%</span>
+<span class="go"> Time  (median):     78.805 ns               ┊ GC (median):    0.00%</span>
+<span class="go"> Time  (mean ± σ):   85.932 ns ±  41.564 ns  ┊ GC (mean ± σ):  5.88% ± 9.87%</span>
+
+<span class="go">  █▄▁                                                          ▁</span>
+<span class="go">  █████▇█▇▅▅▅▅▄█▇▄▃▃▅▄▁▄▃▃▁▁▄▄▁▄▁▁▁▁▁▁▁▁▁▁▁▁▁▄▁▁▃▁▃▃▁▁▄▅▆▅▇▆▇▆ █</span>
+<span class="go">  75.2 ns       Histogram: log(frequency) by time       365 ns &lt;</span>
+
+<span class="go"> Memory estimate: 896 bytes, allocs estimate: 1.</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="nd">@benchmark</span><span class="w"> </span><span class="o">$</span><span class="n">z</span><span class="w"> </span><span class="o">.=</span><span class="w"> </span><span class="o">$</span><span class="n">x</span><span class="w"> </span><span class="o">.+</span><span class="w"> </span><span class="o">$</span><span class="n">y</span><span class="w"></span>
+<span class="go">BenchmarkTools.Trial: 10000 samples with 997 evaluations.</span>
+<span class="go"> Range (min … max):  20.640 ns … 398.402 ns  ┊ GC (min … max): 0.00% … 0.00%</span>
+<span class="go"> Time  (median):     20.930 ns               ┊ GC (median):    0.00%</span>
+<span class="go"> Time  (mean ± σ):   22.264 ns ±   8.109 ns  ┊ GC (mean ± σ):  0.00% ± 0.00%</span>
+
+<span class="go">  █▃▁▁▁                                                        ▁</span>
+<span class="go">  █████▇▆▆▇▇▆▆▆▆▆▆▆▆▅▅▅▆▆▆▆▆▇▇▇▇▇▇▆▇▇▆▇▇▇▆▅▆▆▆▆▄▄▅▅▄▄▄▄▄▅▃▁▄▁▄ █</span>
+<span class="go">  20.6 ns       Histogram: log(frequency) by time        45 ns &lt;</span>
+
+<span class="go"> Memory estimate: 0 bytes, allocs estimate: 0.</span>
+</pre></div>
+</div>
+<p>Повторим тест для больших векторов, возьмём их размером 1000000.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">(</span><span class="mi">1_000_000</span><span class="p">);</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">rand</span><span class="p">(</span><span class="mi">1_000_000</span><span class="p">);</span><span class="w"> </span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">similar</span><span class="p">(</span><span class="n">x</span><span class="p">);</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="nd">@benchmark</span><span class="w"> </span><span class="o">$</span><span class="n">z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">$</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="o">$</span><span class="n">y</span><span class="w"></span>
+<span class="go">BenchmarkTools.Trial: 2902 samples with 1 evaluation.</span>
+<span class="go"> Range (min … max):  901.201 μs …   6.733 ms  ┊ GC (min … max):  0.00% … 46.36%</span>
+<span class="go"> Time  (median):       1.275 ms               ┊ GC (median):     0.00%</span>
+<span class="go"> Time  (mean ± σ):     1.713 ms ± 976.100 μs  ┊ GC (mean ± σ):  26.05% ± 25.78%</span>
+
+<span class="go">        ██▄▁                                            ▁▄▄▂▁   ▁</span>
+<span class="go">  ▃▁▁▁▁▅████▇▄▇▅▃▃▁▃▁▁▄▃▁▁▁▃▁▃▃▁▃▁▁▁▃▁▁▁▁▁▁▁▁▁▃▃▁▁▁▁▁▁▁▅██████▇ █</span>
+<span class="go">  901 μs        Histogram: log(frequency) by time        470 ms &lt;</span>
+
+<span class="go"> Memory estimate: 7.63 MiB, allocs estimate: 2.</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="nd">@benchmark</span><span class="w"> </span><span class="o">$</span><span class="n">z</span><span class="w"> </span><span class="o">.=</span><span class="w"> </span><span class="o">$</span><span class="n">x</span><span class="w"> </span><span class="o">.+</span><span class="w"> </span><span class="o">$</span><span class="n">y</span><span class="w"></span>
+<span class="go">BenchmarkTools.Trial: 5360 samples with 1 evaluation.</span>
+<span class="go"> Range (min … max):  789.767 μs …   5.811 ms  ┊ GC (min … max): 0.00% … 0.00%</span>
+<span class="go"> Time  (median):     832.923 μs               ┊ GC (median):    0.00%</span>
+<span class="go"> Time  (mean ± σ):   921.733 μs ± 295.907 μs  ┊ GC (mean ± σ):  0.00% ± 0.00%</span>
+
+<span class="go">  ▅█▆▃▃▂▁▁▁▁▁▁▁▁                                                ▁</span>
+<span class="go">  ██████████████████▇█▇▇▆▆▇▆▅▆▅▆▆▅▆▅▅▅▄▄▄▄▄▄▄▃▄▅▅▄▅▅▁▄▃▄▅▄▄▄▄▄▅ █</span>
+<span class="go">  790 μs        Histogram: log(frequency) by time       2.42 ms &lt;</span>
+
+<span class="go"> Memory estimate: 0 bytes, allocs estimate: 0.</span>
+</pre></div>
+</div>
+<p>На векторах размера 100 разница среднего времени исполнения составляла <span class="math notranslate nohighlight">\(\approx 4\)</span> раза, а на больших векторах уменьшилась до <span class="math notranslate nohighlight">\(\approx 2\)</span> раз.</p>
+</div></div></section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./julia"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="types_methods_dispatch.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1.7. </span>Типы, методы и multiple dispatch</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="linearalgebra.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.9. </span>Линейная алгебра</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Степан Захаров и Василий Писарев<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

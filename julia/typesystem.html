@@ -1,0 +1,1110 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>1.7. Система типов &#8212; Практикум по вычислительной теплофизике</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script src="../_static/tabs.js"></script>
+    <script src="../_static/proof.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="1.8. Методы и multiple dispatch" href="julia.html" />
+    <link rel="prev" title="1.6. Функции" href="functions.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      
+      
+      <h1 class="site-logo" id="site-title">Практикум по вычислительной теплофизике</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    Предмет практикума
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Практикум
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   1. Основы языка программирования Julia
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="install.html">
+     1.1. Установка
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="run.html">
+     1.2. Запуск программ
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="numbers.html">
+     1.3. Числа, переменные, Bool
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="strings.html">
+     1.4. Строки
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="controlflow.html">
+     1.5. Управляющие конструкции
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="functions.html">
+     1.6. Функции
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     1.7. Система типов
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="julia.html">
+     1.8. Методы и multiple dispatch
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     1.12. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro/index.html">
+   2. Введение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/float.html">
+     2.1. Числа с плавающей точкой
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/cond.html">
+     2.2. Обусловленность задач
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../interpolation/index.html">
+   3. Интерполяция
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/polynomial.html">
+     3.1. Полиномиальная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/pwlinear.html">
+     3.2. Кусочно-линейная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/cubic_spline.html">
+     3.3. Кубические сплайны
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/ex.html">
+     3.4. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../integration/index.html">
+   4. Численное интегрирование
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/newton_cotes.html">
+     4.1. Формулы Ньютона-Котса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/romberg.html">
+     4.2. Метод Ромберга
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/gauss.html">
+     4.3. Формулы Гаусса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/adaptive.html">
+     4.4. Адаптивное интегрирование
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/ex.html">
+     4.5. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../nlroot/index.html">
+   5. Нелинейные уравнения
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/simpleiter.html">
+     5.1. Метод простой итерации
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/newton_secant.html">
+     5.2. Метод Ньютона и секущих
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/bisection_regula_falsi.html">
+     5.3. Методы бисекции и regula falsi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ridders.html">
+     5.4. Метод Риддерса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/itp.html">
+     5.5. ITP метод
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ex.html">
+     5.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../syslinear/index.html">
+   6. Линейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/triangular.html">
+     6.1. Треугольные системы
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/lu.html">
+     6.2. LU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/plu.html">
+     6.3. PLU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/decompose_overview.html">
+     6.4. Обзор других разложений и задач
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../sysnonlinear/index.html">
+   7. Нелинейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/newton.html">
+     7.1. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/quasinewton.html">
+     7.2. Метод Бройдена
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/ex.html">
+     7.3. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ode/index.html">
+   8. Обыкновенные дифференциальные уравнения
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode/euler.html">
+     8.1. Метод Эйлера
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode/rungekutta.html">
+     8.2. Методы Рунге-Кутта
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode/adaptive_rungekutta.html">
+     8.3. Адаптивные методы
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ode/ex.html">
+     8.4. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../optim/index.html">
+   9. Методы оптимизации
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optim/intro.html">
+     9.1. Предварительные сведения
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optim/linesearch.html">
+     9.2. Линейный поиск
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optim/newton.html">
+     9.3. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optim/bfgs.html">
+     9.4. Квазиньютоновские методы
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../optim/ex.html">
+     9.5. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Приложения
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/genindex.html">
+   Указатель
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/bibliography.html">
+   Литература
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/cholesky.html">
+   Разложение Холецкого
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/materials.html">
+   Дополнительные материалы
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/stepanzh/computational_thermodynamics"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fjulia/typesystem.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/julia/typesystem.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Edit this page"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="headerbtn__text-container">suggest edit</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/julia/typesystem.md"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.md</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1.7.1. Декларация типов
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   1.7.2. Какие бывают типы
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#julia-composite">
+   1.7.3. Композитные типы
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   1.7.4. Параметрические композитные типы
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     1.7.4.1. Пример
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Система типов</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1.7.1. Декларация типов
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   1.7.2. Какие бывают типы
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#julia-composite">
+   1.7.3. Композитные типы
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   1.7.4. Параметрические композитные типы
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id6">
+     1.7.4.1. Пример
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="type-system">
+<span id="id1"></span><h1><span class="section-number">1.7. </span>Система типов<a class="headerlink" href="#type-system" title="Permalink to this headline">#</a></h1>
+<p>В Julia <strong>сильная динамическая</strong> система типов. Система типов и методы функций являются фундаментом по повторному использованию кода.</p>
+<p>Подробнее в мануале к языку <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/types/">[url]</a></strong>.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Однако, стоит избегать и потенциально предугадывать места, в которых переменная меняет свой тип. Компилятор вас поощрит.</p>
+</aside>
+<p>Поскольку в Julia динамическая типизация, то переменная может менять свой тип в процессе работы программы.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"></span>
+<span class="go">5</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"></span>
+<span class="go">Int64</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">x</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mf">5.0</span><span class="w"></span>
+<span class="go">5.0</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"></span>
+<span class="go">Float64</span>
+</pre></div>
+</div>
+<p>В Julia нельзя указать, чтобы переменная имела постоянное значение, но можно указать, что переменная <em>не меняет свой тип</em></p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">const</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
+<span class="go">10</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">10.0</span><span class="w"></span>
+<span class="gr">ERROR: invalid redefinition of constant y</span>
+<span class="gr">Stacktrace:</span>
+<span class="gr"> [1] top-level scope</span>
+<span class="gr">   @ REPL[6]:1</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">20</span><span class="w"></span>
+<span class="go">WARNING: redefinition of constant y. This may fail, cause incorrect answers, or produce other errors.</span>
+<span class="go">20</span>
+</pre></div>
+</div>
+<p>Julia не допустила присвоение <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">10.0</span></code>, потому что оно меняет тип переменной <code class="docutils literal notranslate"><span class="pre">y::Int64</span></code>. Однако, присваивать значения <code class="docutils literal notranslate"><span class="pre">Int64</span></code> переменной <code class="docutils literal notranslate"><span class="pre">y</span></code> всё-таки можно, но не стоит этого делать.</p>
+<section id="id2">
+<h2><span class="section-number">1.7.1. </span>Декларация типов<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>С помощью оператора <code class="docutils literal notranslate"><span class="pre">::</span></code> вы можете <em>декларировать</em> тип объекта. Обычно это делается для</p>
+<ul class="simple">
+<li><p>переменных;</p></li>
+<li><p>аргументов функции;</p></li>
+<li><p>возвращаемого функцией значения;</p></li>
+<li><p>полей композитных типов (структур).</p></li>
+</ul>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Конвертацию делает функция <code class="docutils literal notranslate"><span class="pre">convert(T,</span> <span class="pre">x)</span></code>. Правила конвертации можно задавать.</p>
+</aside>
+<p>Например, вы можете декларировать тип переменной внутри функции (или другой локальной области видимости). В таком случае при присвоении значения происходит конвертация.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">foo</span><span class="p">()</span><span class="w"></span>
+<span class="w">           </span><span class="n">x</span><span class="o">::</span><span class="kt">Int8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="w"></span>
+<span class="w">           </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="w">       </span><span class="k">end</span><span class="w"></span>
+<span class="go">foo (generic function with 1 method)</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">foo</span><span class="p">()</span><span class="w"></span>
+<span class="go">100</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"></span>
+<span class="go">Int8</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"></span>
+<span class="go">Int64</span>
+</pre></div>
+</div>
+<p>Также вы можете декларировать тип возвращаемого значения функцией (хотя, делается это редко, поскольку компилятор выводит типы, если возможно).</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">bar</span><span class="p">()</span><span class="o">::</span><span class="kt">Int8</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">100</span><span class="w"></span>
+<span class="go">bar (generic function with 1 method)</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">bar</span><span class="p">()</span><span class="w"></span>
+<span class="go">100</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="n">bar</span><span class="p">())</span><span class="w"></span>
+<span class="go">Int8</span>
+</pre></div>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">1.7.2. </span>Какие бывают типы<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<p>Типы в Julia классифицируются по следующим признакам (указаны не все)</p>
+<ul class="simple">
+<li><p>абстрактный <em>abstract</em> (<code class="docutils literal notranslate"><span class="pre">AbstractFloat</span></code>) и конкретный <em>concrete</em> (<code class="docutils literal notranslate"><span class="pre">Float64</span></code>);</p></li>
+<li><p>примитивный <em>primitive</em> (<code class="docutils literal notranslate"><span class="pre">Float64</span></code>) и композитный <em>composite</em> (<code class="docutils literal notranslate"><span class="pre">Complex{Float64}</span></code>);</p></li>
+<li><p>параметрический <em>parametric</em> (<code class="docutils literal notranslate"><span class="pre">Complex{Float64}</span></code>);</p></li>
+<li><p>изменяемый (<code class="docutils literal notranslate"><span class="pre">Vector{Float64}</span></code>) и неизменяемый (<code class="docutils literal notranslate"><span class="pre">Tuple{Float64,Float64}</span></code>);</p></li>
+<li><p>…</p></li>
+</ul>
+<p>В Julia система типов является деревом, корень которого тип <code class="docutils literal notranslate"><span class="pre">Any</span></code>. Листьями дерева типов являются <strong>конкретные типы</strong>. У значения такого типа известна структура в памяти. <strong>Абстрактные</strong> типы нужны в качестве промежуточных узлов дерева типов, выстраивая иерархию.</p>
+<div class="dropdown admonition note">
+<p class="admonition-title">Note</p>
+<p>Кроме того, объявление неабстрактного параметрического типа <code class="docutils literal notranslate"><span class="pre">T1{T2}</span></code>  создаёт <strong>UnionAll</strong> тип <code class="docutils literal notranslate"><span class="pre">T1</span></code>. Последний ведёт себя как супертип (родительский) для параметризованных потомков.</p>
+<p>Например, <code class="docutils literal notranslate"><span class="pre">Rational{T}</span></code> порождает UnionAll <code class="docutils literal notranslate"><span class="pre">Rational</span></code>, и <code class="docutils literal notranslate"><span class="pre">Rational</span></code> будет супертипом для всех <code class="docutils literal notranslate"><span class="pre">Rational{T}</span></code>: <code class="docutils literal notranslate"><span class="pre">Rational{Int64}</span></code>, <code class="docutils literal notranslate"><span class="pre">Rational{Int8}</span></code>…</p>
+<p>В дереве ниже <code class="docutils literal notranslate"><span class="pre">UnionAll</span></code> типы помещены в параллелограммы.</p>
+</div>
+<p>Например, так выглядит часть дерева с числовыми и строчными типами, при этом</p>
+<ul class="simple">
+<li><p>конкретные типы указаны в округлённых рамках;</p></li>
+<li><p>абстрактные в прямоугольных.</p></li>
+</ul>
+<div class="mermaid">
+            flowchart TB
+    Any --&gt; Number --&gt; Real --&gt; Integer
+    Any --&gt; AbstractString --&gt; String([String])
+            AbstractString --&gt; SubString[/SubString/]
+    Number --&gt; Complex[/Complex/]
+    Real --&gt; AbstractFloat
+    Real --&gt; Rational[/Rational/]
+    Rational --&gt; RationalInt64([&quot;Rational{Int64}&quot;])
+    Rational --&gt; RationalInt32([&quot;Rational{Int32}&quot;])
+    Integer --&gt; Int64([Int64])
+    Integer --&gt; Int32([Int32])
+    Integer --&gt; Int16([Int16])
+    Integer --&gt; Int8([Int8])
+        </div><p>Несколько функций для интроспекции системы типов</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">subtypes(T)</span></code>: подтипы типа <code class="docutils literal notranslate"><span class="pre">T</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isabstracttype(T)</span></code>: является ли тип <code class="docutils literal notranslate"><span class="pre">T</span></code> абстрактным;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isprimitivetype(T)</span></code>: является ли тип <code class="docutils literal notranslate"><span class="pre">T</span></code> примитивным;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ismutable(x)</span></code>: является ли значение <code class="docutils literal notranslate"><span class="pre">x</span></code> изменяемым.</p></li>
+</ul>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>С точки зрения дерева, можно ли из <code class="docutils literal notranslate"><span class="pre">Ty</span></code> добраться до <code class="docutils literal notranslate"><span class="pre">Tx</span></code>.</p>
+</aside>
+<p>Также с помощью subtype-оператора <code class="docutils literal notranslate"><span class="pre">Tx</span> <span class="pre">&lt;:</span> <span class="pre">Ty</span></code> можно проверять “является ли тип <code class="docutils literal notranslate"><span class="pre">Tx</span></code> подтипом типа <code class="docutils literal notranslate"><span class="pre">Ty</span></code>”.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="kt">Int64</span><span class="w"> </span><span class="o">&lt;:</span><span class="w"> </span><span class="kt">Number</span><span class="w"></span>
+<span class="go">true</span>
+</pre></div>
+</div>
+<p><strong>Примитивные</strong> типы представляются в виде набора бит. Примерами являются <code class="docutils literal notranslate"><span class="pre">Int</span></code>-ы и <code class="docutils literal notranslate"><span class="pre">Float</span></code>-ы.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Создание собственных абстрактных и примитивных типов здесь не разбирается.</p>
+</div>
+</section>
+<section id="julia-composite">
+<span id="id4"></span><h2><span class="section-number">1.7.3. </span>Композитные типы<a class="headerlink" href="#julia-composite" title="Permalink to this headline">#</a></h2>
+<p><strong>Композитный</strong> тип имеет более сложную структуру в памяти, чем примитивный тип. Этот тип является набором именованных полей, а экземпляром такого типа можно манипулирвовать как одним значением. В других языках им соответствуют объекты (<em>objects</em>) или структуры (<em>structs</em>). Примерами встроенных композитых типов являются <code class="docutils literal notranslate"><span class="pre">Complex{T}</span></code>, <code class="docutils literal notranslate"><span class="pre">Rational{T}</span></code>, <code class="docutils literal notranslate"><span class="pre">Tuple</span></code>, <code class="docutils literal notranslate"><span class="pre">String</span></code>, <code class="docutils literal notranslate"><span class="pre">Array</span></code>, <code class="docutils literal notranslate"><span class="pre">IO</span></code>…</p>
+<p>Классический пример – структура для точки на плоскости.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">struct</span> <span class="kt">Point</span><span class="w"></span>
+<span class="w">           </span><span class="n">x</span><span class="w"></span>
+<span class="w">           </span><span class="n">y</span><span class="o">::</span><span class="kt">Int64</span><span class="w">       </span><span class="c"># так указывается тип (можно и абстрактный)</span><span class="w"></span>
+<span class="w">       </span><span class="k">end</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Point</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="go">Point(1.0, 2)</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="n">p1</span><span class="p">)</span><span class="w"></span>
+<span class="go">Point</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">p1</span><span class="o">.</span><span class="n">x</span><span class="w"></span>
+<span class="go">1.0</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">p1</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">9</span><span class="w"></span>
+<span class="gr">ERROR: setfield! immutable struct of type Point cannot be changed</span>
+<span class="gr">...</span>
+</pre></div>
+</div>
+<p>Присвоение можно разрешить, сделав структуру изменяемой (<code class="docutils literal notranslate"><span class="pre">mutable</span></code>).</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">mutable</span><span class="w"> </span><span class="k">struct</span> <span class="kt">MPoint</span><span class="w"></span>
+<span class="w">           </span><span class="n">x</span><span class="w"></span>
+<span class="w">           </span><span class="n">y</span><span class="w"></span>
+<span class="w">       </span><span class="k">end</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">mp1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">MPoint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="go">MPoint(1, 2)</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">mp1</span><span class="o">.</span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
+<span class="go">10</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">mp1</span><span class="w"></span>
+<span class="go">MPoint(10, 2)</span>
+</pre></div>
+</div>
+<p>Иногда это может приводить к замедлению работы, поскольку <code class="docutils literal notranslate"><span class="pre">mutable</span> <span class="pre">struct</span></code> выделяется в куче, а не на стеке.</p>
+<p>Тем не менее, в поле обычной структуры можно хранить значение изменяемого типа. В таком случае поле хранит <em>ссылку на изменяемый объект</em>. Объект поменять можно, а ссылку – нет. Например, так хранятся массивы внутри структур.</p>
+<p>Конструктор (<em>constructor</em>) <code class="docutils literal notranslate"><span class="pre">Point(x,</span> <span class="pre">y)</span></code> для композитного типа можно поменять. Более того, можно создать несколько конструкторов.</p>
+</section>
+<section id="id5">
+<h2><span class="section-number">1.7.4. </span>Параметрические композитные типы<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Абстрактные параметрические типы тоже существуют.</p>
+</aside>
+<p><strong>Параметрический</strong> тип это тип, который в своём объявлении содержит дополнительную информацию. Например, тип <code class="docutils literal notranslate"><span class="pre">Complex</span></code> в языке объявлен следующим образом <strong><a class="reference external" href="https://github.com/JuliaLang/julia/blob/1326e4b00e6f27a4120c30eb12b578a6cee28039/base/complex.jl#L3">[source]</a></strong>.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="kt">Complex</span><span class="p">{</span><span class="kt">T</span><span class="o">&lt;:</span><span class="kt">Real</span><span class="p">}</span><span class="w"> </span><span class="o">&lt;:</span><span class="w"> </span><span class="kt">Number</span><span class="w"></span>
+<span class="w">    </span><span class="n">re</span><span class="o">::</span><span class="kt">T</span><span class="w"></span>
+<span class="w">    </span><span class="nb">im</span><span class="o">::</span><span class="kt">T</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Это объявление значит</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><code class="docutils literal notranslate"><span class="pre">Complex</span></code> в данном случае ни абстрактный, ни конкретный.</p>
+</aside>
+<ul class="simple">
+<li><p>создать UnionAll-тип <code class="docutils literal notranslate"><span class="pre">Complex</span></code>, который будет вести себя как супертип для <code class="docutils literal notranslate"><span class="pre">Complex{T}</span></code>;</p></li>
+<li><p>создать параметрический тип <code class="docutils literal notranslate"><span class="pre">Complex{T}</span></code>,</p></li>
+<li><p>где параметр <code class="docutils literal notranslate"><span class="pre">T</span></code> является подтипом типа <code class="docutils literal notranslate"><span class="pre">Real</span></code>,</p></li>
+<li><p>при этом типы <code class="docutils literal notranslate"><span class="pre">Complex</span></code> и <code class="docutils literal notranslate"><span class="pre">Complex{T}</span></code> являются подтипами <code class="docutils literal notranslate"><span class="pre">Number</span></code>;</p></li>
+<li><p>у <code class="docutils literal notranslate"><span class="pre">Complex{T}</span></code> два поля: <code class="docutils literal notranslate"><span class="pre">re</span></code> и <code class="docutils literal notranslate"><span class="pre">im</span></code>, каждое из них имеет тип <code class="docutils literal notranslate"><span class="pre">T</span></code>.</p></li>
+</ul>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Это не значит, что массив в Julia может хранить только значения одного типа. Ведь есть абстрактные типы: <code class="docutils literal notranslate"><span class="pre">Any</span></code>, <code class="docutils literal notranslate"><span class="pre">Number</span></code>…</p>
+</aside>
+<p>В качестве параметров могут быть типы и значения примитивных типов. Например, в Julia объявлен тип для массивов <code class="docutils literal notranslate"> <span class="pre">AbstractArray{T,N}</span></code>, где под <code class="docutils literal notranslate"><span class="pre">T</span></code> подразумевается тип значений, а под <code class="docutils literal notranslate"><span class="pre">N</span></code> размерность массива (1 для векторов, 2 для матриц…).</p>
+<p>Параметрические типы порождают целое семейство типов. Член такого семейства – <em>любая  комбинация разрешенных значений</em> параметров типа.</p>
+<p>Таким образом, с помощью параметризации композитного типа мы можем дать подсказки для компилятора, чтобы тот создавал оптимизированный код.</p>
+<section id="id6">
+<h3><span class="section-number">1.7.4.1. </span>Пример<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
+<p>Рассмотрим две версии <code class="docutils literal notranslate"><span class="pre">Point</span></code></p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">struct</span> <span class="kt">APoint</span><span class="w"></span>
+<span class="w">           </span><span class="n">x</span><span class="w"></span>
+<span class="w">           </span><span class="n">y</span><span class="w"></span>
+<span class="w">       </span><span class="k">end</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="k">struct</span> <span class="kt">TPoint</span><span class="p">{</span><span class="kt">T</span><span class="p">}</span><span class="w"></span>
+<span class="w">           </span><span class="n">x</span><span class="o">::</span><span class="kt">T</span><span class="w"></span>
+<span class="w">           </span><span class="n">y</span><span class="o">::</span><span class="kt">T</span><span class="w"></span>
+<span class="w">       </span><span class="k">end</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Создадим функцию, вычисляющую расстояние от точки до начала координат</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">dist</span><span class="p">(</span><span class="n">p</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="n">p</span><span class="o">.</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">p</span><span class="o">.</span><span class="n">y</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="go">dist (generic function with 1 method)</span>
+</pre></div>
+</div>
+<p>Заметьте, в этой функции нет никаких ограничений на тип <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
+<p>Создадим два массива случайных точек</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">AA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">APoint</span><span class="p">(</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">...</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">1_000_000</span><span class="p">];</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">TA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">TPoint</span><span class="p">(</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">...</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">1_000_000</span><span class="p">];</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="n">AA</span><span class="p">),</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="n">TA</span><span class="p">)</span><span class="w"></span>
+<span class="go">(Vector{APoint}, Vector{TPoint{Float64}})</span>
+</pre></div>
+</div>
+<p>Про массив <code class="docutils literal notranslate"><span class="pre">TA</span></code> компилятор явно знает больше, судя по <code class="docutils literal notranslate"><span class="pre">typeof</span></code>.</p>
+<p>Измерим время работы. Точный бенчмарк показывает разницу времени работы в два порядка.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">BenchmarkTools</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="nd">@btime</span><span class="w"> </span><span class="n">dist</span><span class="o">.</span><span class="p">(</span><span class="n">AA</span><span class="p">);</span><span class="w"></span>
+<span class="go">  117.766 ms (4999502 allocations: 83.92 MiB)</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="nd">@btime</span><span class="w"> </span><span class="n">dist</span><span class="o">.</span><span class="p">(</span><span class="n">TA</span><span class="p">);</span><span class="w"></span>
+<span class="go">  1.290 ms (5 allocations: 7.63 MiB)</span>
+</pre></div>
+</div>
+<div class="dropdown admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Поисследовать, может ли компилятор предугадать типы в теле вызова можно с помощью макроса <code class="docutils literal notranslate"><span class="pre">&#64;code_warntype</span></code></p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="nd">@code_warntype</span><span class="w"> </span><span class="n">dist</span><span class="p">(</span><span class="n">APoint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w"></span>
+<span class="go">Variables</span>
+<span class="go">  #self#::Core.Const(dist)</span>
+<span class="go">  p::APoint</span>
+
+<span class="go">Body::Any</span>
+<span class="go">1 ─ %1  = Base.getproperty(p, :x)::Any</span>
+<span class="go">│   %2  = Core.apply_type(Base.Val, 2)::Core.Const(Val{2})</span>
+<span class="go">│   %3  = (%2)()::Core.Const(Val{2}())</span>
+<span class="go">│   %4  = Base.literal_pow(Main.:^, %1, %3)::Any</span>
+<span class="go">│   %5  = Base.getproperty(p, :y)::Any</span>
+<span class="go">│   %6  = Core.apply_type(Base.Val, 2)::Core.Const(Val{2})</span>
+<span class="go">│   %7  = (%6)()::Core.Const(Val{2}())</span>
+<span class="go">│   %8  = Base.literal_pow(Main.:^, %5, %7)::Any</span>
+<span class="go">│   %9  = (%4 + %8)::Any</span>
+<span class="go">│   %10 = Main.sqrt(%9)::Any</span>
+<span class="go">└──       return %10</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="nd">@code_warntype</span><span class="w"> </span><span class="n">dist</span><span class="p">(</span><span class="n">TPoint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w"></span>
+<span class="go">Variables</span>
+<span class="go">  #self#::Core.Const(dist)</span>
+<span class="go">  p::TPoint{Int64}</span>
+
+<span class="go">Body::Float64</span>
+<span class="go">1 ─ %1  = Base.getproperty(p, :x)::Int64</span>
+<span class="go">│   %2  = Core.apply_type(Base.Val, 2)::Core.Const(Val{2})</span>
+<span class="go">│   %3  = (%2)()::Core.Const(Val{2}())</span>
+<span class="go">│   %4  = Base.literal_pow(Main.:^, %1, %3)::Int64</span>
+<span class="go">│   %5  = Base.getproperty(p, :y)::Int64</span>
+<span class="go">│   %6  = Core.apply_type(Base.Val, 2)::Core.Const(Val{2})</span>
+<span class="go">│   %7  = (%6)()::Core.Const(Val{2}())</span>
+<span class="go">│   %8  = Base.literal_pow(Main.:^, %5, %7)::Int64</span>
+<span class="go">│   %9  = (%4 + %8)::Int64</span>
+<span class="go">│   %10 = Main.sqrt(%9)::Float64</span>
+<span class="go">└──       return %10</span>
+</pre></div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./julia"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="functions.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">1.6. </span>Функции</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="julia.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">1.8. </span>Методы и multiple dispatch</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Степан Захаров и Василий Писарев<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

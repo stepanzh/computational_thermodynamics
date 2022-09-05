@@ -101,7 +101,7 @@ end
 - `∇f::Function`: по вектору x возвращает градиент `f`, `∇f(x)`: `Vector` → `Vector`;
 - `invH0::Matrix`: приближение обратного гессиана в `x0`, по умолчанию -- единичная матрица.
 """
-function bfgstemplate(f, ∇f, x0, invH0=diagm(0=>ones(length(x)));
+function bfgs(f, ∇f, x0, invH0=diagm(0=>ones(length(x)));
     maxiter=200,
     gtol=1e-5,
 )
