@@ -20,56 +20,56 @@ parts:
     - file: julia/linearalgebra
     - file: julia/modules
     - file: julia/ex
-  - file: intro/index
-    sections:
-    - file: intro/float
-    - file: intro/cond
-  - file: interpolation/index
-    sections:
-    - file: interpolation/polynomial
-    - file: interpolation/pwlinear
-    - file: interpolation/cubic_spline
-    - file: interpolation/ex
-  - file: integration/index
-    sections:
-    - file: integration/newton_cotes
-    - file: integration/romberg
-    - file: integration/gauss
-    - file: integration/adaptive
-    - file: integration/ex
-  - file: nlroot/index
-    sections:
-    - file: nlroot/simpleiter
-    - file: nlroot/newton_secant
-    - file: nlroot/bisection_regula_falsi
-    - file: nlroot/ridders
-    - file: nlroot/itp
-    - file: nlroot/ex
-  - file: syslinear/index
-    sections:
-    - file: syslinear/triangular
-    - file: syslinear/lu
-    - file: syslinear/plu
-    - file: syslinear/decompose_overview
-  - file: sysnonlinear/index
-    sections:
-    - file: sysnonlinear/newton
-    - file: sysnonlinear/quasinewton
-    - file: sysnonlinear/ex
-  - file: ode/index
-    sections:
-    - file: ode/euler
-    - file: ode/rungekutta
-    - file: ode/adaptive_rungekutta
-    # - file: ode/multistep
-    - file: ode/ex
-  - file: optim/index
-    sections:
-    - file: optim/intro
-    - file: optim/linesearch
-    - file: optim/newton
-    - file: optim/bfgs
-    - file: optim/ex
+  # - file: intro/index
+  #   sections:
+  #   - file: intro/float
+  #   - file: intro/cond
+  # - file: interpolation/index
+  #   sections:
+  #   - file: interpolation/polynomial
+  #   - file: interpolation/pwlinear
+  #   - file: interpolation/cubic_spline
+  #   - file: interpolation/ex
+  # - file: integration/index
+  #   sections:
+  #   - file: integration/newton_cotes
+  #   - file: integration/romberg
+  #   - file: integration/gauss
+  #   - file: integration/adaptive
+  #   - file: integration/ex
+  # - file: nlroot/index
+  #   sections:
+  #   - file: nlroot/simpleiter
+  #   - file: nlroot/newton_secant
+  #   - file: nlroot/bisection_regula_falsi
+  #   - file: nlroot/ridders
+  #   - file: nlroot/itp
+  #   - file: nlroot/ex
+  # - file: syslinear/index
+  #   sections:
+  #   - file: syslinear/triangular
+  #   - file: syslinear/lu
+  #   - file: syslinear/plu
+  #   - file: syslinear/decompose_overview
+  # - file: sysnonlinear/index
+  #   sections:
+  #   - file: sysnonlinear/newton
+  #   - file: sysnonlinear/quasinewton
+  #   - file: sysnonlinear/ex
+  # - file: ode/index
+  #   sections:
+  #   - file: ode/euler
+  #   - file: ode/rungekutta
+  #   - file: ode/adaptive_rungekutta
+  #   # - file: ode/multistep
+  #   - file: ode/ex
+  # - file: optim/index
+  #   sections:
+  #   - file: optim/intro
+  #   - file: optim/linesearch
+  #   - file: optim/newton
+  #   - file: optim/bfgs
+  #   - file: optim/ex
 - caption: Приложения
   chapters:
   - file: appendix/genindex
