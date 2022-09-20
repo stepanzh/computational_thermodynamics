@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Предварительные сведения &#8212; Практикум по вычислительной теплофизике</title>
+    <title>3.4. Обусловленность линейных систем &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.5. Обзор других разложений и задач" href="decompose_overview.html" />
+    <link rel="prev" title="3.3. PLU-разложение" href="plu.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -210,43 +212,43 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../syslinear/index.html">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
    3. Линейные системы уравнений
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
   <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/triangular.html">
+    <a class="reference internal" href="triangular.html">
      3.1. Треугольные системы
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/lu.html">
+    <a class="reference internal" href="lu.html">
      3.2. LU-разложение
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/plu.html">
+    <a class="reference internal" href="plu.html">
      3.3. PLU-разложение
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/conditioning.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      3.4. Обусловленность линейных систем
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/decompose_overview.html">
+    <a class="reference internal" href="decompose_overview.html">
      3.5. Обзор других разложений и задач
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/ex.html">
+    <a class="reference internal" href="ex.html">
      3.6. Задания
     </a>
    </li>
@@ -369,7 +371,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Foptim/intro.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fsyslinear/conditioning.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -386,7 +388,7 @@ title="Open an issue"
       </li>
       
       <li>
-        <a href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/optim/intro.md"
+        <a href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/syslinear/conditioning.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -414,7 +416,7 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/optim/intro.md"
+        <a href="../_sources/syslinear/conditioning.md"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -451,23 +453,60 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   3.4.1. Оценка ошибок
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Предварительные сведения</h1>
+                <h1>Обусловленность линейных систем</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   3.4.1. Оценка ошибок
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -476,108 +515,78 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Предварительные сведения<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
-<div class="proof proof-type-definition" id="id2">
-
+<h1><span class="section-number">3.4. </span>Обусловленность линейных систем<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<p>По аналогии с обусловленностью вычисления скалярной функции, вводится понятие обусловленности линейной системы</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{A} \mathbf{x} = \mathbf{b}.
+\]</div>
+<p>Нас интересует, как относительное изменение правой части повлияет на относительное изменение решения. Т.е. рассмотрим возмущенную систему</p>
+<div class="math notranslate nohighlight">
+\[
+\mathbf{A} (\mathbf{x} + \delta\mathbf{x}) = \mathbf{b} + \delta\mathbf{b}.
+\]</div>
+<p>И найдём оценку для величины</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{
+    \dfrac{\|\delta \mathbf{x}\|}{\|\mathbf{x}\|}}{
+    \dfrac{\|\delta \mathbf{b}\|}{\|\mathbf{b}\|}
+}
+= \frac{\|\delta \mathbf{x}\|}{\| \delta\mathbf{b} \|}
+  \frac{\| \mathbf{b} \|}{\|\mathbf{x}\|}
+\]</div>
+<p>Поскольку <span class="math notranslate nohighlight">\(\mathbf{b} = \mathbf{A}\mathbf{x}\)</span>, то <span class="math notranslate nohighlight">\(\|\mathbf{b}\| \le \|\mathbf{A}\| \|\mathbf{x}\|\)</span>. В свою очередь, из возмущённой системы следует, что <span class="math notranslate nohighlight">\(\delta\mathbf{x} = \mathbf{A}^{-1}\mathbf{b}\)</span>, отсюда получаем</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{
+    \dfrac{\|\delta \mathbf{x}\|}{\|\mathbf{x}\|}}{
+    \dfrac{\|\delta \mathbf{b}\|}{\|\mathbf{b}\|}
+} \le \| \mathbf{A}^{-1} \| \| \mathbf{A} \|.
+\]</div>
+<p>Так, вводится определение.</p>
+<div class="proof proof-type-definition" id="id5">
+<span id="index-0"></span>
     <div class="proof-title">
-        <span class="proof-type">Определение </span>
-        
-            <span class="proof-title-name">(Градиент)</span>
+        <span class="proof-type">Определение 3.13</span>
         
     </div><div class="proof-content">
-<p>Градиент функции <span class="math notranslate nohighlight">\(\nabla f(\mathbf{x}) \in \real^n\)</span> называется вектор из частных производных</p>
+<p>Числом обусловленности обратимой квадратной матрицы <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> называют</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}\nabla f(\mathbf{x}) = \begin{bmatrix}
-\frac{\part f}{\part x_1}\\
-\frac{\part f}{\part x_2}\\
-\vdots\\
-\frac{\part f}{\part x_n}\\
-\end{bmatrix}.\end{split}\]</div>
-</div></div><div class="proof proof-type-definition" id="id3">
+\[
+\kappa(\mathbf{A}) = \| \mathbf{A}^{-1} \| \| \mathbf{A} \|.
+\]</div>
+<p>Значение <span class="math notranslate nohighlight">\(\kappa(\mathbf{A})\)</span> зависит от выбора нормы. Для вырожденной матрицы <span class="math notranslate nohighlight">\(\kappa(\mathbf{A}) = \infty\)</span>.</p>
+</div></div><p>Число обусловленности матрицы является числом обусловленности решения линейной системы. Выше выведено утверждение при возмущении правой части, аналогичное утверждение имеет место и при возмущении матрицы системы <span id="id2">[<a class="reference internal" href="../appendix/bibliography.html#id4" title="Tobin A. Driscoll and Richard J. Braun. Fundamentals of numerical computation. Society for Industrial and Applied Mathematics, 2017. ISBN 978-1-61197-507-9. URL: https://tobydriscoll.net/project/fnc/.">ADJB17</a>]</span>.</p>
+<div class="proof proof-type-proposition" id="id6">
 
     <div class="proof-title">
-        <span class="proof-type">Определение </span>
+        <span class="proof-type">Утверждение 3.14</span>
         
-            <span class="proof-title-name">(Гессиан)</span>
-        
-    </div><div class="proof-content">
-<p>Гессианом функции <span class="math notranslate nohighlight">\(\nabla^2 f(\mathbf{x})\)</span> называют матрицу из вторых частных производных</p>
-<div class="math notranslate nohighlight">
-\[\begin{split}\nabla^2 f(\mathbf{x}) = \begin{bmatrix}
-\frac{\part^2 f}{\part x_1 \part x_1}(\mathbf{x}) &amp; \frac{\part^2 f}{\part x_1 \part x_2}(\mathbf{x}) &amp; \cdots &amp; \frac{\part^2 f}{\part x_1 \part x_n}(\mathbf{x})\\
-\frac{\part^2 f}{\part x_2 \part x_1}(\mathbf{x}) &amp; \frac{\part^2 f}{\part x_2 \part x_2}(\mathbf{x}) &amp; \cdots &amp; \frac{\part^2 f}{\part x_2 \part x_n}(\mathbf{x})\\
-\vdots &amp; \vdots &amp; &amp; \vdots \\
-\frac{\part^2 f}{\part x_n \part x_1}(\mathbf{x}) &amp; \frac{\part^2 f}{\part x_n \part x_2}(\mathbf{x}) &amp; \cdots &amp; \frac{\part^2 f}{\part x_n \part x_n}(\mathbf{x})
-\end{bmatrix}.\end{split}\]</div>
-<p>Гессиан является квадратной матрицей размера <span class="math notranslate nohighlight">\(n\)</span> и в случае дважды гладкой <span class="math notranslate nohighlight">\(f\)</span> симметричен.</p>
-</div></div><div class="proof proof-type-theorem" id="id4">
-
-    <div class="proof-title">
-        <span class="proof-type">Теорема </span>
-        
-            <span class="proof-title-name">(Разложение Тейлора)</span>
+            <span class="proof-title-name">(Обусловленность линейной системы)</span>
         
     </div><div class="proof-content">
-<p>Пусть функция <span class="math notranslate nohighlight">\(f: \real^n \to \real\)</span> гладкая, тогда</p>
+<p>При возмущенной правой части системы <span class="math notranslate nohighlight">\(\mathbf{A} (\mathbf{x} + \delta \mathbf{x}) = \mathbf{b} + \delta\mathbf{b}\)</span> справедлива оценка</p>
 <div class="math notranslate nohighlight">
-\[f(\mathbf{x} + \mathbf{d}) = f(\mathbf{x}) + \nabla f(\mathbf{x} + t\: \mathbf{d})^\top \mathbf{d},\quad t \in (0, 1).\]</div>
-<p>Если при этом <span class="math notranslate nohighlight">\(f\)</span> – дважды гладкая, то верно</p>
+\[
+\frac{\|\delta\mathbf{x}\|}{\| \mathbf{x} \|} \le \kappa(\mathbf{A}) \frac{\|\delta\mathbf{b}\|}{\|\mathbf{b}\|}.
+\]</div>
+<p>При возмущённой матрицы системы <span class="math notranslate nohighlight">\((\mathbf{A} + \delta\mathbf{A}) (\mathbf{x} + \delta \mathbf{x}) = \mathbf{b}\)</span> справедлива оценка</p>
 <div class="math notranslate nohighlight">
-\[f(\mathbf{x} + \mathbf{d}) = f(\mathbf{x})
-+ \nabla f(\mathbf{x})^\top \mathbf{d}
-+ \frac{1}{2}\mathbf{d}^\top \nabla^2 f(\mathbf{x} + t\:\mathbf{d})\mathbf{d}
-,\quad t \in (0, 1).\]</div>
-</div></div><div class="proof proof-type-definition" id="id5">
-
-    <div class="proof-title">
-        <span class="proof-type">Определение </span>
-        
-            <span class="proof-title-name">(Положительно определённая матрица)</span>
-        
-    </div><div class="proof-content">
-<p>Положительно определённой называют симметричную матрицу <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, такую, что</p>
+\[
+\frac{\|\delta\mathbf{x}\|}{\|\mathbf{x}\|} \le \kappa(\mathbf{A}) \frac{\|\delta\mathbf{A}\|}{\|\mathbf{A}\|}, \quad \|\delta\mathbf{A}\| \to 0.
+\]</div>
+</div></div><section id="id3">
+<h2><span class="section-number">3.4.1. </span>Оценка ошибок<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<p>Обозначим для линейной системы <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{x}=\mathbf{b}\)</span> найденное (численное) решение через <span class="math notranslate nohighlight">\(\tilde{\mathbf{x}}\)</span>. В большинстве случаев изучать ошибку <span class="math notranslate nohighlight">\(\mathbf{x} - \tilde{\mathbf{x}}\)</span> невозможно, поскольку истинное решение неизвестно. Однако, можно показать <span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id4" title="Tobin A. Driscoll and Richard J. Braun. Fundamentals of numerical computation. Society for Industrial and Applied Mathematics, 2017. ISBN 978-1-61197-507-9. URL: https://tobydriscoll.net/project/fnc/.">ADJB17</a>]</span>, что</p>
 <div class="math notranslate nohighlight">
-\[\mathbf{x}^\top \mathbf{A} \mathbf{x} &gt; 0, \quad \forall \mathbf{x} \neq \mathbf{0}.\]</div>
-<p>Если неравенство нестрогое, то матрицу называют положительно полуопределённой.</p>
-</div></div><div class="proof proof-type-definition" id="id6">
-
-    <div class="proof-title">
-        <span class="proof-type">Определение </span>
-        
-            <span class="proof-title-name">(Строгий локальный минимум)</span>
-        
-    </div><div class="proof-content">
-<p>Вектор <span class="math notranslate nohighlight">\(\mathbf{x}^*\)</span> называется строгим локальным минимумом функции <span class="math notranslate nohighlight">\(f\)</span>, если существует окрестность точки, в которой <span class="math notranslate nohighlight">\(f(\mathbf{x}^*) &lt; f(\mathbf{x})\)</span>, <span class="math notranslate nohighlight">\(\mathbf{x}^* \neq \mathbf{x}\)</span>.</p>
-</div></div><div class="proof proof-type-theorem" id="id7">
-
-    <div class="proof-title">
-        <span class="proof-type">Теорема </span>
-        
-            <span class="proof-title-name">(Достаточные условия минимума)</span>
-        
-    </div><div class="proof-content">
-<p>Пусть</p>
-<ul class="simple">
-<li><p>гессиан функции <span class="math notranslate nohighlight">\(\nabla^2 f\)</span> непрерывен в окрестности <span class="math notranslate nohighlight">\(\mathbf{x}^*\)</span>,</p></li>
-<li><p>градиент функции <span class="math notranslate nohighlight">\(\nabla f (\mathbf{x}^*) = 0\)</span>,</p></li>
-<li><p>и гессиан <span class="math notranslate nohighlight">\(\nabla^2 f (\mathbf{x}^*)\)</span> положительно-определён,</p></li>
-</ul>
-<p>тогда <span class="math notranslate nohighlight">\(\mathbf{x}^*\)</span> является строгим локальным минимумом <span class="math notranslate nohighlight">\(f\)</span>.</p>
-</div></div><div class="proof proof-type-definition" id="id8">
-
-    <div class="proof-title">
-        <span class="proof-type">Определение </span>
-        
-            <span class="proof-title-name">(Направление убывания функции)</span>
-        
-    </div><div class="proof-content">
-<p>Направлением убывания функции в точке <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> будем называть вектор <span class="math notranslate nohighlight">\(\mathbf{d}\)</span>, для которого найдутся малые <span class="math notranslate nohighlight">\(t \in (0, \epsilon)\)</span> такие, что</p>
-<div class="math notranslate nohighlight">
-\[f(\mathbf{x} + t\:\mathbf{d}) &lt; f(\mathbf{x}).\]</div>
-<p>Для направления убывания в точке <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> верно</p>
-<div class="math notranslate nohighlight">
-\[\nabla f(\mathbf{x})^\top \mathbf{d} &lt; 0.\]</div>
-</div></div></section>
+\[
+\frac{\|\mathbf{x} - \tilde{\mathbf{x}} \|}{\|\mathbf{x}\|}
+\le \kappa(\mathbf{A}) \frac{\| \mathbf{b} - \mathbf{A}\tilde{\mathbf{x}}\|}{\|\mathbf{b}\|}.
+\]</div>
+<p>Эта оценка устанавливает связь между относительной ошибкой решения и относительной невязкой  решения. Невязку <span class="math notranslate nohighlight">\(\mathbf{b} - \mathbf{A}\tilde{\mathbf{x}}\)</span>, в свою очередь, подсчитать можно.</p>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -592,7 +601,7 @@ title="Print to PDF"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./optim"
+            path: "./syslinear"
         },
         predefinedOutput: true
     }
@@ -606,6 +615,20 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="plu.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3.3. </span>PLU-разложение</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="decompose_overview.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.5. </span>Обзор других разложений и задач</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

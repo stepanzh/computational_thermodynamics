@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Обусловленность задач &#8212; Практикум по вычислительной теплофизике</title>
+    <title>2.2. Обусловленность задач &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. Линейные системы уравнений" href="../syslinear/index.html" />
+    <link rel="prev" title="2.1. Числа с плавающей точкой" href="float.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -184,6 +186,70 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../julia/ex.html">
      1.11. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   2. Введение
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="float.html">
+     2.1. Числа с плавающей точкой
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.2. Обусловленность задач
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../syslinear/index.html">
+   3. Линейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/triangular.html">
+     3.1. Треугольные системы
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/lu.html">
+     3.2. LU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/plu.html">
+     3.3. PLU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/conditioning.html">
+     3.4. Обусловленность линейных систем
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/decompose_overview.html">
+     3.5. Обзор других разложений и задач
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/ex.html">
+     3.6. Задания
     </a>
    </li>
   </ul>
@@ -457,12 +523,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Число обусловленности
+   2.2.1. Число обусловленности
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   Оценка ошибок
+   2.2.2. Оценка ошибок
   </a>
  </li>
 </ul>
@@ -486,12 +552,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Число обусловленности
+   2.2.1. Число обусловленности
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   Оценка ошибок
+   2.2.2. Оценка ошибок
   </a>
  </li>
 </ul>
@@ -505,7 +571,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Обусловленность задач<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">2.2. </span>Обусловленность задач<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <p>Рассмотрим простую вычислительную задачу.
 Необходимо вычислить значение функции</p>
 <div class="math notranslate nohighlight">
@@ -526,22 +592,22 @@ title="Print to PDF"
 <p>Кроме того, в случае <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, несмотря на точность в 16 десятичных знаков, не все они репрезентативны в конечном результате.</p>
 <p>Таким образом, задачам (и алгоритмам) можно сопоставить их чувствительность к входным данным. У некоторых задач теоретически сильная чувствительность (большая обусловленность), что в паре с вычислительной погрешностью приводит к ошибкам в расчётах. Для оценки чувствительности вводится число обусловленности.</p>
 <section id="id2">
-<h2>Число обусловленности<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.2.1. </span>Число обусловленности<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>… <strong>скалярных функций</strong></p>
 <span class="target" id="index-0"></span><div class="proof proof-type-definition" id="id4">
 <span id="index-1"></span>
     <div class="proof-title">
-        <span class="proof-type">Определение </span>
+        <span class="proof-type">Определение 2.5</span>
         
             <span class="proof-title-name">(Число обусловленности скалярной функции)</span>
         
     </div><div class="proof-content">
 <p>Относительным <strong>числом обусловленности</strong> называют предел отношения относительного изменения значения функции к относительному изменению значения аргумента.</p>
 <div class="math notranslate nohighlight" id="equation-condscalar">
-<span class="eqno">()<a class="headerlink" href="#equation-condscalar" title="Permalink to this equation">#</a></span>\[\kappa_f(x) = \lim_{\delta x \to 0} \frac{ \dfrac{ |f(x+\delta x)-f(x)| }{|f(x)|} }{ \dfrac{|\delta x|}{|x|} }.\]</div>
-</div></div><p>В случае дифференциируемой функции <span class="math notranslate nohighlight">\(f\)</span> из <a class="reference internal" href="#equation-condscalar">()</a> получаем</p>
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-condscalar" title="Permalink to this equation">#</a></span>\[\kappa_f(x) = \lim_{\delta x \to 0} \frac{ \dfrac{ |f(x+\delta x)-f(x)| }{|f(x)|} }{ \dfrac{|\delta x|}{|x|} }.\]</div>
+</div></div><p>В случае дифференциируемой функции <span class="math notranslate nohighlight">\(f\)</span> из <a class="reference internal" href="#equation-condscalar">(2.4)</a> получаем</p>
 <div class="math notranslate nohighlight" id="equation-condscalardiff">
-<span class="eqno">()<a class="headerlink" href="#equation-condscalardiff" title="Permalink to this equation">#</a></span>\[\kappa_f(x) = \left| \frac{x f'(x)}{f(x)}\right|.\]</div>
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-condscalardiff" title="Permalink to this equation">#</a></span>\[\kappa_f(x) = \left| \frac{x f'(x)}{f(x)}\right|.\]</div>
 <p>Число обусловленности сложной функции <span class="math notranslate nohighlight">\(h(x) = f(g(x))\)</span> имеет вид</p>
 <div class="math notranslate nohighlight">
 \[\kappa_h(x) = \kappa_f(g(x))\cdot\kappa_g(x),\]</div>
@@ -549,7 +615,7 @@ title="Print to PDF"
 <div class="proof proof-type-example" id="id5">
 
     <div class="proof-title">
-        <span class="proof-type">Пример </span>
+        <span class="proof-type">Пример 2.6</span>
         
     </div><div class="proof-content">
 <p>Сложение <span class="math notranslate nohighlight">\(\text{add}(x) = x + c\)</span> порождает ошибки из-за конечной точности</p>
@@ -571,16 +637,16 @@ title="Print to PDF"
 <p>теоретически должно уменьшать ошибку в вычислениях, однако, на практике <span class="math notranslate nohighlight">\(\text{sqrt}(x)\)</span> реализован программно, и при его вычислении происходят операции, порождающие ошибки. Либо, в конечном итоге, произойдёт ошибка округления входных данных. Поэтому, на практике меньшее единицы число обусловленности <span class="math notranslate nohighlight">\(\kappa_f &lt; 1\)</span> можно “округлять” до единицы.</p>
 </div></div></section>
 <section id="id3">
-<h2>Оценка ошибок<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
-<p>Из определения числа обусловленности <a class="reference internal" href="#equation-condscalar">()</a> следует, что при малом <span class="math notranslate nohighlight">\(\delta x\)</span></p>
+<h2><span class="section-number">2.2.2. </span>Оценка ошибок<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<p>Из определения числа обусловленности <a class="reference internal" href="#equation-condscalar">(2.4)</a> следует, что при малом <span class="math notranslate nohighlight">\(\delta x\)</span></p>
 <div class="math notranslate nohighlight" id="equation-conderr">
-<span class="eqno">()<a class="headerlink" href="#equation-conderr" title="Permalink to this equation">#</a></span>\[\frac{ |f(x+\delta x) - f(x)| }{|f(x)|} \approx \kappa_f(x) \frac{|\delta x|}{|x|}.\]</div>
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-conderr" title="Permalink to this equation">#</a></span>\[\frac{ |f(x+\delta x) - f(x)| }{|f(x)|} \approx \kappa_f(x) \frac{|\delta x|}{|x|}.\]</div>
 <p>Другими словами, это соотношение позволяет оценить возмущение в значении функции по возмущению входных данных.</p>
 <p>Например, в случае <span class="math notranslate nohighlight">\(\kappa_f \approx 10^d\)</span> можно ожидать, что <span class="math notranslate nohighlight">\(d\)</span> десятичных знаков (мантиссы) потеряны при вычислении <span class="math notranslate nohighlight">\(f(x)\)</span> из <span class="math notranslate nohighlight">\(x\)</span>. Таким образом, если <span class="math notranslate nohighlight">\(\kappa_f\approx 1/\macheps\)</span>, то вычислить <span class="math notranslate nohighlight">\(f\)</span> в числах с точностью <span class="math notranslate nohighlight">\(\macheps\)</span> не получится.</p>
 <div class="proof proof-type-definition" id="id6">
 <span id="index-2"></span>
     <div class="proof-title">
-        <span class="proof-type">Определение </span>
+        <span class="proof-type">Определение 2.7</span>
         
             <span class="proof-title-name">(Плохая обусловленность задачи)</span>
         
@@ -589,7 +655,7 @@ title="Print to PDF"
 </div></div><div class="proof proof-type-demo" id="id7">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 2.8</span>
         
     </div><div class="proof-content">
 </div></div><div class="demo"><p>Вычисление детерминанта является плохо обусловленной задачей для почти сингулярных матриц.
@@ -651,7 +717,7 @@ det(A) =
 </div>
 </div>
 </div>
-<p>Видно, что ошибка вычислений <code class="docutils literal notranslate"><span class="pre">err</span></code> совпадает с оценкой ошибки <code class="docutils literal notranslate"><span class="pre">err_estimate</span></code> по выражению <a class="reference internal" href="#equation-conderr">()</a>.</p>
+<p>Видно, что ошибка вычислений <code class="docutils literal notranslate"><span class="pre">err</span></code> совпадает с оценкой ошибки <code class="docutils literal notranslate"><span class="pre">err_estimate</span></code> по выражению <a class="reference internal" href="#equation-conderr">(2.6)</a>.</p>
 </div></section>
 </section>
 
@@ -682,6 +748,20 @@ det(A) =
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="float.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2.1. </span>Числа с плавающей точкой</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../syslinear/index.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3. </span>Линейные системы уравнений</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

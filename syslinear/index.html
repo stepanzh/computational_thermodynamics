@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Линейные системы уравнений &#8212; Практикум по вычислительной теплофизике</title>
+    <title>3. Линейные системы уравнений &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.1. Треугольные системы" href="triangular.html" />
+    <link rel="prev" title="2.2. Обусловленность задач" href="../intro/cond.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -184,6 +186,70 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../julia/ex.html">
      1.11. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro/index.html">
+   2. Введение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/float.html">
+     2.1. Числа с плавающей точкой
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/cond.html">
+     2.2. Обусловленность задач
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   3. Линейные системы уравнений
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="triangular.html">
+     3.1. Треугольные системы
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lu.html">
+     3.2. LU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="plu.html">
+     3.3. PLU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="conditioning.html">
+     3.4. Обусловленность линейных систем
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="decompose_overview.html">
+     3.5. Обзор других разложений и задач
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     3.6. Задания
     </a>
    </li>
   </ul>
@@ -412,7 +478,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Линейные системы уравнений<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">3. </span>Линейные системы уравнений<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <p>В этом разделе рассматривается решение линейной системы уравнений</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{A}\mathbf{x}=\mathbf{b},\]</div>
@@ -435,6 +501,8 @@ title="Print to PDF"
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">LinearAlgebra</span><span class="w"></span>
 </pre></div>
 </div>
+</div>
+<div class="toctree-wrapper compound">
 </div>
 </section>
 
@@ -465,6 +533,20 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../intro/cond.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2.2. </span>Обусловленность задач</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="triangular.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.1. </span>Треугольные системы</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>LU-разложение &#8212; Практикум по вычислительной теплофизике</title>
+    <title>3.2. LU-разложение &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.3. PLU-разложение" href="plu.html" />
+    <link rel="prev" title="3.1. Треугольные системы" href="triangular.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -184,6 +186,70 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../julia/ex.html">
      1.11. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro/index.html">
+   2. Введение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/float.html">
+     2.1. Числа с плавающей точкой
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/cond.html">
+     2.2. Обусловленность задач
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   3. Линейные системы уравнений
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="triangular.html">
+     3.1. Треугольные системы
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     3.2. LU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="plu.html">
+     3.3. PLU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="conditioning.html">
+     3.4. Обусловленность линейных систем
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="decompose_overview.html">
+     3.5. Обзор других разложений и задач
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     3.6. Задания
     </a>
    </li>
   </ul>
@@ -457,17 +523,17 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   Внешнее произведение
+   3.2.1. Внешнее произведение
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Разложение
+   3.2.2. Разложение
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   Решение системы уравнений
+   3.2.3. Решение системы уравнений
   </a>
  </li>
 </ul>
@@ -491,17 +557,17 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   Внешнее произведение
+   3.2.1. Внешнее произведение
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Разложение
+   3.2.2. Разложение
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   Решение системы уравнений
+   3.2.3. Решение системы уравнений
   </a>
  </li>
 </ul>
@@ -515,10 +581,10 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="lu">
-<h1>LU-разложение<a class="headerlink" href="#lu" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">3.2. </span>LU-разложение<a class="headerlink" href="#lu" title="Permalink to this headline">#</a></h1>
 <p>На практике оказывается, что проще работать не с самой матрицей, а с представлением её в виде произведения нескольких матриц, которое называется разложением. В данном разделе выводится алгоритм решения системы уравнений, представляющий исходную матрицу в виде произведения <span class="math notranslate nohighlight">\(\mathbf{A}=\mathbf{L}\mathbf{U}\)</span> и, затем, пользующийся прямой и обратной подстановкой.</p>
 <section id="id1">
-<h2>Внешнее произведение<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.2.1. </span>Внешнее произведение<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>Вывод алгоритма разложения основывается на внешнем произведении векторов (<em>outer product</em>). Для двух векторов <span class="math notranslate nohighlight">\(\mathbf{u} \in \real^m\)</span>, <span class="math notranslate nohighlight">\(\mathbf{v} \in \real^n\)</span> внешнее произведение является матрицей размера <span class="math notranslate nohighlight">\(m \times n\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\mathbf{u}\mathbf{v}^\top
@@ -531,14 +597,14 @@ u_m v_n &amp; u_m v_n &amp; \cdots &amp; u_m v_n
 <p>Другими словами, столбец <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> умножается на строку <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>.</p>
 <p>Произведение матриц <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B}\)</span> является суммой внешних произведений столбцов матрицы <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> на строки матрицы <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>, т.е.</p>
 <div class="math notranslate nohighlight" id="equation-matrouterprod">
-<span class="eqno">()<a class="headerlink" href="#equation-matrouterprod" title="Permalink to this equation">#</a></span>\[\mathbf{A}\mathbf{B} = \sum_{k=1}^n \mathbf{a}_k \mathbf{b}_k^\top.\]</div>
+<span class="eqno">(3.1)<a class="headerlink" href="#equation-matrouterprod" title="Permalink to this equation">#</a></span>\[\mathbf{A}\mathbf{B} = \sum_{k=1}^n \mathbf{a}_k \mathbf{b}_k^\top.\]</div>
 <p>Рассмотрим теперь произведение нижнетреугольной матрицы на верхнетреугольную <span class="math notranslate nohighlight">\(\mathbf{L}\mathbf{U}\)</span>.
-Обозначим <span class="math notranslate nohighlight">\(\mathbf{l}_k\)</span> столбцы матрицы <span class="math notranslate nohighlight">\(\mathbf{L}\)</span>, а <span class="math notranslate nohighlight">\(\mathbf{u}_k^\top\)</span> – строки матрицы <span class="math notranslate nohighlight">\(\mathbf{U}\)</span>. Тогда произведение запишется в виде <a class="reference internal" href="#equation-matrouterprod">()</a></p>
+Обозначим <span class="math notranslate nohighlight">\(\mathbf{l}_k\)</span> столбцы матрицы <span class="math notranslate nohighlight">\(\mathbf{L}\)</span>, а <span class="math notranslate nohighlight">\(\mathbf{u}_k^\top\)</span> – строки матрицы <span class="math notranslate nohighlight">\(\mathbf{U}\)</span>. Тогда произведение запишется в виде <a class="reference internal" href="#equation-matrouterprod">(3.1)</a></p>
 <div class="math notranslate nohighlight">
 \[\mathbf{L}\mathbf{U} = \sum_{k=1}^n \mathbf{l}_k \mathbf{u}_k^\top.\]</div>
 <p>Первая строка этого произведения имеет вид (здесь <span class="math notranslate nohighlight">\(\mathbf{e}_1^\top\)</span> – первая строка единичной матрицы, домножение на неё слева выделяет первую строку)</p>
 <div class="math notranslate nohighlight" id="equation-lu-row">
-<span class="eqno">()<a class="headerlink" href="#equation-lu-row" title="Permalink to this equation">#</a></span>\[\mathbf{e}_1^\top \sum_{k=1}^n \mathbf{l}_k \mathbf{u}_k^\top
+<span class="eqno">(3.2)<a class="headerlink" href="#equation-lu-row" title="Permalink to this equation">#</a></span>\[\mathbf{e}_1^\top \sum_{k=1}^n \mathbf{l}_k \mathbf{u}_k^\top
 = \sum_{k=1}^n (\mathbf{e}_1^\top \mathbf{l}_k) \mathbf{u}_k^\top
 = L_{11} \mathbf{u}_1^\top,\]</div>
 <p>поскольку только первый элемент столбца <span class="math notranslate nohighlight">\(\mathbf{l}_k\)</span> ненулевой только у <span class="math notranslate nohighlight">\(\mathbf{l}_1\)</span>.
@@ -553,17 +619,17 @@ u_m v_n &amp; u_m v_n &amp; \cdots &amp; u_m v_n
 </div>
 <p>Первый же столбец <span class="math notranslate nohighlight">\(\mathbf{L}\mathbf{U}\)</span> имеет вид</p>
 <div class="math notranslate nohighlight" id="equation-lu-col">
-<span class="eqno">()<a class="headerlink" href="#equation-lu-col" title="Permalink to this equation">#</a></span>\[\Bigg( \sum_{k=1}^n \mathbf{l}_k \mathbf{u}_k^\top \Bigg) \mathbf{e}_1
+<span class="eqno">(3.3)<a class="headerlink" href="#equation-lu-col" title="Permalink to this equation">#</a></span>\[\Bigg( \sum_{k=1}^n \mathbf{l}_k \mathbf{u}_k^\top \Bigg) \mathbf{e}_1
 = \sum_{k=1}^n \mathbf{l}_k (\mathbf{u}_k^\top \mathbf{e}_1)
 = U_{11} \mathbf{l}_1.\]</div>
-<p>Воспользуемся свойствами <a class="reference internal" href="#equation-lu-row">()</a> и <a class="reference internal" href="#equation-lu-col">()</a> для вывода LU-разложения.</p>
+<p>Воспользуемся свойствами <a class="reference internal" href="#equation-lu-row">(3.2)</a> и <a class="reference internal" href="#equation-lu-col">(3.3)</a> для вывода LU-разложения.</p>
 </section>
 <section id="id2">
-<h2>Разложение<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.2.2. </span>Разложение<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <div class="proof proof-type-definition" id="id4">
 
     <div class="proof-title">
-        <span class="proof-type">Определение </span>
+        <span class="proof-type">Определение 3.2</span>
         
             <span class="proof-title-name">(LU-разложение)</span>
         
@@ -575,11 +641,11 @@ u_m v_n &amp; u_m v_n &amp; \cdots &amp; u_m v_n
 \]</div>
 <p>где <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> – нижнетреугольная матрица, а <span class="math notranslate nohighlight">\(\mathbf{U}\)</span> – верхнетреугольная матрица.</p>
 </div></div><p>LU-разложение сводится к нахождению <span class="math notranslate nohighlight">\(n^2 + n\)</span> неизвестных.</p>
-<p>Пусть диагональные элементы <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> единичны <span class="math notranslate nohighlight">\(L_{11} = L_{22} = \cdots = L_{nn} = 1\)</span>. Теперь, зная <span class="math notranslate nohighlight">\(L_{11} = 1\)</span>, применим <a class="reference internal" href="#equation-lu-row">()</a>, и получим</p>
+<p>Пусть диагональные элементы <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> единичны <span class="math notranslate nohighlight">\(L_{11} = L_{22} = \cdots = L_{nn} = 1\)</span>. Теперь, зная <span class="math notranslate nohighlight">\(L_{11} = 1\)</span>, применим <a class="reference internal" href="#equation-lu-row">(3.2)</a>, и получим</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{a}_1^\top = \mathbf{e}_1^\top \mathbf{A} = \mathbf{e}_1^\top (\mathbf{LU}) = \mathbf{u}_1^\top,\]</div>
 <p>т.е. первая строка матрицы <span class="math notranslate nohighlight">\(\mathbf{U}\)</span> равняется первой строке матрицы <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, <span class="math notranslate nohighlight">\(\mathbf{u}_1^\top = \mathbf{a}_1^\top\)</span>.</p>
-<p>На этом шаге нам стало известно значение <span class="math notranslate nohighlight">\(U_{11}\)</span>. Воспользуемся теперь <a class="reference internal" href="#equation-lu-col">()</a></p>
+<p>На этом шаге нам стало известно значение <span class="math notranslate nohighlight">\(U_{11}\)</span>. Воспользуемся теперь <a class="reference internal" href="#equation-lu-col">(3.3)</a></p>
 <div class="math notranslate nohighlight">
 \[\mathbf{a}_1 = \mathbf{A} \mathbf{e}_1 = (\mathbf{LU}) \mathbf{e}_1 = U_{11} \mathbf{l}_1,\]</div>
 <p>откуда следует выражение для первого столбца матрицы <span class="math notranslate nohighlight">\(\mathbf{L}\)</span></p>
@@ -602,7 +668,7 @@ u_m v_n &amp; u_m v_n &amp; \cdots &amp; u_m v_n
 <div class="proof proof-type-demo" id="id5">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 3.3</span>
         
     </div><div class="proof-content">
 </div></div><div class="demo"><p>Рассмотрим пример работы алгоритма на матрице размера <span class="math notranslate nohighlight">\(4 \times 4\)</span>. Исходную матрицу обозначим <code class="docutils literal notranslate"><span class="pre">A₁</span></code>, нижнетреугольную <code class="docutils literal notranslate"><span class="pre">L</span></code> проинициализируем единичной матрицей, а верхнетреугольную <code class="docutils literal notranslate"><span class="pre">U</span></code> нулями.</p>
@@ -620,7 +686,7 @@ u_m v_n &amp; u_m v_n &amp; \cdots &amp; u_m v_n
 </div>
 </div>
 </div>
-<p>Первый шаг алгоритма основывается на <a class="reference internal" href="#equation-lu-row">()</a>: вычисляем первую строку <code class="docutils literal notranslate"><span class="pre">U</span></code></p>
+<p>Первый шаг алгоритма основывается на <a class="reference internal" href="#equation-lu-row">(3.2)</a>: вычисляем первую строку <code class="docutils literal notranslate"><span class="pre">U</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">:</span><span class="p">]</span><span class="w"> </span><span class="o">.=</span><span class="w"> </span><span class="n">A₁</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">:</span><span class="p">]</span><span class="w"></span>
@@ -638,7 +704,7 @@ u_m v_n &amp; u_m v_n &amp; \cdots &amp; u_m v_n
 </div>
 </div>
 </div>
-<p>Теперь вычислим первый столбец <code class="docutils literal notranslate"><span class="pre">L</span></code> <a class="reference internal" href="#equation-lu-col">()</a></p>
+<p>Теперь вычислим первый столбец <code class="docutils literal notranslate"><span class="pre">L</span></code> <a class="reference internal" href="#equation-lu-col">(3.3)</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">.=</span><span class="w"> </span><span class="n">A₁</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">./</span><span class="w"> </span><span class="n">U</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"></span>
@@ -773,7 +839,7 @@ u_m v_n &amp; u_m v_n &amp; \cdots &amp; u_m v_n
 <div class="proof proof-type-function" id="id6">
 <span id="function-lufact"></span>
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 3.4</span>
         
             <span class="proof-title-name">(lufact)</span>
         
@@ -803,11 +869,11 @@ u_m v_n &amp; u_m v_n &amp; \cdots &amp; u_m v_n
 </div>
 </div></div></section>
 <section id="id3">
-<h2>Решение системы уравнений<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">3.2.3. </span>Решение системы уравнений<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <div class="proof proof-type-algorithm" id="id7">
 
     <div class="proof-title">
-        <span class="proof-type">Алгоритм </span>
+        <span class="proof-type">Алгоритм 3.5</span>
         
             <span class="proof-title-name">(Решение системы уравнений через LU-разложение)</span>
         
@@ -823,7 +889,7 @@ u_m v_n &amp; u_m v_n &amp; \cdots &amp; u_m v_n
 <div class="proof proof-type-demo" id="id8">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 3.6</span>
         
             <span class="proof-title-name">(Пример решения)</span>
         
@@ -903,6 +969,20 @@ u_m v_n &amp; u_m v_n &amp; \cdots &amp; u_m v_n
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="triangular.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3.1. </span>Треугольные системы</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="plu.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.3. </span>PLU-разложение</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

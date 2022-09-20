@@ -1,21 +1,3 @@
----
-jupytext:
-  formats: md:myst
-  text_representation:
-    extension: .md
-    format_name: myst
-kernelspec:
-  display_name: Julia
-  language: julia
-  name: julia-1.6
----
-
-```{code-cell}
-:tags: [remove-cell]
-
-include("../src.jl")
-```
-
 # Треугольные системы
 
 Прежде всего рассмотрим решение треугольной системы.
@@ -93,66 +75,4 @@ x_1 &= \frac{b_1 - (U_{12} x_2 + U_{13}x_3 + U_{14}x_4)}{U_{11}}.
 
 ## Реализация
 
-```{proof:function} forwardsub
-
-**Алгоритм прямой подстановки**
-
-:::julia
-"Возвращает решение системы `L`x = `b`, где `L` - нижнетреугольная квадратная матрица."
-function forwardsub(L::AbstractMatrix, b::AbstractVector)
-    x = float(similar(b))
-    x[1] = b[1] / L[1, 1]
-    for i in 2:size(L, 1)
-        s = sum(L[i, j]*x[j] for j in 1:i-1)
-        x[i] = (b[i] - s) / L[i, i]
-    end
-    return x
-end
-:::
-
-Конструкция `similar(b)` создаёт неинициализированный массив того же типа и размера, что и `b`.
-Вектор `b` может содержать, например, и целые числа `::Integer`.
-Поскольку в алгоритме деление приведёт к появлению чисел с плавающей точкой, массив `x` сразу приводится к массиву на основе `::Float`-чисел конструкцией `float(similar(b))`.
-```
-
-```{proof:function} backwardsub
-
-**Алгоритм обратной подстановки**
-
-:::julia
-"Возвращает решение системы `U`x = `b`, где `U` - верхнетреугольная квадратная матрица."
-function backwardsub(U::AbstractMatrix, b::AbstractVector)
-    n = size(U, 1)
-    x = float(similar(b))
-    x[n] = b[n] / U[n, n]
-    for i in size(U, 1)-1:-1:1
-        s = sum(U[i, j] * x[j] for j in i+1:n)
-        x[i] = (b[i] - s) / U[i, i]
-    end
-    return x
-end
-:::
-```
-
-```{proof:demo}
-```
-```{raw} html
-<div class="demo">
-```
-
-Применение прямой подстановки
-
-```{code-cell}
-A = [
-    1 0 0;
-    2 1 0;
-    4 2 3;
-]
-b = [2, 3, 5]
-x = forwardsub(A, b)
-x, A*x - b
-```
-
-```{raw} html
-</div>
-```
+Реализация алгоритмов подстановки входит в {ref}`домашнее задание <syslinear-ex>`.

@@ -188,6 +188,70 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro/index.html">
+   2. Введение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/float.html">
+     2.1. Числа с плавающей точкой
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/cond.html">
+     2.2. Обусловленность задач
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../syslinear/index.html">
+   3. Линейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/triangular.html">
+     3.1. Треугольные системы
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/lu.html">
+     3.2. LU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/plu.html">
+     3.3. PLU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/conditioning.html">
+     3.4. Обусловленность линейных систем
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/decompose_overview.html">
+     3.5. Обзор других разложений и задач
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/ex.html">
+     3.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -521,8 +585,8 @@ title="Print to PDF"
 <h2><span class="section-number">1.10.1. </span>Пример разработки модуля<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>Ниже показана разработка модуля в несколько этапов. В нём привычная структура <code class="docutils literal notranslate"><span class="pre">Point{T}</span></code>, а её интерфейс оборачивается в модуль. Затем, для примера, структура встраивается в существующую экосистему языка: можно скалярно умножать точки, складывать или умножать на скаляр.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="fb88e719-ba9c-4cef-976f-b7a288476527" name="f95f3e4b-56fb-4808-8efd-2e4df3fe4587" type="radio">
-</input><label class="sd-tab-label" for="fb88e719-ba9c-4cef-976f-b7a288476527">
+<input checked="checked" id="ce90807e-9124-4cb0-8423-edd53c803adb" name="bcee67a5-a52a-4bf9-bce0-479e2eafc29c" type="radio">
+</input><label class="sd-tab-label" for="ce90807e-9124-4cb0-8423-edd53c803adb">
 Базовая разработка</label><div class="sd-tab-content docutils">
 <p><code class="file docutils literal notranslate"><span class="pre">Points.jl</span></code></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">Points</span><span class="w"></span>
@@ -550,8 +614,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="191198ab-fee7-42a5-8449-5add1bf2fae5" name="f95f3e4b-56fb-4808-8efd-2e4df3fe4587" type="radio">
-</input><label class="sd-tab-label" for="191198ab-fee7-42a5-8449-5add1bf2fae5">
+<input id="ddd8b0fd-9db0-409f-9de4-fe692269b695" name="bcee67a5-a52a-4bf9-bce0-479e2eafc29c" type="radio">
+</input><label class="sd-tab-label" for="ddd8b0fd-9db0-409f-9de4-fe692269b695">
 Скалярное произведение</label><div class="sd-tab-content docutils">
 <p><code class="file docutils literal notranslate"><span class="pre">Points.jl</span></code></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">Points</span><span class="w"></span>
@@ -584,8 +648,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="4f0920fb-ed3b-46cf-af66-18fd19da0527" name="f95f3e4b-56fb-4808-8efd-2e4df3fe4587" type="radio">
-</input><label class="sd-tab-label" for="4f0920fb-ed3b-46cf-af66-18fd19da0527">
+<input id="35253cd0-eb51-4e37-bfbd-fe43ebf78f06" name="bcee67a5-a52a-4bf9-bce0-479e2eafc29c" type="radio">
+</input><label class="sd-tab-label" for="35253cd0-eb51-4e37-bfbd-fe43ebf78f06">
 Линейные операции</label><div class="sd-tab-content docutils">
 <p><code class="file docutils literal notranslate"><span class="pre">Points.jl</span></code></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">Points</span><span class="w"></span>

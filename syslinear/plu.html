@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>PLU-разложение &#8212; Практикум по вычислительной теплофизике</title>
+    <title>3.3. PLU-разложение &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.4. Обусловленность линейных систем" href="conditioning.html" />
+    <link rel="prev" title="3.2. LU-разложение" href="lu.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -184,6 +186,70 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../julia/ex.html">
      1.11. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro/index.html">
+   2. Введение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/float.html">
+     2.1. Числа с плавающей точкой
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/cond.html">
+     2.2. Обусловленность задач
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   3. Линейные системы уравнений
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="triangular.html">
+     3.1. Треугольные системы
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lu.html">
+     3.2. LU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     3.3. PLU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="conditioning.html">
+     3.4. Обусловленность линейных систем
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="decompose_overview.html">
+     3.5. Обзор других разложений и задач
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     3.6. Задания
     </a>
    </li>
   </ul>
@@ -457,12 +523,17 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   Выбор главного элемента
+   3.3.1. Выбор главного элемента
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   PLU-разложение
+   3.3.2. PLU-разложение
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plu-julia">
+   3.3.3. PLU в Julia
   </a>
  </li>
 </ul>
@@ -486,12 +557,17 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   Выбор главного элемента
+   3.3.1. Выбор главного элемента
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   PLU-разложение
+   3.3.2. PLU-разложение
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plu-julia">
+   3.3.3. PLU в Julia
   </a>
  </li>
 </ul>
@@ -505,12 +581,12 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="plu">
-<h1>PLU-разложение<a class="headerlink" href="#plu" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">3.3. </span>PLU-разложение<a class="headerlink" href="#plu" title="Permalink to this headline">#</a></h1>
 <p>Разложение, представленное в предыдущем разделе, существует не всегда.</p>
 <div class="proof proof-type-demo" id="id4">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 3.7</span>
         
     </div><div class="proof-content">
 </div></div><div class="demo"><p>Применим разложение к следующей матрице.</p>
@@ -604,7 +680,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>Из вида матрицы <code class="docutils literal notranslate"><span class="pre">A₂</span></code> понятно, что на втором шаге возникнет деление на ноль. А именно, при присваивании матрице <code class="docutils literal notranslate"><span class="pre">U</span></code> новой строки всё нормально, первое деление на ноль возникает при подсчёте столбца матрицы <code class="docutils literal notranslate"><span class="pre">L</span></code>, поскольку <code class="docutils literal notranslate"><span class="pre">U[2,</span> <span class="pre">2]</span> <span class="pre">==</span> <span class="pre">A₂[0,</span> <span class="pre">0]</span></code></p>
+<p>Из вида матрицы <code class="docutils literal notranslate"><span class="pre">A₂</span></code> понятно, что на втором шаге возникнет деление на ноль. А именно, при присваивании матрице <code class="docutils literal notranslate"><span class="pre">U</span></code> новой строки всё нормально, первое деление на ноль возникает при подсчёте столбца матрицы <code class="docutils literal notranslate"><span class="pre">L</span></code>, поскольку <code class="docutils literal notranslate"><span class="pre">U[2,</span> <span class="pre">2]</span> <span class="pre">==</span> <span class="pre">A₂[2,</span> <span class="pre">2]</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">:</span><span class="p">]</span><span class="w"> </span><span class="o">.=</span><span class="w"> </span><span class="n">A₂</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="o">:</span><span class="p">]</span><span class="w"></span>
@@ -642,8 +718,8 @@ title="Print to PDF"
 </div>
 </div><p>Чтобы подобной ситуации для обратимых матриц не возникало, достаточно на итерации выбирать главный элемент.</p>
 <section id="id1">
-<h2>Выбор главного элемента<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
-<p>Гланым элементом называют диагональный элемент матрицы <code class="docutils literal notranslate"><span class="pre">U[k,</span> <span class="pre">k]</span></code>, который возникает в строке функции <code class="xref std std-numref docutils literal notranslate"><span class="pre">Функция</span> <span class="pre">{number}</span></code></p>
+<h2><span class="section-number">3.3.1. </span>Выбор главного элемента<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>Гланым элементом (англ., <em>pivot</em>) называют диагональный элемент матрицы <code class="docutils literal notranslate"><span class="pre">U[k,</span> <span class="pre">k]</span></code>, который возникает в строке функции <a class="reference internal" href="lu.html#function-lufact"><span class="std std-numref">Функция 3.4</span></a></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">for</span><span class="w"> </span><span class="n">k</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="w"></span>
 <span class="w">    </span><span class="n">U</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="o">:</span><span class="p">]</span><span class="w"> </span><span class="o">.=</span><span class="w"> </span><span class="n">Aₖ</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="o">:</span><span class="p">]</span><span class="w"></span>
 <span class="w">    </span><span class="n">L</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="o">.=</span><span class="w"> </span><span class="n">Aₖ</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">]</span><span class="w"> </span><span class="o">./</span><span class="w"> </span><span class="n">U</span><span class="p">[</span><span class="n">k</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">]</span><span class="w"></span>
@@ -656,7 +732,7 @@ title="Print to PDF"
 <div class="proof proof-type-demo" id="id5">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 3.8</span>
         
     </div><div class="proof-content">
 </div></div><div class="demo"><p>Рассмотрим ту же матрицу, что и в начале раздела.</p>
@@ -825,23 +901,22 @@ p = argmax(abs.(A₄[:, 4])) = 2
 </div>
 </div>
 <p><em>Voilà!</em></p>
-</div><p>Справедливо следующее утверждение <span id="id2">[<a class="reference internal" href="../appendix/bibliography.html#id4" title="Tobin A. Driscoll and Richard J. Braun. Fundamentals of numerical computation. Society for Industrial and Applied Mathematics, 2017. ISBN 978-1-61197-507-9. URL: https://tobydriscoll.net/project/fnc/.">ADJB17</a>]</span>.</p>
-<div class="proof proof-type-proposition" id="id6">
+</div><div class="proof proof-type-proposition" id="id6">
 
     <div class="proof-title">
-        <span class="proof-type">Утверждение </span>
+        <span class="proof-type">Утверждение 3.9</span>
         
     </div><div class="proof-content">
-<p>LU-разложение с выбором главной строки выполнимо, если производится над обратимой матрицей.</p>
+<p>LU-разложение с выбором главной строки выполнимо, если производится над обратимой матрицей <span id="id2">[<a class="reference internal" href="../appendix/bibliography.html#id4" title="Tobin A. Driscoll and Richard J. Braun. Fundamentals of numerical computation. Society for Industrial and Applied Mathematics, 2017. ISBN 978-1-61197-507-9. URL: https://tobydriscoll.net/project/fnc/.">ADJB17</a>]</span>.</p>
 </div></div><p>Несмотря на это утверждение, существуют примеры обратимых матриц, для которых <em>численный алгоритм</em> разложения всё-таки не работает, однако на практике такие матрицы встречаются редко.</p>
 </section>
 <section id="id3">
-<h2>PLU-разложение<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
-<p>Теперь есть всё, чтобы построить LU-разложение с выбором главной строки. Такое разложение называют PLU-разложением, где P от row-pivoting (<em>pivot</em> – главный элемент).</p>
+<h2><span class="section-number">3.3.2. </span>PLU-разложение<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<p>Теперь есть всё, чтобы построить LU-разложение с выбором главной строки. Такое разложение называют PLU-разложением (англ., row-pivoting LU factorization).</p>
 <div class="proof proof-type-definition" id="id7">
 <span id="index-0"></span>
     <div class="proof-title">
-        <span class="proof-type">Определение </span>
+        <span class="proof-type">Определение 3.10</span>
         
             <span class="proof-title-name">(PLU-разложение)</span>
         
@@ -862,7 +937,7 @@ p = argmax(abs.(A₄[:, 4])) = 2
 <div class="proof proof-type-function" id="id8">
 
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 3.11</span>
         
             <span class="proof-title-name">(plufact)</span>
         
@@ -895,7 +970,7 @@ p = argmax(abs.(A₄[:, 4])) = 2
 </div></div><div class="proof proof-type-demo" id="id9">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 3.12</span>
         
             <span class="proof-title-name">(Пример решения системы)</span>
         
@@ -965,6 +1040,57 @@ p = argmax(abs.(A₄[:, 4])) = 2
 </div><p>PLU-разложение является центральным алгоритмом для решения систем линейных уравнений общего вида. Его вычислительная сложность (число операций с плавающей точкой: флопс, flops) составляет <span class="math notranslate nohighlight">\(\propto \frac{2}{3} n^3\)</span>, где <span class="math notranslate nohighlight">\(n\)</span> – размер матрицы системы.</p>
 <p>В дальнейшем, упоминая LU-разложение, мы для краткости будем подразумевать PLU-разложение.</p>
 </section>
+<section id="plu-julia">
+<h2><span class="section-number">3.3.3. </span>PLU в Julia<a class="headerlink" href="#plu-julia" title="Permalink to this headline">#</a></h2>
+<p>В Julia PLU разложение называется просто LU разложением и доступно в модуле <code class="docutils literal notranslate"><span class="pre">LinearAlgebra</span></code>.</p>
+<ul class="simple">
+<li><p>Функция <code class="docutils literal notranslate"><span class="pre">lu(A)</span></code> возвращает объект разложения <code class="docutils literal notranslate"><span class="pre">F</span></code>, содержащий</p>
+<ul>
+<li><p>множители <code class="docutils literal notranslate"><span class="pre">F.L</span></code> и <code class="docutils literal notranslate"><span class="pre">F.U</span></code></p></li>
+<li><p>матрицу перестановок <code class="docutils literal notranslate"><span class="pre">F.P</span></code></p></li>
+<li><p>вектор перестановок <code class="docutils literal notranslate"><span class="pre">F.p</span></code></p></li>
+</ul>
+</li>
+<li><p>Для решения системы уравнений можно пользоваться самим объектом разложения</p></li>
+<li><p>Решение системы можно выполнять</p>
+<ul>
+<li><p>оператором <code class="docutils literal notranslate"><span class="pre">F</span> <span class="pre">\</span> <span class="pre">b</span></code>, тогда решение будет аллоцироваться</p></li>
+<li><p>функцией <code class="docutils literal notranslate"><span class="pre">ldiv!(x,</span> <span class="pre">F,</span> <span class="pre">b)</span></code>, тогда решение не будет аллоцироваться и запишется в <code class="docutils literal notranslate"><span class="pre">x</span></code></p></li>
+</ul>
+</li>
+</ul>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">5</span><span class="w">  </span><span class="mi">1</span><span class="w">  </span><span class="mi">0</span><span class="w">  </span><span class="mi">9</span><span class="p">;</span><span class="w"> </span><span class="mi">4</span><span class="w">  </span><span class="mi">2</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w">  </span><span class="mi">4</span><span class="p">;</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="o">-</span><span class="mi">1</span><span class="w">  </span><span class="mi">4</span><span class="w">  </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="mi">5</span><span class="w">  </span><span class="mi">7</span><span class="w">  </span><span class="mi">4</span><span class="w">  </span><span class="mi">6</span><span class="p">];</span><span class="w"></span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">];</span><span class="w"></span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">lu</span><span class="p">(</span><span class="n">A</span><span class="p">);</span><span class="w"></span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
+<span class="go">4-element Vector{Float64}:</span>
+<span class="go"> 0.0</span>
+<span class="go"> 0.0</span>
+<span class="go"> 0.0</span>
+<span class="go"> 0.0</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">norm</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">L</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">F</span><span class="o">.</span><span class="n">U</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="o">:</span><span class="p">])</span><span class="w"></span>
+<span class="go">5.570606194861277e-16</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">F</span><span class="o">.</span><span class="n">p</span><span class="w"></span>
+<span class="go">4-element Vector{Int64}:</span>
+<span class="go"> 3</span>
+<span class="go"> 4</span>
+<span class="go"> 2</span>
+<span class="go"> 1</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">ldiv!</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">F</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"></span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">norm</span><span class="p">(</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">F</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"></span>
+<span class="go">0.0</span>
+</pre></div>
+</div>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>Технические детали здесь опускаются, диспатч оператора <code class="docutils literal notranslate"><span class="pre">\</span></code> <a class="reference external" href="https://github.com/JuliaLang/julia/blob/eea2ca79ea00060080de64c1449454bb86bc10cf/stdlib/LinearAlgebra/src/generic.jl#L1065-L1113">немного сложнее</a>.</p>
+</aside>
+<p>В чём разница между <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">\</span> <span class="pre">b</span></code> и <code class="docutils literal notranslate"><span class="pre">F</span> <span class="pre">\</span> <span class="pre">b</span></code>? У оператора <code class="docutils literal notranslate"><span class="pre">\</span></code> есть несколько методов. Наиболее общий из них принимает на вход <code class="docutils literal notranslate"><span class="pre">AbstractMatrix</span></code> и вектор <code class="docutils literal notranslate"><span class="pre">AsbtractVector</span></code>. Этот метод проверяет, квадратная ли система, и является ли она треугольной. Если условия не выполнены, то применяется LU разложение, и вызывается второй метод – <code class="docutils literal notranslate"><span class="pre">F</span> <span class="pre">\</span> <span class="pre">b</span></code>. Таким образом, в первом случае производятся проверки и LU разложение, а во втором нет – разложение уже хранится в <code class="docutils literal notranslate"><span class="pre">F</span></code> и достаточно применить прямую/обратную подстановки.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -994,6 +1120,20 @@ p = argmax(abs.(A₄[:, 4])) = 2
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="lu.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3.2. </span>LU-разложение</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="conditioning.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.4. </span>Обусловленность линейных систем</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

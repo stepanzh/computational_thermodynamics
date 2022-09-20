@@ -188,6 +188,70 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro/index.html">
+   2. Введение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/float.html">
+     2.1. Числа с плавающей точкой
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/cond.html">
+     2.2. Обусловленность задач
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../syslinear/index.html">
+   3. Линейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/triangular.html">
+     3.1. Треугольные системы
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/lu.html">
+     3.2. LU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/plu.html">
+     3.3. PLU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/conditioning.html">
+     3.4. Обусловленность линейных систем
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/decompose_overview.html">
+     3.5. Обзор других разложений и задач
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/ex.html">
+     3.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -497,8 +561,8 @@ title="Print to PDF"
 <p>При запуске запускается режим интерпретатора. Из него можно переключиться в другие режимы, а чтобы вернуться в режим интерпретатора из любого другого, нужно очистить строку <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">E</kbd></kbd>, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">U</kbd></kbd> и нажать <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">←</kbd> <kbd class="kbd docutils literal notranslate">Backspace</kbd></kbd>.</p>
 <p>Чтобы выйти из REPL, очистите строку и нажмите <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">D</kbd></kbd>.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="a5ab3ec0-fbcd-496e-b54b-5abdbc365003" name="0377b567-d323-4670-99f2-06af2eb32be6" type="radio">
-</input><label class="sd-tab-label" for="a5ab3ec0-fbcd-496e-b54b-5abdbc365003">
+<input checked="checked" id="1f92b3ed-75cf-4b39-8e7b-ae3e1302cd45" name="9030b814-953e-473b-9baf-ac61ab13f564" type="radio">
+</input><label class="sd-tab-label" for="1f92b3ed-75cf-4b39-8e7b-ae3e1302cd45">
 Интерпретатор</label><div class="sd-tab-content docutils">
 <p>В нём вы можете исполнять команды языка и переходить в другие режимы. Prompt-сообщение <code class="docutils literal notranslate"><span class="pre">julia&gt;</span></code>.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Hello, world&quot;</span><span class="p">)</span><span class="w"></span>
@@ -508,8 +572,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="2b1b95c5-e65d-41fd-a837-67e55f7ef2d6" name="0377b567-d323-4670-99f2-06af2eb32be6" type="radio">
-</input><label class="sd-tab-label" for="2b1b95c5-e65d-41fd-a837-67e55f7ef2d6">
+<input id="2eae2e4f-8cd2-4547-9b1f-2a11d29872cf" name="9030b814-953e-473b-9baf-ac61ab13f564" type="radio">
+</input><label class="sd-tab-label" for="2eae2e4f-8cd2-4547-9b1f-2a11d29872cf">
 Помощь</label><div class="sd-tab-content docutils">
 <p>Здесь можно получить помощь и документацию к коду. Переход по нажатию <kbd class="kbd docutils literal notranslate">?</kbd>. Prompt-сообщение <code class="docutils literal notranslate"><span class="pre">help?&gt;</span></code>.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="o">?</span><span class="w"></span>
@@ -525,8 +589,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="35e4c415-fc30-4861-85c2-539ee7ddcc56" name="0377b567-d323-4670-99f2-06af2eb32be6" type="radio">
-</input><label class="sd-tab-label" for="35e4c415-fc30-4861-85c2-539ee7ddcc56">
+<input id="ea63bf03-3fd5-49b1-a280-575cc8c84255" name="9030b814-953e-473b-9baf-ac61ab13f564" type="radio">
+</input><label class="sd-tab-label" for="ea63bf03-3fd5-49b1-a280-575cc8c84255">
 Менеджер пакетов</label><div class="sd-tab-content docutils">
 <p>Посвящён работе c окружениями и со сторонними пакетами <a class="footnote-reference brackets" href="#pkgenv" id="id3">1</a>. Команда перехода <kbd class="kbd docutils literal notranslate">]</kbd>. Prompt-сообщение <code class="docutils literal notranslate"><span class="pre">(&#64;v1.6)</span> <span class="pre">pkg&gt;</span></code>. Этот режим нам пока не понадобится. Для знакомых с Python, этот режим обладает функционалом pip и virtualenv.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
@@ -536,8 +600,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="19fb573e-87b8-4496-9f7f-88e2f5ea5080" name="0377b567-d323-4670-99f2-06af2eb32be6" type="radio">
-</input><label class="sd-tab-label" for="19fb573e-87b8-4496-9f7f-88e2f5ea5080">
+<input id="a106600b-056a-4fc4-98e8-8b92039f60eb" name="9030b814-953e-473b-9baf-ac61ab13f564" type="radio">
+</input><label class="sd-tab-label" for="a106600b-056a-4fc4-98e8-8b92039f60eb">
 Командная оболочка</label><div class="sd-tab-content docutils">
 <p>В этом режиме можно работать с командной оболочкой, не выходя из Julia REPL. Команда перехода <kbd class="kbd docutils literal notranslate">;</kbd>. Prompt-сообщение <code class="docutils literal notranslate"><span class="pre">shell&gt;</span></code>.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="p">;</span><span class="w"></span>

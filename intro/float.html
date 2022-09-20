@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Числа с плавающей точкой &#8212; Практикум по вычислительной теплофизике</title>
+    <title>2.1. Числа с плавающей точкой &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2.2. Обусловленность задач" href="cond.html" />
+    <link rel="prev" title="2. Введение" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -184,6 +186,70 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../julia/ex.html">
      1.11. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   2. Введение
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2.1. Числа с плавающей точкой
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cond.html">
+     2.2. Обусловленность задач
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../syslinear/index.html">
+   3. Линейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/triangular.html">
+     3.1. Треугольные системы
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/lu.html">
+     3.2. LU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/plu.html">
+     3.3. PLU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/conditioning.html">
+     3.4. Обусловленность линейных систем
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/decompose_overview.html">
+     3.5. Обзор других разложений и задач
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../syslinear/ex.html">
+     3.6. Задания
     </a>
    </li>
   </ul>
@@ -457,17 +523,22 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Множество чисел с плавающей точкой
+   2.1.1. Множество чисел с плавающей точкой
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   Числа двойной точности
+   2.1.2. Числа двойной точности
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   Особенности арифметики чисел с плавающей точкой
+   2.1.3. Особенности арифметики чисел с плавающей точкой
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#float">
+   2.1.4. Меры предосторожности и практика работы с float-числами
   </a>
  </li>
 </ul>
@@ -491,17 +562,22 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Множество чисел с плавающей точкой
+   2.1.1. Множество чисел с плавающей точкой
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   Числа двойной точности
+   2.1.2. Числа двойной точности
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   Особенности арифметики чисел с плавающей точкой
+   2.1.3. Особенности арифметики чисел с плавающей точкой
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#float">
+   2.1.4. Меры предосторожности и практика работы с float-числами
   </a>
  </li>
 </ul>
@@ -515,26 +591,26 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Числа с плавающей точкой<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
-<p>Множество действительных чисел <span class="math notranslate nohighlight">\(\real\)</span> неограничено и непрерывно. Однако, в вычислительной практике используется множество <em>чисел с плавающей точкой</em> <span class="math notranslate nohighlight">\(\floatset\subset\real\)</span>, которое ограничено и дискретно. Это порождает особенности арифметики.</p>
+<h1><span class="section-number">2.1. </span>Числа с плавающей точкой<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<p>Множество действительных чисел <span class="math notranslate nohighlight">\(\real\)</span> неограничено и непрерывно. Однако, в вычислительной практике используется множество <em>чисел с плавающей точкой</em> <span class="math notranslate nohighlight">\(\floatset\subset\real\)</span>, которое ограничено и дискретно. Это множество имеет арифметику, отличающуюся от арифметики в действительных чисел.</p>
 <section id="id2">
-<h2>Множество чисел с плавающей точкой<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1.1. </span>Множество чисел с плавающей точкой<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <span class="target" id="index-0"></span><span class="target" id="index-1"></span><div class="proof proof-type-definition" id="id5">
 <span id="index-2"></span>
     <div class="proof-title">
-        <span class="proof-type">Определение </span>
+        <span class="proof-type">Определение 2.1</span>
         
             <span class="proof-title-name">(Число с плавающей точкой)</span>
         
     </div><div class="proof-content">
 <p>Множество <strong>чисел с плавающей точкой</strong> <span class="math notranslate nohighlight">\(\floatset\)</span> состоит из нуля и чисел вида</p>
 <div class="math notranslate nohighlight" id="equation-floatpoint">
-<span class="eqno">()<a class="headerlink" href="#equation-floatpoint" title="Permalink to this equation">#</a></span>\[\pm (1 + f) \times 2^n,\]</div>
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-floatpoint" title="Permalink to this equation">#</a></span>\[\pm (1 + f) \times 2^n,\]</div>
 <p>где целое число <span class="math notranslate nohighlight">\(n\in\integer\)</span> называют <strong>экспонентой</strong>, а <span class="math notranslate nohighlight">\(1+f\)</span> <strong>мантиссой</strong>, при этом <span class="math notranslate nohighlight">\(f\)</span> имеет вид</p>
 <div class="math notranslate nohighlight" id="equation-mantissa">
-<span class="eqno">()<a class="headerlink" href="#equation-mantissa" title="Permalink to this equation">#</a></span>\[f = \sum_{i=1}^d b_i \, 2^{-i}, \quad b_i\in\{0,1\},\]</div>
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-mantissa" title="Permalink to this equation">#</a></span>\[f = \sum_{i=1}^d b_i \, 2^{-i}, \quad b_i\in\{0,1\},\]</div>
 <p>где натуральное <span class="math notranslate nohighlight">\(d\)</span> называют (в данном случае) двоичной <strong>точностью</strong>.</p>
-<p>Можно сказать, что <span class="math notranslate nohighlight">\(f\)</span> <a class="reference internal" href="#equation-mantissa">()</a> является дробной частью мантиссы.</p>
+<p>Можно сказать, что <span class="math notranslate nohighlight">\(f\)</span> <a class="reference internal" href="#equation-mantissa">(2.2)</a> является дробной частью мантиссы.</p>
 </div></div><p>Используя нотацию из позиционных систем счисления, можно записать <em>в двоичной системе</em></p>
 <div class="math notranslate nohighlight">
 \[1 + f = 1 + \overline{b_1 b_2 ... b_d} = 1.\overline{b_1 b_2 ... b_d} \in [1,2).\]</div>
@@ -544,7 +620,7 @@ title="Print to PDF"
 <div class="proof proof-type-example" id="id6">
 
     <div class="proof-title">
-        <span class="proof-type">Пример </span>
+        <span class="proof-type">Пример 2.2</span>
         
     </div><div class="proof-content">
 <p>Рассмотрим числа с точностью <span class="math notranslate nohighlight">\(d = 3\)</span>. Для <span class="math notranslate nohighlight">\(n=0\)</span> получим <span class="math notranslate nohighlight">\(8\)</span> чисел</p>
@@ -573,7 +649,7 @@ title="Print to PDF"
 \[\frac{|\float(x)-x|}{|x|} \le \frac{2^{n-d-1}}{2^n} \le \frac{1}{2}\macheps.\]</div>
 </section>
 <section id="id3">
-<h2>Числа двойной точности<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1.2. </span>Числа двойной точности<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <aside class="margin sidebar" id="index-5">
 <p class="sidebar-title"></p>
 <p>Последняя версия стандарта – IEEE 754-2019.</p>
@@ -587,10 +663,10 @@ title="Print to PDF"
 1 бит  11 бит                           52 бита
 </pre></div>
 </div>
-<p>Таким образом для <code class="docutils literal notranslate"><span class="pre">Float64</span></code> <span class="math notranslate nohighlight">\(d=52\)</span> <a class="reference internal" href="#equation-mantissa">()</a>, а машинная точность <span class="math notranslate nohighlight">\(\macheps\)</span> составляет</p>
+<p>Таким образом для <code class="docutils literal notranslate"><span class="pre">Float64</span></code> <span class="math notranslate nohighlight">\(d=52\)</span> <a class="reference internal" href="#equation-mantissa">(2.2)</a>, а машинная точность <span class="math notranslate nohighlight">\(\macheps\)</span> составляет</p>
 <div class="math notranslate nohighlight" id="equation-macheps-float64">
-<span class="eqno">()<a class="headerlink" href="#equation-macheps-float64" title="Permalink to this equation">#</a></span>\[\macheps = 2^{-52} \approx 2.2 \times 10^{-16}.\]</div>
-<p>Экспонента <span class="math notranslate nohighlight">\(n\)</span> <a class="reference internal" href="#equation-floatpoint">()</a> принимает значения <span class="math notranslate nohighlight">\(-1022 \le n \le 1023\)</span>. Максимальное значение в <code class="docutils literal notranslate"> <span class="pre">Float64</span></code> составляет почти <span class="math notranslate nohighlight">\(2^{1024} \approx 2 \times 2^{308}\)</span>. Числа крупнее принимают специальное значение-бесконечность <code class="docutils literal notranslate"><span class="pre">Inf</span></code>. Наименьшим положительным числом является <span class="math notranslate nohighlight">\(2^{-1022} \approx 2 \times 10^{-308}\)</span>, меньшие его становятся нулём. Отрицательные аналоги работают схожим образом.</p>
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-macheps-float64" title="Permalink to this equation">#</a></span>\[\macheps = 2^{-52} \approx 2.2 \times 10^{-16}.\]</div>
+<p>Экспонента <span class="math notranslate nohighlight">\(n\)</span> <a class="reference internal" href="#equation-floatpoint">(2.1)</a> принимает значения <span class="math notranslate nohighlight">\(-1022 \le n \le 1023\)</span>. Максимальное значение в <code class="docutils literal notranslate"> <span class="pre">Float64</span></code> составляет почти <span class="math notranslate nohighlight">\(2^{1024} \approx 2 \times 10^{308}\)</span>. Числа крупнее принимают специальное значение-бесконечность <code class="docutils literal notranslate"><span class="pre">Inf</span></code>. Наименьшим положительным числом является <span class="math notranslate nohighlight">\(2^{-1022} \approx 2 \times 10^{-308}\)</span>, меньшие его становятся нулём. Отрицательные аналоги работают схожим образом.</p>
 <p>Стоит отметить, что нулей в <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, как и бесконечностей, два: <code class="docutils literal notranslate"><span class="pre">+0</span></code> и <code class="docutils literal notranslate"><span class="pre">-0</span></code>.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
@@ -600,7 +676,7 @@ title="Print to PDF"
 <div class="proof proof-type-demo" id="id7">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 2.3</span>
         
     </div><div class="proof-content">
 </div></div><div class="demo"><p><strong><code class="docutils literal notranslate"><span class="pre">Float64</span></code> в Julia</strong></p>
@@ -660,7 +736,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p>Определённые в <a class="reference internal" href="#equation-floatpoint">()</a> экспоненту и мантиссу также можно получить</p>
+<p>Определённые в <a class="reference internal" href="#equation-floatpoint">(2.1)</a> экспоненту и мантиссу также можно получить</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">2.784</span><span class="w"></span>
@@ -759,13 +835,13 @@ nextfloat(2.0) = 2.0000000000000004
 </div>
 </div></section>
 <section id="id4">
-<h2>Особенности арифметики чисел с плавающей точкой<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">2.1.3. </span>Особенности арифметики чисел с плавающей точкой<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
 <p>Конечная точность чисел с плавающей точкой приводит к <strong>ошибкам округления</strong>.
 Рассмотрим на примерах ниже.</p>
 <div class="proof proof-type-example" id="id8">
 
     <div class="proof-title">
-        <span class="proof-type">Пример </span>
+        <span class="proof-type">Пример 2.4</span>
         
     </div><div class="proof-content">
 <p><strong>Oшибки округления</strong></p>
@@ -863,14 +939,7 @@ exact = 0.1 .* ks = [1.0, 10.0, 100.0, 1000.0]
 </div>
 </div>
 </div>
-<div class="proof proof-type-observation">
-
-    <div class="proof-title">
-        <span class="proof-type">Наблюдение </span>
-        
-    </div><div class="proof-content">
-<p>Сложение в числах с плавающей точкой  <em>неассоциативно</em>.</p>
-</div></div><p>Более прикладным примером является работа с числами разных порядков</p>
+<p>Более прикладным примером является работа с числами разных порядков</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">ϵ</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1e-6</span><span class="w"></span>
@@ -888,7 +957,7 @@ exact = 0.1 .* ks = [1.0, 10.0, 100.0, 1000.0]
 </div>
 </div>
 </div>
-<p>Машинный ноль <a class="reference internal" href="#equation-macheps-float64">()</a> на практике означает, что при сложении чисел двойной точности, отличающихся примерно в <span class="math notranslate nohighlight">\(10^{16}\)</span> раз или более, одно из слагаемых потеряется</p>
+<p>Машинный ноль <a class="reference internal" href="#equation-macheps-float64">(2.3)</a> на практике означает, что при сложении чисел двойной точности, отличающихся примерно в <span class="math notranslate nohighlight">\(10^{16}\)</span> раз или более, одно из слагаемых потеряется</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@show</span><span class="w"> </span><span class="mf">1.0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">1e-15</span><span class="p">;</span><span class="w"></span>
@@ -907,8 +976,15 @@ exact = 0.1 .* ks = [1.0, 10.0, 100.0, 1000.0]
 </div>
 </div>
 </div>
-<p>Общие меры предосторожности здесь: малое оперировать с малым, крупное с крупным.</p>
-<p>Ещё один пример неассоциативности. Он возникает на границе <span class="math notranslate nohighlight">\(2^n\)</span> диапазонов <span class="math notranslate nohighlight">\([2^{n-1}, 2^n)\)</span> и <span class="math notranslate nohighlight">\([2^n,2^{n+1})\)</span></p>
+<div class="proof proof-type-observation">
+
+    <div class="proof-title">
+        <span class="proof-type">Наблюдение </span>
+        
+            <span class="proof-title-name">(Мера предосторожности)</span>
+        
+    </div><div class="proof-content">
+</div></div><p>Ещё один пример неассоциативности. Он возникает на границе <span class="math notranslate nohighlight">\(2^n\)</span> диапазонов <span class="math notranslate nohighlight">\([2^{n-1}, 2^n)\)</span> и <span class="math notranslate nohighlight">\([2^n,2^{n+1})\)</span></p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>В англоязычной литературе см. <em>subtractive cancellation</em>.</p>
@@ -927,6 +1003,32 @@ exact = 0.1 .* ks = [1.0, 10.0, 100.0, 1000.0]
 </div>
 </div>
 </div>
+</section>
+<section id="float">
+<h2><span class="section-number">2.1.4. </span>Меры предосторожности и практика работы с float-числами<a class="headerlink" href="#float" title="Permalink to this headline">#</a></h2>
+<p><strong>Точность представления чисел</strong></p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="mf">0.1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.2</span><span class="w">  </span><span class="c"># Float64</span><span class="w"></span>
+<span class="go">0.30000000000000004</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="mf">0.1f0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.2f0</span><span class="w">  </span><span class="c"># Float32</span><span class="w"></span>
+<span class="go">0.3f0</span>
+</pre></div>
+</div>
+<p>Не все числа представимы в float точно, в реальности программист имеет дело с ближайшим к действительному float-числу. Сложение float-чисел может быть выполнено точно, например, результат 0.30000000000000004 верный, просто сложение происходило для приближений, а не исходных чисел. В разных представлениях могут быть разные результаты, так для <code class="docutils literal notranslate"><span class="pre">Float32</span></code> те же числа складываются иначе.</p>
+<p><strong>Сравнение чисел</strong></p>
+<p>Когда необходимо сравнивать числа, используйте неточное сравнение <code class="docutils literal notranslate"><span class="pre">isapprox</span></code>, при этом лучше использовать относительную погрешность, а не абсолютную.</p>
+<p>Будьте аккуратнее в точных сравнениях. Например, вам необходимо найти отрицательную энергию, тогда сравнение вида <code class="docutils literal notranslate"><span class="pre">E</span> <span class="pre">&lt;</span> <span class="pre">0</span></code> иногда не подходит, поскольку <code class="docutils literal notranslate"><span class="pre">E</span></code> может быть порядка <span class="math notranslate nohighlight">\(-\macheps\)</span>: считать ли такое значение значение физически отрицательным – решать вам.</p>
+<p><strong>Числа сильно разных точностей</strong></p>
+<p>Работая с <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, старайтесь не допускать сложений чисел, отличающихся примерно в <span class="math notranslate nohighlight">\(10^{16}\)</span> раз или более.</p>
+<p><strong>Сложение неассоциативно</strong></p>
+<p>Малое складывать с малым, а крупное с крупным.</p>
+<p>Осторожнее с</p>
+<ul class="simple">
+<li><p>С суммами большого числа слагаемых (ряды, циклы);</p></li>
+<li><p>Возведением в степень.</p></li>
+</ul>
+<p><strong>Subtractive cancellation</strong></p>
+<p>Осторожнее с вычитанием чисел близких по значению. Примеры из <a class="reference external" href="https://en.wikipedia.org/wiki/Catastrophic_cancellation#In_numerical_algorithms">Википедии</a>. Операции происходят с конечной точностью, поэтому иногда ошибка вычитания приближений может сильно превышать вычитание точных чисел. Алгебраические преобразования с вычисляемым выражением могут помочь снизить ошибку.</p>
 </section>
 </section>
 
@@ -957,6 +1059,20 @@ exact = 0.1 .* ks = [1.0, 10.0, 100.0, 1000.0]
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">2. </span>Введение</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="cond.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">2.2. </span>Обусловленность задач</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

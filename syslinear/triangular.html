@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Треугольные системы &#8212; Практикум по вычислительной теплофизике</title>
+    <title>3.1. Треугольные системы &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3.2. LU-разложение" href="lu.html" />
+    <link rel="prev" title="3. Линейные системы уравнений" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -184,6 +186,70 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../julia/ex.html">
      1.11. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../intro/index.html">
+   2. Введение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/float.html">
+     2.1. Числа с плавающей точкой
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../intro/cond.html">
+     2.2. Обусловленность задач
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   3. Линейные системы уравнений
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     3.1. Треугольные системы
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="lu.html">
+     3.2. LU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="plu.html">
+     3.3. PLU-разложение
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="conditioning.html">
+     3.4. Обусловленность линейных систем
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="decompose_overview.html">
+     3.5. Обзор других разложений и задач
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     3.6. Задания
     </a>
    </li>
   </ul>
@@ -266,35 +332,6 @@ title="Toggle navigation"
         
     </div>
     <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/stepanzh/computational_thermodynamics/main?urlpath=tree/book/syslinear/triangular.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
-  
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
 <button onclick="toggleFullScreen()"
   class="headerbtn"
   data-toggle="tooltip"
@@ -379,23 +416,6 @@ title="Edit this page"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/syslinear/triangular.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
         <a href="../_sources/syslinear/triangular.md"
    class="headerbtn"
    data-toggle="tooltip"
@@ -457,7 +477,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Реализация
+   3.1.1. Реализация
   </a>
  </li>
 </ul>
@@ -481,7 +501,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Реализация
+   3.1.1. Реализация
   </a>
  </li>
 </ul>
@@ -495,7 +515,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Треугольные системы<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">3.1. </span>Треугольные системы<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <p>Прежде всего рассмотрим решение треугольной системы.</p>
 <p>Рассмотрим частный случай для системы <span class="math notranslate nohighlight">\(\mathbf{L}\mathbf{x}=\mathbf{b}\)</span>, где <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> – <strong>нижнетреугольная</strong> матрица размера 4</p>
 <div class="math notranslate nohighlight">
@@ -548,85 +568,14 @@ x_1 &amp;= \frac{b_1 - (U_{12} x_2 + U_{13}x_3 + U_{14}x_4)}{U_{11}}.
 <div class="proof proof-type-proposition" id="id3">
 
     <div class="proof-title">
-        <span class="proof-type">Утверждение </span>
+        <span class="proof-type">Утверждение 3.1</span>
         
     </div><div class="proof-content">
 <p>Треугольная матрица вырождена тогда и только тогда, когда хотя бы один ёё диагональнй элемент нулевой.</p>
 </div></div><section id="id2">
-<h2>Реализация<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
-<div class="proof proof-type-function" id="id4">
-
-    <div class="proof-title">
-        <span class="proof-type">Функция </span>
-        
-            <span class="proof-title-name">(forwardsub)</span>
-        
-    </div><div class="proof-content">
-<p><strong>Алгоритм прямой подстановки</strong></p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;Возвращает решение системы `L`x = `b`, где `L` - нижнетреугольная квадратная матрица.&quot;</span><span class="w"></span>
-<span class="k">function</span><span class="w"> </span><span class="n">forwardsub</span><span class="p">(</span><span class="n">L</span><span class="o">::</span><span class="kt">AbstractMatrix</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">float</span><span class="p">(</span><span class="n">similar</span><span class="p">(</span><span class="n">b</span><span class="p">))</span><span class="w"></span>
-<span class="w">    </span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="n">size</span><span class="p">(</span><span class="n">L</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="k">end</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
-<span class="k">end</span><span class="w"></span>
-</pre></div>
-</div>
-<p>Конструкция <code class="docutils literal notranslate"><span class="pre">similar(b)</span></code> создаёт неинициализированный массив того же типа и размера, что и <code class="docutils literal notranslate"><span class="pre">b</span></code>.
-Вектор <code class="docutils literal notranslate"><span class="pre">b</span></code> может содержать, например, и целые числа <code class="docutils literal notranslate"><span class="pre">::Integer</span></code>.
-Поскольку в алгоритме деление приведёт к появлению чисел с плавающей точкой, массив <code class="docutils literal notranslate"><span class="pre">x</span></code> сразу приводится к массиву на основе <code class="docutils literal notranslate"><span class="pre">::Float</span></code>-чисел конструкцией <code class="docutils literal notranslate"><span class="pre">float(similar(b))</span></code>.</p>
-</div></div><div class="proof proof-type-function" id="id5">
-
-    <div class="proof-title">
-        <span class="proof-type">Функция </span>
-        
-            <span class="proof-title-name">(backwardsub)</span>
-        
-    </div><div class="proof-content">
-<p><strong>Алгоритм обратной подстановки</strong></p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;Возвращает решение системы `U`x = `b`, где `U` - верхнетреугольная квадратная матрица.&quot;</span><span class="w"></span>
-<span class="k">function</span><span class="w"> </span><span class="n">backwardsub</span><span class="p">(</span><span class="n">U</span><span class="o">::</span><span class="kt">AbstractMatrix</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="o">::</span><span class="kt">AbstractVector</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">U</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">float</span><span class="p">(</span><span class="n">similar</span><span class="p">(</span><span class="n">b</span><span class="p">))</span><span class="w"></span>
-<span class="w">    </span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="n">n</span><span class="p">]</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">U</span><span class="p">[</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">size</span><span class="p">(</span><span class="n">U</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="o">:-</span><span class="mi">1</span><span class="o">:</span><span class="mi">1</span><span class="w"></span>
-<span class="w">        </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">s</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">U</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="p">]</span><span class="w"></span>
-<span class="w">    </span><span class="k">end</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
-<span class="k">end</span><span class="w"></span>
-</pre></div>
-</div>
-</div></div><div class="proof proof-type-demo" id="id6">
-
-    <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
-        
-    </div><div class="proof-content">
-</div></div><div class="demo"><p>Применение прямой подстановки</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
-<span class="w">    </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="mi">2</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<span class="w">    </span><span class="mi">4</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
-<span class="p">]</span><span class="w"></span>
-<span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span><span class="w"></span>
-<span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">forwardsub</span><span class="p">(</span><span class="n">A</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"></span>
-<span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">A</span><span class="o">*</span><span class="n">x</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">b</span><span class="w"></span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>([2.0, -1.0, -0.3333333333333333], [0.0, 0.0, 0.0])
-</pre></div>
-</div>
-</div>
-</div>
-</div></section>
+<h2><span class="section-number">3.1.1. </span>Реализация<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>Реализация алгоритмов подстановки входит в <a class="reference internal" href="ex.html#syslinear-ex"><span class="std std-ref">домашнее задание</span></a>.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -638,16 +587,16 @@ x_1 &amp;= \frac{b_1 - (U_{12} x_2 + U_{13}x_3 + U_{14}x_4)}{U_{11}}.
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "julia-1.6"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "julia-1.6",
+            kernelName: "python3",
             path: "./syslinear"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'julia-1.6'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
               
@@ -656,6 +605,20 @@ x_1 &amp;= \frac{b_1 - (U_{12} x_2 + U_{13}x_3 + U_{14}x_4)}{U_{11}}.
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">3. </span>Линейные системы уравнений</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="lu.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">3.2. </span>LU-разложение</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
