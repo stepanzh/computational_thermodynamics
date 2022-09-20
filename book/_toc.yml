@@ -20,10 +20,18 @@ parts:
     - file: julia/linearalgebra
     - file: julia/modules
     - file: julia/ex
-  # - file: intro/index
-  #   sections:
-  #   - file: intro/float
-  #   - file: intro/cond
+  - file: intro/index
+    sections:
+    - file: intro/float
+    - file: intro/cond
+  - file: syslinear/index
+    sections:
+    - file: syslinear/triangular
+    - file: syslinear/lu
+    - file: syslinear/plu
+    - file: syslinear/conditioning
+    - file: syslinear/decompose_overview
+    - file: syslinear/ex
   # - file: interpolation/index
   #   sections:
   #   - file: interpolation/polynomial
@@ -45,12 +53,6 @@ parts:
   #   - file: nlroot/ridders
   #   - file: nlroot/itp
   #   - file: nlroot/ex
-  # - file: syslinear/index
-  #   sections:
-  #   - file: syslinear/triangular
-  #   - file: syslinear/lu
-  #   - file: syslinear/plu
-  #   - file: syslinear/decompose_overview
   # - file: sysnonlinear/index
   #   sections:
   #   - file: sysnonlinear/newton
@@ -61,7 +63,7 @@ parts:
   #   - file: ode/euler
   #   - file: ode/rungekutta
   #   - file: ode/adaptive_rungekutta
-  #   # - file: ode/multistep
+  #   - file: ode/multistep
   #   - file: ode/ex
   # - file: optim/index
   #   sections:
