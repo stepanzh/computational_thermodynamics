@@ -480,6 +480,16 @@ title="Print to PDF"
    3.6.1. Прямая и обратная подстановка
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   3.6.2. Метод прогонки
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   3.6.3. Системы уравнений
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -502,6 +512,16 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
    3.6.1. Прямая и обратная подстановка
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   3.6.2. Метод прогонки
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   3.6.3. Системы уравнений
   </a>
  </li>
 </ul>
@@ -541,8 +561,108 @@ title="Print to PDF"
 <p>Дополнительно</p>
 <ul class="simple">
 <li><p>Напишите doc-string к каждой из функций;</p></li>
-<li><p>Напишите версии функций, не аллоцирующих память под вектор-решение <span class="math notranslate nohighlight">\(x\)</span>, а принимающих вектор на запись ответа в качестве аргумента.</p></li>
+<li><p>Напишите версии функций, не аллоцирующих память под вектор-решение <span class="math notranslate nohighlight">\(x\)</span>, а принимающих вектор на запись ответа в качестве аргумента:</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">forwardsub!(x,</span> <span class="pre">L,</span> <span class="pre">b)</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">backwardsub!(x,</span> <span class="pre">U,</span> <span class="pre">b)</span></code>.</p></li>
 </ul>
+</li>
+</ul>
+</section>
+<section id="id3">
+<h2><span class="section-number">3.6.2. </span>Метод прогонки<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<p>Одним из важных типов матриц, возникающих на практике в численном решении дифференциальных уравнений, является трёхдиагональная матрица</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+b_1 &amp; c_1 &amp;        &amp;         &amp;         &amp; \\
+a_2 &amp; b_2 &amp; c_2    &amp;         &amp;         &amp; \\
+    &amp; a_3 &amp; b_3    &amp; c_3     &amp;         &amp; \\
+    &amp;     &amp; \ddots &amp; \ddots  &amp; \ddots  &amp; \\
+    &amp;     &amp;        &amp; a_{n-1} &amp; b_{n-1} &amp; c_{n-1} \\
+    &amp;     &amp;        &amp;         &amp; a_n     &amp; b_n
+\end{bmatrix}
+\end{split}\]</div>
+<p>А соответствующая ей система имеет вид</p>
+<div class="math notranslate nohighlight">
+\[
+a_i x_{i-1} + b_i x_i + c_i x_{i+1} = f_i, \quad i=1,\ldots,n,
+\]</div>
+<p>где <span class="math notranslate nohighlight">\(a_1 = c_n = 0\)</span>, а <span class="math notranslate nohighlight">\(\mathbf{f}\)</span> – вектор правой части системы.</p>
+<p id="index-0">Для таких систем существует эффективный <span class="math notranslate nohighlight">\(O(n)\)</span> алгоритм решения, называемый <em>методом прогонки</em> или алгоритмом Томаса.</p>
+<p>Напишите функцию <code class="docutils literal notranslate"><span class="pre">tridiagsolve</span></code>, реализующую метод прогонки.</p>
+<p>У функции должно быть два метода</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tridiagsolve(a,</span> <span class="pre">b,</span> <span class="pre">c,</span> <span class="pre">f)</span> <span class="pre">-&gt;</span> <span class="pre">x</span></code>;</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tridiagsolve(A::Tridiagonal,</span> <span class="pre">f)</span> <span class="pre">-&gt;</span> <span class="pre">x</span></code>, где <code class="docutils literal notranslate"><span class="pre">Tridiagonal</span></code> тип определён в <code class="docutils literal notranslate"><span class="pre">LinearAlgebra</span></code>.</p></li>
+</ul>
+<p>Ссылки: <span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id14" title="Рябенький В.С. Введение в вычислительную математику. Физматлит, Москва, 3 edition, 2016. ISBN 978-5-9221-0926-0.">16</a>]</span> (Раздел 4.4.2), <a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%9C%D0%B5%D1%82%D0%BE%D0%B4_%D0%BF%D1%80%D0%BE%D0%B3%D0%BE%D0%BD%D0%BA%D0%B8">Википедия</a>.</p>
+</section>
+<section id="id5">
+<h2><span class="section-number">3.6.3. </span>Системы уравнений<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<p>Решите следующие системы уравнений. Для каждого примера создайте функцию, которая не принимает аргументов и возвращает решение системы и невязку <span class="math notranslate nohighlight">\(\mathbf{b} - \mathbf{A}\mathbf{x}\)</span>.</p>
+<p>Например,</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="n">solution_a</span><span class="p">()</span><span class="w"></span>
+<span class="w">    </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="mi">1</span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]</span><span class="w"></span>
+<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+</pre></div>
+</div>
+<p><strong>(а)</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+8 &amp; 9 &amp; 4 &amp; -1 \\
+0 &amp; 4 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; -1 &amp; 6 \\
+0 &amp; 0 &amp; 0 &amp; 11 \\
+\end{bmatrix}
+\mathbf{x}
+= \begin{bmatrix}
+9 \\
+3 \\
+-1 \\
+2 \\
+\end{bmatrix}
+\end{split}\]</div>
+<p><strong>(б)</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+-2 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \\
+1 &amp; -2 &amp; 1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; -2 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; -2 &amp; 1 \\
+0 &amp; 0 &amp; 0 &amp; 1 &amp; -2 \\
+\end{bmatrix}
+\mathbf{x}
+= \begin{bmatrix}
+1 \\
+1 \\
+1 \\
+1 \\
+1 \\
+\end{bmatrix}
+\end{split}\]</div>
+<p><strong>(в)</strong></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}
+    1 &amp; 8 &amp; -3 &amp; 9 \\
+    0 &amp; 4 &amp; 10 &amp; -2 \\
+    8 &amp; 2 &amp; -5 &amp; 1 \\
+    3 &amp; 1 &amp; 6 &amp; 12 \\
+\end{bmatrix}
+\mathbf{x}
+= \begin{bmatrix}
+    3 \\
+    6 \\
+    1 \\
+    4 \\
+\end{bmatrix}
+\end{split}\]</div>
 </section>
 </section>
 
