@@ -32,19 +32,19 @@ parts:
     - file: syslinear/conditioning
     - file: syslinear/decompose_overview
     - file: syslinear/ex
-  # - file: interpolation/index
-  #   sections:
-  #   - file: interpolation/polynomial
-  #   - file: interpolation/pwlinear
-  #   - file: interpolation/cubic_spline
-  #   - file: interpolation/ex
-  # - file: integration/index
-  #   sections:
-  #   - file: integration/newton_cotes
-  #   - file: integration/romberg
-  #   - file: integration/gauss
-  #   - file: integration/adaptive
-  #   - file: integration/ex
+  - file: interpolation/index
+    sections:
+    - file: interpolation/polynomial
+    - file: interpolation/pwlinear
+    - file: interpolation/cubic_spline
+    - file: interpolation/ex
+  - file: integration/index
+    sections:
+    - file: integration/newton_cotes
+    - file: integration/romberg
+    - file: integration/gauss
+    - file: integration/adaptive
+    - file: integration/ex
   # - file: nlroot/index
   #   sections:
   #   - file: nlroot/simpleiter
