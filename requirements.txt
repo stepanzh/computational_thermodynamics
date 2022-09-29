@@ -4,3 +4,4 @@ numpy
 sphinxcontrib-mermaid
 sphinx-inline-tabs
 sphinxcontrib-proof
+ghp-import
