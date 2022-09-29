@@ -114,7 +114,7 @@ T_f(n=2) = 2h_4 \Big[0.5 \big(f(x_0) + f(x_4)\big) + f(x_2)\Big].
 ```{math}
 :label: doubling_tf4
 
-T_f(n=4) = h_4 \Big[ 0.5 \big(f(x_0) + f(x_4)\big) + f(x_1) + f(x_3) \Big].
+T_f(n=4) = h_4 \Big[ 0.5 \big(f(x_0) + f(x_4)\big) + f(x_1) + f(x_2) + f(x_3) \Big].
 ```
 
 Сравнивая {eq}`doubling_tf2` и {eq}`doubling_tf4`, обнаруживаем их связь
