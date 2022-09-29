@@ -4,7 +4,7 @@
 
 В этом задании вам необходимо доработать модуль `Integration`, имплементировав требуемые методы.
 
-Шаблон модуля разработан за вас, скачайте его по ссылке [CT_Integration.jl](https://github.com/stepanzh/CT_Integration.jl). Если пользуетесь git, можете склонировать проект или форкнуть, в остальных случаях скачайте `Code -> Download ZIP`.
+Шаблон модуля разработан за вас и находится здесь [CTTaskIntegration.jl](https://github.com/stepanzh/CTTaskIntegration.jl), модуль включает систему тестов для самопроверки.
 
 **Устройство модуля**
 
@@ -59,67 +59,3 @@ end
 ```julia
 __integrate_impl(method::T, f, a, b) = error("Не имплементирован")
 ```
-
-**Самопроверка**
-
-Для самопроверки предоставлены unit-тесты модуля `Integration`. Они находятся в `test/runtests.jl`.
-
-При скачанном шаблоне должны проходить только тесты для формулы прямоугольников:
-
-Чтобы запустить тесты, есть две возможности.
-
-Сначала перейдите в корневую директорию модуля (там, где находится файл `Project.toml`)
-
-1. Запуск тестов из `pkg>` режима Julia REPL.
-    
-    ```console
-    % julia
-                   _
-       _       _ _(_)_     |  Documentation: https://docs.julialang.org
-      (_)     | (_) (_)    |
-       _ _   _| |_  __ _   |  Type "?" for help, "]?" for Pkg help.
-      | | | | | | |/ _` |  |
-      | | |_| | | | (_| |  |  Version 1.6.2 (2021-07-14)
-     _/ |\__'_|_|_|\__'_|  |  Official https://julialang.org/ release
-    |__/                   |
-
-    julia> ]<Enter>
-
-    (@v1.6) pkg> activate .
-      Activating environment at `~/JIHT/computational_thermodynamics_notes/03_integration/CT_Integration.jl_task/Project.toml`
-
-    (Integration) pkg> test
-
-    # много всяких сообщений об ошибках из-за несозданных методов
-
-    Test Summary:                        | Pass  Error  Total
-    Integration                          |    6     19     25
-      Midpoint                           |    6             6
-      Trapezoid                          |           6      6
-        Квадратурная формула             |           4      4
-        Составная квадратурная формула   |           2      2
-      Simpson                            |           4      4
-        Квадратурная формула             |           2      2
-        Составная квадратурная формула   |           2      2
-      Gauss                              |           4      4
-        Интегрирование полинома          |           2      2
-        Интегрирование 1/(1+x²)          |           2      2
-          Составная квадратурная формула |           1      1
-      Kronrod                            |           5      5
-        Интегрирование полинома          |           3      3
-        Интегрирование 1/(1+x²)          |           2      2
-          Составная квадратурная формула |           1      1
-    ERROR: LoadError: Some tests did not pass: 6 passed, 0 failed, 19 errored, 0 broken.
-    ```
-
-2. Запуск тестов из терминала одной командой
-
-    ```console
-    % julia --color=yes --project=. test/runtests.jl
-    ```
-
-    Вы получите вывод, аналогичный пункту 1.
-
-Первый метод позволяет не выходить из REPL, делать изменения в модуле, и запускать в дальнейшем одной командной `(Integration) pkg> test` *без перезапуска сессии*.
-
-Так, вы можете имплементировать метод один за другим и проверять себя на каждом шаге.
