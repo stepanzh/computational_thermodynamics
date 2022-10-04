@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Задания &#8212; Практикум по вычислительной теплофизике</title>
+    <title>5.5. Задания &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Указатель" href="../appendix/genindex.html" />
+    <link rel="prev" title="5.4. Адаптивное интегрирование" href="adaptive.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -248,6 +250,75 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../syslinear/ex.html">
      3.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../interpolation/index.html">
+   4. Интерполяция
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/polynomial.html">
+     4.1. Полиномиальная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/pwlinear.html">
+     4.2. Кусочно-линейная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/cubic_spline.html">
+     4.3. Кубические сплайны
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/ex.html">
+     4.4. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   5. Численное интегрирование
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="newton_cotes.html">
+     5.1. Формулы Ньютона-Котса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="romberg.html">
+     5.2. Метод Ромберга
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gauss.html">
+     5.3. Формулы Гаусса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="adaptive.html">
+     5.4. Адаптивное интегрирование
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     5.5. Задания
     </a>
    </li>
   </ul>
@@ -475,7 +546,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Основные квадратурные формулы
+   5.5.1. Основные квадратурные формулы
   </a>
  </li>
 </ul>
@@ -499,7 +570,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Основные квадратурные формулы
+   5.5.1. Основные квадратурные формулы
   </a>
  </li>
 </ul>
@@ -513,11 +584,11 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Задания<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">5.5. </span>Задания<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <section id="id2">
-<h2>Основные квадратурные формулы<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.5.1. </span>Основные квадратурные формулы<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>В этом задании вам необходимо доработать модуль <code class="docutils literal notranslate"><span class="pre">Integration</span></code>, имплементировав требуемые методы.</p>
-<p>Шаблон модуля разработан за вас, скачайте его по ссылке <a class="reference external" href="https://github.com/stepanzh/CT_Integration.jl">CT_Integration.jl</a>. Если пользуетесь git, можете склонировать проект или форкнуть, в остальных случаях скачайте <code class="docutils literal notranslate"><span class="pre">Code</span> <span class="pre">-&gt;</span> <span class="pre">Download</span> <span class="pre">ZIP</span></code>.</p>
+<p>Шаблон модуля разработан за вас и находится здесь <a class="reference external" href="https://github.com/stepanzh/CTTaskIntegration.jl">CTTaskIntegration.jl</a>, модуль включает систему тестов для самопроверки.</p>
 <p><strong>Устройство модуля</strong></p>
 <p>Модуль <code class="docutils literal notranslate"><span class="pre">Integration</span></code> находится в <code class="docutils literal notranslate"><span class="pre">src/Integration.jl</span></code> и устроен следующим образом.</p>
 <p>Для пользователя модуля создана API-функция <code class="docutils literal notranslate"><span class="pre">integrate</span></code> с двумя методами</p>
@@ -559,62 +630,6 @@ title="Print to PDF"
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">__integrate_impl</span><span class="p">(</span><span class="n">method</span><span class="o">::</span><span class="kt">T</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">error</span><span class="p">(</span><span class="s">&quot;Не имплементирован&quot;</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
-<p><strong>Самопроверка</strong></p>
-<p>Для самопроверки предоставлены unit-тесты модуля <code class="docutils literal notranslate"><span class="pre">Integration</span></code>. Они находятся в <code class="docutils literal notranslate"><span class="pre">test/runtests.jl</span></code>.</p>
-<p>При скачанном шаблоне должны проходить только тесты для формулы прямоугольников:</p>
-<p>Чтобы запустить тесты, есть две возможности.</p>
-<p>Сначала перейдите в корневую директорию модуля (там, где находится файл <code class="docutils literal notranslate"><span class="pre">Project.toml</span></code>)</p>
-<ol>
-<li><p>Запуск тестов из <code class="docutils literal notranslate"><span class="pre">pkg&gt;</span></code> режима Julia REPL.</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">% </span>julia
-<span class="go">               _</span>
-<span class="go">   _       _ _(_)_     |  Documentation: https://docs.julialang.org</span>
-<span class="go">  (_)     | (_) (_)    |</span>
-<span class="go">   _ _   _| |_  __ _   |  Type &quot;?&quot; for help, &quot;]?&quot; for Pkg help.</span>
-<span class="go">  | | | | | | |/ _` |  |</span>
-<span class="go">  | | |_| | | | (_| |  |  Version 1.6.2 (2021-07-14)</span>
-<span class="go"> _/ |\__&#39;_|_|_|\__&#39;_|  |  Official https://julialang.org/ release</span>
-<span class="go">|__/                   |</span>
-
-<span class="go">julia&gt; ]&lt;Enter&gt;</span>
-
-<span class="gp gp-VirtualEnv">(@v1.6)</span> <span class="go">pkg&gt; activate .</span>
-<span class="go">  Activating environment at `~/JIHT/computational_thermodynamics_notes/03_integration/CT_Integration.jl_task/Project.toml`</span>
-
-<span class="gp gp-VirtualEnv">(Integration)</span> <span class="go">pkg&gt; test</span>
-
-<span class="gp"># </span>много всяких сообщений об ошибках из-за несозданных методов
-
-<span class="go">Test Summary:                        | Pass  Error  Total</span>
-<span class="go">Integration                          |    6     19     25</span>
-<span class="go">  Midpoint                           |    6             6</span>
-<span class="go">  Trapezoid                          |           6      6</span>
-<span class="go">    Квадратурная формула             |           4      4</span>
-<span class="go">    Составная квадратурная формула   |           2      2</span>
-<span class="go">  Simpson                            |           4      4</span>
-<span class="go">    Квадратурная формула             |           2      2</span>
-<span class="go">    Составная квадратурная формула   |           2      2</span>
-<span class="go">  Gauss                              |           4      4</span>
-<span class="go">    Интегрирование полинома          |           2      2</span>
-<span class="go">    Интегрирование 1/(1+x²)          |           2      2</span>
-<span class="go">      Составная квадратурная формула |           1      1</span>
-<span class="go">  Kronrod                            |           5      5</span>
-<span class="go">    Интегрирование полинома          |           3      3</span>
-<span class="go">    Интегрирование 1/(1+x²)          |           2      2</span>
-<span class="go">      Составная квадратурная формула |           1      1</span>
-<span class="go">ERROR: LoadError: Some tests did not pass: 6 passed, 0 failed, 19 errored, 0 broken.</span>
-</pre></div>
-</div>
-</li>
-<li><p>Запуск тестов из терминала одной командой</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">% </span>julia --color<span class="o">=</span>yes --project<span class="o">=</span>. test/runtests.jl
-</pre></div>
-</div>
-<p>Вы получите вывод, аналогичный пункту 1.</p>
-</li>
-</ol>
-<p>Первый метод позволяет не выходить из REPL, делать изменения в модуле, и запускать в дальнейшем одной командной <code class="docutils literal notranslate"><span class="pre">(Integration)</span> <span class="pre">pkg&gt;</span> <span class="pre">test</span></code> <em>без перезапуска сессии</em>.</p>
-<p>Так, вы можете имплементировать метод один за другим и проверять себя на каждом шаге.</p>
 </section>
 </section>
 
@@ -645,6 +660,20 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="adaptive.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5.4. </span>Адаптивное интегрирование</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../appendix/genindex.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Указатель</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

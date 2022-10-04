@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Адаптивное интегрирование &#8212; Практикум по вычислительной теплофизике</title>
+    <title>5.4. Адаптивное интегрирование &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.5. Задания" href="ex.html" />
+    <link rel="prev" title="5.3. Формулы Гаусса" href="gauss.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -248,6 +250,75 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../syslinear/ex.html">
      3.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../interpolation/index.html">
+   4. Интерполяция
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/polynomial.html">
+     4.1. Полиномиальная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/pwlinear.html">
+     4.2. Кусочно-линейная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/cubic_spline.html">
+     4.3. Кубические сплайны
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/ex.html">
+     4.4. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   5. Численное интегрирование
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="newton_cotes.html">
+     5.1. Формулы Ньютона-Котса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="romberg.html">
+     5.2. Метод Ромберга
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gauss.html">
+     5.3. Формулы Гаусса
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     5.4. Адаптивное интегрирование
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     5.5. Задания
     </a>
    </li>
   </ul>
@@ -521,12 +592,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Идея
+   5.4.1. Идея
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   Реализация
+   5.4.2. Реализация
   </a>
  </li>
 </ul>
@@ -550,12 +621,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Идея
+   5.4.1. Идея
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   Реализация
+   5.4.2. Реализация
   </a>
  </li>
 </ul>
@@ -569,12 +640,12 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-integration-adaptive">
-<span id="id1"></span><h1>Адаптивное интегрирование<a class="headerlink" href="#chapter-integration-adaptive" title="Permalink to this headline">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">5.4. </span>Адаптивное интегрирование<a class="headerlink" href="#chapter-integration-adaptive" title="Permalink to this headline">#</a></h1>
 <p>Рассмотренные ранее методы интегрирования, не считая метода Гаусса, используют равномерные сетки. Взглянем на следующий пример.</p>
 <div class="proof proof-type-demo" id="id6">
 <span id="demo-adapt-badcase"></span>
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 5.14</span>
         
     </div><div class="proof-content">
 </div></div><div class="demo"><p>Допустим, нам нужно проинтегрировать функцию <span class="math notranslate nohighlight">\(x \sin(2x/(x-2))\)</span>. Её график выглядит следующим образом</p>
@@ -611,13 +682,13 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">rombergwstep</span></code> отличается от <code class="xref std std-numref docutils literal notranslate"><span class="pre">Функции</span> <span class="pre">{number}</span> <span class="pre">(romberg)</span></code> только тем, что возвращает кортеж <code class="docutils literal notranslate"><span class="pre">(I[1,</span> <span class="pre">i],</span> <span class="pre">i)</span></code>. То есть, вычисления слева можно было бы закончить уже после 7 разбиений, однако при вычислении на всём участке потребовалось уже 13 разбиений.</p>
+<p><code class="docutils literal notranslate"><span class="pre">rombergwstep</span></code> отличается от <a class="reference internal" href="romberg.html#function-romberg"><span class="std std-numref">Функции 5.11 (romberg)</span></a> только тем, что возвращает кортеж <code class="docutils literal notranslate"><span class="pre">(I[1,</span> <span class="pre">i],</span> <span class="pre">i)</span></code>. То есть, вычисления слева можно было бы закончить уже после 7 разбиений, однако при вычислении на всём участке потребовалось уже 13 разбиений.</p>
 </div><p id="index-0">Алгоритмы, которые обнаруживают подобное поведение и подбирают сетку автоматически, называются <strong>адаптивными</strong>.</p>
 <section id="id2">
-<h2>Идея<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.4.1. </span>Идея<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>Изложенную здесь идею подробнее можно почитать, например, здесь <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id8" title="А. А. Самарский and А. В. Гулин. Численные методы: учеб. пособие для вузов. Наука, Москва, 1989. ISBN 978-5020139961.">89</a>]</span>, <span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id4" title="Tobin A. Driscoll and Richard J. Braun. Fundamentals of numerical computation. Society for Industrial and Applied Mathematics, 2017. ISBN 978-1-61197-507-9. URL: https://tobydriscoll.net/project/fnc/.">ADJB17</a>]</span>.</p>
 <p>Допустим, мы вычисляем часть интеграла на отрезке <span class="math notranslate nohighlight">\(\int_{x_{i-1}}^{x_i} f\diff x\)</span>. Чтобы понять, нужно ли дробить отрезок для повышения точности, можно рассмотреть два приближения интеграла и сравнить их. Если разница не удовлетворяет заданной “точности”, то отрезок <span class="math notranslate nohighlight">\([x_{i-1}, x_i]\)</span> дробится пополам, а вычисления по <em>тем же</em> квадратурам происходят уже на более мелких отрезках.</p>
-<p>Два приближения вычислим по формулам Симпсона <a class="reference internal" href="newton_cotes.html#equation-simp-final">()</a> на разных сетках</p>
+<p>Два приближения вычислим по формулам Симпсона <a class="reference internal" href="newton_cotes.html#equation-simp-final">(5.9)</a> на разных сетках</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 S_f(h/2) &amp;= \frac{1}{3}\big[4T_f(h/2) - T_f(h)\big],\\
@@ -639,15 +710,15 @@ h &amp;= x_i - x_{i-1}.
 <p>которую и будем использовать для критерия разбиения отрезка.</p>
 <p><em>Критерий разбиения</em> нужно выбирать аккуратно. Дело в том, что по значению входных данных (т.е. функции <span class="math notranslate nohighlight">\(f\)</span> и отрезка) нельзя оценить величину интеграла: будет ли она маленькой или большой. Поэтому полагаться нужно сразу на относительную <span class="math notranslate nohighlight">\(\delta_r\)</span> и абсолютную <span class="math notranslate nohighlight">\(\delta_a\)</span> “точности”</p>
 <div class="math notranslate nohighlight" id="equation-int-adaptive-criterion">
-<span class="eqno">()<a class="headerlink" href="#equation-int-adaptive-criterion" title="Permalink to this equation">#</a></span>\[|E| &lt; \delta_a + \delta_r |S_f(h/4)|.\]</div>
-<p>Если приближение к интегралу <span class="math notranslate nohighlight">\(S_f \approx 0\)</span> мало, то работает абсолютная погрешность <span class="math notranslate nohighlight">\(\delta_a\)</span>. Если же <span class="math notranslate nohighlight">\(S_f\)</span> велико, то <a class="reference internal" href="#equation-int-adaptive-criterion">()</a> требует, чтобы разница приближений <span class="math notranslate nohighlight">\(|E|\)</span> составляла меньше некоторой части <span class="math notranslate nohighlight">\(\delta_r\)</span> от приближения <span class="math notranslate nohighlight">\(|S_f|\)</span>.</p>
+<span class="eqno">(5.25)<a class="headerlink" href="#equation-int-adaptive-criterion" title="Permalink to this equation">#</a></span>\[|E| &lt; \delta_a + \delta_r |S_f(h/4)|.\]</div>
+<p>Если приближение к интегралу <span class="math notranslate nohighlight">\(S_f \approx 0\)</span> мало, то работает абсолютная погрешность <span class="math notranslate nohighlight">\(\delta_a\)</span>. Если же <span class="math notranslate nohighlight">\(S_f\)</span> велико, то <a class="reference internal" href="#equation-int-adaptive-criterion">(5.25)</a> требует, чтобы разница приближений <span class="math notranslate nohighlight">\(|E|\)</span> составляла меньше некоторой части <span class="math notranslate nohighlight">\(\delta_r\)</span> от приближения <span class="math notranslate nohighlight">\(|S_f|\)</span>.</p>
 </section>
 <section id="id5">
-<h2>Реализация<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.4.2. </span>Реализация<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
 <div class="proof proof-type-function" id="id7">
 
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 5.15</span>
         
             <span class="proof-title-name">(intadapt)</span>
         
@@ -693,10 +764,10 @@ h &amp;= x_i - x_{i-1}.
 </div></div><div class="proof proof-type-demo" id="id8">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 5.16</span>
         
     </div><div class="proof-content">
-</div></div><div class="demo"><p>Посмотрим, как наш алгоритм справляется с ситуацией из <code class="xref std std-numref docutils literal notranslate"><span class="pre">Демонстрации</span> <span class="pre">{number}</span></code></p>
+</div></div><div class="demo"><p>Посмотрим, как наш алгоритм справляется с ситуацией из <a class="reference internal" href="#demo-adapt-badcase"><span class="std std-numref">Демонстрации 5.14</span></a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.85</span><span class="w"></span>
@@ -752,6 +823,20 @@ h &amp;= x_i - x_{i-1}.
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="gauss.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5.3. </span>Формулы Гаусса</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="ex.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5.5. </span>Задания</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

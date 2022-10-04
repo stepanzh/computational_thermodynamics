@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Формулы Гаусса &#8212; Практикум по вычислительной теплофизике</title>
+    <title>5.3. Формулы Гаусса &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.4. Адаптивное интегрирование" href="adaptive.html" />
+    <link rel="prev" title="5.2. Метод Ромберга" href="romberg.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -248,6 +250,75 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../syslinear/ex.html">
      3.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../interpolation/index.html">
+   4. Интерполяция
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/polynomial.html">
+     4.1. Полиномиальная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/pwlinear.html">
+     4.2. Кусочно-линейная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/cubic_spline.html">
+     4.3. Кубические сплайны
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/ex.html">
+     4.4. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   5. Численное интегрирование
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="newton_cotes.html">
+     5.1. Формулы Ньютона-Котса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="romberg.html">
+     5.2. Метод Ромберга
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     5.3. Формулы Гаусса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="adaptive.html">
+     5.4. Адаптивное интегрирование
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     5.5. Задания
     </a>
    </li>
   </ul>
@@ -475,29 +546,29 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Квадратуры гауссова типа с частично зафиксированными узлами
+   5.3.1. Квадратуры гауссова типа с частично зафиксированными узлами
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     Квадратуры Лобатто
+     5.3.1.1. Квадратуры Лобатто
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     Квадратуры Кронрода
+     5.3.1.2. Квадратуры Кронрода
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   Альтернативная система уравнений для вычисления весов квадратур
+   5.3.2. Альтернативная система уравнений для вычисления весов квадратур
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   Упражения
+   5.3.3. Упражения
   </a>
  </li>
 </ul>
@@ -521,29 +592,29 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Квадратуры гауссова типа с частично зафиксированными узлами
+   5.3.1. Квадратуры гауссова типа с частично зафиксированными узлами
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id3">
-     Квадратуры Лобатто
+     5.3.1.1. Квадратуры Лобатто
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#id4">
-     Квадратуры Кронрода
+     5.3.1.2. Квадратуры Кронрода
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   Альтернативная система уравнений для вычисления весов квадратур
+   5.3.2. Альтернативная система уравнений для вычисления весов квадратур
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id6">
-   Упражения
+   5.3.3. Упражения
   </a>
  </li>
 </ul>
@@ -557,14 +628,14 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Формулы Гаусса<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
-<p>В <code class="xref std std-numref docutils literal notranslate"><span class="pre">Разделе</span> <span class="pre">{number}</span></code> мы видели, что веса квадратуры <span class="math notranslate nohighlight">\(\{w_i\}\)</span> с известными узлами <span class="math notranslate nohighlight">\(\{x_i\}\)</span> могут быть найдены решением линейной системы уравнений</p>
+<h1><span class="section-number">5.3. </span>Формулы Гаусса<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<p>В <a class="reference internal" href="newton_cotes.html#chapters-integration-newton-cotes"><span class="std std-numref">Разделе 5.1</span></a> мы видели, что веса квадратуры <span class="math notranslate nohighlight">\(\{w_i\}\)</span> с известными узлами <span class="math notranslate nohighlight">\(\{x_i\}\)</span> могут быть найдены решением линейной системы уравнений</p>
 <div class="math notranslate nohighlight">
 \[\sum\limits_{i=1}^{N} w_i x_i^p = \frac{1}{p + 1} \quad\forall p \in \{0, \dots, N-1\}.\]</div>
 <p>Хотя она была записана для формул Ньютона-Котса, её можно решить относительно весов для любого набора <em>различных</em> узлов <span class="math notranslate nohighlight">\(\{x_i\}\)</span>, не обязательно равномерно-распределённых.</p>
 <p>Но эти же условия можно рассматривать как условия на <em>веса и узлы</em> квадратуры, т.е. рассмотреть <em>нелинейную</em> систему уравнений</p>
 <div class="math notranslate nohighlight" id="equation-gauss-system">
-<span class="eqno">()<a class="headerlink" href="#equation-gauss-system" title="Permalink to this equation">#</a></span>\[\sum\limits_{i=1}^{N} w_i x_i^p = \frac{1}{p + 1}, \quad\forall p \in \{0, \dots, M\}\]</div>
+<span class="eqno">(5.19)<a class="headerlink" href="#equation-gauss-system" title="Permalink to this equation">#</a></span>\[\sum\limits_{i=1}^{N} w_i x_i^p = \frac{1}{p + 1}, \quad\forall p \in \{0, \dots, M\}\]</div>
 <p>c <span class="math notranslate nohighlight">\(2N\)</span> неизвестными: <span class="math notranslate nohighlight">\(\{w_i\}_{i=1}^N\)</span> и <span class="math notranslate nohighlight">\(\{x_i\}_{i=1}^N\)</span>. Тогда можно надеяться, что система будет разрешима вплоть до <span class="math notranslate nohighlight">\(M = 2N-1\)</span>.
 Если это так, то мы получим квадратурную формулу с <span class="math notranslate nohighlight">\(N\)</span> узлами, точную для
 многочленов вплоть до степени <span class="math notranslate nohighlight">\(2N-1\)</span>.</p>
@@ -578,10 +649,10 @@ title="Print to PDF"
 <div class="math notranslate nohighlight">
 \[P_M(x) = \Omega_{N}(x) q_{M-N}(x) + r_{N-1}(x),\]</div>
 <p>где <span class="math notranslate nohighlight">\(q_{M-N}\)</span> – многочлен степени <span class="math notranslate nohighlight">\(M - N\)</span>, <span class="math notranslate nohighlight">\(r_{N-1}\)</span> – многочлен степени не выше <span class="math notranslate nohighlight">\(N - 1\)</span>.</p>
-<p>Запишем ошибку интегрирования <span class="math notranslate nohighlight">\(P_M\)</span> при условии, что веса квадратуры определены <span class="math notranslate nohighlight">\(w_i\)</span> из системы <a class="reference internal" href="newton_cotes.html#equation-newtoncotesgeneral">()</a>,
+<p>Запишем ошибку интегрирования <span class="math notranslate nohighlight">\(P_M\)</span> при условии, что веса квадратуры определены <span class="math notranslate nohighlight">\(w_i\)</span> из системы <a class="reference internal" href="newton_cotes.html#equation-newtoncotesgeneral">(5.4)</a>,
 т.е. квадратура точна для всех многочленов вплоть до степени <span class="math notranslate nohighlight">\(N-1\)</span>:</p>
 <div class="math notranslate nohighlight" id="equation-gauss-error">
-<span class="eqno">()<a class="headerlink" href="#equation-gauss-error" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{split}
+<span class="eqno">(5.20)<a class="headerlink" href="#equation-gauss-error" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{split}
 \sum\limits_{i} w_i P_M(x_i) &amp;- \int\limits_{-1}^{1} P_M(x) \diff x = \\
 &amp; = \left(\sum\limits_{i} w_i \Omega_{N}(x_i) q_{M-N}(x_i) - \int\limits_{-1}^{1} \Omega_{N}(x) q_{M-N}(x) \diff x \right) + 
 \left(\sum\limits_{i} w_i r_{N-1}(x_i) - \int\limits_{-1}^{1} r_{N-1}(x) \diff x \right)
@@ -590,19 +661,19 @@ title="Print to PDF"
 Сумма в первой скобке равна нулю, т.к. по своему определению <span class="math notranslate nohighlight">\(\Omega_{N}(x_i) = 0\)</span>.
 Остаётся лишь интеграл в первой скобке. Отсюда получаем вывод: ошибка интегрирования равна нулю, если</p>
 <div class="math notranslate nohighlight" id="equation-gauss-orthogonal">
-<span class="eqno">()<a class="headerlink" href="#equation-gauss-orthogonal" title="Permalink to this equation">#</a></span>\[\int\limits_{-1}^{1} \Omega_{N}(x) q_{M-N}(x) \diff x = 0,\quad \forall q_{M-N}(x).\]</div>
+<span class="eqno">(5.21)<a class="headerlink" href="#equation-gauss-orthogonal" title="Permalink to this equation">#</a></span>\[\int\limits_{-1}^{1} \Omega_{N}(x) q_{M-N}(x) \diff x = 0,\quad \forall q_{M-N}(x).\]</div>
 <p>Т.е. многочлен <span class="math notranslate nohighlight">\(\Omega_{N}(x)\)</span> ортогонален всем многочленам вплоть до степени <span class="math notranslate nohighlight">\(M - N\)</span>, если скалярное произведение определено как</p>
 <div class="math notranslate nohighlight">
 \[f \cdot g = \int\limits_{-1}^{1} f(x) g(x) \diff x.\]</div>
 <p>Как известно из матанализа, для многочленов ортонормированный базис составляют <em>многочлены Лежандра</em></p>
 <div class="math notranslate nohighlight">
 \[L_k(x) = \frac{1}{2^n n!} \frac{d^k}{dx^k}(x^2 - 1)^k.\]</div>
-<p>Значит, в качестве <span class="math notranslate nohighlight">\(\Omega_N\)</span> возьмём <span class="math notranslate nohighlight">\(L_N\)</span>, чтобы удовлетворить <a class="reference internal" href="#equation-gauss-orthogonal">()</a> для полиномов <span class="math notranslate nohighlight">\(q_{M-N}\)</span> как можно более высокой степени. Тогда, если степень <span class="math notranslate nohighlight">\(q_{M-N}\)</span> не превосходит <span class="math notranslate nohighlight">\(M-N \le N-1\)</span>, т.е. <span class="math notranslate nohighlight">\(M \le 2N-1\)</span>, то <a class="reference internal" href="#equation-gauss-orthogonal">()</a> выполнится, т.е.</p>
+<p>Значит, в качестве <span class="math notranslate nohighlight">\(\Omega_N\)</span> возьмём <span class="math notranslate nohighlight">\(L_N\)</span>, чтобы удовлетворить <a class="reference internal" href="#equation-gauss-orthogonal">(5.21)</a> для полиномов <span class="math notranslate nohighlight">\(q_{M-N}\)</span> как можно более высокой степени. Тогда, если степень <span class="math notranslate nohighlight">\(q_{M-N}\)</span> не превосходит <span class="math notranslate nohighlight">\(M-N \le N-1\)</span>, т.е. <span class="math notranslate nohighlight">\(M \le 2N-1\)</span>, то <a class="reference internal" href="#equation-gauss-orthogonal">(5.21)</a> выполнится, т.е.</p>
 <div class="math notranslate nohighlight">
 \[\int\limits_{-1}^{1} \Omega_{N}(x) q_{M-N}(x) \diff x = 0,\quad \forall M \le 2N-1,\]</div>
 <p>а для <span class="math notranslate nohighlight">\(M &gt; 2N-1\)</span> получим наименьшее скалярное произведение.</p>
-<p>Поскольку <span class="math notranslate nohighlight">\(\Omega_N \equiv L_N\)</span>, то узлы интегрирования совпадают с нулями <span class="math notranslate nohighlight">\(L_N(x_i) = 0\)</span>, <span class="math notranslate nohighlight">\(i=1,\dots,N\)</span>. Зная узлы, мы решаем систему на веса <span class="math notranslate nohighlight">\(\{w_i\}_{i=1}^N\)</span> <a class="reference internal" href="newton_cotes.html#equation-newtoncotesgeneral">()</a> из <span class="math notranslate nohighlight">\(N\)</span> уравнений, получая квадратурную формулу.</p>
-<p>Из выражения для ошибки <a class="reference internal" href="#equation-gauss-error">()</a> и такого способа выбора узлов и весов приходим к выводу, что итоговая квадратурная формула будет точна для полиномов <span class="math notranslate nohighlight">\(P_M\)</span> степени не выше <span class="math notranslate nohighlight">\(M \le 2N-1\)</span>. Хотя узлов мы используем всего <span class="math notranslate nohighlight">\(N\)</span>.</p>
+<p>Поскольку <span class="math notranslate nohighlight">\(\Omega_N \equiv L_N\)</span>, то узлы интегрирования совпадают с нулями <span class="math notranslate nohighlight">\(L_N(x_i) = 0\)</span>, <span class="math notranslate nohighlight">\(i=1,\dots,N\)</span>. Зная узлы, мы решаем систему на веса <span class="math notranslate nohighlight">\(\{w_i\}_{i=1}^N\)</span> <a class="reference internal" href="newton_cotes.html#equation-newtoncotesgeneral">(5.4)</a> из <span class="math notranslate nohighlight">\(N\)</span> уравнений, получая квадратурную формулу.</p>
+<p>Из выражения для ошибки <a class="reference internal" href="#equation-gauss-error">(5.20)</a> и такого способа выбора узлов и весов приходим к выводу, что итоговая квадратурная формула будет точна для полиномов <span class="math notranslate nohighlight">\(P_M\)</span> степени не выше <span class="math notranslate nohighlight">\(M \le 2N-1\)</span>. Хотя узлов мы используем всего <span class="math notranslate nohighlight">\(N\)</span>.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>Стоит отметить, что алгебраический порядок и сходимость не обязательно связаны.</p>
@@ -610,13 +681,13 @@ title="Print to PDF"
 <div class="proof proof-type-definition" id="id7">
 <span id="definition-gauss-quadrature"></span><span id="index-0"></span>
     <div class="proof-title">
-        <span class="proof-type">Определение </span>
+        <span class="proof-type">Определение 5.13</span>
         
             <span class="proof-title-name">(Квадратурная формула Гаусса)</span>
         
     </div><div class="proof-content">
 <p>Квадратурные формулы с узлами в нулях многочленов Лежандра называются <strong>квадратурными формулами Гаусса</strong>.
-Они имеют при заданном числе узлов (т.е. количестве вычислений подынтегральной функции) <em>максимальный алгебраический порядок точности</em> из всех квадратур вида <a class="reference internal" href="index.html#equation-quadrature">()</a>.</p>
+Они имеют при заданном числе узлов (т.е. количестве вычислений подынтегральной функции) <em>максимальный алгебраический порядок точности</em> из всех квадратур вида <a class="reference internal" href="index.html#equation-quadrature">(5.2)</a>.</p>
 </div></div><p>На практике для узлов и весов квадратур Гаусса различных порядков составлены таблицы, которыми можно пользоваться и не зная теории.
 При использовании таблиц нужно обратить внимание на два аспекта:</p>
 <ol class="simple">
@@ -626,20 +697,19 @@ title="Print to PDF"
 формулы пересчёта на произвольный отрезок <span class="math notranslate nohighlight">\([a, b]\)</span> будут слегка отличаться.</p></li>
 </ol>
 <section id="id2">
-<h2>Квадратуры гауссова типа с частично зафиксированными узлами<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.3.1. </span>Квадратуры гауссова типа с частично зафиксированными узлами<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>На практике иногда возникает потребность получить максимально точные квадратурные формулы при условии, что часть узлов
 <span class="math notranslate nohighlight">\(\{{\hat x}_1, \dots, {\hat x}_p\}\)</span>зафиксирована, а остальные <span class="math notranslate nohighlight">\(N - p\)</span> узлов можно выбрать свободно. В таком случае те же
 рассуждения, что и при выводе формул Гаусса, приводят к следующему условию максимальной степени квадратуры:</p>
 <div class="math notranslate nohighlight" id="equation-gausslike">
-<span class="eqno">()<a class="headerlink" href="#equation-gausslike" title="Permalink to this equation">#</a></span>\[\int\limits_{-1}^{1} {\hat\Omega}_p(x) \Omega_{N-p}(x) q_{M-N}(x) \diff x = 0\]</div>
+<span class="eqno">(5.22)<a class="headerlink" href="#equation-gausslike" title="Permalink to this equation">#</a></span>\[\int\limits_{-1}^{1} {\hat\Omega}_p(x) \Omega_{N-p}(x) q_{M-N}(x) \diff x = 0\]</div>
 <section id="id3">
-<h3>Квадратуры Лобатто<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
-<p>Гауссовы квадратуры относятся к открытому типу, т.к. все нули многочленов Лежандра лежат внутри интервала <span class="math notranslate nohighlight">\((-1, 1)\)</span>. Если нужно
-построить формулу открытого типа, то положения двух узлов нужно зафиксировать в точках <span class="math notranslate nohighlight">\(x_1 = -1\)</span> и <span class="math notranslate nohighlight">\(x_N = 1\)</span>. Выражение <a class="reference internal" href="#equation-gausslike">()</a>
+<h3><span class="section-number">5.3.1.1. </span>Квадратуры Лобатто<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
+<p>Гауссовы квадратуры относятся к открытому типу, т.к. все нули многочленов Лежандра лежат внутри интервала <span class="math notranslate nohighlight">\((-1, 1)\)</span>. Если нужно построить формулу закрытого типа, то положения <span class="math notranslate nohighlight">\(x_1 = -1\)</span> и <span class="math notranslate nohighlight">\(x_N = 1\)</span> фиксируются. Выражение <a class="reference internal" href="#equation-gausslike">(5.22)</a>
 приобретает вид</p>
 <div class="math notranslate nohighlight" id="equation-integ-lobatto">
-<span class="eqno">()<a class="headerlink" href="#equation-integ-lobatto" title="Permalink to this equation">#</a></span>\[\int\limits_{-1}^{1} (1 - x^2) \Omega_{N-2}(x) q_{M-N}(x) \diff x = 0\]</div>
-<p>Поскольку функция <span class="math notranslate nohighlight">\({\hat\Omega}_p(x) = (1 - x^2)\)</span> положительна на интервале <span class="math notranslate nohighlight">\((-1, 1)\)</span>, выражение <a class="reference internal" href="#equation-integ-lobatto">()</a> можно
+<span class="eqno">(5.23)<a class="headerlink" href="#equation-integ-lobatto" title="Permalink to this equation">#</a></span>\[\int\limits_{-1}^{1} (1 - x^2) \Omega_{N-2}(x) q_{M-N}(x) \diff x = 0\]</div>
+<p>Поскольку функция <span class="math notranslate nohighlight">\({\hat\Omega}_p(x) = (1 - x^2)\)</span> положительна на интервале <span class="math notranslate nohighlight">\((-1, 1)\)</span>, выражение <a class="reference internal" href="#equation-integ-lobatto">(5.23)</a> можно
 рассматривать как скалярное произведение, а <span class="math notranslate nohighlight">\(\Omega_{N-2}(x)\)</span> должен принадлежать семейству ортогональных многочленов для
 такого скалярного произведения. Поиск коэффициентов таких многочленов можно производить через ортогонализацию Грама-Шмидта.
 Когда многочлен найден, каким-либо численным методом находятся его нули, которые будут дополнительными узлами, а затем веса.</p>
@@ -647,19 +717,19 @@ title="Print to PDF"
 <span class="math notranslate nohighlight">\(2N - 3\)</span> (выбор <span class="math notranslate nohighlight">\(N - 2\)</span> узлов и <span class="math notranslate nohighlight">\(N\)</span> весов позволяют получить точные решения для многочленов с <span class="math notranslate nohighlight">\(2N-2\)</span> коэффициентами).</p>
 </section>
 <section id="id4">
-<h3>Квадратуры Кронрода<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
+<h3><span class="section-number">5.3.1.2. </span>Квадратуры Кронрода<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h3>
 <p>Гауссовы квадратуры обладают неприятным свойством – при повышении порядка аппроксимации полностью меняется набор узлов интегрирования.
 Это означает, что оценка фактической погрешности численного интегрирования требует расчёта подынтегральной функции в <span class="math notranslate nohighlight">\(N+1\)</span> точке, при
 этом уточнённая квадратура будет иметь порядок лишь на 2 выше, чем исходная. В случае, например, интегрирования методом Ромберга
 аналогичное удвоение количества точек удваивает и порядок квадратуры.</p>
 <p>В 1960-х Александр Семёнович Кронрод предложил “уточняющие” квадратуры, получаемые добавлением к <span class="math notranslate nohighlight">\(N\)</span> узлам гауссовой квадратуры ещё
 <span class="math notranslate nohighlight">\(N+1\)</span> узлов так, чтобы порядок получившейся квадратуры был максимален.</p>
-<p>Поскольку в <a class="reference internal" href="#equation-gausslike">()</a> теперь берётся не всюду положительный многочлен <span class="math notranslate nohighlight">\({\hat\Omega}_p(x) = L_p(x)\)</span>, этот интеграл уже нельзя
+<p>Поскольку в <a class="reference internal" href="#equation-gausslike">(5.22)</a> теперь берётся не всюду положительный многочлен <span class="math notranslate nohighlight">\({\hat\Omega}_p(x) = L_p(x)\)</span>, этот интеграл уже нельзя
 рассматривать как скалярное произведение, и поиск дополняющего многочлена нужно делать иначе.</p>
 <p>Записав многочлен в виде</p>
 <div class="math notranslate nohighlight" id="equation-kronrod-poly">
-<span class="eqno">()<a class="headerlink" href="#equation-kronrod-poly" title="Permalink to this equation">#</a></span>\[K(x) = x^{N+1} + K_N x^N + \dots + K_1 x + K_0,\]</div>
-<p>и подставив в <a class="reference internal" href="#equation-gausslike">()</a> <span class="math notranslate nohighlight">\(q(x) = 1\)</span>, получаем</p>
+<span class="eqno">(5.24)<a class="headerlink" href="#equation-kronrod-poly" title="Permalink to this equation">#</a></span>\[K(x) = x^{N+1} + K_N x^N + \dots + K_1 x + K_0,\]</div>
+<p>и подставив в <a class="reference internal" href="#equation-gausslike">(5.22)</a> <span class="math notranslate nohighlight">\(q(x) = 1\)</span>, получаем</p>
 <div class="math notranslate nohighlight">
 \[\int\limits_{-1}^{1} L_N(x) (x^{N+1} + K_N x^N + \dots) \diff x = \int\limits_{-1}^{1} L_N(x) (x^{N+1} + K_N x^N) \diff x = 0,\]</div>
 <p>т.к. многочлен Лежандра <span class="math notranslate nohighlight">\(L_N(x)\)</span> ортогонален всем многочленам степени ниже <span class="math notranslate nohighlight">\(N\)</span>. Отсюда</p>
@@ -674,8 +744,8 @@ title="Print to PDF"
 </section>
 </section>
 <section id="id5">
-<h2>Альтернативная система уравнений для вычисления весов квадратур<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
-<p>При выводе системы <a class="reference internal" href="newton_cotes.html#equation-newtoncotesgeneral">()</a> требовалось точное выполнение квадратурной формулы для степеней <span class="math notranslate nohighlight">\(x\)</span>. Можно вместо этого
+<h2><span class="section-number">5.3.2. </span>Альтернативная система уравнений для вычисления весов квадратур<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<p>При выводе системы <a class="reference internal" href="newton_cotes.html#equation-newtoncotesgeneral">(5.4)</a> требовалось точное выполнение квадратурной формулы для степеней <span class="math notranslate nohighlight">\(x\)</span>. Можно вместо этого
 потребовать точное выполнение квадратурной формулы для многочленов Лежандра. Система в предположении, что узлы заданы на отрезке
 <span class="math notranslate nohighlight">\([-1, 1]\)</span>, принимает вид</p>
 <div class="math notranslate nohighlight">
@@ -715,7 +785,7 @@ w_N
 Вандермонда, т.к. имеет лучшую обусловленность.</p>
 </section>
 <section id="id6">
-<h2>Упражения<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.3.3. </span>Упражения<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
 <ol>
 <li><p>Ниже приведена заготовка функции, находящей узлы и коэффициенты формулы Ньютона-Котса, точной для многочлена степени <span class="math notranslate nohighlight">\(p\)</span>.
 Заполните пропуски <code class="docutils literal notranslate"><span class="pre">⟨...⟩</span></code></p>
@@ -794,6 +864,20 @@ w_N
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="romberg.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5.2. </span>Метод Ромберга</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="adaptive.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5.4. </span>Адаптивное интегрирование</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Кусочно-линейная интерполяция &#8212; Практикум по вычислительной теплофизике</title>
+    <title>4.2. Кусочно-линейная интерполяция &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="4.3. Кубические сплайны" href="cubic_spline.html" />
+    <link rel="prev" title="4.1. Полиномиальная интерполяция" href="polynomial.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -248,6 +250,75 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../syslinear/ex.html">
      3.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   4. Интерполяция
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="polynomial.html">
+     4.1. Полиномиальная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     4.2. Кусочно-линейная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="cubic_spline.html">
+     4.3. Кубические сплайны
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     4.4. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../integration/index.html">
+   5. Численное интегрирование
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/newton_cotes.html">
+     5.1. Формулы Ньютона-Котса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/romberg.html">
+     5.2. Метод Ромберга
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/gauss.html">
+     5.3. Формулы Гаусса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/adaptive.html">
+     5.4. Адаптивное интегрирование
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/ex.html">
+     5.5. Задания
     </a>
    </li>
   </ul>
@@ -521,17 +592,17 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#hat">
-   Hat-функции
+   4.2.1. Hat-функции
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   Интерполяция
+   4.2.2. Интерполяция
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   Сходимость
+   4.2.3. Сходимость
   </a>
  </li>
 </ul>
@@ -555,17 +626,17 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#hat">
-   Hat-функции
+   4.2.1. Hat-функции
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   Интерполяция
+   4.2.2. Интерполяция
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   Сходимость
+   4.2.3. Сходимость
   </a>
  </li>
 </ul>
@@ -579,45 +650,45 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Кусочно-линейная интерполяция<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4.2. </span>Кусочно-линейная интерполяция<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <p>Что самое простое можно сделать с набором точек? Соединить отрезками. В этом и состоит кусочно-линейная интерполяция.</p>
 <div class="proof proof-type-definition" id="id5">
 <span id="index-0"></span>
     <div class="proof-title">
-        <span class="proof-type">Определение </span>
+        <span class="proof-type">Определение 4.8</span>
         
             <span class="proof-title-name">(Кусочно-линейная интерполяция)</span>
         
     </div><div class="proof-content">
 <p>На каждом отрезке <span class="math notranslate nohighlight">\([t_k, t_{k+1}]\)</span> <strong>кусочно-линейный интерполянт</strong> является отрезком прямой, соединяющей точки <span class="math notranslate nohighlight">\((t_k, y_k)\)</span> и <span class="math notranslate nohighlight">\((t_{k+1}, y_{k+1})\)</span></p>
 <div class="math notranslate nohighlight" id="equation-pwlin">
-<span class="eqno">()<a class="headerlink" href="#equation-pwlin" title="Permalink to this equation">#</a></span>\[p(x) = y_k + \frac{y_{k+1} - y_k}{t_{k+1} - t_k} (x - t_k),\quad x \in [t_k, t_{k+1}]\]</div>
-</div></div><p>Простой способ реализации формулы <a class="reference internal" href="#equation-pwlin">()</a> заключается в поиске отрезка <span class="math notranslate nohighlight">\([t_k, t_{k+1}]\)</span>, которому принадлежит <span class="math notranslate nohighlight">\(x\)</span>, а затем уже в применении <a class="reference internal" href="#equation-pwlin">()</a>.</p>
+<span class="eqno">(4.4)<a class="headerlink" href="#equation-pwlin" title="Permalink to this equation">#</a></span>\[p(x) = y_k + \frac{y_{k+1} - y_k}{t_{k+1} - t_k} (x - t_k),\quad x \in [t_k, t_{k+1}]\]</div>
+</div></div><p>Простой способ реализации формулы <a class="reference internal" href="#equation-pwlin">(4.4)</a> заключается в поиске отрезка <span class="math notranslate nohighlight">\([t_k, t_{k+1}]\)</span>, которому принадлежит <span class="math notranslate nohighlight">\(x\)</span>, а затем уже в применении <a class="reference internal" href="#equation-pwlin">(4.4)</a>.</p>
 <p>Мы же поступим более общим способом <span id="id2">[<a class="reference internal" href="../appendix/bibliography.html#id3" title="Randall J. LeVeque. Finite Volume Methods for Hyperbolic Problems. Cambridge University Press, August 2002. URL: https://doi.org/10.1017/cbo9780511791253, doi:10.1017/cbo9780511791253.">LeV02</a>]</span>.</p>
 <section id="hat">
-<h2>Hat-функции<a class="headerlink" href="#hat" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.2.1. </span>Hat-функции<a class="headerlink" href="#hat" title="Permalink to this headline">#</a></h2>
 <p>Искомый интерполянт лишь одна из <em>непрерывных кусочно-линейных</em> функций, которые образуют <em>линейное пространство</em>. В этом пространстве функция выражается в виде</p>
 <div class="math notranslate nohighlight" id="equation-pwlin-decomp">
-<span class="eqno">()<a class="headerlink" href="#equation-pwlin-decomp" title="Permalink to this equation">#</a></span>\[p(x) = \sum_{k=1}^n c_k \varphi_k(x),\quad x \in [t_1, t_n].\]</div>
+<span class="eqno">(4.5)<a class="headerlink" href="#equation-pwlin-decomp" title="Permalink to this equation">#</a></span>\[p(x) = \sum_{k=1}^n c_k \varphi_k(x),\quad x \in [t_1, t_n].\]</div>
 <p>Где набор функций <span class="math notranslate nohighlight">\(\{\varphi_k(x)\}_{k=1}^n\)</span> является <em>базисом</em> пространства, а коэффициенты (веса, координаты) <span class="math notranslate nohighlight">\(c_k\)</span> однозначно задают <span class="math notranslate nohighlight">\(p(x)\)</span>. В качестве такого базиса широко используются hat-функции.</p>
 <span class="target" id="index-1"></span><div class="proof proof-type-definition" id="id6">
 <span id="index-2"></span>
     <div class="proof-title">
-        <span class="proof-type">Определение </span>
+        <span class="proof-type">Определение 4.9</span>
         
             <span class="proof-title-name">(Hat-функция)</span>
         
     </div><div class="proof-content">
 <p><strong>Полная hat-функция</strong> <span class="math notranslate nohighlight">\(\varphi_k\)</span> это функция треугольного вида, задающаяся аналитически в виде</p>
 <div class="math notranslate nohighlight" id="equation-hatfunc">
-<span class="eqno">()<a class="headerlink" href="#equation-hatfunc" title="Permalink to this equation">#</a></span>\[\begin{split}\varphi_k(x) = \begin{cases}
+<span class="eqno">(4.6)<a class="headerlink" href="#equation-hatfunc" title="Permalink to this equation">#</a></span>\[\begin{split}\varphi_k(x) = \begin{cases}
 \dfrac{x-t_{k-1}}{t_k - t_{k-1}},&amp; x \in [t_k, t_{k-1}],\\
 \dfrac{t_{k+1}-x}{t_{k+1} - t_k},&amp; x \in [t_k, t_{k+1}],\\
 0, &amp; иначе.
 \end{cases},\quad k = 2,...,n-1.\end{split}\]</div>
 <p id="index-3"><strong>Половинчатые hat-функции</strong> задаются на краях и имеют вид</p>
 <div class="math notranslate nohighlight" id="equation-hatfunchalf">
-<span class="eqno">()<a class="headerlink" href="#equation-hatfunchalf" title="Permalink to this equation">#</a></span>\[\begin{split}\varphi_1 = \begin{cases}
+<span class="eqno">(4.7)<a class="headerlink" href="#equation-hatfunchalf" title="Permalink to this equation">#</a></span>\[\begin{split}\varphi_1 = \begin{cases}
 \dfrac{t_2-x}{t_2 - t_1},&amp; x \in [t_1, t_2],\\
 0, &amp; иначе.
 \end{cases}
@@ -630,7 +701,7 @@ title="Print to PDF"
 <div class="proof proof-type-function" id="id7">
 <span id="function-hatfunc"></span>
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 4.10</span>
         
             <span class="proof-title-name">(hatfunc)</span>
         
@@ -657,7 +728,7 @@ title="Print to PDF"
 </div></div><div class="proof proof-type-demo" id="id8">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 4.11</span>
         
     </div><div class="proof-content">
 </div></div><div class="demo"><p>Допустим, интерполяция производится по четырём точкам <span class="math notranslate nohighlight">\(t_1 = 1.0, t_2 = 1.3, t_3 = 3.1, t_4 = 4.0\)</span> (абсциссы), соответствующий базис имеет вид.</p>
@@ -680,27 +751,27 @@ title="Print to PDF"
 </div>
 </div></section>
 <section id="id3">
-<h2>Интерполяция<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.2.2. </span>Интерполяция<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <div class="proof proof-type-observation">
 
     <div class="proof-title">
         <span class="proof-type">Наблюдение </span>
         
     </div><div class="proof-content">
-<p>Определение интерполянта <span class="math notranslate nohighlight">\(p(x)\)</span> в виде <a class="reference internal" href="#equation-pwlin-decomp">()</a> делает нахождение коэффициентов <span class="math notranslate nohighlight">\(c_k\)</span> и базиса <span class="math notranslate nohighlight">\(\varphi_k(x)\)</span> <em>независимыми</em> задачами.</p>
+<p>Определение интерполянта <span class="math notranslate nohighlight">\(p(x)\)</span> в виде <a class="reference internal" href="#equation-pwlin-decomp">(4.5)</a> делает нахождение коэффициентов <span class="math notranslate nohighlight">\(c_k\)</span> и базиса <span class="math notranslate nohighlight">\(\varphi_k(x)\)</span> <em>независимыми</em> задачами.</p>
 </div></div><p>Поскольку hat-функции обладают свойством</p>
 <div class="math notranslate nohighlight" id="equation-cardinality">
-<span class="eqno">()<a class="headerlink" href="#equation-cardinality" title="Permalink to this equation">#</a></span>\[\begin{split}\varphi_k(t_l) = \begin{cases}
+<span class="eqno">(4.8)<a class="headerlink" href="#equation-cardinality" title="Permalink to this equation">#</a></span>\[\begin{split}\varphi_k(t_l) = \begin{cases}
 1, &amp; k = l,\\
 0, &amp; k \ne l.
 \end{cases}\end{split}\]</div>
-<p>То коэффициенты <span class="math notranslate nohighlight">\(c_k\)</span> в разложении <a class="reference internal" href="#equation-pwlin-decomp">()</a> равняются <span class="math notranslate nohighlight">\(y_k\)</span></p>
+<p>То коэффициенты <span class="math notranslate nohighlight">\(c_k\)</span> в разложении <a class="reference internal" href="#equation-pwlin-decomp">(4.5)</a> равняются <span class="math notranslate nohighlight">\(y_k\)</span></p>
 <div class="math notranslate nohighlight">
 \[p(x) = \sum_{k=1}^n y_k \varphi_k(x),\quad x \in [t_1, t_n].\]</div>
 <div class="proof proof-type-function" id="id9">
 
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 4.12</span>
         
             <span class="proof-title-name">(pwlininterp)</span>
         
@@ -730,7 +801,7 @@ title="Print to PDF"
 </div></div><div class="proof proof-type-demo" id="id10">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 4.13</span>
         
     </div><div class="proof-content">
 </div></div><div class="demo"><p>Рассмотрим пример кусочно-линейной интерполяции на функции из раздела <a class="reference internal" href="polynomial.html#poly-equalspaced"><span class="std std-ref">Случай равноотстоящих точек</span></a>.</p>
@@ -774,12 +845,12 @@ title="Print to PDF"
 <p>Похоже, интерполянт стремится к некоторому пределу…</p>
 </div></section>
 <section id="id4">
-<h2>Сходимость<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.2.3. </span>Сходимость<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
 <p>Можно рассмотреть, как меняется ошибка приближения функции интерполянтом в зависимости от количества использующихся точек. Нам понадобятся несколько инструментов.</p>
 <span class="target" id="index-4"></span><div class="proof proof-type-definition" id="id11">
 <span id="index-5"></span>
     <div class="proof-title">
-        <span class="proof-type">Определение </span>
+        <span class="proof-type">Определение 4.14</span>
         
             <span class="proof-title-name">(<span class="math notranslate nohighlight">\(\infty\)</span>-норма функции)</span>
         
@@ -790,7 +861,7 @@ title="Print to PDF"
 </div></div><div class="proof proof-type-definition" id="id12">
 <span id="index-6"></span>
     <div class="proof-title">
-        <span class="proof-type">Определение </span>
+        <span class="proof-type">Определение 4.15</span>
         
             <span class="proof-title-name">(Равномерная одномерная сетка)</span>
         
@@ -806,7 +877,7 @@ title="Print to PDF"
 <div class="proof proof-type-proposition" id="id13">
 <span id="index-9"></span>
     <div class="proof-title">
-        <span class="proof-type">Утверждение </span>
+        <span class="proof-type">Утверждение 4.16</span>
         
             <span class="proof-title-name">(Cходимость кусочно-линейной интерполяции)</span>
         
@@ -820,7 +891,7 @@ title="Print to PDF"
 <div class="proof proof-type-definition" id="id14">
 <span id="index-10"></span>
     <div class="proof-title">
-        <span class="proof-type">Определение </span>
+        <span class="proof-type">Определение 4.17</span>
         
             <span class="proof-title-name">(Сходимость и порядок сходимости)</span>
         
@@ -829,7 +900,7 @@ title="Print to PDF"
 </div></div><div class="proof proof-type-demo" id="id15">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 4.18</span>
         
     </div><div class="proof-content">
 </div></div><div class="demo"><p>Функция <span class="math notranslate nohighlight">\(f(x)=\exp(\sin(2x)) + 0.05\sin(15x)\)</span>.</p>
@@ -897,6 +968,20 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="polynomial.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">4.1. </span>Полиномиальная интерполяция</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="cubic_spline.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">4.3. </span>Кубические сплайны</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

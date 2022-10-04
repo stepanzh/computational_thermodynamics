@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Формулы Ньютона-Котса &#8212; Практикум по вычислительной теплофизике</title>
+    <title>5.1. Формулы Ньютона-Котса &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.2. Метод Ромберга" href="romberg.html" />
+    <link rel="prev" title="5. Численное интегрирование" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -248,6 +250,75 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../syslinear/ex.html">
      3.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../interpolation/index.html">
+   4. Интерполяция
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/polynomial.html">
+     4.1. Полиномиальная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/pwlinear.html">
+     4.2. Кусочно-линейная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/cubic_spline.html">
+     4.3. Кубические сплайны
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/ex.html">
+     4.4. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   5. Численное интегрирование
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     5.1. Формулы Ньютона-Котса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="romberg.html">
+     5.2. Метод Ромберга
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gauss.html">
+     5.3. Формулы Гаусса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="adaptive.html">
+     5.4. Адаптивное интегрирование
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     5.5. Задания
     </a>
    </li>
   </ul>
@@ -521,22 +592,22 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Формула прямоугольников
+   5.1.1. Формула прямоугольников
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   Формула трапеций
+   5.1.2. Формула трапеций
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#sec-quadrature-simpson">
-   Формула Симпсона
+   5.1.3. Формула Симпсона
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id8">
-   Упражения
+   5.1.4. Упражения
   </a>
  </li>
 </ul>
@@ -560,22 +631,22 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Формула прямоугольников
+   5.1.1. Формула прямоугольников
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   Формула трапеций
+   5.1.2. Формула трапеций
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#sec-quadrature-simpson">
-   Формула Симпсона
+   5.1.3. Формула Симпсона
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id8">
-   Упражения
+   5.1.4. Упражения
   </a>
  </li>
 </ul>
@@ -589,7 +660,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="chapters-integration-newton-cotes">
-<span id="id1"></span><h1>Формулы Ньютона-Котса<a class="headerlink" href="#chapters-integration-newton-cotes" title="Permalink to this headline">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">5.1. </span>Формулы Ньютона-Котса<a class="headerlink" href="#chapters-integration-newton-cotes" title="Permalink to this headline">#</a></h1>
 <p>Рассмотрим задачу приближения интеграла</p>
 <div class="math notranslate nohighlight">
 \[I = \int\limits_{0}^{1} f(x) \diff x\]</div>
@@ -600,7 +671,7 @@ title="Print to PDF"
 \[\sum\limits_{i=1}^{N} w_i x_i^p = \int\limits_{0}^{1} x^p \diff x = \frac{1}{p + 1} \quad\forall p \in \{0, \dots, N-1\}\]</div>
 <p>Это условие дает линейную систему:</p>
 <div class="math notranslate nohighlight" id="equation-newtoncotesgeneral">
-<span class="eqno">()<a class="headerlink" href="#equation-newtoncotesgeneral" title="Permalink to this equation">#</a></span>\[\begin{split}\left(
+<span class="eqno">(5.4)<a class="headerlink" href="#equation-newtoncotesgeneral" title="Permalink to this equation">#</a></span>\[\begin{split}\left(
 \begin{array}{cccc}
  1  &amp;  1  &amp; \dots &amp; 1 \\
 x_1 &amp; x_2 &amp; \dots &amp; x_N \\
@@ -631,7 +702,7 @@ w_N
 <p>Кажется, что точность формул Ньютона-Котса растет с повышением порядка, но при расчетах с конечной точностью это не так. При повышении степени в этих формулах появляются отрицательные веса, что приводит к численной неустойчивости. Поэтому в основном применяются формулы Ньютона-Котса низких порядков. В этом случае лучше брать закрытые формулы, т.к. конечная точка одного подотрезка является начальной точкой следующего, что экономит одно вычисление подынтегральной функции по сравнению с открытыми формулами того же порядка точности. Тем не менее, если на одном из концов отрезка функция имеет особенность, применение открытых формул позволяет избежать её вычисления в этой точке.</p>
 <p>Ниже приведены некоторые составные квадратурные формулы Ньютона-Котса.</p>
 <section id="id2">
-<h2>Формула прямоугольников<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.1.1. </span>Формула прямоугольников<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>Для открытой формулы с 1 узлом (т.е. подынтегральная функция приближается константой):</p>
 <aside class="margin sidebar" id="index-2">
 <p class="sidebar-title"></p>
@@ -651,7 +722,7 @@ w_N
 <div class="proof proof-type-function" id="id9">
 
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 5.4</span>
         
             <span class="proof-title-name">(midpoint)</span>
         
@@ -673,7 +744,7 @@ w_N
 </div></div><div class="proof proof-type-demo" id="id10">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 5.5</span>
         
     </div><div class="proof-content">
 </div></div><div class="demo"><p>Ниже представлены графики численного интеграла</p>
@@ -711,11 +782,11 @@ w_N
 <p>При этом отсюда видно, что ошибка становится <em>нулевой</em> для линейных функций (для них <span class="math notranslate nohighlight">\(f'' \equiv 0\)</span>).</p>
 </section>
 <section id="id4">
-<h2>Формула трапеций<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.1.2. </span>Формула трапеций<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
 <p>Если аппроксимировать функцию на отрезке <span class="math notranslate nohighlight">\([x_{i-1}, x_{i}]\)</span> прямой, проходящей через значения на концах отрезка, то получим <strong>формулу трапеций</strong> (<em>trapezoidal rule</em>)</p>
 <div class="math notranslate nohighlight" id="index-3">
 \[\int_{x_{i-1}}^{x_i} f(x)\diff x \approx \frac{f(x_{i-1}) + f(x_i)}{2} h.\]</div>
-<p>Та же формула получается из <a class="reference internal" href="#equation-newtoncotesgeneral">()</a>, если взять узлы <span class="math notranslate nohighlight">\(x_1=0\)</span> и <span class="math notranslate nohighlight">\(x_2=1\)</span>:</p>
+<p>Та же формула получается из <a class="reference internal" href="#equation-newtoncotesgeneral">(5.4)</a>, если взять узлы <span class="math notranslate nohighlight">\(x_1=0\)</span> и <span class="math notranslate nohighlight">\(x_2=1\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\left(
 \begin{array}{cc}
@@ -747,14 +818,14 @@ w_2
 1 / 2
 \end{array}
 \right)\end{split}\]</div>
-<p id="index-4">Просуммировав <a class="reference internal" href="index.html#equation-quadrature-composite">()</a>, получим <strong>составную формулу трапеций</strong> для отрезка <span class="math notranslate nohighlight">\([a, b]\)</span>:</p>
+<p id="index-4">Просуммировав <a class="reference internal" href="index.html#equation-quadrature-composite">(5.3)</a>, получим <strong>составную формулу трапеций</strong> для отрезка <span class="math notranslate nohighlight">\([a, b]\)</span>:</p>
 <div class="math notranslate nohighlight">
 \[\int_a^b f(x)\diff x \approx T_f = h \left(\frac{1}{2} f(x_0) + f(x_1) + f(x_2) + ... + f(x_{n-1}) + \frac{1}{2}f(x_n)\right).\]</div>
 <p>Из формулы трапеций выводятся многие усовершенствованные методы. Ниже дана реализация.</p>
 <div class="proof proof-type-function" id="id11">
 <span id="function-trapezoid"></span>
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 5.6</span>
         
             <span class="proof-title-name">(trapezoid)</span>
         
@@ -786,7 +857,7 @@ w_2
 </div></div><div class="proof proof-type-demo" id="id12">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 5.7</span>
         
     </div><div class="proof-content">
 </div></div><div class="demo"><div class="cell docutils container">
@@ -814,23 +885,23 @@ w_2
 <p>Таким образом, она обладает вторым порядком точности, как и формула прямоугольников. И также точно приближает интеграл от линейной функции.</p>
 </section>
 <section id="sec-quadrature-simpson">
-<span id="id6"></span><h2>Формула Симпсона<a class="headerlink" href="#sec-quadrature-simpson" title="Permalink to this headline">#</a></h2>
-<p>Формулу Симпсона несложно получить, решив <a class="reference internal" href="#equation-newtoncotesgeneral">()</a> для <span class="math notranslate nohighlight">\(x_1 = 0, x_2 = 1/2, x_3 = 1\)</span>,
+<span id="id6"></span><h2><span class="section-number">5.1.3. </span>Формула Симпсона<a class="headerlink" href="#sec-quadrature-simpson" title="Permalink to this headline">#</a></h2>
+<p>Формулу Симпсона несложно получить, решив <a class="reference internal" href="#equation-newtoncotesgeneral">(5.4)</a> для <span class="math notranslate nohighlight">\(x_1 = 0, x_2 = 1/2, x_3 = 1\)</span>,
 что соответствует интерполяции <span class="math notranslate nohighlight">\(f(x)\)</span> параболой по трём точкам.
 Однако можно взглянуть на вывод этой формулы с другой стороны, на основе экстраполяции Ричардсона.</p>
 <p>Для формулы трапеций на основе разложения Тейлора можно показать, что</p>
 <div class="math notranslate nohighlight" id="equation-simp-step1">
-<span class="eqno">()<a class="headerlink" href="#equation-simp-step1" title="Permalink to this equation">#</a></span>\[I = T_f(h) + c_1 h^2 + O(h^4),\]</div>
+<span class="eqno">(5.6)<a class="headerlink" href="#equation-simp-step1" title="Permalink to this equation">#</a></span>\[I = T_f(h) + c_1 h^2 + O(h^4),\]</div>
 <p>где <span class="math notranslate nohighlight">\(c_1\)</span> не зависит от <span class="math notranslate nohighlight">\(h\)</span>.</p>
 <p>Если мы проведём расчёт на сетке вдвое мельче, то получим</p>
 <div class="math notranslate nohighlight" id="equation-simp-step2">
-<span class="eqno">()<a class="headerlink" href="#equation-simp-step2" title="Permalink to this equation">#</a></span>\[I = T_f(h/2) + c_1 \left(\frac{h}{2}\right)^2 + O(h^4).\]</div>
-<p>Комбинируя выражения <a class="reference internal" href="#equation-simp-step1">()</a> и <a class="reference internal" href="#equation-simp-step2">()</a> так, чтобы исключить главный член погрешности <span class="math notranslate nohighlight">\(c_1 h^2\)</span>, получим</p>
+<span class="eqno">(5.7)<a class="headerlink" href="#equation-simp-step2" title="Permalink to this equation">#</a></span>\[I = T_f(h/2) + c_1 \left(\frac{h}{2}\right)^2 + O(h^4).\]</div>
+<p>Комбинируя выражения <a class="reference internal" href="#equation-simp-step1">(5.6)</a> и <a class="reference internal" href="#equation-simp-step2">(5.7)</a> так, чтобы исключить главный член погрешности <span class="math notranslate nohighlight">\(c_1 h^2\)</span>, получим</p>
 <div class="math notranslate nohighlight" id="equation-simp-bigo">
-<span class="eqno">()<a class="headerlink" href="#equation-simp-bigo" title="Permalink to this equation">#</a></span>\[I = \frac{1}{3} \big[4 T_f(h/2) - T_f(h)\big] + O(h^4).\]</div>
+<span class="eqno">(5.8)<a class="headerlink" href="#equation-simp-bigo" title="Permalink to this equation">#</a></span>\[I = \frac{1}{3} \big[4 T_f(h/2) - T_f(h)\big] + O(h^4).\]</div>
 <p>Таким образом получена уточнённая оценка интеграла. Если сумма <span class="math notranslate nohighlight">\(T_f(h)\)</span> вычислена для <span class="math notranslate nohighlight">\(h = b - a\)</span>, то</p>
 <div class="math notranslate nohighlight" id="equation-simp-final">
-<span id="index-5"></span><span class="eqno">()<a class="headerlink" href="#equation-simp-final" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{split}
+<span id="index-5"></span><span class="eqno">(5.9)<a class="headerlink" href="#equation-simp-final" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{split}
 S_f(h) &amp;= \frac{1}{3} \big[4 T_f\left(\frac{h}{2}\right) - T_f(h)\big] \\
 &amp;= \frac{1}{3} \left[
 4 \left(\frac{\tilde{f}(0)}{2} + \tilde{f}\left(\frac{h}{2}\right) + \frac{\tilde{f}(h)}{2}\right)\frac{h}{2} - 
@@ -841,8 +912,8 @@ h\frac{\tilde{f}(0) + \tilde{f}(h)}{2}
 <p>где введено обозначение</p>
 <div class="math notranslate nohighlight">
 \[\tilde{f}(x) = f(a + x).\]</div>
-<p>Веса в <a class="reference internal" href="#equation-simp-final">()</a> в точности совпадают с решением <a class="reference internal" href="#equation-newtoncotesgeneral">()</a> для <span class="math notranslate nohighlight">\(x_1 = 0, x_2 = 1/2, x_3 = 1\)</span>.
-Полученное приближение называется <strong>квадратурной формулой Симпсона</strong> (<em>Simpson’s rule</em>). Из вывода <a class="reference internal" href="#equation-simp-step1">()</a>–<a class="reference internal" href="#equation-simp-bigo">()</a> видно,
+<p>Веса в <a class="reference internal" href="#equation-simp-final">(5.9)</a> в точности совпадают с решением <a class="reference internal" href="#equation-newtoncotesgeneral">(5.4)</a> для <span class="math notranslate nohighlight">\(x_1 = 0, x_2 = 1/2, x_3 = 1\)</span>.
+Полученное приближение называется <strong>квадратурной формулой Симпсона</strong> (<em>Simpson’s rule</em>). Из вывода <a class="reference internal" href="#equation-simp-step1">(5.6)</a>–<a class="reference internal" href="#equation-simp-bigo">(5.8)</a> видно,
 что она имеет чётвертый порядок сходимости. Более точная оценка <span id="id7">[<a class="reference internal" href="../appendix/bibliography.html#id8" title="А. А. Самарский and А. В. Гулин. Численные методы: учеб. пособие для вузов. Наука, Москва, 1989. ISBN 978-5020139961.">89</a>]</span></p>
 <div class="math notranslate nohighlight">
 \[|I - S_f(h)| \le \frac{h^4 (b-a)}{2880} \sup_{x\in [a,b]} f^{IV}(x) \sim O(h^4).\]</div>
@@ -857,11 +928,11 @@ h\frac{\tilde{f}(0) + \tilde{f}(h)}{2}
 \int_a^b f(x) \diff x \approx S_f(h) &amp;= \sum\limits_{i=1}^{n} \frac{h}{6}(f_{i-1} + 4 f_{i-1/2} + f_i) \\
 &amp;= \frac{h}{6}\big[f_0 + f_n + 2 (f_1 + f_2 + ... + f_{n-1}) + 4 (f_{1/2} + f_{3/2} + ... + f_{n-1/2}) \big].
 \end{align}\end{split}\]</div>
-<p>Ниже дана реализация на основе <code class="xref std std-numref docutils literal notranslate"><span class="pre">Функции</span> <span class="pre">{number}</span></code>.</p>
+<p>Ниже дана реализация на основе <a class="reference internal" href="#function-trapezoid"><span class="std std-numref">Функции 5.6</span></a>.</p>
 <div class="proof proof-type-function" id="id13">
 
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 5.8</span>
         
             <span class="proof-title-name">(simpson)</span>
         
@@ -880,7 +951,7 @@ h\frac{\tilde{f}(0) + \tilde{f}(h)}{2}
 </div></div><div class="proof proof-type-demo" id="id14">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 5.9</span>
         
     </div><div class="proof-content">
 </div></div><div class="demo"><p><strong>Сравнение формул</strong></p>
@@ -907,7 +978,7 @@ h\frac{\tilde{f}(0) + \tilde{f}(h)}{2}
 </div>
 </div></section>
 <section id="id8">
-<h2>Упражения<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.1.4. </span>Упражения<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
 <ol>
 <li><p>Ниже приведена заготовка функции, находящей узлы и коэффициенты формулы Ньютона-Котса, точной для многочлена степени <span class="math notranslate nohighlight">\(p\)</span>.
 Заполните пропуски <code class="docutils literal notranslate"><span class="pre">⟨...⟩</span></code></p>
@@ -960,6 +1031,20 @@ h\frac{\tilde{f}(0) + \tilde{f}(h)}{2}
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5. </span>Численное интегрирование</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="romberg.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5.2. </span>Метод Ромберга</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

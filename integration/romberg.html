@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Метод Ромберга &#8212; Практикум по вычислительной теплофизике</title>
+    <title>5.2. Метод Ромберга &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5.3. Формулы Гаусса" href="gauss.html" />
+    <link rel="prev" title="5.1. Формулы Ньютона-Котса" href="newton_cotes.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -248,6 +250,75 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../syslinear/ex.html">
      3.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../interpolation/index.html">
+   4. Интерполяция
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/polynomial.html">
+     4.1. Полиномиальная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/pwlinear.html">
+     4.2. Кусочно-линейная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/cubic_spline.html">
+     4.3. Кубические сплайны
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/ex.html">
+     4.4. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   5. Численное интегрирование
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="newton_cotes.html">
+     5.1. Формулы Ньютона-Котса
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     5.2. Метод Ромберга
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="gauss.html">
+     5.3. Формулы Гаусса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="adaptive.html">
+     5.4. Адаптивное интегрирование
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     5.5. Задания
     </a>
    </li>
   </ul>
@@ -475,17 +546,17 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Экстраполяция Ричардсона
+   5.2.1. Экстраполяция Ричардсона
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   Удвоение числа узлов
+   5.2.2. Удвоение числа узлов
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   Реализация
+   5.2.3. Реализация
   </a>
  </li>
 </ul>
@@ -509,17 +580,17 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Экстраполяция Ричардсона
+   5.2.1. Экстраполяция Ричардсона
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   Удвоение числа узлов
+   5.2.2. Удвоение числа узлов
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   Реализация
+   5.2.3. Реализация
   </a>
  </li>
 </ul>
@@ -533,40 +604,40 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Метод Ромберга<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">5.2. </span>Метод Ромберга<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <p><em>Метод Ромберга</em> (<em>Romberg’s method</em>) позволяет быстро интегрировать с заданной точностью. Метод основывается на применении экстраполяции Ричардсона к формуле трапеций при удвоении числа узлов.</p>
 <section id="id2">
-<h2>Экстраполяция Ричардсона<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.2.1. </span>Экстраполяция Ричардсона<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>Частный случай этого метода мы рассматривали при выводе <a class="reference internal" href="newton_cotes.html#sec-quadrature-simpson"><span class="std std-ref">Формулы Симпсона</span></a>.</p>
 <p><span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id8" title="А. А. Самарский and А. В. Гулин. Численные методы: учеб. пособие для вузов. Наука, Москва, 1989. ISBN 978-5020139961.">89</a>]</span> Рассмотрим вычисление интеграла <span class="math notranslate nohighlight">\(I_h\)</span> на равномерной сетке с шагом <span class="math notranslate nohighlight">\(h\)</span>. На каждом интервале отрезка применяется одна и та же квадратурная формула. Для некоторых формул (например, для формулы трапеций) удаётся получить вид погрешности <span class="math notranslate nohighlight">\(I - I_h\)</span>. Предположим, что это разложение выглядит так</p>
 <div class="math notranslate nohighlight" id="equation-richardson-int">
-<span class="eqno">()<a class="headerlink" href="#equation-richardson-int" title="Permalink to this equation">#</a></span>\[I_h = I + a_1 h^{\alpha_1} + a_2 h^{\alpha_2} + ... + a_m h^{\alpha_m} + O(h^{\alpha_{m+1}}).\]</div>
+<span class="eqno">(5.10)<a class="headerlink" href="#equation-richardson-int" title="Permalink to this equation">#</a></span>\[I_h = I + a_1 h^{\alpha_1} + a_2 h^{\alpha_2} + ... + a_m h^{\alpha_m} + O(h^{\alpha_{m+1}}).\]</div>
 <p>Здесь <span class="math notranslate nohighlight">\(0 &lt; \alpha_1 &lt; \alpha_2 &lt; ... &lt; \alpha_m\)</span> – степени разложения, а <span class="math notranslate nohighlight">\(a_i\)</span> его ненулевые коэффициенты.</p>
-<p>Теперь рассмотрим <a class="reference internal" href="#equation-richardson-int">()</a> на последовательности сеток с шагами <span class="math notranslate nohighlight">\(h_0 = h\)</span>, <span class="math notranslate nohighlight">\(h_1 = qh\)</span>, <span class="math notranslate nohighlight">\(h_2 = q^2 h\)</span>, …, <span class="math notranslate nohighlight">\(h_k = q^k h\)</span>, <span class="math notranslate nohighlight">\(k=0,...,m\)</span>, <span class="math notranslate nohighlight">\(0 &lt; q &lt; 1\)</span>. Тогда, согласно <a class="reference internal" href="#equation-richardson-int">()</a>, запишем</p>
+<p>Теперь рассмотрим <a class="reference internal" href="#equation-richardson-int">(5.10)</a> на последовательности сеток с шагами <span class="math notranslate nohighlight">\(h_0 = h\)</span>, <span class="math notranslate nohighlight">\(h_1 = qh\)</span>, <span class="math notranslate nohighlight">\(h_2 = q^2 h\)</span>, …, <span class="math notranslate nohighlight">\(h_k = q^k h\)</span>, <span class="math notranslate nohighlight">\(k=0,...,m\)</span>, <span class="math notranslate nohighlight">\(0 &lt; q &lt; 1\)</span>. Тогда, согласно <a class="reference internal" href="#equation-richardson-int">(5.10)</a>, запишем</p>
 <div class="math notranslate nohighlight" id="equation-richardson-decompose">
-<span class="eqno">()<a class="headerlink" href="#equation-richardson-decompose" title="Permalink to this equation">#</a></span>\[I_{h_k} = I + a_1 h_k^{\alpha_1} + a_2 h_k^{\alpha_2} + ... + a_m h_k^{\alpha_m} + O(h_k^{\alpha_{m+1}}),\quad k=0,...,m.\]</div>
+<span class="eqno">(5.11)<a class="headerlink" href="#equation-richardson-decompose" title="Permalink to this equation">#</a></span>\[I_{h_k} = I + a_1 h_k^{\alpha_1} + a_2 h_k^{\alpha_2} + ... + a_m h_k^{\alpha_m} + O(h_k^{\alpha_{m+1}}),\quad k=0,...,m.\]</div>
 <p>Введём обозначение <span class="math notranslate nohighlight">\(I^{(1)}_{h_k} = I_{h_k}\)</span> и запишем для двух сеток</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}I^{(1)}_{h_{k-1}} = I + a_1 h_{k-1}^{\alpha_1} + O(h^{\alpha_2}_{k-1})\\
 I^{(1)}_{h_k} = I + a_1 h_k^{\alpha_1} + O(h^{\alpha_2}_{k}).\end{split}\]</div>
 <p>Скомбинируем выражения так, чтобы слагаемое при <span class="math notranslate nohighlight">\(a_1\)</span> занулить, получим</p>
 <div class="math notranslate nohighlight" id="equation-richardson-step">
-<span class="eqno">()<a class="headerlink" href="#equation-richardson-step" title="Permalink to this equation">#</a></span>\[I = I^{(2)}_{h_{k-1}} + O(h^{\alpha_2}_{k-1}),\]</div>
+<span class="eqno">(5.12)<a class="headerlink" href="#equation-richardson-step" title="Permalink to this equation">#</a></span>\[I = I^{(2)}_{h_{k-1}} + O(h^{\alpha_2}_{k-1}),\]</div>
 <p>где</p>
 <div class="math notranslate nohighlight">
 \[I^{(2)}_{h_{k-1}} = \frac{I^{(1)}_{h_k} - q^{\alpha_1}I^{(1)}_{h_{k-1}}}{1 - q^{\alpha_1}}.\]</div>
-<p id="index-0">Таким образом, мы выполнили один шаг <strong>экстраполяции Ричардсона</strong>. Важно отметить, что согласно <a class="reference internal" href="#equation-richardson-step">()</a> <span class="math notranslate nohighlight">\(I^{(2)}\)</span> приближает <span class="math notranslate nohighlight">\(I\)</span> лучше, чем <span class="math notranslate nohighlight">\(I^{(1)}\)</span>, у которых ошибка порядка <span class="math notranslate nohighlight">\(h^{\alpha_1}\)</span>.</p>
+<p id="index-0">Таким образом, мы выполнили один шаг <strong>экстраполяции Ричардсона</strong>. Важно отметить, что согласно <a class="reference internal" href="#equation-richardson-step">(5.12)</a> <span class="math notranslate nohighlight">\(I^{(2)}\)</span> приближает <span class="math notranslate nohighlight">\(I\)</span> лучше, чем <span class="math notranslate nohighlight">\(I^{(1)}\)</span>, у которых ошибка порядка <span class="math notranslate nohighlight">\(h^{\alpha_1}\)</span>.</p>
 <p>Процесс экстраполяции можно продолжить, тогда в общем случае получим рекурретное выражение</p>
 <div class="math notranslate nohighlight" id="equation-richardson-general">
-<span class="eqno">()<a class="headerlink" href="#equation-richardson-general" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(5.13)<a class="headerlink" href="#equation-richardson-general" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
 I_{h_{k-1}}^{(j+1)} = \frac{I^{(j)}_{h_k} - q^{\alpha_j}I^{(j)}_{h_{k-1}}}{1 - q^{\alpha_j}},\\
 j = 1,..., m, \quad k = 1, 2, ..., m - j + 1, \\
 I_{h_k}^{(1)} = I_{h_k},\quad k =0,1,...,m.
 \end{align}\end{split}\]</div>
-<p>Точность приближения для <a class="reference internal" href="#equation-richardson-general">()</a> составляет</p>
+<p>Точность приближения для <a class="reference internal" href="#equation-richardson-general">(5.13)</a> составляет</p>
 <div class="math notranslate nohighlight">
 \[I = I_{h_k}^{(j)} + O(h_k^{\alpha_j}).\]</div>
-<p>Важно отметить структуру формулы <a class="reference internal" href="#equation-richardson-general">()</a>: <span class="math notranslate nohighlight">\((j+1)\)</span>-ое приближение на сетке с шагом <span class="math notranslate nohighlight">\(h_{k-1}\)</span> можно получить по <span class="math notranslate nohighlight">\((j)\)</span>-приближениям на сетках с шагами <span class="math notranslate nohighlight">\(h_k\)</span> и <span class="math notranslate nohighlight">\(h_{k-1}\)</span>.</p>
+<p>Важно отметить структуру формулы <a class="reference internal" href="#equation-richardson-general">(5.13)</a>: <span class="math notranslate nohighlight">\((j+1)\)</span>-ое приближение на сетке с шагом <span class="math notranslate nohighlight">\(h_{k-1}\)</span> можно получить по <span class="math notranslate nohighlight">\((j)\)</span>-приближениям на сетках с шагами <span class="math notranslate nohighlight">\(h_k\)</span> и <span class="math notranslate nohighlight">\(h_{k-1}\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\ j  1    2    3   
 k --------------
 0   01 → 02 → 03
@@ -577,37 +648,37 @@ k --------------
 </pre></div>
 </div>
 <span class="target" id="index-1"></span><p id="index-2">Теперь рассмотрим частный случай экстраполяции Ричардсона, <strong>метод Ромберга</strong>.</p>
-<p>Положим в основу экстраполяции <a class="reference internal" href="#equation-richardson-general">()</a> формулу трапеций <span class="math notranslate nohighlight">\(I_{h_k}^{(1)}=T_f(h_k)\)</span> и будем мельчить сетку вдвое (<span class="math notranslate nohighlight">\(q=0.5\)</span>). Для составной формулы трапеций разложение <a class="reference internal" href="#equation-richardson-decompose">()</a> содержит только <em>чётные степени</em>, т.е. <span class="math notranslate nohighlight">\(\alpha_j = 2 j\)</span>. Тогда, из <a class="reference internal" href="#equation-richardson-general">()</a> получим</p>
+<p>Положим в основу экстраполяции <a class="reference internal" href="#equation-richardson-general">(5.13)</a> формулу трапеций <span class="math notranslate nohighlight">\(I_{h_k}^{(1)}=T_f(h_k)\)</span> и будем мельчить сетку вдвое (<span class="math notranslate nohighlight">\(q=0.5\)</span>). Для составной формулы трапеций разложение <a class="reference internal" href="#equation-richardson-decompose">(5.11)</a> содержит только <em>чётные степени</em>, т.е. <span class="math notranslate nohighlight">\(\alpha_j = 2 j\)</span>. Тогда, из <a class="reference internal" href="#equation-richardson-general">(5.13)</a> получим</p>
 <div class="math notranslate nohighlight" id="equation-romberg-method">
-<span class="eqno">()<a class="headerlink" href="#equation-romberg-method" title="Permalink to this equation">#</a></span>\[I_{h_{k-1}}^{(j+1)} = \frac{4^j I^{(j)}_{h_k} - I^{(j)}_{h_{k-1}}}{4^j - 1}.\]</div>
-<p>Прежде чем переходить к реализации, рассмотрим особенность формулы трапеции при измельчении сетки, это позволит избежать перевычислений в <a class="reference internal" href="#equation-romberg-method">()</a>.</p>
+<span class="eqno">(5.14)<a class="headerlink" href="#equation-romberg-method" title="Permalink to this equation">#</a></span>\[I_{h_{k-1}}^{(j+1)} = \frac{4^j I^{(j)}_{h_k} - I^{(j)}_{h_{k-1}}}{4^j - 1}.\]</div>
+<p>Прежде чем переходить к реализации, рассмотрим особенность формулы трапеции при измельчении сетки, это позволит избежать перевычислений в <a class="reference internal" href="#equation-romberg-method">(5.14)</a>.</p>
 </section>
 <section id="id4">
-<h2>Удвоение числа узлов<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.2.2. </span>Удвоение числа узлов<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
 <p>Рассмотрим равномерную сетку <span class="math notranslate nohighlight">\(a = x_0 &lt; x_1 &lt; x_2 &lt; x_3 &lt; x_4 = b\)</span> из <span class="math notranslate nohighlight">\(n=4\)</span> интервалов с шагом <span class="math notranslate nohighlight">\(h_4\)</span> и сетку из <span class="math notranslate nohighlight">\(n=2\)</span> интервалов <span class="math notranslate nohighlight">\(a = x_0 &lt; x_2 &lt; x_4 =b\)</span> с шагом <span class="math notranslate nohighlight">\(2h_4\)</span>.</p>
 <p>На крупной сетке формула трапеций даёт</p>
 <div class="math notranslate nohighlight" id="equation-doubling-tf2">
-<span class="eqno">()<a class="headerlink" href="#equation-doubling-tf2" title="Permalink to this equation">#</a></span>\[T_f(n=2) = 2h_4 \Big[0.5 \big(f(x_0) + f(x_4)\big) + f(x_2)\Big].\]</div>
+<span class="eqno">(5.15)<a class="headerlink" href="#equation-doubling-tf2" title="Permalink to this equation">#</a></span>\[T_f(n=2) = 2h_4 \Big[0.5 \big(f(x_0) + f(x_4)\big) + f(x_2)\Big].\]</div>
 <p>А на сетке вдвое мельче</p>
 <div class="math notranslate nohighlight" id="equation-doubling-tf4">
-<span class="eqno">()<a class="headerlink" href="#equation-doubling-tf4" title="Permalink to this equation">#</a></span>\[T_f(n=4) = h_4 \Big[ 0.5 \big(f(x_0) + f(x_4)\big) + f(x_1) + f(x_3) \Big].\]</div>
-<p>Сравнивая <a class="reference internal" href="#equation-doubling-tf2">()</a> и <a class="reference internal" href="#equation-doubling-tf4">()</a>, обнаруживаем их связь</p>
+<span class="eqno">(5.16)<a class="headerlink" href="#equation-doubling-tf4" title="Permalink to this equation">#</a></span>\[T_f(n=4) = h_4 \Big[ 0.5 \big(f(x_0) + f(x_4)\big) + f(x_1) + f(x_2) + f(x_3) \Big].\]</div>
+<p>Сравнивая <a class="reference internal" href="#equation-doubling-tf2">(5.15)</a> и <a class="reference internal" href="#equation-doubling-tf4">(5.16)</a>, обнаруживаем их связь</p>
 <div class="math notranslate nohighlight">
 \[T_f(n=4) = 0.5 T_f(n=2) + h_4 \big(f(x_1) + f(x_3)\big).\]</div>
 <p>Таким образом, мы в частном случае получили, что вычислив интеграл на крупной сетке, мы можем вычислить его на сетке вдвое мельче, используя только значения в <em>новых узлах</em> (<span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_3\)</span>).</p>
 <p>Это верно и в общем случае</p>
 <div class="math notranslate nohighlight" id="equation-trapezoid-2x">
-<span class="eqno">()<a class="headerlink" href="#equation-trapezoid-2x" title="Permalink to this equation">#</a></span>\[T_f(2n) = 0.5 T_f(n) + h_{2n} \sum_{i=1}^n f(x_{2i-1}), \quad h_{2n} = \frac{b-a}{2n},\quad x_{2i-1} = a + h_{2n} (2i-1).\]</div>
+<span class="eqno">(5.17)<a class="headerlink" href="#equation-trapezoid-2x" title="Permalink to this equation">#</a></span>\[T_f(2n) = 0.5 T_f(n) + h_{2n} \sum_{i=1}^n f(x_{2i-1}), \quad h_{2n} = \frac{b-a}{2n},\quad x_{2i-1} = a + h_{2n} (2i-1).\]</div>
 <p>Данная формула позволяет вычислить интеграл с заданной точностью. Под точностью здесь понимается разница между новой аппроксимацией и старой</p>
 <div class="math notranslate nohighlight" id="equation-doubling-tol">
-<span class="eqno">()<a class="headerlink" href="#equation-doubling-tol" title="Permalink to this equation">#</a></span>\[|T_f(2n) - T_f(n)| &lt; \text{tol}.\]</div>
+<span class="eqno">(5.18)<a class="headerlink" href="#equation-doubling-tol" title="Permalink to this equation">#</a></span>\[|T_f(2n) - T_f(n)| &lt; \text{tol}.\]</div>
 <p>Например, при <span class="math notranslate nohighlight">\(\text{tol} = 10^{-6}\)</span> мы можем добиться точности до 6 знаков после запятой. Конечно, ошибки округления и обусловленность задачи никуда не делись.</p>
-<p>Также отметим, что выражение <a class="reference internal" href="#equation-doubling-tol">()</a> является абсолютной, а не относительной точностью.</p>
+<p>Также отметим, что выражение <a class="reference internal" href="#equation-doubling-tol">(5.18)</a> является абсолютной, а не относительной точностью.</p>
 <p>Реализация может быть такой</p>
 <div class="proof proof-type-function" id="id6">
 <span id="function-trapezoid-tol"></span>
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 5.10</span>
         
             <span class="proof-title-name">(trapezoid_tol)</span>
         
@@ -634,7 +705,7 @@ k --------------
 </div>
 </div></div></section>
 <section id="id5">
-<h2>Реализация<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">5.2.3. </span>Реализация<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>Можно обойтись и двумя векторами.</p>
@@ -642,8 +713,8 @@ k --------------
 <p>Итак, хранить <span class="math notranslate nohighlight">\(I_{h_{k-1}}^{(j)}\)</span> будем в элементе матрицы <code class="docutils literal notranslate"><span class="pre">I[k,</span> <span class="pre">j]</span></code>.</p>
 <p>Первый элемент <code class="docutils literal notranslate"><span class="pre">I[1,</span> <span class="pre">1]</span></code> заполним вручную: он соответствует формуле трапеций на сетке из одного интервала (2 узла). Затем, пока не достигнем необходимой точности, будем делать следующее</p>
 <ol class="simple">
-<li><p>Измельчим сетку вдвое и подсчитаем интеграл по формуле трапеций на ней <a class="reference internal" href="#equation-trapezoid-2x">()</a>, так получим из <code class="docutils literal notranslate"><span class="pre">I[k,</span> <span class="pre">1]</span></code> элемент <code class="docutils literal notranslate"><span class="pre">I[k+1,</span> <span class="pre">1]</span></code>;</p></li>
-<li><p>Вычислим по доступной побочной диагонали слева направо все элементы от <code class="docutils literal notranslate"><span class="pre">I[k,</span> <span class="pre">2]</span></code> вплоть до <code class="docutils literal notranslate"><span class="pre">I[1,</span> <span class="pre">k+1]</span></code> по формуле перехода <a class="reference internal" href="#equation-romberg-method">()</a>;</p></li>
+<li><p>Измельчим сетку вдвое и подсчитаем интеграл по формуле трапеций на ней <a class="reference internal" href="#equation-trapezoid-2x">(5.17)</a>, так получим из <code class="docutils literal notranslate"><span class="pre">I[k,</span> <span class="pre">1]</span></code> элемент <code class="docutils literal notranslate"><span class="pre">I[k+1,</span> <span class="pre">1]</span></code>;</p></li>
+<li><p>Вычислим по доступной побочной диагонали слева направо все элементы от <code class="docutils literal notranslate"><span class="pre">I[k,</span> <span class="pre">2]</span></code> вплоть до <code class="docutils literal notranslate"><span class="pre">I[1,</span> <span class="pre">k+1]</span></code> по формуле перехода <a class="reference internal" href="#equation-romberg-method">(5.14)</a>;</p></li>
 <li><p>Будем продолжать 1 и 2 до тех пор, пока приближения <code class="docutils literal notranslate"><span class="pre">I[1,</span> <span class="pre">k+1]</span></code> и <code class="docutils literal notranslate"><span class="pre">I[2,</span> <span class="pre">k]</span></code> станут неотличимы в заданной точности <code class="docutils literal notranslate"><span class="pre">atol</span></code>, или пока не исчерпаем количество измельчений <code class="docutils literal notranslate"><span class="pre">maxstep</span></code>.</p></li>
 </ol>
 <p><strong>Пример заполнения матрицы <code class="docutils literal notranslate"><span class="pre">I</span></code></strong>. Допустим, максимальное измельчение <code class="docutils literal notranslate"><span class="pre">maxstep</span> <span class="pre">=</span> <span class="pre">4</span></code>, т.е. от <span class="math notranslate nohighlight">\(h=b-a\)</span> до <span class="math notranslate nohighlight">\(h = (b-a) / 2^4\)</span>. Ниже приведена схема вычислений и обозначения</p>
@@ -674,7 +745,7 @@ k --------------
 <div class="proof proof-type-function" id="id7">
 <span id="function-romberg"></span>
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 5.11</span>
         
             <span class="proof-title-name">(romberg)</span>
         
@@ -705,7 +776,7 @@ k --------------
 </div></div><div class="proof proof-type-example" id="id8">
 
     <div class="proof-title">
-        <span class="proof-type">Пример </span>
+        <span class="proof-type">Пример 5.12</span>
         
     </div><div class="proof-content">
 <p>Сравним время вычисления интеграла</p>
@@ -792,6 +863,20 @@ k --------------
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="newton_cotes.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5.1. </span>Формулы Ньютона-Котса</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="gauss.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">5.3. </span>Формулы Гаусса</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

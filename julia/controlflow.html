@@ -252,6 +252,75 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../interpolation/index.html">
+   4. Интерполяция
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/polynomial.html">
+     4.1. Полиномиальная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/pwlinear.html">
+     4.2. Кусочно-линейная интерполяция
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/cubic_spline.html">
+     4.3. Кубические сплайны
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../interpolation/ex.html">
+     4.4. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../integration/index.html">
+   5. Численное интегрирование
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/newton_cotes.html">
+     5.1. Формулы Ньютона-Котса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/romberg.html">
+     5.2. Метод Ромберга
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/gauss.html">
+     5.3. Формулы Гаусса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/adaptive.html">
+     5.4. Адаптивное интегрирование
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../integration/ex.html">
+     5.5. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -618,8 +687,8 @@ title="Print to PDF"
 <p>Для циклов доступны стандартные команды досрочного завершения итерации <code class="docutils literal notranslate"><span class="pre">continue</span></code> и всего цикла <code class="docutils literal notranslate"><span class="pre">break</span></code>.</p>
 <p>Циклы могут быть вложенными. Для вложенного <code class="docutils literal notranslate"><span class="pre">for</span></code>-цикла существует альтернативный вариант синтаксиса.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="177a2f03-7bad-46ce-b78c-5b15e84d1a21" name="42ee2a14-1a0c-4638-b4ca-299a42f6355e" type="radio">
-</input><label class="sd-tab-label" for="177a2f03-7bad-46ce-b78c-5b15e84d1a21">
+<input checked="checked" id="4b9c378c-a345-4f97-88b9-2285e568519c" name="3b2a2256-9c78-4559-a17d-2cd615c06c50" type="radio">
+</input><label class="sd-tab-label" for="4b9c378c-a345-4f97-88b9-2285e568519c">
 Вложенный <code class="docutils literal notranslate"><span class="pre">for</span></code></label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="w"></span>
 <span class="w">           </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">3</span><span class="o">:</span><span class="mi">4</span><span class="w"></span>
@@ -633,8 +702,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="b4fb8b54-be3a-48f4-83f7-44126a49f806" name="42ee2a14-1a0c-4638-b4ca-299a42f6355e" type="radio">
-</input><label class="sd-tab-label" for="b4fb8b54-be3a-48f4-83f7-44126a49f806">
+<input id="f4e100a1-be59-4d9b-8004-111a47852878" name="3b2a2256-9c78-4559-a17d-2cd615c06c50" type="radio">
+</input><label class="sd-tab-label" for="f4e100a1-be59-4d9b-8004-111a47852878">
 Альтернативный синтаксис</label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">3</span><span class="o">:</span><span class="mi">4</span><span class="w"></span>
 <span class="w">           </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;i = </span><span class="si">$i</span><span class="s">, j = </span><span class="si">$j</span><span class="s">&quot;</span><span class="p">)</span><span class="w"></span>
