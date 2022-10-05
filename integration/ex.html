@@ -546,7 +546,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   5.5.1. Основные квадратурные формулы
+   5.5.1. Вычислите интеграл
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   5.5.2. Сходимость адаптивного интегрирования
   </a>
  </li>
 </ul>
@@ -570,7 +575,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   5.5.1. Основные квадратурные формулы
+   5.5.1. Вычислите интеграл
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   5.5.2. Сходимость адаптивного интегрирования
   </a>
  </li>
 </ul>
@@ -586,50 +596,26 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">5.5. </span>Задания<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <section id="id2">
-<h2><span class="section-number">5.5.1. </span>Основные квадратурные формулы<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
-<p>В этом задании вам необходимо доработать модуль <code class="docutils literal notranslate"><span class="pre">Integration</span></code>, имплементировав требуемые методы.</p>
-<p>Шаблон модуля разработан за вас и находится здесь <a class="reference external" href="https://github.com/stepanzh/CTTaskIntegration.jl">CTTaskIntegration.jl</a>, модуль включает систему тестов для самопроверки.</p>
-<p><strong>Устройство модуля</strong></p>
-<p>Модуль <code class="docutils literal notranslate"><span class="pre">Integration</span></code> находится в <code class="docutils literal notranslate"><span class="pre">src/Integration.jl</span></code> и устроен следующим образом.</p>
-<p>Для пользователя модуля создана API-функция <code class="docutils literal notranslate"><span class="pre">integrate</span></code> с двумя методами</p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">integrate</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="n">method</span><span class="p">)</span><span class="w"></span>
-<span class="n">integrate</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">nnodes</span><span class="p">;</span><span class="w"> </span><span class="n">method</span><span class="p">)</span><span class="w"></span>
-</pre></div>
-</div>
-<p>И набор синглетонов для указания метода <code class="docutils literal notranslate"><span class="pre">method</span></code> для интегрирования</p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Gauss</span><span class="p">,</span><span class="w"> </span><span class="n">Kronrod</span><span class="p">,</span><span class="w"> </span><span class="n">Midpoint</span><span class="p">,</span><span class="w"> </span><span class="n">Trapezoid</span><span class="p">,</span><span class="w"> </span><span class="n">Simpson</span><span class="w"></span>
-</pre></div>
-</div>
-<p>Так <code class="docutils literal notranslate"><span class="pre">integrate(x</span> <span class="pre">-&gt;</span> <span class="pre">2x,</span> <span class="pre">-1,</span> <span class="pre">3;</span> <span class="pre">method=Midpoint())</span></code> вычисляет <span class="math notranslate nohighlight">\(\int_{-1}^3 2x\:\diff x\)</span> по формуле средних прямоугольников. А <code class="docutils literal notranslate"><span class="pre">integrate(x</span> <span class="pre">-&gt;</span> <span class="pre">2x,</span> <span class="pre">-1,</span> <span class="pre">3,</span> <span class="pre">10;</span> <span class="pre">method=Midpoint())</span></code> вычисляет тот же интеграл, но предварительно разбивает отрезок 10 равноотстоящими узлами.</p>
-<p>В свою очередь, разработчиками организован диспатч по синглетонам, и имплементация формулы средних прямоугольников выглядит так</p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="cm">#= Ещё код =#</span><span class="w"></span>
-
-<span class="c"># Диспетчеризация интерфейса</span><span class="w"></span>
-<span class="n">integrate</span><span class="p">(</span><span class="n">args</span><span class="o">...</span><span class="p">;</span><span class="w"> </span><span class="n">method</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">__integrate_impl</span><span class="p">(</span><span class="n">method</span><span class="p">,</span><span class="w"> </span><span class="n">args</span><span class="o">...</span><span class="p">)</span><span class="w"></span>
-
-<span class="cm">#= Ещё код =#</span><span class="w"></span>
-
-<span class="s">&quot;Формула средних прямоугольников&quot;</span><span class="w"></span>
-<span class="k">struct</span> <span class="kt">Midpoint</span><span class="w"> </span><span class="o">&lt;:</span><span class="w"> </span><span class="kt">AbstractMethod</span><span class="w"> </span><span class="k">end</span><span class="w"></span>
-
-<span class="n">__integrate_impl</span><span class="p">(</span><span class="n">method</span><span class="o">::</span><span class="kt">Midpoint</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="o">-</span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">f</span><span class="p">((</span><span class="n">b</span><span class="o">+</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
-
-<span class="c"># составной метод для формулы прямоугольников</span><span class="w"></span>
-<span class="k">function</span><span class="w"> </span><span class="n">__integrate_impl</span><span class="p">(</span><span class="n">method</span><span class="o">::</span><span class="kt">Midpoint</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">nnodes</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">h</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="n">nnodes</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">range</span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">;</span><span class="w"> </span><span class="n">step</span><span class="o">=</span><span class="n">h</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">int</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">h</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">sum</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">int</span><span class="w"></span>
-<span class="k">end</span><span class="w"></span>
-
-<span class="cm">#= Ещё код =#</span><span class="w"></span>
-</pre></div>
-</div>
-<p><strong>Задание</strong></p>
-<p>Вам необходимо имплементировать методы, которые в шаблоне определены как</p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">__integrate_impl</span><span class="p">(</span><span class="n">method</span><span class="o">::</span><span class="kt">T</span><span class="p">,</span><span class="w"> </span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">error</span><span class="p">(</span><span class="s">&quot;Не имплементирован&quot;</span><span class="p">)</span><span class="w"></span>
-</pre></div>
-</div>
+<h2><span class="section-number">5.5.1. </span>Вычислите интеграл<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<div class="math notranslate nohighlight">
+\[
+\int_{-1/3}^3 \sin(100 x e^{-x^2}) \diff x.
+\]</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">5.5.2. </span>Сходимость адаптивного интегрирования<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<p>На примере интеграла</p>
+<div class="math notranslate nohighlight">
+\[
+\int_0^{\pi/2} e^x \cos x \diff x = \frac{e^{\pi/2} - 1}{2}.
+\]</div>
+<p>Исследуйте сходимость адаптивного интегрирования.</p>
+<p>Для этого</p>
+<ol class="simple">
+<li><p>Подсчитайте интеграл с точностями (оценочной точностью алгоритма) <span class="math notranslate nohighlight">\(10^{-2}\)</span>, <span class="math notranslate nohighlight">\(10^{-3}\)</span>, …, <span class="math notranslate nohighlight">\(10^{-12}\)</span>.</p></li>
+<li><p>Постройте график зависимости ошибки вычисления от количества узлов.</p></li>
+<li><p>Определите порядок сходимости алгоритма.</p></li>
+</ol>
 </section>
 </section>
 
