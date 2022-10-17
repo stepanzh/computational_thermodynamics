@@ -44,6 +44,8 @@ include("../src.jl")
 k_\max = \Big\lceil \log_2\Big(\frac{\Delta_0}{\text{xtol}}\Big) \Big\rceil.
 ```
 
+Метод бисекции один из немногих, в которых известно наперёд число итераций, необходимое для достижения заданной точности.
+
 ```{proof:function} bisection
 
 **Метод бисекции**
@@ -56,11 +58,12 @@ k_\max = \Big\lceil \log_2\Big(\frac{\Delta_0}{\text{xtol}}\Big) \Big\rceil.
 function bisection(f, x₁, x₂; xtol=eps(), ftol=eps())
     if x₁ > x₂; x₁, x₂ = x₂, x₁; end
     y₁, y₂ = f(x₁), f(x₂)
+
     sign(y₁) == sign(y₂) && error("Функция должна иметь разные знаки в концах отрезка")
-    y₁ == 0 && return x₁
-    y₂ == 0 && return x₂
+    abs(y₁) < ftol && return x₁
+    abs(y₂) < ftol && return x₂
     
-    maxiter = ceil(Int, log2((x₂-x₁)/(xtol)))
+    maxiter = ceil(Int, log2((x₂-x₁)/xtol))
     
     for i in 1:maxiter
         xnew = (x₂ + x₁) / 2
@@ -80,10 +83,20 @@ end
 :::
 ```
 
+```{proof:demo} Метод бисекции
+```
+```{raw} html
+<div class="demo">
+```
+
 ```{code-cell}
 f = (x) -> -x^2 + x
 @show bisection(f, 0.5, 1.6; xtol=1e-6)
 @show bisection(f, 0.5, 1.6; xtol=1e-10);
+```
+
+```{raw} html
+</div>
 ```
 
 ## Regula falsi
@@ -121,8 +134,8 @@ function regulafalsi(f, x₁, x₂; maxiter=25, xtol=eps(), ftol=eps())
     if x₁ > x₂; x₁, x₂ = x₂, x₁; end
     y₁, y₂ = f.((x₁, x₂))
     sign(y₁) == sign(y₂) && error("Функция должна иметь разные знаки в концах отрезка")
-    y₁ == 0 && return x₁
-    y₂ == 0 && return x₂
+    abs(y₁) < 0 && return x₁
+    abs(y₂) < 0 && return x₂
     
     for i in 1:maxiter
         y₂ = f(x₂)
@@ -167,8 +180,4 @@ for (i, p) in eachrow(path) |> enumerate
     plot!(p, f.(p); label="секущая $i", marker=:o)
 end
 scatter!([root], [f(root)]; label="найденный корень", color=:red, marker=:square)
-```
-
-```{raw} html
-</div>
 ```
