@@ -323,6 +323,75 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../nlroot/index.html">
+   6. Нелинейные уравнения
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/simpleiter.html">
+     6.1. Метод простой итерации
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/newton_secant.html">
+     6.2. Метод Ньютона и секущих
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/bisection_regula_falsi.html">
+     6.3. Методы бисекции и regula falsi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ridders.html">
+     6.4. Метод Риддерса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/itp.html">
+     6.5. ITP метод
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ex.html">
+     6.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../sysnonlinear/index.html">
+   7. Нелинейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/newton.html">
+     7.1. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/quasinewton.html">
+     7.2. Метод Бройдена
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/ex.html">
+     7.3. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -560,8 +629,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="5b6182cf-9d45-4c6f-a396-eefe676b4c84" name="16744a80-54af-4fd4-a83d-79ba167563b1" type="radio">
-</input><label class="sd-tab-label" for="5b6182cf-9d45-4c6f-a396-eefe676b4c84">
+<input checked="checked" id="34e1ec00-d011-4505-80e3-afdd781017ab" name="66d3afdf-8319-43a4-8976-68768ae4eb35" type="radio">
+</input><label class="sd-tab-label" for="34e1ec00-d011-4505-80e3-afdd781017ab">
 Линейные</label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
 <span class="go">3-element Vector{Float64}:</span>
@@ -576,8 +645,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="ffa24614-f6e7-49e3-9576-1596e3c6eb96" name="16744a80-54af-4fd4-a83d-79ba167563b1" type="radio">
-</input><label class="sd-tab-label" for="ffa24614-f6e7-49e3-9576-1596e3c6eb96">
+<input id="0a98d487-2c44-41ca-9d87-b7642d5e94f5" name="66d3afdf-8319-43a4-8976-68768ae4eb35" type="radio">
+</input><label class="sd-tab-label" for="0a98d487-2c44-41ca-9d87-b7642d5e94f5">
 Матричное умножение</label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"></span>
 <span class="go">2-element Vector{Int64}:</span>
@@ -591,8 +660,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="976fd3d8-8f04-43ab-a299-0dae66236614" name="16744a80-54af-4fd4-a83d-79ba167563b1" type="radio">
-</input><label class="sd-tab-label" for="976fd3d8-8f04-43ab-a299-0dae66236614">
+<input id="27a718a0-c39a-4267-839a-29ea29878f27" name="66d3afdf-8319-43a4-8976-68768ae4eb35" type="radio">
+</input><label class="sd-tab-label" for="27a718a0-c39a-4267-839a-29ea29878f27">
 Транспонирование</label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">a</span><span class="o">&#39;</span><span class="w"></span>
 <span class="go">1×3 adjoint(::Vector{Int64}) with eltype Int64:</span>
@@ -609,8 +678,8 @@ title="Print to PDF"
 </div>
 <p>Для комплексных матриц <code class="docutils literal notranslate"><span class="pre">'</span></code>-оператор выполняет эрмитово сопряжение.</p>
 </div>
-<input id="356bd0d3-8918-453c-974a-c368e58e77bf" name="16744a80-54af-4fd4-a83d-79ba167563b1" type="radio">
-</input><label class="sd-tab-label" for="356bd0d3-8918-453c-974a-c368e58e77bf">
+<input id="5759fbe3-55bb-4848-a34c-6d50a1693b48" name="66d3afdf-8319-43a4-8976-68768ae4eb35" type="radio">
+</input><label class="sd-tab-label" for="5759fbe3-55bb-4848-a34c-6d50a1693b48">
 Решение СЛАУ</label><div class="sd-tab-content docutils">
 <p>Решается система <span class="math notranslate nohighlight">\(A x = [1, 2]^\top\)</span>, <code class="docutils literal notranslate"><span class="pre">inv(A)</span></code><span class="math notranslate nohighlight">\(= A^{-1}\)</span>.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"></span>

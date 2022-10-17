@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Задания &#8212; Практикум по вычислительной теплофизике</title>
+    <title>7.3. Задания &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Указатель" href="../appendix/genindex.html" />
+    <link rel="prev" title="7.2. Метод Бройдена" href="quasinewton.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -317,6 +319,75 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../integration/ex.html">
      5.5. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../nlroot/index.html">
+   6. Нелинейные уравнения
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/simpleiter.html">
+     6.1. Метод простой итерации
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/newton_secant.html">
+     6.2. Метод Ньютона и секущих
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/bisection_regula_falsi.html">
+     6.3. Методы бисекции и regula falsi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ridders.html">
+     6.4. Метод Риддерса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/itp.html">
+     6.5. ITP метод
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ex.html">
+     6.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   7. Нелинейные системы уравнений
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="newton.html">
+     7.1. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quasinewton.html">
+     7.2. Метод Бройдена
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.3. Задания
     </a>
    </li>
   </ul>
@@ -544,7 +615,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Фазовое равновесие уравнения ван дер Ваальса
+   7.3.1. Фазовое равновесие уравнения ван дер Ваальса
   </a>
  </li>
 </ul>
@@ -568,7 +639,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Фазовое равновесие уравнения ван дер Ваальса
+   7.3.1. Фазовое равновесие уравнения ван дер Ваальса
   </a>
  </li>
 </ul>
@@ -582,29 +653,29 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Задания<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">7.3. </span>Задания<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <section id="id2">
-<h2>Фазовое равновесие уравнения ван дер Ваальса<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
-<p>В этом задании вам необходимо найти двухфазное равновесие вещества, описываемое уравнением ван дер Ваальса. В отличие от <code class="xref std std-numref docutils literal notranslate"><span class="pre">Задания</span> <span class="pre">%s</span></code>, расчёт производится из первых принципов.</p>
+<h2><span class="section-number">7.3.1. </span>Фазовое равновесие уравнения ван дер Ваальса<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>В этом задании вам необходимо найти двухфазное равновесие вещества, описываемое уравнением ван дер Ваальса. В отличие от <a class="reference internal" href="../nlroot/ex.html#ex-vdw-binodal-lekner"><span class="std std-numref">Задания 6.6.2</span></a>, расчёт производится из первых принципов.</p>
 <p>Фазовое равновесие определяется минимумом потенциала Гельмгольца. Воспользуемся <em>необходимыми</em> (но не достаточными) условиями минимума: равенством давлений <span class="math notranslate nohighlight">\(P_r\)</span> и химических потенциалов <span class="math notranslate nohighlight">\(\mu\)</span></p>
 <div class="math notranslate nohighlight" id="equation-sysnonlinear-task-vdw-equilibrium">
-<span class="eqno">()<a class="headerlink" href="#equation-sysnonlinear-task-vdw-equilibrium" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{split}
+<span class="eqno">(7.8)<a class="headerlink" href="#equation-sysnonlinear-task-vdw-equilibrium" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{split}
 P_r(V_G, T_r) &amp;= P_r(V_L, T_r),\\
 \mu(V_G, T_r) &amp;= \mu(V_L, T_r),
 \end{split}\end{split}\]</div>
-<p>где <span class="math notranslate nohighlight">\(V_G\)</span> и <span class="math notranslate nohighlight">\(V_L\)</span> приведённые объёмы, определённые в <code class="xref std std-numref docutils literal notranslate"><span class="pre">Задании</span> <span class="pre">%s</span></code>. Таким образом, система <a class="reference internal" href="#equation-sysnonlinear-task-vdw-equilibrium">()</a> может быть решена относительно <span class="math notranslate nohighlight">\(V_G\)</span> и <span class="math notranslate nohighlight">\(V_L\)</span> для заданной температуры <span class="math notranslate nohighlight">\(T_r\)</span>.</p>
+<p>где <span class="math notranslate nohighlight">\(V_G\)</span> и <span class="math notranslate nohighlight">\(V_L\)</span> приведённые объёмы, определённые в <a class="reference internal" href="../nlroot/ex.html#ex-vdw-binodal-lekner"><span class="std std-numref">Задании 6.6.2</span></a>. Таким образом, система <a class="reference internal" href="#equation-sysnonlinear-task-vdw-equilibrium">(7.8)</a> может быть решена относительно <span class="math notranslate nohighlight">\(V_G\)</span> и <span class="math notranslate nohighlight">\(V_L\)</span> для заданной температуры <span class="math notranslate nohighlight">\(T_r\)</span>.</p>
 <p>Приведём явный вид уравнения ван дер Ваальса</p>
 <div class="math notranslate nohighlight">
 \[P_r(V_r, T_r) = \frac{8 T_r}{3 V_r - 1} - \frac{3}{V_r^2}.\]</div>
 <p>И его химического потенциала (который выводится из энергии Гельмгольца <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id13" title="David Johnston. Advances in thermodynamics of the van der waals fluid. arXiv, 2014. URL: https://arxiv.org/abs/1402.1205v1, doi:10.1088/978-1-627-05532-1.">Joh14</a>]</span>)</p>
 <div class="math notranslate nohighlight">
 \[\mu(V_r, T_r) = - T_r \ln{\bigg[\frac{3V_r - 1}{2e^{-1/2}}\bigg]} + \frac{T_r}{3V_r - 1} - \frac{9}{4V_r}.\]</div>
-<p>Поскольку давление и химический потенциал нелинейны относительно объёма, то и система <a class="reference internal" href="#equation-sysnonlinear-task-vdw-equilibrium">()</a> в случае уравнения ван дер Ваальса нелинейна.</p>
-<p><strong>Задание</strong>. Найдите точки фазового равновесия <span class="math notranslate nohighlight">\((P, V_G, T_r)\)</span> и <span class="math notranslate nohighlight">\((P, V_L, T_r)\)</span> для нескольких температур <span class="math notranslate nohighlight">\(T_r\)</span> из диапазона <span class="math notranslate nohighlight">\(T_r \in [0.85, 0.99]\)</span>. Нанесите эти точки на <span class="math notranslate nohighlight">\(PV\)</span>-диаграмму  вместе с соответствующими изотермами. Вы должны получить график, похожий на <code class="xref std std-numref docutils literal notranslate"><span class="pre">Рисунок</span> <span class="pre">%s</span></code>, приведённый ниже.</p>
+<p>Поскольку давление и химический потенциал нелинейны относительно объёма, то и система <a class="reference internal" href="#equation-sysnonlinear-task-vdw-equilibrium">(7.8)</a> в случае уравнения ван дер Ваальса нелинейна.</p>
+<p><strong>Задание</strong>. Найдите точки фазового равновесия <span class="math notranslate nohighlight">\((P, V_G, T_r)\)</span> и <span class="math notranslate nohighlight">\((P, V_L, T_r)\)</span> для нескольких температур <span class="math notranslate nohighlight">\(T_r\)</span> из диапазона <span class="math notranslate nohighlight">\(T_r \in [0.85, 0.99]\)</span>. Нанесите эти точки на <span class="math notranslate nohighlight">\(PV\)</span>-диаграмму  вместе с соответствующими изотермами. Вы должны получить график, похожий на <a class="reference internal" href="#fig-task-vdw-equilibrium"><span class="std std-numref">Рисунок 7.1</span></a>, приведённый ниже.</p>
 <figure class="align-default" id="id4">
 <span id="fig-task-vdw-equilibrium"></span><a class="reference internal image-reference" href="../_images/vdw_equilibrium_answer.svg"><img alt="../_images/vdw_equilibrium_answer.svg" height="480px" src="../_images/vdw_equilibrium_answer.svg" /></a>
 <figcaption>
-<p><span class="caption-text">Уравнение ван дер Ваальса. Пунктирными линиями показаны изотермы для ряда температур.
+<p><span class="caption-number">Fig. 7.1 </span><span class="caption-text">Уравнение ван дер Ваальса. Пунктирными линиями показаны изотермы для ряда температур.
 Красные точки <span class="math notranslate nohighlight">\((V_L, P)\)</span> соответствуют подсчитанным границам равновесия жидкость-двухфазное состояние для тех же температур, при которых нанесены изотермы. Синие точки <span class="math notranslate nohighlight">\((V_G, P)\)</span> аналогичны красным, но показывают границу равновесия двухфазное-газовое состояние.</span><a class="headerlink" href="#id4" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
@@ -638,6 +709,20 @@ P_r(V_G, T_r) &amp;= P_r(V_L, T_r),\\
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="quasinewton.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">7.2. </span>Метод Бройдена</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../appendix/genindex.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Указатель</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

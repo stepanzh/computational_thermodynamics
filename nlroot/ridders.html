@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Метод Риддерса &#8212; Практикум по вычислительной теплофизике</title>
+    <title>6.4. Метод Риддерса &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.5. ITP метод" href="itp.html" />
+    <link rel="prev" title="6.3. Методы бисекции и regula falsi" href="bisection_regula_falsi.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -317,6 +319,75 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../integration/ex.html">
      5.5. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   6. Нелинейные уравнения
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="simpleiter.html">
+     6.1. Метод простой итерации
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="newton_secant.html">
+     6.2. Метод Ньютона и секущих
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bisection_regula_falsi.html">
+     6.3. Методы бисекции и regula falsi
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.4. Метод Риддерса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="itp.html">
+     6.5. ITP метод
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     6.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../sysnonlinear/index.html">
+   7. Нелинейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/newton.html">
+     7.1. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/quasinewton.html">
+     7.2. Метод Бройдена
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/ex.html">
+     7.3. Задания
     </a>
    </li>
   </ul>
@@ -590,12 +661,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   Вывод метода
+   6.4.1. Вывод метода
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   Реализация
+   6.4.2. Реализация
   </a>
  </li>
 </ul>
@@ -619,12 +690,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   Вывод метода
+   6.4.1. Вывод метода
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   Реализация
+   6.4.2. Реализация
   </a>
  </li>
 </ul>
@@ -638,10 +709,10 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Метод Риддерса<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">6.4. </span>Метод Риддерса<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <p>Метод Риддерса <span id="id2">[<a class="reference internal" href="../appendix/bibliography.html#id10" title="C. Ridders. A new algorithm for computing a single root of a real continuous function. IEEE Transactions on Circuits and Systems, 26(11):979-980, 1979. URL: https://doi.org/10.1109/TCS.1979.1084580, doi:10.1109/TCS.1979.1084580.">Rid79</a>]</span> основывается на линеаризации исходной функции с последующим применением regula falsi к новой, модифицированной функции.</p>
 <section id="id3">
-<h2>Вывод метода<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.4.1. </span>Вывод метода<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <p>Пусть мы ищем приближение корня уравнения <span class="math notranslate nohighlight">\(f(x) = 0\)</span> на отрезке <span class="math notranslate nohighlight">\([x_0, x_2]\)</span>, при этом <span class="math notranslate nohighlight">\(f(x_0)f(x_2) &lt; 0\)</span>. Заведём новую функцию <span class="math notranslate nohighlight">\(g(x)\)</span></p>
 <div class="math notranslate nohighlight">
 \[g(x) = f(x) e^{mx},\]</div>
@@ -651,7 +722,7 @@ title="Print to PDF"
 <figure class="align-default" id="id6">
 <a class="reference internal image-reference" href="../_images/ridders_notation.png"><img alt="../_images/ridders_notation.png" src="../_images/ridders_notation.png" style="height: 480px;" /></a>
 <figcaption>
-<p><span class="caption-text">К методу Риддерса.</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.1 </span><span class="caption-text">К методу Риддерса.</span><a class="headerlink" href="#id6" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Подставим сюда определение <span class="math notranslate nohighlight">\(g(x)\)</span> и получим уравнение</p>
@@ -673,11 +744,11 @@ title="Print to PDF"
 <p>Метод Риддерса обладает квадратичной сходимостью, но требует 2 вычисления функции на итерации (в точках <span class="math notranslate nohighlight">\(x_1\)</span> и <span class="math notranslate nohighlight">\(x_3\)</span>), поэтому его скорость сходимости на вычисление равняется <span class="math notranslate nohighlight">\(\sqrt{2}\)</span> и можно говорить о <em>сверхлинейной сходимости на вычисление функции</em>.</p>
 </section>
 <section id="id4">
-<h2>Реализация<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.4.2. </span>Реализация<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
 <div class="proof proof-type-function" id="id7">
 
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 6.21</span>
         
             <span class="proof-title-name">(ridders)</span>
         
@@ -710,9 +781,9 @@ title="Print to PDF"
 <span class="w">        </span><span class="k">elseif</span><span class="w"> </span><span class="n">sign</span><span class="p">(</span><span class="n">ynew</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">sign</span><span class="p">(</span><span class="n">y₁</span><span class="p">)</span><span class="w"></span>
 <span class="w">            </span><span class="n">x₁</span><span class="p">,</span><span class="w"> </span><span class="n">y₁</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xnew</span><span class="p">,</span><span class="w"> </span><span class="n">ynew</span><span class="w"></span>
 <span class="w">        </span><span class="k">end</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">ynew</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ftol</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">x₁</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x₂</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">xtol</span><span class="w"></span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">xnew</span><span class="w"></span>
-<span class="w">        </span><span class="k">end</span><span class="w"></span>
+<span class="w">        </span>
+<span class="w">        </span><span class="n">abs</span><span class="p">(</span><span class="n">ynew</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ftol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">xnew</span><span class="w"></span>
+<span class="w">        </span><span class="n">abs</span><span class="p">(</span><span class="n">x₁</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x₂</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">xtol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">xnew</span><span class="w"></span>
 <span class="w">    </span><span class="k">end</span><span class="w"></span>
 <span class="w">    </span><span class="n">error</span><span class="p">(</span><span class="s">&quot;Число итераций превышено.&quot;</span><span class="p">)</span><span class="w"></span>
 <span class="k">end</span><span class="w"></span>
@@ -721,7 +792,7 @@ title="Print to PDF"
 </div></div><div class="proof proof-type-demo" id="id8">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 6.22</span>
         
             <span class="proof-title-name">(Метод Риддерса)</span>
         
@@ -825,6 +896,20 @@ Stacktrace:
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="bisection_regula_falsi.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6.3. </span>Методы бисекции и regula falsi</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="itp.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6.5. </span>ITP метод</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

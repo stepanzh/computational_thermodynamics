@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Метод Ньютона &#8212; Практикум по вычислительной теплофизике</title>
+    <title>7.1. Метод Ньютона &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.2. Метод Бройдена" href="quasinewton.html" />
+    <link rel="prev" title="7. Нелинейные системы уравнений" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -317,6 +319,75 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../integration/ex.html">
      5.5. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../nlroot/index.html">
+   6. Нелинейные уравнения
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/simpleiter.html">
+     6.1. Метод простой итерации
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/newton_secant.html">
+     6.2. Метод Ньютона и секущих
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/bisection_regula_falsi.html">
+     6.3. Методы бисекции и regula falsi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ridders.html">
+     6.4. Метод Риддерса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/itp.html">
+     6.5. ITP метод
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ex.html">
+     6.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   7. Нелинейные системы уравнений
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.1. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quasinewton.html">
+     7.2. Метод Бройдена
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     7.3. Задания
     </a>
    </li>
   </ul>
@@ -590,7 +661,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Реализация
+   7.1.1. Реализация
   </a>
  </li>
 </ul>
@@ -614,7 +685,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Реализация
+   7.1.1. Реализация
   </a>
  </li>
 </ul>
@@ -628,32 +699,33 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Метод Ньютона<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">7.1. </span>Метод Ньютона<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <p>Одним из простых методов решения является обобщение метода Ньютона (Ньютона-Рафсона, <em>Newton-Raphson method</em>) на случай многомерной функции <span class="math notranslate nohighlight">\(\mathbf{f}\)</span>.</p>
 <p>Как и для скалярного метода, представим <span class="math notranslate nohighlight">\(\mathbf{f}\)</span> линейной моделью</p>
 <div class="math notranslate nohighlight" id="equation-sysnonlinear-taylor">
-<span class="eqno">()<a class="headerlink" href="#equation-sysnonlinear-taylor" title="Permalink to this equation">#</a></span>\[f_i(\mathbf{x} + \mathbf{\delta x})
+<span class="eqno">(7.2)<a class="headerlink" href="#equation-sysnonlinear-taylor" title="Permalink to this equation">#</a></span>\[f_i(\mathbf{x} + \mathbf{\delta x})
 = f_i(\mathbf{x}) + \sum_{j=1}^n \frac{\partial f_i}{\partial x_j}(\mathbf{x}) \delta x_j + O(\mathbf{\delta x}^2)\]</div>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>В русскоязычной литературе якобианом называют, как правило, детерминант матрицы Якоби.</p>
 </aside>
 <span class="target" id="index-0"></span><p id="index-1">Матрицу <span class="math notranslate nohighlight">\(\mathbf{J}(\mathbf{x})\)</span> с элементами <span class="math notranslate nohighlight">\(J_{ij}(\mathbf{x}) = \frac{\partial f_i}{\partial x_j}(\mathbf{x})\)</span> называют <strong>матрицей Якоби</strong>, мы же, для краткости, будем называть её просто <strong>якобианом</strong>.</p>
-<p>С помощью якобиана система <a class="reference internal" href="#equation-sysnonlinear-taylor">()</a> записывается в виде</p>
+<p>С помощью якобиана система <a class="reference internal" href="#equation-sysnonlinear-taylor">(7.2)</a> записывается в виде</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{f}(\mathbf{x} + \mathbf{\delta x})
 = \mathbf{f}(\mathbf{x}) + \mathbf{J}(\mathbf{x}) \delta \mathbf{x} + O(\mathbf{\delta x^2}).\]</div>
 <p>Положим теперь <span class="math notranslate nohighlight">\(\mathbf{f}(\mathbf{x} + \mathbf{\delta x}) = \mathbf{0}\)</span> и отбросим квадратичную поправку. Тогда получим условие</p>
-<div class="math notranslate nohighlight">
-\[\mathbf{J}(\mathbf{x}) \delta \mathbf{x} = - \mathbf{f}(\mathbf{x}),\]</div>
-<p>которое для <em>фиксированного</em> <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> является линейной системой.</p>
+<div class="math notranslate nohighlight" id="equation-sysnonlinear-newton-step">
+<span class="eqno">(7.3)<a class="headerlink" href="#equation-sysnonlinear-newton-step" title="Permalink to this equation">#</a></span>\[\mathbf{J}(\mathbf{x}) \delta \mathbf{x} = - \mathbf{f}(\mathbf{x}),\]</div>
+<p>которое для <em>фиксированного</em> <span class="math notranslate nohighlight">\(\mathbf{x}\)</span> является линейной системой на <span class="math notranslate nohighlight">\(\delta\mathbf{x}\)</span>.</p>
 <p>Так, метод Ньютона строит серию приближений</p>
 <div class="math notranslate nohighlight">
-\[\mathbf{x}_\text{new} = \mathbf{x}_\text{old} - \mathbf{J}^{-1}(\mathbf{x}_\text{old})\mathbf{f}(\mathbf{x}_\text{old}).\]</div>
+\[\mathbf{x}_\text{new} = \mathbf{x}_\text{old} + \delta\mathbf{x} = \mathbf{x}_\text{old} - \mathbf{J}^{-1}(\mathbf{x}_\text{old})\mathbf{f}(\mathbf{x}_\text{old}).\]</div>
+<p id="index-2">В свою очередь, шаг <span class="math notranslate nohighlight">\(\delta\mathbf{x}\)</span>, найденный из условия <a class="reference internal" href="#equation-sysnonlinear-newton-step">(7.3)</a> называют <strong>ньютоновским</strong> шагом.</p>
 <div class="proof proof-type-algorithm" id="id3">
-<span id="index-2"></span>
+<span id="index-3"></span>
     <div class="proof-title">
-        <span class="proof-type">Алгоритм </span>
+        <span class="proof-type">Алгоритм 7.1</span>
         
             <span class="proof-title-name">(Многомерный метод Ньютона)</span>
         
@@ -665,11 +737,11 @@ title="Print to PDF"
 <li><p>Построить новое приближение корня <span class="math notranslate nohighlight">\(\mathbf{x}_{k+1} = \mathbf{x}_k + \delta \mathbf{x}\)</span>.</p></li>
 </ol>
 </div></div><section id="id2">
-<h2>Реализация<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.1.1. </span>Реализация<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <div class="proof proof-type-function" id="id4">
 
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 7.2</span>
         
             <span class="proof-title-name">(newtonsys)</span>
         
@@ -691,9 +763,9 @@ title="Print to PDF"
 <span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">.=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="n">δx</span><span class="w"> </span><span class="o">.=</span><span class="w"> </span><span class="o">.-</span><span class="w"> </span><span class="p">(</span><span class="n">J</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">.+=</span><span class="w"> </span><span class="n">δx</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">norm</span><span class="p">(</span><span class="n">δx</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">xtol</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">norm</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ftol</span><span class="w"></span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
-<span class="w">        </span><span class="k">end</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">norm</span><span class="p">(</span><span class="n">δx</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">xtol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="w">        </span><span class="n">norm</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ftol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
 <span class="w">    </span><span class="k">end</span><span class="w"></span>
 <span class="w">    </span><span class="n">error</span><span class="p">(</span><span class="s">&quot;Превышено число итераций.&quot;</span><span class="p">)</span><span class="w"></span>
 <span class="k">end</span><span class="w"></span>
@@ -706,7 +778,7 @@ title="Print to PDF"
 </div></div><div class="proof proof-type-demo" id="id5">
 <span id="demo-sysnonlinear-newton"></span>
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 7.3</span>
         
     </div><div class="proof-content">
 </div></div><div class="demo"><p>Рассмотрим в качестве примера решение системы</p>
@@ -831,6 +903,20 @@ x_1^2 - 2 x_2^2 - x_1 x_2 + 2x_1 - x_2 + 1\\
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">7. </span>Нелинейные системы уравнений</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="quasinewton.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7.2. </span>Метод Бройдена</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Метод Ньютона и секущих &#8212; Практикум по вычислительной теплофизике</title>
+    <title>6.2. Метод Ньютона и секущих &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.3. Методы бисекции и regula falsi" href="bisection_regula_falsi.html" />
+    <link rel="prev" title="6.1. Метод простой итерации" href="simpleiter.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -317,6 +319,75 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../integration/ex.html">
      5.5. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   6. Нелинейные уравнения
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="simpleiter.html">
+     6.1. Метод простой итерации
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.2. Метод Ньютона и секущих
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bisection_regula_falsi.html">
+     6.3. Методы бисекции и regula falsi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ridders.html">
+     6.4. Метод Риддерса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="itp.html">
+     6.5. ITP метод
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     6.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../sysnonlinear/index.html">
+   7. Нелинейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/newton.html">
+     7.1. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/quasinewton.html">
+     7.2. Метод Бройдена
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/ex.html">
+     7.3. Задания
     </a>
    </li>
   </ul>
@@ -590,12 +661,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Метод Ньютона-Рафсона
+   6.2.1. Метод Ньютона-Рафсона
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#chapter-nlroot-secant">
-   Метод секущих
+   6.2.2. Метод секущих
   </a>
  </li>
 </ul>
@@ -619,12 +690,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Метод Ньютона-Рафсона
+   6.2.1. Метод Ньютона-Рафсона
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#chapter-nlroot-secant">
-   Метод секущих
+   6.2.2. Метод секущих
   </a>
  </li>
 </ul>
@@ -638,18 +709,18 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Метод Ньютона и секущих<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">6.2. </span>Метод Ньютона и секущих<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <section id="id2">
-<h2>Метод Ньютона-Рафсона<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.2.1. </span>Метод Ньютона-Рафсона<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>В методе Ньютона (также, Ньютона-Рафсона <em>Newton–Raphson method</em>) функция приближается прямой. Т.е. через текущее приближение корня <span class="math notranslate nohighlight">\(x_k\)</span> проводится касательная <span class="math notranslate nohighlight">\(q(x)\)</span> и корень касательной <span class="math notranslate nohighlight">\(q(x_{k+1}) = 0\)</span> берётся за новое приближение.</p>
 <p>Уравнение касательной в точке <span class="math notranslate nohighlight">\(x_k\)</span>  функции <span class="math notranslate nohighlight">\(f\)</span> имеет вид</p>
 <div class="math notranslate nohighlight">
 \[q(x) = f(x_k) + f'(k) (x - x_k).\]</div>
-<p>Откуда получаем.</p>
+<p>Откуда при <span class="math notranslate nohighlight">\(q(x) = 0\)</span> получаем</p>
 <div class="proof proof-type-algorithm" id="id4">
 
     <div class="proof-title">
-        <span class="proof-type">Алгоритм </span>
+        <span class="proof-type">Алгоритм 6.8</span>
         
             <span class="proof-title-name">(Метод Ньютона поиска корня нелинейного уравнения)</span>
         
@@ -663,7 +734,7 @@ x_{k+1} = x_k - \frac{f(x_k)}{f'(x_k)}, \quad k = 1, 2, ....
 <div class="proof proof-type-definition" id="id5">
 
     <div class="proof-title">
-        <span class="proof-type">Определение </span>
+        <span class="proof-type">Определение 6.9</span>
         
             <span class="proof-title-name">(Квадратичная сходимость)</span>
         
@@ -677,7 +748,7 @@ x_{k+1} = x_k - \frac{f(x_k)}{f'(x_k)}, \quad k = 1, 2, ....
 </div></div><div class="proof proof-type-function" id="id6">
 
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 6.10</span>
         
             <span class="proof-title-name">(newton)</span>
         
@@ -693,9 +764,9 @@ x_{k+1} = x_k - \frac{f(x_k)}{f'(x_k)}, \quad k = 1, 2, ....
 <span class="w">        </span><span class="n">fx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="n">δx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">fx</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">δx</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">fx</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ftol</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">δx</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">xtol</span><span class="w"></span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
-<span class="w">        </span><span class="k">end</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">abs</span><span class="p">(</span><span class="n">fx</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ftol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="w">        </span><span class="n">abs</span><span class="p">(</span><span class="n">δx</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">xtol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
 <span class="w">    </span><span class="k">end</span><span class="w"></span>
 <span class="w">    </span><span class="n">error</span><span class="p">(</span><span class="s">&quot;Число итераций превышено.&quot;</span><span class="p">)</span><span class="w"></span>
 <span class="k">end</span><span class="w"></span>
@@ -704,7 +775,7 @@ x_{k+1} = x_k - \frac{f(x_k)}{f'(x_k)}, \quad k = 1, 2, ....
 </div></div><div class="proof proof-type-demo" id="id7">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 6.11</span>
         
             <span class="proof-title-name">(Метод Ньютона)</span>
         
@@ -748,9 +819,8 @@ r2 = -5.396595270071815e-16
 </div>
 </div></section>
 <section id="chapter-nlroot-secant">
-<span id="id3"></span><h2>Метод секущих<a class="headerlink" href="#chapter-nlroot-secant" title="Permalink to this headline">#</a></h2>
-<p>Метод секущих основывается на интерполяции функции прямой.</p>
-<p>Пусть есть два приближения корня <span class="math notranslate nohighlight">\(x_1\)</span> и <span class="math notranslate nohighlight">\(x_2\)</span>. Проведём секущую <span class="math notranslate nohighlight">\(q(x)\)</span> через точки <span class="math notranslate nohighlight">\((x_1, f(x_1))\)</span> и <span class="math notranslate nohighlight">\((x_2, f(x_2))\)</span></p>
+<span id="id3"></span><h2><span class="section-number">6.2.2. </span>Метод секущих<a class="headerlink" href="#chapter-nlroot-secant" title="Permalink to this headline">#</a></h2>
+<p>Метод секущих основывается на интерполяции функции прямой. Пусть есть два приближения корня <span class="math notranslate nohighlight">\(x_1\)</span> и <span class="math notranslate nohighlight">\(x_2\)</span>. Проведём секущую <span class="math notranslate nohighlight">\(q(x)\)</span> через точки <span class="math notranslate nohighlight">\((x_1, f(x_1))\)</span> и <span class="math notranslate nohighlight">\((x_2, f(x_2))\)</span></p>
 <div class="math notranslate nohighlight">
 \[q(x) = f(x_1) + \frac{f(x_2) - f(x_1)}{x_2 - x_1} (x - x_1).\]</div>
 <p>Новое приближение корня <span class="math notranslate nohighlight">\(x_3\)</span> возьмём из пересечения секущей абсциссы <span class="math notranslate nohighlight">\(q(x_3) = 0\)</span>, откуда</p>
@@ -759,7 +829,7 @@ r2 = -5.396595270071815e-16
 <div class="proof proof-type-algorithm" id="id8">
 
     <div class="proof-title">
-        <span class="proof-type">Алгоритм </span>
+        <span class="proof-type">Алгоритм 6.12</span>
         
             <span class="proof-title-name">(Метод секущих)</span>
         
@@ -769,12 +839,12 @@ r2 = -5.396595270071815e-16
 \[
 x_{k+1} = \frac{f(x_k)x_{k-1} - f(x_{k-1})x_k}{f(x_k) - f(x_{k-1})}, \quad k=2, 3, ....
 \]</div>
-</div></div><p>Таким образом, в этом методе секущие проводятся всегда по двум последним приближениям корня.</p>
-<p>Метод секущих обладает сверхлинейной сходимостью со скоростью, равной золотому сечению <span class="math notranslate nohighlight">\(\alpha = (1 + \sqrt{5})/2 \approx 1.618\)</span>.</p>
+<p>Таким образом, в этом методе секущие проводятся всегда по двум последним приближениям корня.</p>
+</div></div><p>Метод секущих обладает сверхлинейной сходимостью со скоростью, равной золотому сечению <span class="math notranslate nohighlight">\(\alpha = (1 + \sqrt{5})/2 \approx 1.618\)</span>.</p>
 <div class="proof proof-type-definition" id="id9">
 
     <div class="proof-title">
-        <span class="proof-type">Определение </span>
+        <span class="proof-type">Определение 6.13</span>
         
             <span class="proof-title-name">(Сверхлинейная сходимость)</span>
         
@@ -789,7 +859,7 @@ x_{k+1} = \frac{f(x_k)x_{k-1} - f(x_{k-1})x_k}{f(x_k) - f(x_{k-1})}, \quad k=2, 
 <div class="proof proof-type-function" id="id10">
 
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 6.14</span>
         
             <span class="proof-title-name">(secant)</span>
         
@@ -808,15 +878,22 @@ x_{k+1} = \frac{f(x_k)x_{k-1} - f(x_{k-1})x_k}{f(x_k) - f(x_{k-1})}, \quad k=2, 
 <span class="w">        </span><span class="n">x₁</span><span class="p">,</span><span class="w"> </span><span class="n">y₁</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x₂</span><span class="p">,</span><span class="w"> </span><span class="n">y₂</span><span class="w"></span>
 <span class="w">        </span><span class="n">x₂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">xnew</span><span class="w"></span>
 
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">y₂</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ftol</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">x₂</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x₁</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">xtol</span><span class="w"></span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">x₂</span><span class="w"></span>
-<span class="w">        </span><span class="k">end</span><span class="w"></span>
+<span class="w">        </span><span class="n">abs</span><span class="p">(</span><span class="n">y₂</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ftol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x₂</span><span class="w"></span>
+<span class="w">        </span><span class="n">abs</span><span class="p">(</span><span class="n">x₂</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x₁</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">xtol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x₂</span><span class="w"></span>
 <span class="w">    </span><span class="k">end</span><span class="w"></span>
 <span class="w">    </span><span class="n">error</span><span class="p">(</span><span class="s">&quot;Число итераций превышено.&quot;</span><span class="p">)</span><span class="w"></span>
 <span class="k">end</span><span class="w"></span>
 </pre></div>
 </div>
-</div></div><div class="cell docutils container">
+</div></div><div class="proof proof-type-demo" id="id11">
+
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 6.15</span>
+        
+            <span class="proof-title-name">(Метод секущих)</span>
+        
+    </div><div class="proof-content">
+</div></div><div class="demo"><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">x</span><span class="o">*</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
 <span class="n">root</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">secant</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
@@ -828,7 +905,7 @@ x_{k+1} = \frac{f(x_k)x_{k-1} - f(x_{k-1})x_k}{f(x_k) - f(x_{k-1})}, \quad k=2, 
 <div class="cell_output docutils container">
 <img alt="../_images/newton_secant_6_0.svg" src="../_images/newton_secant_6_0.svg" /></div>
 </div>
-</section>
+</div></section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -858,6 +935,20 @@ x_{k+1} = \frac{f(x_k)x_{k-1} - f(x_{k-1})x_k}{f(x_k) - f(x_{k-1})}, \quad k=2, 
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="simpleiter.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6.1. </span>Метод простой итерации</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="bisection_regula_falsi.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6.3. </span>Методы бисекции и regula falsi</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

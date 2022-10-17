@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Методы бисекции и regula falsi &#8212; Практикум по вычислительной теплофизике</title>
+    <title>6.3. Методы бисекции и regula falsi &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.4. Метод Риддерса" href="ridders.html" />
+    <link rel="prev" title="6.2. Метод Ньютона и секущих" href="newton_secant.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -317,6 +319,75 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../integration/ex.html">
      5.5. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   6. Нелинейные уравнения
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="simpleiter.html">
+     6.1. Метод простой итерации
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="newton_secant.html">
+     6.2. Метод Ньютона и секущих
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.3. Методы бисекции и regula falsi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ridders.html">
+     6.4. Метод Риддерса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="itp.html">
+     6.5. ITP метод
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     6.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../sysnonlinear/index.html">
+   7. Нелинейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/newton.html">
+     7.1. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/quasinewton.html">
+     7.2. Метод Бройдена
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/ex.html">
+     7.3. Задания
     </a>
    </li>
   </ul>
@@ -590,12 +661,17 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   Метод бисекции
+   6.3.1. Метод бисекции
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Regula falsi
+   6.3.2. Regula falsi
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   6.3.3. Упражнения
   </a>
  </li>
 </ul>
@@ -619,12 +695,17 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id1">
-   Метод бисекции
+   6.3.1. Метод бисекции
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Regula falsi
+   6.3.2. Regula falsi
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   6.3.3. Упражнения
   </a>
  </li>
 </ul>
@@ -638,9 +719,9 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="regula-falsi">
-<h1>Методы бисекции и regula falsi<a class="headerlink" href="#regula-falsi" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">6.3. </span>Методы бисекции и regula falsi<a class="headerlink" href="#regula-falsi" title="Permalink to this headline">#</a></h1>
 <section id="id1">
-<h2>Метод бисекции<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.3.1. </span>Метод бисекции<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>Для непрерывной функции известно, что, имея разные знаки <span class="math notranslate nohighlight">\(f(a)f(b)&lt;0\)</span> на концах отрезка <span class="math notranslate nohighlight">\([a, b]\)</span>, функция <span class="math notranslate nohighlight">\(f\)</span> имеет также корень <span class="math notranslate nohighlight">\(f(x^*)=0\)</span> на этом отрезке <span class="math notranslate nohighlight">\(x^* \in [a, b]\)</span>.</p>
 <p>Метод бисекции пользуется этим утверждением. Разобъём исходный отрезок <span class="math notranslate nohighlight">\([x_1, x_2]\)</span> пополам точкой <span class="math notranslate nohighlight">\(x_3 = (x_1 + x_2) / 2\)</span>. Тогда, если <span class="math notranslate nohighlight">\(x_3\)</span> не является корнем уравнения, то <span class="math notranslate nohighlight">\(f\)</span> имеет разные знаки либо на концах отрезка <span class="math notranslate nohighlight">\([x_1, x_3]\)</span>, либо на концах отрезка <span class="math notranslate nohighlight">\([x_3, x_2]\)</span>. Выберем в качестве нового отрезка тот, на котором функция имеет разные знаки и продолжим процедуру.</p>
 <p>Метод бисекции гарантирует локализацию корня. Поскольку за итерацию длина отрезка уменьшается вдвое <span class="math notranslate nohighlight">\(\Delta_{k+1} = \Delta_k / 2\)</span>, то имеет место <em>линейная сходимость</em> метода.</p>
@@ -653,10 +734,11 @@ title="Print to PDF"
 <p>то получим необходимое число итераций</p>
 <div class="math notranslate nohighlight">
 \[k_\max = \Big\lceil \log_2\Big(\frac{\Delta_0}{\text{xtol}}\Big) \Big\rceil.\]</div>
-<div class="proof proof-type-function" id="id4">
+<p>Метод бисекции один из немногих, в которых известно наперёд число итераций, необходимое для достижения заданной точности.</p>
+<div class="proof proof-type-function" id="id5">
 
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 6.16</span>
         
             <span class="proof-title-name">(bisection)</span>
         
@@ -669,11 +751,12 @@ title="Print to PDF"
 <span class="k">function</span><span class="w"> </span><span class="n">bisection</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">x₁</span><span class="p">,</span><span class="w"> </span><span class="n">x₂</span><span class="p">;</span><span class="w"> </span><span class="n">xtol</span><span class="o">=</span><span class="n">eps</span><span class="p">(),</span><span class="w"> </span><span class="n">ftol</span><span class="o">=</span><span class="n">eps</span><span class="p">())</span><span class="w"></span>
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">x₁</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x₂</span><span class="p">;</span><span class="w"> </span><span class="n">x₁</span><span class="p">,</span><span class="w"> </span><span class="n">x₂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x₂</span><span class="p">,</span><span class="w"> </span><span class="n">x₁</span><span class="p">;</span><span class="w"> </span><span class="k">end</span><span class="w"></span>
 <span class="w">    </span><span class="n">y₁</span><span class="p">,</span><span class="w"> </span><span class="n">y₂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x₁</span><span class="p">),</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x₂</span><span class="p">)</span><span class="w"></span>
+
 <span class="w">    </span><span class="n">sign</span><span class="p">(</span><span class="n">y₁</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">sign</span><span class="p">(</span><span class="n">y₂</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">error</span><span class="p">(</span><span class="s">&quot;Функция должна иметь разные знаки в концах отрезка&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">y₁</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x₁</span><span class="w"></span>
-<span class="w">    </span><span class="n">y₂</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x₂</span><span class="w"></span>
+<span class="w">    </span><span class="n">abs</span><span class="p">(</span><span class="n">y₁</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ftol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x₁</span><span class="w"></span>
+<span class="w">    </span><span class="n">abs</span><span class="p">(</span><span class="n">y₂</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ftol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x₂</span><span class="w"></span>
 <span class="w">    </span>
-<span class="w">    </span><span class="n">maxiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ceil</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">log2</span><span class="p">((</span><span class="n">x₂</span><span class="o">-</span><span class="n">x₁</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">xtol</span><span class="p">)))</span><span class="w"></span>
+<span class="w">    </span><span class="n">maxiter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ceil</span><span class="p">(</span><span class="kt">Int</span><span class="p">,</span><span class="w"> </span><span class="n">log2</span><span class="p">((</span><span class="n">x₂</span><span class="o">-</span><span class="n">x₁</span><span class="p">)</span><span class="o">/</span><span class="n">xtol</span><span class="p">))</span><span class="w"></span>
 <span class="w">    </span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">maxiter</span><span class="w"></span>
 <span class="w">        </span><span class="n">xnew</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">x₂</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x₁</span><span class="p">)</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
@@ -692,7 +775,15 @@ title="Print to PDF"
 <span class="k">end</span><span class="w"></span>
 </pre></div>
 </div>
-</div></div><div class="cell docutils container">
+</div></div><div class="proof proof-type-demo" id="id6">
+
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 6.17</span>
+        
+            <span class="proof-title-name">(Метод бисекции)</span>
+        
+    </div><div class="proof-content">
+</div></div><div class="demo"><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
 <span class="nd">@show</span><span class="w"> </span><span class="n">bisection</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="mf">0.5</span><span class="p">,</span><span class="w"> </span><span class="mf">1.6</span><span class="p">;</span><span class="w"> </span><span class="n">xtol</span><span class="o">=</span><span class="mf">1e-6</span><span class="p">)</span><span class="w"></span>
@@ -707,16 +798,16 @@ bisection(f, 0.5, 1.6; xtol = 1.0e-10) = 1.0000000000145521
 </div>
 </div>
 </div>
-</section>
+</div></section>
 <section id="id2">
-<h2>Regula falsi<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.3.2. </span>Regula falsi<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>В методе ложной позиции (<em>regula falsi</em>, <em>false position</em>) по двум приближениям корня <span class="math notranslate nohighlight">\(x_1\)</span> и <span class="math notranslate nohighlight">\(x_2\)</span>, на которых функция имеет разные знаки <span class="math notranslate nohighlight">\(f(x_1)f(x_2) &lt; 0\)</span>, проводится секущая. Затем вычисляется точка пересечения секущей с осью абсцисс <span class="math notranslate nohighlight">\(x_3\)</span>. После чего, подобно методу бисекции, по <span class="math notranslate nohighlight">\(f(x_3)\)</span> выбирается новый интервал, локализующий корень.</p>
 <p>Для многих функций и начальных интервалов, метод regula falsi имеет <em>сверхлинейную сходимость</em> <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id9" title="William H. Press, Saul A. Teukolsky, William T. Vetterling, and Brian P. Flannery. Numerical Recipes 3rd Edition: The Art of Scientific Computing. Cambridge University Press, USA, 3 edition, 2007. ISBN 0521880688.">PTVF07</a>]</span>.</p>
 <p>Метод очень напоминает метод секущих. Разница лишь в том, что метод секущих всегда строит новое приближение корня по двум предыдущим, тогда как regula falsi, поддерживая разные знаки функции на концах отрезка, заменяет один из концов новым приближением.</p>
-<div class="proof proof-type-algorithm" id="id5">
+<div class="proof proof-type-algorithm" id="id7">
 
     <div class="proof-title">
-        <span class="proof-type">Алгоритм </span>
+        <span class="proof-type">Алгоритм 6.18</span>
         
             <span class="proof-title-name">(Метод regula falsi)</span>
         
@@ -731,10 +822,10 @@ bisection(f, 0.5, 1.6; xtol = 1.0e-10) = 1.0000000000145521
 </li>
 <li><p>Из двух <span class="math notranslate nohighlight">\([x_l, x_f]\)</span>, <span class="math notranslate nohighlight">\([x_f, x_r]\)</span> в качестве нового выберем тот, на котором функция имеет разные знаки.</p></li>
 </ol>
-</div></div><div class="proof proof-type-function" id="id6">
+</div></div><div class="proof proof-type-function" id="id8">
 
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 6.19</span>
         
             <span class="proof-title-name">(regulafalsi)</span>
         
@@ -750,8 +841,8 @@ bisection(f, 0.5, 1.6; xtol = 1.0e-10) = 1.0000000000145521
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">x₁</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x₂</span><span class="p">;</span><span class="w"> </span><span class="n">x₁</span><span class="p">,</span><span class="w"> </span><span class="n">x₂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x₂</span><span class="p">,</span><span class="w"> </span><span class="n">x₁</span><span class="p">;</span><span class="w"> </span><span class="k">end</span><span class="w"></span>
 <span class="w">    </span><span class="n">y₁</span><span class="p">,</span><span class="w"> </span><span class="n">y₂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="p">((</span><span class="n">x₁</span><span class="p">,</span><span class="w"> </span><span class="n">x₂</span><span class="p">))</span><span class="w"></span>
 <span class="w">    </span><span class="n">sign</span><span class="p">(</span><span class="n">y₁</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">sign</span><span class="p">(</span><span class="n">y₂</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">error</span><span class="p">(</span><span class="s">&quot;Функция должна иметь разные знаки в концах отрезка&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">y₁</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x₁</span><span class="w"></span>
-<span class="w">    </span><span class="n">y₂</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x₂</span><span class="w"></span>
+<span class="w">    </span><span class="n">abs</span><span class="p">(</span><span class="n">y₁</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x₁</span><span class="w"></span>
+<span class="w">    </span><span class="n">abs</span><span class="p">(</span><span class="n">y₂</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x₂</span><span class="w"></span>
 <span class="w">    </span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">maxiter</span><span class="w"></span>
 <span class="w">        </span><span class="n">y₂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x₂</span><span class="p">)</span><span class="w"></span>
@@ -765,15 +856,22 @@ bisection(f, 0.5, 1.6; xtol = 1.0e-10) = 1.0000000000145521
 <span class="w">        </span><span class="k">else</span><span class="w"></span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">xnew</span><span class="w"></span>
 <span class="w">        </span><span class="k">end</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">ynew</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ftol</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">x₂</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x₁</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">xtol</span><span class="w"></span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">xnew</span><span class="w"></span>
-<span class="w">        </span><span class="k">end</span><span class="w"></span>
+<span class="w">        </span><span class="n">abs</span><span class="p">(</span><span class="n">ynew</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ftol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">xnew</span><span class="w"></span>
+<span class="w">        </span><span class="n">abs</span><span class="p">(</span><span class="n">x₂</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x₁</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">xtol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">xnew</span><span class="w"></span>
 <span class="w">    </span><span class="k">end</span><span class="w"></span>
 <span class="w">    </span><span class="n">error</span><span class="p">(</span><span class="s">&quot;Число итераций превышено.&quot;</span><span class="p">)</span><span class="w"></span>
 <span class="k">end</span><span class="w"></span>
 </pre></div>
 </div>
-</div></div><p>Ниже показаны несколько первых секущих, порождающихся методом regula falsi для функции <span class="math notranslate nohighlight">\(-x^2 + x + 10\)</span> с начальным отрезком <span class="math notranslate nohighlight">\([-4, 2]\)</span>. Заметьте, как одна из точек отрезка для данной функции остаётся фиксированной.</p>
+</div></div><div class="proof proof-type-demo" id="id9">
+
+    <div class="proof-title">
+        <span class="proof-type">Демонстрация 6.20</span>
+        
+            <span class="proof-title-name">(Метод regula falsi)</span>
+        
+    </div><div class="proof-content">
+</div></div><div class="demo"><p>Ниже показаны несколько первых секущих, порождающихся методом regula falsi для функции <span class="math notranslate nohighlight">\(-x^2 + x + 10\)</span> с начальным отрезком <span class="math notranslate nohighlight">\([-4, 2]\)</span>. Заметьте, как одна из точек отрезка для данной функции остаётся фиксированной.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="o">-</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">10</span><span class="w"></span>
@@ -802,6 +900,13 @@ bisection(f, 0.5, 1.6; xtol = 1.0e-10) = 1.0000000000145521
 <img alt="../_images/bisection_regula_falsi_4_0.svg" src="../_images/bisection_regula_falsi_4_0.svg" /></div>
 </div>
 </div></section>
+<section id="id4">
+<h2><span class="section-number">6.3.3. </span>Упражнения<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<ol class="simple">
+<li><p>Почему в методе regula falsi важно устанавливать гарантию малости функции <span class="math notranslate nohighlight">\(\text{ftol}\)</span>?</p></li>
+<li><p>Для каких функций в методе regula falsi одна из точек приближения корня остаётся фиксированной в течение работы всего алгоритма?</p></li>
+</ol>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -831,6 +936,20 @@ bisection(f, 0.5, 1.6; xtol = 1.0e-10) = 1.0000000000145521
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="newton_secant.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6.2. </span>Метод Ньютона и секущих</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="ridders.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6.4. </span>Метод Риддерса</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

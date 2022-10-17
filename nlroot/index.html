@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Нелинейные уравнения &#8212; Практикум по вычислительной теплофизике</title>
+    <title>6. Нелинейные уравнения &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.1. Метод простой итерации" href="simpleiter.html" />
+    <link rel="prev" title="5.5. Задания" href="../integration/ex.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -317,6 +319,75 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../integration/ex.html">
      5.5. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   6. Нелинейные уравнения
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="simpleiter.html">
+     6.1. Метод простой итерации
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="newton_secant.html">
+     6.2. Метод Ньютона и секущих
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bisection_regula_falsi.html">
+     6.3. Методы бисекции и regula falsi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ridders.html">
+     6.4. Метод Риддерса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="itp.html">
+     6.5. ITP метод
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     6.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../sysnonlinear/index.html">
+   7. Нелинейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/newton.html">
+     7.1. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/quasinewton.html">
+     7.2. Метод Бройдена
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/ex.html">
+     7.3. Задания
     </a>
    </li>
   </ul>
@@ -545,7 +616,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Нелинейные уравнения<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">6. </span>Нелинейные уравнения<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <p>В этом разделе изучается задача поиска корня нелинейного уравнения</p>
 <div class="math notranslate nohighlight">
 \[f(x) = 0.\]</div>
@@ -553,7 +624,7 @@ title="Print to PDF"
 <div class="proof proof-type-definition" id="id5">
 
     <div class="proof-title">
-        <span class="proof-type">Определение </span>
+        <span class="proof-type">Определение 6.1</span>
         
             <span class="proof-title-name">(Задача поиска корня нелинейного уравнения)</span>
         
@@ -574,7 +645,7 @@ r: |f(r)| &lt; \text{ftol}.
 <div class="proof proof-type-proposition" id="id6">
 
     <div class="proof-title">
-        <span class="proof-type">Утверждение </span>
+        <span class="proof-type">Утверждение 6.2</span>
         
             <span class="proof-title-name">(Число обусловленности задачи поиска корня)</span>
         
@@ -585,6 +656,8 @@ r: |f(r)| &lt; \text{ftol}.
 \kappa_r = |f'(r)|^{-1}.
 \]</div>
 </div></div><p>Также добавим, что в случае нескольких корней можно сначала найти первый корень <span class="math notranslate nohighlight">\(x^*_1\)</span> функции <span class="math notranslate nohighlight">\(f\)</span>, а затем продолжить поиск других корней, но уже для функции <span class="math notranslate nohighlight">\(f(x)/(x-x^*_1)\)</span> <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id8" title="А. А. Самарский and А. В. Гулин. Численные методы: учеб. пособие для вузов. Наука, Москва, 1989. ISBN 978-5020139961.">89</a>]</span>. Кроме того, существуют процедуры по локализации корней функции, после чего задача сводится к поиску корня на каждом из интервалов по отдельности <span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id9" title="William H. Press, Saul A. Teukolsky, William T. Vetterling, and Brian P. Flannery. Numerical Recipes 3rd Edition: The Art of Scientific Computing. Cambridge University Press, USA, 3 edition, 2007. ISBN 0521880688.">PTVF07</a>]</span>.</p>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -614,6 +687,20 @@ r: |f(r)| &lt; \text{ftol}.
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../integration/ex.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">5.5. </span>Задания</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="simpleiter.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6.1. </span>Метод простой итерации</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

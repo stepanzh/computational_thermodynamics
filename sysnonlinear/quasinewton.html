@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Метод Бройдена &#8212; Практикум по вычислительной теплофизике</title>
+    <title>7.2. Метод Бройдена &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.3. Задания" href="ex.html" />
+    <link rel="prev" title="7.1. Метод Ньютона" href="newton.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -317,6 +319,75 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../integration/ex.html">
      5.5. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../nlroot/index.html">
+   6. Нелинейные уравнения
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/simpleiter.html">
+     6.1. Метод простой итерации
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/newton_secant.html">
+     6.2. Метод Ньютона и секущих
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/bisection_regula_falsi.html">
+     6.3. Методы бисекции и regula falsi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ridders.html">
+     6.4. Метод Риддерса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/itp.html">
+     6.5. ITP метод
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ex.html">
+     6.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   7. Нелинейные системы уравнений
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="newton.html">
+     7.1. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     7.2. Метод Бройдена
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     7.3. Задания
     </a>
    </li>
   </ul>
@@ -590,22 +661,22 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Приближение якобиана конечной разностью
+   7.2.1. Приближение якобиана конечной разностью
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   Метод
+   7.2.2. Метод Бройдена
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   Реализация
+   7.2.3. Реализация
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   Другие версии метода
+   7.2.4. Другие версии метода
   </a>
  </li>
 </ul>
@@ -629,22 +700,22 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Приближение якобиана конечной разностью
+   7.2.1. Приближение якобиана конечной разностью
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id3">
-   Метод
+   7.2.2. Метод Бройдена
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   Реализация
+   7.2.3. Реализация
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id5">
-   Другие версии метода
+   7.2.4. Другие версии метода
   </a>
  </li>
 </ul>
@@ -658,11 +729,11 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Метод Бройдена<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">7.2. </span>Метод Бройдена<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <p>Метод Ньютона послужил основой для многих других методов. Недостатком метода является требовательное по времени вычисление якобиана на каждой итерации. Для некоторых приложений это неприемлимо. Вместо прямого вычисления якобиана, <strong>квазиньютоновские</strong> методы заменяют якобиан некоторым приближением.</p>
 <section id="id2">
-<h2>Приближение якобиана конечной разностью<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
-<p>В <code class="xref std std-numref docutils literal notranslate"><span class="pre">%s</span> <span class="pre">Методе</span> <span class="pre">секущих</span></code> мы фактически сталкивались с приближением производной функции в точке <span class="math notranslate nohighlight">\(f'(x_{k+1})\)</span></p>
+<h2><span class="section-number">7.2.1. </span>Приближение якобиана конечной разностью<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>В <a class="reference internal" href="../nlroot/newton_secant.html#chapter-nlroot-secant"><span class="std std-numref">6.2.2 Методе секущих</span></a> мы фактически сталкивались с приближением производной функции в точке <span class="math notranslate nohighlight">\(f'(x_{k+1})\)</span></p>
 <div class="math notranslate nohighlight">
 \[\frac{f(x_{k+1}) - f(x_k)}{x_{k+1} - x_k}.\]</div>
 <p>Численный метод, приближающий производную “из определения” (<span class="math notranslate nohighlight">\(\lim_{\Delta x \to 0} \Delta f / \Delta x\)</span>) называется методом конечной разности. Формулу замены производной её численным аналогом называют <em>разностной схемой</em>. Эти методы распространнены в решении дифференциальных уравнений.</p>
@@ -684,7 +755,7 @@ title="Print to PDF"
 <div class="proof proof-type-function" id="id7">
 
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 7.4</span>
         
             <span class="proof-title-name">(jacobianfd)</span>
         
@@ -712,7 +783,7 @@ title="Print to PDF"
 </div></div><div class="proof proof-type-demo" id="id8">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 7.5</span>
         
     </div><div class="proof-content">
 </div></div><div class="demo"><p>Сравним на небольшом примере точность приближения якобиана. В качестве функции и точки приближения возьмём</p>
@@ -785,57 +856,57 @@ x_2 \exp{x_1} + \sin{x_1}\\
 <p>Отличие в данной точке получилось небольшим. В качестве меры невязки здесь приведена норма Фробениуса для матриц <span class="math notranslate nohighlight">\(\sqrt{\sum A_{ij}^2}\)</span>.</p>
 </div></section>
 <section id="id3">
-<h2>Метод<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.2.2. </span>Метод Бройдена<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <p>Обозначим приближение якобиана в точке <span class="math notranslate nohighlight">\(\mathbf{x}_k\)</span> через <span class="math notranslate nohighlight">\(\mathbf{B}_k\)</span>, т.е.</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{J}(\mathbf{x}_k) \approx \mathbf{B}_k.\]</div>
 <p>На <span class="math notranslate nohighlight">\(k\)</span>-ой итерации шаг квазиньютоновского метода будем находить из системы</p>
 <div class="math notranslate nohighlight" id="equation-sysnonlinear-quasi-step">
-<span class="eqno">()<a class="headerlink" href="#equation-sysnonlinear-quasi-step" title="Permalink to this equation">#</a></span>\[\mathbf{B}_k \delta \mathbf{x}_k = - \mathbf{f}_k,\]</div>
+<span class="eqno">(7.4)<a class="headerlink" href="#equation-sysnonlinear-quasi-step" title="Permalink to this equation">#</a></span>\[\mathbf{B}_k \delta \mathbf{x}_k = - \mathbf{f}_k,\]</div>
 <p>здесь обозначены <span class="math notranslate nohighlight">\(\delta \mathbf{x}_k = \mathbf{x}_{k+1} - \mathbf{x}_k\)</span>, а <span class="math notranslate nohighlight">\(\mathbf{f}_k = \mathbf{f}(\mathbf{x}_k)\)</span>.</p>
 <p>Квазиньютоновское условие на новое приближение якобиана <span class="math notranslate nohighlight">\(\mathbf{B}_{k+1}\)</span> состоит в</p>
 <div class="math notranslate nohighlight" id="equation-sysnonlinear-quasi-cond">
-<span class="eqno">()<a class="headerlink" href="#equation-sysnonlinear-quasi-cond" title="Permalink to this equation">#</a></span>\[\mathbf{B}_{k+1} \delta \mathbf{x}_k = \mathbf{f}_{k+1} - \mathbf{f}_k.\]</div>
+<span class="eqno">(7.5)<a class="headerlink" href="#equation-sysnonlinear-quasi-cond" title="Permalink to this equation">#</a></span>\[\mathbf{B}_{k+1} \delta \mathbf{x}_k = \mathbf{f}_{k+1} - \mathbf{f}_k.\]</div>
 <p>Выбор <span class="math notranslate nohighlight">\(\mathbf{B}_{k+1}\)</span> не однозначен. На практике хорошие результаты показывает правило Бройдена, выведенное из минимальной в смысле нормы Фробениуса поправки к <span class="math notranslate nohighlight">\(\mathbf{B}_k\)</span></p>
 <div class="math notranslate nohighlight" id="equation-sysnonlinear-broyden-cond">
-<span class="eqno">()<a class="headerlink" href="#equation-sysnonlinear-broyden-cond" title="Permalink to this equation">#</a></span>\[\min \|\mathbf{B}_{k+1} - \mathbf{B}_k \|_\text{F},\quad \| \mathbf{A} \|_\text{F}
+<span class="eqno">(7.6)<a class="headerlink" href="#equation-sysnonlinear-broyden-cond" title="Permalink to this equation">#</a></span>\[\min \|\mathbf{B}_{k+1} - \mathbf{B}_k \|_\text{F},\quad \| \mathbf{A} \|_\text{F}
 = \big( \sum_{i, j} |A_{ij}|^2 \big)^{1/2},\]</div>
-<p>такой, что условие <a class="reference internal" href="#equation-sysnonlinear-quasi-cond">()</a> удовлетворится.</p>
+<p>такой, что условие <a class="reference internal" href="#equation-sysnonlinear-quasi-cond">(7.5)</a> удовлетворится.</p>
 <div class="proof proof-type-definition" id="id9">
 
     <div class="proof-title">
-        <span class="proof-type">Определение </span>
+        <span class="proof-type">Определение 7.6</span>
         
             <span class="proof-title-name">(Правило Бройдена)</span>
         
     </div><div class="proof-content">
 <div class="math notranslate nohighlight" id="equation-sysnonlinear-broyden-update">
-<span class="eqno">()<a class="headerlink" href="#equation-sysnonlinear-broyden-update" title="Permalink to this equation">#</a></span>\[\mathbf{B}_{k+1} = \mathbf{B}_k + \frac{1}{\delta \mathbf{x}^\top_k \delta \mathbf{x}_k}
+<span class="eqno">(7.7)<a class="headerlink" href="#equation-sysnonlinear-broyden-update" title="Permalink to this equation">#</a></span>\[\mathbf{B}_{k+1} = \mathbf{B}_k + \frac{1}{\delta \mathbf{x}^\top_k \delta \mathbf{x}_k}
 (\mathbf{f}_{k+1} - \mathbf{f}_k - \mathbf{B}_k \delta \mathbf{x}_k)
 \delta \mathbf{x}^\top_k.\]</div>
 </div></div><p>Самыми ресурсоемкими операциями в правиле Бройдена является матричное умножение (<span class="math notranslate nohighlight">\(\mathbf{B}_k \delta \mathbf{x}_k\)</span>) и внешнее произведение (<span class="math notranslate nohighlight">\(\square \cdot \delta \mathbf{x}^\top_k\)</span>). При этом при использовании <a class="reference internal" href="../syslinear/decompose_overview.html#chapter-syslinear-qr"><span class="std std-ref">QR-разложения</span></a> получается сэкономить часть операций (для этого разложения <span class="math notranslate nohighlight">\(\text{QR}(\mathbf{A} + \mathbf{a}\mathbf{b}^\top)\)</span> выражается через <span class="math notranslate nohighlight">\(\text{QR}(\mathbf{A})\)</span>).</p>
 <div class="proof proof-type-algorithm" id="id10">
 <span id="index-0"></span>
     <div class="proof-title">
-        <span class="proof-type">Алгоритм </span>
+        <span class="proof-type">Алгоритм 7.7</span>
         
             <span class="proof-title-name">(Метод Бройдена)</span>
         
     </div><div class="proof-content">
 <p>Пусть дана функция <span class="math notranslate nohighlight">\(\mathbf{f}\)</span>, начальная точка <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span> и приближение якобиана в этой точке <span class="math notranslate nohighlight">\(\mathbf{B}_1\)</span>. Последующие приближения <span class="math notranslate nohighlight">\(k = 2, 3, \ldots\)</span> получаются примением действий</p>
 <ol class="simple">
-<li><p>Решить систему <a class="reference internal" href="#equation-sysnonlinear-quasi-step">()</a>, найдя таким образом шаг <span class="math notranslate nohighlight">\(\delta \mathbf{x}_k\)</span>;</p></li>
+<li><p>Решить систему <a class="reference internal" href="#equation-sysnonlinear-quasi-step">(7.4)</a>, найдя таким образом шаг <span class="math notranslate nohighlight">\(\delta \mathbf{x}_k\)</span>;</p></li>
 <li><p>Построить новое приближение корня <span class="math notranslate nohighlight">\(\mathbf{x}_{k+1} = \mathbf{x}_k + \delta \mathbf{x}_k\)</span> и вычислить значение функции в нём <span class="math notranslate nohighlight">\(\mathbf{f}_{k+1} = \mathbf{f}(\mathbf{x}_{k+1})\)</span>;</p></li>
-<li><p>Получить новое приближение для якобиана <span class="math notranslate nohighlight">\(\mathbf{B}_{k+1}\)</span> из формулы <a class="reference internal" href="#equation-sysnonlinear-broyden-update">()</a>.</p></li>
+<li><p>Получить новое приближение для якобиана <span class="math notranslate nohighlight">\(\mathbf{B}_{k+1}\)</span> из формулы <a class="reference internal" href="#equation-sysnonlinear-broyden-update">(7.7)</a>.</p></li>
 </ol>
 </div></div><p>В качестве начального приближения якобиана можно использовать как его конечную разность, так и настоящий якобиан.</p>
 </section>
 <section id="id4">
-<h2>Реализация<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">7.2.3. </span>Реализация<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
 <div class="proof proof-type-function" id="id11">
 
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 7.8</span>
         
             <span class="proof-title-name">(broydensys)</span>
         
@@ -860,9 +931,10 @@ x_2 \exp{x_1} + \sin{x_1}\\
 <span class="w">        </span><span class="n">δx</span><span class="w"> </span><span class="o">.=</span><span class="w"> </span><span class="o">.-</span><span class="w"> </span><span class="p">(</span><span class="n">B</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="n">yp</span><span class="p">)</span><span class="w"></span>
 <span class="w">        </span><span class="n">x</span><span class="w"> </span><span class="o">.+=</span><span class="w"> </span><span class="n">δx</span><span class="w"></span>
 <span class="w">        </span><span class="n">yn</span><span class="w"> </span><span class="o">.=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">norm</span><span class="p">(</span><span class="n">δx</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">xtol</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">norm</span><span class="p">(</span><span class="n">yn</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ftol</span><span class="w"></span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
-<span class="w">        </span><span class="k">end</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">norm</span><span class="p">(</span><span class="n">δx</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">xtol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="w">        </span><span class="n">norm</span><span class="p">(</span><span class="n">yn</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ftol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="w">        </span>
 <span class="w">        </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">B</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">δx</span><span class="w"></span>
 <span class="w">        </span><span class="n">B</span><span class="w"> </span><span class="o">.+=</span><span class="w"> </span><span class="p">(</span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">dot</span><span class="p">(</span><span class="n">δx</span><span class="p">,</span><span class="w"> </span><span class="n">δx</span><span class="p">))</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="p">(</span><span class="n">yn</span><span class="w"> </span><span class="o">.-</span><span class="w"> </span><span class="n">yp</span><span class="w"> </span><span class="o">.-</span><span class="w"> </span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="o">.*</span><span class="w"> </span><span class="n">δx</span><span class="o">&#39;</span><span class="w"></span>
 <span class="w">    </span><span class="k">end</span><span class="w"></span>
@@ -874,10 +946,10 @@ x_2 \exp{x_1} + \sin{x_1}\\
 </div></div><div class="proof proof-type-demo" id="id12">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 7.9</span>
         
     </div><div class="proof-content">
-</div></div><div class="demo"><p>Рассмотрим пример использования метода Бройдена. Возьмём функцию и якобиан из <code class="xref std std-numref docutils literal notranslate"><span class="pre">Демонстрации</span> <span class="pre">%s</span></code>, где использовался метод Ньютона</p>
+</div></div><div class="demo"><p>Рассмотрим пример использования метода Бройдена. Возьмём функцию и якобиан из <a class="reference internal" href="newton.html#demo-sysnonlinear-newton"><span class="std std-numref">Демонстрации 7.3</span></a>, где использовался метод Ньютона</p>
 <div class="cell tag_remove-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"></span>
@@ -964,12 +1036,12 @@ f(rjac) = [-2.3769531543038624e-7, -2.327485972841714e-7]
 </div>
 </div></section>
 <section id="id5">
-<h2>Другие версии метода<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
-<p>Изложенная выше версия метода <a class="reference internal" href="#equation-sysnonlinear-broyden-update">()</a> требует решения линейной системы <a class="reference internal" href="#equation-sysnonlinear-quasi-step">()</a>. Однако, она сочетается с линейным поиском, обеспечивающим глобальную сходимость метода, т.е. сходимостью к корню из произвольного начального приближения <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span>, если корень существует. Правда, для этого необходимо переформулировать постановку задачи <span class="math notranslate nohighlight">\(\mathbf{f}(\mathbf{x}) = \mathbf{0}\)</span> под задачу минимизации <span id="id6">[<a class="reference internal" href="../appendix/bibliography.html#id9" title="William H. Press, Saul A. Teukolsky, William T. Vetterling, and Brian P. Flannery. Numerical Recipes 3rd Edition: The Art of Scientific Computing. Cambridge University Press, USA, 3 edition, 2007. ISBN 0521880688.">PTVF07</a>]</span>.</p>
-<p>Если же линейный поиск не используется, распространены две версии алгоритма, использующие вместо матрицы <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> обратную к ней <span class="math notranslate nohighlight">\(\mathbf{B}^{-1}\)</span>, полученную аналитически. Использование <span class="math notranslate nohighlight">\(\mathbf{B}^{-1}\)</span> позволяет не решать систему <a class="reference internal" href="#equation-sysnonlinear-quasi-step">()</a>, а сразу вычислять шаг</p>
+<h2><span class="section-number">7.2.4. </span>Другие версии метода<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<p>Изложенная выше версия метода <a class="reference internal" href="#equation-sysnonlinear-broyden-update">(7.7)</a> требует решения линейной системы <a class="reference internal" href="#equation-sysnonlinear-quasi-step">(7.4)</a>. Однако, она сочетается с линейным поиском, обеспечивающим глобальную сходимость метода, т.е. сходимостью к корню из произвольного начального приближения <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span>, если корень существует. Правда, для этого необходимо переформулировать постановку задачи <span class="math notranslate nohighlight">\(\mathbf{f}(\mathbf{x}) = \mathbf{0}\)</span> под задачу минимизации <span id="id6">[<a class="reference internal" href="../appendix/bibliography.html#id9" title="William H. Press, Saul A. Teukolsky, William T. Vetterling, and Brian P. Flannery. Numerical Recipes 3rd Edition: The Art of Scientific Computing. Cambridge University Press, USA, 3 edition, 2007. ISBN 0521880688.">PTVF07</a>]</span>.</p>
+<p>Если же линейный поиск не используется, распространены две версии алгоритма, использующие вместо матрицы <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> обратную к ней <span class="math notranslate nohighlight">\(\mathbf{B}^{-1}\)</span>, полученную аналитически. Использование <span class="math notranslate nohighlight">\(\mathbf{B}^{-1}\)</span> позволяет не решать систему <a class="reference internal" href="#equation-sysnonlinear-quasi-step">(7.4)</a>, а сразу вычислять шаг</p>
 <div class="math notranslate nohighlight">
 \[\delta \mathbf{x}_k = - \mathbf{B}^{-1}_k \mathbf{f}_k.\]</div>
-<p>Самим Бройденом была предложена формула для <span class="math notranslate nohighlight">\(\mathbf{B}^{-1}\)</span> на основе применения <a class="reference external" href="https://en.wikipedia.org/wiki/Sherman%E2%80%93Morrison_formula">формулы Шермана-Моррисона</a> к <a class="reference internal" href="#equation-sysnonlinear-broyden-update">()</a></p>
+<p>Самим Бройденом была предложена формула для <span class="math notranslate nohighlight">\(\mathbf{B}^{-1}\)</span> на основе применения <a class="reference external" href="https://en.wikipedia.org/wiki/Sherman%E2%80%93Morrison_formula">формулы Шермана-Моррисона</a> к <a class="reference internal" href="#equation-sysnonlinear-broyden-update">(7.7)</a></p>
 <div class="math notranslate nohighlight">
 \[\mathbf{B}^{-1}_{k+1}
 = \mathbf{B}^{-1}_k
@@ -977,7 +1049,7 @@ f(rjac) = [-2.3769531543038624e-7, -2.327485972841714e-7]
     \delta \mathbf{x}_k^\top \mathbf{B}^{-1}_k \delta \mathbf{f}_k
   }
 \delta \mathbf{x}_k^\top \mathbf{B}^{-1}_k,\]</div>
-<p>здесь <span class="math notranslate nohighlight">\(\delta \mathbf{f}_k = \mathbf{f}_{k+1} - \mathbf{f}_k\)</span>. Как и формула <a class="reference internal" href="#equation-sysnonlinear-broyden-update">()</a>, данная формула минимизирует поправку <a class="reference internal" href="#equation-sysnonlinear-broyden-cond">()</a> для “прямой” матрицы <span class="math notranslate nohighlight">\(\mathbf{B}_{k+1}\)</span>. Метод, основанный на данной формуле ещё называют “хорошим методом Бройдена” (<em>good Broyden’s method</em>).</p>
+<p>здесь <span class="math notranslate nohighlight">\(\delta \mathbf{f}_k = \mathbf{f}_{k+1} - \mathbf{f}_k\)</span>. Как и формула <a class="reference internal" href="#equation-sysnonlinear-broyden-update">(7.7)</a>, данная формула минимизирует поправку <a class="reference internal" href="#equation-sysnonlinear-broyden-cond">(7.6)</a> для “прямой” матрицы <span class="math notranslate nohighlight">\(\mathbf{B}_{k+1}\)</span>. Метод, основанный на данной формуле ещё называют “хорошим методом Бройдена” (<em>good Broyden’s method</em>).</p>
 <p>Вторая версия метода на основе обратной матрицы <span class="math notranslate nohighlight">\(\mathbf{B}^{-1}\)</span> использует формулу</p>
 <div class="math notranslate nohighlight">
 \[\mathbf{B}^{-1}_{k+1}
@@ -1018,6 +1090,20 @@ f(rjac) = [-2.3769531543038624e-7, -2.327485972841714e-7]
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="newton.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">7.1. </span>Метод Ньютона</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="ex.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7.3. </span>Задания</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

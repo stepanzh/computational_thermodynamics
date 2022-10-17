@@ -321,6 +321,75 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../nlroot/index.html">
+   6. Нелинейные уравнения
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/simpleiter.html">
+     6.1. Метод простой итерации
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/newton_secant.html">
+     6.2. Метод Ньютона и секущих
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/bisection_regula_falsi.html">
+     6.3. Методы бисекции и regula falsi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ridders.html">
+     6.4. Метод Риддерса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/itp.html">
+     6.5. ITP метод
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ex.html">
+     6.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../sysnonlinear/index.html">
+   7. Нелинейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/newton.html">
+     7.1. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/quasinewton.html">
+     7.2. Метод Бройдена
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/ex.html">
+     7.3. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -687,8 +756,8 @@ title="Print to PDF"
 <p>Для циклов доступны стандартные команды досрочного завершения итерации <code class="docutils literal notranslate"><span class="pre">continue</span></code> и всего цикла <code class="docutils literal notranslate"><span class="pre">break</span></code>.</p>
 <p>Циклы могут быть вложенными. Для вложенного <code class="docutils literal notranslate"><span class="pre">for</span></code>-цикла существует альтернативный вариант синтаксиса.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="f1d49556-f013-42c4-8435-c8325ef1a690" name="9cc8fe15-6014-4f88-bb8d-7abda36c35a5" type="radio">
-</input><label class="sd-tab-label" for="f1d49556-f013-42c4-8435-c8325ef1a690">
+<input checked="checked" id="c1239e5b-30e6-4198-980a-54a080874090" name="68f5a992-0910-4818-9c2f-10bfffc26b14" type="radio">
+</input><label class="sd-tab-label" for="c1239e5b-30e6-4198-980a-54a080874090">
 Вложенный <code class="docutils literal notranslate"><span class="pre">for</span></code></label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="w"></span>
 <span class="w">           </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">3</span><span class="o">:</span><span class="mi">4</span><span class="w"></span>
@@ -702,8 +771,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="5c683b6f-77bc-4e82-9fe3-6fb76ae4de71" name="9cc8fe15-6014-4f88-bb8d-7abda36c35a5" type="radio">
-</input><label class="sd-tab-label" for="5c683b6f-77bc-4e82-9fe3-6fb76ae4de71">
+<input id="46cf047e-70f4-4a8e-b72e-6d75c484d4ac" name="68f5a992-0910-4818-9c2f-10bfffc26b14" type="radio">
+</input><label class="sd-tab-label" for="46cf047e-70f4-4a8e-b72e-6d75c484d4ac">
 Альтернативный синтаксис</label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">3</span><span class="o">:</span><span class="mi">4</span><span class="w"></span>
 <span class="w">           </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;i = </span><span class="si">$i</span><span class="s">, j = </span><span class="si">$j</span><span class="s">&quot;</span><span class="p">)</span><span class="w"></span>

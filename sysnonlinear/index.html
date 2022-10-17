@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Нелинейные системы уравнений &#8212; Практикум по вычислительной теплофизике</title>
+    <title>7. Нелинейные системы уравнений &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="7.1. Метод Ньютона" href="newton.html" />
+    <link rel="prev" title="6.6. Задания" href="../nlroot/ex.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -317,6 +319,75 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../integration/ex.html">
      5.5. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../nlroot/index.html">
+   6. Нелинейные уравнения
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/simpleiter.html">
+     6.1. Метод простой итерации
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/newton_secant.html">
+     6.2. Метод Ньютона и секущих
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/bisection_regula_falsi.html">
+     6.3. Методы бисекции и regula falsi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ridders.html">
+     6.4. Метод Риддерса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/itp.html">
+     6.5. ITP метод
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ex.html">
+     6.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   7. Нелинейные системы уравнений
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="newton.html">
+     7.1. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="quasinewton.html">
+     7.2. Метод Бройдена
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     7.3. Задания
     </a>
    </li>
   </ul>
@@ -545,7 +616,7 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Нелинейные системы уравнений<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">7. </span>Нелинейные системы уравнений<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <p>В данном разделе рассматривается решение нелинейных систем уравнений</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{split}
@@ -556,9 +627,11 @@ f_n(x_1, x_2, \ldots, x_n) &amp;= 0.
 \end{split}\end{split}\]</div>
 <p>Кратко мы будем записывать системы выше в виде</p>
 <div class="math notranslate nohighlight" id="equation-sysnonlinear">
-<span class="eqno">()<a class="headerlink" href="#equation-sysnonlinear" title="Permalink to this equation">#</a></span>\[\mathbf{f}(\mathbf{x}) = \mathbf{0},\]</div>
+<span class="eqno">(7.1)<a class="headerlink" href="#equation-sysnonlinear" title="Permalink to this equation">#</a></span>\[\mathbf{f}(\mathbf{x}) = \mathbf{0},\]</div>
 <p>где <span class="math notranslate nohighlight">\(\mathbf{f}\)</span> функция вида <span class="math notranslate nohighlight">\(\real^n \to \real^n\)</span>.</p>
-<p>Прежде всего отметим, что у системы <a class="reference internal" href="#equation-sysnonlinear">()</a> может быть несколько решений, а может не быть ни одного. Поэтому не существует общего метода для решения нелинейных систем, в отличие от решения нелинейного скалярного уравнения.</p>
+<p>Прежде всего отметим, что у системы <a class="reference internal" href="#equation-sysnonlinear">(7.1)</a> может быть несколько решений, а может не быть ни одного. Поэтому не существует общего метода для решения нелинейных систем, в отличие от решения нелинейного скалярного уравнения.</p>
+<div class="toctree-wrapper compound">
+</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -588,6 +661,20 @@ f_n(x_1, x_2, \ldots, x_n) &amp;= 0.
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../nlroot/ex.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6.6. </span>Задания</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="newton.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">7.1. </span>Метод Ньютона</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

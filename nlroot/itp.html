@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>ITP метод &#8212; Практикум по вычислительной теплофизике</title>
+    <title>6.5. ITP метод &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.6. Задания" href="ex.html" />
+    <link rel="prev" title="6.4. Метод Риддерса" href="ridders.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -317,6 +319,75 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../integration/ex.html">
      5.5. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   6. Нелинейные уравнения
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="simpleiter.html">
+     6.1. Метод простой итерации
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="newton_secant.html">
+     6.2. Метод Ньютона и секущих
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bisection_regula_falsi.html">
+     6.3. Методы бисекции и regula falsi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ridders.html">
+     6.4. Метод Риддерса
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.5. ITP метод
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     6.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../sysnonlinear/index.html">
+   7. Нелинейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/newton.html">
+     7.1. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/quasinewton.html">
+     7.2. Метод Бройдена
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/ex.html">
+     7.3. Задания
     </a>
    </li>
   </ul>
@@ -590,12 +661,12 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Описание метода
+   6.5.1. Описание метода
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   Реализация
+   6.5.2. Реализация
   </a>
  </li>
 </ul>
@@ -619,12 +690,12 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Описание метода
+   6.5.1. Описание метода
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id4">
-   Реализация
+   6.5.2. Реализация
   </a>
  </li>
 </ul>
@@ -638,12 +709,12 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="itp">
-<h1>ITP метод<a class="headerlink" href="#itp" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">6.5. </span>ITP метод<a class="headerlink" href="#itp" title="Permalink to this headline">#</a></h1>
 <p>В общем виде алгоритм с локализацией корня (бисекция, regula falsi, метод Риддерса) можно описать так.</p>
 <div class="proof proof-type-algorithm" id="id6">
 <span id="algo-bracketing"></span>
     <div class="proof-title">
-        <span class="proof-type">Алгоритм </span>
+        <span class="proof-type">Алгоритм 6.23</span>
         
             <span class="proof-title-name">(Алгоритм с локализацией корня)</span>
         
@@ -657,26 +728,26 @@ title="Print to PDF"
 </div></div><p>Метод бисекции обладает замечательным свойством – он <strong>заранее</strong> предсказывает необходимое число итераций <span class="math notranslate nohighlight">\(n_{1/2}\)</span> по заданной точности локализации корня <span class="math notranslate nohighlight">\(\text{xtol}\)</span>.</p>
 <p>Авторы работы <span id="id1">[<a class="reference internal" href="../appendix/bibliography.html#id11" title="I. F. D. Oliveira and R. H. C. Takahashi. An enhancement of the bisection method average performance preserving minmax optimality. ACM Trans. Math. Softw., December 2020. URL: https://doi.org/10.1145/3423597, doi:10.1145/3423597.">OT20</a>]</span> показали, что это свойство (называемое minmax optimality) сохраняется во всяком алгоритме с локализацией корня, если новое приближение <span class="math notranslate nohighlight">\(\tilde{x}\)</span> попадает в область <span class="math notranslate nohighlight">\(I = [x_{1/2}-r, x_{1/2}+r]\)</span> вокруг середины интервала <span class="math notranslate nohighlight">\(x_{1/2}\)</span>. Ниже приведено выражение для <span class="math notranslate nohighlight">\(r\)</span> на <span class="math notranslate nohighlight">\(i\)</span>-ой итерации алгоритма</p>
 <div class="math notranslate nohighlight" id="equation-itp-radius">
-<span class="eqno">()<a class="headerlink" href="#equation-itp-radius" title="Permalink to this equation">#</a></span>\[r_i = \text{xtol } 2^{n_{1/2} - i} - \frac{b_i - a_i}{2}, \quad i = 1, 2, ..., n_{1/2}.\]</div>
-<p>Так, можно модифицировать <code class="xref std std-numref docutils literal notranslate"><span class="pre">Алгоритм</span> <span class="pre">%s</span></code>, добавив после шага 1 проверку: попадает ли приближение <span class="math notranslate nohighlight">\(\tilde{x}\)</span> в область <span class="math notranslate nohighlight">\(I\)</span>. Если попадает, то оставить его, как есть, а если не попадает, взять приближение как у бисекции <span class="math notranslate nohighlight">\(\tilde{x} := x_{1/2}\)</span>. Таким образом, модифицированный алгоритм гарантированно будет работать не хуже бисекции, а в лучшем случае как алгоритм, взятый за основу (например, метод Риддерса).</p>
+<span class="eqno">(6.2)<a class="headerlink" href="#equation-itp-radius" title="Permalink to this equation">#</a></span>\[r_i = \text{xtol } 2^{n_{1/2} - i} - \frac{b_i - a_i}{2}, \quad i = 1, 2, ..., n_{1/2}.\]</div>
+<p>Так, можно модифицировать <a class="reference internal" href="#algo-bracketing"><span class="std std-numref">Алгоритм 6.23</span></a>, добавив после шага 1 проверку: попадает ли приближение <span class="math notranslate nohighlight">\(\tilde{x}\)</span> в область <span class="math notranslate nohighlight">\(I\)</span>. Если попадает, то оставить его, как есть, а если не попадает, взять приближение как у бисекции <span class="math notranslate nohighlight">\(\tilde{x} := x_{1/2}\)</span>. Таким образом, модифицированный алгоритм гарантированно будет работать не хуже бисекции, а в лучшем случае как алгоритм, взятый за основу (например, метод Риддерса).</p>
 <section id="id2">
-<h2>Описание метода<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
-<p>Самими же авторами был предложен метод ITP (Interpolate Truncate and Project) <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id11" title="I. F. D. Oliveira and R. H. C. Takahashi. An enhancement of the bisection method average performance preserving minmax optimality. ACM Trans. Math. Softw., December 2020. URL: https://doi.org/10.1145/3423597, doi:10.1145/3423597.">OT20</a>]</span>.</p>
+<h2><span class="section-number">6.5.1. </span>Описание метода<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>Авторами <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id11" title="I. F. D. Oliveira and R. H. C. Takahashi. An enhancement of the bisection method average performance preserving minmax optimality. ACM Trans. Math. Softw., December 2020. URL: https://doi.org/10.1145/3423597, doi:10.1145/3423597.">OT20</a>]</span> был предложен метод ITP (Interpolate Truncate and Project).</p>
 <p><strong>Interpolate</strong>. На этом шаге определяется <span class="math notranslate nohighlight">\(x_f\)</span> приближение по методу regula falsi (пересечение абсциссы секущей).</p>
 <p><strong>Truncate</strong>. В этом методе, помимо описанной выше модификации присутствует шаг truncate, смещающий найденный при интерполяции корень в сторону <span class="math notranslate nohighlight">\(x_{1/2}\)</span>. Делается это в надежде на уменьшение интервала <span class="math notranslate nohighlight">\([a, b]\)</span> более чем в два раза. Результат этого шага точка <span class="math notranslate nohighlight">\(x_t\)</span>.</p>
 <p><strong>Project</strong>. На этом шаге определяется, попадает ли <span class="math notranslate nohighlight">\(x_t\)</span> в область minmax optimality. Если <span class="math notranslate nohighlight">\(x_t\)</span> не попадает, то он перемещается (проецируется) в эту область и получается <span class="math notranslate nohighlight">\(x_{\text{ITP}}\)</span>. В конце итерации происходит выбор нового отрезка по точкам <span class="math notranslate nohighlight">\(a_i\)</span>, <span class="math notranslate nohighlight">\(b_i\)</span> и <span class="math notranslate nohighlight">\(x_{\text{ITP}}\)</span>.</p>
-<p>В методе присутствует три параметра. Параметр <span class="math notranslate nohighlight">\(n_0 \ge 0\)</span> определяет число дополнительных итераций, в результате в формуле <a class="reference internal" href="#equation-itp-radius">()</a> присутствует не <span class="math notranslate nohighlight">\(n_{1/2}\)</span>, а <span class="math notranslate nohighlight">\(n_\max = n_{1/2} + n_0\)</span>. Параметры <span class="math notranslate nohighlight">\(\kappa_1 &gt; 0\)</span> и <span class="math notranslate nohighlight">\(\kappa_2 \in [1, 1 + \phi)\)</span> (<span class="math notranslate nohighlight">\(\phi \approx 1.618\)</span>, золотое сечение) определяют, как происходит truncate шаг. Так, они задают область <span class="math notranslate nohighlight">\([x_{1/2} - \delta, x_{1/2}+\delta]\)</span>, где</p>
+<p>В методе присутствует три параметра. Параметр <span class="math notranslate nohighlight">\(n_0 \ge 0\)</span> определяет число дополнительных итераций, в результате в формуле <a class="reference internal" href="#equation-itp-radius">(6.2)</a> присутствует не <span class="math notranslate nohighlight">\(n_{1/2}\)</span>, а <span class="math notranslate nohighlight">\(n_\max = n_{1/2} + n_0\)</span>. Параметры <span class="math notranslate nohighlight">\(\kappa_1 &gt; 0\)</span> и <span class="math notranslate nohighlight">\(\kappa_2 \in [1, 1 + \phi)\)</span> (<span class="math notranslate nohighlight">\(\phi \approx 1.618\)</span>, золотое сечение) определяют, как происходит truncate шаг. Так, они задают область <span class="math notranslate nohighlight">\([x_{1/2} - \delta, x_{1/2}+\delta]\)</span>, где</p>
 <div class="math notranslate nohighlight">
 \[\delta = \kappa_1 (b_i - a_i)^{\kappa_2} / (b_0 - a_0).\]</div>
 <p>Если <span class="math notranslate nohighlight">\(x_f\)</span> находится за пределами области <span class="math notranslate nohighlight">\(\delta \le |x_{1/2} - x_f|\)</span>, то он смещается в сторону середины <span class="math notranslate nohighlight">\(x_{1/2}\)</span> на <span class="math notranslate nohighlight">\(\delta\)</span>. Иначе устанавливается в <span class="math notranslate nohighlight">\(x_t := x_{1/2}\)</span>.</p>
 <p>Авторами метода показано, что в случае дважды дифференциируемой функции метод сходится к простому корню со скоростью <span class="math notranslate nohighlight">\(\sqrt{\kappa_2}\)</span>. Например, в случае <span class="math notranslate nohighlight">\(\kappa_2 = 2\)</span> ожидается сверхлинейная сходимость со скоростью <span class="math notranslate nohighlight">\(\sqrt{2}\)</span>.</p>
 </section>
 <section id="id4">
-<h2>Реализация<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.5.2. </span>Реализация<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
 <div class="proof proof-type-function" id="id7">
 
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 6.24</span>
         
             <span class="proof-title-name">(itproot)</span>
         
@@ -718,9 +789,9 @@ title="Print to PDF"
 <span class="w">        </span><span class="k">else</span><span class="w">  </span><span class="c"># ynew == 0</span><span class="w"></span>
 <span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">xnew</span><span class="w"></span>
 <span class="w">        </span><span class="k">end</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">ynew</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ftol</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">x₂</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x₁</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">xtol</span><span class="w"></span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">x₁</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x₂</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="w"></span>
-<span class="w">        </span><span class="k">end</span><span class="w"></span>
+
+<span class="w">        </span><span class="n">abs</span><span class="p">(</span><span class="n">ynew</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ftol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">x₁</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x₂</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="w"></span>
+<span class="w">        </span><span class="n">abs</span><span class="p">(</span><span class="n">x₂</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">x₁</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">xtol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">x₁</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x₂</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="w"></span>
 <span class="w">    </span><span class="k">end</span><span class="w"></span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">x₁</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x₂</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="w"></span>
 <span class="k">end</span><span class="w"></span>
@@ -729,7 +800,7 @@ title="Print to PDF"
 </div></div><div class="proof proof-type-demo" id="id8">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 6.25</span>
         
             <span class="proof-title-name">(Метод ITP)</span>
         
@@ -799,6 +870,20 @@ ridders(f, -1, 1; xtol = 2.0e-10, maxiter = 5) = 0.1111111111111111
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="ridders.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6.4. </span>Метод Риддерса</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="ex.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6.6. </span>Задания</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

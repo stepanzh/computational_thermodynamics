@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Метод простой итерации &#8212; Практикум по вычислительной теплофизике</title>
+    <title>6.1. Метод простой итерации &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -61,6 +61,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script>mermaid.initialize({startOnLoad:true});</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="6.2. Метод Ньютона и секущих" href="newton_secant.html" />
+    <link rel="prev" title="6. Нелинейные уравнения" href="index.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -120,7 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   Практикум
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="../julia/index.html">
    1. Основы языка программирования Julia
@@ -317,6 +319,75 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../integration/ex.html">
      5.5. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="index.html">
+   6. Нелинейные уравнения
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     6.1. Метод простой итерации
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="newton_secant.html">
+     6.2. Метод Ньютона и секущих
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="bisection_regula_falsi.html">
+     6.3. Методы бисекции и regula falsi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ridders.html">
+     6.4. Метод Риддерса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="itp.html">
+     6.5. ITP метод
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="ex.html">
+     6.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../sysnonlinear/index.html">
+   7. Нелинейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/newton.html">
+     7.1. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/quasinewton.html">
+     7.2. Метод Бройдена
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/ex.html">
+     7.3. Задания
     </a>
    </li>
   </ul>
@@ -590,7 +661,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Сходимость
+   6.1.1. Сходимость
   </a>
  </li>
 </ul>
@@ -614,7 +685,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   Сходимость
+   6.1.1. Сходимость
   </a>
  </li>
 </ul>
@@ -628,12 +699,12 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="chapter-nlroot-simpleiter">
-<span id="id1"></span><h1>Метод простой итерации<a class="headerlink" href="#chapter-nlroot-simpleiter" title="Permalink to this headline">#</a></h1>
+<span id="id1"></span><h1><span class="section-number">6.1. </span>Метод простой итерации<a class="headerlink" href="#chapter-nlroot-simpleiter" title="Permalink to this headline">#</a></h1>
 <p>Задачу поиска корня <span class="math notranslate nohighlight">\(f(x) = 0\)</span> можно свести к поиску неподвижной точки.</p>
 <div class="proof proof-type-definition" id="id3">
 
     <div class="proof-title">
-        <span class="proof-type">Определение </span>
+        <span class="proof-type">Определение 6.3</span>
         
             <span class="proof-title-name">(Задача поиска неподвижной точки)</span>
         
@@ -652,7 +723,7 @@ p: g(p) = p.
 <div class="proof proof-type-function" id="id4">
 <span id="index-0"></span>
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 6.4</span>
         
             <span class="proof-title-name">(fixedpoint)</span>
         
@@ -674,28 +745,28 @@ p: g(p) = p.
 </pre></div>
 </div>
 </div></div><section id="id2">
-<h2>Сходимость<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.1.1. </span>Сходимость<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>Допустим, мы получаем серию приближений <span class="math notranslate nohighlight">\(x_k\)</span> неподвижной точки <span class="math notranslate nohighlight">\(p\)</span>. Вместо серии <span class="math notranslate nohighlight">\(x_k\)</span>  рассмотрим серию ошибок <span class="math notranslate nohighlight">\(\epsilon_k = x_k - p\)</span>, тогда в окрестности <span class="math notranslate nohighlight">\(p\)</span> получим</p>
 <div class="math notranslate nohighlight">
 \[\epsilon_{k+1} + p = g(\epsilon_k + p) = g(p) + g'(p)\epsilon_k + O(\epsilon_k^2).\]</div>
 <p>Отсюда, поскольку <span class="math notranslate nohighlight">\(g(p) = p\)</span></p>
 <div class="math notranslate nohighlight" id="equation-simpleiter-error">
-<span class="eqno">()<a class="headerlink" href="#equation-simpleiter-error" title="Permalink to this equation">#</a></span>\[\epsilon_{k+1} = g'(p)\epsilon_k + O(\epsilon_k^2).\]</div>
+<span class="eqno">(6.1)<a class="headerlink" href="#equation-simpleiter-error" title="Permalink to this equation">#</a></span>\[\epsilon_{k+1} = g'(p)\epsilon_k + O(\epsilon_k^2).\]</div>
 <p>Или <span class="math notranslate nohighlight">\(\epsilon_{k+1} \approx g'(p)\epsilon_k\)</span>. Значит, ошибка может как расти (метод не сходится), так и убывать (метод сходится). Поэтому имеет место</p>
 <div class="proof proof-type-proposition" id="id5">
 
     <div class="proof-title">
-        <span class="proof-type">Утверждение </span>
+        <span class="proof-type">Утверждение 6.5</span>
         
             <span class="proof-title-name">(Сходимость метода простой итерации)</span>
         
     </div><div class="proof-content">
 <p>Метод простой итерации для дифференциируемой <span class="math notranslate nohighlight">\(g\)</span> <em>может сойтись</em> к неподвижной точке <span class="math notranslate nohighlight">\(p\)</span> при условии <span class="math notranslate nohighlight">\(|g'(p)| &lt; 1\)</span>.</p>
-</div></div><p>Кроме того, из <a class="reference internal" href="#equation-simpleiter-error">()</a> видно, что отношение <span class="math notranslate nohighlight">\(\epsilon_{k+1} / \epsilon_k\)</span> стремится к константе <span class="math notranslate nohighlight">\(\sigma = g'(p)\)</span>. Такой вид сходимости распространён в задачах оптимизации и решения нелинейных уравнений. Для него введено определение.</p>
+</div></div><p>Кроме того, из <a class="reference internal" href="#equation-simpleiter-error">(6.1)</a> видно, что отношение <span class="math notranslate nohighlight">\(\epsilon_{k+1} / \epsilon_k\)</span> стремится к константе <span class="math notranslate nohighlight">\(\sigma = g'(p)\)</span>. Такой вид сходимости распространён в задачах оптимизации и решения нелинейных уравнений. Для него введено определение.</p>
 <span class="target" id="index-1"></span><div class="proof proof-type-definition" id="id6">
 <span id="index-2"></span>
     <div class="proof-title">
-        <span class="proof-type">Определение </span>
+        <span class="proof-type">Определение 6.6</span>
         
             <span class="proof-title-name">(Линейная сходимость)</span>
         
@@ -706,10 +777,11 @@ p: g(p) = p.
 \lim_{k\to \infty}\frac{|\epsilon_{k+1}|}{|\epsilon_k|} = \sigma &lt; 1,
 \]</div>
 <p>то говорят, что последовательность обладает <strong>линейной сходимостью</strong>. А число <span class="math notranslate nohighlight">\(\sigma\)</span> называют <strong>скоростью сходимости</strong>.</p>
-</div></div><div class="proof proof-type-demo" id="id7">
+</div></div><p>Из-за особенностей сходимости метод простой итерации применяется не часто. Однако в задачах, для которых выполняется условие сходимости (хотя бы постфактум), метод является дешёвым способом получить грубое решение задачи. Метод активно применяется в NPT расчётах фазового равновесия и некоторых разностных схемах.</p>
+<div class="proof proof-type-demo" id="id7">
 
     <div class="proof-title">
-        <span class="proof-type">Демонстрация </span>
+        <span class="proof-type">Демонстрация 6.7</span>
         
             <span class="proof-title-name">(Метод простой итерации)</span>
         
@@ -817,6 +889,20 @@ f(root) = 0.0
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="index.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title"><span class="section-number">6. </span>Нелинейные уравнения</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="newton_secant.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">6.2. </span>Метод Ньютона и секущих</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

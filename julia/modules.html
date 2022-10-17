@@ -321,6 +321,75 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../nlroot/index.html">
+   6. Нелинейные уравнения
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/simpleiter.html">
+     6.1. Метод простой итерации
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/newton_secant.html">
+     6.2. Метод Ньютона и секущих
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/bisection_regula_falsi.html">
+     6.3. Методы бисекции и regula falsi
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ridders.html">
+     6.4. Метод Риддерса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/itp.html">
+     6.5. ITP метод
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../nlroot/ex.html">
+     6.6. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../sysnonlinear/index.html">
+   7. Нелинейные системы уравнений
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/newton.html">
+     7.1. Метод Ньютона
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/quasinewton.html">
+     7.2. Метод Бройдена
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../sysnonlinear/ex.html">
+     7.3. Задания
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -654,8 +723,8 @@ title="Print to PDF"
 <h2><span class="section-number">1.10.1. </span>Пример разработки модуля<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>Ниже показана разработка модуля в несколько этапов. В нём привычная структура <code class="docutils literal notranslate"><span class="pre">Point{T}</span></code>, а её интерфейс оборачивается в модуль. Затем, для примера, структура встраивается в существующую экосистему языка: можно скалярно умножать точки, складывать или умножать на скаляр.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="0836809d-935f-4657-9f0f-3f6260bbe3cd" name="0d2268da-f0a0-4f96-b597-29510c37447d" type="radio">
-</input><label class="sd-tab-label" for="0836809d-935f-4657-9f0f-3f6260bbe3cd">
+<input checked="checked" id="9738367f-dd9b-4da9-b56c-32b8eff81f7c" name="5ffa408b-5d2e-4a0e-b5ba-ae9a453aed6f" type="radio">
+</input><label class="sd-tab-label" for="9738367f-dd9b-4da9-b56c-32b8eff81f7c">
 Базовая разработка</label><div class="sd-tab-content docutils">
 <p><code class="file docutils literal notranslate"><span class="pre">Points.jl</span></code></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">Points</span><span class="w"></span>
@@ -683,8 +752,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="3040d297-b109-4e2a-8004-2abb680ef327" name="0d2268da-f0a0-4f96-b597-29510c37447d" type="radio">
-</input><label class="sd-tab-label" for="3040d297-b109-4e2a-8004-2abb680ef327">
+<input id="bcfbe5ca-6212-4b3c-8501-9607e3211624" name="5ffa408b-5d2e-4a0e-b5ba-ae9a453aed6f" type="radio">
+</input><label class="sd-tab-label" for="bcfbe5ca-6212-4b3c-8501-9607e3211624">
 Скалярное произведение</label><div class="sd-tab-content docutils">
 <p><code class="file docutils literal notranslate"><span class="pre">Points.jl</span></code></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">Points</span><span class="w"></span>
@@ -717,8 +786,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="2b28f0c7-cb47-4554-9fe1-bc6a80b4cda6" name="0d2268da-f0a0-4f96-b597-29510c37447d" type="radio">
-</input><label class="sd-tab-label" for="2b28f0c7-cb47-4554-9fe1-bc6a80b4cda6">
+<input id="bed50371-a115-40cc-9b93-fefbb04095b7" name="5ffa408b-5d2e-4a0e-b5ba-ae9a453aed6f" type="radio">
+</input><label class="sd-tab-label" for="bed50371-a115-40cc-9b93-fefbb04095b7">
 Линейные операции</label><div class="sd-tab-content docutils">
 <p><code class="file docutils literal notranslate"><span class="pre">Points.jl</span></code></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">Points</span><span class="w"></span>
