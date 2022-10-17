@@ -43,7 +43,7 @@ r_i = \text{xtol } 2^{n_{1/2} - i} - \frac{b_i - a_i}{2}, \quad i = 1, 2, ..., n
 
 ## Описание метода
 
-Самими же авторами был предложен метод ITP (Interpolate Truncate and Project) {cite}`itp2020`.
+Авторами {cite}`itp2020` был предложен метод ITP (Interpolate Truncate and Project).
 
 **Interpolate**. На этом шаге определяется $x_f$ приближение по методу regula falsi (пересечение абсциссы секущей).
 
@@ -104,9 +104,9 @@ function itproot(f, x₁, x₂; xtol=eps(), ftol=eps(), κ₁=0.1, κ₂=2, n₀
         else  # ynew == 0
             return xnew
         end
-        if abs(ynew) < ftol || abs(x₂ - x₁) < xtol
-            return (x₁ + x₂)/2
-        end
+
+        abs(ynew) < ftol && (x₁ + x₂)/2
+        abs(x₂ - x₁) < xtol && (x₁ + x₂)/2
     end
     return (x₁ + x₂)/2
 end
