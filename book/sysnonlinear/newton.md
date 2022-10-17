@@ -48,16 +48,22 @@ f_i(\mathbf{x} + \mathbf{\delta x})
 Положим теперь $\mathbf{f}(\mathbf{x} + \mathbf{\delta x}) = \mathbf{0}$ и отбросим квадратичную поправку. Тогда получим условие
 
 ```{math}
+:label: sysnonlinear_newton_step
+
 \mathbf{J}(\mathbf{x}) \delta \mathbf{x} = - \mathbf{f}(\mathbf{x}),
 ```
 
-которое для *фиксированного* $\mathbf{x}$ является линейной системой.
+которое для *фиксированного* $\mathbf{x}$ является линейной системой на $\delta\mathbf{x}$.
 
 Так, метод Ньютона строит серию приближений
 
 ```{math}
-\mathbf{x}_\text{new} = \mathbf{x}_\text{old} - \mathbf{J}^{-1}(\mathbf{x}_\text{old})\mathbf{f}(\mathbf{x}_\text{old}).
+\mathbf{x}_\text{new} = \mathbf{x}_\text{old} + \delta\mathbf{x} = \mathbf{x}_\text{old} - \mathbf{J}^{-1}(\mathbf{x}_\text{old})\mathbf{f}(\mathbf{x}_\text{old}).
 ```
+
+```{index} шаг; ньтоновский (нелинейные системы)
+```
+В свою очередь, шаг $\delta\mathbf{x}$, найденный из условия {eq}`sysnonlinear_newton_step` называют **ньютоновским** шагом. 
 
 
 ```{index} метод; Ньютона многомерный
@@ -95,9 +101,9 @@ function newtonsys(f, x, J; maxiter=50, xtol=1e-6, ftol=1e-6)
         y .= f(x)
         δx .= .- (J(x) \ y)
         x .+= δx
-        if norm(δx) < xtol || norm(y) < ftol
-            return x
-        end
+
+        norm(δx) < xtol && return x
+        norm(y) < ftol && return x
     end
     error("Превышено число итераций.")
 end

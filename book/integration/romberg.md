@@ -159,7 +159,7 @@ T_f(2n) = 0.5 T_f(n) + h_{2n} \sum_{i=1}^n f(x_{2i-1}), \quad h_{2n} = \frac{b-a
 Возвращает значение интеграла.
 """
 function trapezoid_tol(f, a, b; atol=1e-3, maxstep::Integer=100)
-    nc, hc::Float64 = 1, b - a
+    nc, hc = 1, float(b - a)
     Tc = hc * (f(a) + f(b)) / 2
     for step in 1:maxstep
         Tp, np = Tc, nc

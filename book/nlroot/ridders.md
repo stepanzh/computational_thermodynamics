@@ -109,9 +109,9 @@ function ridders(f, x₁, x₂; maxiter=25, xtol=eps(), ftol=eps())
         elseif sign(ynew) == sign(y₁)
             x₁, y₁ = xnew, ynew
         end
-        if abs(ynew) < ftol || abs(x₁ - x₂) < xtol
-            return xnew
-        end
+        
+        abs(ynew) < ftol && return xnew
+        abs(x₁ - x₂) < xtol && return xnew
     end
     error("Число итераций превышено.")
 end

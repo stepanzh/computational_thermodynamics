@@ -45,19 +45,19 @@ parts:
     - file: integration/gauss
     - file: integration/adaptive
     - file: integration/ex
-  # - file: nlroot/index
-  #   sections:
-  #   - file: nlroot/simpleiter
-  #   - file: nlroot/newton_secant
-  #   - file: nlroot/bisection_regula_falsi
-  #   - file: nlroot/ridders
-  #   - file: nlroot/itp
-  #   - file: nlroot/ex
-  # - file: sysnonlinear/index
-  #   sections:
-  #   - file: sysnonlinear/newton
-  #   - file: sysnonlinear/quasinewton
-  #   - file: sysnonlinear/ex
+  - file: nlroot/index
+    sections:
+    - file: nlroot/simpleiter
+    - file: nlroot/newton_secant
+    - file: nlroot/bisection_regula_falsi
+    - file: nlroot/ridders
+    - file: nlroot/itp
+    - file: nlroot/ex
+  - file: sysnonlinear/index
+    sections:
+    - file: sysnonlinear/newton
+    - file: sysnonlinear/quasinewton
+    - file: sysnonlinear/ex
   # - file: ode/index
   #   sections:
   #   - file: ode/euler

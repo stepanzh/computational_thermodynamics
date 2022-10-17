@@ -140,7 +140,7 @@ Jfd |> display
 </div>
 ```
 
-## Метод
+## Метод Бройдена
 
 Обозначим приближение якобиана в точке $\mathbf{x}_k$ через $\mathbf{B}_k$, т.е.
 
@@ -230,9 +230,10 @@ function broydensys(f, x, J; maxiter=50, xtol=1e-6, ftol=1e-6)
         δx .= .- (B \ yp)
         x .+= δx
         yn .= f(x)
-        if norm(δx) < xtol || norm(yn) < ftol
-            return x
-        end
+
+        norm(δx) < xtol && return x
+        norm(yn) < ftol && return x
+        
         g = B * δx
         B .+= (1 / dot(δx, δx)) .* (yn .- yp .- g) .* δx'
     end
