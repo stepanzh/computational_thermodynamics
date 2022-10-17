@@ -149,13 +149,18 @@ function regulafalsi(f, x₁, x₂; maxiter=25, xtol=eps(), ftol=eps())
         else
             return xnew
         end
-        if abs(ynew) < ftol || abs(x₂ - x₁) < xtol
-            return xnew
-        end
+        abs(ynew) < ftol && return xnew
+        abs(x₂ - x₁) < xtol && return xnew
     end
     error("Число итераций превышено.")
 end
 :::
+```
+
+```{proof:demo} Метод regula falsi
+```
+```{raw} html
+<div class="demo">
 ```
 
 Ниже показаны несколько первых секущих, порождающихся методом regula falsi для функции $-x^2 + x + 10$ с начальным отрезком $[-4, 2]$. Заметьте, как одна из точек отрезка для данной функции остаётся фиксированной.
@@ -181,3 +186,12 @@ for (i, p) in eachrow(path) |> enumerate
 end
 scatter!([root], [f(root)]; label="найденный корень", color=:red, marker=:square)
 ```
+
+```{raw} html
+</div>
+```
+
+## Упражнения
+
+1. Почему в методе regula falsi важно устанавливать гарантию малости функции $\text{ftol}$?
+2. Для каких функций в методе regula falsi одна из точек приближения корня остаётся фиксированной в течение работы всего алгоритма?
