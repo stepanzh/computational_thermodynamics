@@ -67,9 +67,9 @@ function newton(f, df, x₁; maxiter=25, ftol=eps(), xtol=eps())
         fx = f(x)
         δx = - fx / df(x)
         x += δx
-        if abs(fx) < ftol || abs(δx) < xtol
-            return x
-        end
+
+        abs(fx) < ftol && return x
+        abs(δx) < xtol && return x
     end
     error("Число итераций превышено.")
 end
