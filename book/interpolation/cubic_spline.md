@@ -80,7 +80,7 @@ y_0 \\ y_1 \\ \vdots \\ y_{n-1}
 **1.б.** Условие $S_k(t_k) = y_k$ приводит к 
 
 ```{math}
-a_k + h_k b_k + h^2_k c_k + h^3_k d_k = y_k,\quad h_k = y_k - y_{k-1},\: k=1,...,n.
+a_k + h_k b_k + h^2_k c_k + h^3_k d_k = y_k,\quad h_k = t_k - t_{k-1},\: k=1,...,n.
 ```
 
 В матричном виде
