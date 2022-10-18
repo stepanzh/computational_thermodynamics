@@ -102,7 +102,7 @@ function ridders(f, x₁, x₂; maxiter=25, xtol=eps(), ftol=eps())
         xnew = xmid + (xmid - x₁) * sign(y₁) * ymid / sqrt(ymid^2 - y₁*y₂)
         ynew = f(xnew)
 
-        ynew == 0 && return xnew
+        abs(ynew) < ftol && return xnew
         
         if sign(ynew) == sign(y₂)
             x₂, y₂ = xnew, ynew
