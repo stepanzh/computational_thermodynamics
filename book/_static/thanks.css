@@ -1,0 +1,27 @@
+:root {
+  /*
+      In 2022, icons are implemented through typeface, the default font for them is "Font Awesome 5 Free"
+      The icons are here: https://fontawesome.com/v5/search
+  */
+  --custom-icon-admonition-thanks: '\f004';
+  --custom-icon-color-admonition-thanks: white;
+  --custom-color-admonition-thanks: rgba(0, 0, 0, .1);
+  --custom-border-color-admonition-thanks: #4158D0;
+}
+
+.admonition.thanks {
+  border-color: var(--custom-border-color-admonition-thanks);
+}
+
+.admonition.thanks .admonition-title {
+  color: var(--custom-icon-color-admonition-thanks);
+  /*  https://cssgradient.io/gradient-backgrounds/  */
+  background-color: #4158D0;
+  background-image: linear-gradient(90deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+}
+
+/* admonition icon */
+.admonition.thanks .admonition-title::before {
+  color: var(--custom-icon-color-admonition-thanks);
+  content: var(--custom-icon-admonition-thanks);
+}
