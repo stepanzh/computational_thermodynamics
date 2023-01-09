@@ -75,6 +75,8 @@ parts:
 - caption: Фазовое равновесие
   chapters:
   - file: ptstability/index
+    sections:
+    - file: ptstability/problem
 - caption: Приложения
   chapters:
   - file: appendix/genindex
