@@ -72,6 +72,14 @@ parts:
   #   - file: optim/newton
   #   - file: optim/bfgs
   #   - file: optim/ex
+- caption: Фазовое равновесие
+  chapters:
+  - file: ptstability/index
+    sections:
+    - file: ptstability/problem
+    - file: ptstability/vanderwaals
+    - file: ptstability/algorithm
+    - file: ptstability/exercise
 - caption: Приложения
   chapters:
   - file: appendix/genindex
