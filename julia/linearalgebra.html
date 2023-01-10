@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thanks.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
@@ -395,6 +396,45 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Фазовое равновесие
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ptstability/index.html">
+   PT стабильность
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptstability/problem.html">
+     Постановка задачи
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptstability/vanderwaals.html">
+     Уравнение состояния ван дер Ваальса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptstability/algorithm.html">
+     Алгоритм решения
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptstability/exercise.html">
+     Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Приложения
  </span>
 </p>
@@ -629,8 +669,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="5be8d53c-4bda-46e0-bf0f-e786dec0336c" name="2008863c-cb21-4c30-8052-00e6ddb96a45" type="radio">
-</input><label class="sd-tab-label" for="5be8d53c-4bda-46e0-bf0f-e786dec0336c">
+<input checked="checked" id="720525ce-2b8b-4e74-b3f6-a2e086707872" name="e49b7b21-aa55-40d5-87b6-ba0a052f4685" type="radio">
+</input><label class="sd-tab-label" for="720525ce-2b8b-4e74-b3f6-a2e086707872">
 Линейные</label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="o">*</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
 <span class="go">3-element Vector{Float64}:</span>
@@ -645,8 +685,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="9bbd9d97-fb36-4819-a870-553354c0c17a" name="2008863c-cb21-4c30-8052-00e6ddb96a45" type="radio">
-</input><label class="sd-tab-label" for="9bbd9d97-fb36-4819-a870-553354c0c17a">
+<input id="ee81d021-2858-436b-be9e-a53cb385129a" name="e49b7b21-aa55-40d5-87b6-ba0a052f4685" type="radio">
+</input><label class="sd-tab-label" for="ee81d021-2858-436b-be9e-a53cb385129a">
 Матричное умножение</label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"></span>
 <span class="go">2-element Vector{Int64}:</span>
@@ -660,8 +700,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="8af2cf56-e699-41de-a2e7-3890cb0cb9e1" name="2008863c-cb21-4c30-8052-00e6ddb96a45" type="radio">
-</input><label class="sd-tab-label" for="8af2cf56-e699-41de-a2e7-3890cb0cb9e1">
+<input id="fa11dc2c-8204-40e9-986f-57c9c30f22d6" name="e49b7b21-aa55-40d5-87b6-ba0a052f4685" type="radio">
+</input><label class="sd-tab-label" for="fa11dc2c-8204-40e9-986f-57c9c30f22d6">
 Транспонирование</label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">a</span><span class="o">&#39;</span><span class="w"></span>
 <span class="go">1×3 adjoint(::Vector{Int64}) with eltype Int64:</span>
@@ -678,8 +718,8 @@ title="Print to PDF"
 </div>
 <p>Для комплексных матриц <code class="docutils literal notranslate"><span class="pre">'</span></code>-оператор выполняет эрмитово сопряжение.</p>
 </div>
-<input id="25efd9dc-386a-4de5-bd3a-f365878ef3a3" name="2008863c-cb21-4c30-8052-00e6ddb96a45" type="radio">
-</input><label class="sd-tab-label" for="25efd9dc-386a-4de5-bd3a-f365878ef3a3">
+<input id="74df3f68-881d-42c2-a6ee-7899b75cd422" name="e49b7b21-aa55-40d5-87b6-ba0a052f4685" type="radio">
+</input><label class="sd-tab-label" for="74df3f68-881d-42c2-a6ee-7899b75cd422">
 Решение СЛАУ</label><div class="sd-tab-content docutils">
 <p>Решается система <span class="math notranslate nohighlight">\(A x = [1, 2]^\top\)</span>, <code class="docutils literal notranslate"><span class="pre">inv(A)</span></code><span class="math notranslate nohighlight">\(= A^{-1}\)</span>.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">\</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"></span>

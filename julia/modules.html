@@ -28,6 +28,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thanks.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
     
@@ -393,6 +394,45 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
+  Фазовое равновесие
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ptstability/index.html">
+   PT стабильность
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptstability/problem.html">
+     Постановка задачи
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptstability/vanderwaals.html">
+     Уравнение состояния ван дер Ваальса
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptstability/algorithm.html">
+     Алгоритм решения
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptstability/exercise.html">
+     Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
   Приложения
  </span>
 </p>
@@ -723,8 +763,8 @@ title="Print to PDF"
 <h2><span class="section-number">1.10.1. </span>Пример разработки модуля<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>Ниже показана разработка модуля в несколько этапов. В нём привычная структура <code class="docutils literal notranslate"><span class="pre">Point{T}</span></code>, а её интерфейс оборачивается в модуль. Затем, для примера, структура встраивается в существующую экосистему языка: можно скалярно умножать точки, складывать или умножать на скаляр.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="177f7239-cfdb-48fa-9d39-394a42f325f4" name="c8ee7628-a7ce-4bc8-9a34-01054e40463f" type="radio">
-</input><label class="sd-tab-label" for="177f7239-cfdb-48fa-9d39-394a42f325f4">
+<input checked="checked" id="0a707391-277c-4811-a490-606d324475ab" name="41c21e00-8c35-405e-a2db-0c3ce2e96df2" type="radio">
+</input><label class="sd-tab-label" for="0a707391-277c-4811-a490-606d324475ab">
 Базовая разработка</label><div class="sd-tab-content docutils">
 <p><code class="file docutils literal notranslate"><span class="pre">Points.jl</span></code></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">Points</span><span class="w"></span>
@@ -752,8 +792,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="df097adf-0892-4c89-b383-f5a15dd0af84" name="c8ee7628-a7ce-4bc8-9a34-01054e40463f" type="radio">
-</input><label class="sd-tab-label" for="df097adf-0892-4c89-b383-f5a15dd0af84">
+<input id="9582f96d-4747-48e9-880e-486ff3b8b8bf" name="41c21e00-8c35-405e-a2db-0c3ce2e96df2" type="radio">
+</input><label class="sd-tab-label" for="9582f96d-4747-48e9-880e-486ff3b8b8bf">
 Скалярное произведение</label><div class="sd-tab-content docutils">
 <p><code class="file docutils literal notranslate"><span class="pre">Points.jl</span></code></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">Points</span><span class="w"></span>
@@ -786,8 +826,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="b9e45bc1-c895-4f55-ba54-b2687a6e755c" name="c8ee7628-a7ce-4bc8-9a34-01054e40463f" type="radio">
-</input><label class="sd-tab-label" for="b9e45bc1-c895-4f55-ba54-b2687a6e755c">
+<input id="f518a60f-4852-45b2-b04c-c67206ace0e5" name="41c21e00-8c35-405e-a2db-0c3ce2e96df2" type="radio">
+</input><label class="sd-tab-label" for="f518a60f-4852-45b2-b04c-c67206ace0e5">
 Линейные операции</label><div class="sd-tab-content docutils">
 <p><code class="file docutils literal notranslate"><span class="pre">Points.jl</span></code></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">Points</span><span class="w"></span>
