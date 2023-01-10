@@ -105,7 +105,7 @@ F(\boldsymbol{x}) = \sum_i x_i (\mu_i(\boldsymbol{x}) - \mu^0_i) \ge 0.
 \\ i &= 1,\dots,n
 \end{aligned}
 ```
-здесь введены обозначения $h_i \equiv \ln{z_i} + \ln{\varphi_i(\boldsymbol{z})}$ и $k \equiv \lambda/ R T$.
+здесь введены обозначения $z_i$ -- мольная доля компонента $i$ в исходной смеси, $h_i \equiv \ln{z_i} + \ln{\varphi_i(\boldsymbol{z})}$ и $k \equiv \lambda/ R T$.
 
 Последним шагом сведём систему к однородной. Для этого введём замену переменных $x_i = X_i e^k$, тогда
 ```{math}
@@ -115,6 +115,8 @@ F(\boldsymbol{x}) = \sum_i x_i (\mu_i(\boldsymbol{x}) - \mu^0_i) \ge 0.
 ```
 Формально, новые переменные $X_i$ можно считать составами, поскольку
 ```{math}
+:label: ptstab_new_variables_molfrac_property
+
 x_i = \frac{X_i}{\sum_i X_i}.
 ```
 

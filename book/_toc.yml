@@ -78,6 +78,8 @@ parts:
     sections:
     - file: ptstability/problem
     - file: ptstability/vanderwaals
+    - file: ptstability/algorithm
+    - file: ptstability/exercise
 - caption: Приложения
   chapters:
   - file: appendix/genindex
