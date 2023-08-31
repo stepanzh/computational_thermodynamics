@@ -661,6 +661,11 @@ title="Print to PDF"
    1.2.2. Скриптовый режим
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   1.2.3. Работа в ноутбуках
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -690,6 +695,11 @@ title="Print to PDF"
    1.2.2. Скриптовый режим
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id5">
+   1.2.3. Работа в ноутбуках
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -702,14 +712,22 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">1.2. </span>Запуск программ<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
-<p>Программы в Julia можно запускать в интерактивном режиме или скриптовом режиме.</p>
+<p>Программы в Julia можно запускать в интерактивном (REPL) или скриптовом режиме.
+Кроме того, есть возможность работать в ноутбуках.</p>
+<ul class="simple">
+<li><p>Julia REPL хорошо подходит для изучения нового, получения помощи и установки библиотек.
+Его также удобно использовать как калькулятор.</p></li>
+<li><p>Скриптовый режим позволяет запускать сохранённый ранее исходный код программ.</p></li>
+<li><p>Работа в ноутбуках удобна для конспектов и экспериментов.</p></li>
+</ul>
 <section id="repl-guide">
 <span id="id2"></span><h2><span class="section-number">1.2.1. </span>Интерактивный режим<a class="headerlink" href="#repl-guide" title="Permalink to this headline">#</a></h2>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>Это аналогично интерактивному режиму работы в Python.</p>
 </aside>
-<p>Знакомство языка начнём с интерактивного режима. Для этого необходимо запустить Julia REPL (Read-Evaluate-Print-Loop).</p>
+<p>Знакомство языка начнём с интерактивного режима.
+Для этого необходимо запустить Julia REPL (Read-Evaluate-Print-Loop), Julia REPL также называют Julia терминалом.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p><code class="docutils literal notranslate"><span class="pre">GNOME</span> <span class="pre">Terminal</span></code>, <code class="docutils literal notranslate"><span class="pre">Terminal.app</span></code>, <code class="docutils literal notranslate"><span class="pre">iTerm.app</span></code>, <code class="docutils literal notranslate"><span class="pre">Windows</span> <span class="pre">Terminal</span></code>, <code class="docutils literal notranslate"><span class="pre">cmd</span></code>…</p>
@@ -728,7 +746,8 @@ title="Print to PDF"
 <span class="go">julia&gt;</span>
 </pre></div>
 </div>
-<p>Строки до <code class="docutils literal notranslate"><span class="pre">julia&gt;</span></code> это приветственное сообщение. Здесь есть ссылка на документацию к языку. Команды для получения помощи и версия релиза.</p>
+<p>Строки до <code class="docutils literal notranslate"><span class="pre">julia&gt;</span></code> это приветственное сообщение.
+Здесь есть ссылка на документацию к языку, команды для получения помощи и версия релиза.</p>
 <p>Julia REPL обладает четыремя режимами работы</p>
 <ul class="simple">
 <li><p>Интерпретатор;</p></li>
@@ -736,11 +755,15 @@ title="Print to PDF"
 <li><p>Менеджер пакетов;</p></li>
 <li><p>Командная оболочка.</p></li>
 </ul>
-<p>При запуске запускается режим интерпретатора. Из него можно переключиться в другие режимы, а чтобы вернуться в режим интерпретатора из любого другого, нужно очистить строку <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">E</kbd></kbd>, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">U</kbd></kbd> и нажать <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">←</kbd> <kbd class="kbd docutils literal notranslate">Backspace</kbd></kbd>.</p>
-<p>Чтобы выйти из REPL, очистите строку и нажмите <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">D</kbd></kbd>.</p>
+<p>Чтобы их отличать, в начале ввода появляется prompt-сообщение (например, <code class="docutils literal notranslate"><span class="pre">julia&gt;</span></code>), а если терминал поддерживает цвета, то prompt-сообщения режимом окрашены по-разному.</p>
+<p>При запуске REPL работает в режиме интерпретатора.
+Из него можно переключиться в другие режимы, а чтобы вернуться в режим интерпретатора из любого другого, нужно очистить строку (быстрее всего это сделать так: <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">E</kbd></kbd>, <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">U</kbd></kbd>) и нажать <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">←</kbd> <kbd class="kbd docutils literal notranslate">Backspace</kbd></kbd>.</p>
+<p>Чтобы выйти из REPL, нужно очистить строку и нажать <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">D</kbd></kbd>.
+Для прерывания команды используется стандартное сочетания <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">C</kbd></kbd>.</p>
+<p>Ниже показано, для чего каждый режим используется.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="8ee77e25-736c-45c9-86ff-c61c58122c7d" name="69b55f32-ddd4-4b33-8da0-40649e039f69" type="radio">
-</input><label class="sd-tab-label" for="8ee77e25-736c-45c9-86ff-c61c58122c7d">
+<input checked="checked" id="156140f4-46bd-42d5-b12f-5479ab2db8ff" name="1e89c721-8057-4b32-b7cc-9b196efdc58f" type="radio">
+</input><label class="sd-tab-label" for="156140f4-46bd-42d5-b12f-5479ab2db8ff">
 Интерпретатор</label><div class="sd-tab-content docutils">
 <p>В нём вы можете исполнять команды языка и переходить в другие режимы. Prompt-сообщение <code class="docutils literal notranslate"><span class="pre">julia&gt;</span></code>.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Hello, world&quot;</span><span class="p">)</span><span class="w"></span>
@@ -750,8 +773,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="79ff3368-e7d1-4db5-975f-a0ec5c9b1209" name="69b55f32-ddd4-4b33-8da0-40649e039f69" type="radio">
-</input><label class="sd-tab-label" for="79ff3368-e7d1-4db5-975f-a0ec5c9b1209">
+<input id="b64dfa8f-5c54-4cf2-be50-e2651d93f563" name="1e89c721-8057-4b32-b7cc-9b196efdc58f" type="radio">
+</input><label class="sd-tab-label" for="b64dfa8f-5c54-4cf2-be50-e2651d93f563">
 Помощь</label><div class="sd-tab-content docutils">
 <p>Здесь можно получить помощь и документацию к коду. Переход по нажатию <kbd class="kbd docutils literal notranslate">?</kbd>. Prompt-сообщение <code class="docutils literal notranslate"><span class="pre">help?&gt;</span></code>.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="o">?</span><span class="w"></span>
@@ -767,10 +790,14 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="889b376c-cbd0-42c2-805a-9b2fad9c5807" name="69b55f32-ddd4-4b33-8da0-40649e039f69" type="radio">
-</input><label class="sd-tab-label" for="889b376c-cbd0-42c2-805a-9b2fad9c5807">
+<input id="9d93809a-189c-48c8-87f7-06404ee4153a" name="1e89c721-8057-4b32-b7cc-9b196efdc58f" type="radio">
+</input><label class="sd-tab-label" for="9d93809a-189c-48c8-87f7-06404ee4153a">
 Менеджер пакетов</label><div class="sd-tab-content docutils">
-<p>Посвящён работе c окружениями и со сторонними пакетами <a class="footnote-reference brackets" href="#pkgenv" id="id3">1</a>. Команда перехода <kbd class="kbd docutils literal notranslate">]</kbd>. Prompt-сообщение <code class="docutils literal notranslate"><span class="pre">(&#64;v1.6)</span> <span class="pre">pkg&gt;</span></code>. Этот режим нам пока не понадобится. Для знакомых с Python, этот режим обладает функционалом pip и virtualenv.</p>
+<p>Посвящён работе c окружениями и сторонними пакетами <a class="footnote-reference brackets" href="#pkgenv" id="id3">1</a>.
+Команда перехода <kbd class="kbd docutils literal notranslate">]</kbd>.
+Prompt-сообщение <code class="docutils literal notranslate"><span class="pre">(&#64;v1.6)</span> <span class="pre">pkg&gt;</span></code>.
+Для знакомых с Python, этот режим обладает функционалом pip и virtualenv.
+Чтобы установить какую-то библиотеку, необходимо выполнить команду <code class="docutils literal notranslate"><span class="pre">add</span> <span class="pre">&lt;PackageName&gt;</span></code>.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="p">]</span><span class="w"></span>
 
 <span class="go">(v1.6) pkg&gt; help</span>
@@ -778,8 +805,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="2e90a0e5-df56-4786-b533-e91db9620041" name="69b55f32-ddd4-4b33-8da0-40649e039f69" type="radio">
-</input><label class="sd-tab-label" for="2e90a0e5-df56-4786-b533-e91db9620041">
+<input id="d1980a00-edc1-4074-a683-79aa9ec316b4" name="1e89c721-8057-4b32-b7cc-9b196efdc58f" type="radio">
+</input><label class="sd-tab-label" for="d1980a00-edc1-4074-a683-79aa9ec316b4">
 Командная оболочка</label><div class="sd-tab-content docutils">
 <p>В этом режиме можно работать с командной оболочкой, не выходя из Julia REPL. Команда перехода <kbd class="kbd docutils literal notranslate">;</kbd>. Prompt-сообщение <code class="docutils literal notranslate"><span class="pre">shell&gt;</span></code>.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
@@ -805,7 +832,8 @@ title="Print to PDF"
 <span class="k">end</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Программа запускается командой <code class="docutils literal notranslate"><span class="pre">julia</span></code> с указанием полного пути до файла с исходным кодом. Перейдите в терминале в директорию, где вы сохранили <code class="docutils literal notranslate"><span class="pre">hello.jl</span></code> и выполните команду <code class="docutils literal notranslate"><span class="pre">julia</span> <span class="pre">hello.jl</span></code></p>
+<p>Программа запускается командой <code class="docutils literal notranslate"><span class="pre">julia</span></code> с указанием полного пути до файла с исходным кодом.
+Перейдите в терминале в директорию, где вы сохранили <code class="docutils literal notranslate"><span class="pre">hello.jl</span></code> и выполните команду <code class="docutils literal notranslate"><span class="pre">julia</span> <span class="pre">hello.jl</span></code></p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">% </span>julia hello.jl
 <span class="go">  + + ++++ +++ + + ++ +  +++++ + ++ + + +  + ++ ++</span>
 <span class="go">+ ++   + +++      +    + +  ++ +++++ +++ + + +    </span>
@@ -819,7 +847,8 @@ title="Print to PDF"
 <span class="go">+ + +  +  + ++++     + +++ ++++ + +  ++ ++ + ++ + </span>
 </pre></div>
 </div>
-<p>У интерпретатора много полезных опций. Например, с опцией <code class="docutils literal notranslate"><span class="pre">-i</span></code> интерпретатор переходит в интерактивный режим после исполения программы.</p>
+<p>У интерпретатора много полезных опций.
+Например, с опцией <code class="docutils literal notranslate"><span class="pre">-i</span></code> интерпретатор переходит в интерактивный режим после исполнения программы.</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">% </span>julia -i hello.jl
 <span class="go"> + +++ ++++ +++    +++ +++    + + +++++  +++   ++ </span>
 <span class="go">+ +   ++ + + ++ +++ +  ++  ++   ++ +++      ++ +++</span>
@@ -843,6 +872,38 @@ title="Print to PDF"
 <span class="go">julia&gt; maze_height</span>
 <span class="go">10</span>
 </pre></div>
+</div>
+</section>
+<section id="id5">
+<h2><span class="section-number">1.2.3. </span>Работа в ноутбуках<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
+<p>Для Julia есть две опции работы в ноутбуках: Jupiter Notebook и Pluto.jl.
+Ноутбуки удобны для создания конспектов и экспериментирования.</p>
+<p><strong>Jupyter Notebook</strong></p>
+<p>Для работы в Jupyter вам понадобится сама интерактивная среда <a class="reference external" href="https://jupyter.org/">Jupyter Notebook</a> и <a class="reference external" href="https://github.com/JuliaLang/IJulia.jl">IJulia.jl</a>.
+IJulia.jl предоставляет Julia-ядро для Jupyter.
+Если Jupyter уже установлен, то команда в REPL <code class="docutils literal notranslate"><span class="pre">]</span> <span class="pre">add</span> <span class="pre">IJulia</span></code> установит ядро и произведёт необходимые настройки.
+Чтобы начать работу с ноутбуком, можно воспользоваться стандартной командой <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span></code> в терминале и выбрать в качестве ядра Julia.
+Либо запустить Julia REPL и выполнить команду <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">IJulia;</span> <span class="pre">notebook()</span></code>.
+Подробнее о работе с Julia в Jupyter <a class="reference external" href="https://github.com/JuliaLang/IJulia.jl">здесь</a>.</p>
+<p><strong>Pluto.jl</strong></p>
+<p><a class="reference external" href="https://plutojl.org/">Pluto.jl</a> также представляет собой ноутбук, но в отличие от Jupyter, является реактивным.
+В Jupyter при изменении переменной в какой-либо ячейке с кодом необходимо перезапускать зависящие от этой переменной ячейки.
+В Pluto это делается автоматически.
+Как результат, Pluto удобен для небольших и наглядных численных экспериментов и конспектов.
+Для установки необходимо выполнить <code class="docutils literal notranslate"><span class="pre">]</span> <span class="pre">add</span> <span class="pre">Pluto</span></code> в Julia REPL, а для запуска <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">Pluto;</span> <span class="pre">Pluto.run()</span></code> (тоже из Julia REPL).
+Кроме реактивности, исходный файл с Pluto-ноутбуком хранит точную информацию об используемых библиотеках, что упрощает обмен ноутбуками с другими людьми.</p>
+<p>Попробовать Pluto без установки можно онлайн <a class="reference external" href="https://featured.plutojl.org/basic/getting%20started">здесь</a>.</p>
+<div class="sd-container-fluid sd-sphinx-override sd-mb-4 docutils">
+<div class="sd-row docutils">
+<div class="sd-col sd-d-flex-column docutils">
+<img alt="../_images/ijulia-example.png" class="align-center" src="../_images/ijulia-example.png" />
+<p>Jupyter Notebook + IJulia.jl</p>
+</div>
+<div class="sd-col sd-d-flex-column docutils">
+<img alt="../_images/pluto-example.png" class="align-center" src="../_images/pluto-example.png" />
+<p>Pluto.jl</p>
+</div>
+</div>
 </div>
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
