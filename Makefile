@@ -1,13 +1,13 @@
 default: help
 
-build:
+book:
 	jupyter-book build book
 
-pages:
+publish:
 	ghp-import -n -p -f book/_build/html
 
 help:
 	@echo 'Make targets'
 	@echo '  help (default) : show this help message and exit'
-	@echo '  build          : build pages for the book'
-	@echo '  pages          : publish *already* built pages to github'
+	@echo '  book           : build pages for the book'
+	@echo '  publish        : publish *already* built pages to github'
