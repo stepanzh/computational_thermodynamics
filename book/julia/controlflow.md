@@ -78,6 +78,7 @@ ERROR: UndefVarError: j not defined
 ```
 
 Здесь использован *range operator* `start:stop`, создающий генератор арифметической прогрессии.
+Также есть функция `range`, позволяющая создавать такие генераторы через длину последовательности.
 
 ```julia-repl
 help?> 1:3
@@ -85,6 +86,14 @@ help?> 1:3
 
   Range operator. a:b constructs a range from a to b with a step size of 1 (a UnitRange),
   and a:s:b is similar but uses a step size of s(a StepRange).
+
+help?> range(1, 3)
+  range(start, stop, length)
+  range(start, stop; length, step)
+  range(start; length, stop, step)
+  range(;start, length, stop, step)
+
+  Construct a specialized array with evenly spaced elements and optimized storage from the arguments...
 ```
 
 Итерировать можно и по коллекциям. Ниже пример для кортежа `Tuple`.
