@@ -629,12 +629,36 @@ title="Print to PDF"
     </ul>
   </div>
 </div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
 
     </div>
 </div>
 
 <!-- Table of contents -->
 <div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1.6.1. Упражнения
+  </a>
+ </li>
+</ul>
+
+    </nav>
 </div>
     </div>
     <div class="article row">
@@ -646,6 +670,19 @@ title="Print to PDF"
                 <div id="print-main-content">
                     <div id="jb-print-toc">
                         
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id2">
+   1.6.1. Упражнения
+  </a>
+ </li>
+</ul>
+
+                        </nav>
                     </div>
                 </div>
             </div>
@@ -657,6 +694,18 @@ title="Print to PDF"
 <h1><span class="section-number">1.6. </span>Функции<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <p>Функция в Julia один из основных инструментов повторного использования кода.</p>
 <p>Больше информации в мануале <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/functions/">[url]</a></strong>.</p>
+<div class="admonition-tl-dr admonition">
+<p class="admonition-title">TL;DR</p>
+<ul class="simple">
+<li><p>Длинная и компактная формы синтаксиса;</p></li>
+<li><p>Анонимные функции;</p></li>
+<li><p>Функция – first-class объект;</p></li>
+<li><p>Принцип передачи аргументов – pass by sharing;</p></li>
+<li><p>Операторы определены через функции;</p></li>
+<li><p>Аргументы и возвращаемое значение определены через кортежи;</p></li>
+<li><p>Аргументы бывают позиционными, по ключу, могут иметь значение по умолчанию.</p></li>
+</ul>
+</div>
 <p>Основной синтаксис для функций в Julia</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"></span>
 <span class="w">           </span><span class="k">return</span><span class="w"> </span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
@@ -740,13 +789,14 @@ title="Print to PDF"
 <span class="go">5.0</span>
 </pre></div>
 </div>
-<p>Важно, что операторы в Julia также являются функциями</p>
+<p>Важно, что операторы (<code class="docutils literal notranslate"><span class="pre">+-*/</span></code>, <code class="docutils literal notranslate"><span class="pre">in</span></code>, <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code>…)  в Julia также являются функциями, просто имя такой функции это символ(ы) оператора</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="o">+</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
 <span class="go">true</span>
 </pre></div>
 </div>
 <p>Языковые конструкции, вроде доступа к элементу массива (<code class="docutils literal notranslate"><span class="pre">A[i]</span></code>) или полю структуры (<code class="docutils literal notranslate"><span class="pre">S.x</span></code>) являются операторами c функциональными аналогами.</p>
-<p>Можно создавать анонимные функции</p>
+<p>Можно создавать <em>анонимные</em> функции (<em>anonymous functions</em>).
+Они обычно передаются в другие функции, например, в сортировку или фильтрацию массивов.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="mi">2</span><span class="n">x</span><span class="w">                        </span><span class="c"># короткий синтаксис</span><span class="w"></span>
 <span class="go">#1 (generic function with 1 method)</span>
 
@@ -769,7 +819,8 @@ title="Print to PDF"
 <span class="go"> 12</span>
 </pre></div>
 </div>
-<p>В Julia тип, соответствующий аргументам функции, является кортежем <code class="docutils literal notranslate"><span class="pre">Tuple</span></code>. Кортеж неизменная коллекция.</p>
+<p>Аргументы функции в Julia представлены кортежем <code class="docutils literal notranslate"><span class="pre">Tuple</span></code>.
+Кортеж это неизменная коллекция, которая может содержать данные разных типов.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">tup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">)</span><span class="w"></span>
 <span class="go">(3, 4)</span>
 
@@ -780,9 +831,23 @@ title="Print to PDF"
 <span class="go">(3,)</span>
 </pre></div>
 </div>
-<p>Функция, конечно, может и возращать <code class="docutils literal notranslate"><span class="pre">Tuple</span></code>, т.е. возвращать несколько значений. Если абстрагироваться, функция в Julia создаёт из одного кортежа значений другой кортеж.</p>
+<p>Julia позволяет создавать функции с переменным числом аргументов.
+В таком случае один из аргументов хранит все поданные значения в виде кортежа.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">...</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nd">@show</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="n">y</span><span class="p">)</span><span class="w"></span>
+<span class="go">f (generic function with 2 methods)</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="go">x = 1</span>
+<span class="go">y = (2, &quot;a&quot;)</span>
+<span class="go">typeof(y) = Tuple{Int64, String}</span>
+<span class="go">Tuple{Int64, String}</span>
+</pre></div>
+</div>
+<p>Функция может возвращать несколько значений.
+В таком случае возвращается кортеж.
+Так, функция превращает один кортеж значений (аргументы) в другой (возвращаемое значение).</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">addmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"></span>
-<span class="w">           </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="w">           </span><span class="k">return</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="w">   </span><span class="c"># или return (x + y, x * y)</span><span class="w"></span>
 <span class="w">       </span><span class="k">end</span><span class="w"></span>
 <span class="go">addmul (generic function with 1 method)</span>
 
@@ -796,19 +861,97 @@ title="Print to PDF"
 <span class="go">12</span>
 </pre></div>
 </div>
-<p>Также существует именованный кортеж <code class="docutils literal notranslate"><span class="pre">NamedTuple</span></code>, хранящий пары ключ-значение. На его основе создаются функции, принимающие аргументы по ключу.</p>
-<p>И можно присваивать аргументам значения по умолчанию.</p>
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># x - позиционный, p - именованный со значением по умолчанию</span><span class="w"></span>
-<span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="n">p</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
-<span class="n">f</span><span class="w"> </span><span class="p">(</span><span class="n">generic</span><span class="w"> </span><span class="k">function</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="n">method</span><span class="p">)</span><span class="w"></span>
+<p>Также существует именованный кортеж <code class="docutils literal notranslate"><span class="pre">NamedTuple</span></code>.
+В отличие от обычного кортежа, доступ к элементам кортежа можно получить по имени поля.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">ntup</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="o">=</span><span class="s">&quot;xyz&quot;</span><span class="p">)</span><span class="w"></span>
+<span class="go">(a = 10, b = &quot;xyz&quot;)</span>
 
-<span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"></span>
-<span class="mi">10</span><span class="w"></span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">typeof</span><span class="p">(</span><span class="n">ntup</span><span class="p">)</span><span class="w"></span>
+<span class="go">NamedTuple{(:a, :b), Tuple{Int64, String}}</span>
 
-<span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">p</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span><span class="w"></span>
-<span class="mi">40</span><span class="w"></span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">ntup</span><span class="o">.</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">ntup</span><span class="o">.</span><span class="n">b</span><span class="w"></span>
+<span class="go">(10, &quot;xyz&quot;)</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">ntup</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="w"> </span><span class="n">ntup</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"></span>
+<span class="go">(10, &quot;xyz&quot;)</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">ntup</span><span class="p">[</span><span class="ss">:a</span><span class="p">],</span><span class="w"> </span><span class="n">ntup</span><span class="p">[</span><span class="ss">:b</span><span class="p">]</span><span class="w"></span>
+<span class="go">(10, &quot;xyz&quot;)</span>
 </pre></div>
 </div>
+<p>На основе <code class="docutils literal notranslate"><span class="pre">NamedTuple</span></code> создаются функции, принимающие аргументы по ключу.
+Чтобы отделить позиционные аргументы от аргументов по ключу используется точка с запятой <code class="docutils literal notranslate"><span class="pre">;</span></code>.
+При вызове функции <code class="docutils literal notranslate"><span class="pre">;</span></code> можно опускать, но мы не рекомендуем этого делать.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">(;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="w"></span>
+<span class="go">f (generic function with 3 methods)</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">(;</span><span class="w"> </span><span class="n">x</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="w"></span>
+<span class="go">11</span>
+</pre></div>
+</div>
+<p>Аргументам (позиционным и по ключу) можно присваивать значения по умолчанию.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="n">factor</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">factor</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="w"></span>
+<span class="go">f (generic function with 4 methods)</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span><span class="w"></span>
+<span class="go">150</span>
+
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="mi">15</span><span class="p">;</span><span class="w"> </span><span class="n">factor</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
+<span class="go">30</span>
+</pre></div>
+</div>
+<section id="id2">
+<h2><span class="section-number">1.6.1. </span>Упражнения<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="20509f44-37be-4cdd-8361-1b3f7d65d11e" name="7cca6553-ce25-4f09-b0f3-b93fb2e80414" type="radio">
+</input><label class="sd-tab-label" for="20509f44-37be-4cdd-8361-1b3f7d65d11e">
+Проверьте себя</label><div class="sd-tab-content docutils">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="o">...</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="o">...</span><span class="p">)</span><span class="w"></span>
+<span class="w">    </span><span class="n">answer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">...</span><span class="w"></span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">answer</span><span class="w"></span>
+<span class="k">end</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Ответьте на вопросы про каждый аргумент функции выше</p>
+<ul class="simple">
+<li><p>Позиционный или по ключу</p></li>
+<li><p>Обязательный при вызове или нет</p></li>
+<li><p>Имеет ли значение по умолчанию</p></li>
+<li><p>Является ли коллекцией аргументов при вызове</p></li>
+</ul>
+</div>
+<input id="e97e1db5-c3b3-443f-b849-8ef7ee627e82" name="7cca6553-ce25-4f09-b0f3-b93fb2e80414" type="radio">
+</input><label class="sd-tab-label" for="e97e1db5-c3b3-443f-b849-8ef7ee627e82">
+x</label><div class="sd-tab-content docutils">
+<p>Позиционный; обязательный.</p>
+</div>
+<input id="ee35fb94-ff07-4b78-b98e-ea29a5634e5e" name="7cca6553-ce25-4f09-b0f3-b93fb2e80414" type="radio">
+</input><label class="sd-tab-label" for="ee35fb94-ff07-4b78-b98e-ea29a5634e5e">
+y</label><div class="sd-tab-content docutils">
+<p>Позиционный; необязательный, поскольку имеет значение по умолчанию.</p>
+</div>
+<input id="fbef4392-7695-4342-a605-91725cb5da53" name="7cca6553-ce25-4f09-b0f3-b93fb2e80414" type="radio">
+</input><label class="sd-tab-label" for="fbef4392-7695-4342-a605-91725cb5da53">
+z</label><div class="sd-tab-content docutils">
+<p>Содержит все позиционные аргументы, за исключением <code class="docutils literal notranslate"><span class="pre">x</span></code> и <code class="docutils literal notranslate"><span class="pre">y</span></code>; необязательный.</p>
+</div>
+<input id="8b2a7ea9-a3c8-4c92-ad7f-ac4178cde288" name="7cca6553-ce25-4f09-b0f3-b93fb2e80414" type="radio">
+</input><label class="sd-tab-label" for="8b2a7ea9-a3c8-4c92-ad7f-ac4178cde288">
+a</label><div class="sd-tab-content docutils">
+<p>По ключу; необязательный, поскольку имеет значение по умолчанию.</p>
+</div>
+<input id="3472d3e7-c33a-48d3-9958-b2777cff531e" name="7cca6553-ce25-4f09-b0f3-b93fb2e80414" type="radio">
+</input><label class="sd-tab-label" for="3472d3e7-c33a-48d3-9958-b2777cff531e">
+b</label><div class="sd-tab-content docutils">
+<p>По ключу; обязательный.</p>
+</div>
+<input id="9f04e6f6-9596-45ba-9f8b-eb547ea9a909" name="7cca6553-ce25-4f09-b0f3-b93fb2e80414" type="radio">
+</input><label class="sd-tab-label" for="9f04e6f6-9596-45ba-9f8b-eb547ea9a909">
+c</label><div class="sd-tab-content docutils">
+<p>Содержит все аргументы по ключу, за исключением <code class="docutils literal notranslate"><span class="pre">a</span></code> и <code class="docutils literal notranslate"><span class="pre">b</span></code>; необязательный.</p>
+</div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">

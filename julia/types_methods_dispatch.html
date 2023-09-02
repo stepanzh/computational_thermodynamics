@@ -690,6 +690,11 @@ title="Print to PDF"
    1.7.2. Методы и multiple dispatch
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   1.7.3. Интерфейсы
+  </a>
+ </li>
 </ul>
 
     </nav>
@@ -748,6 +753,11 @@ title="Print to PDF"
    1.7.2. Методы и multiple dispatch
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id8">
+   1.7.3. Интерфейсы
+  </a>
+ </li>
 </ul>
 
                         </nav>
@@ -760,8 +770,13 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="multiple-dispatch">
 <h1><span class="section-number">1.7. </span>Типы, методы и multiple dispatch<a class="headerlink" href="#multiple-dispatch" title="Permalink to this headline">#</a></h1>
-<p>В Julia типы упорядочены в <em>дерево</em>, образуя систему. В этом дереве есть самые разные ветви: для числовых типов, строковых, массивов… В свою очередь, для функции можно написать любое количество <em>методов</em>, указывая в объявлении метода при каком наборе типов аргументов, или даже целых ветвей, он будет вызываться. Процесс выбора метода для функции называется <em>диспетчеризацией</em>. При этом Julia, если возможно, создаёт эффективную (машинную) реализацию используемых методов.</p>
-<p>Эти три инструмента: дерево типов, методы и диспетчеризация, являются ядром дизайна Julia, дающим гибкость в написании кода вообще и быстрого кода в частности.</p>
+<p>В Julia типы упорядочены в <em>дерево</em>, образуя систему.
+В этом дереве есть самые разные ветви: для числовых типов, строковых, массивов…
+В свою очередь, для функции можно написать любое количество <em>методов</em>, указывая в объявлении метода при каком наборе типов аргументов, или даже целых ветвей, он будет вызываться.
+Процесс выбора метода при вызове функции называется <em>диспетчеризацией</em>.
+Диспетчеризация учитывает типы <em>всех позиционных аргументов</em>, поэтому она называется <em>множественной</em>.
+При первом вызове функции или метода Julia, если возможно, создаёт для него эффективную (машинную) реализацию.</p>
+<p>Эти три инструмента: дерево типов, методы и диспетчеризация, являются ядром дизайна языка Julia, дающим гибкость в написании кода вообще и быстрого кода в частности.</p>
 <p>Подробнее о рассматриваемых здесь темах можно почитать в разделах <a class="reference external" href="https://docs.julialang.org/en/v1/manual/types/">Types</a>, <a class="reference external" href="https://docs.julialang.org/en/v1/manual/methods/">Methods</a> и <a class="reference external" href="https://en.wikipedia.org/wiki/Multiple_dispatch#Languages_with_built-in_multiple_dispatch">wiki:Multiple dispatch</a>.</p>
 <section id="type-system">
 <span id="id1"></span><h2><span class="section-number">1.7.1. </span>Система типов<a class="headerlink" href="#type-system" title="Permalink to this headline">#</a></h2>
@@ -852,7 +867,10 @@ title="Print to PDF"
 <li><p>изменяемый (<code class="docutils literal notranslate"><span class="pre">Vector{Float64}</span></code>) и неизменяемый (<code class="docutils literal notranslate"><span class="pre">Tuple{Float64,Float64}</span></code>);</p></li>
 <li><p>…</p></li>
 </ul>
-<p>В Julia система типов является деревом, корень которого тип <code class="docutils literal notranslate"><span class="pre">Any</span></code>. Листьями дерева типов являются <strong>конкретные типы</strong>. У значения такого типа известна структура в памяти. <strong>Абстрактные</strong> типы нужны в качестве промежуточных узлов дерева типов, выстраивая иерархию.</p>
+<p>В Julia система типов организована в дерево, корень которого тип <code class="docutils literal notranslate"><span class="pre">Any</span></code>, т.е. любой.
+Листьями дерева типов являются <strong>конкретные типы</strong>.
+У значения такого типа известна структура в памяти.
+<strong>Абстрактные</strong> типы нужны в качестве промежуточных узлов дерева типов, выстраивая иерархию.</p>
 <div class="dropdown admonition note">
 <p class="admonition-title">Note</p>
 <p>Кроме того, объявление неабстрактного параметрического типа <code class="docutils literal notranslate"><span class="pre">T1{T2}</span></code>  создаёт <strong>UnionAll</strong> тип <code class="docutils literal notranslate"><span class="pre">T1</span></code>. Последний ведёт себя как супертип (родительский) для параметризованных потомков.</p>
@@ -956,7 +974,10 @@ title="Print to PDF"
 <span class="k">end</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Это объявление значит</p>
+<p>С практической точки зрения, код выше объявляет структуру данных <code class="docutils literal notranslate"><span class="pre">Complex</span></code> для комплексных чисел, которые (сюрприз) являются числами (<code class="docutils literal notranslate"><span class="pre">Number</span></code>).
+Т.е., подразумевается, что с ними можно совершать все арифметические операции.
+Сама структура данных состоит из двух действительных (<code class="docutils literal notranslate"><span class="pre">Real</span></code>) чисел с <em>одинаковым</em> типом.</p>
+<p>Более строго, объявление выше значит</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p><code class="docutils literal notranslate"><span class="pre">Complex</span></code> в данном случае ни абстрактный, ни конкретный.</p>
@@ -994,7 +1015,7 @@ title="Print to PDF"
 <span class="go">dist (generic function with 1 method)</span>
 </pre></div>
 </div>
-<p>Заметьте, в этой функции нет никаких ограничений на тип <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
+<p>Заметьте, в этой функции нет никаких ограничений на тип аргумента <code class="docutils literal notranslate"><span class="pre">p</span></code>.</p>
 <p>Создадим два массива случайных точек</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">AA</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="n">APoint</span><span class="p">(</span><span class="n">rand</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">...</span><span class="p">)</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">_</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">1_000_000</span><span class="p">];</span><span class="w"></span>
 
@@ -1005,7 +1026,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 <p>Про массив <code class="docutils literal notranslate"><span class="pre">TA</span></code> компилятор явно знает больше, судя по <code class="docutils literal notranslate"><span class="pre">typeof</span></code>.</p>
-<p>Измерим время работы. Точный бенчмарк показывает разницу времени работы в два порядка.</p>
+<p>Измерим время работы.
+Точный бенчмарк показывает разницу времени работы в два порядка.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">using</span><span class="w"> </span><span class="n">BenchmarkTools</span><span class="w"></span>
 
 <span class="gp">julia&gt;</span><span class="w"> </span><span class="nd">@btime</span><span class="w"> </span><span class="n">dist</span><span class="o">.</span><span class="p">(</span><span class="n">AA</span><span class="p">);</span><span class="w"></span>
@@ -1015,6 +1037,13 @@ title="Print to PDF"
 <span class="go">  1.290 ms (5 allocations: 7.63 MiB)</span>
 </pre></div>
 </div>
+<p>Почему?
+Дело в том, что тип <code class="docutils literal notranslate"><span class="pre">APoint</span></code> не параметризован, и с точки зрения компилятора в его полях может находится всё что угодно (<code class="docutils literal notranslate"><span class="pre">Any</span></code>).
+Поэтому, всякий раз совершая операцию над полем такой структуры, необходимо проверять, что в этом поле содержится и можно ли операцию совершать вообще.
+Тип <code class="docutils literal notranslate"><span class="pre">TPoint</span></code>, напротив, параметризован.
+Создав такой объект, компилятору известны типы его полей, а значит и полное представление объекта в памяти.
+Поэтому можно создать эффективный код для функции <code class="docutils literal notranslate"><span class="pre">dist</span></code> при вызове от <code class="docutils literal notranslate"><span class="pre">TPoint{Float64}</span></code>, ведь известно, что <code class="docutils literal notranslate"><span class="pre">p.x</span></code> и <code class="docutils literal notranslate"><span class="pre">p.y</span></code> это <code class="docutils literal notranslate"><span class="pre">Float64</span></code> числа, а для них определены операции возведения в степень, сложение и извлечение корня.
+А вызывая <code class="docutils literal notranslate"><span class="pre">dist</span></code> от <code class="docutils literal notranslate"><span class="pre">TPoint{Float64}</span></code> в дальнейшем, можно сразу пользоваться скомпилированной версией.</p>
 <div class="dropdown admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Поисследовать, может ли компилятор предугадать типы в теле вызова можно с помощью макроса <code class="docutils literal notranslate"><span class="pre">&#64;code_warntype</span></code></p>
@@ -1062,7 +1091,8 @@ title="Print to PDF"
 <section id="id7">
 <h2><span class="section-number">1.7.2. </span>Методы и multiple dispatch<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>
 <p>Для каждой функции в Julia можно определить сколько угодно методов (<em>methods</em>). Это способ полиформизма в языке. Вы уже с ним сталкивались, например, <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">+</span> <span class="pre">2</span></code> и <code class="docutils literal notranslate"><span class="pre">1.0</span> <span class="pre">+</span> <span class="pre">2.0</span></code> совершенно разные вызовы. В первом случае вызывается метод <code class="docutils literal notranslate"><span class="pre">+(x,</span> <span class="pre">y)</span></code> для  <code class="docutils literal notranslate"><span class="pre">Int64</span></code>, а во втором метод <code class="docutils literal notranslate"><span class="pre">+(x,</span> <span class="pre">y)</span></code> для сложения <code class="docutils literal notranslate"><span class="pre">Float64</span></code>.</p>
-<p>У сложения <code class="docutils literal notranslate"><span class="pre">+</span></code> в Julia 1.6.2 190 методов.</p>
+<p>Вообще, у сложения <code class="docutils literal notranslate"><span class="pre">+</span></code> в базовой библиотеке Julia 1.6.2 190 методов.
+Здесь методы и для примитивных типов, для комплексных и рациональных чисел, для векторов, матриц, тензоров…</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">methods</span><span class="p">(</span><span class="o">+</span><span class="p">)</span><span class="w"></span>
 <span class="go"># 190 methods for generic function &quot;+&quot;:</span>
 <span class="go">[1] +(x::T, y::T) where T&lt;:Union{Int128, Int16, Int32, Int64, Int8, UInt128, UInt16, UInt32, UInt64, UInt8} in Base at int.jl:87</span>
@@ -1130,12 +1160,28 @@ title="Print to PDF"
 </ul>
 <p>Кроме того, до запуска скрипта (<em>compilation time</em>) Julia просматривает методы и некоторые из них может прекомпилировать.</p>
 <p>Методы могут быть параметрическими, и в их теле вам будет доступен тип аргумента на этапе компиляции (<code class="docutils literal notranslate"><span class="pre">typeof(x)</span></code> не нужен).</p>
-<div class="dropdown admonition tip">
-<p class="admonition-title">Tip</p>
-<p>На методах основаны интерфейсы в языке. Например, вы можете создавать собственные структуры данных, у которых будет поведение массивов. Как только вы объявите методы интерфейса для своего типа, вы сможете пользоваться всеми функциями, определенными для <code class="docutils literal notranslate"><span class="pre">AbstractArray{T,N}</span></code>. Или, скажем, вы можете встроить свои структуры данных в интерфейс цикла <code class="docutils literal notranslate"><span class="pre">for</span></code>.</p>
-<p>С помощью методов также создаются типы, ведущие себя как функции: их можно вызывать (<em>callable</em>). На этом основаны замыкания (<em>closures</em>) в Julia.</p>
-<p>Изобретено множество дизайн-паттернов с использованием методов и типов. За подробностями по теме методов обращайтесь в мануал <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/methods/">[url]</a></strong>. Много паттернов описано в книге <span id="id8">[<a class="reference internal" href="../appendix/bibliography.html#id5" title="Tom Kwong. Hands-on design patterns and best practices with Julia: proven solutions to common problems in software design for Julia 1.x. Packt Publishing, 2020. ISBN 9781838648817. URL: https://www.packtpub.com/product/hands-on-design-patterns-and-best-practices-with-julia/9781838648817.">Kwo20</a>]</span>.</p>
-</div>
+</section>
+<section id="id8">
+<h2><span class="section-number">1.7.3. </span>Интерфейсы<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h2>
+<p>На методах основаны интерфейсы в языке.
+Например, для типа точки на декартовой плоскости, рассмотренном выше, вы можете определить оператор сложения.
+Вы также можете создать вектора из точек.
+Сложение таких векторов определять уже не нужно: операция сложения для векторов происходит поэлементно и определено в стандартной библиотеке.
+Поэтому, определив арифметические операции для точки, вам автоматически доступны методы линейной алгебры (<code class="docutils literal notranslate"><span class="pre">LinearAlgebra</span></code>) и, например, статистики (<code class="docutils literal notranslate"><span class="pre">Statistics</span></code>).</p>
+<p>Вы можете создавать собственные структуры данных, у которых будет поведение коллекций.
+Как только вы объявите необходимые методы интерфейса для своего типа, вы сможете пользоваться всеми функциями, определенными для коллекций.
+Или, скажем, вы можете встроить свои структуры данных в интерфейс цикла <code class="docutils literal notranslate"><span class="pre">for</span></code>.</p>
+<p>С помощью методов также создаются типы, ведущие себя как функции: их можно вызывать (<em>callable</em>).
+На этом основаны замыкания (<em>closures</em>) в Julia.</p>
+<p>Один из ярких примеров это автоматическое дифференцирование вперёд.
+Можно определить дуальное число и математические операции с ним.
+Затем подать это число на вход любой функции от числа.
+При вызове такой функции от действительного числа возвращается её значение.
+А при вызове от дуального числа возвращается значение функции и её производной.
+То есть, программисту не нужно аналитически вычислять производную и переносить её в код отдельной функцией: можно воспользоваться дуальным числом.</p>
+<p>Изобретено множество дизайн-паттернов с использованием методов и типов.
+За подробностями по теме методов обращайтесь в мануал <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/methods/">[url]</a></strong>.
+Много паттернов описано в книге <span id="id9">[<a class="reference internal" href="../appendix/bibliography.html#id5" title="Tom Kwong. Hands-on design patterns and best practices with Julia: proven solutions to common problems in software design for Julia 1.x. Packt Publishing, 2020. ISBN 9781838648817. URL: https://www.packtpub.com/product/hands-on-design-patterns-and-best-practices-with-julia/9781838648817.">Kwo20</a>]</span>.</p>
 </section>
 </section>
 

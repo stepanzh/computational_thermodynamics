@@ -86,10 +86,10 @@ julia> using LinearAlgebra
 julia> det(A), tr(A), norm(a)  # детерминант, след, норма
 (-2.0, 5, 3.7416573867739413)
 
-julia> a ⋅ b, A ⋅ B  # скалярное умножение (dot)
+julia> a ⋅ b, A ⋅ B  # скалярное умножение, \cdot; или dot(a, b), dot(A, B)
 (32, -30)
 
-julia> a × b  # векторное умножение
+julia> a × b  # векторное умножение, \times; или cross(a, b)
 3-element Vector{Int64}:
  -3
   6

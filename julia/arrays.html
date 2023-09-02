@@ -744,11 +744,13 @@ title="Print to PDF"
 <li><p><code class="docutils literal notranslate"><span class="pre">Vector{T}</span> <span class="pre">==</span> <span class="pre">Array{T,1}</span></code> для одномерных вектор-столбцов;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">Matrix{T}</span> <span class="pre">==</span> <span class="pre">Array{T,2}</span></code> для матриц и вектор-строк.</p></li>
 </ul>
-<p>Литералом <code class="docutils literal notranslate"><span class="pre">Array{T,N}</span></code> являются квадратные скобки <code class="docutils literal notranslate"><span class="pre">[]</span></code>, при этом можно явно указать тип <code class="docutils literal notranslate"><span class="pre">T[]</span></code> (<code class="docutils literal notranslate"><span class="pre">Int[1,</span> <span class="pre">2]</span></code>, <code class="docutils literal notranslate"><span class="pre">Float64[1,</span> <span class="pre">2]</span></code>). Создание массива с помощью литерала осуществляется посредством вертикальной и горизонтальной <em>конкатенации</em>.</p>
+<p>Литералом <code class="docutils literal notranslate"><span class="pre">Array{T,N}</span></code> являются квадратные скобки <code class="docutils literal notranslate"><span class="pre">[]</span></code>, при этом можно явно указать тип <code class="docutils literal notranslate"><span class="pre">T[]</span></code> (<code class="docutils literal notranslate"><span class="pre">Int[1,</span> <span class="pre">2]</span></code>, <code class="docutils literal notranslate"><span class="pre">Float64[1,</span> <span class="pre">2]</span></code>).
+Если тип элементов массива не указывать, то Julia его вычислит.</p>
+<p>Для создания массива через литерал используется вертикальная и горизонтальная <em>конкатенация</em>.</p>
 <p>Для <strong>вертикальной конкатенации</strong> используется <code class="docutils literal notranslate"><span class="pre">;</span></code> или новая строка.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="5587d0b1-93da-4760-a188-ef3b5cc29d88" name="6491045c-77f5-451f-af56-1075f902488f" type="radio">
-</input><label class="sd-tab-label" for="5587d0b1-93da-4760-a188-ef3b5cc29d88">
+<input checked="checked" id="2a760bc6-24ae-43b4-bab7-f01cca225b0e" name="c954da74-8368-410e-a894-4e9a8a224aa5" type="radio">
+</input><label class="sd-tab-label" for="2a760bc6-24ae-43b4-bab7-f01cca225b0e">
 Вектор из скаляров</label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"></span>
 <span class="go">3-element Vector{Int64}:</span>
@@ -758,8 +760,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="19363da0-a569-411a-bfe2-1cceadbd0a57" name="6491045c-77f5-451f-af56-1075f902488f" type="radio">
-</input><label class="sd-tab-label" for="19363da0-a569-411a-bfe2-1cceadbd0a57">
+<input id="2edb5382-cb56-4f07-9d94-9da6f5bb62d1" name="c954da74-8368-410e-a894-4e9a8a224aa5" type="radio">
+</input><label class="sd-tab-label" for="2edb5382-cb56-4f07-9d94-9da6f5bb62d1">
 Вертикальная конкатенация</label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">];</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">]]</span><span class="w"></span>
 <span class="go">5-element Vector{Int64}:</span>
@@ -774,8 +776,8 @@ title="Print to PDF"
 </div>
 <p>Для <strong>горизонтальной конкатенации</strong> используется пробел <code class="docutils literal notranslate"> </code> или табуляция. Запятая <code class="docutils literal notranslate"><span class="pre">,</span></code> означает отсутствие конкатенации.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="816bc1d9-169f-49b5-b8a4-6b2abd0c1443" name="8a4f23c2-b835-4be4-b86f-4edbae76e202" type="radio">
-</input><label class="sd-tab-label" for="816bc1d9-169f-49b5-b8a4-6b2abd0c1443">
+<input checked="checked" id="2f8cc466-e59a-4ecf-8423-b0f5625702c4" name="dbb599c6-a676-4d2d-85bc-ad83f17f1e14" type="radio">
+</input><label class="sd-tab-label" for="2f8cc466-e59a-4ecf-8423-b0f5625702c4">
 Вектор-строка</label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">]</span><span class="w"></span>
 <span class="go">1×4 Matrix{Int64}:</span>
@@ -783,8 +785,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="bdecb79a-6487-4976-930b-76e168484a93" name="8a4f23c2-b835-4be4-b86f-4edbae76e202" type="radio">
-</input><label class="sd-tab-label" for="bdecb79a-6487-4976-930b-76e168484a93">
+<input id="2d377079-0267-4d48-9cc7-40ce1c395d64" name="dbb599c6-a676-4d2d-85bc-ad83f17f1e14" type="radio">
+</input><label class="sd-tab-label" for="2d377079-0267-4d48-9cc7-40ce1c395d64">
 Горизонтальная конкатенация</label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]]</span><span class="w"></span>
 <span class="go">2×2 Matrix{Int64}:</span>
@@ -801,7 +803,8 @@ title="Print to PDF"
 <span class="go"> [7, 8]</span>
 </pre></div>
 </div>
-<p>На первый взгляд, синтаксис может показаться запутанным. Однако, он позволяет создавать блочные матрицы и тензоры.</p>
+<p>На первый взгляд синтаксис может показаться запутанным.
+Однако, с ним легко создавать блочные матрицы и тензоры.</p>
 <div class="proof proof-type-demo" id="id5">
 <span id="demo-create-block-matrix"></span>
     <div class="proof-title">
@@ -823,7 +826,7 @@ A &amp; I \\ \hline
 0^\top &amp; b^\top
 \end{array}\right]\end{split}\]</div>
 <p>Соответствующий код будет</p>
-<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">9</span><span class="p">]</span><span class="w"></span>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="mi">4</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="mi">6</span><span class="p">;</span><span class="w"> </span><span class="mi">7</span><span class="w"> </span><span class="mi">8</span><span class="w"> </span><span class="mi">9</span><span class="p">]</span><span class="w">   </span><span class="c"># или reshape(collect(1:9), 3, 3)&#39;</span><span class="w"></span>
 <span class="go">3×3 Matrix{Int64}:</span>
 <span class="go"> 1  2  3</span>
 <span class="go"> 4  5  6</span>
@@ -835,13 +838,13 @@ A &amp; I \\ \hline
 <span class="go"> 0  1  0</span>
 <span class="go"> 0  0  1</span>
 
-<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">zero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span><span class="w"></span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">zero</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">]</span><span class="w">  </span><span class="c"># или zeros(Int, 3)</span><span class="w"></span>
 <span class="go">3-element Vector{Int64}</span>
 <span class="go"> 0</span>
 <span class="go"> 0</span>
 <span class="go"> 0</span>
 
-<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">]</span><span class="w"></span>
+<span class="gp">julia&gt;</span><span class="w"> </span><span class="n">b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">]</span><span class="w">  </span><span class="c"># или collect(10:12)</span><span class="w"></span>
 <span class="go">3-element Vector{Int64}:</span>
 <span class="go"> 10</span>
 <span class="go"> 11</span>
@@ -859,7 +862,13 @@ A &amp; I \\ \hline
 </div></div><section id="id1">
 <h2><span class="section-number">1.8.1. </span>Индексирование<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>В Julia встроено два вида индексов.</p>
-<p>Синтаксис первого <code class="docutils literal notranslate"><span class="pre">A[i]</span></code>, это линейный индекс <code class="docutils literal notranslate"><span class="pre">LinearIndex</span></code>. Он позволяет получить <code class="docutils literal notranslate"><span class="pre">i</span></code>-ый <em>по счёту в памяти</em> элемент массива. Например, для вектора <code class="docutils literal notranslate"><span class="pre">A[4]</span></code> это <span class="math notranslate nohighlight">\(A_4\)</span>, а для матрицы размера <span class="math notranslate nohighlight">\(2 \times 3\)</span> это <span class="math notranslate nohighlight">\(A_{2, 2}\)</span>.</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p>При этом нужно помнить, что в Julia-массивах значения хранятся постолбично.</p>
+</aside>
+<p>Синтаксис первого <code class="docutils literal notranslate"><span class="pre">A[i]</span></code>, это линейный индекс <code class="docutils literal notranslate"><span class="pre">LinearIndex</span></code>.
+Он позволяет получить <code class="docutils literal notranslate"><span class="pre">i</span></code>-ый <em>по счёту в памяти</em> элемент массива.
+Например, для вектора <code class="docutils literal notranslate"><span class="pre">A[4]</span></code> это <span class="math notranslate nohighlight">\(A_4\)</span>, а для матрицы размера <span class="math notranslate nohighlight">\(2 \times 3\)</span> это <span class="math notranslate nohighlight">\(A_{2, 2}\)</span>.</p>
 <p>Синтаксис второго <code class="docutils literal notranslate"><span class="pre">A[i,</span> <span class="pre">j,</span> <span class="pre">k,..]</span></code>, это декартов индекс <code class="docutils literal notranslate"><span class="pre">CartesianIndex</span></code>. Данный индекс учитывает размерность массива. Например, для матрицы элемент <code class="docutils literal notranslate"><span class="pre">A[i,</span> <span class="pre">j]</span></code> это элемент <span class="math notranslate nohighlight">\(A_{i,j}\)</span> (<span class="math notranslate nohighlight">\(i\)</span>-ая строка, <span class="math notranslate nohighlight">\(j\)</span>-ый столбец).</p>
 <p>Индексом может быть и коллекция элементов, что позволяет обращаться к целым строкам, столцам, их пересечению, или просто некоторому набору элементов. Часто для этого используется <em>range operator</em> <code class="docutils literal notranslate"><span class="pre">start:[step:]stop</span></code>.</p>
 <p>Ниже показано несколько примеров для матрицы.</p>
@@ -871,8 +880,8 @@ A &amp; I \\ \hline
 </pre></div>
 </div>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="837e412e-a5be-4405-8f7b-0ed3fdeaf0b6" name="e6159783-0e33-4d60-9c84-925734fa66bd" type="radio">
-</input><label class="sd-tab-label" for="837e412e-a5be-4405-8f7b-0ed3fdeaf0b6">
+<input checked="checked" id="95375e91-d567-4bab-8b51-946bf773539a" name="a750b2d8-6d75-4057-8542-52f6ae05c88a" type="radio">
+</input><label class="sd-tab-label" for="95375e91-d567-4bab-8b51-946bf773539a">
 Один элемент</label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w">     </span><span class="c"># линейный индекс</span><span class="w"></span>
 <span class="go">8</span>
@@ -885,8 +894,8 @@ A &amp; I \\ \hline
 </pre></div>
 </div>
 </div>
-<input id="f3f10885-17d3-4466-9095-7a24efdefe6c" name="e6159783-0e33-4d60-9c84-925734fa66bd" type="radio">
-</input><label class="sd-tab-label" for="f3f10885-17d3-4466-9095-7a24efdefe6c">
+<input id="01b7c618-f07b-4ff9-9130-8bb4488d5b2c" name="a750b2d8-6d75-4057-8542-52f6ae05c88a" type="radio">
+</input><label class="sd-tab-label" for="01b7c618-f07b-4ff9-9130-8bb4488d5b2c">
 Целая строка/столбец</label><div class="sd-tab-content docutils">
 <p>Строка.</p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">:</span><span class="p">]</span><span class="w">  </span><span class="c"># A[строка 1, все столбцы]</span><span class="w"></span>
@@ -905,8 +914,8 @@ A &amp; I \\ \hline
 </pre></div>
 </div>
 </div>
-<input id="b28dbc04-f6f2-4cc1-bb59-9bef0e5abbf7" name="e6159783-0e33-4d60-9c84-925734fa66bd" type="radio">
-</input><label class="sd-tab-label" for="b28dbc04-f6f2-4cc1-bb59-9bef0e5abbf7">
+<input id="d29b3287-cbf6-4017-abf0-0976d5cc5637" name="a750b2d8-6d75-4057-8542-52f6ae05c88a" type="radio">
+</input><label class="sd-tab-label" for="d29b3287-cbf6-4017-abf0-0976d5cc5637">
 Подматрица</label><div class="sd-tab-content docutils">
 <p>“Пересечение” строк 1 и 2 со столбцами 2 и 3.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="mi">3</span><span class="p">]</span><span class="w"></span>
@@ -923,8 +932,8 @@ A &amp; I \\ \hline
 </pre></div>
 </div>
 </div>
-<input id="8da0f021-ca21-4d68-9780-209c0532bbe9" name="e6159783-0e33-4d60-9c84-925734fa66bd" type="radio">
-</input><label class="sd-tab-label" for="8da0f021-ca21-4d68-9780-209c0532bbe9">
+<input id="0384d501-741e-4cff-a341-54a0de4a931f" name="a750b2d8-6d75-4057-8542-52f6ae05c88a" type="radio">
+</input><label class="sd-tab-label" for="0384d501-741e-4cff-a341-54a0de4a931f">
 Диагонали</label><div class="sd-tab-content docutils">
 <p>Главная диагональ.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">4</span><span class="o">:</span><span class="k">end</span><span class="p">]</span><span class="w"></span>
@@ -1012,7 +1021,7 @@ A &amp; I \\ \hline
 <li><p><code class="docutils literal notranslate"><span class="pre">push!(A,</span> <span class="pre">x...)</span></code>: добавление в конец <code class="docutils literal notranslate"><span class="pre">A</span></code> элемента <code class="docutils literal notranslate"><span class="pre">x</span></code>;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pop!(A)</span></code>: извлечение элемента с конца <code class="docutils literal notranslate"><span class="pre">A</span></code>.</p></li>
 </ul>
-<p>Для чтения и записи в файл массивов в форматах с сепаратором (.csv, .tsv,..) есть встроенная библиотека <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/DelimitedFiles/">DelimitedFiles</a>.</p>
+<p>Для чтения и записи в файл массивов в форматах с сепаратором (.csv, .tsv,..) есть встроенная библиотека <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/DelimitedFiles/">DelimitedFiles</a> и сторонний пакет <a class="reference external" href="https://github.com/JuliaData/CSV.jl">CSV.jl</a>.</p>
 </section>
 <section id="broadcasting">
 <span id="id4"></span><h2><span class="section-number">1.8.4. </span>Векторизация функций<a class="headerlink" href="#broadcasting" title="Permalink to this headline">#</a></h2>

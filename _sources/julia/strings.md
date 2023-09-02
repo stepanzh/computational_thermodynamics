@@ -82,6 +82,10 @@ Escape специальных символов производится прив
   - `println(x,..)`
   - `println("A = ", 10)`
   - Печатает в stdout "A = 10"
+* - `@show`: печать выражения
+  - `@show expr1[ expr2 ...]`
+  - `x = 2; @show x^3`
+  - Печатает в stdout `x ^ 3 = 8`
 * - Чтение из stdin
   - `readline()`
   - `readline()`

@@ -747,12 +747,17 @@ title="Print to PDF"
 <td><p><code class="docutils literal notranslate"><span class="pre">println(&quot;A</span> <span class="pre">=</span> <span class="pre">&quot;,</span> <span class="pre">10)</span></code></p></td>
 <td><p>Печатает в stdout “A = 10”</p></td>
 </tr>
-<tr class="row-odd"><td><p>Чтение из stdin</p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&#64;show</span></code>: печать выражения</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&#64;show</span> <span class="pre">expr1[</span> <span class="pre">expr2</span> <span class="pre">...]</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">=</span> <span class="pre">2;</span> <span class="pre">&#64;show</span> <span class="pre">x^3</span></code></p></td>
+<td><p>Печатает в stdout <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">^</span> <span class="pre">3</span> <span class="pre">=</span> <span class="pre">8</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Чтение из stdin</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">readline()</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">readline()</span></code></p></td>
 <td><p>Ожидание ввода</p></td>
 </tr>
-<tr class="row-even"><td><p>Парсинг строки</p></td>
+<tr class="row-odd"><td><p>Парсинг строки</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">parse(T,</span> <span class="pre">x)</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">parse(Float64,</span> <span class="pre">&quot;1.564&quot;)</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1.564</span></code></p></td>

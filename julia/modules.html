@@ -655,13 +655,6 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#id2">
    1.10.1. Пример разработки модуля
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     1.10.1.1. Разбиение исходного файла
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -686,13 +679,6 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#id2">
    1.10.1. Пример разработки модуля
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id3">
-     1.10.1.1. Разбиение исходного файла
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -726,11 +712,41 @@ title="Print to PDF"
 <span class="k">end</span><span class="w"> </span><span class="c"># module</span><span class="w"></span>
 </pre></div>
 </div>
-<p>Всё, что между командами <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">...</span> <span class="pre">end</span></code> представляет собой модуль. В данном примере создаётся модуль <code class="docutils literal notranslate"><span class="pre">Points</span></code>.</p>
-<p>Инструкция <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">LinearAlgebra</span></code> импортирует публичные имена из модуля <code class="docutils literal notranslate"><span class="pre">LinearAlgebra</span></code>. При таком вызове, например, функция <code class="docutils literal notranslate"><span class="pre">LinearAlgebra.norm</span></code> из модуля доступна просто по имени <code class="docutils literal notranslate"><span class="pre">norm</span></code>. Фактически, программист так указывает зависимости модуля.</p>
+<p>Всё, что между командами <code class="docutils literal notranslate"><span class="pre">module</span> <span class="pre">...</span> <span class="pre">end</span></code> представляет собой модуль.
+В данном примере создаётся модуль <code class="docutils literal notranslate"><span class="pre">Points</span></code>.</p>
+<p>Инструкция <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">LinearAlgebra</span></code> импортирует публичные имена из модуля <code class="docutils literal notranslate"><span class="pre">LinearAlgebra</span></code>.
+При таком вызове, например, функция <code class="docutils literal notranslate"><span class="pre">LinearAlgebra.norm</span></code> из модуля доступна просто по имени <code class="docutils literal notranslate"><span class="pre">norm</span></code>.
+Фактически, программист так указывает зависимости модуля <code class="docutils literal notranslate"><span class="pre">Points</span></code> от других модулей.</p>
 <p>Модуль <code class="docutils literal notranslate"><span class="pre">Points</span></code> также делает имена <code class="docutils literal notranslate"><span class="pre">dist</span></code> и <code class="docutils literal notranslate"><span class="pre">Point</span></code> публичными. Т.е., когда кто-нибудь импортирует <code class="docutils literal notranslate"><span class="pre">Points</span></code> командой <code class="docutils literal notranslate"><span class="pre">using</span></code>, то ему будут доступны имена <code class="docutils literal notranslate"><span class="pre">dist</span></code> и <code class="docutils literal notranslate"><span class="pre">Point</span></code>. Точно также где-то в исходном коде модуля <code class="docutils literal notranslate"><span class="pre">LinearAlgebra</span></code> происходит экспорт имени <code class="docutils literal notranslate"><span class="pre">norm</span></code>.</p>
-<p>Функция <code class="docutils literal notranslate"><span class="pre">include(&quot;&lt;path_to_file&gt;&quot;)</span></code> делает подстановку содержимого файла в модуль. В Julia позднее связывание имён, поэтому вы можете спокойно экспортировать что-то, а объявить где-то позднее.</p>
-<p>Помимо этого, при импортировании есть следующие опции.</p>
+<p>Функция <code class="docutils literal notranslate"><span class="pre">include(&quot;&lt;path_to_file&gt;&quot;)</span></code> делает подстановку содержимого файла в модуль.
+В Julia позднее связывание имён, поэтому вы можете спокойно экспортировать что-то, а объявить где-то позднее.</p>
+<p><strong>Как импортировать свой модуль?</strong></p>
+<p>Если модуль <code class="docutils literal notranslate"><span class="pre">Points</span></code> помещён в файл <code class="docutils literal notranslate"><span class="pre">myscripts/Points.jl</span></code>, то можно импортировать модуль так</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">include</span><span class="p">(</span><span class="s">&quot;myscripts/Points.jl&quot;</span><span class="p">)</span><span class="w">  </span><span class="c"># В общем случае полный путь до файла с исходным кодом модуля</span><span class="w"></span>
+<span class="k">using</span><span class="w"> </span><span class="o">.</span><span class="n">Points</span><span class="w"></span>
+
+<span class="nd">@show</span><span class="w"> </span><span class="n">dist</span><span class="p">(</span><span class="n">Point</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span><span class="w"></span>
+</pre></div>
+</div>
+<p>Здесь функцией <code class="docutils literal notranslate"><span class="pre">include</span></code> совершается подстановка содержимого файла с модулем, как будто бы мы его скопировали сюда.
+Затем используется <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">.Points</span></code> – заметьте точку.
+По умолчанию Julia ищет модули (а точнее, пакет) в текущем окружении.
+Глобальное окружение вы можете посмотреть в REPL командой <code class="docutils literal notranslate"><span class="pre">]</span> <span class="pre">status</span></code> – она покажет список установленных пакетов (но не покажет стандартные библиотеки).
+В нашем случае пакет не создавался и регистрировался в глобальном окружении, поэтому команда <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">Points</span></code> привела бы к ошибке.
+Но, с помощью <code class="docutils literal notranslate"><span class="pre">.</span></code> поиск модуля осуществляется относительно скрипта, а не окружения.
+Кроме того, есть <code class="docutils literal notranslate"><span class="pre">..</span></code> для обращения к родительскому модулю.</p>
+<p><strong>using и import</strong></p>
+<p>Для импортирования существуют инструкции <code class="docutils literal notranslate"><span class="pre">using</span></code> и <code class="docutils literal notranslate"><span class="pre">import</span></code>.
+Их главное отличие в назначении.</p>
+<p>Инструкция <code class="docutils literal notranslate"><span class="pre">using</span></code> предназначена для использования кода модуля <em>пользователем</em>.
+Например, <code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">LinearAlgebra</span></code> позволяет нам, как пользователям модуля <code class="docutils literal notranslate"><span class="pre">LinearAlgebra</span></code>, использовать функции <code class="docutils literal notranslate"><span class="pre">norm</span></code>, <code class="docutils literal notranslate"><span class="pre">cross</span></code>…</p>
+<p>Инструкция <code class="docutils literal notranslate"><span class="pre">import</span></code> отличается от <code class="docutils literal notranslate"><span class="pre">using</span></code> тем, что позволяет переопределять и создавать новые методы для функций, определённых в импортированном модуле.
+Другими словами, <code class="docutils literal notranslate"><span class="pre">import</span></code> для разработчиков.
+Например, чтобы добавить метод скалярного произведения для собственного типа данных, придётся воспользоваться <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">LinearAlgebra</span></code>.</p>
+<p><strong>Что импортируется, а что нет</strong></p>
+<p>Можно импортировать только некоторый функционал модуля, для этого используется двоеточие <code class="docutils literal notranslate"><span class="pre">:</span></code>.
+Можно переименовывать импортируемые имена с помощью <code class="docutils literal notranslate"><span class="pre">as</span></code>.
+В таблице ниже показано, какие имена доступны при использовании разных вариантов <code class="docutils literal notranslate"><span class="pre">using</span></code> и <code class="docutils literal notranslate"><span class="pre">import</span></code>.</p>
 <table class="table">
 <colgroup>
 <col style="width: 50%" />
@@ -743,13 +759,13 @@ title="Print to PDF"
 </thead>
 <tbody>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">Points</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">Points</span></code>, <code class="docutils literal notranslate"><span class="pre">dist</span></code>, <code class="docutils literal notranslate"><span class="pre">Point</span></code>, остальные через точку: <code class="docutils literal notranslate"><span class="pre">Points.private_foo</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Points</span></code>, и публичные <code class="docutils literal notranslate"><span class="pre">dist</span></code>, <code class="docutils literal notranslate"><span class="pre">Point</span></code>, остальные через точку: <code class="docutils literal notranslate"><span class="pre">Points.private_foo</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">Points:</span> <span class="pre">dist</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">dist</span></code></p></td>
+<td><p>Только <code class="docutils literal notranslate"><span class="pre">dist</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">using</span> <span class="pre">Points:</span> <span class="pre">dist</span> <span class="pre">as</span> <span class="pre">d</span></code></p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">d</span></code></p></td>
+<td><p>Только <code class="docutils literal notranslate"><span class="pre">d</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">Points</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">Points</span></code>, остальные через точку</p></td>
@@ -763,8 +779,8 @@ title="Print to PDF"
 <h2><span class="section-number">1.10.1. </span>Пример разработки модуля<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>Ниже показана разработка модуля в несколько этапов. В нём привычная структура <code class="docutils literal notranslate"><span class="pre">Point{T}</span></code>, а её интерфейс оборачивается в модуль. Затем, для примера, структура встраивается в существующую экосистему языка: можно скалярно умножать точки, складывать или умножать на скаляр.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="0a707391-277c-4811-a490-606d324475ab" name="41c21e00-8c35-405e-a2db-0c3ce2e96df2" type="radio">
-</input><label class="sd-tab-label" for="0a707391-277c-4811-a490-606d324475ab">
+<input checked="checked" id="a2dc8603-15e0-4fd1-ad52-8f56e8827e1e" name="562b363d-801e-4509-80e2-91f88ce2ac09" type="radio">
+</input><label class="sd-tab-label" for="a2dc8603-15e0-4fd1-ad52-8f56e8827e1e">
 Базовая разработка</label><div class="sd-tab-content docutils">
 <p><code class="file docutils literal notranslate"><span class="pre">Points.jl</span></code></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">Points</span><span class="w"></span>
@@ -792,8 +808,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="9582f96d-4747-48e9-880e-486ff3b8b8bf" name="41c21e00-8c35-405e-a2db-0c3ce2e96df2" type="radio">
-</input><label class="sd-tab-label" for="9582f96d-4747-48e9-880e-486ff3b8b8bf">
+<input id="fd5fc39a-df15-4a05-b44c-24c1f5374f04" name="562b363d-801e-4509-80e2-91f88ce2ac09" type="radio">
+</input><label class="sd-tab-label" for="fd5fc39a-df15-4a05-b44c-24c1f5374f04">
 Скалярное произведение</label><div class="sd-tab-content docutils">
 <p><code class="file docutils literal notranslate"><span class="pre">Points.jl</span></code></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">Points</span><span class="w"></span>
@@ -826,8 +842,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="f518a60f-4852-45b2-b04c-c67206ace0e5" name="41c21e00-8c35-405e-a2db-0c3ce2e96df2" type="radio">
-</input><label class="sd-tab-label" for="f518a60f-4852-45b2-b04c-c67206ace0e5">
+<input id="cf1c9c2f-f976-4cbd-8ea1-de5cbe98829a" name="562b363d-801e-4509-80e2-91f88ce2ac09" type="radio">
+</input><label class="sd-tab-label" for="cf1c9c2f-f976-4cbd-8ea1-de5cbe98829a">
 Линейные операции</label><div class="sd-tab-content docutils">
 <p><code class="file docutils literal notranslate"><span class="pre">Points.jl</span></code></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">Points</span><span class="w"></span>
@@ -868,9 +884,10 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-<section id="id3">
-<h3><span class="section-number">1.10.1.1. </span>Разбиение исходного файла<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
-<p>Функция <code class="docutils literal notranslate"><span class="pre">include(&quot;filename.jl&quot;)</span></code> вставляет содержимое <code class="file docutils literal notranslate"><span class="pre">filename.jl</span></code> в исходный код туда, где <code class="docutils literal notranslate"><span class="pre">include</span></code> был вызван.</p>
+<p><strong>Разбиение исходного кода на файлы</strong></p>
+<p>Когда исходный код разрастается, его разбивают на отдельные файлы.
+Для библиотеки кода в Julia типично наличие корневого файла, в котором объявлен модуль, зависимости от других библиотек и экспортируемые имена, а оставшийся код библиотеки подставлятся с помощью <code class="docutils literal notranslate"><span class="pre">include</span></code>.
+Весь код библиотеки помещают в директорию <code class="docutils literal notranslate"><span class="pre">src</span></code>, а корневой файл называют также, как и главный модуль библиотеки.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>От реальной структуры отличается только отстутсвием файла с зависимостями пакета.</p>
@@ -940,7 +957,6 @@ title="Print to PDF"
 </div>
 </div>
 </div>
-</section>
 </section>
 </section>
 
