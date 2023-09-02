@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>1.10. Модули &#8212; Практикум по вычислительной теплофизике</title>
+    <title>1.10. Модули и пакеты &#8212; Практикум по вычислительной теплофизике</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -179,7 +179,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     1.10. Модули
+     1.10. Модули и пакеты
     </a>
    </li>
    <li class="toctree-l2">
@@ -653,7 +653,19 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   1.10.1. Пример разработки модуля
+   1.10.1. Модули
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     1.10.1.1. Пример разработки модуля
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   1.10.2. Пакеты
   </a>
  </li>
 </ul>
@@ -665,7 +677,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Модули</h1>
+                <h1>Модули и пакеты</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -677,7 +689,19 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   1.10.1. Пример разработки модуля
+   1.10.1. Модули
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#id3">
+     1.10.1.1. Пример разработки модуля
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id4">
+   1.10.2. Пакеты
   </a>
  </li>
 </ul>
@@ -691,12 +715,15 @@ title="Print to PDF"
               <div>
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">1.10. </span>Модули<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">1.10. </span>Модули и пакеты<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<section id="id2">
+<h2><span class="section-number">1.10.1. </span>Модули<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Подробнее в секции мануала <a class="reference external" href="https://docs.julialang.org/en/v1/manual/modules/">Modules</a>.</p>
 </div>
-<p>В Julia можно разбивать исходный код программы на модули (<em>modules</em>). Модуль создаёт собственное пространство имён и может быть прекомпилирован.</p>
+<p>В Julia можно разбивать код программы на модули (<em>modules</em>).
+Модуль создаёт собственное пространство имён и может быть прекомпилирован.</p>
 <p>Основной синтаксис выглядит так.</p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">Points</span><span class="w"></span>
 
@@ -775,12 +802,12 @@ title="Print to PDF"
 </tr>
 </tbody>
 </table>
-<section id="id2">
-<h2><span class="section-number">1.10.1. </span>Пример разработки модуля<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<section id="id3">
+<h3><span class="section-number">1.10.1.1. </span>Пример разработки модуля<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <p>Ниже показана разработка модуля в несколько этапов. В нём привычная структура <code class="docutils literal notranslate"><span class="pre">Point{T}</span></code>, а её интерфейс оборачивается в модуль. Затем, для примера, структура встраивается в существующую экосистему языка: можно скалярно умножать точки, складывать или умножать на скаляр.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="a2dc8603-15e0-4fd1-ad52-8f56e8827e1e" name="562b363d-801e-4509-80e2-91f88ce2ac09" type="radio">
-</input><label class="sd-tab-label" for="a2dc8603-15e0-4fd1-ad52-8f56e8827e1e">
+<input checked="checked" id="68961c09-dc58-4786-aac2-6c79a4e47e74" name="7b9127ca-62aa-441d-a2a6-f6d0dec1d9df" type="radio">
+</input><label class="sd-tab-label" for="68961c09-dc58-4786-aac2-6c79a4e47e74">
 Базовая разработка</label><div class="sd-tab-content docutils">
 <p><code class="file docutils literal notranslate"><span class="pre">Points.jl</span></code></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">Points</span><span class="w"></span>
@@ -808,8 +835,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="fd5fc39a-df15-4a05-b44c-24c1f5374f04" name="562b363d-801e-4509-80e2-91f88ce2ac09" type="radio">
-</input><label class="sd-tab-label" for="fd5fc39a-df15-4a05-b44c-24c1f5374f04">
+<input id="92be4f6d-91b8-4f52-b520-92c90514ce38" name="7b9127ca-62aa-441d-a2a6-f6d0dec1d9df" type="radio">
+</input><label class="sd-tab-label" for="92be4f6d-91b8-4f52-b520-92c90514ce38">
 Скалярное произведение</label><div class="sd-tab-content docutils">
 <p><code class="file docutils literal notranslate"><span class="pre">Points.jl</span></code></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">Points</span><span class="w"></span>
@@ -842,8 +869,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="cf1c9c2f-f976-4cbd-8ea1-de5cbe98829a" name="562b363d-801e-4509-80e2-91f88ce2ac09" type="radio">
-</input><label class="sd-tab-label" for="cf1c9c2f-f976-4cbd-8ea1-de5cbe98829a">
+<input id="154a9aba-5401-49d6-89ab-911f3382f0db" name="7b9127ca-62aa-441d-a2a6-f6d0dec1d9df" type="radio">
+</input><label class="sd-tab-label" for="154a9aba-5401-49d6-89ab-911f3382f0db">
 Линейные операции</label><div class="sd-tab-content docutils">
 <p><code class="file docutils literal notranslate"><span class="pre">Points.jl</span></code></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">module</span><span class="w"> </span><span class="n">Points</span><span class="w"></span>
@@ -957,6 +984,48 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+</section>
+</section>
+<section id="id4">
+<h2><span class="section-number">1.10.2. </span>Пакеты<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
+<p>Пакет (<em>package</em>) это инструмент для распространения библиотеки кода среди пользователей.
+Пакет содержит саму библиотеку кода и метаинформацию о нём, необходимую для идентификации пакета в системе и корректной установки.
+Кроме того, пакет может содержать примеры применения и набор тестов.</p>
+<p>Пакеты в Julia создаются с помощью Pkg-mode в Julia REPL.
+Сам пакет представляет из себя git-репозиторий со следующей структурой</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AwesomeLibrary</span><span class="o">/</span>
+  <span class="n">src</span><span class="o">/</span>
+    <span class="n">AwesomeLibrary</span><span class="o">.</span><span class="n">jl</span>
+    <span class="o">...</span>
+  <span class="n">tests</span><span class="o">/</span>
+    <span class="o">...</span>
+  <span class="n">Project</span><span class="o">.</span><span class="n">toml</span>
+</pre></div>
+</div>
+<p>Непосредственный код библиотеки содержится в <code class="docutils literal notranslate"><span class="pre">src/</span></code> и имеет ту же структуру, которую мы рассмотрели в примере разработки модуля.
+В <code class="docutils literal notranslate"><span class="pre">tests/</span></code> содержится система тестирования кода библиотеки.
+В <code class="docutils literal notranslate"><span class="pre">Project.toml</span></code> содержится информация об авторе пакета, его уникальный номер, а также перечисление программных библиотек с версиями, которые необходимы для работы пакета (зависимостей).</p>
+<p>Пакеты можно разрабатывать и использовать локально.
+Это лучше всего делать в директории <code class="docutils literal notranslate"><span class="pre">~/.julia/dev/</span></code>.
+Также, если вы хотите внести изменения не в свой пакет, то для этого используется <code class="docutils literal notranslate"><span class="pre">]</span> <span class="pre">dev</span></code>, а исходный код появится в <code class="docutils literal notranslate"><span class="pre">~/.julia/dev/</span></code>.</p>
+<p>Для распространения пакеты публикуются на git-платформе, обычно на GitHub, например, <a class="reference external" href="https://github.com/JuliaData/DataFrames.jl">DataFrames.jl</a> или <a class="reference external" href="https://github.com/PainterQubits/Unitful.jl">Unitful.jl</a>.
+Кроме того, пакеты обычно регистрируются в реестре пакетов для удобства поиска пользователями.
+Реестр также является git-репозиторием и хранит информацию о всех зарегистрированных версиях пакетов.
+В REPL вы можете посмотреть добавленные реестры командой <code class="docutils literal notranslate"><span class="pre">]</span> <span class="pre">registry</span> <span class="pre">status</span></code>.
+Скорее всего, там окажется <code class="docutils literal notranslate"><span class="pre">General</span></code> реестр – официальный реестр пакетов для Julia.
+Можно искать пакеты в REPL, на github или на интернет-платформе, вроде <a class="reference external" href="https://juliapackages.com/">такой</a>.</p>
+<p>Зарегистрированные в реестре пакеты устанавливаются просто: <code class="docutils literal notranslate"><span class="pre">]</span> <span class="pre">add</span> <span class="pre">PackageName</span></code>, например, <code class="docutils literal notranslate"><span class="pre">]</span> <span class="pre">add</span> <span class="pre">DataFrames</span></code>.
+После этой команды Julia запросит информацию в реестрах о пакете <code class="docutils literal notranslate"><span class="pre">DataFrames</span></code>, найдёт его фактическое расположение, скачает и установит все зависимости.
+Список установленных пакетов в окружении можно узнать командой <code class="docutils literal notranslate"><span class="pre">]</span> <span class="pre">status</span></code>.</p>
+<p>В Julia пакеты имеют независимые окружения.
+Т.е. зависимости пакета изолированы от остальных окружений, в том числе от глобального.
+Это уменьшает количество конфликтов версий между используемыми библиотеками.</p>
+<p>Полная информация об окружении содержится в файле <code class="docutils literal notranslate"><span class="pre">Project.toml</span></code>.
+Если вы хотите поделиться кодом, который использует библиотеки, то можно вместе с ним передать <code class="docutils literal notranslate"><span class="pre">Project.toml</span></code> файл.
+Так поступают для Jupyter ноутбуков, а в Pluto.jl информация об окружении содержится внутри скрипта.</p>
+<p>В окружение также входит файл <code class="docutils literal notranslate"><span class="pre">Manifest.toml</span></code>, создаваемый автоматически.
+В нём содержится полная и точная информация о зависимостях пакета для вашего компьютера.
+Т.е. какая библиотека откуда берётся.</p>
 </section>
 </section>
 
