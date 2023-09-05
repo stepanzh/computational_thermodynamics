@@ -184,7 +184,7 @@ julia> maze_height
 
 ## Работа в ноутбуках
 
-Для Julia есть две опции работы в ноутбуках: Jupiter Notebook и Pluto.jl.
+Для Julia есть две опции работы в ноутбуках: Jupyter Notebook и Pluto.jl.
 Ноутбуки удобны для создания конспектов и экспериментирования.
 
 **Jupyter Notebook**
