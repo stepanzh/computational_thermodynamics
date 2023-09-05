@@ -179,7 +179,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="modules.html">
-     1.10. Модули
+     1.10. Модули и пакеты
     </a>
    </li>
    <li class="toctree-l2">
@@ -762,8 +762,8 @@ title="Print to PDF"
 Для прерывания команды используется стандартное сочетания <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">C</kbd></kbd>.</p>
 <p>Ниже показано, для чего каждый режим используется.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="156140f4-46bd-42d5-b12f-5479ab2db8ff" name="1e89c721-8057-4b32-b7cc-9b196efdc58f" type="radio">
-</input><label class="sd-tab-label" for="156140f4-46bd-42d5-b12f-5479ab2db8ff">
+<input checked="checked" id="e1ece960-6feb-4680-83a7-e080b98aa39e" name="3e18a8b2-93e5-49ee-b99c-3913cb7e018d" type="radio">
+</input><label class="sd-tab-label" for="e1ece960-6feb-4680-83a7-e080b98aa39e">
 Интерпретатор</label><div class="sd-tab-content docutils">
 <p>В нём вы можете исполнять команды языка и переходить в другие режимы. Prompt-сообщение <code class="docutils literal notranslate"><span class="pre">julia&gt;</span></code>.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Hello, world&quot;</span><span class="p">)</span><span class="w"></span>
@@ -773,8 +773,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="b64dfa8f-5c54-4cf2-be50-e2651d93f563" name="1e89c721-8057-4b32-b7cc-9b196efdc58f" type="radio">
-</input><label class="sd-tab-label" for="b64dfa8f-5c54-4cf2-be50-e2651d93f563">
+<input id="eaf82dc0-5ca7-4018-b3ce-17705ab88f5b" name="3e18a8b2-93e5-49ee-b99c-3913cb7e018d" type="radio">
+</input><label class="sd-tab-label" for="eaf82dc0-5ca7-4018-b3ce-17705ab88f5b">
 Помощь</label><div class="sd-tab-content docutils">
 <p>Здесь можно получить помощь и документацию к коду. Переход по нажатию <kbd class="kbd docutils literal notranslate">?</kbd>. Prompt-сообщение <code class="docutils literal notranslate"><span class="pre">help?&gt;</span></code>.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="o">?</span><span class="w"></span>
@@ -790,8 +790,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="9d93809a-189c-48c8-87f7-06404ee4153a" name="1e89c721-8057-4b32-b7cc-9b196efdc58f" type="radio">
-</input><label class="sd-tab-label" for="9d93809a-189c-48c8-87f7-06404ee4153a">
+<input id="26de425d-8f6d-49c9-84a0-8656e83d48a5" name="3e18a8b2-93e5-49ee-b99c-3913cb7e018d" type="radio">
+</input><label class="sd-tab-label" for="26de425d-8f6d-49c9-84a0-8656e83d48a5">
 Менеджер пакетов</label><div class="sd-tab-content docutils">
 <p>Посвящён работе c окружениями и сторонними пакетами <a class="footnote-reference brackets" href="#pkgenv" id="id3">1</a>.
 Команда перехода <kbd class="kbd docutils literal notranslate">]</kbd>.
@@ -805,8 +805,8 @@ Prompt-сообщение <code class="docutils literal notranslate"><span class
 </pre></div>
 </div>
 </div>
-<input id="d1980a00-edc1-4074-a683-79aa9ec316b4" name="1e89c721-8057-4b32-b7cc-9b196efdc58f" type="radio">
-</input><label class="sd-tab-label" for="d1980a00-edc1-4074-a683-79aa9ec316b4">
+<input id="b55bdda5-25d1-4029-b92d-a56179df0092" name="3e18a8b2-93e5-49ee-b99c-3913cb7e018d" type="radio">
+</input><label class="sd-tab-label" for="b55bdda5-25d1-4029-b92d-a56179df0092">
 Командная оболочка</label><div class="sd-tab-content docutils">
 <p>В этом режиме можно работать с командной оболочкой, не выходя из Julia REPL. Команда перехода <kbd class="kbd docutils literal notranslate">;</kbd>. Prompt-сообщение <code class="docutils literal notranslate"><span class="pre">shell&gt;</span></code>.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="p">;</span><span class="w"></span>
@@ -876,7 +876,7 @@ Prompt-сообщение <code class="docutils literal notranslate"><span class
 </section>
 <section id="id5">
 <h2><span class="section-number">1.2.3. </span>Работа в ноутбуках<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
-<p>Для Julia есть две опции работы в ноутбуках: Jupiter Notebook и Pluto.jl.
+<p>Для Julia есть две опции работы в ноутбуках: Jupyter Notebook и Pluto.jl.
 Ноутбуки удобны для создания конспектов и экспериментирования.</p>
 <p><strong>Jupyter Notebook</strong></p>
 <p>Для работы в Jupyter вам понадобится сама интерактивная среда <a class="reference external" href="https://jupyter.org/">Jupyter Notebook</a> и <a class="reference external" href="https://github.com/JuliaLang/IJulia.jl">IJulia.jl</a>.
