@@ -182,6 +182,28 @@ julia> maze_height
 10
 ```
 
+**Редакторы кода**
+
+На момент 2023 года не существует специализированных IDE (Integrated Development Environment) для языка Julia.
+В целом, в них нет потребности.
+
+:::{margin}
+https://survey.stackoverflow.co/2022#section-most-popular-technologies-integrated-development-environment
+:::
+Для данного курса вам достаточно редактора кода.
+Популярные редакторы: [Visual Studio Code](https://code.visualstudio.com/),
+[vim](https://www.vim.org/) (или его версии, например, [neovim](https://neovim.io/)),
+[Sublime Text](https://www.sublimetext.com/) и
+[Notepad++](https://notepad-plus-plus.org/).
+Если ранее вы не использовали редакторы, попробуйте Visual Studio Code.
+
+Перечисленные редакторы расширяемы, т.е. имеют механизмы для установки дополнительного функционала.
+В случае Julia стоит установить подсветку синтаксиса, если в редакторе этот язык не распознаётся.
+Расширения для многих редакторов есть [здесь](https://github.com/JuliaEditorSupport).
+Для других редакторов механизм установки собственный, например, для Visual Studio Code [плагин для Julia](https://code.visualstudio.com/docs/languages/julia) устанавливается из самого редактора.
+
+
+
 ## Работа в ноутбуках
 
 Для Julia есть две опции работы в ноутбуках: Jupyter Notebook и Pluto.jl.
