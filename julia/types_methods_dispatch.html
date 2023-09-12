@@ -179,7 +179,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="modules.html">
-     1.10. Модули
+     1.10. Модули и пакеты
     </a>
    </li>
    <li class="toctree-l2">
@@ -920,11 +920,14 @@ title="Print to PDF"
 </section>
 <section id="julia-composite">
 <span id="id4"></span><h3><span class="section-number">1.7.1.3. </span>Композитные типы<a class="headerlink" href="#julia-composite" title="Permalink to this headline">#</a></h3>
-<p><strong>Композитный</strong> тип имеет более сложную структуру в памяти, чем примитивный тип. Этот тип является набором именованных полей, а экземпляром такого типа можно манипулирвовать как одним значением. В других языках им соответствуют объекты (<em>objects</em>) или структуры (<em>structs</em>). Примерами встроенных композитых типов являются <code class="docutils literal notranslate"><span class="pre">Complex{T}</span></code>, <code class="docutils literal notranslate"><span class="pre">Rational{T}</span></code>, <code class="docutils literal notranslate"><span class="pre">Tuple</span></code>, <code class="docutils literal notranslate"><span class="pre">String</span></code>, <code class="docutils literal notranslate"><span class="pre">Array</span></code>, <code class="docutils literal notranslate"><span class="pre">IO</span></code>…</p>
-<p>Классический пример – структура для точки на плоскости.</p>
+<p><strong>Композитный</strong> тип имеет более сложную структуру в памяти, чем примитивный тип.
+Этот тип является набором именованных полей, а экземпляром такого типа можно манипулирвовать как одним значением.
+В других языках им соответствуют объекты (<em>objects</em>) или структуры (<em>structs</em>).
+Примерами встроенных композитых типов являются <code class="docutils literal notranslate"><span class="pre">Complex{T}</span></code>, <code class="docutils literal notranslate"><span class="pre">Rational{T}</span></code>, <code class="docutils literal notranslate"><span class="pre">Tuple</span></code>, <code class="docutils literal notranslate"><span class="pre">String</span></code>, <code class="docutils literal notranslate"><span class="pre">Array</span></code>, <code class="docutils literal notranslate"><span class="pre">IO</span></code>…</p>
+<p>Ниже показан пример композитного типа для точки на плоскости.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">struct</span> <span class="kt">Point</span><span class="w"></span>
-<span class="w">           </span><span class="n">x</span><span class="w"></span>
-<span class="w">           </span><span class="n">y</span><span class="o">::</span><span class="kt">Int64</span><span class="w">       </span><span class="c"># так указывается тип (можно и абстрактный)</span><span class="w"></span>
+<span class="w">           </span><span class="n">x</span><span class="w">        </span><span class="c"># то же, что и x::Any, т.е. поле может быть либого типа</span><span class="w"></span>
+<span class="w">           </span><span class="n">y</span><span class="o">::</span><span class="kt">Int</span><span class="w">   </span><span class="c"># так указывается тип (можно и абстрактный)</span><span class="w"></span>
 <span class="w">       </span><span class="k">end</span><span class="w"></span>
 
 <span class="gp">julia&gt;</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Point</span><span class="p">(</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">)</span><span class="w"></span>
@@ -941,7 +944,8 @@ title="Print to PDF"
 <span class="gr">...</span>
 </pre></div>
 </div>
-<p>Присвоение можно разрешить, сделав структуру изменяемой (<code class="docutils literal notranslate"><span class="pre">mutable</span></code>).</p>
+<p>По умолчанию, структуры в Julia неизменяемые.
+Перезапись поля можно разрешить, сделав структуру изменяемой (<code class="docutils literal notranslate"><span class="pre">mutable</span></code>).</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">mutable</span><span class="w"> </span><span class="k">struct</span> <span class="kt">MPoint</span><span class="w"></span>
 <span class="w">           </span><span class="n">x</span><span class="w"></span>
 <span class="w">           </span><span class="n">y</span><span class="w"></span>
@@ -957,9 +961,17 @@ title="Print to PDF"
 <span class="go">MPoint(10, 2)</span>
 </pre></div>
 </div>
-<p>Иногда это может приводить к замедлению работы, поскольку <code class="docutils literal notranslate"><span class="pre">mutable</span> <span class="pre">struct</span></code> выделяется в куче, а не на стеке.</p>
-<p>Тем не менее, в поле обычной структуры можно хранить значение изменяемого типа. В таком случае поле хранит <em>ссылку на изменяемый объект</em>. Объект поменять можно, а ссылку – нет. Например, так хранятся массивы внутри структур.</p>
-<p>Конструктор (<em>constructor</em>) <code class="docutils literal notranslate"><span class="pre">Point(x,</span> <span class="pre">y)</span></code> для композитного типа можно поменять. Более того, можно создать несколько конструкторов.</p>
+<p>Иногда это может приводить к замедлению работы, поскольку <code class="docutils literal notranslate"><span class="pre">mutable</span> <span class="pre">struct</span></code> (или её часть) выделяется в куче, а не на стеке.</p>
+<p>Тем не менее, в поле обычной структуры можно хранить значение изменяемого типа.
+В таком случае поле хранит <em>ссылку на изменяемый объект</em>.
+Объект поменять можно, а ссылку – нет.
+Например, так хранятся массивы внутри структур.</p>
+<p>Конструктор (<em>constructor</em>) <code class="docutils literal notranslate"><span class="pre">Point(x,</span> <span class="pre">y)</span></code> для композитного типа можно поменять или создать несколько.
+Конструкторы бывают внутренние (<em>inner constructor</em>) и внешние (<em>outer constructor</em>).
+Внутренние конструкторы объявляются внутри объявления структуры, и в этом случае конструктор по умолчанию теряется.
+Внешние конструкторы, по сути, функции для удобного создания экземпляров структур.
+Обычно такие функции имеют то же имя, что и тип.
+Такое возможно благодаря механизму методов, о которых говорится далее.</p>
 </section>
 <section id="id5">
 <h3><span class="section-number">1.7.1.4. </span>Параметрические композитные типы<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h3>
