@@ -11,3 +11,5 @@ help:
 	@echo '  help (default) : show this help message and exit'
 	@echo '  book           : build pages for the book'
 	@echo '  publish        : publish *already* built pages to github'
+
+.PHONY: book
