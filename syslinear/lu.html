@@ -181,7 +181,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../julia/modules.html">
-     1.10. Модули
+     1.10. Модули и пакеты
     </a>
    </li>
    <li class="toctree-l2">
@@ -760,10 +760,12 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="lu">
 <h1><span class="section-number">3.2. </span>LU-разложение<a class="headerlink" href="#lu" title="Permalink to this headline">#</a></h1>
-<p>На практике оказывается, что проще работать не с самой матрицей, а с представлением её в виде произведения нескольких матриц, которое называется разложением. В данном разделе выводится алгоритм решения системы уравнений, представляющий исходную матрицу в виде произведения <span class="math notranslate nohighlight">\(\mathbf{A}=\mathbf{L}\mathbf{U}\)</span> и, затем, пользующийся прямой и обратной подстановкой.</p>
+<p>На практике оказывается, что проще работать не с самой матрицей, а с представлением её в виде произведения нескольких матриц, которое называется разложением.
+В данном разделе выводится алгоритм решения системы уравнений, представляющий исходную матрицу в виде произведения <span class="math notranslate nohighlight">\(\mathbf{A}=\mathbf{L}\mathbf{U}\)</span>, после чего пользующийся прямой и обратной подстановкой.</p>
 <section id="id1">
 <h2><span class="section-number">3.2.1. </span>Внешнее произведение<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
-<p>Вывод алгоритма разложения основывается на внешнем произведении векторов (<em>outer product</em>). Для двух векторов <span class="math notranslate nohighlight">\(\mathbf{u} \in \real^m\)</span>, <span class="math notranslate nohighlight">\(\mathbf{v} \in \real^n\)</span> внешнее произведение является матрицей размера <span class="math notranslate nohighlight">\(m \times n\)</span></p>
+<p>Вывод алгоритма разложения основывается на внешнем произведении векторов (<em>outer product</em>).
+Для двух векторов <span class="math notranslate nohighlight">\(\mathbf{u} \in \real^m\)</span>, <span class="math notranslate nohighlight">\(\mathbf{v} \in \real^n\)</span> внешнее произведение является матрицей размера <span class="math notranslate nohighlight">\(m \times n\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\mathbf{u}\mathbf{v}^\top
 = \begin{bmatrix}
@@ -773,7 +775,7 @@ u_2 v_1 &amp; u_2 v_2 &amp; \cdots &amp; u_2 v_n \\
 u_m v_n &amp; u_m v_n &amp; \cdots &amp; u_m v_n
 \end{bmatrix}.\end{split}\]</div>
 <p>Другими словами, столбец <span class="math notranslate nohighlight">\(\mathbf{u}\)</span> умножается на строку <span class="math notranslate nohighlight">\(\mathbf{v}\)</span>.</p>
-<p>Произведение матриц <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B}\)</span> является суммой внешних произведений столбцов матрицы <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> на строки матрицы <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>, т.е.</p>
+<p>Произведение матриц <span class="math notranslate nohighlight">\(\mathbf{A}\mathbf{B}\)</span> является суммой внешних произведений столбцов <span class="math notranslate nohighlight">\(\mathbf{a}_{k}\)</span> матрицы <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> на строки <span class="math notranslate nohighlight">\(\mathbf{b}^{\top}_{k}\)</span> матрицы <span class="math notranslate nohighlight">\(\mathbf{B}\)</span>, т.е.</p>
 <div class="math notranslate nohighlight" id="equation-matrouterprod">
 <span class="eqno">(3.1)<a class="headerlink" href="#equation-matrouterprod" title="Permalink to this equation">#</a></span>\[\mathbf{A}\mathbf{B} = \sum_{k=1}^n \mathbf{a}_k \mathbf{b}_k^\top.\]</div>
 <p>Рассмотрим теперь произведение нижнетреугольной матрицы на верхнетреугольную <span class="math notranslate nohighlight">\(\mathbf{L}\mathbf{U}\)</span>.
@@ -833,8 +835,10 @@ u_m v_n &amp; u_m v_n &amp; \cdots &amp; u_m v_n
 <div class="math notranslate nohighlight">
 \[\mathbf{A}_2 = \mathbf{A} - \mathbf{l}_1 \mathbf{u}_1^\top
 = \sum_{k=2}^n \mathbf{l}_k \mathbf{u}_k^\top.\]</div>
-<p>Полученная матрица <span class="math notranslate nohighlight">\(\mathbf{A}_2\)</span> будет иметь нулевую первую строку и нулевой первый столбец.</p>
-<p>Таким образом, задача свелась к предыдущей, но, фактически, на квадратной матрице меньшего размера. Повторяя эту процедуру дальше, получим остальные строки и столбцы разложения. Ниже приведена схема вычислений и демонстрация на небольшой матрицы.</p>
+<p>Полученная матрица <span class="math notranslate nohighlight">\(\mathbf{A}_2\)</span> имеет нулевую первую строку и нулевой первый столбец.</p>
+<p>Таким образом, задача свелась к предыдущей, но, фактически, на квадратной матрице меньшего размера.
+Повторяя эту процедуру дальше, получим остальные строки и столбцы разложения.
+Ниже приведена схема вычислений и демонстрация на небольшой матрице.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  A₁ = A             A₂              A₃              A₄
 
 | □ □ □ □ |     | ⋅ ⋅ ⋅ ⋅ |     | ⋅ ⋅ ⋅ ⋅ |     | ⋅ ⋅ ⋅ ⋅ |
