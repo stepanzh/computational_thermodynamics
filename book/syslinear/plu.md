@@ -320,7 +320,7 @@ julia> F \ b - A \ b
  0.0
  0.0
 
-julia> norm(F.L * F.U - A[p, :])
+julia> norm(F.L * F.U - A[F.p, :])
 5.570606194861277e-16
 
 julia> F.p
