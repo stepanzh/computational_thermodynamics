@@ -15,22 +15,21 @@ $$
 Функция должны иметь следующую сигнатуру вызова
 
 ```julia
-function forwardsub(L, b) end
-function backwardsub(U, b) end
+function forwardsub(L::AbstractMatrix, b::AbstractVector) end
+function backwardsub(U::AbstractMatrix, b::AbstractVector) end
 ```
 
 а возвращать вектор из `Float64` чисел.
 
-Обратите внимание на
+Добавьте в функции несколько проверок
 
-1. Типы аргументов;
-2. Проверку на размерность;
-3. Проверку на треугольность системы;
-4. Проверку на вырожденность системы.
+1. На размерность --- матрица квадратная, размер матрицы системы и правой части корректны;
+2. На треугольность системы (см. [Julia/LinearAlgebra](https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/));
+3. На вырожденность системы.
 
 Дополнительно
 
-- Напишите doc-string к каждой из функций;
+- Напишите doc-string к каждой из функций (см. [Julia/Documentation](https://docs.julialang.org/en/v1/manual/documentation/));
 - Напишите версии функций, не аллоцирующих память под вектор-решение $x$, а принимающих вектор на запись ответа в качестве аргумента:
     + `forwardsub!(x, L, b)`,
     + `backwardsub!(x, U, b)`.
