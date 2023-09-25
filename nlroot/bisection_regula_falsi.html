@@ -181,7 +181,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../julia/modules.html">
-     1.10. Модули
+     1.10. Модули и пакеты
     </a>
    </li>
    <li class="toctree-l2">
@@ -772,6 +772,10 @@ title="Print to PDF"
 <div class="math notranslate nohighlight">
 \[|x_{k+1} - x_k| = \Delta_k &lt; \text{xtol},\quad k = 0, 1, 2, ...\]</div>
 <p>то получим необходимое число итераций</p>
+<aside class="margin sidebar">
+<p class="sidebar-title"></p>
+<p><span class="math notranslate nohighlight">\(\lceil \cdot \rceil\)</span> – округление до целого вверх (“потолок”), <span class="math notranslate nohighlight">\(\lceil 1.1 \rceil = \lceil 1.5 \rceil = \lceil 1.9 \rceil = 2\)</span>.</p>
+</aside>
 <div class="math notranslate nohighlight">
 \[k_\max = \Big\lceil \log_2\Big(\frac{\Delta_0}{\text{xtol}}\Big) \Big\rceil.\]</div>
 <p>Метод бисекции один из немногих, в которых известно наперёд число итераций, необходимое для достижения заданной точности.</p>
@@ -881,8 +885,8 @@ bisection(f, 0.5, 1.6; xtol = 1.0e-10) = 1.0000000000145521
 <span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="n">x₁</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">x₂</span><span class="p">;</span><span class="w"> </span><span class="n">x₁</span><span class="p">,</span><span class="w"> </span><span class="n">x₂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x₂</span><span class="p">,</span><span class="w"> </span><span class="n">x₁</span><span class="p">;</span><span class="w"> </span><span class="k">end</span><span class="w"></span>
 <span class="w">    </span><span class="n">y₁</span><span class="p">,</span><span class="w"> </span><span class="n">y₂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="o">.</span><span class="p">((</span><span class="n">x₁</span><span class="p">,</span><span class="w"> </span><span class="n">x₂</span><span class="p">))</span><span class="w"></span>
 <span class="w">    </span><span class="n">sign</span><span class="p">(</span><span class="n">y₁</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">sign</span><span class="p">(</span><span class="n">y₂</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">error</span><span class="p">(</span><span class="s">&quot;Функция должна иметь разные знаки в концах отрезка&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">abs</span><span class="p">(</span><span class="n">y₁</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x₁</span><span class="w"></span>
-<span class="w">    </span><span class="n">abs</span><span class="p">(</span><span class="n">y₂</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x₂</span><span class="w"></span>
+<span class="w">    </span><span class="n">abs</span><span class="p">(</span><span class="n">y₁</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ftol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x₁</span><span class="w"></span>
+<span class="w">    </span><span class="n">abs</span><span class="p">(</span><span class="n">y₂</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">ftol</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">x₂</span><span class="w"></span>
 <span class="w">    </span>
 <span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="n">maxiter</span><span class="w"></span>
 <span class="w">        </span><span class="n">y₂</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x₂</span><span class="p">)</span><span class="w"></span>

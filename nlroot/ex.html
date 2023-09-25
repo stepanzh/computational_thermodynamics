@@ -181,7 +181,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../julia/modules.html">
-     1.10. Модули
+     1.10. Модули и пакеты
     </a>
    </li>
    <li class="toctree-l2">
@@ -701,12 +701,17 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   6.6.1. Уравнение фазовых концентраций
+   6.6.1. Вычисление квадратного корня
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   6.6.2. Уравнение фазовых концентраций
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ex-vdw-binodal-lekner">
-   6.6.2. Бинодаль уравнения состояния ван дер Ваальса
+   6.6.3. Бинодаль уравнения состояния ван дер Ваальса
   </a>
  </li>
 </ul>
@@ -730,12 +735,17 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#id2">
-   6.6.1. Уравнение фазовых концентраций
+   6.6.1. Вычисление квадратного корня
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id3">
+   6.6.2. Уравнение фазовых концентраций
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#ex-vdw-binodal-lekner">
-   6.6.2. Бинодаль уравнения состояния ван дер Ваальса
+   6.6.3. Бинодаль уравнения состояния ван дер Ваальса
   </a>
  </li>
 </ul>
@@ -763,15 +773,20 @@ L_7(x) = \frac{1}{16}(429 x^7 - 693 x^5 + 315 x^3 - 35 x).
 ```
 -->
 <section id="id2">
-<h2><span class="section-number">6.6.1. </span>Уравнение фазовых концентраций<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
-<p>Уравнение фазовых концентраций (Rachford-Rice equation) используется для расчётов парожидкостного равновесия смеси веществ <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id16" title="А И Брусиловский. Фазовые превращения при разработке месторождений нефти и газа. ВИНИТИ РАН, Грааль, 2002. ISBN 5-94688-031-4.">02</a>]</span>. Уравнение выводится из массового баланса веществ в каждой фазе и представляет собой</p>
+<h2><span class="section-number">6.6.1. </span>Вычисление квадратного корня<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<p>Напишите функцию <code class="docutils literal notranslate"><span class="pre">mysqrt(x)</span></code>, вычисляющую квадратный корень <span class="math notranslate nohighlight">\(\sqrt{x}\)</span> для неотрицательного <span class="math notranslate nohighlight">\(x \ge 0\)</span>.
+Сравните невязку написанной вами функции со стандартной функцией <code class="docutils literal notranslate"><span class="pre">sqrt(x)</span></code> в диапазоне <code class="docutils literal notranslate"><span class="pre">range(0,</span> <span class="pre">10;</span> <span class="pre">step=0.1)</span></code>.</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">6.6.2. </span>Уравнение фазовых концентраций<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
+<p>Уравнение фазовых концентраций (Rachford-Rice equation) используется для расчётов парожидкостного равновесия смеси веществ <span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id16" title="А И Брусиловский. Фазовые превращения при разработке месторождений нефти и газа. ВИНИТИ РАН, Грааль, 2002. ISBN 5-94688-031-4.">02</a>]</span>. Уравнение выводится из массового баланса веществ в каждой фазе и представляет собой</p>
 <div class="math notranslate nohighlight">
 \[
-F(G) = \sum_{i} \frac{z_i (K_i - 1)}{G (K_i - 1) + 1} = 0,
+F(G) = \sum_{i} \frac{z_i \times (K_i - 1)}{G \times (K_i - 1) + 1} = 0,
 \]</div>
 <p>где <span class="math notranslate nohighlight">\(z_i\)</span> мольная доля <span class="math notranslate nohighlight">\(i\)</span>-го компонента в смеси, <span class="math notranslate nohighlight">\(K_i\)</span> константа равновесия <span class="math notranslate nohighlight">\(i\)</span>-го компонента (отношение мольной доли компонента в газе к его мольной доли в жидкости) и <span class="math notranslate nohighlight">\(G\)</span> мольная доля газа в двухфазном состоянии.</p>
 <p>Решение этого уравнения показывает мольную долю газа в двухфазном состоянии при соответствующем распределении компонентов по жидкой и газовой фазе.</p>
-<p>Можно показать <span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id16" title="А И Брусиловский. Фазовые превращения при разработке месторождений нефти и газа. ВИНИТИ РАН, Грааль, 2002. ISBN 5-94688-031-4.">02</a>]</span>, что решение уравнения стоит искать в интервале</p>
+<p>Можно показать <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id16" title="А И Брусиловский. Фазовые превращения при разработке месторождений нефти и газа. ВИНИТИ РАН, Грааль, 2002. ISBN 5-94688-031-4.">02</a>]</span>, что решение уравнения стоит искать в интервале</p>
 <div class="math notranslate nohighlight">
 \[
 1 / (1 - \max K_i) \quad \ldots \quad 1 / (1 - \min K_i).
@@ -779,14 +794,16 @@ F(G) = \sum_{i} \frac{z_i (K_i - 1)}{G (K_i - 1) + 1} = 0,
 <p>Этот интервал содержит в себе физические значения
 мольной доли газа <span class="math notranslate nohighlight">\(G\)</span>, а функция <span class="math notranslate nohighlight">\(F(G)\)</span> на нём убывает.</p>
 <p><strong>Задание</strong></p>
-<p>Напишите функцию <code class="docutils literal notranslate"><span class="pre">rachford_rice_solve(z,</span> <span class="pre">K)</span> <span class="pre">-&gt;</span> <span class="pre">G</span></code>, решающую уравнение фазовых концентраций. Постройте графики функции <span class="math notranslate nohighlight">\(F(G)\)</span> с нанесённым корнем <span class="math notranslate nohighlight">\(F(G) = 0\)</span> для случаев</p>
+<p>Напишите функцию <code class="docutils literal notranslate"><span class="pre">rachford_rice_solve(z,</span> <span class="pre">K)</span> <span class="pre">-&gt;</span> <span class="pre">G</span></code>, решающую уравнение фазовых концентраций.
+Постройте графики функции <span class="math notranslate nohighlight">\(F(G)\)</span> с нанесённым корнем <span class="math notranslate nohighlight">\(F(G) = 0\)</span> для случаев</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(z = [0.9, 0.1]\)</span>, <span class="math notranslate nohighlight">\(K = [1.5, 0.01]\)</span>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(z = [0.2463, 0.2208, 0.2208, 0.3121]\)</span>, <span class="math notranslate nohighlight">\(K = [40, 25, 0.6, 0.005]\)</span>.</p></li>
 </ul>
+<p>Для построения графиков воспользуйтесь пакетом <a class="reference external" href="https://docs.juliaplots.org/stable/">Plots.jl</a>.</p>
 </section>
 <section id="ex-vdw-binodal-lekner">
-<span id="id5"></span><h2><span class="section-number">6.6.2. </span>Бинодаль уравнения состояния ван дер Ваальса<a class="headerlink" href="#ex-vdw-binodal-lekner" title="Permalink to this headline">#</a></h2>
+<span id="id6"></span><h2><span class="section-number">6.6.3. </span>Бинодаль уравнения состояния ван дер Ваальса<a class="headerlink" href="#ex-vdw-binodal-lekner" title="Permalink to this headline">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>В этом задании вам предстоит найти область двухфазного равновесия для уравнения состояния ван дер Ваальса.</p>
@@ -817,10 +834,10 @@ F(G) = \sum_{i} \frac{z_i (K_i - 1)}{G (K_i - 1) + 1} = 0,
 <img alt="../_images/ex_2_0.svg" src="../_images/ex_2_0.svg" /></div>
 </div>
 <p>Рассмотрим подробнее изотерму для докритической температуры <span class="math notranslate nohighlight">\(T^* \in (0, T_c)\)</span>.</p>
-<figure class="align-default" id="id8">
+<figure class="align-default" id="id9">
 <a class="reference internal image-reference" href="../_images/vdw_isotherm.png"><img alt="../_images/vdw_isotherm.png" src="../_images/vdw_isotherm.png" style="height: 480px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Изотерма ван дер Ваальса при температуре ниже критической.</span><a class="headerlink" href="#id8" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Изотерма ван дер Ваальса при температуре ниже критической.</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Красный участок на изотерме соответствует запрещённым термодинамическим состояниям, поскольку <span class="math notranslate nohighlight">\(\partial P_r / \partial V_r &gt; 0\)</span>. Жёлтый участок изобары <span class="math notranslate nohighlight">\(P_X\)</span> соответствует давлению, при котором при данной температуре <span class="math notranslate nohighlight">\(T^*\)</span> жидкая и газовая фазы сосуществуют. При объёмах <span class="math notranslate nohighlight">\(V_r &lt; V_L\)</span> всё вещество находится в жидком состоянии, а при объёмах <span class="math notranslate nohighlight">\(V_r &gt; V_G\)</span> в газовом. Синий и зелёный участки изотермы соответствуют метастабильным состояниям.</p>
@@ -832,7 +849,7 @@ F(G) = \sum_{i} \frac{z_i (K_i - 1)}{G (K_i - 1) + 1} = 0,
 </figcaption>
 </figure>
 <p>Чтобы для данной температуры <span class="math notranslate nohighlight">\(T^*\)</span> определить равновесные объёмы <span class="math notranslate nohighlight">\(V_G\)</span>, <span class="math notranslate nohighlight">\(V_L\)</span> и давление <span class="math notranslate nohighlight">\(P_X\)</span>, требуется находить минимум потенциала Гельмгольца. Это требует решения нелинейной системы, но можно поступить иначе.</p>
-<p>Лекнером <span id="id6">[<a class="reference internal" href="../appendix/bibliography.html#id12" title="John Lekner. Parametric solution of the van der waals liquid–vapor coexistence curve. American Journal of Physics, 50(2):161-163, 1982. URL: https://doi.org/10.1119/1.12877, doi:10.1119/1.12877.">Lek82</a>]</span> предложена параметризация величин для двухфазного равновесия. В качестве параметра используется <span class="math notranslate nohighlight">\(y = \Delta s / 2\)</span>, где <span class="math notranslate nohighlight">\(\Delta s\)</span> представляет собой скачок энтропии на частицу между газовой и жидкой фазами в единицах <span class="math notranslate nohighlight">\(k_B\)</span>. Для параметризации используются функции <span class="math notranslate nohighlight">\(f(y)\)</span> и <span class="math notranslate nohighlight">\(g(y)\)</span></p>
+<p>Лекнером <span id="id7">[<a class="reference internal" href="../appendix/bibliography.html#id12" title="John Lekner. Parametric solution of the van der waals liquid–vapor coexistence curve. American Journal of Physics, 50(2):161-163, 1982. URL: https://doi.org/10.1119/1.12877, doi:10.1119/1.12877.">Lek82</a>]</span> предложена параметризация величин для двухфазного равновесия. В качестве параметра используется <span class="math notranslate nohighlight">\(y = \Delta s / 2\)</span>, где <span class="math notranslate nohighlight">\(\Delta s\)</span> представляет собой скачок энтропии на частицу между газовой и жидкой фазами в единицах <span class="math notranslate nohighlight">\(k_B\)</span>. Для параметризации используются функции <span class="math notranslate nohighlight">\(f(y)\)</span> и <span class="math notranslate nohighlight">\(g(y)\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 f(y) &amp;= \frac{y \cosh{y} - \sinh{y}}{\sinh{y}\cosh{y}-y},\\
@@ -849,7 +866,7 @@ P_X(y) &amp;= \frac{27 f^2(y)[1 - f^2(y)]}{g^2(y)}.\\
 <p>Ваша задача состоит в том, чтобы определить <span class="math notranslate nohighlight">\(V_L\)</span> и <span class="math notranslate nohighlight">\(V_G\)</span> для ряда температур <span class="math notranslate nohighlight">\(T_r \in [0.85, 1]\)</span> и соответствующих им давлений, получив таким образом границу фазового равновесия. Нанесите полученные точки <span class="math notranslate nohighlight">\((P_X, V_L)\)</span> и <span class="math notranslate nohighlight">\((P_X, V_G)\)</span> поверх изотерм, как на <a class="reference internal" href="#nlroot-vdw-task-answer"><span class="std std-numref">Рисунке 6.3</span></a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Подробную информацию об уравнении ван дер Ваальса можно получить из статьи <span id="id7">[<a class="reference internal" href="../appendix/bibliography.html#id13" title="David Johnston. Advances in thermodynamics of the van der waals fluid. arXiv, 2014. URL: https://arxiv.org/abs/1402.1205v1, doi:10.1088/978-1-627-05532-1.">Joh14</a>]</span>.</p>
+<p>Подробную информацию об уравнении ван дер Ваальса можно получить из статьи <span id="id8">[<a class="reference internal" href="../appendix/bibliography.html#id13" title="David Johnston. Advances in thermodynamics of the van der waals fluid. arXiv, 2014. URL: https://arxiv.org/abs/1402.1205v1, doi:10.1088/978-1-627-05532-1.">Joh14</a>]</span>.</p>
 </div>
 </section>
 </section>

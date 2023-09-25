@@ -181,7 +181,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../julia/modules.html">
-     1.10. Модули
+     1.10. Модули и пакеты
     </a>
    </li>
    <li class="toctree-l2">
@@ -680,7 +680,9 @@ r: |x^* - r| &lt; \text{xtol},
 \[
 r: |f(r)| &lt; \text{ftol}.
 \]</div>
-</div></div><p>Первое условие подходит для методов, пользующихся тем, что непрерывная функция, имеющая разные знаки на концах отрезка <span class="math notranslate nohighlight">\(f(a) f(b) &lt; 0\)</span> содержит корень <span class="math notranslate nohighlight">\(x^* \in [a, b]\)</span>. Второе условие подходит для остальных методов.</p>
+</div></div><p>Первое условие подходит для методов, пользующихся тем, что непрерывная функция, имеющая разные знаки на концах отрезка <span class="math notranslate nohighlight">\(f(a) f(b) &lt; 0\)</span> содержит корень <span class="math notranslate nohighlight">\(x^* \in [a, b]\)</span>.
+Второе условие подходит для остальных методов.
+Для некоторых методов подходит условие близости последних <em>приближений</em> решения.</p>
 <p>Для задачи поиска корня можно показать.</p>
 <div class="proof proof-type-proposition" id="id6">
 
@@ -690,7 +692,7 @@ r: |f(r)| &lt; \text{ftol}.
             <span class="proof-title-name">(Число обусловленности задачи поиска корня)</span>
         
     </div><div class="proof-content">
-<p><span id="id2">[<a class="reference internal" href="../appendix/bibliography.html#id4" title="Tobin A. Driscoll and Richard J. Braun. Fundamentals of numerical computation. Society for Industrial and Applied Mathematics, 2017. ISBN 978-1-61197-507-9. URL: https://tobydriscoll.net/project/fnc/.">ADJB17</a>]</span> Для дифференцируемой в корне <span class="math notranslate nohighlight">\(x^*\)</span> функции <span class="math notranslate nohighlight">\(f\)</span> число обусловленности задачи поиска корня <span class="math notranslate nohighlight">\(f(x) = 0\)</span> имеет вид</p>
+<p>Для дифференцируемой в корне <span class="math notranslate nohighlight">\(x^*\)</span> функции <span class="math notranslate nohighlight">\(f\)</span> число обусловленности задачи поиска корня <span class="math notranslate nohighlight">\(f(x) = 0\)</span> имеет вид <span id="id2">[<a class="reference internal" href="../appendix/bibliography.html#id4" title="Tobin A. Driscoll and Richard J. Braun. Fundamentals of numerical computation. Society for Industrial and Applied Mathematics, 2017. ISBN 978-1-61197-507-9. URL: https://tobydriscoll.net/project/fnc/.">ADJB17</a>]</span></p>
 <div class="math notranslate nohighlight">
 \[
 \kappa_r = |f'(r)|^{-1}.

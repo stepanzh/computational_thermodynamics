@@ -39,6 +39,9 @@ include("../src.jl")
 ```
 
 то получим необходимое число итераций
+```{margin}
+$\lceil \cdot \rceil$ -- округление до целого вверх ("потолок"), $\lceil 1.1 \rceil = \lceil 1.5 \rceil = \lceil 1.9 \rceil = 2$.
+```
 
 ```{math}
 k_\max = \Big\lceil \log_2\Big(\frac{\Delta_0}{\text{xtol}}\Big) \Big\rceil.
@@ -134,8 +137,8 @@ function regulafalsi(f, x₁, x₂; maxiter=25, xtol=eps(), ftol=eps())
     if x₁ > x₂; x₁, x₂ = x₂, x₁; end
     y₁, y₂ = f.((x₁, x₂))
     sign(y₁) == sign(y₂) && error("Функция должна иметь разные знаки в концах отрезка")
-    abs(y₁) < 0 && return x₁
-    abs(y₂) < 0 && return x₂
+    abs(y₁) < ftol && return x₁
+    abs(y₂) < ftol && return x₂
     
     for i in 1:maxiter
         y₂ = f(x₂)
