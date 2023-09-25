@@ -92,9 +92,9 @@ x_3 = x_1 + \sign(f(x_0))\frac{f(x_1)d}{\sqrt{W}}.
 function ridders(f, x₁, x₂; maxiter=25, xtol=eps(), ftol=eps())
     if x₁ > x₂; x₁, x₂ = x₂, x₁; end
     y₁, y₂ = f.((x₁, x₂))
-    y₁ * y₂ > 0 && error("Функция должна иметь разные знаки в концах отрезка")
-    y₁ == 0 && return x₁
-    y₂ == 0 && return x₂
+    sign(y₁) == sign(y₂) && error("Функция должна иметь разные знаки в концах отрезка")
+    abs(y₁) < ftol && return x₁
+    abs(y₂) < ftol && return x₂
     
     for i in 1:maxiter
         xmid = (x₁ + x₂) / 2
