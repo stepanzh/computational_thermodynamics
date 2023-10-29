@@ -54,6 +54,6 @@
 
 ### Вам также понадобится
 
-- Julia-пакет, который мы разбирали на занятиях: https://github.com/stepanzh/CTPTSolvers.jl;
+- Julia-пакет, который мы разбирали на занятиях;
 - Критические точки веществ: http://imartinez.etsiae.upm.es/~isidoro/dat1/eGAS.pdf;
 - Параметры УрС Ван дер Ваальса веществ: https://en.wikipedia.org/wiki/Van_der_Waals_constants_(data_page).
