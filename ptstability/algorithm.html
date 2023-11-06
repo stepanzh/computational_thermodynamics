@@ -181,7 +181,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../julia/modules.html">
-     1.10. Модули
+     1.10. Модули и пакеты
     </a>
    </li>
    <li class="toctree-l2">
@@ -450,13 +450,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/cholesky.html">
-   Разложение Холецкого
+  <a class="reference internal" href="../appendix/materials.html">
+   Дополнительные материалы
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/materials.html">
-   Дополнительные материалы
+  <a class="reference internal" href="../appendix/solvecubic.html">
+   Решение кубического уравнения
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/cholesky.html">
+   Разложение Холецкого
   </a>
  </li>
 </ul>
@@ -792,7 +797,7 @@ x_2            &amp;  \cos x_2 + x_1
 <p>Сходимость метода Ньютона чувствительна к точности начального приближения. Практика показывает, что, при нахождении начального приближения далеко от решения, метод может не сойтись.</p>
 <p>Чтобы увеличить отказоустойчивость (робастность, англ. <em>robust</em>) алгоритма, будем искать решение в два этапа. На первом этапе найдём грубое решение системы методом простой итерации с исходным начальным приближением. Соответствующая система на неподвижную точку (сравните с <a class="reference internal" href="problem.html#equation-ptstab-chempot-stationary-system-final">(6)</a>) имеет вид</p>
 <div class="math notranslate nohighlight" id="equation-ptstab-chempot-stationary-system-ssi">
-<span class="eqno">(15)<a class="headerlink" href="#equation-ptstab-chempot-stationary-system-ssi" title="Permalink to this equation">#</a></span>\[\ln{X_i^{k+1}} = h_i - \ln{\varphi_i(X^k_i)},\quad i=1,\dots,n.\]</div>
+<span class="eqno">(15)<a class="headerlink" href="#equation-ptstab-chempot-stationary-system-ssi" title="Permalink to this equation">#</a></span>\[\ln{X_i^{k+1}} = h_i - \ln{\varphi_i(\boldsymbol{x}(\boldsymbol{X}^k))},\quad i=1,\dots,n.\]</div>
 <p>В этой системе вектор неизвестных – <span class="math notranslate nohighlight">\([\ln{X_1}, \dots, \ln{X_n}]^\top\)</span>.</p>
 <p>Бывают разные критерии остановки при поиске грубого решения. Обычно, даже если норма грубого решения системы превышает заданную точность, уточняющий второй этап всё равно проводят. Иногда норму решения не проверяют, производя несколько простых итераций.</p>
 <p>На втором этапе воспользуемся методом Ньютона для уточнения решения, в качестве начального приближения возьмём грубое решение задачи.</p>

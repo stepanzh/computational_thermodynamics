@@ -181,7 +181,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../julia/modules.html">
-     1.10. Модули
+     1.10. Модули и пакеты
     </a>
    </li>
    <li class="toctree-l2">
@@ -450,13 +450,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/cholesky.html">
-   Разложение Холецкого
+  <a class="reference internal" href="../appendix/materials.html">
+   Дополнительные материалы
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/materials.html">
-   Дополнительные материалы
+  <a class="reference internal" href="../appendix/solvecubic.html">
+   Решение кубического уравнения
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/cholesky.html">
+   Разложение Холецкого
   </a>
  </li>
 </ul>
@@ -767,7 +772,9 @@ title="Print to PDF"
 <div class="math notranslate nohighlight" id="equation-ptstab-vdw-eos-cubic-z">
 <span class="eqno">(14)<a class="headerlink" href="#equation-ptstab-vdw-eos-cubic-z" title="Permalink to this equation">#</a></span>\[z^3 + (- B - 1) z^2 + A z - A B = 0,\]</div>
 <p>где коэффициенты <span class="math notranslate nohighlight">\(A\)</span> и <span class="math notranslate nohighlight">\(B\)</span> определены ранее <a class="reference internal" href="#equation-ptstab-fugacity-coef-vdw-coefficients">(13)</a>. Из-за вида уравнения <a class="reference internal" href="#equation-ptstab-vdw-eos-cubic-z">(14)</a> уравнение состояния ван дер Ваальса относят к кубическому семейству.</p>
-<p>Уравнение на сжимаемость <a class="reference internal" href="#equation-ptstab-vdw-eos-cubic-z">(14)</a> может иметь до двух различных действительных корней. Меньший из них соотвествует жидкой (плотной) фазе, а больший корень – газовой (менее плотной) фазе.</p>
+<p>Уравнение на сжимаемость <a class="reference internal" href="#equation-ptstab-vdw-eos-cubic-z">(14)</a> может иметь до двух различных действительных корней.
+Меньший из них соотвествует жидкой (плотной) фазе, а больший корень — газовой (менее плотной) фазе.</p>
+<p>Для решения кубического уравнения воспользуйтесь функцией из Приложения <a class="reference internal" href="../appendix/solvecubic.html#appendix-solvecubic"><span class="std std-ref">Решение кубического уравнения</span></a>.</p>
 </section>
 <section id="id7">
 <h2>Вычисление коэффициента летучести<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h2>

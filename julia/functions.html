@@ -179,7 +179,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="modules.html">
-     1.10. Модули
+     1.10. Модули и пакеты
     </a>
    </li>
    <li class="toctree-l2">
@@ -448,13 +448,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/cholesky.html">
-   Разложение Холецкого
+  <a class="reference internal" href="../appendix/materials.html">
+   Дополнительные материалы
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/materials.html">
-   Дополнительные материалы
+  <a class="reference internal" href="../appendix/solvecubic.html">
+   Решение кубического уравнения
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/cholesky.html">
+   Разложение Холецкого
   </a>
  </li>
 </ul>
@@ -903,8 +908,8 @@ title="Print to PDF"
 <section id="id2">
 <h2><span class="section-number">1.6.1. </span>Упражнения<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="20509f44-37be-4cdd-8361-1b3f7d65d11e" name="7cca6553-ce25-4f09-b0f3-b93fb2e80414" type="radio">
-</input><label class="sd-tab-label" for="20509f44-37be-4cdd-8361-1b3f7d65d11e">
+<input checked="checked" id="6998ea4a-f0a9-4500-9d2b-a151eb4f24ed" name="a487c736-096a-4f09-8062-76a410fc40a7" type="radio">
+</input><label class="sd-tab-label" for="6998ea4a-f0a9-4500-9d2b-a151eb4f24ed">
 Проверьте себя</label><div class="sd-tab-content docutils">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">z</span><span class="o">...</span><span class="p">;</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="o">...</span><span class="p">)</span><span class="w"></span>
 <span class="w">    </span><span class="n">answer</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">...</span><span class="w"></span>
@@ -920,33 +925,33 @@ title="Print to PDF"
 <li><p>Является ли коллекцией аргументов при вызове</p></li>
 </ul>
 </div>
-<input id="e97e1db5-c3b3-443f-b849-8ef7ee627e82" name="7cca6553-ce25-4f09-b0f3-b93fb2e80414" type="radio">
-</input><label class="sd-tab-label" for="e97e1db5-c3b3-443f-b849-8ef7ee627e82">
+<input id="a666c9c7-ff77-4ac2-9bad-0ed040bc9fa1" name="a487c736-096a-4f09-8062-76a410fc40a7" type="radio">
+</input><label class="sd-tab-label" for="a666c9c7-ff77-4ac2-9bad-0ed040bc9fa1">
 x</label><div class="sd-tab-content docutils">
 <p>Позиционный; обязательный.</p>
 </div>
-<input id="ee35fb94-ff07-4b78-b98e-ea29a5634e5e" name="7cca6553-ce25-4f09-b0f3-b93fb2e80414" type="radio">
-</input><label class="sd-tab-label" for="ee35fb94-ff07-4b78-b98e-ea29a5634e5e">
+<input id="da23ee56-265a-46d0-b75e-ff9ef05a8a8b" name="a487c736-096a-4f09-8062-76a410fc40a7" type="radio">
+</input><label class="sd-tab-label" for="da23ee56-265a-46d0-b75e-ff9ef05a8a8b">
 y</label><div class="sd-tab-content docutils">
 <p>Позиционный; необязательный, поскольку имеет значение по умолчанию.</p>
 </div>
-<input id="fbef4392-7695-4342-a605-91725cb5da53" name="7cca6553-ce25-4f09-b0f3-b93fb2e80414" type="radio">
-</input><label class="sd-tab-label" for="fbef4392-7695-4342-a605-91725cb5da53">
+<input id="568e82cb-4e94-48b5-ae82-8ab3b7391138" name="a487c736-096a-4f09-8062-76a410fc40a7" type="radio">
+</input><label class="sd-tab-label" for="568e82cb-4e94-48b5-ae82-8ab3b7391138">
 z</label><div class="sd-tab-content docutils">
 <p>Содержит все позиционные аргументы, за исключением <code class="docutils literal notranslate"><span class="pre">x</span></code> и <code class="docutils literal notranslate"><span class="pre">y</span></code>; необязательный.</p>
 </div>
-<input id="8b2a7ea9-a3c8-4c92-ad7f-ac4178cde288" name="7cca6553-ce25-4f09-b0f3-b93fb2e80414" type="radio">
-</input><label class="sd-tab-label" for="8b2a7ea9-a3c8-4c92-ad7f-ac4178cde288">
+<input id="8e4fb5a2-669d-44a1-9a26-5213fd8691fc" name="a487c736-096a-4f09-8062-76a410fc40a7" type="radio">
+</input><label class="sd-tab-label" for="8e4fb5a2-669d-44a1-9a26-5213fd8691fc">
 a</label><div class="sd-tab-content docutils">
 <p>По ключу; необязательный, поскольку имеет значение по умолчанию.</p>
 </div>
-<input id="3472d3e7-c33a-48d3-9958-b2777cff531e" name="7cca6553-ce25-4f09-b0f3-b93fb2e80414" type="radio">
-</input><label class="sd-tab-label" for="3472d3e7-c33a-48d3-9958-b2777cff531e">
+<input id="858fa4fb-5fce-47e4-a8d1-07872628803d" name="a487c736-096a-4f09-8062-76a410fc40a7" type="radio">
+</input><label class="sd-tab-label" for="858fa4fb-5fce-47e4-a8d1-07872628803d">
 b</label><div class="sd-tab-content docutils">
 <p>По ключу; обязательный.</p>
 </div>
-<input id="9f04e6f6-9596-45ba-9f8b-eb547ea9a909" name="7cca6553-ce25-4f09-b0f3-b93fb2e80414" type="radio">
-</input><label class="sd-tab-label" for="9f04e6f6-9596-45ba-9f8b-eb547ea9a909">
+<input id="68d0be8b-946f-46f8-aa68-23dd6b2cdad9" name="a487c736-096a-4f09-8062-76a410fc40a7" type="radio">
+</input><label class="sd-tab-label" for="68d0be8b-946f-46f8-aa68-23dd6b2cdad9">
 c</label><div class="sd-tab-content docutils">
 <p>Содержит все аргументы по ключу, за исключением <code class="docutils literal notranslate"><span class="pre">a</span></code> и <code class="docutils literal notranslate"><span class="pre">b</span></code>; необязательный.</p>
 </div>

@@ -179,7 +179,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="modules.html">
-     1.10. Модули
+     1.10. Модули и пакеты
     </a>
    </li>
    <li class="toctree-l2">
@@ -448,13 +448,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/cholesky.html">
-   Разложение Холецкого
+  <a class="reference internal" href="../appendix/materials.html">
+   Дополнительные материалы
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/materials.html">
-   Дополнительные материалы
+  <a class="reference internal" href="../appendix/solvecubic.html">
+   Решение кубического уравнения
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/cholesky.html">
+   Разложение Холецкого
   </a>
  </li>
 </ul>
@@ -805,8 +810,8 @@ title="Print to PDF"
 <p>Для циклов доступны стандартные команды досрочного завершения итерации <code class="docutils literal notranslate"><span class="pre">continue</span></code> и всего цикла <code class="docutils literal notranslate"><span class="pre">break</span></code>.</p>
 <p>Циклы могут быть вложенными. Для вложенного <code class="docutils literal notranslate"><span class="pre">for</span></code>-цикла существует альтернативный вариант синтаксиса.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="c760df0a-eb59-4d71-8914-448bced22a7a" name="7462d76d-2106-4e93-a5ec-d781dd398993" type="radio">
-</input><label class="sd-tab-label" for="c760df0a-eb59-4d71-8914-448bced22a7a">
+<input checked="checked" id="e1c66de4-390b-4932-932e-646d43db8d92" name="ff1a9264-4d7c-4c42-9b74-ed7d12265576" type="radio">
+</input><label class="sd-tab-label" for="e1c66de4-390b-4932-932e-646d43db8d92">
 Вложенный <code class="docutils literal notranslate"><span class="pre">for</span></code></label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="w"></span>
 <span class="w">           </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">3</span><span class="o">:</span><span class="mi">4</span><span class="w"></span>
@@ -820,8 +825,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="eccd8d1d-3c0a-49a6-b041-8dc927bd28bc" name="7462d76d-2106-4e93-a5ec-d781dd398993" type="radio">
-</input><label class="sd-tab-label" for="eccd8d1d-3c0a-49a6-b041-8dc927bd28bc">
+<input id="b11e8dda-0e82-460d-83de-0ed566fffe5b" name="ff1a9264-4d7c-4c42-9b74-ed7d12265576" type="radio">
+</input><label class="sd-tab-label" for="b11e8dda-0e82-460d-83de-0ed566fffe5b">
 Альтернативный синтаксис</label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">j</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">3</span><span class="o">:</span><span class="mi">4</span><span class="w"></span>
 <span class="w">           </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;i = </span><span class="si">$i</span><span class="s">, j = </span><span class="si">$j</span><span class="s">&quot;</span><span class="p">)</span><span class="w"></span>

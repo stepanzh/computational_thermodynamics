@@ -450,13 +450,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/cholesky.html">
-   Разложение Холецкого
+  <a class="reference internal" href="../appendix/materials.html">
+   Дополнительные материалы
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/materials.html">
-   Дополнительные материалы
+  <a class="reference internal" href="../appendix/solvecubic.html">
+   Решение кубического уравнения
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/cholesky.html">
+   Разложение Холецкого
   </a>
  </li>
 </ul>
@@ -749,8 +754,8 @@ title="Print to PDF"
 <p>Для создания массива через литерал используется вертикальная и горизонтальная <em>конкатенация</em>.</p>
 <p>Для <strong>вертикальной конкатенации</strong> используется <code class="docutils literal notranslate"><span class="pre">;</span></code> или новая строка.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="8a2b97d8-a1d8-4fe4-9c6b-1cab8f015ebb" name="c8132cc7-42de-4fd7-bbcd-4e82bc5aa631" type="radio">
-</input><label class="sd-tab-label" for="8a2b97d8-a1d8-4fe4-9c6b-1cab8f015ebb">
+<input checked="checked" id="03f47843-bef5-4feb-9bd2-046d6bab0ff9" name="7dc78a8f-3099-427d-a2ee-452bab159c73" type="radio">
+</input><label class="sd-tab-label" for="03f47843-bef5-4feb-9bd2-046d6bab0ff9">
 Вектор из скаляров</label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">]</span><span class="w"></span>
 <span class="go">3-element Vector{Int64}:</span>
@@ -760,8 +765,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="8f0bfd8e-2f4c-4eea-939f-cfb6d6e13b1d" name="c8132cc7-42de-4fd7-bbcd-4e82bc5aa631" type="radio">
-</input><label class="sd-tab-label" for="8f0bfd8e-2f4c-4eea-939f-cfb6d6e13b1d">
+<input id="e11f0d91-03c8-40db-8496-0bb6cfb07628" name="7dc78a8f-3099-427d-a2ee-452bab159c73" type="radio">
+</input><label class="sd-tab-label" for="e11f0d91-03c8-40db-8496-0bb6cfb07628">
 Вертикальная конкатенация</label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="p">];</span><span class="w"> </span><span class="p">[</span><span class="mi">7</span><span class="p">,</span><span class="w"> </span><span class="mi">8</span><span class="p">]]</span><span class="w"></span>
 <span class="go">5-element Vector{Int64}:</span>
@@ -776,8 +781,8 @@ title="Print to PDF"
 </div>
 <p>Для <strong>горизонтальной конкатенации</strong> используется пробел <code class="docutils literal notranslate"> </code> или табуляция. Запятая <code class="docutils literal notranslate"><span class="pre">,</span></code> означает отсутствие конкатенации.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="ce2f6b0a-c94d-45d4-afaa-26f7916ce039" name="57a37b0c-56a7-4174-9488-459cc8ea1ec0" type="radio">
-</input><label class="sd-tab-label" for="ce2f6b0a-c94d-45d4-afaa-26f7916ce039">
+<input checked="checked" id="9e80b4b9-cc8a-4792-8267-93c35917bc1f" name="712d1b76-53a7-4f84-8515-f2c8dd7f0fcd" type="radio">
+</input><label class="sd-tab-label" for="9e80b4b9-cc8a-4792-8267-93c35917bc1f">
 Вектор-строка</label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="mi">4</span><span class="p">]</span><span class="w"></span>
 <span class="go">1×4 Matrix{Int64}:</span>
@@ -785,8 +790,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="2ff491cd-0ea0-43f9-b44d-573fdcf26210" name="57a37b0c-56a7-4174-9488-459cc8ea1ec0" type="radio">
-</input><label class="sd-tab-label" for="2ff491cd-0ea0-43f9-b44d-573fdcf26210">
+<input id="be02bf13-1b9d-459d-82a0-46785bd0942d" name="712d1b76-53a7-4f84-8515-f2c8dd7f0fcd" type="radio">
+</input><label class="sd-tab-label" for="be02bf13-1b9d-459d-82a0-46785bd0942d">
 Горизонтальная конкатенация</label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">]]</span><span class="w"></span>
 <span class="go">2×2 Matrix{Int64}:</span>
@@ -880,8 +885,8 @@ A &amp; I \\ \hline
 </pre></div>
 </div>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="3739fc88-4f2d-4b06-bb53-b326e4d5d64a" name="ba9042c7-d545-412d-861e-c6e97dbe4ae3" type="radio">
-</input><label class="sd-tab-label" for="3739fc88-4f2d-4b06-bb53-b326e4d5d64a">
+<input checked="checked" id="7ebf878c-e9b8-4731-84c3-ef4bddaba169" name="1a7595de-127e-43b9-b7ee-10a5ccbb5c54" type="radio">
+</input><label class="sd-tab-label" for="7ebf878c-e9b8-4731-84c3-ef4bddaba169">
 Один элемент</label><div class="sd-tab-content docutils">
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="w">     </span><span class="c"># линейный индекс</span><span class="w"></span>
 <span class="go">8</span>
@@ -894,8 +899,8 @@ A &amp; I \\ \hline
 </pre></div>
 </div>
 </div>
-<input id="e5b3fa96-7974-4f72-9beb-cd6799fb09a6" name="ba9042c7-d545-412d-861e-c6e97dbe4ae3" type="radio">
-</input><label class="sd-tab-label" for="e5b3fa96-7974-4f72-9beb-cd6799fb09a6">
+<input id="27acf7b0-c0f5-4ca9-9be6-6e2b78d9f526" name="1a7595de-127e-43b9-b7ee-10a5ccbb5c54" type="radio">
+</input><label class="sd-tab-label" for="27acf7b0-c0f5-4ca9-9be6-6e2b78d9f526">
 Целая строка/столбец</label><div class="sd-tab-content docutils">
 <p>Строка.</p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">julia</span><span class="o">&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="o">:</span><span class="p">]</span><span class="w">  </span><span class="c"># A[строка 1, все столбцы]</span><span class="w"></span>
@@ -914,8 +919,8 @@ A &amp; I \\ \hline
 </pre></div>
 </div>
 </div>
-<input id="f323c530-74d3-4074-80f0-42442947a923" name="ba9042c7-d545-412d-861e-c6e97dbe4ae3" type="radio">
-</input><label class="sd-tab-label" for="f323c530-74d3-4074-80f0-42442947a923">
+<input id="18411e02-6861-40ec-bd99-eabd06a65025" name="1a7595de-127e-43b9-b7ee-10a5ccbb5c54" type="radio">
+</input><label class="sd-tab-label" for="18411e02-6861-40ec-bd99-eabd06a65025">
 Подматрица</label><div class="sd-tab-content docutils">
 <p>“Пересечение” строк 1 и 2 со столбцами 2 и 3.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="o">:</span><span class="mi">3</span><span class="p">]</span><span class="w"></span>
@@ -932,8 +937,8 @@ A &amp; I \\ \hline
 </pre></div>
 </div>
 </div>
-<input id="d0cb3e16-9bdb-4cb9-9229-248d7e7283fe" name="ba9042c7-d545-412d-861e-c6e97dbe4ae3" type="radio">
-</input><label class="sd-tab-label" for="d0cb3e16-9bdb-4cb9-9229-248d7e7283fe">
+<input id="7d6728ca-d610-4c3d-a72a-82c797177671" name="1a7595de-127e-43b9-b7ee-10a5ccbb5c54" type="radio">
+</input><label class="sd-tab-label" for="7d6728ca-d610-4c3d-a72a-82c797177671">
 Диагонали</label><div class="sd-tab-content docutils">
 <p>Главная диагональ.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">4</span><span class="o">:</span><span class="k">end</span><span class="p">]</span><span class="w"></span>

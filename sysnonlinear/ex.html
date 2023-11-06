@@ -181,7 +181,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../julia/modules.html">
-     1.10. Модули
+     1.10. Модули и пакеты
     </a>
    </li>
    <li class="toctree-l2">
@@ -450,13 +450,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/cholesky.html">
-   Разложение Холецкого
+  <a class="reference internal" href="../appendix/materials.html">
+   Дополнительные материалы
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/materials.html">
-   Дополнительные материалы
+  <a class="reference internal" href="../appendix/solvecubic.html">
+   Решение кубического уравнения
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/cholesky.html">
+   Разложение Холецкого
   </a>
  </li>
 </ul>
@@ -696,14 +701,14 @@ title="Print to PDF"
 <h1><span class="section-number">7.3. </span>Задания<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <section id="id2">
 <h2><span class="section-number">7.3.1. </span>Фазовое равновесие уравнения ван дер Ваальса<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
-<p>В этом задании вам необходимо найти двухфазное равновесие вещества, описываемое уравнением ван дер Ваальса. В отличие от <a class="reference internal" href="../nlroot/ex.html#ex-vdw-binodal-lekner"><span class="std std-numref">Задания 6.6.2</span></a>, расчёт производится из первых принципов.</p>
+<p>В этом задании вам необходимо найти двухфазное равновесие вещества, описываемое уравнением ван дер Ваальса. В отличие от <a class="reference internal" href="../nlroot/ex.html#ex-vdw-binodal-lekner"><span class="std std-numref">Задания 6.6.3</span></a>, расчёт производится из первых принципов.</p>
 <p>Фазовое равновесие определяется минимумом потенциала Гельмгольца. Воспользуемся <em>необходимыми</em> (но не достаточными) условиями минимума: равенством давлений <span class="math notranslate nohighlight">\(P_r\)</span> и химических потенциалов <span class="math notranslate nohighlight">\(\mu\)</span></p>
 <div class="math notranslate nohighlight" id="equation-sysnonlinear-task-vdw-equilibrium">
 <span class="eqno">(7.8)<a class="headerlink" href="#equation-sysnonlinear-task-vdw-equilibrium" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{split}
 P_r(V_G, T_r) &amp;= P_r(V_L, T_r),\\
 \mu(V_G, T_r) &amp;= \mu(V_L, T_r),
 \end{split}\end{split}\]</div>
-<p>где <span class="math notranslate nohighlight">\(V_G\)</span> и <span class="math notranslate nohighlight">\(V_L\)</span> приведённые объёмы, определённые в <a class="reference internal" href="../nlroot/ex.html#ex-vdw-binodal-lekner"><span class="std std-numref">Задании 6.6.2</span></a>. Таким образом, система <a class="reference internal" href="#equation-sysnonlinear-task-vdw-equilibrium">(7.8)</a> может быть решена относительно <span class="math notranslate nohighlight">\(V_G\)</span> и <span class="math notranslate nohighlight">\(V_L\)</span> для заданной температуры <span class="math notranslate nohighlight">\(T_r\)</span>.</p>
+<p>где <span class="math notranslate nohighlight">\(V_G\)</span> и <span class="math notranslate nohighlight">\(V_L\)</span> приведённые объёмы, определённые в <a class="reference internal" href="../nlroot/ex.html#ex-vdw-binodal-lekner"><span class="std std-numref">Задании 6.6.3</span></a>. Таким образом, система <a class="reference internal" href="#equation-sysnonlinear-task-vdw-equilibrium">(7.8)</a> может быть решена относительно <span class="math notranslate nohighlight">\(V_G\)</span> и <span class="math notranslate nohighlight">\(V_L\)</span> для заданной температуры <span class="math notranslate nohighlight">\(T_r\)</span>.</p>
 <p>Приведём явный вид уравнения ван дер Ваальса</p>
 <div class="math notranslate nohighlight">
 \[P_r(V_r, T_r) = \frac{8 T_r}{3 V_r - 1} - \frac{3}{V_r^2}.\]</div>

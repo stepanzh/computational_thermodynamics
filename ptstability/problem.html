@@ -181,7 +181,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../julia/modules.html">
-     1.10. Модули
+     1.10. Модули и пакеты
     </a>
    </li>
    <li class="toctree-l2">
@@ -450,13 +450,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/cholesky.html">
-   Разложение Холецкого
+  <a class="reference internal" href="../appendix/materials.html">
+   Дополнительные материалы
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/materials.html">
-   Дополнительные материалы
+  <a class="reference internal" href="../appendix/solvecubic.html">
+   Решение кубического уравнения
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/cholesky.html">
+   Разложение Холецкого
   </a>
  </li>
 </ul>
@@ -748,7 +753,10 @@ title="Print to PDF"
 <p>По определению, летучесть <span class="math notranslate nohighlight">\(f_i\)</span> связана с химпотенциалом <span class="math notranslate nohighlight">\(\mu_i\)</span> так<a class="footnote-reference brackets" href="#fugacity-introduced" id="id7">3</a></p>
 <div class="math notranslate nohighlight" id="equation-fugacity-definition">
 <span class="eqno">(5)<a class="headerlink" href="#equation-fugacity-definition" title="Permalink to this equation">#</a></span>\[\mu_i = \hat{\mu}(T) + R T \ln \bigg( \frac{f_i}{[\text{ед. давления}]} \bigg),\]</div>
-<p>здесь <span class="math notranslate nohighlight">\(\hat{\mu}(T)\)</span> – химический потенциал идеального газа при единичном (референсном) давлении. Фактически, это поправка, зависящая только от температуры и не влияющая на утверждения о разности химических потенциалов в изотермических состояниях. Поскольку летучесть <span class="math notranslate nohighlight">\(f_i\)</span> имеет размерность давления, под знаком логарифма в знаменателе стоит единица давления для обезразмеривания. Из определения следует, что для смеси идеальных газов <span class="math notranslate nohighlight">\(V \to \infty\)</span>, а <span class="math notranslate nohighlight">\(f_i = P\)</span> и <span class="math notranslate nohighlight">\(\varphi_i = 1\)</span>.</p>
+<p>здесь <span class="math notranslate nohighlight">\(\hat{\mu}(T)\)</span> – химический потенциал идеального газа при единичном (референсном) давлении.
+Фактически, это поправка, зависящая только от температуры и не влияющая на утверждения о разности химических потенциалов в изотермических состояниях.
+Поскольку летучесть <span class="math notranslate nohighlight">\(f_i\)</span> имеет размерность давления, под знаком логарифма в знаменателе стоит единица давления для обезразмеривания.
+Из определения следует, что для смеси идеальных газов <span class="math notranslate nohighlight">\(V \to \infty\)</span>, а <span class="math notranslate nohighlight">\(f_i = x_i P\)</span> и <span class="math notranslate nohighlight">\(\varphi_i = 1\)</span>.</p>
 <p>В свою очередь, для коэффициента летучести <span class="math notranslate nohighlight">\(\varphi_i \equiv f_i / (x_i P)\)</span> <a class="reference internal" href="#equation-fugacity-definition">(5)</a> перепишется в виде</p>
 <div class="math notranslate nohighlight">
 \[\mu_i = \hat{\mu}(T) + R T (\ln{x_i} + \ln{\varphi_i} + \ln{P}).\]</div>
