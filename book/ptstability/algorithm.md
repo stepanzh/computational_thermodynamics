@@ -90,7 +90,7 @@ julia> ForwardDiff.jacobian(F, p)[end, end]
 ```{math}
 :label: ptstab_chempot_stationary_system_ssi
 
-\ln{X_i^{k+1}} = h_i - \ln{\varphi_i(X^k_i)},\quad i=1,\dots,n.
+\ln{X_i^{k+1}} = h_i - \ln{\varphi_i(\boldsymbol{x}(\boldsymbol{X}^k))},\quad i=1,\dots,n.
 ```
 В этой системе вектор неизвестных -- $[\ln{X_1}, \dots, \ln{X_n}]^\top$.
 
