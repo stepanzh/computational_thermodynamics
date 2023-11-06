@@ -84,5 +84,6 @@ parts:
   chapters:
   - file: appendix/genindex
   - file: appendix/bibliography
-  - file: appendix/cholesky
   - file: appendix/materials
+  - file: appendix/solvecubic
+  - file: appendix/cholesky
