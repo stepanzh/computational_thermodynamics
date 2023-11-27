@@ -80,6 +80,10 @@ parts:
     - file: ptstability/vanderwaals
     - file: ptstability/algorithm
     - file: ptstability/exercise
+  - file: ptsplit/index
+    sections:
+    - file: ptsplit/problem
+    - file: ptsplit/solution
 - caption: Приложения
   chapters:
   - file: appendix/genindex
