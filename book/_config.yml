@@ -62,16 +62,20 @@ sphinx:
     mathjax3_config:
         tex:
           macros:
-            "real"      : "\\mathbb{R}"
-            "floatset"  : "\\mathbb{F}"
-            "integer"   : "\\mathbb{Z}"
-            "macheps"   : "\\epsilon_{\\text{mach}}"
-            "float"     : "\\text{float}"
-            "diff"      : "\\mathrm{d}"
-            "diag"      : "\\text{diag}"
-            "sign"      : "\\text{sign}"
-            "part"      : "\\partial"
-            "lto"       : "\\leftarrow"
+            "argmin" : "\\operatorname{argmin}"
+            "const" : "\\text{const}"
+            "diag" : "\\text{diag}"
+            "diff" : "\\mathrm{d}"
+            "float" : "\\text{float}"
+            "floatset" : "\\mathbb{F}"
+            "integer" : "\\mathbb{Z}"
+            "lto" : "\\leftarrow"
+            "macheps" : "\\epsilon_{\\text{mach}}"
+            "part" : "\\partial"
+            "real" : "\\mathbb{R}"
+            "sign" : "\\text{sign}"
+            "vapor" : "\\text{пар}"
+            "liquid" : "\\text{жидк.}"
         HTML-CSS:
           fonts: ["Latin-Modern"]
     proof_theorem_types:  # see https://sphinxcontrib-proof.readthedocs.io/en/latest/usage/#configuration-options
