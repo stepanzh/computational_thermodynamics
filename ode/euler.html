@@ -56,7 +56,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial", "lto": "\\leftarrow"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -430,6 +430,28 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ptsplit/index.html">
+   PT расслоение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/problem.html">
+     Постановка задачи
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/solution.html">
+     Решение задачи
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -764,7 +786,7 @@ y_0 &amp;= u_0.
 <p>Пусть дана задача Коши для функции <span class="math notranslate nohighlight">\(u\)</span>. Значения <span class="math notranslate nohighlight">\(u(t)\)</span> при <span class="math notranslate nohighlight">\(t&gt;0\)</span> находим из рекуррентной формулы</p>
 <div class="math notranslate nohighlight">
 \[y_{i+1} = y_i + \tau f(t_i, y_i),\quad y_0 = u_0,\quad i = 0, 1, 2, \ldots.\]</div>
-</div></div><p>На примере метода Эйлера введём несколько понятий, применяющихся к разностным схемам <span id="id2">[<a class="reference internal" href="../appendix/bibliography.html#id8" title="А. А. Самарский and А. В. Гулин. Численные методы: учеб. пособие для вузов. Наука, Москва, 1989. ISBN 978-5020139961.">89</a>]</span>.</p>
+</div></div><p>На примере метода Эйлера введём несколько понятий, применяющихся к разностным схемам <span id="id2">[<a class="reference internal" href="../appendix/bibliography.html#id21" title="А. А. Самарский and А. В. Гулин. Численные методы: учеб. пособие для вузов. Наука, Москва, 1989. ISBN 978-5020139961.">89</a>]</span>.</p>
 <div class="proof proof-type-definition" id="id8">
 <span id="index-1"></span>
     <div class="proof-title">
@@ -781,7 +803,7 @@ y_0 &amp;= u_0.
 <div class="math notranslate nohighlight">
 \[|y_i - u(t_i)| = O(\tau^p),\quad p&gt;0,\: \tau \to 0,\]</div>
 <p>то говорят, что метод имеет <span class="math notranslate nohighlight">\(p\)</span>-ый <em>порядок точности</em>.</p>
-</div></div><p>Альтернативное определение сходимости <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id14" title="Рябенький В.С. Введение в вычислительную математику. Физматлит, Москва, 3 edition, 2016. ISBN 978-5-9221-0926-0.">16</a>]</span> заключается в рассмотрении <span class="math notranslate nohighlight">\(y_\tau\)</span> и проекции <span class="math notranslate nohighlight">\(u_\tau\)</span> как сеточных функций (т.е. функций, определённых на <span class="math notranslate nohighlight">\(\omega_\tau\)</span>), тогда требуют <span class="math notranslate nohighlight">\(\|y_\tau - u_\tau\|_{F_\tau} \to 0\)</span>, где <span class="math notranslate nohighlight">\(F_\tau\)</span> – пространство сеточных функций.</p>
+</div></div><p>Альтернативное определение сходимости <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id20" title="Рябенький В.С. Введение в вычислительную математику. Физматлит, Москва, 3 edition, 2016. ISBN 978-5-9221-0926-0.">16</a>]</span> заключается в рассмотрении <span class="math notranslate nohighlight">\(y_\tau\)</span> и проекции <span class="math notranslate nohighlight">\(u_\tau\)</span> как сеточных функций (т.е. функций, определённых на <span class="math notranslate nohighlight">\(\omega_\tau\)</span>), тогда требуют <span class="math notranslate nohighlight">\(\|y_\tau - u_\tau\|_{F_\tau} \to 0\)</span>, где <span class="math notranslate nohighlight">\(F_\tau\)</span> – пространство сеточных функций.</p>
 <p>При подстановке решения <span class="math notranslate nohighlight">\(u\)</span> в численный метод получается выражение для <em>погрешности аппроксимации разностного уравнения на решении исходного уравнения</em>, или <em>невязки</em>. Например, для метода Эйлера <a class="reference internal" href="#equation-ode-euler-explicit">()</a> получим вид невязки <span class="math notranslate nohighlight">\(\psi_i\)</span></p>
 <div class="math notranslate nohighlight" id="equation-ode-euler-residual">
 <span class="eqno">()<a class="headerlink" href="#equation-ode-euler-residual" title="Permalink to this equation">#</a></span>\[\psi_i = - \frac{u_{i+1} - u_i}{\tau} + f(t_i, u_i).\]</div>
@@ -808,14 +830,14 @@ y_0 &amp;= u_0.
 <div class="math notranslate nohighlight">
 \[\psi_i = - u'(t_i) + f(t_i, u_i) + O(\tau).\]</div>
 <p>Таким образом, метод Эйлера имеет первый порядок аппроксимации.</p>
-<p id="index-3">Помимо сходимости и аппроксимации, вводят различные понятия <em>устойчивости</em>. Одной из обобщённых является <strong>устойчивость по правой части</strong>. Данная устойчивость <span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id14" title="Рябенький В.С. Введение в вычислительную математику. Физматлит, Москва, 3 edition, 2016. ISBN 978-5-9221-0926-0.">16</a>]</span> означает, что при малом возмущении правой части уравнения <span class="math notranslate nohighlight">\(f + \epsilon\)</span> разностный метод будет иметь (а) единственное решение <span class="math notranslate nohighlight">\(z_\tau\)</span>, (б) решение <span class="math notranslate nohighlight">\(z_\tau\)</span> будет не сильно отличаться от невозмущённого, т.е. <span class="math notranslate nohighlight">\(\|z_\tau - y_\tau\| \le c \|\epsilon_\tau\|\)</span>.</p>
+<p id="index-3">Помимо сходимости и аппроксимации, вводят различные понятия <em>устойчивости</em>. Одной из обобщённых является <strong>устойчивость по правой части</strong>. Данная устойчивость <span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id20" title="Рябенький В.С. Введение в вычислительную математику. Физматлит, Москва, 3 edition, 2016. ISBN 978-5-9221-0926-0.">16</a>]</span> означает, что при малом возмущении правой части уравнения <span class="math notranslate nohighlight">\(f + \epsilon\)</span> разностный метод будет иметь (а) единственное решение <span class="math notranslate nohighlight">\(z_\tau\)</span>, (б) решение <span class="math notranslate nohighlight">\(z_\tau\)</span> будет не сильно отличаться от невозмущённого, т.е. <span class="math notranslate nohighlight">\(\|z_\tau - y_\tau\| \le c \|\epsilon_\tau\|\)</span>.</p>
 <div class="proof proof-type-proposition" id="id10">
 
     <div class="proof-title">
         <span class="proof-type">Утверждение </span>
         
     </div><div class="proof-content">
-<p>Показано <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id14" title="Рябенький В.С. Введение в вычислительную математику. Физматлит, Москва, 3 edition, 2016. ISBN 978-5-9221-0926-0.">16</a>]</span>, что из аппроксимации и устойчивости по правой части следует сходимость метода с порядком точности, совпадающем с порядком аппроксимации.</p>
+<p>Показано <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id20" title="Рябенький В.С. Введение в вычислительную математику. Физматлит, Москва, 3 edition, 2016. ISBN 978-5-9221-0926-0.">16</a>]</span>, что из аппроксимации и устойчивости по правой части следует сходимость метода с порядком точности, совпадающем с порядком аппроксимации.</p>
 </div></div><section id="id6">
 <h2>Реализация<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>
 <p>В этой главе для постановки задачи Коши (скалярной) мы будем пользоваться структурой данных <code class="docutils literal notranslate"><span class="pre">CauchyODEProblem</span></code>.</p>

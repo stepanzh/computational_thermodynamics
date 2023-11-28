@@ -56,7 +56,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial", "lto": "\\leftarrow"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -432,6 +432,28 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ptsplit/index.html">
+   PT расслоение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/problem.html">
+     Постановка задачи
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/solution.html">
+     Решение задачи
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -712,7 +734,7 @@ P_r(V_G, T_r) &amp;= P_r(V_L, T_r),\\
 <p>Приведём явный вид уравнения ван дер Ваальса</p>
 <div class="math notranslate nohighlight">
 \[P_r(V_r, T_r) = \frac{8 T_r}{3 V_r - 1} - \frac{3}{V_r^2}.\]</div>
-<p>И его химического потенциала (который выводится из энергии Гельмгольца <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id13" title="David Johnston. Advances in thermodynamics of the van der waals fluid. arXiv, 2014. URL: https://arxiv.org/abs/1402.1205v1, doi:10.1088/978-1-627-05532-1.">Joh14</a>]</span>)</p>
+<p>И его химического потенциала (который выводится из энергии Гельмгольца <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id10" title="David Johnston. Advances in thermodynamics of the van der waals fluid. arXiv, 2014. doi:10.1088/978-1-627-05532-1.">Joh14</a>]</span>)</p>
 <div class="math notranslate nohighlight">
 \[\mu(V_r, T_r) = - T_r \ln{\bigg[\frac{3V_r - 1}{2e^{-1/2}}\bigg]} + \frac{T_r}{3V_r - 1} - \frac{9}{4V_r}.\]</div>
 <p>Поскольку давление и химический потенциал нелинейны относительно объёма, то и система <a class="reference internal" href="#equation-sysnonlinear-task-vdw-equilibrium">(7.8)</a> в случае уравнения ван дер Ваальса нелинейна.</p>

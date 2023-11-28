@@ -56,7 +56,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial", "lto": "\\leftarrow"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -428,6 +428,28 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../ptstability/exercise.html">
      Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ptsplit/index.html">
+   PT расслоение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/problem.html">
+     Постановка задачи
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/solution.html">
+     Решение задачи
     </a>
    </li>
   </ul>
@@ -851,7 +873,7 @@ bisection(f, 0.5, 1.6; xtol = 1.0e-10) = 1.0000000000145521
 <section id="id2">
 <h2><span class="section-number">6.3.2. </span>Regula falsi<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>В методе ложной позиции (<em>regula falsi</em>, <em>false position</em>) по двум приближениям корня <span class="math notranslate nohighlight">\(x_1\)</span> и <span class="math notranslate nohighlight">\(x_2\)</span>, на которых функция имеет разные знаки <span class="math notranslate nohighlight">\(f(x_1)f(x_2) &lt; 0\)</span>, проводится секущая. Затем вычисляется точка пересечения секущей с осью абсцисс <span class="math notranslate nohighlight">\(x_3\)</span>. После чего, подобно методу бисекции, по <span class="math notranslate nohighlight">\(f(x_3)\)</span> выбирается новый интервал, локализующий корень.</p>
-<p>Для многих функций и начальных интервалов, метод regula falsi имеет <em>сверхлинейную сходимость</em> <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id9" title="William H. Press, Saul A. Teukolsky, William T. Vetterling, and Brian P. Flannery. Numerical Recipes 3rd Edition: The Art of Scientific Computing. Cambridge University Press, USA, 3 edition, 2007. ISBN 0521880688.">PTVF07</a>]</span>.</p>
+<p>Для многих функций и начальных интервалов, метод regula falsi имеет <em>сверхлинейную сходимость</em> <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id18" title="W. H. Press, S. A. Teukolsky, W. T. Vetterling, and B. P. Flannery. Numerical Recipes 3rd Edition: The Art of Scientific Computing. Cambridge University Press, USA, 3 edition, 2007. ISBN 0521880688.">PTVF07</a>]</span>.</p>
 <p>Метод очень напоминает метод секущих. Разница лишь в том, что метод секущих всегда строит новое приближение корня по двум предыдущим, тогда как regula falsi, поддерживая разные знаки функции на концах отрезка, заменяет один из концов новым приближением.</p>
 <div class="proof proof-type-algorithm" id="id7">
 

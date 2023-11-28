@@ -56,7 +56,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial", "lto": "\\leftarrow"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -426,6 +426,28 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../ptstability/exercise.html">
      Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ptsplit/index.html">
+   PT расслоение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/problem.html">
+     Постановка задачи
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/solution.html">
+     Решение задачи
     </a>
    </li>
   </ul>
@@ -884,7 +906,7 @@ f(t_i + a_2\tau, u_i + b_{21}\tau f(t_i, u_i))
             <span class="proof-title-name">(Сходимость явных методов Рунге-Кутта)</span>
         
     </div><div class="proof-content">
-<p><span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id8" title="А. А. Самарский and А. В. Гулин. Численные методы: учеб. пособие для вузов. Наука, Москва, 1989. ISBN 978-5020139961.">89</a>]</span> Если явный метод Рунге-Кутта аппроксимирует исходное уравнение, то он сходится при <span class="math notranslate nohighlight">\(\tau \to 0\)</span>, причём порядок точности совпадает с порядком аппроксимации.</p>
+<p><span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id21" title="А. А. Самарский and А. В. Гулин. Численные методы: учеб. пособие для вузов. Наука, Москва, 1989. ISBN 978-5020139961.">89</a>]</span> Если явный метод Рунге-Кутта аппроксимирует исходное уравнение, то он сходится при <span class="math notranslate nohighlight">\(\tau \to 0\)</span>, причём порядок точности совпадает с порядком аппроксимации.</p>
 </div></div><p>Отметим, что данное утверждение не связывает этапность метода <span class="math notranslate nohighlight">\(m\)</span> и порядок аппроксимации.
 В случае методов с числом этапов <span class="math notranslate nohighlight">\(1\)</span>, <span class="math notranslate nohighlight">\(2\)</span>, <span class="math notranslate nohighlight">\(3\)</span>, <span class="math notranslate nohighlight">\(4\)</span> порядок аппроксимации (и точности) совпадает с числом этапов, однако, при <span class="math notranslate nohighlight">\(m=5\)</span> система на коэффициенты метода уже не является совместной в предположении о пятом порядке аппроксимации. Данное утверждение было доказано Бутчером и носит название <em>первого барьера</em>.</p>
 <div class="proof proof-type-proposition" id="id9">
@@ -896,7 +918,7 @@ f(t_i + a_2\tau, u_i + b_{21}\tau f(t_i, u_i))
         
     </div><div class="proof-content">
 <p>Среди явных методов Рунге-Кутты с числом этапов <span class="math notranslate nohighlight">\(m = 5\)</span> не существует методов пятого порядка аппроксимации.</p>
-</div></div><p>Так, достижение пятого порядка аппроксимации реализуемо для явного <span class="math notranslate nohighlight">\(6\)</span>-ти этапного метода Рунге-Кутты. Более того, при поиске методов с большим порядком аппроксимации требуется всё больше этапов и возникают новые барьеры Бутчера. С другой стороны, вместе с этапностью метода растёт и количество вычислений правой части <span class="math notranslate nohighlight">\(f(t, u)\)</span>. Поэтому, на практике явные методы Рунге-Кутта с порядком <span class="math notranslate nohighlight">\(m &gt; 5\)</span> используются реже <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id8" title="А. А. Самарский and А. В. Гулин. Численные методы: учеб. пособие для вузов. Наука, Москва, 1989. ISBN 978-5020139961.">89</a>]</span>.</p>
+</div></div><p>Так, достижение пятого порядка аппроксимации реализуемо для явного <span class="math notranslate nohighlight">\(6\)</span>-ти этапного метода Рунге-Кутты. Более того, при поиске методов с большим порядком аппроксимации требуется всё больше этапов и возникают новые барьеры Бутчера. С другой стороны, вместе с этапностью метода растёт и количество вычислений правой части <span class="math notranslate nohighlight">\(f(t, u)\)</span>. Поэтому, на практике явные методы Рунге-Кутта с порядком <span class="math notranslate nohighlight">\(m &gt; 5\)</span> используются реже <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id21" title="А. А. Самарский and А. В. Гулин. Численные методы: учеб. пособие для вузов. Наука, Москва, 1989. ISBN 978-5020139961.">89</a>]</span>.</p>
 </section>
 <section id="id6">
 <h2>РК4<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h2>

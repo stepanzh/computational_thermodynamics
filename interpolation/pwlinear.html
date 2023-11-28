@@ -56,7 +56,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial", "lto": "\\leftarrow"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -432,6 +432,28 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ptsplit/index.html">
+   PT расслоение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/problem.html">
+     Постановка задачи
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/solution.html">
+     Решение задачи
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -778,7 +800,7 @@ title="Print to PDF"
 <div class="math notranslate nohighlight" id="equation-pwlin">
 <span class="eqno">(4.4)<a class="headerlink" href="#equation-pwlin" title="Permalink to this equation">#</a></span>\[p(x) = y_k + \frac{y_{k+1} - y_k}{t_{k+1} - t_k} (x - t_k),\quad x \in [t_k, t_{k+1}]\]</div>
 </div></div><p>Простой способ реализации формулы <a class="reference internal" href="#equation-pwlin">(4.4)</a> заключается в поиске отрезка <span class="math notranslate nohighlight">\([t_k, t_{k+1}]\)</span>, которому принадлежит <span class="math notranslate nohighlight">\(x\)</span>, а затем уже в применении <a class="reference internal" href="#equation-pwlin">(4.4)</a>.</p>
-<p>Мы же поступим более общим способом <span id="id2">[<a class="reference internal" href="../appendix/bibliography.html#id3" title="Randall J. LeVeque. Finite Volume Methods for Hyperbolic Problems. Cambridge University Press, August 2002. URL: https://doi.org/10.1017/cbo9780511791253, doi:10.1017/cbo9780511791253.">LeV02</a>]</span>.</p>
+<p>Мы же поступим более общим способом <span id="id2">[<a class="reference internal" href="../appendix/bibliography.html#id15" title="R. J. LeVeque. Finite Volume Methods for Hyperbolic Problems. Cambridge University Press, 2002. doi:10.1017/cbo9780511791253.">LeV02</a>]</span>.</p>
 <section id="hat">
 <h2><span class="section-number">4.2.1. </span>Hat-функции<a class="headerlink" href="#hat" title="Permalink to this headline">#</a></h2>
 <p>Искомый интерполянт лишь одна из <em>непрерывных кусочно-линейных</em> функций, которые образуют <em>линейное пространство</em>. В этом пространстве функция выражается в виде</p>

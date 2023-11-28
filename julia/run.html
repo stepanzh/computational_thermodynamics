@@ -430,6 +430,28 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ptsplit/index.html">
+   PT расслоение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/problem.html">
+     Постановка задачи
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/solution.html">
+     Решение задачи
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -767,8 +789,8 @@ title="Print to PDF"
 Для прерывания команды используется стандартное сочетания <kbd class="kbd compound docutils literal notranslate"><kbd class="kbd docutils literal notranslate">Ctrl</kbd>+<kbd class="kbd docutils literal notranslate">C</kbd></kbd>.</p>
 <p>Ниже показано, для чего каждый режим используется.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="8eec0db2-18c0-4284-8e66-a4144fc3d49c" name="5054bd1f-d50c-4ee4-bdab-13f98343c2b9" type="radio">
-</input><label class="sd-tab-label" for="8eec0db2-18c0-4284-8e66-a4144fc3d49c">
+<input checked="checked" id="b0d0b45f-0fb2-4c3d-81e2-7be2557a82c1" name="75b1792b-9b2f-4a82-838b-27f3f5889d88" type="radio">
+</input><label class="sd-tab-label" for="b0d0b45f-0fb2-4c3d-81e2-7be2557a82c1">
 Интерпретатор</label><div class="sd-tab-content docutils">
 <p>В нём вы можете исполнять команды языка и переходить в другие режимы. Prompt-сообщение <code class="docutils literal notranslate"><span class="pre">julia&gt;</span></code>.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">println</span><span class="p">(</span><span class="s">&quot;Hello, world&quot;</span><span class="p">)</span><span class="w"></span>
@@ -778,8 +800,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="08a60c55-13bd-44c7-9125-4e85b552ab19" name="5054bd1f-d50c-4ee4-bdab-13f98343c2b9" type="radio">
-</input><label class="sd-tab-label" for="08a60c55-13bd-44c7-9125-4e85b552ab19">
+<input id="c7fdb5a8-9daf-411e-9d61-0e75d6183c60" name="75b1792b-9b2f-4a82-838b-27f3f5889d88" type="radio">
+</input><label class="sd-tab-label" for="c7fdb5a8-9daf-411e-9d61-0e75d6183c60">
 Помощь</label><div class="sd-tab-content docutils">
 <p>Здесь можно получить помощь и документацию к коду. Переход по нажатию <kbd class="kbd docutils literal notranslate">?</kbd>. Prompt-сообщение <code class="docutils literal notranslate"><span class="pre">help?&gt;</span></code>.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="o">?</span><span class="w"></span>
@@ -795,8 +817,8 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
-<input id="3f2fb354-8364-4242-b02f-a3b314bf4e21" name="5054bd1f-d50c-4ee4-bdab-13f98343c2b9" type="radio">
-</input><label class="sd-tab-label" for="3f2fb354-8364-4242-b02f-a3b314bf4e21">
+<input id="40a5f173-cc24-4def-838d-26a3eb0558f8" name="75b1792b-9b2f-4a82-838b-27f3f5889d88" type="radio">
+</input><label class="sd-tab-label" for="40a5f173-cc24-4def-838d-26a3eb0558f8">
 Менеджер пакетов</label><div class="sd-tab-content docutils">
 <p>Посвящён работе c окружениями и сторонними пакетами <a class="footnote-reference brackets" href="#pkgenv" id="id3">1</a>.
 Команда перехода <kbd class="kbd docutils literal notranslate">]</kbd>.
@@ -810,8 +832,8 @@ Prompt-сообщение <code class="docutils literal notranslate"><span class
 </pre></div>
 </div>
 </div>
-<input id="4b102862-8b6f-4048-a7e4-f0284c649fa4" name="5054bd1f-d50c-4ee4-bdab-13f98343c2b9" type="radio">
-</input><label class="sd-tab-label" for="4b102862-8b6f-4048-a7e4-f0284c649fa4">
+<input id="abbce7a3-ab43-47cc-b2cd-bf853c8f9c1a" name="75b1792b-9b2f-4a82-838b-27f3f5889d88" type="radio">
+</input><label class="sd-tab-label" for="abbce7a3-ab43-47cc-b2cd-bf853c8f9c1a">
 Командная оболочка</label><div class="sd-tab-content docutils">
 <p>В этом режиме можно работать с командной оболочкой, не выходя из Julia REPL. Команда перехода <kbd class="kbd docutils literal notranslate">;</kbd>. Prompt-сообщение <code class="docutils literal notranslate"><span class="pre">shell&gt;</span></code>.</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="p">;</span><span class="w"></span>

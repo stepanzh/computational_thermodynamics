@@ -56,7 +56,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial", "lto": "\\leftarrow"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -432,6 +432,28 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ptsplit/index.html">
+   PT расслоение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/problem.html">
+     Постановка задачи
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/solution.html">
+     Решение задачи
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -739,7 +761,7 @@ title="Print to PDF"
 <div class="math notranslate nohighlight" id="equation-ptstab-vdw-eos-mixture">
 <span class="eqno">(9)<a class="headerlink" href="#equation-ptstab-vdw-eos-mixture" title="Permalink to this equation">#</a></span>\[P = \frac{N R T}{V - \mathcal{B(\boldsymbol{N})}} - \frac{\mathcal{A}(\boldsymbol{N})}{V^2}.\]</div>
 <p>Таким образом, уравнения для одного компонента и смеси имеют одинаковый функциональный вид.</p>
-<p id="index-0">Формулы для коэффициентов смеси <span class="math notranslate nohighlight">\(\mathcal{A}\)</span>, <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> называют <strong>правилами смешения</strong>. Одно из простых правил смешения следующее<a class="footnote-reference brackets" href="#mixing-rule" id="id2">1</a> <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id19" title="T.Y. Kwak and G.A. Mansoori. Van der waals mixing rules for cubic equations of state. applications for supercritical fluid extraction modelling. Chemical Engineering Science, 41(5):1303–1309, 1986. URL: https://linkinghub.elsevier.com/retrieve/pii/0009250986871032 (visited on 2022-10-28), doi:10.1016/0009-2509(86)87103-2.">KM86</a>]</span></p>
+<p id="index-0">Формулы для коэффициентов смеси <span class="math notranslate nohighlight">\(\mathcal{A}\)</span>, <span class="math notranslate nohighlight">\(\mathcal{B}\)</span> называют <strong>правилами смешения</strong>. Одно из простых правил смешения следующее<a class="footnote-reference brackets" href="#mixing-rule" id="id2">1</a> <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id12" title="T.Y. Kwak and G.A. Mansoori. Van der waals mixing rules for cubic equations of state. applications for supercritical fluid extraction modelling. Chemical Engineering Science, 41(5):1303–1309, 1986. doi:10.1016/0009-2509(86)87103-2.">KM86</a>]</span></p>
 <div class="math notranslate nohighlight" id="equation-ptstab-vdw-eos-mixing-rules">
 <span class="eqno">(10)<a class="headerlink" href="#equation-ptstab-vdw-eos-mixing-rules" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{aligned}
 \mathcal{A} &amp;= \sum_i \sum_j N_i N_j a_{i j},\ a_{i j} = \sqrt{a_i a_j},
@@ -747,7 +769,7 @@ title="Print to PDF"
 \end{aligned}\end{split}\]</div>
 <section id="id4">
 <h2>Вид коэффициента летучести<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
-<p>Для уравнений состояния, выражающих явно давление, коэффициент летучести может быть найден интегрированием <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id16" title="А И Брусиловский. Фазовые превращения при разработке месторождений нефти и газа. ВИНИТИ РАН, Грааль, 2002. ISBN 5-94688-031-4.">02</a>]</span></p>
+<p>Для уравнений состояния, выражающих явно давление, коэффициент летучести может быть найден интегрированием <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id5" title="А.И. Брусиловский. Фазовые превращения при разработке месторождений нефти и газа. ВИНИТИ РАН, Грааль, 2002. ISBN 5-94688-031-4.">02</a>]</span></p>
 <div class="math notranslate nohighlight" id="equation-ptstab-fugacity-coef-integral">
 <span class="eqno">(11)<a class="headerlink" href="#equation-ptstab-fugacity-coef-integral" title="Permalink to this equation">#</a></span>\[\ln{\varphi_i} = \int_V^\infty \bigg[\frac{1}{R T} \frac{\partial P}{\partial N_i}(\boldsymbol{N}, \xi, T) - \frac{1}{\xi} \bigg] d\xi - \ln{z}\]</div>
 <p>где <span class="math notranslate nohighlight">\(z = P V / N R T\)</span> – сжимаемость (сверхсжимаемость, z-фактор) вещества, для идеального газа <span class="math notranslate nohighlight">\(z = 1\)</span>.</p>

@@ -56,7 +56,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial", "lto": "\\leftarrow"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -432,6 +432,28 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ptsplit/index.html">
+   PT расслоение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/problem.html">
+     Постановка задачи
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/solution.html">
+     Решение задачи
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -784,14 +806,14 @@ L_7(x) = \frac{1}{16}(429 x^7 - 693 x^5 + 315 x^3 - 35 x).
 </section>
 <section id="id3">
 <h2><span class="section-number">6.6.2. </span>Уравнение фазовых концентраций<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
-<p>Уравнение фазовых концентраций (Rachford-Rice equation) используется для расчётов парожидкостного равновесия смеси веществ <span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id16" title="А И Брусиловский. Фазовые превращения при разработке месторождений нефти и газа. ВИНИТИ РАН, Грааль, 2002. ISBN 5-94688-031-4.">02</a>]</span>. Уравнение выводится из массового баланса веществ в каждой фазе и представляет собой</p>
+<p>Уравнение фазовых концентраций (Rachford-Rice equation) используется для расчётов парожидкостного равновесия смеси веществ <span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id5" title="А.И. Брусиловский. Фазовые превращения при разработке месторождений нефти и газа. ВИНИТИ РАН, Грааль, 2002. ISBN 5-94688-031-4.">02</a>]</span>. Уравнение выводится из массового баланса веществ в каждой фазе и представляет собой</p>
 <div class="math notranslate nohighlight">
 \[
 F(G) = \sum_{i} \frac{z_i \times (K_i - 1)}{G \times (K_i - 1) + 1} = 0,
 \]</div>
 <p>где <span class="math notranslate nohighlight">\(z_i\)</span> мольная доля <span class="math notranslate nohighlight">\(i\)</span>-го компонента в смеси, <span class="math notranslate nohighlight">\(K_i\)</span> константа равновесия <span class="math notranslate nohighlight">\(i\)</span>-го компонента (отношение мольной доли компонента в газе к его мольной доли в жидкости) и <span class="math notranslate nohighlight">\(G\)</span> мольная доля газа в двухфазном состоянии.</p>
 <p>Решение этого уравнения показывает мольную долю газа в двухфазном состоянии при соответствующем распределении компонентов по жидкой и газовой фазе.</p>
-<p>Можно показать <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id16" title="А И Брусиловский. Фазовые превращения при разработке месторождений нефти и газа. ВИНИТИ РАН, Грааль, 2002. ISBN 5-94688-031-4.">02</a>]</span>, что решение уравнения стоит искать в интервале</p>
+<p>Можно показать <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id5" title="А.И. Брусиловский. Фазовые превращения при разработке месторождений нефти и газа. ВИНИТИ РАН, Грааль, 2002. ISBN 5-94688-031-4.">02</a>]</span>, что решение уравнения стоит искать в интервале</p>
 <div class="math notranslate nohighlight">
 \[
 1 / (1 - \max K_i) \quad \ldots \quad 1 / (1 - \min K_i).
@@ -854,7 +876,7 @@ F(G) = \sum_{i} \frac{z_i \times (K_i - 1)}{G \times (K_i - 1) + 1} = 0,
 </figcaption>
 </figure>
 <p>Чтобы для данной температуры <span class="math notranslate nohighlight">\(T^*\)</span> определить равновесные объёмы <span class="math notranslate nohighlight">\(V_G\)</span>, <span class="math notranslate nohighlight">\(V_L\)</span> и давление <span class="math notranslate nohighlight">\(P_X\)</span>, требуется находить минимум потенциала Гельмгольца. Это требует решения нелинейной системы, но можно поступить иначе.</p>
-<p>Лекнером <span id="id7">[<a class="reference internal" href="../appendix/bibliography.html#id12" title="John Lekner. Parametric solution of the van der waals liquid–vapor coexistence curve. American Journal of Physics, 50(2):161-163, 1982. URL: https://doi.org/10.1119/1.12877, doi:10.1119/1.12877.">Lek82</a>]</span> предложена параметризация величин для двухфазного равновесия. В качестве параметра используется <span class="math notranslate nohighlight">\(y = \Delta s / 2\)</span>, где <span class="math notranslate nohighlight">\(\Delta s\)</span> представляет собой скачок энтропии на частицу между газовой и жидкой фазами в единицах <span class="math notranslate nohighlight">\(k_B\)</span>. Для параметризации используются функции <span class="math notranslate nohighlight">\(f(y)\)</span> и <span class="math notranslate nohighlight">\(g(y)\)</span></p>
+<p>Лекнером <span id="id7">[<a class="reference internal" href="../appendix/bibliography.html#id14" title="J. Lekner. Parametric solution of the van der waals liquid–vapor coexistence curve. American Journal of Physics, 50(2):161-163, 1982. doi:10.1119/1.12877.">Lek82</a>]</span> предложена параметризация величин для двухфазного равновесия. В качестве параметра используется <span class="math notranslate nohighlight">\(y = \Delta s / 2\)</span>, где <span class="math notranslate nohighlight">\(\Delta s\)</span> представляет собой скачок энтропии на частицу между газовой и жидкой фазами в единицах <span class="math notranslate nohighlight">\(k_B\)</span>. Для параметризации используются функции <span class="math notranslate nohighlight">\(f(y)\)</span> и <span class="math notranslate nohighlight">\(g(y)\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 f(y) &amp;= \frac{y \cosh{y} - \sinh{y}}{\sinh{y}\cosh{y}-y},\\
@@ -871,7 +893,7 @@ P_X(y) &amp;= \frac{27 f^2(y)[1 - f^2(y)]}{g^2(y)}.\\
 <p>Ваша задача состоит в том, чтобы определить <span class="math notranslate nohighlight">\(V_L\)</span> и <span class="math notranslate nohighlight">\(V_G\)</span> для ряда температур <span class="math notranslate nohighlight">\(T_r \in [0.85, 1]\)</span> и соответствующих им давлений, получив таким образом границу фазового равновесия. Нанесите полученные точки <span class="math notranslate nohighlight">\((P_X, V_L)\)</span> и <span class="math notranslate nohighlight">\((P_X, V_G)\)</span> поверх изотерм, как на <a class="reference internal" href="#nlroot-vdw-task-answer"><span class="std std-numref">Рисунке 6.3</span></a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Подробную информацию об уравнении ван дер Ваальса можно получить из статьи <span id="id8">[<a class="reference internal" href="../appendix/bibliography.html#id13" title="David Johnston. Advances in thermodynamics of the van der waals fluid. arXiv, 2014. URL: https://arxiv.org/abs/1402.1205v1, doi:10.1088/978-1-627-05532-1.">Joh14</a>]</span>.</p>
+<p>Подробную информацию об уравнении ван дер Ваальса можно получить из статьи <span id="id8">[<a class="reference internal" href="../appendix/bibliography.html#id10" title="David Johnston. Advances in thermodynamics of the van der waals fluid. arXiv, 2014. doi:10.1088/978-1-627-05532-1.">Joh14</a>]</span>.</p>
 </div>
 </section>
 </section>

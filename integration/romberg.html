@@ -56,7 +56,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial", "lto": "\\leftarrow"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -432,6 +432,28 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ptsplit/index.html">
+   PT расслоение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/problem.html">
+     Постановка задачи
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/solution.html">
+     Решение задачи
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -723,7 +745,7 @@ title="Print to PDF"
 <section id="id2">
 <h2><span class="section-number">5.2.1. </span>Экстраполяция Ричардсона<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
 <p>Частный случай этого метода мы рассматривали при выводе <a class="reference internal" href="newton_cotes.html#sec-quadrature-simpson"><span class="std std-ref">Формулы Симпсона</span></a>.</p>
-<p><span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id8" title="А. А. Самарский and А. В. Гулин. Численные методы: учеб. пособие для вузов. Наука, Москва, 1989. ISBN 978-5020139961.">89</a>]</span> Рассмотрим вычисление интеграла <span class="math notranslate nohighlight">\(I_h\)</span> на равномерной сетке с шагом <span class="math notranslate nohighlight">\(h\)</span>. На каждом интервале отрезка применяется одна и та же квадратурная формула. Для некоторых формул (например, для формулы трапеций) удаётся получить вид погрешности <span class="math notranslate nohighlight">\(I - I_h\)</span>. Предположим, что это разложение выглядит так</p>
+<p><span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id21" title="А. А. Самарский and А. В. Гулин. Численные методы: учеб. пособие для вузов. Наука, Москва, 1989. ISBN 978-5020139961.">89</a>]</span> Рассмотрим вычисление интеграла <span class="math notranslate nohighlight">\(I_h\)</span> на равномерной сетке с шагом <span class="math notranslate nohighlight">\(h\)</span>. На каждом интервале отрезка применяется одна и та же квадратурная формула. Для некоторых формул (например, для формулы трапеций) удаётся получить вид погрешности <span class="math notranslate nohighlight">\(I - I_h\)</span>. Предположим, что это разложение выглядит так</p>
 <div class="math notranslate nohighlight" id="equation-richardson-int">
 <span class="eqno">(5.10)<a class="headerlink" href="#equation-richardson-int" title="Permalink to this equation">#</a></span>\[I_h = I + a_1 h^{\alpha_1} + a_2 h^{\alpha_2} + ... + a_m h^{\alpha_m} + O(h^{\alpha_{m+1}}).\]</div>
 <p>Здесь <span class="math notranslate nohighlight">\(0 &lt; \alpha_1 &lt; \alpha_2 &lt; ... &lt; \alpha_m\)</span> – степени разложения, а <span class="math notranslate nohighlight">\(a_i\)</span> его ненулевые коэффициенты.</p>

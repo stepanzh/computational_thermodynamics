@@ -56,7 +56,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial", "lto": "\\leftarrow"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -432,6 +432,28 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ptsplit/index.html">
+   PT расслоение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/problem.html">
+     Постановка задачи
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/solution.html">
+     Решение задачи
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -800,7 +822,7 @@ title="Print to PDF"
 </div><p id="index-0">Алгоритмы, которые обнаруживают подобное поведение и подбирают сетку автоматически, называются <strong>адаптивными</strong>.</p>
 <section id="id2">
 <h2><span class="section-number">5.4.1. </span>Идея<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
-<p>Изложенную здесь идею подробнее можно почитать, например, здесь <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id8" title="А. А. Самарский and А. В. Гулин. Численные методы: учеб. пособие для вузов. Наука, Москва, 1989. ISBN 978-5020139961.">89</a>]</span>, <span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id4" title="Tobin A. Driscoll and Richard J. Braun. Fundamentals of numerical computation. Society for Industrial and Applied Mathematics, 2017. ISBN 978-1-61197-507-9. URL: https://tobydriscoll.net/project/fnc/.">ADJB17</a>]</span>.</p>
+<p>Изложенную здесь идею подробнее можно почитать, например, здесь <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id21" title="А. А. Самарский and А. В. Гулин. Численные методы: учеб. пособие для вузов. Наука, Москва, 1989. ISBN 978-5020139961.">89</a>]</span>, <span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id6" title="T. A. Driscoll and R. J. Braun. Fundamentals of numerical computation. Society for Industrial and Applied Mathematics, 2017. ISBN 978-1-61197-507-9. URL: https://tobydriscoll.net/project/fnc/.">DB17</a>]</span>.</p>
 <p>Допустим, мы вычисляем часть интеграла на отрезке <span class="math notranslate nohighlight">\(\int_{x_{i-1}}^{x_i} f\diff x\)</span>. Чтобы понять, нужно ли дробить отрезок для повышения точности, можно рассмотреть два приближения интеграла и сравнить их. Если разница не удовлетворяет заданной “точности”, то отрезок <span class="math notranslate nohighlight">\([x_{i-1}, x_i]\)</span> дробится пополам, а вычисления по <em>тем же</em> квадратурам происходят уже на более мелких отрезках.</p>
 <p>Два приближения вычислим по формулам Симпсона <a class="reference internal" href="newton_cotes.html#equation-simp-final">(5.9)</a> на разных сетках</p>
 <div class="math notranslate nohighlight">

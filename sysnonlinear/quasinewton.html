@@ -56,7 +56,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial", "lto": "\\leftarrow"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -428,6 +428,28 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="../ptstability/exercise.html">
      Задания
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ptsplit/index.html">
+   PT расслоение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/problem.html">
+     Постановка задачи
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/solution.html">
+     Решение задачи
     </a>
    </li>
   </ul>
@@ -1082,7 +1104,7 @@ f(rjac) = [-2.3769531543038624e-7, -2.327485972841714e-7]
 </div></section>
 <section id="id5">
 <h2><span class="section-number">7.2.4. </span>Другие версии метода<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
-<p>Изложенная выше версия метода <a class="reference internal" href="#equation-sysnonlinear-broyden-update">(7.7)</a> требует решения линейной системы <a class="reference internal" href="#equation-sysnonlinear-quasi-step">(7.4)</a>. Однако, она сочетается с линейным поиском, обеспечивающим глобальную сходимость метода, т.е. сходимостью к корню из произвольного начального приближения <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span>, если корень существует. Правда, для этого необходимо переформулировать постановку задачи <span class="math notranslate nohighlight">\(\mathbf{f}(\mathbf{x}) = \mathbf{0}\)</span> под задачу минимизации <span id="id6">[<a class="reference internal" href="../appendix/bibliography.html#id9" title="William H. Press, Saul A. Teukolsky, William T. Vetterling, and Brian P. Flannery. Numerical Recipes 3rd Edition: The Art of Scientific Computing. Cambridge University Press, USA, 3 edition, 2007. ISBN 0521880688.">PTVF07</a>]</span>.</p>
+<p>Изложенная выше версия метода <a class="reference internal" href="#equation-sysnonlinear-broyden-update">(7.7)</a> требует решения линейной системы <a class="reference internal" href="#equation-sysnonlinear-quasi-step">(7.4)</a>. Однако, она сочетается с линейным поиском, обеспечивающим глобальную сходимость метода, т.е. сходимостью к корню из произвольного начального приближения <span class="math notranslate nohighlight">\(\mathbf{x}_1\)</span>, если корень существует. Правда, для этого необходимо переформулировать постановку задачи <span class="math notranslate nohighlight">\(\mathbf{f}(\mathbf{x}) = \mathbf{0}\)</span> под задачу минимизации <span id="id6">[<a class="reference internal" href="../appendix/bibliography.html#id18" title="W. H. Press, S. A. Teukolsky, W. T. Vetterling, and B. P. Flannery. Numerical Recipes 3rd Edition: The Art of Scientific Computing. Cambridge University Press, USA, 3 edition, 2007. ISBN 0521880688.">PTVF07</a>]</span>.</p>
 <p>Если же линейный поиск не используется, распространены две версии алгоритма, использующие вместо матрицы <span class="math notranslate nohighlight">\(\mathbf{B}\)</span> обратную к ней <span class="math notranslate nohighlight">\(\mathbf{B}^{-1}\)</span>, полученную аналитически. Использование <span class="math notranslate nohighlight">\(\mathbf{B}^{-1}\)</span> позволяет не решать систему <a class="reference internal" href="#equation-sysnonlinear-quasi-step">(7.4)</a>, а сразу вычислять шаг</p>
 <div class="math notranslate nohighlight">
 \[\delta \mathbf{x}_k = - \mathbf{B}^{-1}_k \mathbf{f}_k.\]</div>

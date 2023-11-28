@@ -56,7 +56,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial", "lto": "\\leftarrow"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -432,6 +432,28 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ptsplit/index.html">
+   PT расслоение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/problem.html">
+     Постановка задачи
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/solution.html">
+     Решение задачи
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -755,7 +777,7 @@ title="Print to PDF"
                 
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">6.4. </span>Метод Риддерса<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
-<p>Метод Риддерса <span id="id2">[<a class="reference internal" href="../appendix/bibliography.html#id10" title="C. Ridders. A new algorithm for computing a single root of a real continuous function. IEEE Transactions on Circuits and Systems, 26(11):979-980, 1979. URL: https://doi.org/10.1109/TCS.1979.1084580, doi:10.1109/TCS.1979.1084580.">Rid79</a>]</span> основывается на линеаризации исходной функции с последующим применением regula falsi к новой, модифицированной функции.</p>
+<p>Метод Риддерса <span id="id2">[<a class="reference internal" href="../appendix/bibliography.html#id19" title="C. Ridders. A new algorithm for computing a single root of a real continuous function. IEEE Transactions on Circuits and Systems, 26(11):979-980, 1979. doi:10.1109/TCS.1979.1084580.">Rid79</a>]</span> основывается на линеаризации исходной функции с последующим применением regula falsi к новой, модифицированной функции.</p>
 <section id="id3">
 <h2><span class="section-number">6.4.1. </span>Вывод метода<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
 <p>Пусть мы ищем приближение корня уравнения <span class="math notranslate nohighlight">\(f(x) = 0\)</span> на отрезке <span class="math notranslate nohighlight">\([x_0, x_2]\)</span>, при этом <span class="math notranslate nohighlight">\(f(x_0)f(x_2) &lt; 0\)</span>. Заведём новую функцию <span class="math notranslate nohighlight">\(g(x)\)</span></p>
@@ -842,7 +864,7 @@ title="Print to PDF"
             <span class="proof-title-name">(Метод Риддерса)</span>
         
     </div><div class="proof-content">
-</div></div><div class="demo"><p>Рассмотрим работу метода Риддерса на функции <span class="math notranslate nohighlight">\(f(x) = (\tan{x})^{\tan{x}} - 10^3\)</span> из оригинальной работы <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id10" title="C. Ridders. A new algorithm for computing a single root of a real continuous function. IEEE Transactions on Circuits and Systems, 26(11):979-980, 1979. URL: https://doi.org/10.1109/TCS.1979.1084580, doi:10.1109/TCS.1979.1084580.">Rid79</a>]</span>.</p>
+</div></div><div class="demo"><p>Рассмотрим работу метода Риддерса на функции <span class="math notranslate nohighlight">\(f(x) = (\tan{x})^{\tan{x}} - 10^3\)</span> из оригинальной работы <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id19" title="C. Ridders. A new algorithm for computing a single root of a real continuous function. IEEE Transactions on Circuits and Systems, 26(11):979-980, 1979. doi:10.1109/TCS.1979.1084580.">Rid79</a>]</span>.</p>
 <p>В качестве начального интервала возьмём <span class="math notranslate nohighlight">\([0, 1.5]\)</span>. Функция принимает в концах отрезка значения, отличающиеся на 13 порядков!</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

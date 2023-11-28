@@ -56,7 +56,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial", "lto": "\\leftarrow"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -432,6 +432,28 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ptsplit/index.html">
+   PT расслоение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/problem.html">
+     Постановка задачи
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/solution.html">
+     Решение задачи
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -744,7 +766,7 @@ title="Print to PDF"
 </section>
 <section id="id5">
 <h2>Математическая постановка<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h2>
-<p>Итак, в общем случае, необходимо перебрать всевозможные составы <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> и проверить в каждом из них знак функции <span class="math notranslate nohighlight">\(F(\boldsymbol{x})\)</span> <a class="reference internal" href="#equation-ptstab-tpd">(3)</a>. Конечно, можно поступить и проще, найдя глобальный минимум <span class="math notranslate nohighlight">\(F\)</span>, и посмотреть знак <span class="math notranslate nohighlight">\(F\)</span> в нём. Вместо поиска минимума можно проверить знак <span class="math notranslate nohighlight">\(F\)</span> в стационарных точках <span id="id6">[<a class="reference internal" href="../appendix/bibliography.html#id18" title="Lee E. Baker, Alan C. Pierce, and Kraemer D. Luks. Gibbs energy analysis of phase equilibria. Society of Petroleum Engineers Journal, 22(5):731–742, 1982. URL: https://onepetro.org/spejournal/article/22/05/731/69036/Gibbs-Energy-Analysis-of-Phase-Equilibria (visited on 2022-03-14), doi:10.2118/9806-PA.">BPL82</a>]</span>.</p>
+<p>Итак, в общем случае, необходимо перебрать всевозможные составы <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> и проверить в каждом из них знак функции <span class="math notranslate nohighlight">\(F(\boldsymbol{x})\)</span> <a class="reference internal" href="#equation-ptstab-tpd">(3)</a>. Конечно, можно поступить и проще, найдя глобальный минимум <span class="math notranslate nohighlight">\(F\)</span>, и посмотреть знак <span class="math notranslate nohighlight">\(F\)</span> в нём. Вместо поиска минимума можно проверить знак <span class="math notranslate nohighlight">\(F\)</span> в стационарных точках <span id="id6">[<a class="reference internal" href="../appendix/bibliography.html#id4" title="L. E. Baker, A. C. Pierce, and K. D. Luks. Gibbs energy analysis of phase equilibria. Society of Petroleum Engineers Journal, 22(5):731–742, 1982. doi:10.2118/9806-PA.">BPL82</a>]</span>.</p>
 <p>Условие стационарности <span class="math notranslate nohighlight">\(\nabla F = \boldsymbol{0}\)</span> с учётом <span class="math notranslate nohighlight">\(\sum_i x_i = 1\)</span> приводит к системе уравнений</p>
 <div class="math notranslate nohighlight" id="equation-ptstab-chempot-stationary-system">
 <span class="eqno">(4)<a class="headerlink" href="#equation-ptstab-chempot-stationary-system" title="Permalink to this equation">#</a></span>\[\mu_i(\boldsymbol{x}) -\mu^0_i = \lambda, \quad i=1,\dots,n\]</div>
@@ -784,7 +806,7 @@ title="Print to PDF"
 <hr class="footnotes docutils" />
 <dl class="footnote brackets">
 <dt class="label" id="gibbs-derivation"><span class="brackets"><a class="fn-backref" href="#id3">1</a></span></dt>
-<dd><p>Выражение свободной энергии Гиббса для смеси следует из аддитивности внутренней энергии и энтропии. Подробнее об этом в <span id="id8">[<a class="reference internal" href="../appendix/bibliography.html#id16" title="А И Брусиловский. Фазовые превращения при разработке месторождений нефти и газа. ВИНИТИ РАН, Грааль, 2002. ISBN 5-94688-031-4.">02</a>]</span> (Раздел 2.9, Химический потенциал).</p>
+<dd><p>Выражение свободной энергии Гиббса для смеси следует из аддитивности внутренней энергии и энтропии. Подробнее об этом в <span id="id8">[<a class="reference internal" href="../appendix/bibliography.html#id5" title="А.И. Брусиловский. Фазовые превращения при разработке месторождений нефти и газа. ВИНИТИ РАН, Грааль, 2002. ISBN 5-94688-031-4.">02</a>]</span> (Раздел 2.9, Химический потенциал).</p>
 </dd>
 <dt class="label" id="gibbs-delta-approx"><span class="brackets"><a class="fn-backref" href="#id4">2</a></span></dt>
 <dd><p>Строго говоря, это равенство выполняется приближённо. Знак точного равенства поставлен с целью упрощения изложения и математической записи.</p>

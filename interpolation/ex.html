@@ -56,7 +56,7 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"real": "\\mathbb{R}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "macheps": "\\epsilon_{\\text{mach}}", "float": "\\text{float}", "diff": "\\mathrm{d}", "diag": "\\text{diag}", "sign": "\\text{sign}", "part": "\\partial", "lto": "\\leftarrow"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
@@ -432,6 +432,28 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../ptsplit/index.html">
+   PT расслоение
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/problem.html">
+     Постановка задачи
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../ptsplit/solution.html">
+     Решение задачи
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -747,7 +769,7 @@ title="Print to PDF"
 <h1><span class="section-number">4.4. </span>Задания<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
 <section id="id2">
 <h2><span class="section-number">4.4.1. </span>Вязкость разреженного газа<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
-<p>Многие корреляционные модели вязкости (например, <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id6" title="M. J. Assael, J. H. Dymond, M. Papadaki, and P. M. Patterson. Correlation and prediction of dense fluid transport coefficients. i. n-alkanes. International Journal of Thermophysics, 13(2):269–281, March 1992. URL: https://doi.org/10.1007/bf00504436, doi:10.1007/bf00504436.">ADPP92</a>]</span>) предоставляют формулу для вычислений</p>
+<p>Многие корреляционные модели вязкости (например, <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id3" title="M. J. Assael, J. H. Dymond, M. Papadaki, and P. M. Patterson. Correlation and prediction of dense fluid transport coefficients. I. n-alkanes. International Journal of Thermophysics, 13(2):269–281, 1992. doi:10.1007/bf00504436.">ADPP92</a>]</span>) предоставляют формулу для вычислений</p>
 <div class="math notranslate nohighlight">
 \[\eta_{\text{c}}(\upsilon, T),\]</div>
 <p>где <span class="math notranslate nohighlight">\(\upsilon\)</span> молярный объём и <span class="math notranslate nohighlight">\(T\)</span> температура. Индекс <span class="math notranslate nohighlight">\(\text{c}\)</span> отражает тот факт, что внутри формула параметризована для конкретного вещества. Как правило, параметризация производится по экспериментальным данным, а набор параметров для некоторых веществ приводится вместе с моделью.</p>
@@ -756,7 +778,7 @@ title="Print to PDF"
 \[\eta_{\text{c}}(\upsilon, T) \to \eta_{0\text{c}}(T), \quad \upsilon \to \infty.\]</div>
 <p>В свою очередь, низкоплотные пределы исследуются <em>аналитически</em>. В этом задании вам предстоит реализовать одну такую модель.</p>
 <p><strong>Модель разреженного газа.</strong></p>
-<p>Модель ниже приводится из <span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id7" title="И. Ф. Голубев and Н. Е. Гнездилов. Вязкость газовых смесей. Издательство государственного комитета стандартов кабинета министров СССР, Москва, 1971. URL: https://lib.mipt.ru/book/35000/?q=%D0%98.%D0%A4.+%D0%93%D0%BE%D0%BB%D1%83%D0%B1%D0%B5%D0%B2+and+%D0%9D.%D0%95.+%D0%93%D0%BD%D0%B5%D0%B7%D0%B4%D0%B8%D0%BB%D0%BE%D0%B2.+%D0%92%D1%8F%D0%B7%D0%BA%D0%BE%D1%81%D1%82%D1%8C+%D0%B3%D0%B0%D0%B7%D0%BE%D0%B2%D1%8B%D1%85+%D1%81%D0%BC%D0%B5%D1%81%D0%B5%D0%B9.">71</a>]</span>.</p>
+<p>Модель ниже приводится из <span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id7" title="И. Ф. Голубев and Н. Е. Гнездилов. Вязкость газовых смесей. Издательство государственного комитета стандартов кабинета министров СССР, Москва, 1971.">71</a>]</span>.</p>
 <p>Уравнение модели получено из физической кинетики. Выведено для низкоплотного состояния неполярного газа. Модель учитывает кинетическое взаимодействие и взаимодействие по <a class="reference external" href="https://en.wikipedia.org/wiki/Lennard-Jones_potential">потенциалу Ленарда-Джонса</a> (Л-Ж) между частицами вещества.</p>
 <p>Модель даёт уравнение</p>
 <div class="math notranslate nohighlight" id="equation-dilute">
@@ -778,7 +800,7 @@ title="Print to PDF"
 <li><p>численный множитель получается после подстановки значений физических констант.</p></li>
 </ul>
 <p>В уравнении <a class="reference internal" href="#equation-dilute">(4.15)</a> вещество <span class="math notranslate nohighlight">\(\text{c}\)</span> определяется тремя параметрами <span class="math notranslate nohighlight">\(M\)</span>, <span class="math notranslate nohighlight">\(\sigma\)</span> и <span class="math notranslate nohighlight">\(\varepsilon/k\)</span>.</p>
-<p>Функции <span class="math notranslate nohighlight">\(f_\eta(T^*)\)</span> и <span class="math notranslate nohighlight">\(\Omega^{(2,2)*}(T^*)\)</span> в <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id7" title="И. Ф. Голубев and Н. Е. Гнездилов. Вязкость газовых смесей. Издательство государственного комитета стандартов кабинета министров СССР, Москва, 1971. URL: https://lib.mipt.ru/book/35000/?q=%D0%98.%D0%A4.+%D0%93%D0%BE%D0%BB%D1%83%D0%B1%D0%B5%D0%B2+and+%D0%9D.%D0%95.+%D0%93%D0%BD%D0%B5%D0%B7%D0%B4%D0%B8%D0%BB%D0%BE%D0%B2.+%D0%92%D1%8F%D0%B7%D0%BA%D0%BE%D1%81%D1%82%D1%8C+%D0%B3%D0%B0%D0%B7%D0%BE%D0%B2%D1%8B%D1%85+%D1%81%D0%BC%D0%B5%D1%81%D0%B5%D0%B9.">71</a>]</span> приводятся в табличном виде, ссылки на таблицы приведены ниже</p>
+<p>Функции <span class="math notranslate nohighlight">\(f_\eta(T^*)\)</span> и <span class="math notranslate nohighlight">\(\Omega^{(2,2)*}(T^*)\)</span> в <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id7" title="И. Ф. Голубев and Н. Е. Гнездилов. Вязкость газовых смесей. Издательство государственного комитета стандартов кабинета министров СССР, Москва, 1971.">71</a>]</span> приводятся в табличном виде, ссылки на таблицы приведены ниже</p>
 <ul class="simple">
 <li><p><span class="math notranslate nohighlight">\(f_\eta(T^*)\)</span>: <strong><a href="https://raw.githubusercontent.com/stepanzh/computational_thermodynamics/main/book/static/golubev1971_feta.pdf" target="_blank">[ссылка]</a></strong>;</p></li>
 <li><p><span class="math notranslate nohighlight">\(\Omega^{(2,2)*}(T^*)\)</span>: <strong><a href="https://raw.githubusercontent.com/stepanzh/computational_thermodynamics/main/book/static/golubev1971_omega22.pdf" target="_blank">[ссылка]</a></strong>.</p></li>
