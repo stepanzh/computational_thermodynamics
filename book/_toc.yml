@@ -58,6 +58,9 @@ parts:
     - file: sysnonlinear/newton
     - file: sysnonlinear/quasinewton
     - file: sysnonlinear/ex
+  - file: autodiff/index
+    sections:
+    - file: autodiff/complexstep
   # - file: ode/index
   #   sections:
   #   - file: ode/euler
