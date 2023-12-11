@@ -61,6 +61,7 @@ parts:
   - file: autodiff/index
     sections:
     - file: autodiff/complexstep
+    - file: autodiff/dualnumbers
   # - file: ode/index
   #   sections:
   #   - file: ode/euler
