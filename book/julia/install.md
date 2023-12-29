@@ -1,13 +1,25 @@
 ---
-substitutions:
-  urldownload: "https://julialang.org/downloads/"
-  wintermdwnld: "<img src=\"https://www.microsoft.com/favicon.ico%3Fv2\" style=\"height: 1em;\" alt=\"⊞\"> [Windows Terminal](https://aka.ms/terminal)"
-  julia_logo: "<img src=\"https://raw.githubusercontent.com/JuliaLang/julia-logo-graphics/master/images/julia-dots.svg\" style=\"height: 1em;\">"
+myst:
+  substitutions:
+    urldownload: "https://julialang.org/downloads/"
+    wintermdwnld: "<img src=\"https://www.microsoft.com/favicon.ico%3Fv2\" style=\"height: 1em;\" alt=\"⊞\"> [Windows Terminal](https://aka.ms/terminal)"
+    julia_logo: "<img src=\"https://raw.githubusercontent.com/JuliaLang/julia-logo-graphics/master/images/julia-dots.svg\" style=\"height: 1em;\">"
 ---
+
+```{eval-rst}
+.. meta::
+   :description: Установка языка компилятора языка Julia на Windows, Linux-системы и MacOS.
+   :keywords: julia, установка, инструкция
+```
 
 # Установка
 
 Ниже расположены краткие инструкции по установке исполнителя языка Julia для Linux-based операционных систем (ОС), MacOS и Windows. При возникновении неясностей, обратитесь к [официальной инструкции](https://julialang.org/downloads/platform/) для вашей ОС.
+
+```{warning}
+Инструкция ниже написана для версии языка `1.6.2`.
+Скорее всего, вам потребуется изменить некоторые команды, заменив в них `1.6.2` на скачанную вами версию языка.
+```
 
 ## Linux-based ОС
 
