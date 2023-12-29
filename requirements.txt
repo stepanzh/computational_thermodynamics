@@ -1,7 +1,4 @@
-jupyter-book
-matplotlib
-numpy
+jupyter-book>=0.15.0,<0.16.0
 sphinxcontrib-mermaid
 sphinx-inline-tabs
 sphinxcontrib-proof
-ghp-import
