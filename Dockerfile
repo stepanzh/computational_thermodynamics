@@ -10,8 +10,8 @@ EXPOSE 80
 # Home директория root пользователя.
 WORKDIR /root/
 
-COPY requirements.txt .
-COPY Project.toml .
+COPY python-requirements.txt .
+COPY julia-requirements.toml .
 
 RUN <<EOF
 apt update
@@ -25,7 +25,7 @@ python3 get-pip.py
 rm get-pip.py
 
 # Python packages
-pip install -r requirements.txt
+pip install -r python-requirements.txt
 
 # Julia 1.9.4
 wget https://julialang-s3.julialang.org/bin/linux/x64/1.9/julia-1.9.4-linux-x86_64.tar.gz
@@ -39,8 +39,9 @@ ln -s /usr/local/bin/julia-1.9.4/bin/julia /usr/local/bin/julia
 
 ## Инициализация глобального окружения julia (/root/.julia директория).
 julia -e "using Pkg; Pkg.instantiate()"
-## Проставляем наш Project.toml глобальным окружением Julia в контейнере.
-cp Project.toml /root/.julia/environments/v1.9/Project.toml
+## Проставляем глобальное окружение Julia в контейнере.
+## Не оставляйте `/root/Project.toml`!!! Иначе jupyter-book будет ссылаться на него, а не глобальное окружение.
+cp julia-requirements.toml /root/.julia/environments/v1.9/Project.toml
 ## Грузим и устанавливаем пакеты, перечисленные в Project.toml.
 julia -e "using Pkg; Pkg.resolve(); Pkg.instantiate(); Pkg.precompile()"
 
