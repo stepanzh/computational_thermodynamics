@@ -4,10 +4,12 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.0
 kernelspec:
-  display_name: Julia
+  display_name: Julia 1.9.4
   language: julia
-  name: julia-1.6
+  name: julia-1.9
 ---
 
 ```{code-cell}
@@ -126,9 +128,7 @@ g = (x) -> -x*(x-1) + x
 А вот для корня $x = 0$ тогда ожидать сходимости не стоит, поскольку $g'(0) = 2$.
 
 ```{code-cell}
----
-tags: [raises-exception]
----
+:tags: [raises-exception]
 
 fixedpoint(g, -0.1; maxiter=100)
 ```

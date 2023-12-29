@@ -4,10 +4,12 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.0
 kernelspec:
-  display_name: Julia
+  display_name: Julia 1.9.4
   language: julia
-  name: julia-1.6
+  name: julia-1.9
 ---
 
 ```{code-cell}
@@ -149,9 +151,7 @@ scatter!([root], [f(root)]; subplot=2, label="Найденный корень", 
 Сравним с методом regula falsi. Для этого выставим для методов одинаковые `ftol`.
 
 ```{code-cell}
----
-tags: [raises-exception]
----
+:tags: [raises-exception]
 
 regulafalsi(f, 0, 1.5; ftol=1e-6, maxiter=1000);
 ```

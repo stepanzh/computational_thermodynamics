@@ -4,10 +4,12 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.0
 kernelspec:
-  display_name: Julia
+  display_name: Julia 1.9.4
   language: julia
-  name: julia-1.6
+  name: julia-1.9
 ---
 
 # Числа с плавающей точкой
@@ -312,6 +314,7 @@ ks = [10.0, 100.0, 1000.0, 10000.0]
 ```{margin}
 В англоязычной литературе см. *subtractive cancellation*.
 ```
+
 ```{code-cell}
 @show (1.0 + eps()/2) - 1.0;
 @show 1.0 + (eps()/2 - 1.0);

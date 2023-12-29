@@ -4,10 +4,12 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.0
 kernelspec:
-  display_name: Julia
+  display_name: Julia 1.9.4
   language: julia
-  name: julia-1.6
+  name: julia-1.9
 ---
 
 ```{code-cell}
@@ -262,7 +264,7 @@ end
 <div class="demo">
 ```
 
-Рассмотрим решение задачи Коши из {numref}`Демонстрации %s <ode_euler_demo_cauchy>` 4-этапным методом Рунге-Кутты. 
+Рассмотрим решение задачи Коши из {numref}`Демонстрации %s <ode_euler_demo_cauchy>` 4-этапным методом Рунге-Кутты.
 
 ```{code-cell}
 problem = CauchyODEProblem(;
