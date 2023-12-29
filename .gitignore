@@ -1,6 +1,8 @@
 _build/
+
+# Editor specifc
 *.sublime-workspace
 *.sublime-project
-.DS_Store
-book/Manifest.toml
 
+# OS-specific
+.DS_Store
