@@ -4,10 +4,12 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.0
 kernelspec:
-  display_name: Julia
+  display_name: Julia 1.9.4
   language: julia
-  name: julia-1.6
+  name: julia-1.9
 ---
 
 ```{code-cell}
@@ -15,6 +17,7 @@ kernelspec:
 
 include("../src.jl")
 ```
+
 (chapters:integration:newton-cotes)=
 # Формулы Ньютона-Котса
 
@@ -156,6 +159,7 @@ for (i, n) in enumerate((1, 4, 8))
 end
 plt
 ```
+
 ```{raw} html
 </div>
 ```
@@ -259,6 +263,7 @@ end
 ```{raw} html
 <div class="demo">
 ```
+
 ```{code-cell}
 foo(x) = x * exp(sin(2x))
 a, b = 0, 3
@@ -272,6 +277,7 @@ for (i, n) in enumerate((1, 4, 8))
 end
 plt
 ```
+
 ```{raw} html
 </div>
 ```
@@ -404,6 +410,7 @@ plot(n, trap.(n); marker=:o, label="формула трапеций", xlabel="ч
 plot!(n, simp.(n); marker=:o, label="формула Симпсона")
 plot!(n, midp.(n); marker=:o, label="формула прямоугольников")
 ```
+
 ```{raw} html
 </div>
 ```

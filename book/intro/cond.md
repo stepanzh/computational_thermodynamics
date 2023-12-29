@@ -4,10 +4,12 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.0
 kernelspec:
-  display_name: Julia
+  display_name: Julia 1.9.4
   language: julia
-  name: julia-1.6
+  name: julia-1.9
 ---
 
 # Обусловленность задач
@@ -146,6 +148,7 @@ A(x) = \begin{bmatrix}
 ```{margin}
 Здесь использована функция детерминанта `det` из стандартного пакета `LinearAlgebra`.
 ```
+
 ```{code-cell}
 using LinearAlgebra: det;
 x = 0.601;
