@@ -10,6 +10,10 @@ kernelspec:
   display_name: Julia 1.9.4
   language: julia
   name: julia-1.9
+myst:
+  substitutions:
+    url_omega22_table: "<a href=\"https://raw.githubusercontent.com/stepanzh/computational_thermodynamics/main/book/static/golubev1971_omega22.pdf\" target=\"_blank\">pdf</a>"
+    url_feta_table: "<a href=\"https://raw.githubusercontent.com/stepanzh/computational_thermodynamics/main/book/static/golubev1971_feta.pdf\" target=\"_blank\">pdf</a>"
 ---
 
 ```{code-cell}
@@ -71,10 +75,10 @@ include("interpolation.jl")
 
 В уравнении {eq}`dilute` вещество $\text{c}$ определяется тремя параметрами $M$, $\sigma$ и $\varepsilon/k$.
 
-Функции $f_\eta(T^*)$ и $\Omega^{(2,2)*}(T^*)$ в {cite}`GolubevGnezdilov1971` приводятся в табличном виде, ссылки на таблицы приведены ниже
+Функции $f_\eta(T^*)$ и $\Omega^{(2,2)*}(T^*)$ в {cite}`GolubevGnezdilov1971` задаются в табличном виде, ссылки на таблицы приведены ниже
 
-- $f_\eta(T^*)$: **{{ url_feta_table }}**;
-- $\Omega^{(2,2)*}(T^*)$: **{{ url_omega22_table }}**.
+- табличное определение функции $f_\eta(T^*)$, {{ url_feta_table }};
+- табличное определение функции $\Omega^{(2,2)*}(T^*)$, {{ url_omega22_table }}.
 
 Таким образом, при реализации модели {eq}`dilute` возникает задача интерполяции.
 
