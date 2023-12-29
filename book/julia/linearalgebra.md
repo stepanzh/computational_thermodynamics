@@ -1,4 +1,4 @@
-(arrays_linops)=
+(sec:julia:linear-algebra)=
 # Линейная алгебра
 
 ```{tip}
