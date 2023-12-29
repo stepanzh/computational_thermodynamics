@@ -99,8 +99,8 @@ data = [
 
 pretty_table(data;
     header=["Вещество", "M, г/моль", "σ, Å", "ε/k, K", "Tmin, K", "Tmax, K", "NIST"],
-    backend=:html,
-    alignment=:c
+    backend=Val(:html),
+    alignment=:c,
 )
 ```
 
