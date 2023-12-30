@@ -39,7 +39,7 @@ K_{i}
 :label: eq:fixedpoint
 K_{i} = \frac{\varphi_{i}(\mathbf{x}(\mathbf{K}))}{ \varphi_{i}(\mathbf{y}(\mathbf{K})) }.
 ```
-Полученная система является системой на неподвижную точку вида $K_{i} = g(\mathbf{K})$.
+Полученная система является системой на неподвижную точку вида $\mathbf{K} = g(\mathbf{K})$.
 
 Осталось определить зависимости $x_{i}(\mathbf{K})$ и $y_{i}(\mathbf{K})$.
 Воспользуемся уравнением {eq}`eq:nlsystem:comp_balance`, учтём в нём $L = 1 - V$ {eq}`eq:nlsystem:LV`, $y_{i} = K_{i} x_{i}$, и получим
