@@ -4,6 +4,12 @@ myst:
     julia_logo: "<img src=\"https://raw.githubusercontent.com/JuliaLang/julia-logo-graphics/master/images/julia-dots.svg\" style=\"height: 1em;\">"
 ---
 
+```{eval-rst}
+.. meta::
+   :description: Введение в программирование на языке Julia.
+   :keywords: julia, программирование, введение, учебник
+```
+
 # Основы языка программирования Julia
 
 ```{epigraph}

@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+   :description: Julia. Операции линейной алгебры и модуль LinearAlgebra.
+   :keywords: julia, программирование, линейная алгебра, linearalgebra, транспонирование, норма, матричное умножение
+```
+
 (sec:julia:linear-algebra)=
 # Линейная алгебра
 

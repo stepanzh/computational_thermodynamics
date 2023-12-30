@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+   :description: Массивы и векторизация (broadcast) операций в Julia.
+   :keywords: julia, программирование, массив, array, vector, matrix, векторизация, broadcast
+```
+
 # Массивы и broadcast
 
 В Julia для массивов существует абстрактный тип `AbstractArray{T,N}`, где `T` тип элемента массива (`Int64`, `String`, `Complex{Int64}`, `Number`, `Any`...), а `N` размерность. При написании собственных типов с поведением массива в объявлении следует указать, что ваш тип является подтипом `AbstractArray`.

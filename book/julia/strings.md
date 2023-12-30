@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+   :description: Julia. Работа со строками и текстом.
+   :keywords: julia, программирование, основы, строки, текст
+```
+
 # Строки
 
 Подробнее о строках в мануале **[[url]](https://docs.julialang.org/en/v1/manual/strings/)**.

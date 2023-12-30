@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+   :description: Julia. Ветвление if-elseif-else и циклы for и while.
+   :keywords: julia, программирование, ветвление, циклы, if, if-else, if-else-if, for, while
+```
+
 # Управляющие конструкции
 
 Подробнее в мануале **[[url]](https://docs.julialang.org/en/v1/manual/control-flow/)**. Здесь освещены не все конструкции и не так подробно.

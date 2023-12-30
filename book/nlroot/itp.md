@@ -12,6 +12,12 @@ kernelspec:
   name: julia-1.9
 ---
 
+```{eval-rst}
+.. meta::
+   :description: Рассмотрим метод Interpolate-Truncate-Project (ITP) для решения нелинейного уравнения.
+   :keywords: метод itp, interpolate truncate project, itp method, нелинейное уравнение, поиск корня, вычислительная математика, вычматы
+```
+
 ```{code-cell}
 :tags: [remove-cell]
 

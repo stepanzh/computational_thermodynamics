@@ -23,7 +23,7 @@ html-clean:
 
 html-clean-all:
 	@echo 'Очищаю артефакты html и jupyter-book кэш'
-	docker exec -t $(DOCKER_CONTAINER_NAME) jupyter-book clean book
+	docker exec -t $(DOCKER_CONTAINER_NAME) jupyter-book clean --all book
 
 github-pages:
 	@echo 'Публикация файлов локальных файлов книги на github pages'
