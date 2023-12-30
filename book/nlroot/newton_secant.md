@@ -12,6 +12,12 @@ kernelspec:
   name: julia-1.9
 ---
 
+```{eval-rst}
+.. meta::
+   :description: Рассмотрим методы Ньютона и секущих для решения нелинейного уравнения.
+   :keywords: метод Ньютона, метод секущих, secant, newton, fixed point, нелинейное уравнение, поиск корня, вычислительная математика, вычматы
+```
+
 ```{code-cell}
 :tags: [remove-cell]
 
