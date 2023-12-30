@@ -85,7 +85,7 @@ parts:
     - file: ptsplit/solution
 - caption: Приложения
   chapters:
-  - file: appendix/genindex
+  - file: genindex
   - file: appendix/bibliography
   - file: appendix/materials
   - file: appendix/solvecubic
