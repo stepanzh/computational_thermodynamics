@@ -1,5 +1,4 @@
 jupyter-book>=0.15.0,<0.16.0
 jupytext
 sphinxcontrib-mermaid
-sphinx-inline-tabs
 sphinxcontrib-proof
