@@ -16,6 +16,12 @@ myst:
     url_feta_table: "<a href=\"https://raw.githubusercontent.com/stepanzh/computational_thermodynamics/main/book/static/golubev1971_feta.pdf\" target=\"_blank\">pdf</a>"
 ---
 
+```{eval-rst}
+.. meta::
+   :description: Задачи и упражения на интерполяцию.
+   :keywords: задачи, упражнения, интерполяция, вычислительная математика, вычматы
+```
+
 ```{code-cell}
 :tags: [remove-cell]
 
@@ -25,8 +31,6 @@ include("interpolation.jl")
 # Задания
 
 ## Вязкость разреженного газа
-
-%%% bib
 
 Многие корреляционные модели вязкости (например, {cite}`Assael1992`) предоставляют формулу для вычислений
 
