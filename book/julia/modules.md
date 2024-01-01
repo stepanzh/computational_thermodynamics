@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+   :description: Julia. Создание модулей, библиотек кода и пакетов.
+   :keywords: julia, программирование, модуль, пакет, библиотека, package, export, include, using, import
+```
+
 # Модули и пакеты
 
 ## Модули

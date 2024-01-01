@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+   :description: Массивы и векторизация (broadcast) операций в Julia.
+   :keywords: julia, программирование, массив, array, vector, matrix, векторизация, broadcast
+```
+
 # Массивы и broadcast
 
 В Julia для массивов существует абстрактный тип `AbstractArray{T,N}`, где `T` тип элемента массива (`Int64`, `String`, `Complex{Int64}`, `Number`, `Any`...), а `N` размерность. При написании собственных типов с поведением массива в объявлении следует указать, что ваш тип является подтипом `AbstractArray`.
@@ -138,7 +144,7 @@ julia> M = [A I; zero' b']
  0  0  0  10  11  12
 :::
 
-Оператор `'` (одинарная кавычка) выполняет [транспонирование](arrays_linops).
+Оператор `'` (одинарная кавычка) выполняет {ref}`транспонирование <sec:julia:linear-algebra>`.
 ```
 
 ## Индексирование
@@ -275,7 +281,7 @@ julia> A
   1   8  9
 ```
 
-При присваивании можно использовать [векторизацию](broadcasting).
+При присваивании можно использовать {ref}`векторизацию <sec:julia:broadcast>`.
 
 ```julia-repl
 julia> A[1, :] .= 11;
@@ -316,7 +322,7 @@ julia> A
 
 Для чтения и записи в файл массивов в форматах с сепаратором (.csv, .tsv,..) есть встроенная библиотека [DelimitedFiles](https://docs.julialang.org/en/v1/stdlib/DelimitedFiles/) и сторонний пакет [CSV.jl](https://github.com/JuliaData/CSV.jl).
 
-(broadcasting)=
+(sec:julia:broadcast)=
 ## Векторизация функций
 
 ```{tip}

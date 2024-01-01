@@ -4,11 +4,19 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.0
 kernelspec:
-  display_name: Julia
+  display_name: Julia 1.9.4
   language: julia
-  name: julia-1.6
+  name: julia-1.9
 ---
+
+```{eval-rst}
+.. meta::
+   :description: Рассмотрим метод Риддерса (Ridders) для решения нелинейного уравнения.
+   :keywords: метод риддерса, метод риддера, ridders method, нелинейное уравнение, поиск корня, вычислительная математика, вычматы
+```
 
 ```{code-cell}
 :tags: [remove-cell]
@@ -16,6 +24,7 @@ kernelspec:
 include("../src.jl")
 ```
 
+(sec:nlroot:ridders)=
 # Метод Риддерса
 
 Метод Риддерса {cite}`ridders1979` основывается на линеаризации исходной функции с последующим применением regula falsi к новой, модифицированной функции.
@@ -149,9 +158,7 @@ scatter!([root], [f(root)]; subplot=2, label="Найденный корень", 
 Сравним с методом regula falsi. Для этого выставим для методов одинаковые `ftol`.
 
 ```{code-cell}
----
-tags: [raises-exception]
----
+:tags: [raises-exception]
 
 regulafalsi(f, 0, 1.5; ftol=1e-6, maxiter=1000);
 ```

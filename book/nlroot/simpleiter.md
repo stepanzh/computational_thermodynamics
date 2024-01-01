@@ -4,11 +4,19 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.0
 kernelspec:
-  display_name: Julia
+  display_name: Julia 1.9.4
   language: julia
-  name: julia-1.6
+  name: julia-1.9
 ---
+
+```{eval-rst}
+.. meta::
+   :description: Рассмотрим простейший метод решения нелинейного уравнения - метод простой итерации.
+   :keywords: метод простой итерации, неподвижная точка, fixed point, нелинейное уравнение, поиск корня, вычислительная математика, вычматы
+```
 
 ```{code-cell}
 :tags: [remove-cell]
@@ -126,9 +134,7 @@ g = (x) -> -x*(x-1) + x
 А вот для корня $x = 0$ тогда ожидать сходимости не стоит, поскольку $g'(0) = 2$.
 
 ```{code-cell}
----
-tags: [raises-exception]
----
+:tags: [raises-exception]
 
 fixedpoint(g, -0.1; maxiter=100)
 ```

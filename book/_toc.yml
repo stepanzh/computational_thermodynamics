@@ -1,5 +1,5 @@
 # Table of contents
-# Learn more at https://jupyterbook.org/customize/toc.html
+# Learn more at https://jupyterbook.org/en/stable/structure/toc.html
 
 format: jb-book
 root: index
@@ -62,20 +62,19 @@ parts:
     sections:
     - file: autodiff/complexstep
     - file: autodiff/dualnumbers
-  # - file: ode/index
-  #   sections:
-  #   - file: ode/euler
-  #   - file: ode/rungekutta
-  #   - file: ode/adaptive_rungekutta
-  #   - file: ode/multistep
-  #   - file: ode/ex
-  # - file: optim/index
-  #   sections:
-  #   - file: optim/intro
-  #   - file: optim/linesearch
-  #   - file: optim/newton
-  #   - file: optim/bfgs
-  #   - file: optim/ex
+  - file: ode/index
+    sections:
+    - file: ode/euler
+    - file: ode/rungekutta
+    - file: ode/adaptive_rungekutta
+    - file: ode/ex
+  - file: optim/index
+    sections:
+    - file: optim/intro
+    - file: optim/linesearch
+    - file: optim/newton
+    - file: optim/bfgs
+    - file: optim/ex
 - caption: Фазовое равновесие
   chapters:
   - file: ptstability/index
@@ -90,7 +89,7 @@ parts:
     - file: ptsplit/solution
 - caption: Приложения
   chapters:
-  - file: appendix/genindex
+  - file: genindex
   - file: appendix/bibliography
   - file: appendix/materials
   - file: appendix/solvecubic

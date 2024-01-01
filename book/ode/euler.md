@@ -4,11 +4,19 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.0
 kernelspec:
-  display_name: Julia
+  display_name: Julia 1.9.4
   language: julia
-  name: julia-1.6
+  name: julia-1.9
 ---
+
+```{eval-rst}
+.. meta::
+   :description: Рассмотрим простейший метод численного решения ОДУ - метод Эйлера.
+   :keywords: метод эйлера, явный метод эйлера, оду, обыкновенное дифференциальное уравнение, дифуры, вычислительная математика, вычматы
+```
 
 ```{code-cell}
 :tags: [remove-cell]
@@ -185,13 +193,13 @@ u(0) &= 2
 
 ```{code-cell}
 problem = CauchyODEProblem(
-    f=(t, u) -> -u + 2exp(t),
+    f=(t, u) -> -u + 2 * exp(t),
     tstart=0,
     tend=1,
     u₀=2,
 )
 plt = plot(; xlabel="time", leg=:topleft)
-plot!((t) -> 2cosh(t); label=L"2\cosh t", lw=2, xlabel=L"t")
+plot!((t) -> 2 * cosh(t); label=L"2 \times \cosh{t}", lw=2, xlabel=L"t", ylabel=L"u(t)")
 for n in (1, 2, 3, 10)
     t, u = euler(problem; nsteps=n)
     plot!(t, u; label="euler, nsteps = $n", marker=:o)

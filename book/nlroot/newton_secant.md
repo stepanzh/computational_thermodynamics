@@ -4,11 +4,19 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.0
 kernelspec:
-  display_name: Julia
+  display_name: Julia 1.9.4
   language: julia
-  name: julia-1.6
+  name: julia-1.9
 ---
+
+```{eval-rst}
+.. meta::
+   :description: Рассмотрим методы Ньютона и секущих для решения нелинейного уравнения.
+   :keywords: метод Ньютона, метод секущих, secant, newton, fixed point, нелинейное уравнение, поиск корня, вычислительная математика, вычматы
+```
 
 ```{code-cell}
 :tags: [remove-cell]
@@ -196,4 +204,3 @@ scatter!([root], [f(root)]; label="метод секущих")
 ```{raw} html
 </div>
 ```
-
