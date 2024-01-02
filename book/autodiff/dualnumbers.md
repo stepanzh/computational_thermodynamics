@@ -374,3 +374,48 @@ promote(1//3, Dual(1, 2))
 ```{code-cell}
 f(Dual(5, 1))
 ```
+
+## Заключение
+
+Ниже представлен полный код из примера выше.
+
+```julia
+struct Dual{T<:Real}
+    a::T
+    b::T
+end
+
+Base.convert(::Type{Dual{T}}, x::Dual) where {T} = Dual{T}(x.a, x.b)
+Base.convert(::Type{Dual{T}}, x::S) where {T, S<:Real} = Dual{T}(x, zero(x))
+
+Base.promote_rule(::Type{Dual{T}}, ::Type{Dual{S}}) where {T, S} = Dual{promote_type(T, S)}
+Base.promote_rule(::Type{Dual{T}}, ::Type{S}) where {T, S<:Real} = Dual{promote_type(T, S)}
+
+Base.:+(x::Dual, y::Real) = +(promote(x, y)...)
+Base.:+(x::Real, y::Dual) = +(promote(x, y)...)
+
+Base.:+(x::Dual, y::Dual) = Dual(x.a + y.a, x.b + y.b)
+Base.:*(x::Dual, y::Dual) = Dual(x.a * y.a, x.b * y.a + x.a * y.b)
+Base.:^(x::Dual, n::Int) = Dual(x.a^n, x.b * n * x.a^(n-1))
+
+Base.log(x::Dual) = Dual(log(x.a), x.b / x.a)
+```
+
+Этот код позволяет автоматически дифференцировать не только функцию $3 + x \log{x^2}$, но и вообще любую скалярную функцию, состоящую из операций сложения, произведения, возведения в целую степень и логарифмирования.
+Чтобы распространить метод на больший класс функций, необходимо доопределить оставшиеся операции, например, вычитание, сравнение или $\sin$.
+Кроме того, понадобится доопределить нематематические функции, например, выделение памяти.
+
+Дифференцирование с использованием дуальных чисел обощается на случаи частных производных и производных высших порядков.
+Такой вид дифференцирования реализован в пакете [ForwardDiff.jl](https://github.com/JuliaDiff/ForwardDiff.jl).
+С помощью ForwardDiff производную для нашего примера можно вычислить так.
+
+```{code-cell}
+using ForwardDiff
+
+f(x) = 3 + x * log(x^2)
+df(x) = ForwardDiff.derivative(f, x)
+df(5)
+```
+
+Реализованный нами способ дифференцирования называется _автоматическим дифференцированием вперёд_.
+Смысл слова "вперёд" связан с направленностью цепочки вычислений производной и разъясняется в следующем разделе.
