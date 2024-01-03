@@ -63,6 +63,7 @@ parts:
     - file: autodiff/complexstep
     - file: autodiff/dualnumbers
     - file: autodiff/compgraph
+    - file: autodiff/forwardmode
     - file: autodiff/ex
   - file: ode/index
     sections:
