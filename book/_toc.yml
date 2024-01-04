@@ -64,6 +64,7 @@ parts:
     - file: autodiff/dualnumbers
     - file: autodiff/compgraph
     - file: autodiff/forwardmode
+    - file: autodiff/backwardmode
     - file: autodiff/ex
   - file: ode/index
     sections:
