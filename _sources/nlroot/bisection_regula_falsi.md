@@ -4,16 +4,24 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.0
 kernelspec:
-  display_name: Julia
+  display_name: Julia 1.9.4
   language: julia
-  name: julia-1.6
+  name: julia-1.9
 ---
 
 ```{code-cell}
 :tags: [remove-cell]
 
 include("../src.jl")
+```
+
+```{eval-rst}
+.. meta::
+   :description: Рассмотрим методы бисекции (деления пополам) и ложной позиции (regula falsi) для решения нелинейного уравнения.
+   :keywords: бисекция, деление пополам, метод ложной позиции, regula falsi, нелинейное уравнение, поиск корня, вычислительная математика, вычматы
 ```
 
 # Методы бисекции и regula falsi

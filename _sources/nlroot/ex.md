@@ -4,11 +4,19 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.0
 kernelspec:
-  display_name: Julia
+  display_name: Julia 1.9.4
   language: julia
-  name: julia-1.6
+  name: julia-1.9
 ---
+
+```{eval-rst}
+.. meta::
+   :description: Задачи и упражения на тему численного решения нелинейного уравнения.
+   :keywords: задача, упражение, нелинейное уравнение, поиск корня, вычислительная математика, вычматы
+```
 
 ```{code-cell}
 :tags: [remove-cell]
@@ -18,18 +26,14 @@ include("../src.jl")
 
 # Задания
 
-<!--
 ## Нули полинома Лежандра
 
-```{margin}
-Которые служат узлами для {ref}`квадратуры Гаусса <definition:gauss_quadrature>`.
-```
-Методом Риддерса найдите нули полинома Лежандра $L_7$
+{ref}`Методом Риддерса <sec:nlroot:ridders>` найдите нули полинома Лежандра $L_7$.
+(Которые служат узлами {ref}`квадратуры Гаусса <definition:gauss_quadrature>`.)
 
 ```{math}
 L_7(x) = \frac{1}{16}(429 x^7 - 693 x^5 + 315 x^3 - 35 x).
 ```
--->
 
 ## Вычисление квадратного корня
 

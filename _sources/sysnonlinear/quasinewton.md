@@ -4,11 +4,19 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.0
 kernelspec:
-  display_name: Julia
+  display_name: Julia 1.9.4
   language: julia
-  name: julia-1.6
+  name: julia-1.9
 ---
+
+```{eval-rst}
+.. meta::
+   :description: В этом разделе мы рассмотрим метод Бройдена (Broyden) для решения нелинейной системы уравнений.
+   :keywords: метод бройдена, broyden, нелинейное уравнение, система нелинейных уравнений, снау, вычислительная математика, вычматы
+```
 
 ```{code-cell}
 :tags: [remove-cell]
@@ -100,7 +108,7 @@ x_2 \exp{x_1} + \sin{x_1}\\
 -1\\
 \sqrt{2}
 \end{bmatrix}.
-``` 
+```
 
 ```{code-cell}
 :tags: [remove-output]
@@ -290,11 +298,13 @@ x = [-10.0, 10.0]
 root = broydensys(f, x, jacobianfd(f, x))
 root, f(root)
 ```
+
 ```{code-cell}
 x = [10.0, -10.0]
 root = broydensys(f, x, jacobianfd(f, x))
 root, f(root)
 ```
+
 ```{code-cell}
 x = [-10.0, -10.0]
 root = broydensys(f, x, jacobianfd(f, x))

@@ -4,11 +4,19 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.0
 kernelspec:
-  display_name: Julia
+  display_name: Julia 1.9.4
   language: julia
-  name: julia-1.6
+  name: julia-1.9
 ---
+
+```{eval-rst}
+.. meta::
+   :description: Мы рассмотрим центральный алгоритм вычислительной линейной алгебры - LU-разложение с выбором главного элемента.
+   :keywords: вычислительная математика, вычматы, plu разложение, lu разложение, алгоритм, код, пример
+```
 
 ```{code-cell}
 :tags: [remove-cell]

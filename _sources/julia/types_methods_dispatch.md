@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+   :description: Мы рассмотрим краегольный камень дизайна языка Julia - систему типов, multiple dispatch и методы.
+   :keywords: julia, программирование, функция, function, тип, type, дерево типов, метод, methods, диспатч, multiple dispatch
+```
+
 # Типы, методы и multiple dispatch
 
 В Julia типы упорядочены в *дерево*, образуя систему.

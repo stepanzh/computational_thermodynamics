@@ -1,54 +1,66 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="Задачи и упражения на тему численного решения нелинейного уравнения." name="description" />
+<meta content="задача, упражение, нелинейное уравнение, поиск корня, вычислительная математика, вычматы" name="keywords" />
 
     <title>6.6. Задания &#8212; Практикум по вычислительной теплофизике</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/thanks.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script src="../_static/tabs.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="../_static/proof.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -56,764 +68,467 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "dual": "\\varepsilon", "dualset": "\\mathbb{D}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'nlroot/ex';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="7. Нелинейные системы уравнений" href="../sysnonlinear/index.html" />
     <link rel="prev" title="6.5. ITP метод" href="itp.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Практикум по вычислительной теплофизике</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Практикум по вычислительной теплофизике</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    Предмет практикума
+                    О практикуме
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Практикум
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Практикум</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../julia/index.html">
-   1. Основы языка программирования Julia
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/install.html">
-     1.1. Установка
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/run.html">
-     1.2. Запуск программ
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/numbers.html">
-     1.3. Числа, переменные, Bool
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/strings.html">
-     1.4. Строки
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/controlflow.html">
-     1.5. Управляющие конструкции
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/functions.html">
-     1.6. Функции
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/types_methods_dispatch.html">
-     1.7. Типы, методы и multiple dispatch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/arrays.html">
-     1.8. Массивы и broadcast
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/linearalgebra.html">
-     1.9. Линейная алгебра
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/modules.html">
-     1.10. Модули и пакеты
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/ex.html">
-     1.11. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../intro/index.html">
-   2. Введение
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../intro/float.html">
-     2.1. Числа с плавающей точкой
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../intro/cond.html">
-     2.2. Обусловленность задач
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../syslinear/index.html">
-   3. Линейные системы уравнений
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/triangular.html">
-     3.1. Треугольные системы
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/lu.html">
-     3.2. LU-разложение
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/plu.html">
-     3.3. PLU-разложение
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/conditioning.html">
-     3.4. Обусловленность линейных систем
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/decompose_overview.html">
-     3.5. Обзор других разложений и задач
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/ex.html">
-     3.6. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../interpolation/index.html">
-   4. Интерполяция
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../interpolation/polynomial.html">
-     4.1. Полиномиальная интерполяция
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../interpolation/pwlinear.html">
-     4.2. Кусочно-линейная интерполяция
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../interpolation/cubic_spline.html">
-     4.3. Кубические сплайны
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../interpolation/ex.html">
-     4.4. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../integration/index.html">
-   5. Численное интегрирование
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../integration/newton_cotes.html">
-     5.1. Формулы Ньютона-Котса
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../integration/romberg.html">
-     5.2. Метод Ромберга
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../integration/gauss.html">
-     5.3. Формулы Гаусса
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../integration/adaptive.html">
-     5.4. Адаптивное интегрирование
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../integration/ex.html">
-     5.5. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="index.html">
-   6. Нелинейные уравнения
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="simpleiter.html">
-     6.1. Метод простой итерации
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="newton_secant.html">
-     6.2. Метод Ньютона и секущих
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="bisection_regula_falsi.html">
-     6.3. Методы бисекции и regula falsi
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="ridders.html">
-     6.4. Метод Риддерса
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="itp.html">
-     6.5. ITP метод
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     6.6. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../sysnonlinear/index.html">
-   7. Нелинейные системы уравнений
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../sysnonlinear/newton.html">
-     7.1. Метод Ньютона
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../sysnonlinear/quasinewton.html">
-     7.2. Метод Бройдена
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../sysnonlinear/ex.html">
-     7.3. Задания
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../julia/index.html">1. Основы языка программирования Julia</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../julia/install.html">1.1. Установка</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/run.html">1.2. Запуск программ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/numbers.html">1.3. Числа, переменные, Bool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/strings.html">1.4. Строки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/controlflow.html">1.5. Управляющие конструкции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/functions.html">1.6. Функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/types_methods_dispatch.html">1.7. Типы, методы и multiple dispatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/arrays.html">1.8. Массивы и broadcast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/linearalgebra.html">1.9. Линейная алгебра</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/modules.html">1.10. Модули и пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/ex.html">1.11. Задания</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Фазовое равновесие
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ptstability/index.html">
-   PT стабильность
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ptstability/problem.html">
-     Постановка задачи
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ptstability/vanderwaals.html">
-     Уравнение состояния ван дер Ваальса
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ptstability/algorithm.html">
-     Алгоритм решения
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ptstability/exercise.html">
-     Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ptsplit/index.html">
-   PT расслоение
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ptsplit/problem.html">
-     Постановка задачи
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ptsplit/solution.html">
-     Решение задачи
-    </a>
-   </li>
-  </ul>
- </li>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro/index.html">2. Введение</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro/float.html">2.1. Числа с плавающей точкой</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/cond.html">2.2. Обусловленность задач</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Приложения
- </span>
-</p>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../syslinear/index.html">3. Линейные системы уравнений</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/triangular.html">3.1. Треугольные системы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/lu.html">3.2. LU-разложение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/plu.html">3.3. PLU-разложение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/conditioning.html">3.4. Обусловленность линейных систем</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/decompose_overview.html">3.5. Обзор других разложений и задач</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/ex.html">3.6. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../interpolation/index.html">4. Интерполяция</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../interpolation/polynomial.html">4.1. Полиномиальная интерполяция</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interpolation/pwlinear.html">4.2. Кусочно-линейная интерполяция</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interpolation/cubic_spline.html">4.3. Кубические сплайны</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interpolation/ex.html">4.4. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../integration/index.html">5. Численное интегрирование</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../integration/newton_cotes.html">5.1. Формулы Ньютона-Котса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/romberg.html">5.2. Метод Ромберга</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/gauss.html">5.3. Формулы Гаусса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/adaptive.html">5.4. Адаптивное интегрирование</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/ex.html">5.5. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">6. Нелинейные уравнения</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="simpleiter.html">6.1. Метод простой итерации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="newton_secant.html">6.2. Метод Ньютона и секущих</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bisection_regula_falsi.html">6.3. Методы бисекции и regula falsi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ridders.html">6.4. Метод Риддерса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="itp.html">6.5. ITP метод</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">6.6. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sysnonlinear/index.html">7. Нелинейные системы уравнений</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sysnonlinear/newton.html">7.1. Метод Ньютона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sysnonlinear/quasinewton.html">7.2. Метод Бройдена</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sysnonlinear/ex.html">7.3. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../autodiff/index.html">8. Автоматическое дифференцирование</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/complexstep.html">8.1. Метод комплексного шага</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/dualnumbers.html">8.2. Дуальные числа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/compgraph.html">8.3. Граф вычислений</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/forwardmode.html">8.4. Автоматическое дифференцирование вперёд</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/backwardmode.html">8.5. Автоматическое дифференцирование назад</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/oja_problem.html">8.6. Оптимальное вычисление матрицы Якоби</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/ex.html">8.7. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ode/index.html">9. Обыкновенные дифференциальные уравнения</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ode/euler.html">9.1. Метод Эйлера</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ode/rungekutta.html">9.2. Методы Рунге-Кутты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ode/adaptive_rungekutta.html">9.3. Адаптивные методы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ode/ex.html">9.4. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../optim/index.html">10. Задача оптимизации</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../optim/intro.html">10.1. Предварительные сведения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optim/linesearch.html">10.2. Поиск вдоль направления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optim/newton.html">10.3. Метод Ньютона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optim/bfgs.html">10.4. Метод BFGS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optim/ex.html">10.5. Задания</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Фазовое равновесие</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/genindex.html">
-   Указатель
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/bibliography.html">
-   Литература
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/materials.html">
-   Дополнительные материалы
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/solvecubic.html">
-   Решение кубического уравнения
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/cholesky.html">
-   Разложение Холецкого
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ptstability/index.html">PT стабильность</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ptstability/problem.html">Постановка задачи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ptstability/vanderwaals.html">Уравнение состояния ван дер Ваальса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ptstability/algorithm.html">Алгоритм решения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ptstability/exercise.html">Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ptsplit/index.html">PT расслоение</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ptsplit/problem.html">Постановка задачи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ptsplit/solution.html">Решение задачи</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Указатель</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/bibliography.html">Литература</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/materials.html">Дополнительные материалы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/solvecubic.html">Решение кубического уравнения</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/cholesky.html">Разложение Холецкого</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/stepanzh/computational_thermodynamics/main?urlpath=tree/book/nlroot/ex.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/stepanzh/computational_thermodynamics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/nlroot/ex.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fnlroot/ex.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/nlroot/ex.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/stepanzh/computational_thermodynamics"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fnlroot/ex.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/nlroot/ex.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/nlroot/ex.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="../_sources/nlroot/ex.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   6.6.1. Вычисление квадратного корня
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   6.6.2. Уравнение фазовых концентраций
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ex-vdw-binodal-lekner">
-   6.6.3. Бинодаль уравнения состояния ван дер Ваальса
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Задания</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   6.6.1. Вычисление квадратного корня
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   6.6.2. Уравнение фазовых концентраций
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ex-vdw-binodal-lekner">
-   6.6.3. Бинодаль уравнения состояния ван дер Ваальса
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Задания</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.6.1. Нули полинома Лежандра</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.6.2. Вычисление квадратного корня</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.6.3. Уравнение фазовых концентраций</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ex-vdw-binodal-lekner">6.6.4. Бинодаль уравнения состояния ван дер Ваальса</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">6.6. </span>Задания<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
-<!--
-## Нули полинома Лежандра
-
-```{margin}
-Которые служат узлами для {ref}`квадратуры Гаусса <definition:gauss_quadrature>`.
-```
-Методом Риддерса найдите нули полинома Лежандра $L_7$
-
-```{math}
-L_7(x) = \frac{1}{16}(429 x^7 - 693 x^5 + 315 x^3 - 35 x).
-```
--->
+<h1><span class="section-number">6.6. </span>Задания<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <section id="id2">
-<h2><span class="section-number">6.6.1. </span>Вычисление квадратного корня<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">6.6.1. </span>Нули полинома Лежандра<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<p><a class="reference internal" href="ridders.html#sec-nlroot-ridders"><span class="std std-ref">Методом Риддерса</span></a> найдите нули полинома Лежандра <span class="math notranslate nohighlight">\(L_7\)</span>.
+(Которые служат узлами <a class="reference internal" href="../integration/gauss.html#definition-gauss-quadrature"><span class="std std-ref">квадратуры Гаусса</span></a>.)</p>
+<div class="math notranslate nohighlight">
+\[L_7(x) = \frac{1}{16}(429 x^7 - 693 x^5 + 315 x^3 - 35 x).\]</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">6.6.2. </span>Вычисление квадратного корня<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>Напишите функцию <code class="docutils literal notranslate"><span class="pre">mysqrt(x)</span></code>, вычисляющую квадратный корень <span class="math notranslate nohighlight">\(\sqrt{x}\)</span> для неотрицательного <span class="math notranslate nohighlight">\(x \ge 0\)</span>.
 Сравните невязку написанной вами функции со стандартной функцией <code class="docutils literal notranslate"><span class="pre">sqrt(x)</span></code> в диапазоне <code class="docutils literal notranslate"><span class="pre">range(0,</span> <span class="pre">10;</span> <span class="pre">step=0.1)</span></code>.</p>
 </section>
-<section id="id3">
-<h2><span class="section-number">6.6.2. </span>Уравнение фазовых концентраций<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
-<p>Уравнение фазовых концентраций (Rachford-Rice equation) используется для расчётов парожидкостного равновесия смеси веществ <span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id5" title="А.И. Брусиловский. Фазовые превращения при разработке месторождений нефти и газа. ВИНИТИ РАН, Грааль, 2002. ISBN 5-94688-031-4.">02</a>]</span>. Уравнение выводится из массового баланса веществ в каждой фазе и представляет собой</p>
+<section id="id4">
+<h2><span class="section-number">6.6.3. </span>Уравнение фазовых концентраций<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>Уравнение фазовых концентраций (Rachford-Rice equation) используется для расчётов парожидкостного равновесия смеси веществ <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id6" title="А.И. Брусиловский. Фазовые превращения при разработке месторождений нефти и газа. ВИНИТИ РАН, Грааль, 2002. ISBN 5-94688-031-4.">02</a>]</span>. Уравнение выводится из массового баланса веществ в каждой фазе и представляет собой</p>
 <div class="math notranslate nohighlight">
 \[
 F(G) = \sum_{i} \frac{z_i \times (K_i - 1)}{G \times (K_i - 1) + 1} = 0,
 \]</div>
 <p>где <span class="math notranslate nohighlight">\(z_i\)</span> мольная доля <span class="math notranslate nohighlight">\(i\)</span>-го компонента в смеси, <span class="math notranslate nohighlight">\(K_i\)</span> константа равновесия <span class="math notranslate nohighlight">\(i\)</span>-го компонента (отношение мольной доли компонента в газе к его мольной доли в жидкости) и <span class="math notranslate nohighlight">\(G\)</span> мольная доля газа в двухфазном состоянии.</p>
 <p>Решение этого уравнения показывает мольную долю газа в двухфазном состоянии при соответствующем распределении компонентов по жидкой и газовой фазе.</p>
-<p>Можно показать <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id5" title="А.И. Брусиловский. Фазовые превращения при разработке месторождений нефти и газа. ВИНИТИ РАН, Грааль, 2002. ISBN 5-94688-031-4.">02</a>]</span>, что решение уравнения стоит искать в интервале</p>
+<p>Можно показать <span id="id6">[<a class="reference internal" href="../appendix/bibliography.html#id6" title="А.И. Брусиловский. Фазовые превращения при разработке месторождений нефти и газа. ВИНИТИ РАН, Грааль, 2002. ISBN 5-94688-031-4.">02</a>]</span>, что решение уравнения стоит искать в интервале</p>
 <div class="math notranslate nohighlight">
 \[
 1 / (1 - \max K_i) \quad \ldots \quad 1 / (1 - \min K_i).
@@ -830,7 +545,7 @@ F(G) = \sum_{i} \frac{z_i \times (K_i - 1)}{G \times (K_i - 1) + 1} = 0,
 <p>Для построения графиков воспользуйтесь пакетом <a class="reference external" href="https://docs.juliaplots.org/stable/">Plots.jl</a>.</p>
 </section>
 <section id="ex-vdw-binodal-lekner">
-<span id="id6"></span><h2><span class="section-number">6.6.3. </span>Бинодаль уравнения состояния ван дер Ваальса<a class="headerlink" href="#ex-vdw-binodal-lekner" title="Permalink to this headline">#</a></h2>
+<span id="id7"></span><h2><span class="section-number">6.6.4. </span>Бинодаль уравнения состояния ван дер Ваальса<a class="headerlink" href="#ex-vdw-binodal-lekner" title="Permalink to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>В этом задании вам предстоит найти область двухфазного равновесия для уравнения состояния ван дер Ваальса.</p>
@@ -841,30 +556,86 @@ F(G) = \sum_{i} \frac{z_i \times (K_i - 1)}{G \times (K_i - 1) + 1} = 0,
 <p>Несложно построить набор изотерм.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">pressure</span><span class="p">(</span><span class="n">Vr</span><span class="o">::</span><span class="kt">Real</span><span class="p">,</span><span class="w"> </span><span class="n">Tr</span><span class="o">::</span><span class="kt">Real</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="n">Tr</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="n">Vr</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Vr</span><span class="o">^</span><span class="mi">2</span><span class="w"></span>
-<span class="n">V</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">range</span><span class="p">(</span><span class="mf">0.34</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span><span class="w"></span>
-<span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plot</span><span class="p">(;</span><span class="w"></span>
-<span class="w">    </span><span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">),</span><span class="w"></span>
-<span class="w">    </span><span class="n">xlabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;V/V_c&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">ylabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;P/P_c&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">    </span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="w"></span>
-<span class="p">)</span><span class="w"></span>
-<span class="k">for</span><span class="w"> </span><span class="n">Tr</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mf">0.85</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w"> </span><span class="mf">0.95</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.1</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">plot!</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="w"> </span><span class="n">pressure</span><span class="o">.</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="w"> </span><span class="n">Tr</span><span class="p">);</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;T_r = %</span><span class="si">$</span><span class="p">(</span><span class="n">Tr</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span><span class="w"></span>
-<span class="k">end</span><span class="w"></span>
-<span class="n">plt</span><span class="w"></span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">pressure</span><span class="p">(</span><span class="n">Vr</span><span class="o">::</span><span class="kt">Real</span><span class="p">,</span><span class="w"> </span><span class="n">Tr</span><span class="o">::</span><span class="kt">Real</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">8</span><span class="n">Tr</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="p">(</span><span class="mi">3</span><span class="n">Vr</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">Vr</span><span class="o">^</span><span class="mi">2</span>
+<span class="n">V</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">range</span><span class="p">(</span><span class="mf">0.34</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span><span class="w"> </span><span class="n">length</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">plt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">plot</span><span class="p">(;</span>
+<span class="w">    </span><span class="n">ylim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span>
+<span class="w">    </span><span class="n">xlim</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">5</span><span class="p">),</span>
+<span class="w">    </span><span class="n">xlabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;V/V_c&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">ylabel</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;P/P_c&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="k">for</span><span class="w"> </span><span class="n">Tr</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="p">(</span><span class="mf">0.85</span><span class="p">,</span><span class="w"> </span><span class="mf">0.9</span><span class="p">,</span><span class="w"> </span><span class="mf">0.95</span><span class="p">,</span><span class="w"> </span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1.1</span><span class="p">)</span>
+<span class="w">    </span><span class="n">plot!</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="w"> </span><span class="n">pressure</span><span class="o">.</span><span class="p">(</span><span class="n">V</span><span class="p">,</span><span class="w"> </span><span class="n">Tr</span><span class="p">);</span><span class="w"> </span><span class="n">label</span><span class="o">=</span><span class="sa">L</span><span class="s">&quot;T_r = %</span><span class="si">$</span><span class="p">(</span><span class="n">Tr</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="n">plt</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/ex_2_0.svg" src="../_images/ex_2_0.svg" /></div>
+<div class="output text_html"><?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="400" viewBox="0 0 2400 1600">
+<defs>
+  <clipPath id="clip870">
+    <rect x="0" y="0" width="2400" height="1600"/>
+  </clipPath>
+</defs>
+<path clip-path="url(#clip870)" d="M0 1600 L2400 1600 L2400 0 L0 0  Z" fill="#ffffff" fill-rule="evenodd" fill-opacity="1"/>
+<defs>
+  <clipPath id="clip871">
+    <rect x="480" y="0" width="1681" height="1600"/>
+  </clipPath>
+</defs>
+<path clip-path="url(#clip870)" d="M219.38 1423.18 L2352.76 1423.18 L2352.76 47.2441 L219.38 47.2441  Z" fill="#ffffff" fill-rule="evenodd" fill-opacity="1"/>
+<defs>
+  <clipPath id="clip872">
+    <rect x="219" y="47" width="2134" height="1377"/>
+  </clipPath>
+</defs>
+<polyline clip-path="url(#clip872)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="219.38,1423.18 219.38,47.2441 "/>
+<polyline clip-path="url(#clip872)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="646.055,1423.18 646.055,47.2441 "/>
+<polyline clip-path="url(#clip872)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="1072.73,1423.18 1072.73,47.2441 "/>
+<polyline clip-path="url(#clip872)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="1499.41,1423.18 1499.41,47.2441 "/>
+<polyline clip-path="url(#clip872)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="1926.08,1423.18 1926.08,47.2441 "/>
+<polyline clip-path="url(#clip872)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="2352.76,1423.18 2352.76,47.2441 "/>
+<polyline clip-path="url(#clip870)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="219.38,1423.18 2352.76,1423.18 "/>
+<polyline clip-path="url(#clip870)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="219.38,1423.18 219.38,1404.28 "/>
+<polyline clip-path="url(#clip870)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="646.055,1423.18 646.055,1404.28 "/>
+<polyline clip-path="url(#clip870)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="1072.73,1423.18 1072.73,1404.28 "/>
+<polyline clip-path="url(#clip870)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="1499.41,1423.18 1499.41,1404.28 "/>
+<polyline clip-path="url(#clip870)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="1926.08,1423.18 1926.08,1404.28 "/>
+<polyline clip-path="url(#clip870)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="2352.76,1423.18 2352.76,1404.28 "/>
+<path clip-path="url(#clip870)" d="M219.38 1454.1 Q215.769 1454.1 213.94 1457.66 Q212.135 1461.2 212.135 1468.33 Q212.135 1475.44 213.94 1479.01 Q215.769 1482.55 219.38 1482.55 Q223.014 1482.55 224.82 1479.01 Q226.649 1475.44 226.649 1468.33 Q226.649 1461.2 224.82 1457.66 Q223.014 1454.1 219.38 1454.1 M219.38 1450.39 Q225.19 1450.39 228.246 1455 Q231.325 1459.58 231.325 1468.33 Q231.325 1477.06 228.246 1481.67 Q225.19 1486.25 219.38 1486.25 Q213.57 1486.25 210.491 1481.67 Q207.436 1477.06 207.436 1468.33 Q207.436 1459.58 210.491 1455 Q213.57 1450.39 219.38 1450.39 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M636.437 1481.64 L644.076 1481.64 L644.076 1455.28 L635.766 1456.95 L635.766 1452.69 L644.03 1451.02 L648.706 1451.02 L648.706 1481.64 L656.345 1481.64 L656.345 1485.58 L636.437 1485.58 L636.437 1481.64 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M1067.38 1481.64 L1083.7 1481.64 L1083.7 1485.58 L1061.76 1485.58 L1061.76 1481.64 Q1064.42 1478.89 1069 1474.26 Q1073.61 1469.61 1074.79 1468.27 Q1077.04 1465.74 1077.92 1464.01 Q1078.82 1462.25 1078.82 1460.56 Q1078.82 1457.8 1076.87 1456.07 Q1074.95 1454.33 1071.85 1454.33 Q1069.65 1454.33 1067.2 1455.09 Q1064.77 1455.86 1061.99 1457.41 L1061.99 1452.69 Q1064.81 1451.55 1067.27 1450.97 Q1069.72 1450.39 1071.76 1450.39 Q1077.13 1450.39 1080.32 1453.08 Q1083.52 1455.77 1083.52 1460.26 Q1083.52 1462.39 1082.71 1464.31 Q1081.92 1466.2 1079.81 1468.8 Q1079.24 1469.47 1076.13 1472.69 Q1073.03 1475.88 1067.38 1481.64 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M1503.65 1466.95 Q1507.01 1467.66 1508.88 1469.93 Q1510.78 1472.2 1510.78 1475.53 Q1510.78 1480.65 1507.26 1483.45 Q1503.75 1486.25 1497.26 1486.25 Q1495.09 1486.25 1492.77 1485.81 Q1490.48 1485.39 1488.03 1484.54 L1488.03 1480.02 Q1489.97 1481.16 1492.29 1481.74 Q1494.6 1482.32 1497.13 1482.32 Q1501.52 1482.32 1503.82 1480.58 Q1506.13 1478.84 1506.13 1475.53 Q1506.13 1472.48 1503.98 1470.77 Q1501.85 1469.03 1498.03 1469.03 L1494 1469.03 L1494 1465.19 L1498.21 1465.19 Q1501.66 1465.19 1503.49 1463.82 Q1505.32 1462.43 1505.32 1459.84 Q1505.32 1457.18 1503.42 1455.77 Q1501.55 1454.33 1498.03 1454.33 Q1496.11 1454.33 1493.91 1454.75 Q1491.71 1455.16 1489.07 1456.04 L1489.07 1451.88 Q1491.73 1451.14 1494.05 1450.77 Q1496.38 1450.39 1498.44 1450.39 Q1503.77 1450.39 1506.87 1452.83 Q1509.97 1455.23 1509.97 1459.35 Q1509.97 1462.22 1508.33 1464.21 Q1506.69 1466.18 1503.65 1466.95 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M1929.09 1455.09 L1917.28 1473.54 L1929.09 1473.54 L1929.09 1455.09 M1927.86 1451.02 L1933.74 1451.02 L1933.74 1473.54 L1938.67 1473.54 L1938.67 1477.43 L1933.74 1477.43 L1933.74 1485.58 L1929.09 1485.58 L1929.09 1477.43 L1913.49 1477.43 L1913.49 1472.92 L1927.86 1451.02 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2343.03 1451.02 L2361.39 1451.02 L2361.39 1454.96 L2347.32 1454.96 L2347.32 1463.43 Q2348.33 1463.08 2349.35 1462.92 Q2350.37 1462.73 2351.39 1462.73 Q2357.18 1462.73 2360.56 1465.9 Q2363.94 1469.08 2363.94 1474.49 Q2363.94 1480.07 2360.46 1483.17 Q2356.99 1486.25 2350.67 1486.25 Q2348.5 1486.25 2346.23 1485.88 Q2343.98 1485.51 2341.58 1484.77 L2341.58 1480.07 Q2343.66 1481.2 2345.88 1481.76 Q2348.1 1482.32 2350.58 1482.32 Q2354.58 1482.32 2356.92 1480.21 Q2359.26 1478.1 2359.26 1474.49 Q2359.26 1470.88 2356.92 1468.77 Q2354.58 1466.67 2350.58 1466.67 Q2348.71 1466.67 2346.83 1467.08 Q2344.98 1467.5 2343.03 1468.38 L2343.03 1451.02 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M1258.51 1511.62 Q1258.45 1512.81 1257.64 1512.87 Q1256.42 1512.94 1255.68 1513.1 Q1254.94 1513.23 1253.78 1513.71 Q1252.62 1514.19 1251.49 1515.35 Q1250.36 1516.51 1249.2 1518.35 L1225.47 1556.13 Q1225.05 1556.83 1224.69 1557.06 Q1224.37 1557.32 1223.63 1557.32 Q1222.95 1557.32 1222.7 1557.03 Q1222.44 1556.77 1222.31 1555.8 L1217.09 1515.1 Q1217 1514.35 1216.9 1514.03 Q1216.8 1513.71 1216.42 1513.39 Q1216.06 1513.07 1215.29 1512.97 Q1214.52 1512.87 1213.13 1512.87 Q1212.49 1512.87 1212.2 1512.84 Q1211.94 1512.81 1211.72 1512.65 Q1211.49 1512.45 1211.49 1512.07 Q1211.49 1511.49 1211.72 1511.2 Q1211.97 1510.88 1212.17 1510.84 Q1212.39 1510.81 1212.75 1510.81 Q1213.29 1510.81 1214.48 1510.88 Q1215.68 1510.94 1216.29 1510.94 Q1216.87 1510.94 1218.09 1510.97 Q1219.32 1511.01 1219.93 1511.01 Q1221.28 1511.01 1224.02 1510.91 Q1226.79 1510.81 1228.11 1510.81 Q1229.01 1510.81 1229.01 1511.55 Q1229.01 1512.45 1228.62 1512.68 Q1228.24 1512.87 1227.37 1512.87 Q1225.18 1512.87 1223.99 1513.42 Q1222.83 1513.97 1222.83 1514.84 L1227.3 1549.75 L1247.56 1517.54 Q1248.56 1516.03 1248.56 1515.03 Q1248.56 1513.1 1245.5 1512.87 Q1244.47 1512.87 1244.47 1512.07 Q1244.47 1511.49 1244.73 1511.2 Q1244.98 1510.88 1245.18 1510.84 Q1245.4 1510.81 1245.72 1510.81 Q1246.79 1510.81 1248.95 1510.91 Q1251.14 1511.01 1252.23 1511.01 Q1253.13 1511.01 1254.97 1510.91 Q1256.8 1510.81 1257.64 1510.81 Q1258.51 1510.81 1258.51 1511.62 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M1249.54 1571.42 Q1249.54 1571.1 1249.8 1570.39 L1273.09 1508.17 Q1273.09 1508.11 1273.25 1507.75 Q1273.41 1507.4 1273.51 1507.17 Q1273.6 1506.91 1273.8 1506.72 Q1274.02 1506.53 1274.28 1506.53 Q1274.92 1506.53 1274.92 1507.33 Q1274.92 1507.4 1274.73 1508.17 L1251.38 1570.46 Q1250.99 1571.58 1250.74 1571.91 Q1250.51 1572.23 1250.12 1572.23 Q1249.54 1572.23 1249.54 1571.42 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M1329.23 1511.62 Q1329.16 1512.81 1328.36 1512.87 Q1327.14 1512.94 1326.4 1513.1 Q1325.65 1513.23 1324.49 1513.71 Q1323.34 1514.19 1322.21 1515.35 Q1321.08 1516.51 1319.92 1518.35 L1296.19 1556.13 Q1295.77 1556.83 1295.41 1557.06 Q1295.09 1557.32 1294.35 1557.32 Q1293.67 1557.32 1293.42 1557.03 Q1293.16 1556.77 1293.03 1555.8 L1287.81 1515.1 Q1287.72 1514.35 1287.62 1514.03 Q1287.52 1513.71 1287.14 1513.39 Q1286.78 1513.07 1286.01 1512.97 Q1285.24 1512.87 1283.85 1512.87 Q1283.21 1512.87 1282.92 1512.84 Q1282.66 1512.81 1282.43 1512.65 Q1282.21 1512.45 1282.21 1512.07 Q1282.21 1511.49 1282.43 1511.2 Q1282.69 1510.88 1282.88 1510.84 Q1283.11 1510.81 1283.46 1510.81 Q1284.01 1510.81 1285.2 1510.88 Q1286.4 1510.94 1287.01 1510.94 Q1287.59 1510.94 1288.81 1510.97 Q1290.03 1511.01 1290.65 1511.01 Q1292 1511.01 1294.74 1510.91 Q1297.51 1510.81 1298.83 1510.81 Q1299.73 1510.81 1299.73 1511.55 Q1299.73 1512.45 1299.34 1512.68 Q1298.96 1512.87 1298.09 1512.87 Q1295.9 1512.87 1294.7 1513.42 Q1293.55 1513.97 1293.55 1514.84 L1298.02 1549.75 L1318.28 1517.54 Q1319.28 1516.03 1319.28 1515.03 Q1319.28 1513.1 1316.22 1512.87 Q1315.19 1512.87 1315.19 1512.07 Q1315.19 1511.49 1315.45 1511.2 Q1315.7 1510.88 1315.9 1510.84 Q1316.12 1510.81 1316.44 1510.81 Q1317.51 1510.81 1319.66 1510.91 Q1321.85 1511.01 1322.95 1511.01 Q1323.85 1511.01 1325.69 1510.91 Q1327.52 1510.81 1328.36 1510.81 Q1329.23 1510.81 1329.23 1511.62 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M1353.6 1564.09 Q1353.78 1564.29 1353.78 1564.5 Q1353.78 1564.7 1353.33 1565.28 Q1352.9 1565.87 1351.98 1566.66 Q1351.05 1567.45 1349.86 1568.19 Q1348.66 1568.94 1346.9 1569.43 Q1345.14 1569.95 1343.3 1569.95 Q1339.85 1569.95 1337.82 1567.67 Q1335.81 1565.4 1335.81 1562.13 Q1335.81 1558.95 1337.59 1555.91 Q1339.37 1552.84 1342.26 1550.95 Q1345.14 1549.03 1348.19 1549.03 Q1350.6 1549.03 1352.11 1550.16 Q1353.62 1551.28 1353.62 1553 Q1353.62 1554.33 1352.85 1555.14 Q1352.09 1555.95 1351.05 1555.95 Q1350.33 1555.95 1349.83 1555.55 Q1349.34 1555.12 1349.34 1554.33 Q1349.34 1553.31 1350.17 1552.52 Q1350.49 1552.21 1350.85 1552.07 Q1351.23 1551.92 1351.46 1551.92 Q1351.68 1551.89 1352.2 1551.89 Q1351.73 1551.01 1350.6 1550.54 Q1349.5 1550.04 1348.23 1550.04 Q1346.36 1550.04 1344.58 1551.35 Q1342.8 1552.64 1341.72 1554.67 Q1340.64 1556.65 1339.94 1559.47 Q1339.24 1562.26 1339.24 1563.89 Q1339.24 1566.12 1340.27 1567.52 Q1341.31 1568.91 1343.39 1568.91 Q1343.79 1568.91 1344.22 1568.89 Q1344.67 1568.87 1345.8 1568.62 Q1346.95 1568.37 1347.96 1567.94 Q1348.98 1567.52 1350.26 1566.59 Q1351.57 1565.65 1352.61 1564.36 Q1352.97 1563.89 1353.22 1563.89 Q1353.42 1563.89 1353.6 1564.09 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><polyline clip-path="url(#clip872)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="219.38,1423.18 2352.76,1423.18 "/>
+<polyline clip-path="url(#clip872)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="219.38,1079.2 2352.76,1079.2 "/>
+<polyline clip-path="url(#clip872)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="219.38,735.212 2352.76,735.212 "/>
+<polyline clip-path="url(#clip872)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="219.38,391.228 2352.76,391.228 "/>
+<polyline clip-path="url(#clip872)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="219.38,47.2441 2352.76,47.2441 "/>
+<polyline clip-path="url(#clip870)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="219.38,1423.18 219.38,47.2441 "/>
+<polyline clip-path="url(#clip870)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="219.38,1423.18 238.278,1423.18 "/>
+<polyline clip-path="url(#clip870)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="219.38,1079.2 238.278,1079.2 "/>
+<polyline clip-path="url(#clip870)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="219.38,735.212 238.278,735.212 "/>
+<polyline clip-path="url(#clip870)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="219.38,391.228 238.278,391.228 "/>
+<polyline clip-path="url(#clip870)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="219.38,47.2441 238.278,47.2441 "/>
+<path clip-path="url(#clip870)" d="M126.205 1408.98 Q122.593 1408.98 120.765 1412.54 Q118.959 1416.08 118.959 1423.21 Q118.959 1430.32 120.765 1433.89 Q122.593 1437.43 126.205 1437.43 Q129.839 1437.43 131.644 1433.89 Q133.473 1430.32 133.473 1423.21 Q133.473 1416.08 131.644 1412.54 Q129.839 1408.98 126.205 1408.98 M126.205 1405.27 Q132.015 1405.27 135.07 1409.88 Q138.149 1414.46 138.149 1423.21 Q138.149 1431.94 135.07 1436.55 Q132.015 1441.13 126.205 1441.13 Q120.394 1441.13 117.316 1436.55 Q114.26 1431.94 114.26 1423.21 Q114.26 1414.46 117.316 1409.88 Q120.394 1405.27 126.205 1405.27 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M146.366 1434.58 L151.251 1434.58 L151.251 1440.46 L146.366 1440.46 L146.366 1434.58 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M171.436 1408.98 Q167.825 1408.98 165.996 1412.54 Q164.19 1416.08 164.19 1423.21 Q164.19 1430.32 165.996 1433.89 Q167.825 1437.43 171.436 1437.43 Q175.07 1437.43 176.876 1433.89 Q178.704 1430.32 178.704 1423.21 Q178.704 1416.08 176.876 1412.54 Q175.07 1408.98 171.436 1408.98 M171.436 1405.27 Q177.246 1405.27 180.301 1409.88 Q183.38 1414.46 183.38 1423.21 Q183.38 1431.94 180.301 1436.55 Q177.246 1441.13 171.436 1441.13 Q165.626 1441.13 162.547 1436.55 Q159.491 1431.94 159.491 1423.21 Q159.491 1414.46 162.547 1409.88 Q165.626 1405.27 171.436 1405.27 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M127.2 1064.99 Q123.589 1064.99 121.76 1068.56 Q119.955 1072.1 119.955 1079.23 Q119.955 1086.34 121.76 1089.9 Q123.589 1093.44 127.2 1093.44 Q130.834 1093.44 132.64 1089.9 Q134.468 1086.34 134.468 1079.23 Q134.468 1072.1 132.64 1068.56 Q130.834 1064.99 127.2 1064.99 M127.2 1061.29 Q133.01 1061.29 136.066 1065.9 Q139.144 1070.48 139.144 1079.23 Q139.144 1087.96 136.066 1092.56 Q133.01 1097.15 127.2 1097.15 Q121.39 1097.15 118.311 1092.56 Q115.256 1087.96 115.256 1079.23 Q115.256 1070.48 118.311 1065.9 Q121.39 1061.29 127.2 1061.29 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M147.362 1090.6 L152.246 1090.6 L152.246 1096.48 L147.362 1096.48 L147.362 1090.6 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M162.477 1061.92 L180.834 1061.92 L180.834 1065.85 L166.76 1065.85 L166.76 1074.32 Q167.778 1073.98 168.797 1073.81 Q169.815 1073.63 170.834 1073.63 Q176.621 1073.63 180.001 1076.8 Q183.38 1079.97 183.38 1085.39 Q183.38 1090.97 179.908 1094.07 Q176.436 1097.15 170.116 1097.15 Q167.94 1097.15 165.672 1096.78 Q163.427 1096.41 161.019 1095.67 L161.019 1090.97 Q163.102 1092.1 165.325 1092.66 Q167.547 1093.21 170.024 1093.21 Q174.028 1093.21 176.366 1091.11 Q178.704 1089 178.704 1085.39 Q178.704 1081.78 176.366 1079.67 Q174.028 1077.56 170.024 1077.56 Q168.149 1077.56 166.274 1077.98 Q164.422 1078.4 162.477 1079.28 L162.477 1061.92 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M117.015 748.557 L124.654 748.557 L124.654 722.191 L116.343 723.858 L116.343 719.599 L124.607 717.932 L129.283 717.932 L129.283 748.557 L136.922 748.557 L136.922 752.492 L117.015 752.492 L117.015 748.557 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M146.366 746.612 L151.251 746.612 L151.251 752.492 L146.366 752.492 L146.366 746.612 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M171.436 721.011 Q167.825 721.011 165.996 724.575 Q164.19 728.117 164.19 735.247 Q164.19 742.353 165.996 745.918 Q167.825 749.46 171.436 749.46 Q175.07 749.46 176.876 745.918 Q178.704 742.353 178.704 735.247 Q178.704 728.117 176.876 724.575 Q175.07 721.011 171.436 721.011 M171.436 717.307 Q177.246 717.307 180.301 721.913 Q183.38 726.497 183.38 735.247 Q183.38 743.973 180.301 748.58 Q177.246 753.163 171.436 753.163 Q165.626 753.163 162.547 748.58 Q159.491 743.973 159.491 735.247 Q159.491 726.497 162.547 721.913 Q165.626 717.307 171.436 717.307 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M118.01 404.573 L125.649 404.573 L125.649 378.207 L117.339 379.874 L117.339 375.615 L125.603 373.948 L130.279 373.948 L130.279 404.573 L137.917 404.573 L137.917 408.508 L118.01 408.508 L118.01 404.573 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M147.362 402.628 L152.246 402.628 L152.246 408.508 L147.362 408.508 L147.362 402.628 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M162.477 373.948 L180.834 373.948 L180.834 377.883 L166.76 377.883 L166.76 386.355 Q167.778 386.008 168.797 385.846 Q169.815 385.661 170.834 385.661 Q176.621 385.661 180.001 388.832 Q183.38 392.003 183.38 397.42 Q183.38 402.999 179.908 406.101 Q176.436 409.179 170.116 409.179 Q167.94 409.179 165.672 408.809 Q163.427 408.439 161.019 407.698 L161.019 402.999 Q163.102 404.133 165.325 404.689 Q167.547 405.244 170.024 405.244 Q174.028 405.244 176.366 403.138 Q178.704 401.031 178.704 397.42 Q178.704 393.809 176.366 391.703 Q174.028 389.596 170.024 389.596 Q168.149 389.596 166.274 390.013 Q164.422 390.429 162.477 391.309 L162.477 373.948 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M120.232 60.5889 L136.552 60.5889 L136.552 64.5241 L114.607 64.5241 L114.607 60.5889 Q117.269 57.8343 121.853 53.2047 Q126.459 48.552 127.64 47.2094 Q129.885 44.6862 130.765 42.9501 Q131.667 41.1909 131.667 39.5011 Q131.667 36.7465 129.723 35.0104 Q127.802 33.2743 124.7 33.2743 Q122.501 33.2743 120.047 34.0381 Q117.617 34.802 114.839 36.3529 L114.839 31.6308 Q117.663 30.4965 120.117 29.9178 Q122.57 29.3391 124.607 29.3391 Q129.978 29.3391 133.172 32.0243 Q136.367 34.7094 136.367 39.2002 Q136.367 41.3298 135.556 43.2511 Q134.769 45.1492 132.663 47.7418 Q132.084 48.4131 128.982 51.6306 Q125.88 54.8251 120.232 60.5889 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M146.366 58.6445 L151.251 58.6445 L151.251 64.5241 L146.366 64.5241 L146.366 58.6445 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M171.436 33.0428 Q167.825 33.0428 165.996 36.6076 Q164.19 40.1492 164.19 47.2788 Q164.19 54.3853 165.996 57.9501 Q167.825 61.4917 171.436 61.4917 Q175.07 61.4917 176.876 57.9501 Q178.704 54.3853 178.704 47.2788 Q178.704 40.1492 176.876 36.6076 Q175.07 33.0428 171.436 33.0428 M171.436 29.3391 Q177.246 29.3391 180.301 33.9456 Q183.38 38.5289 183.38 47.2788 Q183.38 56.0056 180.301 60.6121 Q177.246 65.1954 171.436 65.1954 Q165.626 65.1954 162.547 60.6121 Q159.491 56.0056 159.491 47.2788 Q159.491 38.5289 162.547 33.9456 Q165.626 29.3391 171.436 29.3391 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M30.9797 764.667 Q34.5868 764.667 37.904 767.34 Q41.2212 769.98 43.2501 774.296 Q45.2469 778.579 45.2469 783.185 L45.2469 794.393 L61.7363 798.483 Q61.8329 798.515 62.2516 798.611 Q62.6381 798.708 62.8635 798.708 Q63.6687 798.708 63.8619 797.71 Q64.0551 796.679 64.0551 794.393 Q64.0551 792.911 64.3128 792.686 Q64.4738 792.557 64.7637 792.557 Q65.2145 792.557 65.5366 792.686 Q65.8264 792.814 65.9231 793.072 Q66.0197 793.298 66.0519 793.459 Q66.0841 793.62 66.0841 793.877 Q66.0841 794.554 66.0197 796.003 Q65.9553 797.42 65.9553 798.161 L65.8909 802.38 L66.0841 810.753 Q66.0841 811.751 65.2789 811.751 Q64.667 811.751 64.4094 811.494 Q64.1195 811.236 64.0873 810.946 Q64.0551 810.656 64.0551 809.916 Q64.0551 808.305 63.9585 807.339 Q63.8619 806.373 63.7331 805.761 Q63.572 805.117 63.1212 804.795 Q62.6703 804.441 62.2838 804.28 Q61.8651 804.119 60.9312 803.893 L25.5047 795.069 Q24.4419 794.811 24.2809 794.811 Q23.7334 794.811 23.5402 795.133 Q23.3147 795.423 23.2181 796.26 Q23.0893 797.871 23.0893 799.095 Q23.0893 799.9 23.0571 800.222 Q23.0249 800.512 22.8638 800.769 Q22.6706 800.995 22.2841 800.995 Q21.6722 800.995 21.4146 800.737 Q21.1247 800.447 21.0925 800.125 Q21.0281 799.803 21.0281 799.03 L21.0281 777.645 Q21.0281 771.494 23.9588 768.08 Q26.8896 764.667 30.9797 764.667 M29.4016 770.786 Q23.0893 770.786 23.0893 779.771 L23.0893 786.083 Q23.0893 788.177 23.4757 788.692 Q23.83 789.207 25.6013 789.658 L43.54 794.135 L43.54 784.827 Q43.54 778.579 40.0296 774.683 Q38.4193 772.911 35.0699 771.848 Q31.7204 770.786 29.4016 770.786 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M81.6395 769.837 Q81.3175 769.837 80.6089 769.579 L18.3872 746.294 Q18.3228 746.294 17.9685 746.133 Q17.6143 745.972 17.3888 745.876 Q17.1312 745.779 16.938 745.586 Q16.7447 745.36 16.7447 745.103 Q16.7447 744.459 17.5499 744.459 Q17.6143 744.459 18.3872 744.652 L80.6734 768.001 Q81.8006 768.388 82.1226 768.645 Q82.4447 768.871 82.4447 769.257 Q82.4447 769.837 81.6395 769.837 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M30.9797 690.088 Q34.5868 690.088 37.904 692.761 Q41.2212 695.402 43.2501 699.717 Q45.2469 704.001 45.2469 708.606 L45.2469 719.814 L61.7363 723.904 Q61.8329 723.936 62.2516 724.033 Q62.6381 724.129 62.8635 724.129 Q63.6687 724.129 63.8619 723.131 Q64.0551 722.1 64.0551 719.814 Q64.0551 718.332 64.3128 718.107 Q64.4738 717.978 64.7637 717.978 Q65.2145 717.978 65.5366 718.107 Q65.8264 718.236 65.9231 718.493 Q66.0197 718.719 66.0519 718.88 Q66.0841 719.041 66.0841 719.299 Q66.0841 719.975 66.0197 721.424 Q65.9553 722.841 65.9553 723.582 L65.8909 727.801 L66.0841 736.174 Q66.0841 737.173 65.2789 737.173 Q64.667 737.173 64.4094 736.915 Q64.1195 736.657 64.0873 736.368 Q64.0551 736.078 64.0551 735.337 Q64.0551 733.727 63.9585 732.761 Q63.8619 731.794 63.7331 731.182 Q63.572 730.538 63.1212 730.216 Q62.6703 729.862 62.2838 729.701 Q61.8651 729.54 60.9312 729.315 L25.5047 720.49 Q24.4419 720.232 24.2809 720.232 Q23.7334 720.232 23.5402 720.555 Q23.3147 720.844 23.2181 721.682 Q23.0893 723.292 23.0893 724.516 Q23.0893 725.321 23.0571 725.643 Q23.0249 725.933 22.8638 726.191 Q22.6706 726.416 22.2841 726.416 Q21.6722 726.416 21.4146 726.158 Q21.1247 725.869 21.0925 725.546 Q21.0281 725.224 21.0281 724.451 L21.0281 703.067 Q21.0281 696.915 23.9588 693.502 Q26.8896 690.088 30.9797 690.088 M29.4016 696.207 Q23.0893 696.207 23.0893 705.192 L23.0893 711.505 Q23.0893 713.598 23.4757 714.113 Q23.83 714.629 25.6013 715.08 L43.54 719.556 L43.54 710.249 Q43.54 704.001 40.0296 700.104 Q38.4193 698.333 35.0699 697.27 Q31.7204 696.207 29.4016 696.207 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M72.8686 665.72 Q73.0715 665.54 73.2744 665.54 Q73.4773 665.54 74.0635 665.991 Q74.6496 666.419 75.4387 667.344 Q76.2277 668.268 76.9717 669.463 Q77.7156 670.658 78.2116 672.416 Q78.7301 674.175 78.7301 676.023 Q78.7301 679.472 76.4532 681.501 Q74.1762 683.508 70.9073 683.508 Q67.7286 683.508 64.6851 681.727 Q61.6191 679.946 59.7254 677.06 Q57.8092 674.175 57.8092 671.131 Q57.8092 668.719 58.9364 667.208 Q60.0636 665.698 61.7769 665.698 Q63.107 665.698 63.9186 666.464 Q64.7302 667.231 64.7302 668.268 Q64.7302 668.989 64.3244 669.485 Q63.8961 669.981 63.107 669.981 Q62.0926 669.981 61.3035 669.147 Q60.9879 668.832 60.8526 668.471 Q60.6948 668.088 60.6948 667.862 Q60.6723 667.637 60.6723 667.118 Q59.7931 667.592 59.3196 668.719 Q58.8237 669.824 58.8237 671.086 Q58.8237 672.957 60.1312 674.738 Q61.4162 676.519 63.4452 677.601 Q65.4291 678.683 68.2471 679.382 Q71.0426 680.081 72.6657 680.081 Q74.8976 680.081 76.2953 679.044 Q77.6931 678.007 77.6931 675.933 Q77.6931 675.527 77.6705 675.099 Q77.648 674.648 77.4 673.521 Q77.152 672.371 76.7237 671.357 Q76.2953 670.342 75.371 669.057 Q74.4242 667.749 73.1392 666.712 Q72.6657 666.352 72.6657 666.104 Q72.6657 665.901 72.8686 665.72 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><polyline clip-path="url(#clip872)" style="stroke:#009af9; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="364.45,-214632 374.441,-34784.8 384.433,-13931.5 394.424,-6587.5 404.416,-3144.46 414.407,-1299.19 424.399,-233.559 434.39,409.486 444.382,807.078 454.373,1055.09 464.365,1208.77 474.356,1301.52 484.348,1354.23 494.339,1380.39 504.331,1388.89 514.322,1385.67 524.314,1374.8 534.305,1359.04 544.297,1340.33 554.288,1319.98 564.279,1298.94 574.271,1277.82 584.262,1257.07 594.254,1236.98 604.245,1217.72 614.237,1199.42 624.228,1182.13 634.22,1165.89 644.211,1150.69 654.203,1136.51 664.194,1123.32 674.186,1111.08 684.177,1099.76 694.169,1089.3 704.16,1079.65 714.152,1070.78 724.143,1062.63 734.135,1055.16 744.126,1048.32 754.118,1042.09 764.109,1036.4 774.101,1031.24 784.092,1026.56 794.084,1022.33 804.075,1018.52 814.067,1015.11 824.058,1012.06 834.05,1009.35 844.041,1006.95 854.033,1004.86 864.024,1003.04 874.016,1001.47 884.007,1000.14 893.999,999.034 903.99,998.133 913.982,997.425 923.973,996.895 933.965,996.532 943.956,996.323 953.948,996.259 963.939,996.328 973.931,996.522 983.922,996.831 993.913,997.248 1003.9,997.765 1013.9,998.374 1023.89,999.07 1033.88,999.846 1043.87,1000.7 1053.86,1001.61 1063.85,1002.6 1073.85,1003.64 1083.84,1004.73 1093.83,1005.88 1103.82,1007.07 1113.81,1008.31 1123.8,1009.58 1133.79,1010.9 1143.79,1012.24 1153.78,1013.62 1163.77,1015.02 1173.76,1016.45 1183.75,1017.9 1193.74,1019.38 1203.73,1020.87 1213.73,1022.38 1223.72,1023.91 1233.71,1025.45 1243.7,1027 1253.69,1028.56 1263.68,1030.13 1273.68,1031.71 1283.67,1033.3 1293.66,1034.9 1303.65,1036.49 1313.64,1038.1 1323.63,1039.7 1333.62,1041.31 1343.62,1042.92 1353.61,1044.53 1363.6,1046.14 1373.59,1047.75 1383.58,1049.35 1393.57,1050.96 1403.56,1052.56 1413.56,1054.16 1423.55,1055.76 1433.54,1057.35 1443.53,1058.94 1453.52,1060.53 1463.51,1062.1 1473.5,1063.68 1483.5,1065.25 1493.49,1066.81 1503.48,1068.36 1513.47,1069.91 1523.46,1071.46 1533.45,1072.99 1543.45,1074.52 1553.44,1076.04 1563.43,1077.55 1573.42,1079.06 1583.41,1080.56 1593.4,1082.05 1603.39,1083.53 1613.39,1085.01 1623.38,1086.47 1633.37,1087.93 1643.36,1089.38 1653.35,1090.83 1663.34,1092.26 1673.33,1093.68 1683.33,1095.1 1693.32,1096.51 1703.31,1097.91 1713.3,1099.3 1723.29,1100.68 1733.28,1102.05 1743.28,1103.42 1753.27,1104.78 1763.26,1106.12 1773.25,1107.46 1783.24,1108.79 1793.23,1110.12 1803.22,1111.43 1813.22,1112.73 1823.21,1114.03 1833.2,1115.32 1843.19,1116.6 1853.18,1117.87 1863.17,1119.13 1873.16,1120.38 1883.16,1121.63 1893.15,1122.87 1903.14,1124.09 1913.13,1125.31 1923.12,1126.53 1933.11,1127.73 1943.1,1128.93 1953.1,1130.12 1963.09,1131.29 1973.08,1132.47 1983.07,1133.63 1993.06,1134.79 2003.05,1135.93 2013.05,1137.08 2023.04,1138.21 2033.03,1139.33 2043.02,1140.45 2053.01,1141.56 2063,1142.66 2072.99,1143.76 2082.99,1144.84 2092.98,1145.92 2102.97,1147 2112.96,1148.06 2122.95,1149.12 2132.94,1150.17 2142.93,1151.21 2152.93,1152.25 2162.92,1153.28 2172.91,1154.3 2182.9,1155.32 2192.89,1156.33 2202.88,1157.33 2212.88,1158.32 2222.87,1159.31 2232.86,1160.29 2242.85,1161.27 2252.84,1162.24 2262.83,1163.2 2272.82,1164.16 2282.82,1165.11 2292.81,1166.05 2302.8,1166.99 2312.79,1167.92 2322.78,1168.84 2332.77,1169.76 2342.76,1170.67 2352.76,1171.58 "/>
+<polyline clip-path="url(#clip872)" style="stroke:#e26f46; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="364.45,-228391 374.441,-37833.9 384.433,-15646.1 394.424,-7780.06 404.416,-4058.69 414.407,-2040.42 424.399,-856.848 434.39,-128.242 444.382,334.256 454.373,633.191 464.365,827.898 474.356,954.392 484.348,1035.36 494.339,1085.53 504.331,1114.67 514.322,1129.39 524.314,1134.25 534.305,1132.41 544.297,1126.09 554.288,1116.86 564.279,1105.83 574.271,1093.79 584.262,1081.29 594.254,1068.75 604.245,1056.42 614.237,1044.5 624.228,1033.1 634.22,1022.32 644.211,1012.19 654.203,1002.74 664.194,993.971 674.186,985.871 684.177,978.424 694.169,971.609 704.16,965.398 714.152,959.762 724.143,954.672 734.135,950.097 744.126,946.007 754.118,942.372 764.109,939.164 774.101,936.355 784.092,933.919 794.084,931.831 804.075,930.067 814.067,928.605 824.058,927.424 834.05,926.505 844.041,925.828 854.033,925.377 864.024,925.135 874.016,925.088 884.007,925.22 893.999,925.519 903.99,925.973 913.982,926.57 923.973,927.299 933.965,928.151 943.956,929.116 953.948,930.185 963.939,931.35 973.931,932.604 983.922,933.939 993.913,935.35 1003.9,936.83 1013.9,938.373 1023.89,939.974 1033.88,941.628 1043.87,943.33 1053.86,945.077 1063.85,946.864 1073.85,948.687 1083.84,950.543 1093.83,952.429 1103.82,954.342 1113.81,956.278 1123.8,958.235 1133.79,960.211 1143.79,962.204 1153.78,964.211 1163.77,966.23 1173.76,968.26 1183.75,970.298 1193.74,972.343 1203.73,974.394 1213.73,976.45 1223.72,978.508 1233.71,980.568 1243.7,982.628 1253.69,984.688 1263.68,986.746 1273.68,988.802 1283.67,990.855 1293.66,992.904 1303.65,994.948 1313.64,996.986 1323.63,999.019 1333.62,1001.04 1343.62,1003.06 1353.61,1005.07 1363.6,1007.08 1373.59,1009.07 1383.58,1011.06 1393.57,1013.03 1403.56,1015 1413.56,1016.96 1423.55,1018.9 1433.54,1020.84 1443.53,1022.77 1453.52,1024.68 1463.51,1026.59 1473.5,1028.48 1483.5,1030.36 1493.49,1032.23 1503.48,1034.09 1513.47,1035.93 1523.46,1037.77 1533.45,1039.59 1543.45,1041.4 1553.44,1043.2 1563.43,1044.99 1573.42,1046.76 1583.41,1048.53 1593.4,1050.28 1603.39,1052.02 1613.39,1053.74 1623.38,1055.46 1633.37,1057.16 1643.36,1058.85 1653.35,1060.53 1663.34,1062.19 1673.33,1063.85 1683.33,1065.49 1693.32,1067.12 1703.31,1068.74 1713.3,1070.34 1723.29,1071.94 1733.28,1073.52 1743.28,1075.09 1753.27,1076.65 1763.26,1078.2 1773.25,1079.74 1783.24,1081.26 1793.23,1082.78 1803.22,1084.28 1813.22,1085.77 1823.21,1087.25 1833.2,1088.72 1843.19,1090.18 1853.18,1091.63 1863.17,1093.06 1873.16,1094.49 1883.16,1095.91 1893.15,1097.31 1903.14,1098.71 1913.13,1100.09 1923.12,1101.46 1933.11,1102.83 1943.1,1104.18 1953.1,1105.52 1963.09,1106.86 1973.08,1108.18 1983.07,1109.49 1993.06,1110.8 2003.05,1112.09 2013.05,1113.38 2023.04,1114.65 2033.03,1115.92 2043.02,1117.17 2053.01,1118.42 2063,1119.66 2072.99,1120.89 2082.99,1122.11 2092.98,1123.32 2102.97,1124.52 2112.96,1125.71 2122.95,1126.9 2132.94,1128.07 2142.93,1129.24 2152.93,1130.4 2162.92,1131.55 2172.91,1132.69 2182.9,1133.83 2192.89,1134.95 2202.88,1136.07 2212.88,1137.18 2222.87,1138.28 2232.86,1139.38 2242.85,1140.47 2252.84,1141.54 2262.83,1142.62 2272.82,1143.68 2282.82,1144.73 2292.81,1145.78 2302.8,1146.83 2312.79,1147.86 2322.78,1148.89 2332.77,1149.91 2342.76,1150.92 2352.76,1151.92 "/>
+<polyline clip-path="url(#clip872)" style="stroke:#3da44d; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="364.45,-242151 374.441,-40883 384.433,-17360.6 394.424,-8972.62 404.416,-4972.92 414.407,-2781.65 424.399,-1480.14 434.39,-665.971 444.382,-138.566 454.373,211.294 464.365,447.023 474.356,607.269 484.348,716.496 494.339,790.664 504.331,840.443 514.322,873.109 524.314,893.708 534.305,905.785 544.297,911.859 554.288,913.736 564.279,912.717 574.271,909.749 584.262,905.515 594.254,900.517 604.245,895.116 614.237,889.572 624.228,884.075 634.22,878.755 644.211,873.703 654.203,868.981 664.194,864.626 674.186,860.66 684.177,857.091 694.169,853.921 704.16,851.143 714.152,848.746 724.143,846.715 734.135,845.036 744.126,843.69 754.118,842.66 764.109,841.927 774.101,841.473 784.092,841.281 794.084,841.333 804.075,841.612 814.067,842.104 824.058,842.792 834.05,843.662 844.041,844.701 854.033,845.896 864.024,847.235 874.016,848.706 884.007,850.3 893.999,852.005 903.99,853.813 913.982,855.715 923.973,857.704 933.965,859.77 943.956,861.908 953.948,864.11 963.939,866.372 973.931,868.686 983.922,871.048 993.913,873.452 1003.9,875.895 1013.9,878.371 1023.89,880.877 1033.88,883.41 1043.87,885.965 1053.86,888.54 1063.85,891.131 1073.85,893.736 1083.84,896.352 1093.83,898.978 1103.82,901.61 1113.81,904.246 1123.8,906.886 1133.79,909.526 1143.79,912.166 1153.78,914.804 1163.77,917.439 1173.76,920.069 1183.75,922.693 1193.74,925.31 1203.73,927.919 1213.73,930.519 1223.72,933.109 1233.71,935.689 1243.7,938.258 1253.69,940.815 1263.68,943.359 1273.68,945.89 1283.67,948.408 1293.66,950.912 1303.65,953.401 1313.64,955.876 1323.63,958.336 1333.62,960.78 1343.62,963.208 1353.61,965.621 1363.6,968.017 1373.59,970.397 1383.58,972.761 1393.57,975.108 1403.56,977.439 1413.56,979.753 1423.55,982.049 1433.54,984.329 1443.53,986.592 1453.52,988.838 1463.51,991.067 1473.5,993.279 1483.5,995.473 1493.49,997.651 1503.48,999.812 1513.47,1001.96 1523.46,1004.08 1533.45,1006.19 1543.45,1008.29 1553.44,1010.36 1563.43,1012.42 1573.42,1014.47 1583.41,1016.49 1593.4,1018.5 1603.39,1020.5 1613.39,1022.48 1623.38,1024.44 1633.37,1026.38 1643.36,1028.31 1653.35,1030.23 1663.34,1032.13 1673.33,1034.01 1683.33,1035.88 1693.32,1037.73 1703.31,1039.57 1713.3,1041.39 1723.29,1043.2 1733.28,1044.99 1743.28,1046.77 1753.27,1048.53 1763.26,1050.28 1773.25,1052.01 1783.24,1053.73 1793.23,1055.44 1803.22,1057.13 1813.22,1058.81 1823.21,1060.47 1833.2,1062.13 1843.19,1063.76 1853.18,1065.39 1863.17,1067 1873.16,1068.6 1883.16,1070.18 1893.15,1071.76 1903.14,1073.32 1913.13,1074.86 1923.12,1076.4 1933.11,1077.92 1943.1,1079.43 1953.1,1080.93 1963.09,1082.42 1973.08,1083.89 1983.07,1085.36 1993.06,1086.81 2003.05,1088.25 2013.05,1089.68 2023.04,1091.09 2033.03,1092.5 2043.02,1093.9 2053.01,1095.28 2063,1096.65 2072.99,1098.02 2082.99,1099.37 2092.98,1100.71 2102.97,1102.04 2112.96,1103.37 2122.95,1104.68 2132.94,1105.98 2142.93,1107.27 2152.93,1108.55 2162.92,1109.82 2172.91,1111.09 2182.9,1112.34 2192.89,1113.58 2202.88,1114.82 2212.88,1116.04 2222.87,1117.26 2232.86,1118.46 2242.85,1119.66 2252.84,1120.85 2262.83,1122.03 2272.82,1123.2 2282.82,1124.36 2292.81,1125.52 2302.8,1126.66 2312.79,1127.8 2322.78,1128.93 2332.77,1130.05 2342.76,1131.16 2352.76,1132.27 "/>
+<polyline clip-path="url(#clip872)" style="stroke:#c271d2; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="364.45,-255910 374.441,-43932.2 384.433,-19075.1 394.424,-10165.2 404.416,-5887.15 414.407,-3522.88 424.399,-2103.43 434.39,-1203.7 444.382,-611.388 454.373,-210.603 464.365,66.1476 474.356,260.145 484.348,397.629 494.339,495.799 504.331,566.22 514.322,616.827 524.314,653.164 534.305,679.158 544.297,697.626 554.288,710.612 564.279,719.607 574.271,725.711 584.262,729.736 594.254,732.287 604.245,733.813 614.237,734.649 624.228,735.046 634.22,735.188 644.211,735.212 654.203,735.219 664.194,735.281 674.186,735.449 684.177,735.759 694.169,736.234 704.16,736.888 714.152,737.729 724.143,738.758 734.135,739.974 744.126,741.373 754.118,742.947 764.109,744.689 774.101,746.591 784.092,748.642 794.084,750.834 804.075,753.158 814.067,755.602 824.058,758.159 834.05,760.82 844.041,763.574 854.033,766.415 864.024,769.335 874.016,772.325 884.007,775.379 893.999,778.491 903.99,781.653 913.982,784.861 923.973,788.108 933.965,791.389 943.956,794.7 953.948,798.036 963.939,801.394 973.931,804.768 983.922,808.156 993.913,811.554 1003.9,814.96 1013.9,818.37 1023.89,821.781 1033.88,825.192 1043.87,828.599 1053.86,832.002 1063.85,835.398 1073.85,838.785 1083.84,842.161 1093.83,845.526 1103.82,848.877 1113.81,852.215 1123.8,855.536 1133.79,858.841 1143.79,862.129 1153.78,865.398 1163.77,868.648 1173.76,871.878 1183.75,875.087 1193.74,878.276 1203.73,881.443 1213.73,884.588 1223.72,887.711 1233.71,890.811 1243.7,893.888 1253.69,896.942 1263.68,899.972 1273.68,902.979 1283.67,905.961 1293.66,908.92 1303.65,911.855 1313.64,914.766 1323.63,917.652 1333.62,920.514 1343.62,923.353 1353.61,926.167 1363.6,928.957 1373.59,931.722 1383.58,934.464 1393.57,937.182 1403.56,939.876 1413.56,942.547 1423.55,945.194 1433.54,947.817 1443.53,950.417 1453.52,952.994 1463.51,955.548 1473.5,958.079 1483.5,960.587 1493.49,963.073 1503.48,965.536 1513.47,967.977 1523.46,970.397 1533.45,972.794 1543.45,975.17 1553.44,977.524 1563.43,979.857 1573.42,982.169 1583.41,984.46 1593.4,986.73 1603.39,988.98 1613.39,991.209 1623.38,993.419 1633.37,995.608 1643.36,997.778 1653.35,999.929 1663.34,1002.06 1673.33,1004.17 1683.33,1006.27 1693.32,1008.34 1703.31,1010.4 1713.3,1012.43 1723.29,1014.45 1733.28,1016.45 1743.28,1018.44 1753.27,1020.41 1763.26,1022.35 1773.25,1024.29 1783.24,1026.2 1793.23,1028.1 1803.22,1029.98 1813.22,1031.85 1823.21,1033.7 1833.2,1035.53 1843.19,1037.35 1853.18,1039.15 1863.17,1040.93 1873.16,1042.7 1883.16,1044.46 1893.15,1046.2 1903.14,1047.93 1913.13,1049.64 1923.12,1051.33 1933.11,1053.02 1943.1,1054.68 1953.1,1056.34 1963.09,1057.98 1973.08,1059.6 1983.07,1061.22 1993.06,1062.82 2003.05,1064.4 2013.05,1065.98 2023.04,1067.54 2033.03,1069.08 2043.02,1070.62 2053.01,1072.14 2063,1073.65 2072.99,1075.15 2082.99,1076.63 2092.98,1078.11 2102.97,1079.57 2112.96,1081.02 2122.95,1082.46 2132.94,1083.88 2142.93,1085.3 2152.93,1086.7 2162.92,1088.1 2172.91,1089.48 2182.9,1090.85 2192.89,1092.21 2202.88,1093.56 2212.88,1094.9 2222.87,1096.23 2232.86,1097.55 2242.85,1098.86 2252.84,1100.15 2262.83,1101.44 2272.82,1102.72 2282.82,1103.99 2292.81,1105.25 2302.8,1106.5 2312.79,1107.74 2322.78,1108.97 2332.77,1110.19 2342.76,1111.41 2352.76,1112.61 "/>
+<polyline clip-path="url(#clip872)" style="stroke:#ac8d18; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="364.45,-283429 374.441,-50030.4 384.433,-22504.2 394.424,-12550.3 404.416,-7715.6 414.407,-5005.35 424.399,-3350.01 434.39,-2279.16 444.382,-1557.03 454.373,-1054.4 464.365,-695.603 474.356,-434.103 484.348,-240.106 494.339,-93.9298 504.331,17.775 514.322,104.264 524.314,172.076 534.305,225.903 544.297,269.16 554.288,304.364 564.279,333.386 574.271,357.636 584.262,378.178 594.254,395.827 604.245,411.208 614.237,424.803 624.228,436.988 634.22,448.053 644.211,458.229 654.203,467.694 664.194,476.59 674.186,485.027 684.177,493.094 694.169,500.86 704.16,508.379 714.152,515.696 724.143,522.845 734.135,529.851 744.126,536.738 754.118,543.521 764.109,550.214 774.101,556.826 784.092,563.366 794.084,569.838 804.075,576.248 814.067,582.6 824.058,588.895 834.05,595.134 844.041,601.321 854.033,607.454 864.024,613.535 874.016,619.563 884.007,625.539 893.999,631.462 903.99,637.333 913.982,643.151 923.973,648.916 933.965,654.627 943.956,660.285 953.948,665.888 963.939,671.437 973.931,676.932 983.922,682.373 993.913,687.759 1003.9,693.09 1013.9,698.366 1023.89,703.588 1033.88,708.756 1043.87,713.868 1053.86,718.927 1063.85,723.931 1073.85,728.882 1083.84,733.779 1093.83,738.623 1103.82,743.413 1113.81,748.151 1123.8,752.837 1133.79,757.471 1143.79,762.053 1153.78,766.585 1163.77,771.065 1173.76,775.496 1183.75,779.877 1193.74,784.209 1203.73,788.492 1213.73,792.727 1223.72,796.914 1233.71,801.055 1243.7,805.148 1253.69,809.196 1263.68,813.198 1273.68,817.155 1283.67,821.068 1293.66,824.937 1303.65,828.762 1313.64,832.545 1323.63,836.285 1333.62,839.984 1343.62,843.642 1353.61,847.259 1363.6,850.835 1373.59,854.372 1383.58,857.871 1393.57,861.33 1403.56,864.752 1413.56,868.136 1423.55,871.483 1433.54,874.793 1443.53,878.067 1453.52,881.306 1463.51,884.51 1473.5,887.68 1483.5,890.815 1493.49,893.916 1503.48,896.985 1513.47,900.021 1523.46,903.024 1533.45,905.996 1543.45,908.936 1553.44,911.846 1563.43,914.725 1573.42,917.574 1583.41,920.393 1593.4,923.183 1603.39,925.944 1613.39,928.677 1623.38,931.381 1633.37,934.058 1643.36,936.708 1653.35,939.331 1663.34,941.927 1673.33,944.497 1683.33,947.042 1693.32,949.561 1703.31,952.054 1713.3,954.523 1723.29,956.968 1733.28,959.388 1743.28,961.785 1753.27,964.158 1763.26,966.508 1773.25,968.836 1783.24,971.141 1793.23,973.423 1803.22,975.684 1813.22,977.923 1823.21,980.141 1833.2,982.337 1843.19,984.513 1853.18,986.669 1863.17,988.804 1873.16,990.919 1883.16,993.015 1893.15,995.091 1903.14,997.148 1913.13,999.186 1923.12,1001.21 1933.11,1003.21 1943.1,1005.19 1953.1,1007.15 1963.09,1009.1 1973.08,1011.03 1983.07,1012.94 1993.06,1014.84 2003.05,1016.72 2013.05,1018.58 2023.04,1020.42 2033.03,1022.25 2043.02,1024.06 2053.01,1025.86 2063,1027.64 2072.99,1029.41 2082.99,1031.16 2092.98,1032.9 2102.97,1034.62 2112.96,1036.32 2122.95,1038.01 2132.94,1039.69 2142.93,1041.36 2152.93,1043 2162.92,1044.64 2172.91,1046.26 2182.9,1047.87 2192.89,1049.47 2202.88,1051.05 2212.88,1052.62 2222.87,1054.17 2232.86,1055.72 2242.85,1057.25 2252.84,1058.77 2262.83,1060.27 2272.82,1061.77 2282.82,1063.25 2292.81,1064.72 2302.8,1066.18 2312.79,1067.62 2322.78,1069.06 2332.77,1070.48 2342.76,1071.9 2352.76,1073.3 "/>
+<path clip-path="url(#clip870)" d="M1864.04 404.149 L2281.64 404.149 L2281.64 93.1086 L1864.04 93.1086  Z" fill="#ffffff" fill-rule="evenodd" fill-opacity="1"/>
+<polyline clip-path="url(#clip870)" style="stroke:#000000; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="1864.04,404.149 2281.64,404.149 2281.64,93.1086 1864.04,93.1086 1864.04,404.149 "/>
+<polyline clip-path="url(#clip870)" style="stroke:#009af9; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="1887.75,144.949 2029.97,144.949 "/>
+<path clip-path="url(#clip870)" d="M2086.3 124.478 Q2086.3 124.923 2086.21 125.298 L2084.9 133.636 Q2084.83 134.269 2084.69 134.503 Q2084.57 134.737 2084.2 134.737 Q2083.61 134.737 2083.61 134.128 Q2083.61 133.777 2083.75 133.215 Q2084.15 130.568 2084.15 129.373 Q2084.15 128.577 2083.99 127.991 Q2083.85 127.382 2083.61 126.961 Q2083.4 126.539 2082.91 126.258 Q2082.42 125.977 2081.95 125.813 Q2081.48 125.649 2080.64 125.579 Q2079.79 125.485 2079.07 125.462 Q2078.34 125.438 2077.15 125.438 Q2074.55 125.438 2074.12 125.532 Q2073.68 125.649 2073.45 126.001 Q2073.23 126.328 2073 127.312 L2066.63 152.772 L2066.44 153.78 Q2066.44 154.342 2066.79 154.529 Q2067.15 154.716 2068.22 154.834 Q2069.77 154.951 2071.29 154.951 Q2071.34 154.951 2071.43 154.951 Q2071.95 154.951 2072.16 154.974 Q2072.37 154.974 2072.58 155.021 Q2072.79 155.068 2072.84 155.185 Q2072.91 155.279 2072.91 155.466 Q2072.91 155.911 2072.72 156.145 Q2072.53 156.356 2072.34 156.403 Q2072.18 156.426 2071.85 156.426 Q2071.2 156.426 2069.79 156.379 Q2068.39 156.333 2067.68 156.333 L2063.7 156.286 L2059.63 156.333 Q2058.99 156.333 2057.66 156.379 Q2056.32 156.426 2055.69 156.426 Q2054.87 156.426 2054.87 155.841 Q2054.87 155.185 2055.18 155.068 Q2055.5 154.951 2056.89 154.951 Q2058.83 154.951 2059.88 154.857 Q2060.94 154.763 2061.5 154.435 Q2062.09 154.107 2062.25 153.78 Q2062.41 153.428 2062.6 152.632 L2069.04 127.031 Q2069.23 126.469 2069.23 126.024 Q2069.23 125.79 2069.16 125.696 Q2069.11 125.602 2068.81 125.532 Q2068.5 125.438 2067.87 125.438 L2066 125.438 Q2064.08 125.438 2062.88 125.532 Q2061.71 125.602 2060.59 125.954 Q2059.49 126.305 2058.83 126.797 Q2058.2 127.289 2057.5 128.296 Q2056.79 129.303 2056.28 130.521 Q2055.79 131.739 2055.08 133.73 Q2054.85 134.386 2054.71 134.573 Q2054.59 134.737 2054.26 134.737 Q2054.03 134.737 2053.84 134.597 Q2053.68 134.433 2053.68 134.222 Q2053.91 133.449 2053.96 133.355 L2056.84 124.9 Q2057.07 124.22 2057.28 124.103 Q2057.52 123.963 2058.39 123.963 L2084.99 123.963 Q2085.41 123.963 2085.56 123.963 Q2085.7 123.963 2085.93 124.01 Q2086.16 124.056 2086.23 124.174 Q2086.3 124.291 2086.3 124.478 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2104.77 152.582 Q2104.77 153.451 2104.19 154.009 Q2103.64 154.566 2102.92 154.566 Q2102.29 154.566 2101.96 154.205 Q2101.64 153.845 2101.64 153.386 Q2101.64 152.73 2102.14 152.189 Q2102.65 151.648 2103.39 151.533 Q2102.85 151.139 2101.98 151.139 Q2100.55 151.139 2099.29 152.238 Q2098.73 152.746 2098.13 153.681 Q2097.52 154.599 2097.41 154.992 L2096.34 159.37 Q2096.24 159.862 2095.64 162.223 Q2095.05 164.567 2095 164.666 Q2094.83 165.125 2094.47 165.371 Q2094.11 165.617 2093.75 165.617 Q2093.34 165.617 2093.06 165.371 Q2092.78 165.125 2092.78 164.699 Q2092.78 164.633 2092.83 164.387 Q2092.88 164.141 2092.96 163.797 Q2093.05 163.453 2093.08 163.256 L2095.03 155.501 Q2095.39 154.091 2095.47 153.648 Q2095.57 153.189 2095.57 152.681 Q2095.57 151.795 2095.29 151.467 Q2095.01 151.139 2094.52 151.139 Q2093.67 151.139 2093.11 152.156 Q2092.55 153.172 2092.08 155.14 Q2091.93 155.681 2091.83 155.796 Q2091.75 155.911 2091.5 155.911 Q2091.09 155.894 2091.09 155.566 Q2091.09 155.484 2091.23 154.96 Q2091.36 154.419 2091.6 153.632 Q2091.86 152.828 2092.14 152.32 Q2092.31 151.976 2092.45 151.746 Q2092.6 151.517 2092.9 151.156 Q2093.19 150.795 2093.64 150.598 Q2094.08 150.402 2094.62 150.402 Q2095.8 150.402 2096.64 151.123 Q2097.49 151.844 2097.69 152.976 Q2098.1 152.385 2098.6 151.877 Q2099.11 151.353 2100.05 150.877 Q2100.98 150.402 2101.98 150.402 Q2103.23 150.402 2104 151.041 Q2104.77 151.664 2104.77 152.582 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2123.05 149.142 Q2123.1 148.556 2124.01 148.556 L2153.4 148.556 Q2154.79 148.556 2154.81 149.095 Q2154.81 149.681 2153.5 149.657 L2124.34 149.657 Q2123.05 149.681 2123.05 149.142 M2123.05 139.773 Q2123.05 139.187 2124.06 139.211 L2153.36 139.211 Q2154.79 139.211 2154.81 139.773 Q2154.81 140.312 2153.59 140.312 L2124.01 140.312 Q2123.05 140.312 2123.05 139.773 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2173.3 141.085 Q2173.3 134.034 2175.08 130.193 Q2177.56 124.478 2183.42 124.478 Q2184.66 124.478 2185.95 124.829 Q2187.26 125.157 2188.9 126.446 Q2190.56 127.734 2191.57 129.842 Q2193.49 133.917 2193.49 141.085 Q2193.49 148.088 2191.71 151.906 Q2189.11 157.48 2183.37 157.48 Q2181.22 157.48 2179.02 156.379 Q2176.84 155.279 2175.46 152.632 Q2173.3 148.673 2173.3 141.085 M2177.28 140.499 Q2177.28 147.737 2177.8 150.618 Q2178.38 153.733 2179.98 155.091 Q2181.59 156.426 2183.37 156.426 Q2185.29 156.426 2186.89 154.998 Q2188.5 153.545 2188.99 150.43 Q2189.53 147.362 2189.51 140.499 Q2189.51 133.824 2189.04 131.153 Q2188.41 128.038 2186.72 126.797 Q2185.06 125.532 2183.37 125.532 Q2182.74 125.532 2182.06 125.719 Q2181.4 125.907 2180.44 126.446 Q2179.48 126.984 2178.73 128.319 Q2178.01 129.654 2177.66 131.669 Q2177.28 134.269 2177.28 140.499 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2197.78 155.653 Q2197.05 154.88 2197.05 153.873 Q2197.05 152.866 2197.78 152.14 Q2198.5 151.39 2199.6 151.39 Q2200.66 151.39 2201.36 152.093 Q2202.09 152.772 2202.09 153.897 Q2202.09 154.998 2201.31 155.724 Q2200.56 156.426 2199.6 156.426 Q2198.5 156.426 2197.78 155.653 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2210.25 149.189 Q2210.25 143.825 2217.16 140.358 Q2214.18 138.344 2213.64 137.759 Q2211.54 135.416 2211.54 132.489 Q2211.54 129.139 2214.07 126.82 Q2216.62 124.478 2220.23 124.478 Q2223.67 124.478 2226.27 126.469 Q2228.87 128.46 2228.87 131.622 Q2228.87 136.072 2223.06 139.07 Q2226.9 141.459 2227.81 142.466 Q2230.16 145.066 2230.16 148.369 Q2230.16 152.21 2227.21 154.857 Q2224.25 157.48 2220.18 157.48 Q2216.2 157.48 2213.22 155.161 Q2210.25 152.843 2210.25 149.189 M2212.64 149.189 Q2212.64 152.163 2214.86 154.154 Q2217.11 156.145 2220.23 156.145 Q2223.25 156.145 2225.5 154.412 Q2227.77 152.679 2227.77 150.102 Q2227.77 149.095 2227.42 148.228 Q2227.09 147.362 2226.41 146.683 Q2225.75 145.98 2225.33 145.675 Q2224.93 145.347 2224.16 144.809 L2218.26 141.085 Q2212.64 144.2 2212.64 149.189 M2213.64 130.615 Q2213.64 132.91 2216.06 134.503 L2222.01 138.344 Q2226.76 135.557 2226.76 131.622 Q2226.76 129.069 2224.82 127.382 Q2222.87 125.673 2220.18 125.673 Q2217.53 125.673 2215.59 127.078 Q2213.64 128.46 2213.64 130.615 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2234.19 148.697 Q2234.19 147.268 2234.96 146.729 Q2235.74 146.167 2236.55 146.167 Q2237.66 146.167 2238.29 146.87 Q2238.94 147.549 2238.94 148.509 Q2238.94 149.47 2238.29 150.172 Q2237.66 150.852 2236.55 150.852 Q2236.02 150.852 2235.74 150.758 Q2236.37 152.96 2238.29 154.552 Q2240.23 156.145 2242.79 156.145 Q2245.99 156.145 2247.91 153.03 Q2249.06 151.016 2249.06 146.448 Q2249.06 142.42 2248.2 140.405 Q2246.86 137.337 2244.12 137.337 Q2240.23 137.337 2237.94 140.686 Q2237.66 141.108 2237.33 141.131 Q2236.86 141.131 2236.74 140.874 Q2236.65 140.593 2236.65 139.867 L2236.65 125.673 Q2236.65 124.525 2237.12 124.525 Q2237.3 124.525 2237.7 124.665 Q2240.72 126.001 2244.07 126.024 Q2247.52 126.024 2250.61 124.619 Q2250.84 124.478 2250.98 124.478 Q2251.45 124.478 2251.47 125.017 Q2251.47 125.204 2251.08 125.766 Q2250.7 126.305 2249.88 127.031 Q2249.06 127.734 2248.01 128.413 Q2246.95 129.092 2245.41 129.561 Q2243.89 130.006 2242.2 130.006 Q2240.19 130.006 2238.12 129.373 L2238.12 138.719 Q2240.61 136.283 2244.21 136.283 Q2248.06 136.283 2250.7 139.375 Q2253.35 142.466 2253.35 146.776 Q2253.35 151.297 2250.21 154.389 Q2247.09 157.48 2242.88 157.48 Q2239.04 157.48 2236.6 154.74 Q2234.19 151.999 2234.19 148.697 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><polyline clip-path="url(#clip870)" style="stroke:#e26f46; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="1887.75,196.789 2029.97,196.789 "/>
+<path clip-path="url(#clip870)" d="M2086.3 176.318 Q2086.3 176.763 2086.21 177.138 L2084.9 185.476 Q2084.83 186.109 2084.69 186.343 Q2084.57 186.577 2084.2 186.577 Q2083.61 186.577 2083.61 185.968 Q2083.61 185.617 2083.75 185.055 Q2084.15 182.408 2084.15 181.213 Q2084.15 180.417 2083.99 179.831 Q2083.85 179.222 2083.61 178.801 Q2083.4 178.379 2082.91 178.098 Q2082.42 177.817 2081.95 177.653 Q2081.48 177.489 2080.64 177.419 Q2079.79 177.325 2079.07 177.302 Q2078.34 177.278 2077.15 177.278 Q2074.55 177.278 2074.12 177.372 Q2073.68 177.489 2073.45 177.841 Q2073.23 178.168 2073 179.152 L2066.63 204.612 L2066.44 205.62 Q2066.44 206.182 2066.79 206.369 Q2067.15 206.556 2068.22 206.674 Q2069.77 206.791 2071.29 206.791 Q2071.34 206.791 2071.43 206.791 Q2071.95 206.791 2072.16 206.814 Q2072.37 206.814 2072.58 206.861 Q2072.79 206.908 2072.84 207.025 Q2072.91 207.119 2072.91 207.306 Q2072.91 207.751 2072.72 207.985 Q2072.53 208.196 2072.34 208.243 Q2072.18 208.266 2071.85 208.266 Q2071.2 208.266 2069.79 208.219 Q2068.39 208.173 2067.68 208.173 L2063.7 208.126 L2059.63 208.173 Q2058.99 208.173 2057.66 208.219 Q2056.32 208.266 2055.69 208.266 Q2054.87 208.266 2054.87 207.681 Q2054.87 207.025 2055.18 206.908 Q2055.5 206.791 2056.89 206.791 Q2058.83 206.791 2059.88 206.697 Q2060.94 206.603 2061.5 206.275 Q2062.09 205.947 2062.25 205.62 Q2062.41 205.268 2062.6 204.472 L2069.04 178.871 Q2069.23 178.309 2069.23 177.864 Q2069.23 177.63 2069.16 177.536 Q2069.11 177.442 2068.81 177.372 Q2068.5 177.278 2067.87 177.278 L2066 177.278 Q2064.08 177.278 2062.88 177.372 Q2061.71 177.442 2060.59 177.794 Q2059.49 178.145 2058.83 178.637 Q2058.2 179.129 2057.5 180.136 Q2056.79 181.143 2056.28 182.361 Q2055.79 183.579 2055.08 185.57 Q2054.85 186.226 2054.71 186.413 Q2054.59 186.577 2054.26 186.577 Q2054.03 186.577 2053.84 186.437 Q2053.68 186.273 2053.68 186.062 Q2053.91 185.289 2053.96 185.195 L2056.84 176.74 Q2057.07 176.06 2057.28 175.943 Q2057.52 175.803 2058.39 175.803 L2084.99 175.803 Q2085.41 175.803 2085.56 175.803 Q2085.7 175.803 2085.93 175.85 Q2086.16 175.896 2086.23 176.014 Q2086.3 176.131 2086.3 176.318 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2104.77 204.422 Q2104.77 205.291 2104.19 205.849 Q2103.64 206.406 2102.92 206.406 Q2102.29 206.406 2101.96 206.045 Q2101.64 205.685 2101.64 205.226 Q2101.64 204.57 2102.14 204.029 Q2102.65 203.488 2103.39 203.373 Q2102.85 202.979 2101.98 202.979 Q2100.55 202.979 2099.29 204.078 Q2098.73 204.586 2098.13 205.521 Q2097.52 206.439 2097.41 206.832 L2096.34 211.21 Q2096.24 211.702 2095.64 214.063 Q2095.05 216.407 2095 216.506 Q2094.83 216.965 2094.47 217.211 Q2094.11 217.457 2093.75 217.457 Q2093.34 217.457 2093.06 217.211 Q2092.78 216.965 2092.78 216.539 Q2092.78 216.473 2092.83 216.227 Q2092.88 215.981 2092.96 215.637 Q2093.05 215.293 2093.08 215.096 L2095.03 207.341 Q2095.39 205.931 2095.47 205.488 Q2095.57 205.029 2095.57 204.521 Q2095.57 203.635 2095.29 203.307 Q2095.01 202.979 2094.52 202.979 Q2093.67 202.979 2093.11 203.996 Q2092.55 205.012 2092.08 206.98 Q2091.93 207.521 2091.83 207.636 Q2091.75 207.751 2091.5 207.751 Q2091.09 207.734 2091.09 207.406 Q2091.09 207.324 2091.23 206.8 Q2091.36 206.259 2091.6 205.472 Q2091.86 204.668 2092.14 204.16 Q2092.31 203.816 2092.45 203.586 Q2092.6 203.357 2092.9 202.996 Q2093.19 202.635 2093.64 202.438 Q2094.08 202.242 2094.62 202.242 Q2095.8 202.242 2096.64 202.963 Q2097.49 203.684 2097.69 204.816 Q2098.1 204.225 2098.6 203.717 Q2099.11 203.193 2100.05 202.717 Q2100.98 202.242 2101.98 202.242 Q2103.23 202.242 2104 202.881 Q2104.77 203.504 2104.77 204.422 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2123.05 200.982 Q2123.1 200.396 2124.01 200.396 L2153.4 200.396 Q2154.79 200.396 2154.81 200.935 Q2154.81 201.521 2153.5 201.497 L2124.34 201.497 Q2123.05 201.521 2123.05 200.982 M2123.05 191.613 Q2123.05 191.027 2124.06 191.051 L2153.36 191.051 Q2154.79 191.051 2154.81 191.613 Q2154.81 192.152 2153.59 192.152 L2124.01 192.152 Q2123.05 192.152 2123.05 191.613 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2173.3 192.925 Q2173.3 185.874 2175.08 182.033 Q2177.56 176.318 2183.42 176.318 Q2184.66 176.318 2185.95 176.669 Q2187.26 176.997 2188.9 178.286 Q2190.56 179.574 2191.57 181.682 Q2193.49 185.757 2193.49 192.925 Q2193.49 199.928 2191.71 203.746 Q2189.11 209.32 2183.37 209.32 Q2181.22 209.32 2179.02 208.219 Q2176.84 207.119 2175.46 204.472 Q2173.3 200.513 2173.3 192.925 M2177.28 192.339 Q2177.28 199.577 2177.8 202.458 Q2178.38 205.573 2179.98 206.931 Q2181.59 208.266 2183.37 208.266 Q2185.29 208.266 2186.89 206.838 Q2188.5 205.385 2188.99 202.27 Q2189.53 199.202 2189.51 192.339 Q2189.51 185.664 2189.04 182.993 Q2188.41 179.878 2186.72 178.637 Q2185.06 177.372 2183.37 177.372 Q2182.74 177.372 2182.06 177.559 Q2181.4 177.747 2180.44 178.286 Q2179.48 178.824 2178.73 180.159 Q2178.01 181.494 2177.66 183.509 Q2177.28 186.109 2177.28 192.339 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2197.78 207.493 Q2197.05 206.72 2197.05 205.713 Q2197.05 204.706 2197.78 203.98 Q2198.5 203.23 2199.6 203.23 Q2200.66 203.23 2201.36 203.933 Q2202.09 204.612 2202.09 205.737 Q2202.09 206.838 2201.31 207.564 Q2200.56 208.266 2199.6 208.266 Q2198.5 208.266 2197.78 207.493 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2210.25 187.116 Q2210.25 184.563 2211 182.83 Q2211.75 181.073 2213.32 179.34 Q2216.2 176.318 2220.37 176.318 Q2222.15 176.318 2223.72 177.068 Q2225.31 177.817 2226.81 179.527 Q2228.33 181.213 2229.24 184.563 Q2230.16 187.889 2230.16 192.48 Q2230.16 199.904 2226.55 204.612 Q2222.97 209.32 2218.12 209.32 Q2215.05 209.32 2213.25 207.938 Q2211.44 206.533 2211.44 204.144 Q2211.44 202.903 2212.14 202.387 Q2212.85 201.849 2213.64 201.849 Q2214.51 201.849 2215.19 202.434 Q2215.87 202.996 2215.87 204.05 Q2215.87 204.917 2215.31 205.596 Q2214.77 206.252 2213.36 206.252 Q2214.74 207.985 2218.07 207.985 Q2219.26 207.985 2220.46 207.446 Q2221.65 206.884 2222.94 205.549 Q2224.25 204.191 2225.05 201.357 Q2225.85 198.523 2225.85 194.541 L2225.85 193.018 Q2223.93 197.82 2219.85 197.82 Q2215.82 197.82 2213.03 194.728 Q2210.25 191.636 2210.25 187.116 M2214.56 187.163 Q2214.56 191.917 2215.42 193.674 Q2216.9 196.696 2219.9 196.696 Q2222.83 196.696 2224.28 194.096 Q2225.75 191.472 2225.75 188.076 Q2225.75 183.368 2224.98 181.307 Q2223.55 177.513 2220.37 177.513 Q2217.2 177.513 2215.56 180.534 Q2214.56 182.314 2214.56 187.163 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><polyline clip-path="url(#clip870)" style="stroke:#3da44d; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="1887.75,248.629 2029.97,248.629 "/>
+<path clip-path="url(#clip870)" d="M2086.3 228.158 Q2086.3 228.603 2086.21 228.978 L2084.9 237.316 Q2084.83 237.949 2084.69 238.183 Q2084.57 238.417 2084.2 238.417 Q2083.61 238.417 2083.61 237.808 Q2083.61 237.457 2083.75 236.895 Q2084.15 234.248 2084.15 233.053 Q2084.15 232.257 2083.99 231.671 Q2083.85 231.062 2083.61 230.641 Q2083.4 230.219 2082.91 229.938 Q2082.42 229.657 2081.95 229.493 Q2081.48 229.329 2080.64 229.259 Q2079.79 229.165 2079.07 229.142 Q2078.34 229.118 2077.15 229.118 Q2074.55 229.118 2074.12 229.212 Q2073.68 229.329 2073.45 229.681 Q2073.23 230.008 2073 230.992 L2066.63 256.452 L2066.44 257.46 Q2066.44 258.022 2066.79 258.209 Q2067.15 258.396 2068.22 258.514 Q2069.77 258.631 2071.29 258.631 Q2071.34 258.631 2071.43 258.631 Q2071.95 258.631 2072.16 258.654 Q2072.37 258.654 2072.58 258.701 Q2072.79 258.748 2072.84 258.865 Q2072.91 258.959 2072.91 259.146 Q2072.91 259.591 2072.72 259.825 Q2072.53 260.036 2072.34 260.083 Q2072.18 260.106 2071.85 260.106 Q2071.2 260.106 2069.79 260.059 Q2068.39 260.013 2067.68 260.013 L2063.7 259.966 L2059.63 260.013 Q2058.99 260.013 2057.66 260.059 Q2056.32 260.106 2055.69 260.106 Q2054.87 260.106 2054.87 259.521 Q2054.87 258.865 2055.18 258.748 Q2055.5 258.631 2056.89 258.631 Q2058.83 258.631 2059.88 258.537 Q2060.94 258.443 2061.5 258.115 Q2062.09 257.787 2062.25 257.46 Q2062.41 257.108 2062.6 256.312 L2069.04 230.711 Q2069.23 230.149 2069.23 229.704 Q2069.23 229.47 2069.16 229.376 Q2069.11 229.282 2068.81 229.212 Q2068.5 229.118 2067.87 229.118 L2066 229.118 Q2064.08 229.118 2062.88 229.212 Q2061.71 229.282 2060.59 229.634 Q2059.49 229.985 2058.83 230.477 Q2058.2 230.969 2057.5 231.976 Q2056.79 232.983 2056.28 234.201 Q2055.79 235.419 2055.08 237.41 Q2054.85 238.066 2054.71 238.253 Q2054.59 238.417 2054.26 238.417 Q2054.03 238.417 2053.84 238.277 Q2053.68 238.113 2053.68 237.902 Q2053.91 237.129 2053.96 237.035 L2056.84 228.58 Q2057.07 227.9 2057.28 227.783 Q2057.52 227.643 2058.39 227.643 L2084.99 227.643 Q2085.41 227.643 2085.56 227.643 Q2085.7 227.643 2085.93 227.69 Q2086.16 227.736 2086.23 227.854 Q2086.3 227.971 2086.3 228.158 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2104.77 256.262 Q2104.77 257.131 2104.19 257.689 Q2103.64 258.246 2102.92 258.246 Q2102.29 258.246 2101.96 257.885 Q2101.64 257.525 2101.64 257.066 Q2101.64 256.41 2102.14 255.869 Q2102.65 255.328 2103.39 255.213 Q2102.85 254.819 2101.98 254.819 Q2100.55 254.819 2099.29 255.918 Q2098.73 256.426 2098.13 257.361 Q2097.52 258.279 2097.41 258.672 L2096.34 263.05 Q2096.24 263.542 2095.64 265.903 Q2095.05 268.247 2095 268.346 Q2094.83 268.805 2094.47 269.051 Q2094.11 269.297 2093.75 269.297 Q2093.34 269.297 2093.06 269.051 Q2092.78 268.805 2092.78 268.379 Q2092.78 268.313 2092.83 268.067 Q2092.88 267.821 2092.96 267.477 Q2093.05 267.133 2093.08 266.936 L2095.03 259.181 Q2095.39 257.771 2095.47 257.328 Q2095.57 256.869 2095.57 256.361 Q2095.57 255.475 2095.29 255.147 Q2095.01 254.819 2094.52 254.819 Q2093.67 254.819 2093.11 255.836 Q2092.55 256.852 2092.08 258.82 Q2091.93 259.361 2091.83 259.476 Q2091.75 259.591 2091.5 259.591 Q2091.09 259.574 2091.09 259.246 Q2091.09 259.164 2091.23 258.64 Q2091.36 258.099 2091.6 257.312 Q2091.86 256.508 2092.14 256 Q2092.31 255.656 2092.45 255.426 Q2092.6 255.197 2092.9 254.836 Q2093.19 254.475 2093.64 254.278 Q2094.08 254.082 2094.62 254.082 Q2095.8 254.082 2096.64 254.803 Q2097.49 255.524 2097.69 256.656 Q2098.1 256.065 2098.6 255.557 Q2099.11 255.033 2100.05 254.557 Q2100.98 254.082 2101.98 254.082 Q2103.23 254.082 2104 254.721 Q2104.77 255.344 2104.77 256.262 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2123.05 252.822 Q2123.1 252.236 2124.01 252.236 L2153.4 252.236 Q2154.79 252.236 2154.81 252.775 Q2154.81 253.361 2153.5 253.337 L2124.34 253.337 Q2123.05 253.361 2123.05 252.822 M2123.05 243.453 Q2123.05 242.867 2124.06 242.891 L2153.36 242.891 Q2154.79 242.891 2154.81 243.453 Q2154.81 243.992 2153.59 243.992 L2124.01 243.992 Q2123.05 243.992 2123.05 243.453 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2173.3 244.765 Q2173.3 237.714 2175.08 233.873 Q2177.56 228.158 2183.42 228.158 Q2184.66 228.158 2185.95 228.509 Q2187.26 228.837 2188.9 230.126 Q2190.56 231.414 2191.57 233.522 Q2193.49 237.597 2193.49 244.765 Q2193.49 251.768 2191.71 255.586 Q2189.11 261.16 2183.37 261.16 Q2181.22 261.16 2179.02 260.059 Q2176.84 258.959 2175.46 256.312 Q2173.3 252.353 2173.3 244.765 M2177.28 244.179 Q2177.28 251.417 2177.8 254.298 Q2178.38 257.413 2179.98 258.771 Q2181.59 260.106 2183.37 260.106 Q2185.29 260.106 2186.89 258.678 Q2188.5 257.225 2188.99 254.11 Q2189.53 251.042 2189.51 244.179 Q2189.51 237.504 2189.04 234.833 Q2188.41 231.718 2186.72 230.477 Q2185.06 229.212 2183.37 229.212 Q2182.74 229.212 2182.06 229.399 Q2181.4 229.587 2180.44 230.126 Q2179.48 230.664 2178.73 231.999 Q2178.01 233.334 2177.66 235.349 Q2177.28 237.949 2177.28 244.179 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2197.78 259.333 Q2197.05 258.56 2197.05 257.553 Q2197.05 256.546 2197.78 255.82 Q2198.5 255.07 2199.6 255.07 Q2200.66 255.07 2201.36 255.773 Q2202.09 256.452 2202.09 257.577 Q2202.09 258.678 2201.31 259.404 Q2200.56 260.106 2199.6 260.106 Q2198.5 260.106 2197.78 259.333 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2210.25 238.956 Q2210.25 236.403 2211 234.67 Q2211.75 232.913 2213.32 231.18 Q2216.2 228.158 2220.37 228.158 Q2222.15 228.158 2223.72 228.908 Q2225.31 229.657 2226.81 231.367 Q2228.33 233.053 2229.24 236.403 Q2230.16 239.729 2230.16 244.32 Q2230.16 251.744 2226.55 256.452 Q2222.97 261.16 2218.12 261.16 Q2215.05 261.16 2213.25 259.778 Q2211.44 258.373 2211.44 255.984 Q2211.44 254.743 2212.14 254.227 Q2212.85 253.689 2213.64 253.689 Q2214.51 253.689 2215.19 254.274 Q2215.87 254.836 2215.87 255.89 Q2215.87 256.757 2215.31 257.436 Q2214.77 258.092 2213.36 258.092 Q2214.74 259.825 2218.07 259.825 Q2219.26 259.825 2220.46 259.286 Q2221.65 258.724 2222.94 257.389 Q2224.25 256.031 2225.05 253.197 Q2225.85 250.363 2225.85 246.381 L2225.85 244.858 Q2223.93 249.66 2219.85 249.66 Q2215.82 249.66 2213.03 246.568 Q2210.25 243.476 2210.25 238.956 M2214.56 239.003 Q2214.56 243.757 2215.42 245.514 Q2216.9 248.536 2219.9 248.536 Q2222.83 248.536 2224.28 245.936 Q2225.75 243.312 2225.75 239.916 Q2225.75 235.208 2224.98 233.147 Q2223.55 229.353 2220.37 229.353 Q2217.2 229.353 2215.56 232.374 Q2214.56 234.154 2214.56 239.003 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2234.19 252.377 Q2234.19 250.948 2234.96 250.409 Q2235.74 249.847 2236.55 249.847 Q2237.66 249.847 2238.29 250.55 Q2238.94 251.229 2238.94 252.189 Q2238.94 253.15 2238.29 253.852 Q2237.66 254.532 2236.55 254.532 Q2236.02 254.532 2235.74 254.438 Q2236.37 256.64 2238.29 258.232 Q2240.23 259.825 2242.79 259.825 Q2245.99 259.825 2247.91 256.71 Q2249.06 254.696 2249.06 250.128 Q2249.06 246.1 2248.2 244.085 Q2246.86 241.017 2244.12 241.017 Q2240.23 241.017 2237.94 244.366 Q2237.66 244.788 2237.33 244.811 Q2236.86 244.811 2236.74 244.554 Q2236.65 244.273 2236.65 243.547 L2236.65 229.353 Q2236.65 228.205 2237.12 228.205 Q2237.3 228.205 2237.7 228.345 Q2240.72 229.681 2244.07 229.704 Q2247.52 229.704 2250.61 228.299 Q2250.84 228.158 2250.98 228.158 Q2251.45 228.158 2251.47 228.697 Q2251.47 228.884 2251.08 229.446 Q2250.7 229.985 2249.88 230.711 Q2249.06 231.414 2248.01 232.093 Q2246.95 232.772 2245.41 233.241 Q2243.89 233.686 2242.2 233.686 Q2240.19 233.686 2238.12 233.053 L2238.12 242.399 Q2240.61 239.963 2244.21 239.963 Q2248.06 239.963 2250.7 243.055 Q2253.35 246.146 2253.35 250.456 Q2253.35 254.977 2250.21 258.069 Q2247.09 261.16 2242.88 261.16 Q2239.04 261.16 2236.6 258.42 Q2234.19 255.679 2234.19 252.377 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><polyline clip-path="url(#clip870)" style="stroke:#c271d2; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="1887.75,300.469 2029.97,300.469 "/>
+<path clip-path="url(#clip870)" d="M2086.3 279.998 Q2086.3 280.443 2086.21 280.818 L2084.9 289.156 Q2084.83 289.789 2084.69 290.023 Q2084.57 290.257 2084.2 290.257 Q2083.61 290.257 2083.61 289.648 Q2083.61 289.297 2083.75 288.735 Q2084.15 286.088 2084.15 284.893 Q2084.15 284.097 2083.99 283.511 Q2083.85 282.902 2083.61 282.481 Q2083.4 282.059 2082.91 281.778 Q2082.42 281.497 2081.95 281.333 Q2081.48 281.169 2080.64 281.099 Q2079.79 281.005 2079.07 280.982 Q2078.34 280.958 2077.15 280.958 Q2074.55 280.958 2074.12 281.052 Q2073.68 281.169 2073.45 281.521 Q2073.23 281.848 2073 282.832 L2066.63 308.292 L2066.44 309.3 Q2066.44 309.862 2066.79 310.049 Q2067.15 310.236 2068.22 310.354 Q2069.77 310.471 2071.29 310.471 Q2071.34 310.471 2071.43 310.471 Q2071.95 310.471 2072.16 310.494 Q2072.37 310.494 2072.58 310.541 Q2072.79 310.588 2072.84 310.705 Q2072.91 310.799 2072.91 310.986 Q2072.91 311.431 2072.72 311.665 Q2072.53 311.876 2072.34 311.923 Q2072.18 311.946 2071.85 311.946 Q2071.2 311.946 2069.79 311.899 Q2068.39 311.853 2067.68 311.853 L2063.7 311.806 L2059.63 311.853 Q2058.99 311.853 2057.66 311.899 Q2056.32 311.946 2055.69 311.946 Q2054.87 311.946 2054.87 311.361 Q2054.87 310.705 2055.18 310.588 Q2055.5 310.471 2056.89 310.471 Q2058.83 310.471 2059.88 310.377 Q2060.94 310.283 2061.5 309.955 Q2062.09 309.627 2062.25 309.3 Q2062.41 308.948 2062.6 308.152 L2069.04 282.551 Q2069.23 281.989 2069.23 281.544 Q2069.23 281.31 2069.16 281.216 Q2069.11 281.122 2068.81 281.052 Q2068.5 280.958 2067.87 280.958 L2066 280.958 Q2064.08 280.958 2062.88 281.052 Q2061.71 281.122 2060.59 281.474 Q2059.49 281.825 2058.83 282.317 Q2058.2 282.809 2057.5 283.816 Q2056.79 284.823 2056.28 286.041 Q2055.79 287.259 2055.08 289.25 Q2054.85 289.906 2054.71 290.093 Q2054.59 290.257 2054.26 290.257 Q2054.03 290.257 2053.84 290.117 Q2053.68 289.953 2053.68 289.742 Q2053.91 288.969 2053.96 288.875 L2056.84 280.42 Q2057.07 279.74 2057.28 279.623 Q2057.52 279.483 2058.39 279.483 L2084.99 279.483 Q2085.41 279.483 2085.56 279.483 Q2085.7 279.483 2085.93 279.53 Q2086.16 279.576 2086.23 279.694 Q2086.3 279.811 2086.3 279.998 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2104.77 308.102 Q2104.77 308.971 2104.19 309.529 Q2103.64 310.086 2102.92 310.086 Q2102.29 310.086 2101.96 309.725 Q2101.64 309.365 2101.64 308.906 Q2101.64 308.25 2102.14 307.709 Q2102.65 307.168 2103.39 307.053 Q2102.85 306.659 2101.98 306.659 Q2100.55 306.659 2099.29 307.758 Q2098.73 308.266 2098.13 309.201 Q2097.52 310.119 2097.41 310.512 L2096.34 314.89 Q2096.24 315.382 2095.64 317.743 Q2095.05 320.087 2095 320.186 Q2094.83 320.645 2094.47 320.891 Q2094.11 321.137 2093.75 321.137 Q2093.34 321.137 2093.06 320.891 Q2092.78 320.645 2092.78 320.219 Q2092.78 320.153 2092.83 319.907 Q2092.88 319.661 2092.96 319.317 Q2093.05 318.973 2093.08 318.776 L2095.03 311.021 Q2095.39 309.611 2095.47 309.168 Q2095.57 308.709 2095.57 308.201 Q2095.57 307.315 2095.29 306.987 Q2095.01 306.659 2094.52 306.659 Q2093.67 306.659 2093.11 307.676 Q2092.55 308.692 2092.08 310.66 Q2091.93 311.201 2091.83 311.316 Q2091.75 311.431 2091.5 311.431 Q2091.09 311.414 2091.09 311.086 Q2091.09 311.004 2091.23 310.48 Q2091.36 309.939 2091.6 309.152 Q2091.86 308.348 2092.14 307.84 Q2092.31 307.496 2092.45 307.266 Q2092.6 307.037 2092.9 306.676 Q2093.19 306.315 2093.64 306.118 Q2094.08 305.922 2094.62 305.922 Q2095.8 305.922 2096.64 306.643 Q2097.49 307.364 2097.69 308.496 Q2098.1 307.905 2098.6 307.397 Q2099.11 306.873 2100.05 306.397 Q2100.98 305.922 2101.98 305.922 Q2103.23 305.922 2104 306.561 Q2104.77 307.184 2104.77 308.102 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2123.05 304.662 Q2123.1 304.076 2124.01 304.076 L2153.4 304.076 Q2154.79 304.076 2154.81 304.615 Q2154.81 305.201 2153.5 305.177 L2124.34 305.177 Q2123.05 305.201 2123.05 304.662 M2123.05 295.293 Q2123.05 294.707 2124.06 294.731 L2153.36 294.731 Q2154.79 294.731 2154.81 295.293 Q2154.81 295.832 2153.59 295.832 L2124.01 295.832 Q2123.05 295.832 2123.05 295.293 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2173.3 284.565 L2173.3 283.066 Q2179.06 283.066 2182.04 279.998 Q2182.86 279.998 2183 280.185 Q2183.14 280.373 2183.14 281.239 L2183.14 308.152 Q2183.14 309.581 2183.84 310.026 Q2184.54 310.471 2187.61 310.471 L2189.13 310.471 L2189.13 311.946 Q2187.45 311.806 2181.36 311.806 Q2175.27 311.806 2173.6 311.946 L2173.6 310.471 L2175.13 310.471 Q2178.15 310.471 2178.87 310.049 Q2179.6 309.604 2179.6 308.152 L2179.6 283.301 Q2177.09 284.565 2173.3 284.565 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2192.9 311.173 Q2192.18 310.4 2192.18 309.393 Q2192.18 308.386 2192.9 307.66 Q2193.63 306.91 2194.73 306.91 Q2195.78 306.91 2196.48 307.613 Q2197.21 308.292 2197.21 309.417 Q2197.21 310.518 2196.44 311.244 Q2195.69 311.946 2194.73 311.946 Q2193.63 311.946 2192.9 311.173 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2205.37 296.605 Q2205.37 289.554 2207.15 285.713 Q2209.64 279.998 2215.49 279.998 Q2216.73 279.998 2218.02 280.349 Q2219.33 280.677 2220.97 281.966 Q2222.63 283.254 2223.64 285.362 Q2225.56 289.437 2225.56 296.605 Q2225.56 303.608 2223.78 307.426 Q2221.18 313 2215.44 313 Q2213.29 313 2211.09 311.899 Q2208.91 310.799 2207.53 308.152 Q2205.37 304.193 2205.37 296.605 M2209.35 296.019 Q2209.35 303.257 2209.87 306.138 Q2210.45 309.253 2212.05 310.611 Q2213.66 311.946 2215.44 311.946 Q2217.36 311.946 2218.96 310.518 Q2220.57 309.065 2221.07 305.95 Q2221.6 302.882 2221.58 296.019 Q2221.58 289.344 2221.11 286.673 Q2220.48 283.558 2218.79 282.317 Q2217.13 281.052 2215.44 281.052 Q2214.81 281.052 2214.13 281.239 Q2213.48 281.427 2212.52 281.966 Q2211.56 282.504 2210.81 283.839 Q2210.08 285.174 2209.73 287.189 Q2209.35 289.789 2209.35 296.019 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><polyline clip-path="url(#clip870)" style="stroke:#ac8d18; stroke-linecap:round; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="1887.75,352.309 2029.97,352.309 "/>
+<path clip-path="url(#clip870)" d="M2086.3 331.838 Q2086.3 332.283 2086.21 332.658 L2084.9 340.996 Q2084.83 341.629 2084.69 341.863 Q2084.57 342.097 2084.2 342.097 Q2083.61 342.097 2083.61 341.488 Q2083.61 341.137 2083.75 340.575 Q2084.15 337.928 2084.15 336.733 Q2084.15 335.937 2083.99 335.351 Q2083.85 334.742 2083.61 334.321 Q2083.4 333.899 2082.91 333.618 Q2082.42 333.337 2081.95 333.173 Q2081.48 333.009 2080.64 332.939 Q2079.79 332.845 2079.07 332.822 Q2078.34 332.798 2077.15 332.798 Q2074.55 332.798 2074.12 332.892 Q2073.68 333.009 2073.45 333.361 Q2073.23 333.688 2073 334.672 L2066.63 360.132 L2066.44 361.14 Q2066.44 361.702 2066.79 361.889 Q2067.15 362.076 2068.22 362.194 Q2069.77 362.311 2071.29 362.311 Q2071.34 362.311 2071.43 362.311 Q2071.95 362.311 2072.16 362.334 Q2072.37 362.334 2072.58 362.381 Q2072.79 362.428 2072.84 362.545 Q2072.91 362.639 2072.91 362.826 Q2072.91 363.271 2072.72 363.505 Q2072.53 363.716 2072.34 363.763 Q2072.18 363.786 2071.85 363.786 Q2071.2 363.786 2069.79 363.739 Q2068.39 363.693 2067.68 363.693 L2063.7 363.646 L2059.63 363.693 Q2058.99 363.693 2057.66 363.739 Q2056.32 363.786 2055.69 363.786 Q2054.87 363.786 2054.87 363.201 Q2054.87 362.545 2055.18 362.428 Q2055.5 362.311 2056.89 362.311 Q2058.83 362.311 2059.88 362.217 Q2060.94 362.123 2061.5 361.795 Q2062.09 361.467 2062.25 361.14 Q2062.41 360.788 2062.6 359.992 L2069.04 334.391 Q2069.23 333.829 2069.23 333.384 Q2069.23 333.15 2069.16 333.056 Q2069.11 332.962 2068.81 332.892 Q2068.5 332.798 2067.87 332.798 L2066 332.798 Q2064.08 332.798 2062.88 332.892 Q2061.71 332.962 2060.59 333.314 Q2059.49 333.665 2058.83 334.157 Q2058.2 334.649 2057.5 335.656 Q2056.79 336.663 2056.28 337.881 Q2055.79 339.099 2055.08 341.09 Q2054.85 341.746 2054.71 341.933 Q2054.59 342.097 2054.26 342.097 Q2054.03 342.097 2053.84 341.957 Q2053.68 341.793 2053.68 341.582 Q2053.91 340.809 2053.96 340.715 L2056.84 332.26 Q2057.07 331.58 2057.28 331.463 Q2057.52 331.323 2058.39 331.323 L2084.99 331.323 Q2085.41 331.323 2085.56 331.323 Q2085.7 331.323 2085.93 331.37 Q2086.16 331.416 2086.23 331.534 Q2086.3 331.651 2086.3 331.838 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2104.77 359.942 Q2104.77 360.811 2104.19 361.369 Q2103.64 361.926 2102.92 361.926 Q2102.29 361.926 2101.96 361.565 Q2101.64 361.205 2101.64 360.746 Q2101.64 360.09 2102.14 359.549 Q2102.65 359.008 2103.39 358.893 Q2102.85 358.499 2101.98 358.499 Q2100.55 358.499 2099.29 359.598 Q2098.73 360.106 2098.13 361.041 Q2097.52 361.959 2097.41 362.352 L2096.34 366.73 Q2096.24 367.222 2095.64 369.583 Q2095.05 371.927 2095 372.026 Q2094.83 372.485 2094.47 372.731 Q2094.11 372.977 2093.75 372.977 Q2093.34 372.977 2093.06 372.731 Q2092.78 372.485 2092.78 372.059 Q2092.78 371.993 2092.83 371.747 Q2092.88 371.501 2092.96 371.157 Q2093.05 370.813 2093.08 370.616 L2095.03 362.861 Q2095.39 361.451 2095.47 361.008 Q2095.57 360.549 2095.57 360.041 Q2095.57 359.155 2095.29 358.827 Q2095.01 358.499 2094.52 358.499 Q2093.67 358.499 2093.11 359.516 Q2092.55 360.532 2092.08 362.5 Q2091.93 363.041 2091.83 363.156 Q2091.75 363.271 2091.5 363.271 Q2091.09 363.254 2091.09 362.926 Q2091.09 362.844 2091.23 362.32 Q2091.36 361.779 2091.6 360.992 Q2091.86 360.188 2092.14 359.68 Q2092.31 359.336 2092.45 359.106 Q2092.6 358.877 2092.9 358.516 Q2093.19 358.155 2093.64 357.958 Q2094.08 357.762 2094.62 357.762 Q2095.8 357.762 2096.64 358.483 Q2097.49 359.204 2097.69 360.336 Q2098.1 359.745 2098.6 359.237 Q2099.11 358.713 2100.05 358.237 Q2100.98 357.762 2101.98 357.762 Q2103.23 357.762 2104 358.401 Q2104.77 359.024 2104.77 359.942 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2123.05 356.502 Q2123.1 355.916 2124.01 355.916 L2153.4 355.916 Q2154.79 355.916 2154.81 356.455 Q2154.81 357.041 2153.5 357.017 L2124.34 357.017 Q2123.05 357.041 2123.05 356.502 M2123.05 347.133 Q2123.05 346.547 2124.06 346.571 L2153.36 346.571 Q2154.79 346.571 2154.81 347.133 Q2154.81 347.672 2153.59 347.672 L2124.01 347.672 Q2123.05 347.672 2123.05 347.133 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2173.3 336.405 L2173.3 334.906 Q2179.06 334.906 2182.04 331.838 Q2182.86 331.838 2183 332.025 Q2183.14 332.213 2183.14 333.079 L2183.14 359.992 Q2183.14 361.421 2183.84 361.866 Q2184.54 362.311 2187.61 362.311 L2189.13 362.311 L2189.13 363.786 Q2187.45 363.646 2181.36 363.646 Q2175.27 363.646 2173.6 363.786 L2173.6 362.311 L2175.13 362.311 Q2178.15 362.311 2178.87 361.889 Q2179.6 361.444 2179.6 359.992 L2179.6 335.141 Q2177.09 336.405 2173.3 336.405 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2192.9 363.013 Q2192.18 362.24 2192.18 361.233 Q2192.18 360.226 2192.9 359.5 Q2193.63 358.75 2194.73 358.75 Q2195.78 358.75 2196.48 359.453 Q2197.21 360.132 2197.21 361.257 Q2197.21 362.358 2196.44 363.084 Q2195.69 363.786 2194.73 363.786 Q2193.63 363.786 2192.9 363.013 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip870)" d="M2200.5 336.405 L2200.5 334.906 Q2206.26 334.906 2209.23 331.838 Q2210.05 331.838 2210.19 332.025 Q2210.33 332.213 2210.33 333.079 L2210.33 359.992 Q2210.33 361.421 2211.04 361.866 Q2211.74 362.311 2214.81 362.311 L2216.33 362.311 L2216.33 363.786 Q2214.64 363.646 2208.55 363.646 Q2202.46 363.646 2200.8 363.786 L2200.8 362.311 L2202.32 362.311 Q2205.35 362.311 2206.07 361.889 Q2206.8 361.444 2206.8 359.992 L2206.8 335.141 Q2204.29 336.405 2200.5 336.405 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /></svg>
+</div></div>
 </div>
 <p>Рассмотрим подробнее изотерму для докритической температуры <span class="math notranslate nohighlight">\(T^* \in (0, T_c)\)</span>.</p>
-<figure class="align-default" id="id9">
+<figure class="align-default" id="id10">
 <a class="reference internal image-reference" href="../_images/vdw_isotherm.png"><img alt="../_images/vdw_isotherm.png" src="../_images/vdw_isotherm.png" style="height: 480px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Изотерма ван дер Ваальса при температуре ниже критической.</span><a class="headerlink" href="#id9" title="Permalink to this image">#</a></p>
+<p><span class="caption-number">Fig. 6.2 </span><span class="caption-text">Изотерма ван дер Ваальса при температуре ниже критической.</span><a class="headerlink" href="#id10" title="Permalink to this image">#</a></p>
 </figcaption>
 </figure>
 <p>Красный участок на изотерме соответствует запрещённым термодинамическим состояниям, поскольку <span class="math notranslate nohighlight">\(\partial P_r / \partial V_r &gt; 0\)</span>. Жёлтый участок изобары <span class="math notranslate nohighlight">\(P_X\)</span> соответствует давлению, при котором при данной температуре <span class="math notranslate nohighlight">\(T^*\)</span> жидкая и газовая фазы сосуществуют. При объёмах <span class="math notranslate nohighlight">\(V_r &lt; V_L\)</span> всё вещество находится в жидком состоянии, а при объёмах <span class="math notranslate nohighlight">\(V_r &gt; V_G\)</span> в газовом. Синий и зелёный участки изотермы соответствуют метастабильным состояниям.</p>
@@ -876,7 +647,7 @@ F(G) = \sum_{i} \frac{z_i \times (K_i - 1)}{G \times (K_i - 1) + 1} = 0,
 </figcaption>
 </figure>
 <p>Чтобы для данной температуры <span class="math notranslate nohighlight">\(T^*\)</span> определить равновесные объёмы <span class="math notranslate nohighlight">\(V_G\)</span>, <span class="math notranslate nohighlight">\(V_L\)</span> и давление <span class="math notranslate nohighlight">\(P_X\)</span>, требуется находить минимум потенциала Гельмгольца. Это требует решения нелинейной системы, но можно поступить иначе.</p>
-<p>Лекнером <span id="id7">[<a class="reference internal" href="../appendix/bibliography.html#id14" title="J. Lekner. Parametric solution of the van der waals liquid–vapor coexistence curve. American Journal of Physics, 50(2):161-163, 1982. doi:10.1119/1.12877.">Lek82</a>]</span> предложена параметризация величин для двухфазного равновесия. В качестве параметра используется <span class="math notranslate nohighlight">\(y = \Delta s / 2\)</span>, где <span class="math notranslate nohighlight">\(\Delta s\)</span> представляет собой скачок энтропии на частицу между газовой и жидкой фазами в единицах <span class="math notranslate nohighlight">\(k_B\)</span>. Для параметризации используются функции <span class="math notranslate nohighlight">\(f(y)\)</span> и <span class="math notranslate nohighlight">\(g(y)\)</span></p>
+<p>Лекнером <span id="id8">[<a class="reference internal" href="../appendix/bibliography.html#id18" title="J. Lekner. Parametric solution of the van der waals liquid–vapor coexistence curve. American Journal of Physics, 50(2):161-163, 1982. doi:10.1119/1.12877.">Lek82</a>]</span> предложена параметризация величин для двухфазного равновесия. В качестве параметра используется <span class="math notranslate nohighlight">\(y = \Delta s / 2\)</span>, где <span class="math notranslate nohighlight">\(\Delta s\)</span> представляет собой скачок энтропии на частицу между газовой и жидкой фазами в единицах <span class="math notranslate nohighlight">\(k_B\)</span>. Для параметризации используются функции <span class="math notranslate nohighlight">\(f(y)\)</span> и <span class="math notranslate nohighlight">\(g(y)\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align}
 f(y) &amp;= \frac{y \cosh{y} - \sinh{y}}{\sinh{y}\cosh{y}-y},\\
@@ -893,7 +664,7 @@ P_X(y) &amp;= \frac{27 f^2(y)[1 - f^2(y)]}{g^2(y)}.\\
 <p>Ваша задача состоит в том, чтобы определить <span class="math notranslate nohighlight">\(V_L\)</span> и <span class="math notranslate nohighlight">\(V_G\)</span> для ряда температур <span class="math notranslate nohighlight">\(T_r \in [0.85, 1]\)</span> и соответствующих им давлений, получив таким образом границу фазового равновесия. Нанесите полученные точки <span class="math notranslate nohighlight">\((P_X, V_L)\)</span> и <span class="math notranslate nohighlight">\((P_X, V_G)\)</span> поверх изотерм, как на <a class="reference internal" href="#nlroot-vdw-task-answer"><span class="std std-numref">Рисунке 6.3</span></a>.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Подробную информацию об уравнении ван дер Ваальса можно получить из статьи <span id="id8">[<a class="reference internal" href="../appendix/bibliography.html#id10" title="David Johnston. Advances in thermodynamics of the van der waals fluid. arXiv, 2014. doi:10.1088/978-1-627-05532-1.">Joh14</a>]</span>.</p>
+<p>Подробную информацию об уравнении ван дер Ваальса можно получить из статьи <span id="id9">[<a class="reference internal" href="../appendix/bibliography.html#id13" title="David Johnston. Advances in thermodynamics of the van der waals fluid. arXiv, 2014. doi:10.1088/978-1-627-05532-1.">Joh14</a>]</span>.</p>
 </div>
 </section>
 </section>
@@ -907,61 +678,116 @@ P_X(y) &amp;= \frac{27 f^2(y)[1 - f^2(y)]}{g^2(y)}.\\
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "julia-1.6"
+            mode: "julia-1.9"
         },
         kernelOptions: {
-            kernelName: "julia-1.6",
+            name: "julia-1.9",
             path: "./nlroot"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'julia-1.6'</script>
+    <script>kernelName = 'julia-1.9'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="itp.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">6.5. </span>ITP метод</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="itp.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">6.5. </span>ITP метод</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="../sysnonlinear/index.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="../sysnonlinear/index.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">7. </span>Нелинейные системы уравнений</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">6.6.1. Нули полинома Лежандра</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">6.6.2. Вычисление квадратного корня</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">6.6.3. Уравнение фазовых концентраций</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ex-vdw-binodal-lekner">6.6.4. Бинодаль уравнения состояния ван дер Ваальса</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Степан Захаров и Василий Писарев<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Степан Захаров и Василий Писарев
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

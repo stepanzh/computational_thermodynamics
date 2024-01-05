@@ -4,12 +4,21 @@ jupytext:
   text_representation:
     extension: .md
     format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.0
 kernelspec:
-  display_name: Julia
+  display_name: Julia 1.9.4
   language: julia
-  name: julia-1.6
+  name: julia-1.9
 ---
 
+```{eval-rst}
+.. meta::
+   :description: Основы арифметики чисел с плавающей точкой (float).
+   :keywords: float, floating point arithmetic, арифметика, плавающая точка
+```
+
+(section-float-numbers)=
 # Числа с плавающей точкой
 
 Множество действительных чисел $\real$ неограничено и непрерывно. Однако, в вычислительной практике используется множество *чисел с плавающей точкой* $\floatset\subset\real$, которое ограничено и дискретно. Это множество имеет арифметику, отличающуюся от арифметики в действительных чисел.
@@ -312,6 +321,7 @@ ks = [10.0, 100.0, 1000.0, 10000.0]
 ```{margin}
 В англоязычной литературе см. *subtractive cancellation*.
 ```
+
 ```{code-cell}
 @show (1.0 + eps()/2) - 1.0;
 @show 1.0 + (eps()/2 - 1.0);

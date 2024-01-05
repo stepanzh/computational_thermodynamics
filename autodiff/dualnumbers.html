@@ -1,0 +1,1074 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="Численное дифференцирование методом комплексного шага." name="description" />
+<meta content="дуальное число, автоматическое дифференцирование, производная, вычислительная математика, вычматы" name="keywords" />
+
+    <title>8.2. Дуальные числа &#8212; Практикум по вычислительной теплофизике</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/thanks.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/proof.js"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "dual": "\\varepsilon", "dualset": "\\mathbb{D}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'autodiff/dualnumbers';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="8.3. Граф вычислений" href="compgraph.html" />
+    <link rel="prev" title="8.1. Метод комплексного шага" href="complexstep.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Практикум по вычислительной теплофизике</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    О практикуме
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Практикум</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../julia/index.html">1. Основы языка программирования Julia</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../julia/install.html">1.1. Установка</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/run.html">1.2. Запуск программ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/numbers.html">1.3. Числа, переменные, Bool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/strings.html">1.4. Строки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/controlflow.html">1.5. Управляющие конструкции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/functions.html">1.6. Функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/types_methods_dispatch.html">1.7. Типы, методы и multiple dispatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/arrays.html">1.8. Массивы и broadcast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/linearalgebra.html">1.9. Линейная алгебра</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/modules.html">1.10. Модули и пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/ex.html">1.11. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro/index.html">2. Введение</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro/float.html">2.1. Числа с плавающей точкой</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/cond.html">2.2. Обусловленность задач</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../syslinear/index.html">3. Линейные системы уравнений</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/triangular.html">3.1. Треугольные системы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/lu.html">3.2. LU-разложение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/plu.html">3.3. PLU-разложение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/conditioning.html">3.4. Обусловленность линейных систем</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/decompose_overview.html">3.5. Обзор других разложений и задач</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/ex.html">3.6. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../interpolation/index.html">4. Интерполяция</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../interpolation/polynomial.html">4.1. Полиномиальная интерполяция</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interpolation/pwlinear.html">4.2. Кусочно-линейная интерполяция</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interpolation/cubic_spline.html">4.3. Кубические сплайны</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interpolation/ex.html">4.4. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../integration/index.html">5. Численное интегрирование</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../integration/newton_cotes.html">5.1. Формулы Ньютона-Котса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/romberg.html">5.2. Метод Ромберга</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/gauss.html">5.3. Формулы Гаусса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/adaptive.html">5.4. Адаптивное интегрирование</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/ex.html">5.5. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nlroot/index.html">6. Нелинейные уравнения</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nlroot/simpleiter.html">6.1. Метод простой итерации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nlroot/newton_secant.html">6.2. Метод Ньютона и секущих</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nlroot/bisection_regula_falsi.html">6.3. Методы бисекции и regula falsi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nlroot/ridders.html">6.4. Метод Риддерса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nlroot/itp.html">6.5. ITP метод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nlroot/ex.html">6.6. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sysnonlinear/index.html">7. Нелинейные системы уравнений</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sysnonlinear/newton.html">7.1. Метод Ньютона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sysnonlinear/quasinewton.html">7.2. Метод Бройдена</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sysnonlinear/ex.html">7.3. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">8. Автоматическое дифференцирование</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="complexstep.html">8.1. Метод комплексного шага</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">8.2. Дуальные числа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="compgraph.html">8.3. Граф вычислений</a></li>
+<li class="toctree-l2"><a class="reference internal" href="forwardmode.html">8.4. Автоматическое дифференцирование вперёд</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backwardmode.html">8.5. Автоматическое дифференцирование назад</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oja_problem.html">8.6. Оптимальное вычисление матрицы Якоби</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ex.html">8.7. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ode/index.html">9. Обыкновенные дифференциальные уравнения</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ode/euler.html">9.1. Метод Эйлера</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ode/rungekutta.html">9.2. Методы Рунге-Кутты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ode/adaptive_rungekutta.html">9.3. Адаптивные методы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ode/ex.html">9.4. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../optim/index.html">10. Задача оптимизации</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../optim/intro.html">10.1. Предварительные сведения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optim/linesearch.html">10.2. Поиск вдоль направления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optim/newton.html">10.3. Метод Ньютона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optim/bfgs.html">10.4. Метод BFGS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optim/ex.html">10.5. Задания</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Фазовое равновесие</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ptstability/index.html">PT стабильность</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ptstability/problem.html">Постановка задачи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ptstability/vanderwaals.html">Уравнение состояния ван дер Ваальса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ptstability/algorithm.html">Алгоритм решения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ptstability/exercise.html">Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ptsplit/index.html">PT расслоение</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ptsplit/problem.html">Постановка задачи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ptsplit/solution.html">Решение задачи</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Указатель</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/bibliography.html">Литература</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/materials.html">Дополнительные материалы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/solvecubic.html">Решение кубического уравнения</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/cholesky.html">Разложение Холецкого</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/stepanzh/computational_thermodynamics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/autodiff/dualnumbers.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fautodiff/dualnumbers.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/autodiff/dualnumbers.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Дуальные числа</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.2.1. Связь с дифференцированием</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.2.2. Автоматическое дифференцирование скалярной функции</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.2.3. Заключение</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="sec-autodiff-dualnumbers">
+<span id="id1"></span><h1><span class="section-number">8.2. </span>Дуальные числа<a class="headerlink" href="#sec-autodiff-dualnumbers" title="Permalink to this heading">#</a></h1>
+<p>Дуальные числа тесно связаны с дифференцированием, а на основе арифметики с ними можно создать алгоритм автоматического дифференцирования вперёд.</p>
+<div class="proof proof-type-definition" id="id6">
+<span id="index-0"></span>
+    <div class="proof-title">
+        <span class="proof-type">Определение 8.3</span>
+        
+            <span class="proof-title-name">(Множество дуальных чисел)</span>
+        
+    </div><div class="proof-content">
+<p>Дуальные числа <span class="math notranslate nohighlight">\(\dualset\)</span> расширяют<a class="footnote-reference brackets" href="#hypercomplexnumbers" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a> действительные числа <span class="math notranslate nohighlight">\(\real\)</span> числом <span class="math notranslate nohighlight">\(\dual\)</span>, для которого определяются следующие правила</p>
+<div class="math notranslate nohighlight">
+\[\dual{}  \neq 0, \quad \dual{} \times 0 = 0, \quad \text{но} \quad \dual{} \times \dual{}  = \dual{}^2 = 0.\]</div>
+</div></div><p>Например, в дуальных числах уравнение <span class="math notranslate nohighlight">\(x^2 = 0\)</span> имеет множество корней: <span class="math notranslate nohighlight">\(0, \dual{}^2, \dual{}^3,\dots\)</span></p>
+<p>Определим запись дуальных чисел аналогично записи комплексных</p>
+<div class="math notranslate nohighlight">
+\[  a + b \dual, \quad a, b \in \real,\]</div>
+<p>где <span class="math notranslate nohighlight">\(a\)</span> назовём действительной частью (компонентой) числа, а <span class="math notranslate nohighlight">\(b\)</span> — дуальной.</p>
+<p>Сложение и вычитание чисел определяется интуитивно, покомпонентно</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+\begin{split}
+  (a + b \dual) + (c + d \dual) = (a + c) + (b + d)\dual,
+  \\
+  (a + b \dual) - (c + d \dual) = (a - c) + (b - d)\dual.
+\end{split}
+\end{align}\end{split}\]</div>
+<p>При произведении проявляется природа числа <span class="math notranslate nohighlight">\(\dual\)</span></p>
+<div class="math notranslate nohighlight">
+\[(a + b \dual)(c + d \dual) = ac + a d \dual + b c \dual + \cancel{b d \dual^2}
+= ac + (a d + b c)\dual.\]</div>
+<p>Такое поведение может напомнить пренебрежение квадратичными поправками.
+Например, можно считать, что <span class="math notranslate nohighlight">\(b\dual\)</span> и <span class="math notranslate nohighlight">\(d\dual\)</span> являются погрешностями значений <span class="math notranslate nohighlight">\(a\)</span> и <span class="math notranslate nohighlight">\(c\)</span>.
+Тогда <span class="math notranslate nohighlight">\(b d \dual^2\)</span> мало по сравнению с остальными слагаемыми, и пренебрегается.</p>
+<p>Деление дуальных чисел можно представить домножением числителя и знаменателя на сопряжённое к знаменателю (при этом знаменатель ненулевой, <span class="math notranslate nohighlight">\(c + d\dual \neq 0\)</span>)</p>
+<div class="math notranslate nohighlight">
+\[\frac{a + b\dual}{c + d\dual}
+= \frac{(a + b\dual)(c - d \dual)}{(c + d\dual)(c - d\dual)}
+= \frac{ac + (-ad + bc)\dual}{c^2}
+= \frac{a}{c} + \frac{bc - ad}{c^2}\dual.\]</div>
+<div class="proof proof-type-definition" id="id7">
+<span id="sec-autodiff-dual-arithmetic"></span>
+    <div class="proof-title">
+        <span class="proof-type">Определение 8.4</span>
+        
+            <span class="proof-title-name">(Арифметика дуальных чисел)</span>
+        
+    </div><div class="proof-content">
+<p>Сложение, вычитание, произведение и деление дуальных чисел определяются следующим образом.</p>
+<div class="math notranslate nohighlight" id="equation-eq-dual-sumsub">
+<span class="eqno">(8.2)<a class="headerlink" href="#equation-eq-dual-sumsub" title="Permalink to this equation">#</a></span>\[(a + b \dual) \pm (c + d \dual) = (a \pm c) + (b \pm d)\dual.\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-dual-mul">
+<span class="eqno">(8.3)<a class="headerlink" href="#equation-eq-dual-mul" title="Permalink to this equation">#</a></span>\[(a + b \dual)(c + d \dual) = ac + (a d + b c)\dual.\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-dual-div">
+<span class="eqno">(8.4)<a class="headerlink" href="#equation-eq-dual-div" title="Permalink to this equation">#</a></span>\[\frac{a + b\dual}{c + d\dual} = \frac{a}{c} + \frac{bc - ad}{c^2}\dual.\]</div>
+</div></div><section id="id3">
+<h2><span class="section-number">8.2.1. </span>Связь с дифференцированием<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>Попробуем вычислить функцию <span class="math notranslate nohighlight">\(f\)</span> от дуального числа <span class="math notranslate nohighlight">\(a + b\dual{}\)</span>.
+Для этого воспользуемся разложением Тейлора</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \sum_{k=0}^{\infty} \frac{f^{(k)}(x_0)}{k!} (x - x_0)^k\]</div>
+<p>и применим его к <span class="math notranslate nohighlight">\(f(a + b\dual{})\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{split}
+f(a + b\dual) &amp;= \sum_{k=0}^{\infty} \frac{f^{(k)}(a)}{k!} (a + b\dual - a)^k
+= \sum_{k=0}^{\infty} \frac{f^{(k)}(a) b^k \dual^k}{k!}
+\\ &amp;= f(a) + b f'(a) \dual + \sum_{k=2}^\infty \frac{f^{(k)}(a) b^k \dual^k}{k!}
+\\ &amp;= f(a) + b f'(a) \dual + \dual^2 \sum_{k=2}^\infty \frac{f^{(k)}(a) b^k \dual^{k-2}}{k!}
+\\ &amp;= f(a) + b f'(a) \dual.
+\end{split}\end{split}\]</div>
+<p>Значит, вычислив функцию от дуального числа, получаем дуальное число, в действительной части которого содержится значение функции, а в дуальной содержится её производится.
+(Сравните с <a class="reference internal" href="complexstep.html#sec-autodiff-complex-step"><span class="std std-ref"> методом комплексного шага</span></a>.)</p>
+<p>Итак, дуальные числа обладают свойством, непосредственно связанным с дифференцированием.</p>
+<div class="proof proof-type-proposition" id="id8">
+
+    <div class="proof-title">
+        <span class="proof-type">Утверждение 8.5</span>
+        
+            <span class="proof-title-name">(Значение функции от дуального числа)</span>
+        
+    </div><div class="proof-content">
+<div class="math notranslate nohighlight" id="equation-eq-funcofdual">
+<span class="eqno">(8.5)<a class="headerlink" href="#equation-eq-funcofdual" title="Permalink to this equation">#</a></span>\[f(a + b\dual) = f(a) + b f'(a)\dual, \quad a, b \in \real.\]</div>
+</div></div><p>Отметим, что соотношение <a class="reference internal" href="#equation-eq-funcofdual">(8.5)</a> выполняется <em>аналитически</em> точно.</p>
+<div class="proof proof-type-example" id="id9">
+
+    <div class="proof-title">
+        <span class="proof-type">Пример 8.6</span>
+        
+    </div><div class="proof-content">
+<p>Ниже показаны примеры вычисления функций от дуального числа <span class="math notranslate nohighlight">\(3 + 2\dual\)</span>.
+Чтобы показать определение функции и точку вычисления использована запись <span class="math notranslate nohighlight">\([\text{тело функции}](\text{аргумент})\)</span>.
+Например, <span class="math notranslate nohighlight">\([x^2 + 3](4)\)</span> означает вычисление <span class="math notranslate nohighlight">\(f(x) = x^2 + 3\)</span> в точке 4, т.е. <span class="math notranslate nohighlight">\([x^2 + 3](4) = 4^2 + 3 = 19\)</span>.</p>
+<ul class="simple">
+<li><p>Константа</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+f(x) &amp;= 5,
+\\ f(3 + 2\dual) &amp;= [5](3) + 2 \times [0](3) \dual = 5.
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li><p>Полином</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align*}
+f(x) &amp;= 4x^3 + x,
+\\ f(3 + 2 \dual) &amp;= [4 x^3 + x](3) + 2 \times [12 x^2 + 1](3) \times \dual
+\\ &amp;= 111 + 2 \times 109 \times \dual = 111 + 218 \dual.
+\end{align*}\end{split}\]</div>
+<ul class="simple">
+<li><p>Логарифм</p></li>
+</ul>
+<div class="math notranslate nohighlight" id="equation-eq-example-log">
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-eq-example-log" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{split}
+f(x) &amp;= \log x,
+\\ f(3 + 2 \dual) &amp;= [\log x](3) + 2 \times [1/x](3) \times \dual
+   = \log 3 + \frac{2}{3} \dual.
+\end{split}\end{split}\]</div>
+</div></div><p>Рассмотрим арифметические операции с функциями.
+Для этого воспользуемся свойством <a class="reference internal" href="#equation-eq-funcofdual">(8.5)</a> и определениями арифметических операций с дуальными числами <a class="reference internal" href="#equation-eq-dual-sumsub">(8.2)</a>, <a class="reference internal" href="#equation-eq-dual-mul">(8.3)</a> и <a class="reference internal" href="#equation-eq-dual-div">(8.4)</a>.
+Начнём рассмотрение со значения суммы функций в точке <span class="math notranslate nohighlight">\(a + b\dual\)</span></p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{split}
+f(a + b \dual) + g(a + b \dual)
+&amp;= (f(a) + b f'(a) \dual) + (g(a) + b g'(a) \dual)
+\\ &amp;= (f(a) + g(a)) + b (f'(a) + g'(a)) \dual.
+\end{split}\end{split}\]</div>
+<p>В действительной части мы получили сумму функций, а в дуальной присутствует сумма их производных.
+Положим <span class="math notranslate nohighlight">\(b = 1\)</span> и получим</p>
+<div class="math notranslate nohighlight">
+\[f(a + \dual) + g(a + \dual) = (f(a) + g(a)) + (f'(a) + g'(a)) \dual.\]</div>
+<p>Теперь в дуальной части находится сумма производных функций, она же является производной суммы <span class="math notranslate nohighlight">\((f + g)' = f' + g'\)</span>.
+То есть,</p>
+<div class="math notranslate nohighlight">
+\[[f + g](a + \dual) = [f + g](a) + [f + g]'(a) \times \dual.\]</div>
+<p>Итак, мы получили согласие с правилом дифференцирования суммы функций от действительного числа <span class="math notranslate nohighlight">\(a\)</span>.
+Действительная часть соответствует сумме функций в <span class="math notranslate nohighlight">\(a\)</span>, а дуальная — производной суммы функций в <span class="math notranslate nohighlight">\(a\)</span>.
+Естественно, аналогичное верно и для вычитания.</p>
+<p>Проверим теперь произведение функций</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{split}
+f(a + \dual) \times g(a + \dual) &amp;= (f(a) + f'(a) \dual) \times (g(a) + g'(a) \dual)
+\\ &amp;= f(a) g(a) + (f'(a) g(a) + f(a) g'(a)) \dual.
+\end{split}\end{split}\]</div>
+<p>И снова есть соответствие.
+В действительной части мы получили произведение функций, а в дуальной — производную произведения функций <span class="math notranslate nohighlight">\((fg)' = f'g + fg'\)</span> в точке <span class="math notranslate nohighlight">\(a\)</span></p>
+<div class="math notranslate nohighlight">
+\[[f \times g](a + \dual) = [f \times g](a) + [f \times g]'(a) \times \dual.\]</div>
+<p>Наконец, проверим деление функций</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{split}
+\frac{f(a + \dual)}{g(a + \dual)} &amp;= \frac{f(a) + f'(a) \dual}{g(a) + g'(a) \dual}
+\\ &amp;= \frac{f(a)}{g(a)} + \frac{f'(a) g(a) - f(a) g'(a)}{g^2(a)} \dual.
+\end{split}\end{split}\]</div>
+<p>И снова наблюдается соответствие.
+Действительная часть является делением функций, а дуальная — производной деления функций <span class="math notranslate nohighlight">\((f/g)' = (f'g - f g')/g^2\)</span> в точке <span class="math notranslate nohighlight">\(a\)</span></p>
+<div class="math notranslate nohighlight">
+\[[f / g](a + \dual) = [f / g](a) + [f / g]'(a) \dual.\]</div>
+<p>Последнее, что осталось проверить, это вычисление сложной (составной) функции</p>
+<div class="math notranslate nohighlight">
+\[g(f(a + \dual)) = g(f(a) + f'(a)\dual) = g(f(a)) + g'(f(a)) f'(a)\dual.\]</div>
+<p>Как видно, наблюдается соответствие с правилом дифференцирования сложной функции <span class="math notranslate nohighlight">\((g(f(x)))' = g'(f(x)) f'(x)\)</span></p>
+<div class="math notranslate nohighlight">
+\[[g \circ f](a + \dual) = [g \circ f](a) + [g \circ f]'(a) \times \dual.\]</div>
+</section>
+<section id="id4">
+<h2><span class="section-number">8.2.2. </span>Автоматическое дифференцирование скалярной функции<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>Теперь у нас есть все инструменты для вычисления производной функции.
+Так, чтобы вычислить производную функции в точке <span class="math notranslate nohighlight">\(f'(x)\)</span>, необходимо реализовать вычисление функции от дуального числа <span class="math notranslate nohighlight">\(f(x + \dual)\)</span>.
+В дуальной части <span class="math notranslate nohighlight">\(f(x + \dual)\)</span> будет содержаться значение производной <span class="math notranslate nohighlight">\(f'(x)\)</span>, согласно <a class="reference internal" href="#equation-eq-funcofdual">(8.5)</a>.</p>
+<p>Рассмотрим конкретный пример.
+Задача: вычислить производную функции <span class="math notranslate nohighlight">\(f(x) = 3 + x \log{x^2}\)</span> в точке <span class="math notranslate nohighlight">\(x = 5\)</span>.
+Чтобы верифицировать будущие вычисления, приведём выражение для производной <span class="math notranslate nohighlight">\(f'(x)\)</span></p>
+<div class="math notranslate nohighlight">
+\[f'(x) = \log{x^2} + 2, \quad x \neq 0,\]</div>
+<p>и зададим функцию и её производную в коде.</p>
+<div class="cell tag_remove-output docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">2</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>В точке <span class="math notranslate nohighlight">\(x = 5\)</span> мы ожидаем следующие значения функции и её производной</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="w"> </span><span class="n">df</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(19.094379124341003, 5.218875824868201)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Теперь перейдём к реализации метода автоматического дифференцирования.
+Во-первых, определим новый тип данных <code class="docutils literal notranslate"><span class="pre">Dual</span></code> для представления дуального числа.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="kt">Dual</span><span class="p">{</span><span class="kt">T</span><span class="o">&lt;:</span><span class="kt">Real</span><span class="p">}</span>
+<span class="w">    </span><span class="n">a</span><span class="o">::</span><span class="kt">T</span>
+<span class="w">    </span><span class="n">b</span><span class="o">::</span><span class="kt">T</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>В структуре <code class="docutils literal notranslate"><span class="pre">Dual</span></code> всего два поля: поле <code class="docutils literal notranslate"><span class="pre">a</span></code> хранит действительную часть числа, а поле <code class="docutils literal notranslate"><span class="pre">b</span></code> хранит дуальную.
+Кроме того, мы потребовали, чтобы типы полей были одинаковыми.</p>
+<p>Теперь реализуем  <a class="reference internal" href="#sec-autodiff-dual-arithmetic"><span class="std std-ref">арифметику дуальных чисел</span></a>.
+Для этого перегрузим операторы сложения и умножения.
+(В <span class="math notranslate nohighlight">\(f(x)\)</span> отсутствуют вычитание и деление, их реализовывать не будем.)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Base</span><span class="o">.:+</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">Dual</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">::</span><span class="kt">Dual</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Dual</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="o">.</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+<span class="n">Base</span><span class="o">.:*</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">Dual</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">::</span><span class="kt">Dual</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Dual</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="o">.</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">b</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="o">.</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>В нашем примере есть ещё две операции: возведение числа в целую степень и логарифмирование.
+Для этих операций понадобится реализовать свойство <a class="reference internal" href="#equation-eq-funcofdual">(8.5)</a>.
+Как известно из матанализа</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{align}
+(x^n)' &amp;= n x^{n-1}, \quad x \in \real, n \in \integer,
+\\ (\log{x})' &amp;= 1 / x, \quad\quad x \in \real, x \neq 0.
+\end{align}\end{split}\]</div>
+<p>Воспользуемся этими правилами дифференцирования и добавим методы для оператора <code class="docutils literal notranslate"><span class="pre">^</span></code> и функции натурального логарифма <code class="docutils literal notranslate"><span class="pre">log</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Base</span><span class="o">.:^</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">Dual</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Dual</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">a</span><span class="o">^</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">b</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">a</span><span class="o">^</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">Base</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">Dual</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Dual</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">b</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Все операции определены и можно провести вычисление с дуальными числами.
+Константу 3 представляем в виде <span class="math notranslate nohighlight">\(3 \equiv 3 + 0\times\dual\)</span>, а вычисление производим в точке <span class="math notranslate nohighlight">\(x = 5 + \dual\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Dual</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">Dual</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">log</span><span class="p">(</span><span class="n">Dual</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">f</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">d</span><span class="o">.</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">df</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="n">d</span><span class="o">.</span><span class="n">b</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(true, true)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Как видно, действительная часть числа <code class="docutils literal notranslate"><span class="pre">d</span></code> совпадает с <code class="docutils literal notranslate"><span class="pre">f(5)</span></code>, а дуальная часть совпадает с производной в точке 5 <code class="docutils literal notranslate"><span class="pre">df(5)</span></code>.
+Отметим, что эти равенства выполняются точно.</p>
+<p>Проводить вычисления функции <code class="docutils literal notranslate"><span class="pre">f</span></code> с дуальными числами пока нельзя.
+Дело в том, что в <code class="docutils literal notranslate"><span class="pre">f</span></code> присутствует сложение <code class="docutils literal notranslate"><span class="pre">3::Int</span></code> с дуальным числом <code class="docutils literal notranslate"><span class="pre">(x</span> <span class="pre">*</span> <span class="pre">log(x^2))::Dual{Float64}</span></code>, это сложение мы ещё не определили.</p>
+<div class="cell tag_raises-exception docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="n">Dual</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">MethodError</span>: no method matching +(::Int64, ::Dual{Float64})
+
+<span class="n">Closest</span> <span class="n">candidates</span> <span class="n">are</span><span class="p">:</span>
+  <span class="o">+</span><span class="p">(::</span><span class="n">Any</span><span class="p">,</span> <span class="p">::</span><span class="n">Any</span><span class="p">,</span> <span class="p">::</span><span class="n">Any</span><span class="p">,</span> <span class="p">::</span><span class="n">Any</span><span class="o">...</span><span class="p">)</span>
+   <span class="o">@</span> <span class="n">Base</span> <span class="n">operators</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">578</span>
+  <span class="o">+</span><span class="p">(::</span><span class="n">T</span><span class="p">,</span> <span class="p">::</span><span class="n">T</span><span class="p">)</span> <span class="n">where</span> <span class="n">T</span><span class="o">&lt;</span><span class="p">:</span><span class="n">Union</span><span class="p">{</span><span class="n">Int128</span><span class="p">,</span> <span class="n">Int16</span><span class="p">,</span> <span class="n">Int32</span><span class="p">,</span> <span class="n">Int64</span><span class="p">,</span> <span class="n">Int8</span><span class="p">,</span> <span class="n">UInt128</span><span class="p">,</span> <span class="n">UInt16</span><span class="p">,</span> <span class="n">UInt32</span><span class="p">,</span> <span class="n">UInt64</span><span class="p">,</span> <span class="n">UInt8</span><span class="p">}</span>
+   <span class="o">@</span> <span class="n">Base</span> <span class="nb">int</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">87</span>
+  <span class="o">+</span><span class="p">(::</span><span class="n">Union</span><span class="p">{</span><span class="n">Int16</span><span class="p">,</span> <span class="n">Int32</span><span class="p">,</span> <span class="n">Int64</span><span class="p">,</span> <span class="n">Int8</span><span class="p">},</span> <span class="p">::</span><span class="n">BigInt</span><span class="p">)</span>
+   <span class="o">@</span> <span class="n">Base</span> <span class="n">gmp</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">545</span>
+  <span class="o">...</span>
+
+
+<span class="ne">Stacktrace</span>:
+ <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">::</span><span class="n">Dual</span><span class="p">{</span><span class="n">Int64</span><span class="p">})</span>
+   <span class="o">@</span> <span class="n">Main</span> <span class="o">./</span><span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span><span class="mi">1</span>
+ <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">scope</span>
+   <span class="o">@</span> <span class="n">In</span><span class="p">[</span><span class="mi">7</span><span class="p">]:</span><span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Есть два способа доопредилить сложение.
+Первый состоит в добавлении метода <code class="docutils literal notranslate"><span class="pre">+(::Int,</span> <span class="pre">::Dual)</span></code> и нам бы его хватило для примера.
+Мы же поступим более общим для языка Julia способом.
+Мы уже знакомы с функцией <code class="docutils literal notranslate"><span class="pre">promote(xs...)</span></code>, которая возвращает значения аргументов, приведённых к “общему” типу.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">promote</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2.5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">//</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1.0, 2.5, 0.3333333333333333)
+</pre></div>
+</div>
+</div>
+</div>
+<p>Воспользуемся ей, чтобы определить сложение <code class="docutils literal notranslate"><span class="pre">Real</span></code> чисел с дуальными <code class="docutils literal notranslate"><span class="pre">Dual</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Base</span><span class="o">.:+</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">Dual</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">::</span><span class="kt">Real</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">+</span><span class="p">(</span><span class="n">promote</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="o">...</span><span class="p">)</span>
+<span class="n">Base</span><span class="o">.:+</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">Real</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">::</span><span class="kt">Dual</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">+</span><span class="p">(</span><span class="n">promote</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="o">...</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Однако, мы ещё не определили правила, по которым приводить <code class="docutils literal notranslate"><span class="pre">Real</span></code>-числа к <code class="docutils literal notranslate"><span class="pre">Dual</span></code>-числам.
+Для этого надо знать, как работает функция <code class="docutils literal notranslate"><span class="pre">promote(x::T,</span> <span class="pre">y::S)</span></code>.
+В общих чертах, <code class="docutils literal notranslate"><span class="pre">promote</span></code> выясняет “общий” для <code class="docutils literal notranslate"><span class="pre">T</span></code> и <code class="docutils literal notranslate"><span class="pre">S</span></code> тип <code class="docutils literal notranslate"><span class="pre">U</span></code> с помощью <code class="docutils literal notranslate"><span class="pre">promote_type</span></code>, а затем конвертирует к типу <code class="docutils literal notranslate"><span class="pre">U</span></code> свои аргументы.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="n">promote</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">T</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">::</span><span class="kt">S</span><span class="p">)</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="p">{</span><span class="kt">T</span><span class="p">,</span><span class="w"> </span><span class="kt">S</span><span class="p">}</span>
+<span class="w">    </span><span class="n">U</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">promote_type</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">S</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">convert</span><span class="p">(</span><span class="n">U</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">convert</span><span class="p">(</span><span class="n">U</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">))</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>Начнём с конвертации.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Base</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="kt">Dual</span><span class="p">{</span><span class="kt">T</span><span class="p">}},</span><span class="w"> </span><span class="n">x</span><span class="o">::</span><span class="kt">Dual</span><span class="p">)</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="p">{</span><span class="kt">T</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Dual</span><span class="p">{</span><span class="kt">T</span><span class="p">}(</span><span class="n">x</span><span class="o">.</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+<span class="n">Base</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="kt">Dual</span><span class="p">{</span><span class="kt">T</span><span class="p">}},</span><span class="w"> </span><span class="n">x</span><span class="o">::</span><span class="kt">S</span><span class="p">)</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="p">{</span><span class="kt">T</span><span class="p">,</span><span class="w"> </span><span class="kt">S</span><span class="o">&lt;:</span><span class="kt">Real</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Dual</span><span class="p">{</span><span class="kt">T</span><span class="p">}(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">zero</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>В первой строчке мы определили конвертацию <code class="docutils literal notranslate"><span class="pre">Dual</span></code>-чисел между собой.
+Фактически, при конвертации мы создаём новое <code class="docutils literal notranslate"><span class="pre">Dual</span></code> число, у которого поля имеют желаемый тип <code class="docutils literal notranslate"><span class="pre">T</span></code>.
+Во второй строчке мы определили конвертацию <code class="docutils literal notranslate"><span class="pre">Real</span></code>-числа к <code class="docutils literal notranslate"><span class="pre">Dual{T}</span></code>-числу.
+Как нам известно, действительное число это дуальное с нулевой дуальной частью.</p>
+<p>Теперь перейдём к определению <code class="docutils literal notranslate"><span class="pre">promote_type</span></code> для дуальных чисел.
+Саму функцию <code class="docutils literal notranslate"><span class="pre">promote_type</span></code> переопределять не рекомендуется.
+Вместо этого добавляется метод к функции <code class="docutils literal notranslate"><span class="pre">promote_rule(T1,</span> <span class="pre">T2)</span></code>, которая для пары типов <code class="docutils literal notranslate"><span class="pre">T1</span></code> и <code class="docutils literal notranslate"><span class="pre">T2</span></code> (явно) задаёт общий.
+В свою очередь, <code class="docutils literal notranslate"><span class="pre">promote_type</span></code> использует <code class="docutils literal notranslate"><span class="pre">promote_rule</span></code>, применяя её попарно ко всем своим аргументам.
+Кроме того, <code class="docutils literal notranslate"><span class="pre">promote_type</span></code> заботится о симметрии аргументов, поэтому <code class="docutils literal notranslate"><span class="pre">promote_rule</span></code> достаточно определить для пары аргументов один раз, т.е. пара неупорядоченная.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Base</span><span class="o">.</span><span class="n">promote_rule</span><span class="p">(</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="kt">Dual</span><span class="p">{</span><span class="kt">T</span><span class="p">}},</span><span class="w"> </span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="kt">Dual</span><span class="p">{</span><span class="kt">S</span><span class="p">}})</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="p">{</span><span class="kt">T</span><span class="p">,</span><span class="w"> </span><span class="kt">S</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Dual</span><span class="p">{</span><span class="kt">promote_type</span><span class="p">(</span><span class="kt">T</span><span class="p">,</span><span class="w"> </span><span class="kt">S</span><span class="p">)}</span>
+<span class="n">Base</span><span class="o">.</span><span class="n">promote_rule</span><span class="p">(</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="kt">Dual</span><span class="p">{</span><span class="kt">T</span><span class="p">}},</span><span class="w"> </span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="kt">S</span><span class="p">})</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="p">{</span><span class="kt">T</span><span class="p">,</span><span class="w"> </span><span class="kt">S</span><span class="o">&lt;:</span><span class="kt">Real</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Dual</span><span class="p">{</span><span class="kt">promote_type</span><span class="p">(</span><span class="kt">T</span><span class="p">,</span><span class="w"> </span><span class="kt">S</span><span class="p">)}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>В первой строчке мы определяем общий тип для двух дуальных.
+Поскольку <code class="docutils literal notranslate"><span class="pre">T</span></code> и <code class="docutils literal notranslate"><span class="pre">S</span></code> это подтипы <code class="docutils literal notranslate"><span class="pre">Real</span></code> (см. выше определение <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">Dual</span></code>), то мы можем воспользоваться <code class="docutils literal notranslate"><span class="pre">promote_type</span></code> для них.
+Для <code class="docutils literal notranslate"><span class="pre">Real</span></code> чисел <code class="docutils literal notranslate"><span class="pre">promote_type</span></code> уже определён в Julia.
+Во второй строчке для <code class="docutils literal notranslate"><span class="pre">Dual</span></code> и <code class="docutils literal notranslate"><span class="pre">Real</span></code> числа мы задаём <code class="docutils literal notranslate"><span class="pre">Dual</span></code> как общий тип.</p>
+<p>Теперь <code class="docutils literal notranslate"><span class="pre">promote</span></code> работает с нашим типом <code class="docutils literal notranslate"><span class="pre">Dual</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">promote</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2.5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">//</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">Dual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(Dual{Float64}(1.0, 0.0), Dual{Float64}(2.5, 0.0), Dual{Float64}(0.3333333333333333, 0.0), Dual{Float64}(1.0, 2.0))
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">promote</span><span class="p">(</span><span class="mi">1</span><span class="o">//</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">Dual</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(Dual{Rational{Int64}}(1//3, 0//1), Dual{Rational{Int64}}(1//1, 2//1))
+</pre></div>
+</div>
+</div>
+</div>
+<p>Наконец, всё готово для вычисления производной 🎉</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="n">Dual</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dual{Float64}(19.094379124341003, 5.218875824868201)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id5">
+<h2><span class="section-number">8.2.3. </span>Заключение<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>Ниже представлен полный код из примера выше.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="kt">Dual</span><span class="p">{</span><span class="kt">T</span><span class="o">&lt;:</span><span class="kt">Real</span><span class="p">}</span>
+<span class="w">    </span><span class="n">a</span><span class="o">::</span><span class="kt">T</span>
+<span class="w">    </span><span class="n">b</span><span class="o">::</span><span class="kt">T</span>
+<span class="k">end</span>
+
+<span class="n">Base</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="kt">Dual</span><span class="p">{</span><span class="kt">T</span><span class="p">}},</span><span class="w"> </span><span class="n">x</span><span class="o">::</span><span class="kt">Dual</span><span class="p">)</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="p">{</span><span class="kt">T</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Dual</span><span class="p">{</span><span class="kt">T</span><span class="p">}(</span><span class="n">x</span><span class="o">.</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+<span class="n">Base</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="kt">Dual</span><span class="p">{</span><span class="kt">T</span><span class="p">}},</span><span class="w"> </span><span class="n">x</span><span class="o">::</span><span class="kt">S</span><span class="p">)</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="p">{</span><span class="kt">T</span><span class="p">,</span><span class="w"> </span><span class="kt">S</span><span class="o">&lt;:</span><span class="kt">Real</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Dual</span><span class="p">{</span><span class="kt">T</span><span class="p">}(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">zero</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">Base</span><span class="o">.</span><span class="n">promote_rule</span><span class="p">(</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="kt">Dual</span><span class="p">{</span><span class="kt">T</span><span class="p">}},</span><span class="w"> </span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="kt">Dual</span><span class="p">{</span><span class="kt">S</span><span class="p">}})</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="p">{</span><span class="kt">T</span><span class="p">,</span><span class="w"> </span><span class="kt">S</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Dual</span><span class="p">{</span><span class="kt">promote_type</span><span class="p">(</span><span class="kt">T</span><span class="p">,</span><span class="w"> </span><span class="kt">S</span><span class="p">)}</span>
+<span class="n">Base</span><span class="o">.</span><span class="n">promote_rule</span><span class="p">(</span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="kt">Dual</span><span class="p">{</span><span class="kt">T</span><span class="p">}},</span><span class="w"> </span><span class="o">::</span><span class="kt">Type</span><span class="p">{</span><span class="kt">S</span><span class="p">})</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="p">{</span><span class="kt">T</span><span class="p">,</span><span class="w"> </span><span class="kt">S</span><span class="o">&lt;:</span><span class="kt">Real</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">Dual</span><span class="p">{</span><span class="kt">promote_type</span><span class="p">(</span><span class="kt">T</span><span class="p">,</span><span class="w"> </span><span class="kt">S</span><span class="p">)}</span>
+
+<span class="n">Base</span><span class="o">.:+</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">Dual</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">::</span><span class="kt">Real</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">+</span><span class="p">(</span><span class="n">promote</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="o">...</span><span class="p">)</span>
+<span class="n">Base</span><span class="o">.:+</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">Real</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">::</span><span class="kt">Dual</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">+</span><span class="p">(</span><span class="n">promote</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="o">...</span><span class="p">)</span>
+
+<span class="n">Base</span><span class="o">.:+</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">Dual</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">::</span><span class="kt">Dual</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Dual</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="o">.</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">b</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">y</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+<span class="n">Base</span><span class="o">.:*</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">Dual</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">::</span><span class="kt">Dual</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Dual</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="o">.</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">b</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="o">.</span><span class="n">a</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">a</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">y</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+<span class="n">Base</span><span class="o">.:^</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">Dual</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="o">::</span><span class="kt">Int</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Dual</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">a</span><span class="o">^</span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">b</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">a</span><span class="o">^</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">Base</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">Dual</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Dual</span><span class="p">(</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">a</span><span class="p">),</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">b</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">x</span><span class="o">.</span><span class="n">a</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Этот код позволяет автоматически дифференцировать не только функцию <span class="math notranslate nohighlight">\(3 + x \log{x^2}\)</span>, но и вообще любую скалярную функцию, состоящую из операций сложения, произведения, возведения в целую степень и логарифмирования.
+Чтобы распространить метод на больший класс функций, необходимо доопределить оставшиеся операции, например, вычитание, сравнение или <span class="math notranslate nohighlight">\(\sin\)</span>.
+Кроме того, понадобится доопределить нематематические функции, например, выделение памяти.</p>
+<p>Дифференцирование с использованием дуальных чисел обощается на случаи частных производных и производных высших порядков.
+Такой вид дифференцирования реализован в пакете <a class="reference external" href="https://github.com/JuliaDiff/ForwardDiff.jl">ForwardDiff.jl</a>.
+С помощью ForwardDiff производную для нашего примера можно вычислить так.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span><span class="w"> </span><span class="n">ForwardDiff</span>
+
+<span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">df</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ForwardDiff</span><span class="o">.</span><span class="n">derivative</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">)</span>
+<span class="n">df</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5.218875824868201
+</pre></div>
+</div>
+</div>
+</div>
+<p>Реализованный нами способ дифференцирования называется <em>автоматическим дифференцированием вперёд</em>.
+Смысл слова “вперёд” связан с направленностью цепочки вычислений производной и разъясняется в следующих разделах.</p>
+<hr class="footnotes docutils" />
+<aside class="footnote brackets" id="hypercomplexnumbers" role="note">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<p>Расширение множества действительных чисел называют гиперкомплексными числами. Комплексные, дуальные числа, и, например, квартерионы являются гиперкомплексными числами.</p>
+</aside>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.9"
+        },
+        kernelOptions: {
+            name: "julia-1.9",
+            path: "./autodiff"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.9'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="complexstep.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">8.1. </span>Метод комплексного шага</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="compgraph.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">8.3. </span>Граф вычислений</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">8.2.1. Связь с дифференцированием</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">8.2.2. Автоматическое дифференцирование скалярной функции</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">8.2.3. Заключение</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Степан Захаров и Василий Писарев
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

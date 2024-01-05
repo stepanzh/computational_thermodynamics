@@ -1,3 +1,9 @@
+```{eval-rst}
+.. meta::
+   :description: Мы рассмотрим запуск Julia программ, работу с режимами Julia REPL и работу в ноутбуках Jupyter и Pluto. 
+   :keywords: julia, учебник, repl, pluto, jupyter
+```
+
 # Запуск программ
 
 Программы в Julia можно запускать в интерактивном (REPL) или скриптовом режиме.

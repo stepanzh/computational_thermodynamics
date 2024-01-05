@@ -1,54 +1,66 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="Задачи и упражения на интерполяцию." name="description" />
+<meta content="задачи, упражнения, интерполяция, вычислительная математика, вычматы" name="keywords" />
 
     <title>4.4. Задания &#8212; Практикум по вычислительной теплофизике</title>
-    
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/thanks.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script src="../_static/tabs.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="../_static/proof.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -56,719 +68,444 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "dual": "\\varepsilon", "dualset": "\\mathbb{D}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'interpolation/ex';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="5. Численное интегрирование" href="../integration/index.html" />
     <link rel="prev" title="4.3. Кубические сплайны" href="cubic_spline.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Практикум по вычислительной теплофизике</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Практикум по вычислительной теплофизике</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    Предмет практикума
+                    О практикуме
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Практикум
- </span>
-</p>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Практикум</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../julia/index.html">
-   1. Основы языка программирования Julia
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/install.html">
-     1.1. Установка
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/run.html">
-     1.2. Запуск программ
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/numbers.html">
-     1.3. Числа, переменные, Bool
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/strings.html">
-     1.4. Строки
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/controlflow.html">
-     1.5. Управляющие конструкции
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/functions.html">
-     1.6. Функции
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/types_methods_dispatch.html">
-     1.7. Типы, методы и multiple dispatch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/arrays.html">
-     1.8. Массивы и broadcast
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/linearalgebra.html">
-     1.9. Линейная алгебра
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/modules.html">
-     1.10. Модули и пакеты
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/ex.html">
-     1.11. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../intro/index.html">
-   2. Введение
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../intro/float.html">
-     2.1. Числа с плавающей точкой
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../intro/cond.html">
-     2.2. Обусловленность задач
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../syslinear/index.html">
-   3. Линейные системы уравнений
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/triangular.html">
-     3.1. Треугольные системы
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/lu.html">
-     3.2. LU-разложение
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/plu.html">
-     3.3. PLU-разложение
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/conditioning.html">
-     3.4. Обусловленность линейных систем
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/decompose_overview.html">
-     3.5. Обзор других разложений и задач
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/ex.html">
-     3.6. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 current active has-children">
-  <a class="reference internal" href="index.html">
-   4. Интерполяция
-  </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="current">
-   <li class="toctree-l2">
-    <a class="reference internal" href="polynomial.html">
-     4.1. Полиномиальная интерполяция
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="pwlinear.html">
-     4.2. Кусочно-линейная интерполяция
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="cubic_spline.html">
-     4.3. Кубические сплайны
-    </a>
-   </li>
-   <li class="toctree-l2 current active">
-    <a class="current reference internal" href="#">
-     4.4. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../integration/index.html">
-   5. Численное интегрирование
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../integration/newton_cotes.html">
-     5.1. Формулы Ньютона-Котса
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../integration/romberg.html">
-     5.2. Метод Ромберга
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../integration/gauss.html">
-     5.3. Формулы Гаусса
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../integration/adaptive.html">
-     5.4. Адаптивное интегрирование
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../integration/ex.html">
-     5.5. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../nlroot/index.html">
-   6. Нелинейные уравнения
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/simpleiter.html">
-     6.1. Метод простой итерации
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/newton_secant.html">
-     6.2. Метод Ньютона и секущих
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/bisection_regula_falsi.html">
-     6.3. Методы бисекции и regula falsi
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/ridders.html">
-     6.4. Метод Риддерса
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/itp.html">
-     6.5. ITP метод
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/ex.html">
-     6.6. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../sysnonlinear/index.html">
-   7. Нелинейные системы уравнений
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../sysnonlinear/newton.html">
-     7.1. Метод Ньютона
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../sysnonlinear/quasinewton.html">
-     7.2. Метод Бройдена
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../sysnonlinear/ex.html">
-     7.3. Задания
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../julia/index.html">1. Основы языка программирования Julia</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../julia/install.html">1.1. Установка</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/run.html">1.2. Запуск программ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/numbers.html">1.3. Числа, переменные, Bool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/strings.html">1.4. Строки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/controlflow.html">1.5. Управляющие конструкции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/functions.html">1.6. Функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/types_methods_dispatch.html">1.7. Типы, методы и multiple dispatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/arrays.html">1.8. Массивы и broadcast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/linearalgebra.html">1.9. Линейная алгебра</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/modules.html">1.10. Модули и пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/ex.html">1.11. Задания</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Фазовое равновесие
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ptstability/index.html">
-   PT стабильность
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ptstability/problem.html">
-     Постановка задачи
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ptstability/vanderwaals.html">
-     Уравнение состояния ван дер Ваальса
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ptstability/algorithm.html">
-     Алгоритм решения
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ptstability/exercise.html">
-     Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ptsplit/index.html">
-   PT расслоение
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ptsplit/problem.html">
-     Постановка задачи
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ptsplit/solution.html">
-     Решение задачи
-    </a>
-   </li>
-  </ul>
- </li>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro/index.html">2. Введение</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro/float.html">2.1. Числа с плавающей точкой</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/cond.html">2.2. Обусловленность задач</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Приложения
- </span>
-</p>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../syslinear/index.html">3. Линейные системы уравнений</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/triangular.html">3.1. Треугольные системы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/lu.html">3.2. LU-разложение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/plu.html">3.3. PLU-разложение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/conditioning.html">3.4. Обусловленность линейных систем</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/decompose_overview.html">3.5. Обзор других разложений и задач</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/ex.html">3.6. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">4. Интерполяция</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="polynomial.html">4.1. Полиномиальная интерполяция</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pwlinear.html">4.2. Кусочно-линейная интерполяция</a></li>
+<li class="toctree-l2"><a class="reference internal" href="cubic_spline.html">4.3. Кубические сплайны</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">4.4. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../integration/index.html">5. Численное интегрирование</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../integration/newton_cotes.html">5.1. Формулы Ньютона-Котса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/romberg.html">5.2. Метод Ромберга</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/gauss.html">5.3. Формулы Гаусса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/adaptive.html">5.4. Адаптивное интегрирование</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/ex.html">5.5. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nlroot/index.html">6. Нелинейные уравнения</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nlroot/simpleiter.html">6.1. Метод простой итерации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nlroot/newton_secant.html">6.2. Метод Ньютона и секущих</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nlroot/bisection_regula_falsi.html">6.3. Методы бисекции и regula falsi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nlroot/ridders.html">6.4. Метод Риддерса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nlroot/itp.html">6.5. ITP метод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nlroot/ex.html">6.6. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sysnonlinear/index.html">7. Нелинейные системы уравнений</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sysnonlinear/newton.html">7.1. Метод Ньютона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sysnonlinear/quasinewton.html">7.2. Метод Бройдена</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sysnonlinear/ex.html">7.3. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../autodiff/index.html">8. Автоматическое дифференцирование</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/complexstep.html">8.1. Метод комплексного шага</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/dualnumbers.html">8.2. Дуальные числа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/compgraph.html">8.3. Граф вычислений</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/forwardmode.html">8.4. Автоматическое дифференцирование вперёд</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/backwardmode.html">8.5. Автоматическое дифференцирование назад</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/oja_problem.html">8.6. Оптимальное вычисление матрицы Якоби</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/ex.html">8.7. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ode/index.html">9. Обыкновенные дифференциальные уравнения</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ode/euler.html">9.1. Метод Эйлера</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ode/rungekutta.html">9.2. Методы Рунге-Кутты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ode/adaptive_rungekutta.html">9.3. Адаптивные методы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ode/ex.html">9.4. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../optim/index.html">10. Задача оптимизации</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../optim/intro.html">10.1. Предварительные сведения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optim/linesearch.html">10.2. Поиск вдоль направления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optim/newton.html">10.3. Метод Ньютона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optim/bfgs.html">10.4. Метод BFGS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../optim/ex.html">10.5. Задания</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Фазовое равновесие</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/genindex.html">
-   Указатель
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/bibliography.html">
-   Литература
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/materials.html">
-   Дополнительные материалы
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/solvecubic.html">
-   Решение кубического уравнения
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/cholesky.html">
-   Разложение Холецкого
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ptstability/index.html">PT стабильность</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ptstability/problem.html">Постановка задачи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ptstability/vanderwaals.html">Уравнение состояния ван дер Ваальса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ptstability/algorithm.html">Алгоритм решения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ptstability/exercise.html">Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ptsplit/index.html">PT расслоение</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ptsplit/problem.html">Постановка задачи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ptsplit/solution.html">Решение задачи</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Указатель</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/bibliography.html">Литература</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/materials.html">Дополнительные материалы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/solvecubic.html">Решение кубического уравнения</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/cholesky.html">Разложение Холецкого</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
-</div>
-
-
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
-
-
-
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
->
   
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
-  </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<div class="menu-dropdown menu-dropdown-launch-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Launch interactive content">
-      <i class="fas fa-rocket"></i>
-  </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://mybinder.org/v2/gh/stepanzh/computational_thermodynamics/main?urlpath=tree/book/interpolation/ex.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Launch on Binder"
->
   
-
-<span class="headerbtn__icon-container">
-  
-    <img src="../_static/images/logo_binder.svg">
-  </span>
-<span class="headerbtn__text-container">Binder</span>
-</a>
-
-      </li>
-      
-    </ul>
+  <div class="sidebar-primary-items__end sidebar-primary__section">
   </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/stepanzh/computational_thermodynamics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/interpolation/ex.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Finterpolation/ex.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/interpolation/ex.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
 
 <button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/stepanzh/computational_thermodynamics"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Finterpolation/ex.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/interpolation/ex.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/interpolation/ex.ipynb"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download notebook file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-code"></i>
-  </span>
-<span class="headerbtn__text-container">.ipynb</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="../_sources/interpolation/ex.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   4.4.1. Вязкость разреженного газа
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Задания</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   4.4.1. Вязкость разреженного газа
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Задания</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.4.1. Вязкость разреженного газа</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">4.4. </span>Задания<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<h1><span class="section-number">4.4. </span>Задания<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <section id="id2">
-<h2><span class="section-number">4.4.1. </span>Вязкость разреженного газа<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">4.4.1. </span>Вязкость разреженного газа<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>Многие корреляционные модели вязкости (например, <span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id3" title="M. J. Assael, J. H. Dymond, M. Papadaki, and P. M. Patterson. Correlation and prediction of dense fluid transport coefficients. I. n-alkanes. International Journal of Thermophysics, 13(2):269–281, 1992. doi:10.1007/bf00504436.">ADPP92</a>]</span>) предоставляют формулу для вычислений</p>
 <div class="math notranslate nohighlight">
 \[\eta_{\text{c}}(\upsilon, T),\]</div>
@@ -778,7 +515,7 @@ title="Print to PDF"
 \[\eta_{\text{c}}(\upsilon, T) \to \eta_{0\text{c}}(T), \quad \upsilon \to \infty.\]</div>
 <p>В свою очередь, низкоплотные пределы исследуются <em>аналитически</em>. В этом задании вам предстоит реализовать одну такую модель.</p>
 <p><strong>Модель разреженного газа.</strong></p>
-<p>Модель ниже приводится из <span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id7" title="И. Ф. Голубев and Н. Е. Гнездилов. Вязкость газовых смесей. Издательство государственного комитета стандартов кабинета министров СССР, Москва, 1971.">71</a>]</span>.</p>
+<p>Модель ниже приводится из <span id="id4">[<a class="reference internal" href="../appendix/bibliography.html#id8" title="И. Ф. Голубев and Н. Е. Гнездилов. Вязкость газовых смесей. Издательство государственного комитета стандартов кабинета министров СССР, Москва, 1971.">71</a>]</span>.</p>
 <p>Уравнение модели получено из физической кинетики. Выведено для низкоплотного состояния неполярного газа. Модель учитывает кинетическое взаимодействие и взаимодействие по <a class="reference external" href="https://en.wikipedia.org/wiki/Lennard-Jones_potential">потенциалу Ленарда-Джонса</a> (Л-Ж) между частицами вещества.</p>
 <p>Модель даёт уравнение</p>
 <div class="math notranslate nohighlight" id="equation-dilute">
@@ -800,103 +537,62 @@ title="Print to PDF"
 <li><p>численный множитель получается после подстановки значений физических констант.</p></li>
 </ul>
 <p>В уравнении <a class="reference internal" href="#equation-dilute">(4.15)</a> вещество <span class="math notranslate nohighlight">\(\text{c}\)</span> определяется тремя параметрами <span class="math notranslate nohighlight">\(M\)</span>, <span class="math notranslate nohighlight">\(\sigma\)</span> и <span class="math notranslate nohighlight">\(\varepsilon/k\)</span>.</p>
-<p>Функции <span class="math notranslate nohighlight">\(f_\eta(T^*)\)</span> и <span class="math notranslate nohighlight">\(\Omega^{(2,2)*}(T^*)\)</span> в <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id7" title="И. Ф. Голубев and Н. Е. Гнездилов. Вязкость газовых смесей. Издательство государственного комитета стандартов кабинета министров СССР, Москва, 1971.">71</a>]</span> приводятся в табличном виде, ссылки на таблицы приведены ниже</p>
+<p>Функции <span class="math notranslate nohighlight">\(f_\eta(T^*)\)</span> и <span class="math notranslate nohighlight">\(\Omega^{(2,2)*}(T^*)\)</span> в <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id8" title="И. Ф. Голубев and Н. Е. Гнездилов. Вязкость газовых смесей. Издательство государственного комитета стандартов кабинета министров СССР, Москва, 1971.">71</a>]</span> задаются в табличном виде, ссылки на таблицы приведены ниже</p>
 <ul class="simple">
-<li><p><span class="math notranslate nohighlight">\(f_\eta(T^*)\)</span>: <strong><a href="https://raw.githubusercontent.com/stepanzh/computational_thermodynamics/main/book/static/golubev1971_feta.pdf" target="_blank">[ссылка]</a></strong>;</p></li>
-<li><p><span class="math notranslate nohighlight">\(\Omega^{(2,2)*}(T^*)\)</span>: <strong><a href="https://raw.githubusercontent.com/stepanzh/computational_thermodynamics/main/book/static/golubev1971_omega22.pdf" target="_blank">[ссылка]</a></strong>.</p></li>
+<li><p>табличное определение функции <span class="math notranslate nohighlight">\(f_\eta(T^*)\)</span>, <a href="https://raw.githubusercontent.com/stepanzh/computational_thermodynamics/main/book/static/golubev1971_feta.pdf" target="_blank">pdf</a>;</p></li>
+<li><p>табличное определение функции <span class="math notranslate nohighlight">\(\Omega^{(2,2)*}(T^*)\)</span>, <a href="https://raw.githubusercontent.com/stepanzh/computational_thermodynamics/main/book/static/golubev1971_omega22.pdf" target="_blank">pdf</a>.</p></li>
 </ul>
 <p>Таким образом, при реализации модели <a class="reference internal" href="#equation-dilute">(4.15)</a> возникает задача интерполяции.</p>
 <p><strong>Задание.</strong></p>
 <p>Вам необходимо реализовать модель разреженного газа <a class="reference internal" href="#equation-dilute">(4.15)</a> и посчитать вязкости для веществ из таблицы ниже в диапазоне температур <span class="math notranslate nohighlight">\(T\in[T_\min, T_\max]\)</span>.</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
-<div class="output text_html"><!DOCTYPE html>
-<html>
-<meta charset="UTF-8">
-<style>
-  table, td, th {
-      border-collapse: collapse;
-      font-family: sans-serif;
-  }
-
-  td, th {
-      border-bottom: 0;
-      padding: 4px
-  }
-
-  tr:nth-child(odd) {
-      background: #eee;
-  }
-
-  tr:nth-child(even) {
-      background: #fff;
-  }
-
-  tr.header {
-      background: navy !important;
-      color: white;
-      font-weight: bold;
-  }
-
-  tr.subheader {
-      background: lightgray !important;
-      color: black;
-  }
-
-  tr.headerLastRow {
-      border-bottom: 2px solid black;
-  }
-
-  th.rowNumber, td.rowNumber {
-      text-align: right;
-  }
-
-</style>
-<body>
-<table>
-  <tr class = "header headerLastRow">
-    <th style = "text-align: center;">Вещество</th>
-    <th style = "text-align: center;">M, г/моль</th>
-    <th style = "text-align: center;">σ, Å</th>
-    <th style = "text-align: center;">ε/k, K</th>
-    <th style = "text-align: center;">Tmin, K</th>
-    <th style = "text-align: center;">Tmax, K</th>
-    <th style = "text-align: center;">NIST</th>
-  </tr>
-  <tr>
-    <td style = "text-align: center;">CO₂</td>
-    <td style = "text-align: center;">44.009</td>
-    <td style = "text-align: center;">3.996</td>
-    <td style = "text-align: center;">190</td>
-    <td style = "text-align: center;">300</td>
-    <td style = "text-align: center;">1000</td>
-    <td style = "text-align: center;"><div class="markdown"><p><a href="https://webbook.nist.gov/cgi/fluid.cgi?D&#61;0.001&amp;TLow&#61;220&amp;THigh&#61;1000&amp;TInc&#61;20&amp;Applet&#61;on&amp;Digits&#61;5&amp;ID&#61;C124389&amp;Action&#61;Load&amp;Type&#61;IsoChor&amp;TUnit&#61;K&amp;PUnit&#61;bar&amp;DUnit&#61;kg&#37;2Fm3&amp;HUnit&#61;kJ&#37;2Fmol&amp;WUnit&#61;m&#37;2Fs&amp;VisUnit&#61;uPa*s&amp;STUnit&#61;N&#37;2Fm&amp;RefState&#61;DEF">&#91;ссылка&#93;</a></p></div></td>
-  </tr>
-  <tr>
-    <td style = "text-align: center;">CH₄</td>
-    <td style = "text-align: center;">16.043</td>
-    <td style = "text-align: center;">3.822</td>
-    <td style = "text-align: center;">137</td>
-    <td style = "text-align: center;">100</td>
-    <td style = "text-align: center;">600</td>
-    <td style = "text-align: center;"><div class="markdown"><p><a href="https://webbook.nist.gov/cgi/fluid.cgi?D&#61;0.001&amp;TLow&#61;100&amp;THigh&#61;600&amp;TInc&#61;10&amp;Applet&#61;on&amp;Digits&#61;5&amp;ID&#61;C74828&amp;Action&#61;Load&amp;Type&#61;IsoChor&amp;TUnit&#61;K&amp;PUnit&#61;bar&amp;DUnit&#61;kg&#37;2Fm3&amp;HUnit&#61;kJ&#37;2Fmol&amp;WUnit&#61;m&#37;2Fs&amp;VisUnit&#61;uPa*s&amp;STUnit&#61;N&#37;2Fm&amp;RefState&#61;DEF">&#91;ссылка&#93;</a></p></div></td>
-  </tr>
-  <tr>
-    <td style = "text-align: center;">O₂</td>
-    <td style = "text-align: center;">31.999</td>
-    <td style = "text-align: center;">3.433</td>
-    <td style = "text-align: center;">113</td>
-    <td style = "text-align: center;">100</td>
-    <td style = "text-align: center;">1000</td>
-    <td style = "text-align: center;"><div class="markdown"><p><a href="https://webbook.nist.gov/cgi/fluid.cgi?D&#61;0.001&amp;TLow&#61;60&amp;THigh&#61;1000&amp;TInc&#61;20&amp;Applet&#61;on&amp;Digits&#61;5&amp;ID&#61;C7782447&amp;Action&#61;Load&amp;Type&#61;IsoChor&amp;TUnit&#61;K&amp;PUnit&#61;bar&amp;DUnit&#61;kg&#37;2Fm3&amp;HUnit&#61;kJ&#37;2Fmol&amp;WUnit&#61;m&#37;2Fs&amp;VisUnit&#61;uPa*s&amp;STUnit&#61;N&#37;2Fm&amp;RefState&#61;DEF">&#91;ссылка&#93;</a></p></div></td>
-  </tr>
+<div class="output text_html"><table>
+  <thead>
+    <tr class = "header headerLastRow">
+      <th style = "text-align: center;">Вещество</th>
+      <th style = "text-align: center;">M, г/моль</th>
+      <th style = "text-align: center;">σ, Å</th>
+      <th style = "text-align: center;">ε/k, K</th>
+      <th style = "text-align: center;">Tmin, K</th>
+      <th style = "text-align: center;">Tmax, K</th>
+      <th style = "text-align: center;">NIST</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style = "text-align: center;">CO₂</td>
+      <td style = "text-align: center;">44.009</td>
+      <td style = "text-align: center;">3.996</td>
+      <td style = "text-align: center;">190</td>
+      <td style = "text-align: center;">300</td>
+      <td style = "text-align: center;">1000</td>
+      <td style = "text-align: center;"><div class="markdown"><p><a href="https://webbook.nist.gov/cgi/fluid.cgi?D&#61;0.001&amp;TLow&#61;220&amp;THigh&#61;1000&amp;TInc&#61;20&amp;Applet&#61;on&amp;Digits&#61;5&amp;ID&#61;C124389&amp;Action&#61;Load&amp;Type&#61;IsoChor&amp;TUnit&#61;K&amp;PUnit&#61;bar&amp;DUnit&#61;kg&#37;2Fm3&amp;HUnit&#61;kJ&#37;2Fmol&amp;WUnit&#61;m&#37;2Fs&amp;VisUnit&#61;uPa*s&amp;STUnit&#61;N&#37;2Fm&amp;RefState&#61;DEF">&#91;ссылка&#93;</a></p></div></td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">CH₄</td>
+      <td style = "text-align: center;">16.043</td>
+      <td style = "text-align: center;">3.822</td>
+      <td style = "text-align: center;">137</td>
+      <td style = "text-align: center;">100</td>
+      <td style = "text-align: center;">600</td>
+      <td style = "text-align: center;"><div class="markdown"><p><a href="https://webbook.nist.gov/cgi/fluid.cgi?D&#61;0.001&amp;TLow&#61;100&amp;THigh&#61;600&amp;TInc&#61;10&amp;Applet&#61;on&amp;Digits&#61;5&amp;ID&#61;C74828&amp;Action&#61;Load&amp;Type&#61;IsoChor&amp;TUnit&#61;K&amp;PUnit&#61;bar&amp;DUnit&#61;kg&#37;2Fm3&amp;HUnit&#61;kJ&#37;2Fmol&amp;WUnit&#61;m&#37;2Fs&amp;VisUnit&#61;uPa*s&amp;STUnit&#61;N&#37;2Fm&amp;RefState&#61;DEF">&#91;ссылка&#93;</a></p></div></td>
+    </tr>
+    <tr>
+      <td style = "text-align: center;">O₂</td>
+      <td style = "text-align: center;">31.999</td>
+      <td style = "text-align: center;">3.433</td>
+      <td style = "text-align: center;">113</td>
+      <td style = "text-align: center;">100</td>
+      <td style = "text-align: center;">1000</td>
+      <td style = "text-align: center;"><div class="markdown"><p><a href="https://webbook.nist.gov/cgi/fluid.cgi?D&#61;0.001&amp;TLow&#61;60&amp;THigh&#61;1000&amp;TInc&#61;20&amp;Applet&#61;on&amp;Digits&#61;5&amp;ID&#61;C7782447&amp;Action&#61;Load&amp;Type&#61;IsoChor&amp;TUnit&#61;K&amp;PUnit&#61;bar&amp;DUnit&#61;kg&#37;2Fm3&amp;HUnit&#61;kJ&#37;2Fmol&amp;WUnit&#61;m&#37;2Fs&amp;VisUnit&#61;uPa*s&amp;STUnit&#61;N&#37;2Fm&amp;RefState&#61;DEF">&#91;ссылка&#93;</a></p></div></td>
+    </tr>
+  </tbody>
 </table>
-</body>
-</html>
 </div></div>
 </div>
 <p>В качестве ответа вам необходимо предоставить следующее.</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Julia-пакет, реализующий описанную выше модель разреженного газа, имеющий следующий интерфейс</p>
 <ul class="simple">
 <li><p>Структура для задания вещества;</p></li>
@@ -933,7 +629,7 @@ title="Print to PDF"
 <p>Сгенерировать пакет можно с помощью команды <code class="docutils literal notranslate"><span class="pre">pkg&gt;</span> <span class="pre">generate</span> <span class="pre">&lt;package_name&gt;</span></code>. Основной модуль будет лежать в директории <code class="docutils literal notranslate"><span class="pre">&lt;package_name&gt;/src/&lt;package_name&gt;.jl</span></code>.</p>
 <p>Для работы с табличными данными есть встроенная библиотека <code class="docutils literal notranslate"><span class="pre">DelimitedFiles</span></code>.</p>
 <p>Для генерации сеток см. <code class="docutils literal notranslate"><span class="pre">range</span></code>.</p>
-<p>Для броадкаста по собственной структуре данных см. <a class="reference internal" href="../julia/arrays.html#broadcasting"><span class="std std-ref">Векторизация функций</span></a>.</p>
+<p>Для броадкаста по собственной структуре данных см. <a class="reference internal" href="../julia/arrays.html#sec-julia-broadcast"><span class="std std-ref">Векторизация функций</span></a>.</p>
 <p>Для построения графиков можно. (1) Записать в файл данные и построить график какой-нибудь программой (табличный процессор или, например, gnuplot). (2) Воспользоваться <a class="reference external" href="https://docs.juliaplots.org/stable/">Plots.jl</a>.</p>
 </div>
 </section>
@@ -948,61 +644,113 @@ title="Print to PDF"
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "julia-1.6"
+            mode: "julia-1.9"
         },
         kernelOptions: {
-            kernelName: "julia-1.6",
+            name: "julia-1.9",
             path: "./interpolation"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'julia-1.6'</script>
+    <script>kernelName = 'julia-1.9'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="cubic_spline.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title"><span class="section-number">4.3. </span>Кубические сплайны</p>
-        </div>
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="cubic_spline.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">4.3. </span>Кубические сплайны</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="../integration/index.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="../integration/index.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title"><span class="section-number">5. </span>Численное интегрирование</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">4.4.1. Вязкость разреженного газа</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
   
-    By Степан Захаров и Василий Писарев<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
+  <div class="footer-item">
     
+<p class="component-author">
+By Степан Захаров и Василий Писарев
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
 </div>
+          </footer>
+        
 
-
-      </div>
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

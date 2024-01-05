@@ -1,7 +1,25 @@
 ---
-substitutions:
-  julia_logo: "<img src=\"https://raw.githubusercontent.com/JuliaLang/julia-logo-graphics/master/images/julia-dots.svg\" style=\"height: 1em;\">"
+jupytext:
+  formats: md:myst
+  text_representation:
+    extension: .md
+    format_name: myst
+    format_version: 0.13
+    jupytext_version: 1.16.0
+kernelspec:
+  display_name: Julia 1.9.4
+  language: julia
+  name: julia-1.9
+myst:
+  substitutions:
+    julia_logo: "<img src=\"https://raw.githubusercontent.com/JuliaLang/julia-logo-graphics/master/images/julia-dots.svg\" style=\"height: 1em;\">"
 ---
+
+```{eval-rst}
+.. meta::
+   :description: Введение в программирование на языке Julia.
+   :keywords: julia, программирование, введение, учебник
+```
 
 # Основы языка программирования Julia
 
@@ -26,3 +44,61 @@ Julia продолжает набирать популярность. Этот �
 **Как изучить?**
 
 В данном разделе излагаются основные инструменты языка Julia, которые понадобятся в практикуме. Дополнительные материалы по изучению языка находятся в Приложении {ref}`materials_julia`.
+
+```{proof:demo} Синтаксис Julia
+```
+
+```{raw} html
+<div class="demo">
+```
+
+Ниже показано решение уравнения $\exp{x} + \log{x} - 2 = 0$ методом деления пополам.
+Можете оценить синтаксис Julia по этому короткому примеру.
+
+```{code-cell}
+:tags: [remove-output]
+
+function bisection(f, xl, xr; xtol=eps(), ftol=eps())
+    @assert xl < xr
+
+    yl, yr = f.((xl, xr))
+    @assert sign(yl) != sign(yr)
+
+    abs(yl) < ftol && return xl
+    abs(yl) < ftol && return xr
+    
+    maxiter = ceil(Int, log2((xr-xl)/xtol))
+    
+    for i in 1:maxiter
+        xmid = (xr + xl) / 2
+        ymid = f(xmid)
+        
+        if sign(yr) == sign(ymid)
+            xr, yr = xmid, ymid
+        elseif sign(yl) == sign(ymid)
+            xl, yl = xmid, ymid
+        else
+            return xmid
+        end
+        abs(ymid) < ftol && return xmid
+    end
+    return (xr + xl)/2
+end
+```
+
+```{code-cell}
+f(x) = exp(x) + log(x) - 2
+xsol = bisection(f, 0.1, 2)
+```
+
+```{code-cell}
+using Plots
+using LaTeXStrings
+
+plot(f; label=L"\exp\ x + \log\ x - 2", xlim=(0, 1.5), ylim=(-6, 6), xlabel=L"x", ylabel=L"f(x)")
+scatter!([xsol], [f(xsol)]; label="метод бисекции, корень $(round(xsol; digits=5))")
+```
+
+```{raw} html
+</div>
+```

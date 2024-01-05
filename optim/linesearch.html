@@ -1,54 +1,66 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" data-content_root="" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+<meta content="Рассмотрим решение скалярной задачи минимзации методом поиска вдоль направления." name="description" />
+<meta content="поиск вдоль направления, line search, оптимизация, минимизация, вычислительная математика, вычматы" name="keywords" />
 
-    <title>Линейный поиск &#8212; Практикум по вычислительной теплофизике</title>
-    
+    <title>10.2. Поиск вдоль направления &#8212; Практикум по вычислительной теплофизике</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/tabs.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
     <link rel="stylesheet" type="text/css" href="../_static/thanks.css" />
     <link rel="stylesheet" type="text/css" href="../_static/proof.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
-    
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
-    <script src="../_static/tabs.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script src="../_static/proof.js"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
@@ -56,737 +68,498 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "dual": "\\varepsilon", "dualset": "\\mathbb{D}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'optim/linesearch';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+    <link rel="next" title="10.3. Метод Ньютона" href="newton.html" />
+    <link rel="prev" title="10.1. Предварительные сведения" href="intro.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
-<!-- Checkboxes to toggle the left sidebar -->
-<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
-<label class="overlay overlay-navbar" for="__navigation">
-    <div class="visually-hidden">Toggle navigation sidebar</div>
-</label>
-<!-- Checkboxes to toggle the in-page toc -->
-<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
-<label class="overlay overlay-pagetoc" for="__page-toc">
-    <div class="visually-hidden">Toggle in-page Table of Contents</div>
-</label>
-<!-- Headers at the top -->
-<div class="announcement header-item noprint"></div>
-<div class="header header-item noprint"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
     
-    <div class="container-fluid" id="banner"></div>
-
     
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
 
-    <div class="container-xl">
-      <div class="row">
-          
-<!-- Sidebar -->
-<div class="bd-sidebar noprint" id="site-navigation">
-    <div class="bd-sidebar__content">
-        <div class="bd-sidebar__top"><div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="../index.html">
-      
-      
-      
-      <h1 class="site-logo" id="site-title">Практикум по вычислительной теплофизике</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">Практикум по вычислительной теплофизике</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    Предмет практикума
+                    О практикуме
                 </a>
             </li>
         </ul>
-        <p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Практикум
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../julia/index.html">
-   1. Основы языка программирования Julia
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/install.html">
-     1.1. Установка
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/run.html">
-     1.2. Запуск программ
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/numbers.html">
-     1.3. Числа, переменные, Bool
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/strings.html">
-     1.4. Строки
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/controlflow.html">
-     1.5. Управляющие конструкции
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/functions.html">
-     1.6. Функции
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/types_methods_dispatch.html">
-     1.7. Типы, методы и multiple dispatch
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/arrays.html">
-     1.8. Массивы и broadcast
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/linearalgebra.html">
-     1.9. Линейная алгебра
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/modules.html">
-     1.10. Модули и пакеты
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../julia/ex.html">
-     1.11. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../intro/index.html">
-   2. Введение
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../intro/float.html">
-     2.1. Числа с плавающей точкой
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../intro/cond.html">
-     2.2. Обусловленность задач
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../syslinear/index.html">
-   3. Линейные системы уравнений
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/triangular.html">
-     3.1. Треугольные системы
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/lu.html">
-     3.2. LU-разложение
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/plu.html">
-     3.3. PLU-разложение
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/conditioning.html">
-     3.4. Обусловленность линейных систем
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/decompose_overview.html">
-     3.5. Обзор других разложений и задач
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../syslinear/ex.html">
-     3.6. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../interpolation/index.html">
-   4. Интерполяция
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../interpolation/polynomial.html">
-     4.1. Полиномиальная интерполяция
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../interpolation/pwlinear.html">
-     4.2. Кусочно-линейная интерполяция
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../interpolation/cubic_spline.html">
-     4.3. Кубические сплайны
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../interpolation/ex.html">
-     4.4. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../integration/index.html">
-   5. Численное интегрирование
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../integration/newton_cotes.html">
-     5.1. Формулы Ньютона-Котса
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../integration/romberg.html">
-     5.2. Метод Ромберга
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../integration/gauss.html">
-     5.3. Формулы Гаусса
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../integration/adaptive.html">
-     5.4. Адаптивное интегрирование
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../integration/ex.html">
-     5.5. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../nlroot/index.html">
-   6. Нелинейные уравнения
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/simpleiter.html">
-     6.1. Метод простой итерации
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/newton_secant.html">
-     6.2. Метод Ньютона и секущих
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/bisection_regula_falsi.html">
-     6.3. Методы бисекции и regula falsi
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/ridders.html">
-     6.4. Метод Риддерса
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/itp.html">
-     6.5. ITP метод
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../nlroot/ex.html">
-     6.6. Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../sysnonlinear/index.html">
-   7. Нелинейные системы уравнений
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../sysnonlinear/newton.html">
-     7.1. Метод Ньютона
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../sysnonlinear/quasinewton.html">
-     7.2. Метод Бройдена
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../sysnonlinear/ex.html">
-     7.3. Задания
-    </a>
-   </li>
-  </ul>
- </li>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Практикум</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../julia/index.html">1. Основы языка программирования Julia</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../julia/install.html">1.1. Установка</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/run.html">1.2. Запуск программ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/numbers.html">1.3. Числа, переменные, Bool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/strings.html">1.4. Строки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/controlflow.html">1.5. Управляющие конструкции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/functions.html">1.6. Функции</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/types_methods_dispatch.html">1.7. Типы, методы и multiple dispatch</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/arrays.html">1.8. Массивы и broadcast</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/linearalgebra.html">1.9. Линейная алгебра</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/modules.html">1.10. Модули и пакеты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../julia/ex.html">1.11. Задания</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Фазовое равновесие
- </span>
-</p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ptstability/index.html">
-   PT стабильность
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ptstability/problem.html">
-     Постановка задачи
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ptstability/vanderwaals.html">
-     Уравнение состояния ван дер Ваальса
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ptstability/algorithm.html">
-     Алгоритм решения
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ptstability/exercise.html">
-     Задания
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../ptsplit/index.html">
-   PT расслоение
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ptsplit/problem.html">
-     Постановка задачи
-    </a>
-   </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../ptsplit/solution.html">
-     Решение задачи
-    </a>
-   </li>
-  </ul>
- </li>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro/index.html">2. Введение</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../intro/float.html">2.1. Числа с плавающей точкой</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../intro/cond.html">2.2. Обусловленность задач</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Приложения
- </span>
-</p>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../syslinear/index.html">3. Линейные системы уравнений</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/triangular.html">3.1. Треугольные системы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/lu.html">3.2. LU-разложение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/plu.html">3.3. PLU-разложение</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/conditioning.html">3.4. Обусловленность линейных систем</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/decompose_overview.html">3.5. Обзор других разложений и задач</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../syslinear/ex.html">3.6. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../interpolation/index.html">4. Интерполяция</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../interpolation/polynomial.html">4.1. Полиномиальная интерполяция</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interpolation/pwlinear.html">4.2. Кусочно-линейная интерполяция</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interpolation/cubic_spline.html">4.3. Кубические сплайны</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interpolation/ex.html">4.4. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../integration/index.html">5. Численное интегрирование</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../integration/newton_cotes.html">5.1. Формулы Ньютона-Котса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/romberg.html">5.2. Метод Ромберга</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/gauss.html">5.3. Формулы Гаусса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/adaptive.html">5.4. Адаптивное интегрирование</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../integration/ex.html">5.5. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nlroot/index.html">6. Нелинейные уравнения</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../nlroot/simpleiter.html">6.1. Метод простой итерации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nlroot/newton_secant.html">6.2. Метод Ньютона и секущих</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nlroot/bisection_regula_falsi.html">6.3. Методы бисекции и regula falsi</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nlroot/ridders.html">6.4. Метод Риддерса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nlroot/itp.html">6.5. ITP метод</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nlroot/ex.html">6.6. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sysnonlinear/index.html">7. Нелинейные системы уравнений</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../sysnonlinear/newton.html">7.1. Метод Ньютона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sysnonlinear/quasinewton.html">7.2. Метод Бройдена</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../sysnonlinear/ex.html">7.3. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../autodiff/index.html">8. Автоматическое дифференцирование</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/complexstep.html">8.1. Метод комплексного шага</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/dualnumbers.html">8.2. Дуальные числа</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/compgraph.html">8.3. Граф вычислений</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/forwardmode.html">8.4. Автоматическое дифференцирование вперёд</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/backwardmode.html">8.5. Автоматическое дифференцирование назад</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/oja_problem.html">8.6. Оптимальное вычисление матрицы Якоби</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../autodiff/ex.html">8.7. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ode/index.html">9. Обыкновенные дифференциальные уравнения</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ode/euler.html">9.1. Метод Эйлера</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ode/rungekutta.html">9.2. Методы Рунге-Кутты</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ode/adaptive_rungekutta.html">9.3. Адаптивные методы</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ode/ex.html">9.4. Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">10. Задача оптимизации</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">10.1. Предварительные сведения</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">10.2. Поиск вдоль направления</a></li>
+<li class="toctree-l2"><a class="reference internal" href="newton.html">10.3. Метод Ньютона</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bfgs.html">10.4. Метод BFGS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ex.html">10.5. Задания</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Фазовое равновесие</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/genindex.html">
-   Указатель
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/bibliography.html">
-   Литература
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/materials.html">
-   Дополнительные материалы
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/solvecubic.html">
-   Решение кубического уравнения
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../appendix/cholesky.html">
-   Разложение Холецкого
-  </a>
- </li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ptstability/index.html">PT стабильность</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ptstability/problem.html">Постановка задачи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ptstability/vanderwaals.html">Уравнение состояния ван дер Ваальса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ptstability/algorithm.html">Алгоритм решения</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ptstability/exercise.html">Задания</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ptsplit/index.html">PT расслоение</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ptsplit/problem.html">Постановка задачи</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ptsplit/solution.html">Решение задачи</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Приложения</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../genindex.html">Указатель</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/bibliography.html">Литература</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/materials.html">Дополнительные материалы</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/solvecubic.html">Решение кубического уравнения</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/cholesky.html">Разложение Холецкого</a></li>
 </ul>
 
     </div>
 </nav></div>
-        <div class="bd-sidebar__bottom">
-             <!-- To handle the deprecated key -->
-            
-            <div class="navbar_extra_footer">
-            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-            </div>
-            
-        </div>
     </div>
-    <div id="rtd-footer-container"></div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/stepanzh/computational_thermodynamics" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/optim/linesearch.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Foptim/linesearch.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
 
-          
-
-
-          
-<!-- A tiny helper pixel to detect if we've scrolled -->
-<div class="sbt-scroll-pixel-helper"></div>
-<!-- Main content -->
-<div class="col py-0 content-container">
-    
-    <div class="header-article row sticky-top noprint">
-        
 
 
 
-<div class="col py-1 d-flex header-article-main">
-    <div class="header-article__left">
-        
-        <label for="__navigation"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="right"
-title="Toggle navigation"
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/optim/linesearch.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
-  <i class="fas fa-bars"></i>
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
   </span>
-
-</label>
-
-        
-    </div>
-    <div class="header-article__right">
-<button onclick="toggleFullScreen()"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="bottom"
-title="Fullscreen mode"
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
-<span class="headerbtn__icon-container">
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
   <i class="fas fa-expand"></i>
   </span>
 
 </button>
 
-<div class="menu-dropdown menu-dropdown-repository-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Source repositories">
-      <i class="fab fa-github"></i>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="https://github.com/stepanzh/computational_thermodynamics"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Source repository"
->
-  
+`);
+</script>
 
-<span class="headerbtn__icon-container">
-  <i class="fab fa-github"></i>
-  </span>
-<span class="headerbtn__text-container">repository</span>
-</a>
 
-      </li>
-      
-      <li>
-        <a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Foptim/linesearch.html&body=Your%20issue%20content%20here."
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Open an issue"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-lightbulb"></i>
-  </span>
-<span class="headerbtn__text-container">open issue</span>
-</a>
-
-      </li>
-      
-      <li>
-        <a href="https://github.com/stepanzh/computational_thermodynamics/edit/main/book/optim/linesearch.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Edit this page"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-pencil-alt"></i>
-  </span>
-<span class="headerbtn__text-container">suggest edit</span>
-</a>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-
-<div class="menu-dropdown menu-dropdown-download-buttons">
-  <button class="headerbtn menu-dropdown__trigger"
-      aria-label="Download this page">
-      <i class="fas fa-download"></i>
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
-  <div class="menu-dropdown__content">
-    <ul>
-      <li>
-        <a href="../_sources/optim/linesearch.md"
-   class="headerbtn"
-   data-toggle="tooltip"
-data-placement="left"
-title="Download source file"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file"></i>
-  </span>
-<span class="headerbtn__text-container">.md</span>
-</a>
-
-      </li>
-      
-      <li>
-        
-<button onclick="printPdf(this)"
-  class="headerbtn"
-  data-toggle="tooltip"
-data-placement="left"
-title="Print to PDF"
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-file-pdf"></i>
-  </span>
-<span class="headerbtn__text-container">.pdf</span>
-</button>
-
-      </li>
-      
-    </ul>
-  </div>
-</div>
-<label for="__page-toc"
-  class="headerbtn headerbtn-page-toc"
-  
->
-  
-
-<span class="headerbtn__icon-container">
-  <i class="fas fa-list"></i>
-  </span>
-
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
 </label>
-
+</div></div>
+      
     </div>
+  
 </div>
-
-<!-- Table of contents -->
-<div class="col-md-3 bd-toc show noprint">
-    <div class="tocsection onthispage pt-5 pb-3">
-        <i class="fas fa-list"></i> Contents
-    </div>
-    <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   Условия Вольфе
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   Линейный поиск назад
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   Сильный линейный поиск назад
-  </a>
- </li>
-</ul>
-
-    </nav>
 </div>
-    </div>
-    <div class="article row">
-        <div class="col pl-md-3 pl-lg-5 content-container">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Линейный поиск</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id2">
-   Условия Вольфе
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id3">
-   Линейный поиск назад
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id4">
-   Сильный линейный поиск назад
-  </a>
- </li>
-</ul>
+              
+              
 
-                        </nav>
-                    </div>
-                </div>
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Поиск вдоль направления</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
             </div>
-            <main id="main-content" role="main">
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.2.1. Условия Вольфе</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.2.2. Поиск вдоль направления назад</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10.2.3. Сильный поиск вдоль направления</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
                 
-              <div>
-                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Линейный поиск<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
-<p>Пусть на шаге алгоритма оптимизации текущее приближение минимума равняется <span class="math notranslate nohighlight">\(\mathbf{x}_k\)</span> и выбрано направление убывания <span class="math notranslate nohighlight">\(\mathbf{d}_k\)</span>.</p>
-<p>Построим скалярную функцию <span class="math notranslate nohighlight">\(\phi(\alpha): \real \to \real\)</span></p>
+<h1><span class="section-number">10.2. </span>Поиск вдоль направления<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<p>Пусть на шаге алгоритма оптимизации текущее приближение минимума равняется <span class="math notranslate nohighlight">\(\mathbf{x}_k\)</span> и выбрано направление убывания функции <span class="math notranslate nohighlight">\(\mathbf{d}_k\)</span>.
+Построим скалярную функцию <span class="math notranslate nohighlight">\(\phi(\alpha): \real \to \real\)</span></p>
 <div class="math notranslate nohighlight" id="equation-optim-phi">
-<span class="eqno">()<a class="headerlink" href="#equation-optim-phi" title="Permalink to this equation">#</a></span>\[\phi(\alpha) = f(\mathbf{x}_k + \alpha \mathbf{d}_k).\]</div>
-<p>Задача идеального линейного поиска состоит в минимизации</p>
+<span class="eqno">(10.3)<a class="headerlink" href="#equation-optim-phi" title="Permalink to this equation">#</a></span>\[\phi(\alpha) = f(\mathbf{x}_k + \alpha \mathbf{d}_k).\]</div>
+<p>Логично подбирать амплитуду шага <span class="math notranslate nohighlight">\(\alpha\)</span> такой, которая в точности минимизирует <span class="math notranslate nohighlight">\(\phi(\alpha)\)</span></p>
 <div class="math notranslate nohighlight">
-\[\min_{\alpha &gt; 0} \phi(\alpha),\]</div>
-<p>однако данный подход вычислительно трудоёмок. Вместо этого используют <em>приближённый линейный поиск</em>, задача которого приближённо минимизировать <span class="math notranslate nohighlight">\(\phi(\alpha)\)</span> за небольшое количество вычислений. Для этого могут быть использованы разные критерии, о двух из них пойдёт речь дальше. Далее под линейным поиском будет пониматься приближённый вариант.</p>
+\[\alpha^{*} = \argmin_{\alpha &gt; 0} \phi(\alpha),\]</div>
+<p>однако данный подход вычислительно трудоёмок.
+Поэтому на практике шаг <span class="math notranslate nohighlight">\(\alpha\)</span> находят приближённо, т.е. решают задачу</p>
+<div class="math notranslate nohighlight">
+\[\alpha^{*} \approx \argmin_{\alpha &gt; 0} \phi(\alpha).\]</div>
+<p>Для решения этой задачи применяют <em>поиск вдоль направления</em> (line search).
+Поиск должен с неплохой точностью находить шаг <span class="math notranslate nohighlight">\(\alpha^{*}\)</span> за <em>приемлемое</em> время.
+Чтобы построить оптимальный по точности и быстродействию алгоритм, используются условия Вольфе.</p>
 <section id="id2">
-<h2>Условия Вольфе<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h2>
+<h2><span class="section-number">10.2.1. </span>Условия Вольфе<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
 <p>Первое условие Вольфе (также условие достаточного убывания, <em>sufficient decrease</em>) требует уменьшения функции</p>
 <div class="math notranslate nohighlight" id="equation-optim-wolfe1">
-<span class="eqno">()<a class="headerlink" href="#equation-optim-wolfe1" title="Permalink to this equation">#</a></span>\[f(\mathbf{x}_k + \alpha\mathbf{d}_k) \le f(\mathbf{x}_k) + \beta \alpha \nabla f(\mathbf{x}_k)^\top \mathbf{d}_k,\]</div>
-<p>где <span class="math notranslate nohighlight">\(\beta\)</span> – параметр оптимизации, выбираемый в диапазоне <span class="math notranslate nohighlight">\(\beta\in(0,1)\)</span>, обычно <span class="math notranslate nohighlight">\(\beta = 10^{-4}\)</span>. В правой части <a class="reference internal" href="#equation-optim-wolfe1">()</a> фактически записано разложение Тейлора <span class="math notranslate nohighlight">\(f\)</span> в точке <span class="math notranslate nohighlight">\(\mathbf{x}_k\)</span>.</p>
-<p>Приведём также запись условия <a class="reference internal" href="#equation-optim-wolfe1">()</a> в терминах <span class="math notranslate nohighlight">\(\phi(\alpha)\)</span>. Поскольку</p>
+<span class="eqno">(10.4)<a class="headerlink" href="#equation-optim-wolfe1" title="Permalink to this equation">#</a></span>\[f(\mathbf{x}_k + \alpha\mathbf{d}_k) \le f(\mathbf{x}_k) + \beta \alpha \nabla f(\mathbf{x}_k)^\top \mathbf{d}_k,\]</div>
+<p>где <span class="math notranslate nohighlight">\(\beta\)</span> – параметр оптимизации, выбираемый в диапазоне <span class="math notranslate nohighlight">\(\beta\in(0,1)\)</span>, обычно <span class="math notranslate nohighlight">\(\beta = 10^{-4}\)</span>. В правой части <a class="reference internal" href="#equation-optim-wolfe1">(10.4)</a> фактически записано разложение Тейлора <span class="math notranslate nohighlight">\(f\)</span> в точке <span class="math notranslate nohighlight">\(\mathbf{x}_k\)</span>.</p>
+<p>Приведём также запись условия <a class="reference internal" href="#equation-optim-wolfe1">(10.4)</a> в терминах <span class="math notranslate nohighlight">\(\phi(\alpha)\)</span>. Поскольку</p>
 <div class="math notranslate nohighlight">
 \[\phi'(\alpha) = \nabla f(\mathbf{x}_k + \alpha \mathbf{d}_k)^\top \mathbf{d}_k,\]</div>
-<p>то условие <a class="reference internal" href="#equation-optim-wolfe1">()</a> запишется следующим образом</p>
+<p>то условие <a class="reference internal" href="#equation-optim-wolfe1">(10.4)</a> запишется следующим образом</p>
 <div class="math notranslate nohighlight">
 \[\phi(\alpha) \le \phi(0) + \beta \alpha \phi'(0).\]</div>
 <p>Отметим также, что справа в выражении стоит прямая <span class="math notranslate nohighlight">\(l(\alpha)\)</span> с отрицательным наклоном <span class="math notranslate nohighlight">\(\beta\phi'(0) &lt; 0\)</span>.</p>
 <p>Второе (слабое) условие Вольфе (или условие на кривизну, <em>curvature condition</em>) требует увеличения производной вдоль направления <span class="math notranslate nohighlight">\(\mathbf{d}_k\)</span> в новой точке</p>
 <div class="math notranslate nohighlight" id="equation-optim-wolfe2-weak">
-<span class="eqno">()<a class="headerlink" href="#equation-optim-wolfe2-weak" title="Permalink to this equation">#</a></span>\[\nabla f(\mathbf{x}_k + \alpha \mathbf{d}_k)^\top \mathbf{d}_k
+<span class="eqno">(10.5)<a class="headerlink" href="#equation-optim-wolfe2-weak" title="Permalink to this equation">#</a></span>\[\nabla f(\mathbf{x}_k + \alpha \mathbf{d}_k)^\top \mathbf{d}_k
 \ge \sigma \nabla f(\mathbf{x}_k)^\top \mathbf{d}_k,\]</div>
 <p>или</p>
 <div class="math notranslate nohighlight">
 \[\phi'(\alpha) \ge \sigma \phi'(0).\]</div>
 <p>где <span class="math notranslate nohighlight">\(\sigma \in (\beta, 1)\)</span> – параметр оптимизации. Для метода сопряжённых градиентов обычно берут <span class="math notranslate nohighlight">\(\sigma = 0.1\)</span>, а для метода Ньютона <span class="math notranslate nohighlight">\(0.9\)</span>.</p>
-<p>Условие <a class="reference internal" href="#equation-optim-wolfe2-weak">()</a> допускает большие положительные производные. Используется также его альтернатива – <em>второе сильное условие Вольфе</em></p>
+<p>Условие <a class="reference internal" href="#equation-optim-wolfe2-weak">(10.5)</a> допускает большие положительные производные. Используется также его альтернатива – <em>второе сильное условие Вольфе</em></p>
 <div class="math notranslate nohighlight" id="equation-optim-wolfe2-strong">
-<span class="eqno">()<a class="headerlink" href="#equation-optim-wolfe2-strong" title="Permalink to this equation">#</a></span>\[|\nabla f(\mathbf{x}_k + \alpha \mathbf{d}_k)^\top \mathbf{d}_k|
+<span class="eqno">(10.6)<a class="headerlink" href="#equation-optim-wolfe2-strong" title="Permalink to this equation">#</a></span>\[|\nabla f(\mathbf{x}_k + \alpha \mathbf{d}_k)^\top \mathbf{d}_k|
 \le -\sigma \nabla f(\mathbf{x}_k)^\top \mathbf{d}_k,\]</div>
 <p>или</p>
 <div class="math notranslate nohighlight">
 \[|\phi'(\alpha)| \le -\sigma \phi'(0).\]</div>
-<p>Сильное условие Вольфе <a class="reference internal" href="#equation-optim-wolfe2-strong">()</a> выделяет небольшие окрестности по <span class="math notranslate nohighlight">\(\alpha\)</span> около локальных минимумов, максимумов и стационарных точек. Размер окрестностей контролирует параметр <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
-<p>Итак набор условий <a class="reference internal" href="#equation-optim-wolfe1">()</a> и <a class="reference internal" href="#equation-optim-wolfe2-weak">()</a> называют <em>слабыми условиями Вольфе</em>, а набор <a class="reference internal" href="#equation-optim-wolfe1">()</a> и <a class="reference internal" href="#equation-optim-wolfe2-strong">()</a> называют <em>сильными условиями Вольфе</em>.</p>
+<p>Сильное условие Вольфе <a class="reference internal" href="#equation-optim-wolfe2-strong">(10.6)</a> выделяет небольшие окрестности по <span class="math notranslate nohighlight">\(\alpha\)</span> около локальных минимумов, максимумов и стационарных точек. Размер окрестностей контролирует параметр <span class="math notranslate nohighlight">\(\sigma\)</span>.</p>
+<p>Итак набор условий <a class="reference internal" href="#equation-optim-wolfe1">(10.4)</a> и <a class="reference internal" href="#equation-optim-wolfe2-weak">(10.5)</a> называют <em>слабыми условиями Вольфе</em>, а набор <a class="reference internal" href="#equation-optim-wolfe1">(10.4)</a> и <a class="reference internal" href="#equation-optim-wolfe2-strong">(10.6)</a> называют <em>сильными условиями Вольфе</em>.</p>
 </section>
 <section id="id3">
-<h2>Линейный поиск назад<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h2>
-<p>Линейный поиск назад строится лишь на первом условии Вольфе <a class="reference internal" href="#equation-optim-wolfe1">()</a>.</p>
+<h2><span class="section-number">10.2.2. </span>Поиск вдоль направления назад<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<p>Поиск вдоль направления назад строится лишь на первом условии Вольфе <a class="reference internal" href="#equation-optim-wolfe1">(10.4)</a>.</p>
 <div class="proof proof-type-algorithm" id="id5">
 
     <div class="proof-title">
-        <span class="proof-type">Алгоритм </span>
+        <span class="proof-type">Алгоритм 10.8</span>
         
-            <span class="proof-title-name">(Линейный поиск назад)</span>
+            <span class="proof-title-name">(Поиск вдоль направления назад)</span>
         
     </div><div class="proof-content">
 <p>Входные данные</p>
@@ -799,17 +572,17 @@ title="Print to PDF"
 <li><p>шаг масштабирования <span class="math notranslate nohighlight">\(0 &lt; q &lt; 1\)</span>.</p></li>
 </ul>
 <p>Алгоритм</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Подсчитать значение функции и градиент в начальной точке <span class="math notranslate nohighlight">\(f(\mathbf{x}_0\)</span>), <span class="math notranslate nohighlight">\(\nabla f(\mathbf{x}_0)\)</span>.</p></li>
 <li><p>Проставить <span class="math notranslate nohighlight">\(\alpha \lto \alpha_0\)</span>.</p></li>
-<li><p>Проверить удовлетворение первого условия Вольфе <a class="reference internal" href="#equation-optim-wolfe1">()</a>. Если условие удовлетворено, <span class="math notranslate nohighlight">\(\alpha\)</span> найдено.</p></li>
+<li><p>Проверить удовлетворение первого условия Вольфе <a class="reference internal" href="#equation-optim-wolfe1">(10.4)</a>. Если условие удовлетворено, <span class="math notranslate nohighlight">\(\alpha\)</span> найдено.</p></li>
 <li><p>Уменьшить <span class="math notranslate nohighlight">\(\alpha\)</span>: <span class="math notranslate nohighlight">\(\alpha \lto q \alpha\)</span>. Перейти на шаг 3.</p></li>
 </ol>
 </div></div><p>Поиск называется “поиском назад” (<em>backtracking</em>), поскольку начинает с крупного <span class="math notranslate nohighlight">\(\alpha\)</span>, которое в последствии итеративно уменьшается.</p>
 </section>
 <section id="id4">
-<h2>Сильный линейный поиск назад<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h2>
-<p>Сильный линейный поиск назад (<em>strong backtracking</em>) учитывает сильные условия Вольфе и требует более сложного алгоритма.</p>
+<h2><span class="section-number">10.2.3. </span>Сильный поиск вдоль направления<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>Сильный поиск вдоль направления (<em>strong backtracking</em>) учитывает сильные условия Вольфе и требует более сложного алгоритма.</p>
 <p>Поиск делится на фазы <em>локализации</em> (<em>bracketing</em>) и <em>уточнения</em> (<em>zoom</em>).</p>
 <p>В фазе <em>локализации</em> происходит поиск интервала <span class="math notranslate nohighlight">\((\alpha_\text{lo}, \alpha_\text{hi})\)</span>, в котором гарантируется наличие шагов <span class="math notranslate nohighlight">\(\alpha\)</span>, для которых сильные условия Вольфе удовлетворятся. Этот интервал можно обнаружить, если одно из следующих условий выполнено</p>
 <div class="math notranslate nohighlight">
@@ -818,81 +591,81 @@ f(\mathbf{x} + \alpha \mathbf{d}) &amp;\ge f(\mathbf{x}),\\
 f(\mathbf{x} + \alpha\mathbf{d}) &amp;&gt; f(\mathbf{x}) + \beta \alpha \nabla f(\mathbf{x})^\top \mathbf{d},\\
 \nabla f(\mathbf{x} + \alpha \mathbf{d})^\top \mathbf{d} &amp;\ge 0.
 \end{align}\end{split}\]</div>
-<p>Первое условие показывает, что выбранное <span class="math notranslate nohighlight">\(\alpha\)</span> приводит к увеличению функции, второе условие является обратным к первому условию Вольфе <a class="reference internal" href="#equation-optim-wolfe1">()</a>, а последнее показывает, что выбранный шаг приводит к точке, где <span class="math notranslate nohighlight">\(\phi(\alpha)\)</span> возрастающая.</p>
+<p>Первое условие показывает, что выбранное <span class="math notranslate nohighlight">\(\alpha\)</span> приводит к увеличению функции, второе условие является обратным к первому условию Вольфе <a class="reference internal" href="#equation-optim-wolfe1">(10.4)</a>, а последнее показывает, что выбранный шаг приводит к точке, где <span class="math notranslate nohighlight">\(\phi(\alpha)\)</span> возрастающая.</p>
 <p>В фазе <em>уточнения</em> происходит поиск <span class="math notranslate nohighlight">\(\alpha\)</span> в интервале <span class="math notranslate nohighlight">\((\alpha_\text{lo}, \alpha_\text{hi})\)</span>, удовлетворяющее сильным условиям Вольфе. Это можно производить по-разному, самый простой поиск – бинарный, по знаку производной <span class="math notranslate nohighlight">\(\phi'(0)\)</span>. Более сложные поиски используют, например, параболическую или кубическую интерполяцию функции <span class="math notranslate nohighlight">\(\phi(\alpha)\)</span> по известным значениям функции <span class="math notranslate nohighlight">\(\phi\)</span> и её производной <span class="math notranslate nohighlight">\(\phi'\)</span>, затем в качестве нового приближения <span class="math notranslate nohighlight">\(\alpha\)</span> выбирают минимум интерполяционной модели.</p>
 <p>Ниже приводится модифицированная версия сильного линейного поиска назад (Kochenderfer &amp; Wheeler, 2019, стр. 62).</p>
 <div class="proof proof-type-function" id="id6">
 
     <div class="proof-title">
-        <span class="proof-type">Функция </span>
+        <span class="proof-type">Функция 10.9</span>
         
             <span class="proof-title-name">(strong_backtracking)</span>
         
     </div><div class="proof-content">
-<p><strong>Строгий линейный поиск назад</strong></p>
+<p><strong>Сильный поиск вдоль направления</strong></p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;&quot;&quot;</span>
 <span class="s">    strong_backtracking(f, ∇f, x0, d[; α0=1.0, αmax=Inf, β=1e-4, σ=0.9])</span>
 
-<span class="s">Линейный поиск значения α вдоль направления `d`, при котором для функции `f` </span>
+<span class="s">Сильный поиск вдоль направления значения α вдоль направления `d`, при котором для функции `f` </span>
 <span class="s">выполнятся сильные условия Вольфе в точке `x0 + α*d`.</span>
 <span class="s">`∇f` - функция градиента.</span>
 <span class="s">Опционально задаётся начальное значение α `α0`, и параметры условий Вольфе:</span>
 <span class="s">`β` на первое условие и `σ` - на второе.</span>
 
 <span class="s">(Kochenderfer &amp; Wheeler, Algorithms for Optimization, 2019, стр. 62)</span>
-<span class="s">&quot;&quot;&quot;</span><span class="w"></span>
-<span class="k">function</span><span class="w"> </span><span class="n">strong_backtracking</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">∇f</span><span class="p">,</span><span class="w"> </span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"> </span><span class="n">α0</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="n">β</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span><span class="w"> </span><span class="n">σ</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">g0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">),</span><span class="w"> </span><span class="n">∇f</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span><span class="o">⋅</span><span class="n">d</span><span class="w"></span>
-<span class="w">    </span><span class="nd">@assert</span><span class="w"> </span><span class="n">g0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="s">&quot;Направление d не убывающее&quot;</span><span class="w"></span>
+<span class="s">&quot;&quot;&quot;</span>
+<span class="k">function</span><span class="w"> </span><span class="n">strong_backtracking</span><span class="p">(</span><span class="n">f</span><span class="p">,</span><span class="w"> </span><span class="n">∇f</span><span class="p">,</span><span class="w"> </span><span class="n">x0</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">;</span><span class="w"> </span><span class="n">α0</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span><span class="w"> </span><span class="n">β</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span><span class="w"> </span><span class="n">σ</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="w">    </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="n">g0</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">),</span><span class="w"> </span><span class="n">∇f</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span><span class="o">⋅</span><span class="n">d</span>
+<span class="w">    </span><span class="nd">@assert</span><span class="w"> </span><span class="n">g0</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="s">&quot;Направление d не убывающее&quot;</span>
 
-<span class="w">    </span><span class="n">α</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">α0</span><span class="w"></span>
-<span class="w">    </span><span class="n">yprev</span><span class="p">,</span><span class="w"> </span><span class="n">αprev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span><span class="w"></span>
-<span class="w">    </span><span class="n">αlo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">αhi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NaN</span><span class="w"></span>
+<span class="w">    </span><span class="n">α</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">α0</span>
+<span class="w">    </span><span class="n">yprev</span><span class="p">,</span><span class="w"> </span><span class="n">αprev</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y0</span><span class="p">,</span><span class="w"> </span><span class="mf">0.0</span>
+<span class="w">    </span><span class="n">αlo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">αhi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">NaN</span>
 
-<span class="w">    </span><span class="c"># bracketing phase</span><span class="w"></span>
-<span class="w">    </span><span class="c"># поиск интервала (`αlo`, `αhi`), в котором существует α,</span><span class="w"></span>
-<span class="w">    </span><span class="c"># удовлетворяющее строгим условиям Вольфе</span><span class="w"></span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">100</span><span class="w"></span>
-<span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">α</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="c"># первое условие Вольфе нарушено или функция увеличилась</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">y0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">β</span><span class="o">*</span><span class="n">α</span><span class="o">*</span><span class="n">g0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">≥</span><span class="w"> </span><span class="n">yprev</span><span class="w"></span>
-<span class="w">            </span><span class="n">αlo</span><span class="p">,</span><span class="w"> </span><span class="n">αhi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">αprev</span><span class="p">,</span><span class="w"> </span><span class="n">α</span><span class="w"></span>
-<span class="w">            </span><span class="k">break</span><span class="w"></span>
-<span class="w">        </span><span class="k">end</span><span class="w"></span>
-<span class="w">        </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">∇f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">α</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">⋅</span><span class="n">d</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="o">≤</span><span class="w"> </span><span class="o">-</span><span class="n">σ</span><span class="o">*</span><span class="n">g0</span><span class="w">  </span><span class="c"># 2ое условие Вольфе выполнено, `α` найдено</span><span class="w"></span>
-<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">α</span><span class="w"></span>
-<span class="w">        </span><span class="k">elseif</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">≥</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
-<span class="w">            </span><span class="n">αlo</span><span class="p">,</span><span class="w"> </span><span class="n">αhi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">αprev</span><span class="p">,</span><span class="w"> </span><span class="n">α</span><span class="w"></span>
-<span class="w">            </span><span class="k">break</span><span class="w"></span>
-<span class="w">        </span><span class="k">end</span><span class="w"></span>
-<span class="w">        </span><span class="n">yprev</span><span class="p">,</span><span class="w"> </span><span class="n">αprev</span><span class="p">,</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">α</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="n">α</span><span class="w"></span>
-<span class="w">    </span><span class="k">end</span><span class="w"></span>
-<span class="w">    </span><span class="c"># zoom phase</span><span class="w"></span>
-<span class="w">    </span><span class="c"># поиск α, для которого выполняются условия Вольфе</span><span class="w"></span>
-<span class="w">    </span><span class="n">ylo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">αlo</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="w"></span>
-<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">100</span><span class="w"></span>
-<span class="w">        </span><span class="c"># бинарный поиск, но может быть и интерполяция</span><span class="w"></span>
-<span class="w">        </span><span class="n">α</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">αlo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">αhi</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span><span class="w"></span>
+<span class="w">    </span><span class="c"># bracketing phase</span>
+<span class="w">    </span><span class="c"># поиск интервала (`αlo`, `αhi`), в котором существует α,</span>
+<span class="w">    </span><span class="c"># удовлетворяющее строгим условиям Вольфе</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">100</span>
+<span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">α</span><span class="o">*</span><span class="n">d</span><span class="p">)</span>
+<span class="w">        </span><span class="c"># первое условие Вольфе нарушено или функция увеличилась</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">y0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">β</span><span class="o">*</span><span class="n">α</span><span class="o">*</span><span class="n">g0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">≥</span><span class="w"> </span><span class="n">yprev</span>
+<span class="w">            </span><span class="n">αlo</span><span class="p">,</span><span class="w"> </span><span class="n">αhi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">αprev</span><span class="p">,</span><span class="w"> </span><span class="n">α</span>
+<span class="w">            </span><span class="k">break</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">        </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">∇f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">α</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">⋅</span><span class="n">d</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">abs</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="o">≤</span><span class="w"> </span><span class="o">-</span><span class="n">σ</span><span class="o">*</span><span class="n">g0</span><span class="w">  </span><span class="c"># 2ое условие Вольфе выполнено, `α` найдено</span>
+<span class="w">            </span><span class="k">return</span><span class="w"> </span><span class="n">α</span>
+<span class="w">        </span><span class="k">elseif</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">≥</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">            </span><span class="n">αlo</span><span class="p">,</span><span class="w"> </span><span class="n">αhi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">αprev</span><span class="p">,</span><span class="w"> </span><span class="n">α</span>
+<span class="w">            </span><span class="k">break</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">        </span><span class="n">yprev</span><span class="p">,</span><span class="w"> </span><span class="n">αprev</span><span class="p">,</span><span class="w"> </span><span class="n">α</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">α</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="n">α</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="c"># zoom phase</span>
+<span class="w">    </span><span class="c"># поиск α, для которого выполняются условия Вольфе</span>
+<span class="w">    </span><span class="n">ylo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">αlo</span><span class="o">*</span><span class="n">d</span><span class="p">)</span>
+<span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="mi">1</span><span class="o">:</span><span class="mi">100</span>
+<span class="w">        </span><span class="c"># бинарный поиск, но может быть и интерполяция</span>
+<span class="w">        </span><span class="n">α</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">αlo</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">αhi</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span>
 
-<span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">α</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="w"></span>
-<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">y0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">β</span><span class="o">*</span><span class="n">α</span><span class="o">*</span><span class="n">g0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">≥</span><span class="w"> </span><span class="n">ylo</span><span class="w">  </span><span class="c"># `αhi` слишком большое</span><span class="w"></span>
-<span class="w">            </span><span class="n">αhi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">α</span><span class="w"></span>
-<span class="w">        </span><span class="k">else</span><span class="w"></span>
-<span class="w">            </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">∇f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">α</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">⋅</span><span class="n">d</span><span class="w"></span>
-<span class="w">            </span><span class="c"># 2ое условие Вольфе удовлетворено, `α` найдено</span><span class="w"></span>
-<span class="w">            </span><span class="n">abs</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="o">≤</span><span class="w"> </span><span class="o">-</span><span class="n">σ</span><span class="o">*</span><span class="n">g0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">α</span><span class="w"></span>
-<span class="w">            </span><span class="c"># обновление границ по бинарному поиску на производную</span><span class="w"></span>
-<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">≥</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
-<span class="w">                </span><span class="n">αhi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">α</span><span class="w"></span>
-<span class="w">            </span><span class="k">else</span><span class="w"></span>
-<span class="w">                </span><span class="n">αlo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">α</span><span class="w"></span>
-<span class="w">            </span><span class="k">end</span><span class="w"></span>
-<span class="w">        </span><span class="k">end</span><span class="w"></span>
-<span class="w">    </span><span class="k">end</span><span class="w"></span>
-<span class="w">    </span><span class="nd">@error</span><span class="w"> </span><span class="s">&quot;Ошибка в линейном поиске, α не найдено&quot;</span><span class="w"></span>
-<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">NaN</span><span class="w"></span>
-<span class="k">end</span><span class="w"></span>
+<span class="w">        </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">α</span><span class="o">*</span><span class="n">d</span><span class="p">)</span>
+<span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">y0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">β</span><span class="o">*</span><span class="n">α</span><span class="o">*</span><span class="n">g0</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">≥</span><span class="w"> </span><span class="n">ylo</span><span class="w">  </span><span class="c"># `αhi` слишком большое</span>
+<span class="w">            </span><span class="n">αhi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">α</span>
+<span class="w">        </span><span class="k">else</span>
+<span class="w">            </span><span class="n">g</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">∇f</span><span class="p">(</span><span class="n">x0</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">α</span><span class="o">*</span><span class="n">d</span><span class="p">)</span><span class="o">⋅</span><span class="n">d</span>
+<span class="w">            </span><span class="c"># 2ое условие Вольфе удовлетворено, `α` найдено</span>
+<span class="w">            </span><span class="n">abs</span><span class="p">(</span><span class="n">g</span><span class="p">)</span><span class="w"> </span><span class="o">≤</span><span class="w"> </span><span class="o">-</span><span class="n">σ</span><span class="o">*</span><span class="n">g0</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="n">α</span>
+<span class="w">            </span><span class="c"># обновление границ по бинарному поиску на производную</span>
+<span class="w">            </span><span class="k">if</span><span class="w"> </span><span class="n">g</span><span class="w"> </span><span class="o">≥</span><span class="w"> </span><span class="mi">0</span>
+<span class="w">                </span><span class="n">αhi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">α</span>
+<span class="w">            </span><span class="k">else</span>
+<span class="w">                </span><span class="n">αlo</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">α</span>
+<span class="w">            </span><span class="k">end</span>
+<span class="w">        </span><span class="k">end</span>
+<span class="w">    </span><span class="k">end</span>
+<span class="w">    </span><span class="nd">@error</span><span class="w"> </span><span class="s">&quot;Ошибка в линейном поиске, α не найдено&quot;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">NaN</span>
+<span class="k">end</span>
 </pre></div>
 </div>
 </div></div></section>
@@ -910,7 +683,7 @@ f(\mathbf{x} + \alpha\mathbf{d}) &amp;&gt; f(\mathbf{x}) + \beta \alpha \nabla f
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./optim"
         },
         predefinedOutput: true
@@ -918,36 +691,104 @@ f(\mathbf{x} + \alpha\mathbf{d}) &amp;&gt; f(\mathbf{x}) + \beta \alpha \nabla f
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            </main>
-            <footer class="footer-article noprint">
-                
-    <!-- Previous / next buttons -->
-<div class='prev-next-area'>
-</div>
-            </footer>
-        </div>
-    </div>
-    <div class="footer-content row">
-        <footer class="col footer"><p>
-  
-    By Степан Захаров и Василий Писарев<br/>
-  
-      &copy; Copyright 2022.<br/>
-</p>
-        </footer>
-    </div>
-    
-</div>
 
-
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="intro.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">10.1. </span>Предварительные сведения</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="newton.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><span class="section-number">10.3. </span>Метод Ньютона</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">10.2.1. Условия Вольфе</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">10.2.2. Поиск вдоль направления назад</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">10.2.3. Сильный поиск вдоль направления</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Степан Захаров и Василий Писарев
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
     </div>
+  </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
 
-
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
