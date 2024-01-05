@@ -65,6 +65,7 @@ parts:
     - file: autodiff/compgraph
     - file: autodiff/forwardmode
     - file: autodiff/backwardmode
+    - file: autodiff/oja_problem
     - file: autodiff/ex
   - file: ode/index
     sections:
