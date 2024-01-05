@@ -65,6 +65,8 @@ sphinx:
             "const" : "\\text{const}"
             "diag" : "\\text{diag}"
             "diff" : "\\mathrm{d}"
+            "dual" : "\\varepsilon"
+            "dualset" : "\\mathbb{D}"
             "float" : "\\text{float}"
             "floatset" : "\\mathbb{F}"
             "integer" : "\\mathbb{Z}"
