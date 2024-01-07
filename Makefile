@@ -10,12 +10,17 @@ DOCKER_CONTAINER_PORT = 80
 
 # Путь до исходных файлов книги в контейнере.
 CONTAINER_BOOK_PATH = /root/book/
+# Путь до html файлов книги в контейнере.
+CONTAINER_HTML_PATH = $(CONTAINER_BOOK_PATH)/_build/html/
+
 
 html:
 	docker exec -t $(DOCKER_CONTAINER_NAME) jupyter-book build book
+	docker exec -t $(DOCKER_CONTAINER_NAME) bash -c 'python3 $(CONTAINER_BOOK_PATH)/gensitemap.py > $(CONTAINER_HTML_PATH)/sitemap.xml'
 
 html-all:
 	docker exec -t $(DOCKER_CONTAINER_NAME) jupyter-book build --all book
+	docker exec -t $(DOCKER_CONTAINER_NAME) bash -c 'python3 $(CONTAINER_BOOK_PATH)/gensitemap.py > $(CONTAINER_HTML_PATH)/sitemap.xml'
 
 html-clean:
 	@echo 'Очищаю артефакты html, без jupyter-book кэша'
@@ -53,7 +58,7 @@ docker-container-inspect:
 
 local-server:
 	@echo 'Создаю локальный сервер в контейнере для просмотра книги'
-	docker exec -d $(DOCKER_CONTAINER_NAME) python3 -m http.server --directory $(CONTAINER_BOOK_PATH)/_build/html/ $(DOCKER_CONTAINER_PORT)
+	docker exec -d $(DOCKER_CONTAINER_NAME) python3 -m http.server --directory $(CONTAINER_HTML_PATH) $(DOCKER_CONTAINER_PORT)
 	@echo "Сервер с книгой должен быть доступен по адресу http://localhost:$(DOCKER_LOCAL_PORT)"
 
 help:
