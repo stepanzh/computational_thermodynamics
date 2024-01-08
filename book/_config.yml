@@ -3,6 +3,7 @@
 
 title: Практикум по вычислительной теплофизике
 author: Степан Захаров и Василий Писарев
+copyright: "2024"
 
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
