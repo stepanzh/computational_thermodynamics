@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="ru" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -60,6 +60,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -71,12 +72,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'julia/types_methods_dispatch';</script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
     <link rel="next" title="1.8. Массивы и broadcast" href="arrays.html" />
     <link rel="prev" title="1.6. Функции" href="functions.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="ru"/>
   </head>
   
   
@@ -84,7 +85,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#main-content">Перейти к основному содержанию</a>
   
   <div id="pst-scroll-pixel-helper"></div>
 
@@ -334,7 +335,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/stepanzh/computational_thermodynamics" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
+   title="Исходный репозиторий"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -368,7 +369,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fjulia/types_methods_dispatch.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
+   title="Открыть вопрос"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -389,7 +390,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Загрузите эту страницу">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -398,7 +399,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/julia/types_methods_dispatch.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="Скачать исходный файл"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -416,7 +417,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="Распечатать в PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -436,7 +437,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="Полноэкранный режим"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -451,7 +452,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="светлая/темная" aria-label="светлая/темная" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
@@ -462,7 +463,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Поиск" aria-label="Поиск" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -486,7 +487,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contents </h2>
+                <h2> Содержание </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -617,7 +618,7 @@ document.write(`
 У значения такого типа известна структура в памяти.
 <strong>Абстрактные</strong> типы нужны в качестве промежуточных узлов дерева типов, выстраивая иерархию.</p>
 <div class="dropdown admonition note">
-<p class="admonition-title">Note</p>
+<p class="admonition-title">Примечание</p>
 <p>Кроме того, объявление неабстрактного параметрического типа <code class="docutils literal notranslate"><span class="pre">T1{T2}</span></code>  создаёт <strong>UnionAll</strong> тип <code class="docutils literal notranslate"><span class="pre">T1</span></code>. Последний ведёт себя как супертип (родительский) для параметризованных потомков.</p>
 <p>Например, <code class="docutils literal notranslate"><span class="pre">Rational{T}</span></code> порождает UnionAll <code class="docutils literal notranslate"><span class="pre">Rational</span></code>, и <code class="docutils literal notranslate"><span class="pre">Rational</span></code> будет супертипом для всех <code class="docutils literal notranslate"><span class="pre">Rational{T}</span></code>: <code class="docutils literal notranslate"><span class="pre">Rational{Int64}</span></code>, <code class="docutils literal notranslate"><span class="pre">Rational{Int8}</span></code>…</p>
 <p>В дереве ниже <code class="docutils literal notranslate"><span class="pre">UnionAll</span></code> типы помещены в параллелограммы.</p>
@@ -652,14 +653,14 @@ document.write(`
 <p class="sidebar-title"></p>
 <p>С точки зрения дерева, можно ли из <code class="docutils literal notranslate"><span class="pre">Ty</span></code> добраться до <code class="docutils literal notranslate"><span class="pre">Tx</span></code>.</p>
 </aside>
-<p>Также с помощью subtype-оператора <code class="docutils literal notranslate"><span class="pre">Tx</span> <span class="pre">&lt;:</span> <span class="pre">Ty</span></code> можно проверять “является ли тип <code class="docutils literal notranslate"><span class="pre">Tx</span></code> подтипом типа <code class="docutils literal notranslate"><span class="pre">Ty</span></code>”.</p>
+<p>Также с помощью subtype-оператора <code class="docutils literal notranslate"><span class="pre">Tx</span> <span class="pre">&lt;:</span> <span class="pre">Ty</span></code> можно проверять «является ли тип <code class="docutils literal notranslate"><span class="pre">Tx</span></code> подтипом типа <code class="docutils literal notranslate"><span class="pre">Ty</span></code>».</p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="kt">Int64</span><span class="w"> </span><span class="o">&lt;:</span><span class="w"> </span><span class="kt">Number</span>
 <span class="go">true</span>
 </pre></div>
 </div>
 <p><strong>Примитивные</strong> типы представляются в виде набора бит. Примерами являются <code class="docutils literal notranslate"><span class="pre">Int</span></code>-ы и <code class="docutils literal notranslate"><span class="pre">Float</span></code>-ы.</p>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
+<p class="admonition-title">Примечание</p>
 <p>Создание собственных абстрактных и примитивных типов здесь не разбирается.</p>
 </div>
 </section>
@@ -802,7 +803,7 @@ document.write(`
 Поэтому можно создать эффективный код для функции <code class="docutils literal notranslate"><span class="pre">dist</span></code> при вызове от <code class="docutils literal notranslate"><span class="pre">TPoint{Float64}</span></code>, ведь известно, что <code class="docutils literal notranslate"><span class="pre">p.x</span></code> и <code class="docutils literal notranslate"><span class="pre">p.y</span></code> это <code class="docutils literal notranslate"><span class="pre">Float64</span></code> числа, а для них определены операции возведения в степень, сложение и извлечение корня.
 А вызывая <code class="docutils literal notranslate"><span class="pre">dist</span></code> от <code class="docutils literal notranslate"><span class="pre">TPoint{Float64}</span></code> в дальнейшем, можно сразу пользоваться скомпилированной версией.</p>
 <div class="dropdown admonition tip">
-<p class="admonition-title">Tip</p>
+<p class="admonition-title">Совет</p>
 <p>Поисследовать, может ли компилятор предугадать типы в теле вызова можно с помощью макроса <code class="docutils literal notranslate"><span class="pre">&#64;code_warntype</span></code></p>
 <div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="nd">@code_warntype</span><span class="w"> </span><span class="n">dist</span><span class="p">(</span><span class="n">APoint</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">))</span>
 <span class="go">Variables</span>
@@ -974,18 +975,18 @@ document.write(`
 <div class="prev-next-area">
     <a class="left-prev"
        href="functions.html"
-       title="previous page">
+       title="предыдущая страница">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-subtitle">назад</p>
         <p class="prev-next-title"><span class="section-number">1.6. </span>Функции</p>
       </div>
     </a>
     <a class="right-next"
        href="arrays.html"
-       title="next page">
+       title="следующая страница">
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">вперёд</p>
         <p class="prev-next-title"><span class="section-number">1.8. </span>Массивы и broadcast</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
@@ -1001,7 +1002,7 @@ document.write(`
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+    <i class="fa-solid fa-list"></i> Содержание
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -1031,7 +1032,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By Степан Захаров и Василий Писарев
+По Степан Захаров и Василий Писарев
 </p>
 
   </div>
@@ -1041,7 +1042,7 @@ By Степан Захаров и Василий Писарев
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Копирайт 2024.
       <br/>
     
   </p>

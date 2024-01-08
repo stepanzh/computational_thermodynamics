@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="ru" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -60,6 +60,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -71,12 +72,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "dual": "\\varepsilon", "dualset": "\\mathbb{D}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'interpolation/cubic_spline';</script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
     <link rel="next" title="4.4. Задания" href="ex.html" />
     <link rel="prev" title="4.2. Кусочно-линейная интерполяция" href="pwlinear.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="ru"/>
   </head>
   
   
@@ -84,7 +85,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#main-content">Перейти к основному содержанию</a>
   
   <div id="pst-scroll-pixel-helper"></div>
 
@@ -334,7 +335,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/stepanzh/computational_thermodynamics" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
+   title="Исходный репозиторий"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -368,7 +369,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Finterpolation/cubic_spline.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
+   title="Открыть вопрос"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -389,7 +390,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Загрузите эту страницу">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -398,7 +399,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/interpolation/cubic_spline.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="Скачать исходный файл"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -416,7 +417,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="Распечатать в PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -436,7 +437,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="Полноэкранный режим"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -451,7 +452,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="светлая/темная" aria-label="светлая/темная" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
@@ -462,7 +463,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Поиск" aria-label="Поиск" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -486,7 +487,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contents </h2>
+                <h2> Содержание </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -519,7 +520,7 @@ document.write(`
 <p><strong>Кубический сплайн</strong> <span class="math notranslate nohighlight">\(S(x)\)</span> это кусочно-кубическая функция, при этом дважды непрерывно-дифференцируемая на всём интервале интерполяции.</p>
 </div></div><p>Допустим, задана <span class="math notranslate nohighlight">\(n+1\)</span> абсцисса <span class="math notranslate nohighlight">\(t_0 &lt; t_1 &lt; ... &lt; t_n\)</span> с соответствующими значениями <span class="math notranslate nohighlight">\(y_0, y_1, ..., y_n\)</span>. На каждом из <span class="math notranslate nohighlight">\(n\)</span> отрезков <span class="math notranslate nohighlight">\([t_{k-1}, t_k]\)</span> сплайн <span class="math notranslate nohighlight">\(S_k(x)\)</span> имеет вид</p>
 <div class="math notranslate nohighlight" id="equation-spline">
-<span class="eqno">(4.9)<a class="headerlink" href="#equation-spline" title="Permalink to this equation">#</a></span>\[S_k(x) = a_k + (x-t_{k-1})b_k + (x-t_{k-1})^2 c_k + (x-t_{k-1})^3 d_k, \quad k = 1,...,n.\]</div>
+<span class="eqno">(4.9)<a class="headerlink" href="#equation-spline" title="Ссылка на это уравнение">#</a></span>\[S_k(x) = a_k + (x-t_{k-1})b_k + (x-t_{k-1})^2 c_k + (x-t_{k-1})^3 d_k, \quad k = 1,...,n.\]</div>
 <p>Таким образом, для построения сплайна необходимо знать <span class="math notranslate nohighlight">\(4n\)</span> коэффициентов <span class="math notranslate nohighlight">\(a_k\)</span>, <span class="math notranslate nohighlight">\(b_k\)</span>, <span class="math notranslate nohighlight">\(c_k\)</span> и <span class="math notranslate nohighlight">\(d_k\)</span>.</p>
 <p>Из <a class="reference internal" href="#definition-cubicspline"><span class="std std-numref">Определения 4.19</span></a> сплайна можно составить систему уравнений из условий на</p>
 <ol class="arabic simple">
@@ -537,7 +538,7 @@ document.write(`
 \[a_k = y_{k-1}, \quad k = 1, ..., n.\]</div>
 <p>Матричный вид этого условия</p>
 <div class="math notranslate nohighlight" id="equation-spline-nodes-a">
-<span class="eqno">(4.10)<a class="headerlink" href="#equation-spline-nodes-a" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{bmatrix}
+<span class="eqno">(4.10)<a class="headerlink" href="#equation-spline-nodes-a" title="Ссылка на это уравнение">#</a></span>\[\begin{split}\begin{bmatrix}
 \mathbf{I} &amp; \mathbf{0} &amp; \mathbf{0} &amp; \mathbf{0}
 \end{bmatrix}
 \begin{bmatrix}
@@ -553,7 +554,7 @@ y_0 \\ y_1 \\ \vdots \\ y_{n-1}
 \[a_k + h_k b_k + h^2_k c_k + h^3_k d_k = y_k,\quad h_k = t_k - t_{k-1},\: k=1,...,n.\]</div>
 <p>В матричном виде</p>
 <div class="math notranslate nohighlight" id="equation-spline-nodes-b">
-<span class="eqno">(4.11)<a class="headerlink" href="#equation-spline-nodes-b" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{bmatrix}
+<span class="eqno">(4.11)<a class="headerlink" href="#equation-spline-nodes-b" title="Ссылка на это уравнение">#</a></span>\[\begin{split}\begin{bmatrix}
 \mathbf{I} &amp; \mathbf{H} &amp; \mathbf{H}^2 &amp; \mathbf{H}^3
 \end{bmatrix}
 \begin{bmatrix}
@@ -583,9 +584,9 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_n \\ c_1 \\ \vdots \\ c_{n-1} \\ 
 \end{bmatrix}
 =
 \mathbf{0}_{(n-1)\times 1}\end{split}\]</div>
-<p>Блоки в этой матрице имеют по <span class="math notranslate nohighlight">\(n-1\)</span> строк, второй блок имеет <span class="math notranslate nohighlight">\(n\)</span> столбцов, а остальные <span class="math notranslate nohighlight">\(n-1\)</span> столбцов. В векторе неизвестных отстутствуют <span class="math notranslate nohighlight">\(a_n\)</span>, <span class="math notranslate nohighlight">\(c_n\)</span> и <span class="math notranslate nohighlight">\(d_n\)</span>. Чтобы встроить эту систему в общую, мы формально увеличим матрицы до размера <span class="math notranslate nohighlight">\(n\times n\)</span>, а вектор неизвестных до <span class="math notranslate nohighlight">\(4n\)</span>. Чтобы получить эквивалентную систему, нужно будет только “удалить” <span class="math notranslate nohighlight">\(n\)</span>-ую строку</p>
+<p>Блоки в этой матрице имеют по <span class="math notranslate nohighlight">\(n-1\)</span> строк, второй блок имеет <span class="math notranslate nohighlight">\(n\)</span> столбцов, а остальные <span class="math notranslate nohighlight">\(n-1\)</span> столбцов. В векторе неизвестных отстутствуют <span class="math notranslate nohighlight">\(a_n\)</span>, <span class="math notranslate nohighlight">\(c_n\)</span> и <span class="math notranslate nohighlight">\(d_n\)</span>. Чтобы встроить эту систему в общую, мы формально увеличим матрицы до размера <span class="math notranslate nohighlight">\(n\times n\)</span>, а вектор неизвестных до <span class="math notranslate nohighlight">\(4n\)</span>. Чтобы получить эквивалентную систему, нужно будет только «удалить» <span class="math notranslate nohighlight">\(n\)</span>-ую строку</p>
 <div class="math notranslate nohighlight" id="equation-spline-deriv">
-<span class="eqno">(4.12)<a class="headerlink" href="#equation-spline-deriv" title="Permalink to this equation">#</a></span>\[\begin{split}\mathbf{E}
+<span class="eqno">(4.12)<a class="headerlink" href="#equation-spline-deriv" title="Ссылка на это уравнение">#</a></span>\[\begin{split}\mathbf{E}
 \begin{bmatrix}
 \mathbf{0} &amp; \mathbf{J} &amp; 2 \mathbf{H} &amp; 3 \mathbf{H}^2
 \end{bmatrix}
@@ -594,7 +595,7 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_n \\ c_1 \\ \vdots \\ c_{n-1} \\ 
 \end{bmatrix}
 =
 \mathbf{0}_{(n-1)\times 1},\end{split}\]</div>
-<p>здесь блочные матрицы уже размера <span class="math notranslate nohighlight">\(n\times n\)</span>, а матрица <span class="math notranslate nohighlight">\(\mathbf{E}\)</span> “удаляет” последнюю строку произведения <span class="math notranslate nohighlight">\([\mathbf{0}\:\mathbf{J}\:2\mathbf{H}\:3 \mathbf{H}^2][\mathbf{a}^\top\:\mathbf{b}^\top\:\mathbf{c}^\top\:\mathbf{d}^\top]^\top\)</span>. Матрица <span class="math notranslate nohighlight">\(\mathbf{E}\)</span> имеет размер <span class="math notranslate nohighlight">\((n-1)\times n\)</span> и выглядит как единичная без последней строки</p>
+<p>здесь блочные матрицы уже размера <span class="math notranslate nohighlight">\(n\times n\)</span>, а матрица <span class="math notranslate nohighlight">\(\mathbf{E}\)</span> «удаляет» последнюю строку произведения <span class="math notranslate nohighlight">\([\mathbf{0}\:\mathbf{J}\:2\mathbf{H}\:3 \mathbf{H}^2][\mathbf{a}^\top\:\mathbf{b}^\top\:\mathbf{c}^\top\:\mathbf{d}^\top]^\top\)</span>. Матрица <span class="math notranslate nohighlight">\(\mathbf{E}\)</span> имеет размер <span class="math notranslate nohighlight">\((n-1)\times n\)</span> и выглядит как единичная без последней строки</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\mathbf{E}_{(n-1)\times n} =
 \begin{bmatrix}
@@ -619,7 +620,7 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_n \\ c_1 \\ \vdots \\ c_{n-1} \\ 
 \[2 c_k  + 6h_k d_k = 2 c_{k+1},\quad k=1,...,n-1.\]</div>
 <p>Матричный вид системы</p>
 <div class="math notranslate nohighlight" id="equation-spline-dderiv">
-<span class="eqno">(4.13)<a class="headerlink" href="#equation-spline-dderiv" title="Permalink to this equation">#</a></span>\[\mathbf{E}
+<span class="eqno">(4.13)<a class="headerlink" href="#equation-spline-dderiv" title="Ссылка на это уравнение">#</a></span>\[\mathbf{E}
 \begin{bmatrix}
 \mathbf{0} &amp; \mathbf{0} &amp; \mathbf{J} &amp; 3 \mathbf{H}
 \end{bmatrix}
@@ -634,7 +635,7 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_n \\ c_1 \\ \vdots \\ c_{n-1} \\ 
 \[S'''_1(t_1) = S_2'''(t_1),\quad S'''_{n-1}(t_{n-1}) = S'''_n(t_{n-1}).\]</div>
 <p>Что приводит к уравнениям</p>
 <div class="math notranslate nohighlight" id="equation-spline-edge">
-<span class="eqno">(4.14)<a class="headerlink" href="#equation-spline-edge" title="Permalink to this equation">#</a></span>\[d_1 = d_2, \quad d_{n-1} = d_n.\]</div>
+<span class="eqno">(4.14)<a class="headerlink" href="#equation-spline-edge" title="Ссылка на это уравнение">#</a></span>\[d_1 = d_2, \quad d_{n-1} = d_n.\]</div>
 <p>Которым можно сопоставить соответствующие строки, и встроить их в уже существующую систему.</p>
 <p>Итак, уравнения <a class="reference internal" href="#equation-spline-nodes-a">(4.10)</a>, <a class="reference internal" href="#equation-spline-nodes-b">(4.11)</a>, <a class="reference internal" href="#equation-spline-deriv">(4.12)</a>, <a class="reference internal" href="#equation-spline-dderiv">(4.13)</a> и <a class="reference internal" href="#equation-spline-edge">(4.14)</a> формируют систему для <span class="math notranslate nohighlight">\(4n\)</span> неизвестных, с квадратной матрицей размера <span class="math notranslate nohighlight">\((4n) \times (4n)\)</span>. В отличие от кусочно-линейной интерполяции, интерполяция сплайнами требует решения линейной системы. Оказывается, для сплайнов всё-таки можно найти базис, но он не будет обладать свойством <a class="reference internal" href="pwlinear.html#equation-cardinality">(4.8)</a>.</p>
 </section>
@@ -1026,18 +1027,18 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_n \\ c_1 \\ \vdots \\ c_{n-1} \\ 
 <div class="prev-next-area">
     <a class="left-prev"
        href="pwlinear.html"
-       title="previous page">
+       title="предыдущая страница">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-subtitle">назад</p>
         <p class="prev-next-title"><span class="section-number">4.2. </span>Кусочно-линейная интерполяция</p>
       </div>
     </a>
     <a class="right-next"
        href="ex.html"
-       title="next page">
+       title="следующая страница">
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">вперёд</p>
         <p class="prev-next-title"><span class="section-number">4.4. </span>Задания</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
@@ -1053,7 +1054,7 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_n \\ c_1 \\ \vdots \\ c_{n-1} \\ 
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+    <i class="fa-solid fa-list"></i> Содержание
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -1075,7 +1076,7 @@ a_1 \\ \vdots \\ a_{n-1} \\ b_1 \\ \vdots \\ b_n \\ c_1 \\ \vdots \\ c_{n-1} \\ 
   <div class="footer-item">
     
 <p class="component-author">
-By Степан Захаров и Василий Писарев
+По Степан Захаров и Василий Писарев
 </p>
 
   </div>
@@ -1085,7 +1086,7 @@ By Степан Захаров и Василий Писарев
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Копирайт 2024.
       <br/>
     
   </p>

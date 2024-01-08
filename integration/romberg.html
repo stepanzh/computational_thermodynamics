@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="ru" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -60,6 +60,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -71,12 +72,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "dual": "\\varepsilon", "dualset": "\\mathbb{D}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'integration/romberg';</script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
     <link rel="next" title="5.3. Формулы Гаусса" href="gauss.html" />
     <link rel="prev" title="5.1. Формулы Ньютона-Котса" href="newton_cotes.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="ru"/>
   </head>
   
   
@@ -84,7 +85,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#main-content">Перейти к основному содержанию</a>
   
   <div id="pst-scroll-pixel-helper"></div>
 
@@ -334,7 +335,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/stepanzh/computational_thermodynamics" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
+   title="Исходный репозиторий"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -368,7 +369,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fintegration/romberg.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
+   title="Открыть вопрос"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -389,7 +390,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Загрузите эту страницу">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -398,7 +399,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/integration/romberg.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="Скачать исходный файл"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -416,7 +417,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="Распечатать в PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -436,7 +437,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="Полноэкранный режим"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -451,7 +452,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="светлая/темная" aria-label="светлая/темная" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
@@ -462,7 +463,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Поиск" aria-label="Поиск" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -486,7 +487,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contents </h2>
+                <h2> Содержание </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -512,25 +513,25 @@ document.write(`
 <p>Частный случай этого метода мы рассматривали при выводе <a class="reference internal" href="newton_cotes.html#sec-quadrature-simpson"><span class="std std-ref">Формулы Симпсона</span></a>.</p>
 <p><span id="id3">[<a class="reference internal" href="../appendix/bibliography.html#id27" title="А. А. Самарский and А. В. Гулин. Численные методы: учеб. пособие для вузов. Наука, Москва, 1989. ISBN 978-5020139961.">89</a>]</span> Рассмотрим вычисление интеграла <span class="math notranslate nohighlight">\(I_h\)</span> на равномерной сетке с шагом <span class="math notranslate nohighlight">\(h\)</span>. На каждом интервале отрезка применяется одна и та же квадратурная формула. Для некоторых формул (например, для формулы трапеций) удаётся получить вид погрешности <span class="math notranslate nohighlight">\(I - I_h\)</span>. Предположим, что это разложение выглядит так</p>
 <div class="math notranslate nohighlight" id="equation-richardson-int">
-<span class="eqno">(5.10)<a class="headerlink" href="#equation-richardson-int" title="Permalink to this equation">#</a></span>\[I_h = I + a_1 h^{\alpha_1} + a_2 h^{\alpha_2} + ... + a_m h^{\alpha_m} + O(h^{\alpha_{m+1}}).\]</div>
+<span class="eqno">(5.10)<a class="headerlink" href="#equation-richardson-int" title="Ссылка на это уравнение">#</a></span>\[I_h = I + a_1 h^{\alpha_1} + a_2 h^{\alpha_2} + ... + a_m h^{\alpha_m} + O(h^{\alpha_{m+1}}).\]</div>
 <p>Здесь <span class="math notranslate nohighlight">\(0 &lt; \alpha_1 &lt; \alpha_2 &lt; ... &lt; \alpha_m\)</span> – степени разложения, а <span class="math notranslate nohighlight">\(a_i\)</span> его ненулевые коэффициенты.</p>
 <p>Теперь рассмотрим <a class="reference internal" href="#equation-richardson-int">(5.10)</a> на последовательности сеток с шагами <span class="math notranslate nohighlight">\(h_0 = h\)</span>, <span class="math notranslate nohighlight">\(h_1 = qh\)</span>, <span class="math notranslate nohighlight">\(h_2 = q^2 h\)</span>, …, <span class="math notranslate nohighlight">\(h_k = q^k h\)</span>, <span class="math notranslate nohighlight">\(k=0,...,m\)</span>, <span class="math notranslate nohighlight">\(0 &lt; q &lt; 1\)</span>. Тогда, согласно <a class="reference internal" href="#equation-richardson-int">(5.10)</a>, запишем</p>
 <div class="math notranslate nohighlight" id="equation-richardson-decompose">
-<span class="eqno">(5.11)<a class="headerlink" href="#equation-richardson-decompose" title="Permalink to this equation">#</a></span>\[I_{h_k} = I + a_1 h_k^{\alpha_1} + a_2 h_k^{\alpha_2} + ... + a_m h_k^{\alpha_m} + O(h_k^{\alpha_{m+1}}),\quad k=0,...,m.\]</div>
+<span class="eqno">(5.11)<a class="headerlink" href="#equation-richardson-decompose" title="Ссылка на это уравнение">#</a></span>\[I_{h_k} = I + a_1 h_k^{\alpha_1} + a_2 h_k^{\alpha_2} + ... + a_m h_k^{\alpha_m} + O(h_k^{\alpha_{m+1}}),\quad k=0,...,m.\]</div>
 <p>Введём обозначение <span class="math notranslate nohighlight">\(I^{(1)}_{h_k} = I_{h_k}\)</span> и запишем для двух сеток</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}I^{(1)}_{h_{k-1}} = I + a_1 h_{k-1}^{\alpha_1} + O(h^{\alpha_2}_{k-1})\\
 I^{(1)}_{h_k} = I + a_1 h_k^{\alpha_1} + O(h^{\alpha_2}_{k}).\end{split}\]</div>
 <p>Скомбинируем выражения так, чтобы слагаемое при <span class="math notranslate nohighlight">\(a_1\)</span> занулить, получим</p>
 <div class="math notranslate nohighlight" id="equation-richardson-step">
-<span class="eqno">(5.12)<a class="headerlink" href="#equation-richardson-step" title="Permalink to this equation">#</a></span>\[I = I^{(2)}_{h_{k-1}} + O(h^{\alpha_2}_{k-1}),\]</div>
+<span class="eqno">(5.12)<a class="headerlink" href="#equation-richardson-step" title="Ссылка на это уравнение">#</a></span>\[I = I^{(2)}_{h_{k-1}} + O(h^{\alpha_2}_{k-1}),\]</div>
 <p>где</p>
 <div class="math notranslate nohighlight">
 \[I^{(2)}_{h_{k-1}} = \frac{I^{(1)}_{h_k} - q^{\alpha_1}I^{(1)}_{h_{k-1}}}{1 - q^{\alpha_1}}.\]</div>
 <p id="index-0">Таким образом, мы выполнили один шаг <strong>экстраполяции Ричардсона</strong>. Важно отметить, что согласно <a class="reference internal" href="#equation-richardson-step">(5.12)</a> <span class="math notranslate nohighlight">\(I^{(2)}\)</span> приближает <span class="math notranslate nohighlight">\(I\)</span> лучше, чем <span class="math notranslate nohighlight">\(I^{(1)}\)</span>, у которых ошибка порядка <span class="math notranslate nohighlight">\(h^{\alpha_1}\)</span>.</p>
 <p>Процесс экстраполяции можно продолжить, тогда в общем случае получим рекурретное выражение</p>
 <div class="math notranslate nohighlight" id="equation-richardson-general">
-<span class="eqno">(5.13)<a class="headerlink" href="#equation-richardson-general" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{align}
+<span class="eqno">(5.13)<a class="headerlink" href="#equation-richardson-general" title="Ссылка на это уравнение">#</a></span>\[\begin{split}\begin{align}
 I_{h_{k-1}}^{(j+1)} = \frac{I^{(j)}_{h_k} - q^{\alpha_j}I^{(j)}_{h_{k-1}}}{1 - q^{\alpha_j}},\\
 j = 1,..., m, \quad k = 1, 2, ..., m - j + 1, \\
 I_{h_k}^{(1)} = I_{h_k},\quad k =0,1,...,m.
@@ -551,7 +552,7 @@ k --------------
 <span class="target" id="index-1"></span><p id="index-2">Теперь рассмотрим частный случай экстраполяции Ричардсона, <strong>метод Ромберга</strong>.</p>
 <p>Положим в основу экстраполяции <a class="reference internal" href="#equation-richardson-general">(5.13)</a> формулу трапеций <span class="math notranslate nohighlight">\(I_{h_k}^{(1)}=T_f(h_k)\)</span> и будем мельчить сетку вдвое (<span class="math notranslate nohighlight">\(q=0.5\)</span>). Для составной формулы трапеций разложение <a class="reference internal" href="#equation-richardson-decompose">(5.11)</a> содержит только <em>чётные степени</em>, т.е. <span class="math notranslate nohighlight">\(\alpha_j = 2 j\)</span>. Тогда, из <a class="reference internal" href="#equation-richardson-general">(5.13)</a> получим</p>
 <div class="math notranslate nohighlight" id="equation-romberg-method">
-<span class="eqno">(5.14)<a class="headerlink" href="#equation-romberg-method" title="Permalink to this equation">#</a></span>\[I_{h_{k-1}}^{(j+1)} = \frac{4^j I^{(j)}_{h_k} - I^{(j)}_{h_{k-1}}}{4^j - 1}.\]</div>
+<span class="eqno">(5.14)<a class="headerlink" href="#equation-romberg-method" title="Ссылка на это уравнение">#</a></span>\[I_{h_{k-1}}^{(j+1)} = \frac{4^j I^{(j)}_{h_k} - I^{(j)}_{h_{k-1}}}{4^j - 1}.\]</div>
 <p>Прежде чем переходить к реализации, рассмотрим особенность формулы трапеции при измельчении сетки, это позволит избежать перевычислений в <a class="reference internal" href="#equation-romberg-method">(5.14)</a>.</p>
 </section>
 <section id="id4">
@@ -559,20 +560,20 @@ k --------------
 <p>Рассмотрим равномерную сетку <span class="math notranslate nohighlight">\(a = x_0 &lt; x_1 &lt; x_2 &lt; x_3 &lt; x_4 = b\)</span> из <span class="math notranslate nohighlight">\(n=4\)</span> интервалов с шагом <span class="math notranslate nohighlight">\(h_4\)</span> и сетку из <span class="math notranslate nohighlight">\(n=2\)</span> интервалов <span class="math notranslate nohighlight">\(a = x_0 &lt; x_2 &lt; x_4 =b\)</span> с шагом <span class="math notranslate nohighlight">\(2h_4\)</span>.</p>
 <p>На крупной сетке формула трапеций даёт</p>
 <div class="math notranslate nohighlight" id="equation-doubling-tf2">
-<span class="eqno">(5.15)<a class="headerlink" href="#equation-doubling-tf2" title="Permalink to this equation">#</a></span>\[T_f(n=2) = 2h_4 \Big[0.5 \big(f(x_0) + f(x_4)\big) + f(x_2)\Big].\]</div>
+<span class="eqno">(5.15)<a class="headerlink" href="#equation-doubling-tf2" title="Ссылка на это уравнение">#</a></span>\[T_f(n=2) = 2h_4 \Big[0.5 \big(f(x_0) + f(x_4)\big) + f(x_2)\Big].\]</div>
 <p>А на сетке вдвое мельче</p>
 <div class="math notranslate nohighlight" id="equation-doubling-tf4">
-<span class="eqno">(5.16)<a class="headerlink" href="#equation-doubling-tf4" title="Permalink to this equation">#</a></span>\[T_f(n=4) = h_4 \Big[ 0.5 \big(f(x_0) + f(x_4)\big) + f(x_1) + f(x_2) + f(x_3) \Big].\]</div>
+<span class="eqno">(5.16)<a class="headerlink" href="#equation-doubling-tf4" title="Ссылка на это уравнение">#</a></span>\[T_f(n=4) = h_4 \Big[ 0.5 \big(f(x_0) + f(x_4)\big) + f(x_1) + f(x_2) + f(x_3) \Big].\]</div>
 <p>Сравнивая <a class="reference internal" href="#equation-doubling-tf2">(5.15)</a> и <a class="reference internal" href="#equation-doubling-tf4">(5.16)</a>, обнаруживаем их связь</p>
 <div class="math notranslate nohighlight">
 \[T_f(n=4) = 0.5 T_f(n=2) + h_4 \big(f(x_1) + f(x_3)\big).\]</div>
 <p>Таким образом, мы в частном случае получили, что вычислив интеграл на крупной сетке, мы можем вычислить его на сетке вдвое мельче, используя только значения в <em>новых узлах</em> (<span class="math notranslate nohighlight">\(x_1\)</span>, <span class="math notranslate nohighlight">\(x_3\)</span>).</p>
 <p>Это верно и в общем случае</p>
 <div class="math notranslate nohighlight" id="equation-trapezoid-2x">
-<span class="eqno">(5.17)<a class="headerlink" href="#equation-trapezoid-2x" title="Permalink to this equation">#</a></span>\[T_f(2n) = 0.5 T_f(n) + h_{2n} \sum_{i=1}^n f(x_{2i-1}), \quad h_{2n} = \frac{b-a}{2n},\quad x_{2i-1} = a + h_{2n} (2i-1).\]</div>
+<span class="eqno">(5.17)<a class="headerlink" href="#equation-trapezoid-2x" title="Ссылка на это уравнение">#</a></span>\[T_f(2n) = 0.5 T_f(n) + h_{2n} \sum_{i=1}^n f(x_{2i-1}), \quad h_{2n} = \frac{b-a}{2n},\quad x_{2i-1} = a + h_{2n} (2i-1).\]</div>
 <p>Данная формула позволяет вычислить интеграл с заданной точностью. Под точностью здесь понимается разница между новой аппроксимацией и старой</p>
 <div class="math notranslate nohighlight" id="equation-doubling-tol">
-<span class="eqno">(5.18)<a class="headerlink" href="#equation-doubling-tol" title="Permalink to this equation">#</a></span>\[|T_f(2n) - T_f(n)| &lt; \text{tol}.\]</div>
+<span class="eqno">(5.18)<a class="headerlink" href="#equation-doubling-tol" title="Ссылка на это уравнение">#</a></span>\[|T_f(2n) - T_f(n)| &lt; \text{tol}.\]</div>
 <p>Например, при <span class="math notranslate nohighlight">\(\text{tol} = 10^{-6}\)</span> мы можем добиться точности до 6 знаков после запятой. Конечно, ошибки округления и обусловленность задачи никуда не делись.</p>
 <p>Также отметим, что выражение <a class="reference internal" href="#equation-doubling-tol">(5.18)</a> является абсолютной, а не относительной точностью.</p>
 <p>Реализация может быть такой</p>
@@ -733,7 +734,7 @@ k --------------
 <span class="go"> Memory estimate: 0 bytes, allocs estimate: 0.</span>
 </pre></div>
 </div>
-<p>Значит, <code class="docutils literal notranslate"><span class="pre">romberg</span></code> только на вычислениях функции “сэкономил” примерно 3800 × 14 нс ≈ 53 мкс, что составляет около 40% времени вычисления <code class="docutils literal notranslate"><span class="pre">trapezoid_tol</span></code>.</p>
+<p>Значит, <code class="docutils literal notranslate"><span class="pre">romberg</span></code> только на вычислениях функции «сэкономил» примерно 3800 × 14 нс ≈ 53 мкс, что составляет около 40% времени вычисления <code class="docutils literal notranslate"><span class="pre">trapezoid_tol</span></code>.</p>
 </div></div></section>
 </section>
 
@@ -769,18 +770,18 @@ k --------------
 <div class="prev-next-area">
     <a class="left-prev"
        href="newton_cotes.html"
-       title="previous page">
+       title="предыдущая страница">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-subtitle">назад</p>
         <p class="prev-next-title"><span class="section-number">5.1. </span>Формулы Ньютона-Котса</p>
       </div>
     </a>
     <a class="right-next"
        href="gauss.html"
-       title="next page">
+       title="следующая страница">
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">вперёд</p>
         <p class="prev-next-title"><span class="section-number">5.3. </span>Формулы Гаусса</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
@@ -796,7 +797,7 @@ k --------------
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+    <i class="fa-solid fa-list"></i> Содержание
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -817,7 +818,7 @@ k --------------
   <div class="footer-item">
     
 <p class="component-author">
-By Степан Захаров и Василий Писарев
+По Степан Захаров и Василий Писарев
 </p>
 
   </div>
@@ -827,7 +828,7 @@ By Степан Захаров и Василий Писарев
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Копирайт 2024.
       <br/>
     
   </p>

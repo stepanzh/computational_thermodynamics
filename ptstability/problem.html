@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="ru" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -60,6 +60,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -71,12 +72,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "dual": "\\varepsilon", "dualset": "\\mathbb{D}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ptstability/problem';</script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
     <link rel="next" title="Уравнение состояния ван дер Ваальса" href="vanderwaals.html" />
     <link rel="prev" title="PT стабильность" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="ru"/>
   </head>
   
   
@@ -84,7 +85,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#main-content">Перейти к основному содержанию</a>
   
   <div id="pst-scroll-pixel-helper"></div>
 
@@ -334,7 +335,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/stepanzh/computational_thermodynamics" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
+   title="Исходный репозиторий"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -368,7 +369,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fptstability/problem.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
+   title="Открыть вопрос"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -389,7 +390,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Загрузите эту страницу">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -398,7 +399,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/ptstability/problem.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="Скачать исходный файл"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -416,7 +417,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="Распечатать в PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -436,7 +437,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="Полноэкранный режим"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -451,7 +452,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="светлая/темная" aria-label="светлая/темная" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
@@ -462,7 +463,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Поиск" aria-label="Поиск" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -486,7 +487,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contents </h2>
+                <h2> Содержание </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -520,7 +521,7 @@ document.write(`
 <p>В дальнейшем зависимость от давления <span class="math notranslate nohighlight">\(P\)</span> и температуры <span class="math notranslate nohighlight">\(T\)</span> писать не будем – это параметры задачи.</p>
 <p>Теперь предположим, что часть вещества <span class="math notranslate nohighlight">\(\boldsymbol{\varepsilon}\)</span> исходной системы образует вторую фазу. Тогда разница энергий двухфазного и однофазного состояний будет</p>
 <div class="math notranslate nohighlight" id="equation-ptstab-gibbs-delta">
-<span class="eqno">(1)<a class="headerlink" href="#equation-ptstab-gibbs-delta" title="Permalink to this equation">#</a></span>\[\Delta G = G(\boldsymbol{N} - \boldsymbol{\varepsilon}) + G(\boldsymbol{\varepsilon}) - G(\boldsymbol{N})\]</div>
+<span class="eqno">(1)<a class="headerlink" href="#equation-ptstab-gibbs-delta" title="Ссылка на это уравнение">#</a></span>\[\Delta G = G(\boldsymbol{N} - \boldsymbol{\varepsilon}) + G(\boldsymbol{\varepsilon}) - G(\boldsymbol{N})\]</div>
 <p>Если получится найти такое количество вещества <span class="math notranslate nohighlight">\(\boldsymbol{\varepsilon}\)</span>, что <span class="math notranslate nohighlight">\(\Delta G &lt; 0\)</span>, то двухфазное состояние имеет меньшую энергию, а однофазное состояние – нестабильно. Для этого, можно, например, найти глобальный минимум <span class="math notranslate nohighlight">\(\Delta G\)</span> и посмотреть его знак. Однако, распространён следующий метод.</p>
 <p>Будем считать, что общее количество вещества во второй фазе <span class="math notranslate nohighlight">\(\|\boldsymbol{\varepsilon}\|\)</span> мало (вторая фаза в зародышевом состоянии, например). Разложим тогда в ряд Тейлора первое слагаемое из уравнения <a class="reference internal" href="#equation-ptstab-gibbs-delta">(1)</a></p>
 <div class="math notranslate nohighlight">
@@ -532,23 +533,23 @@ document.write(`
 = \sum_i \varepsilon_i (\mu_i(\boldsymbol{\varepsilon}) - \mu_i(\boldsymbol{N})).\]</div>
 <p>Избавимся от абсолютных величин, введя общее количество вещества в фазе-зародыше <span class="math notranslate nohighlight">\(\varepsilon = \sum_i \varepsilon_i\)</span></p>
 <div class="math notranslate nohighlight" id="equation-ptstab-gibbs-delta-relative">
-<span class="eqno">(2)<a class="headerlink" href="#equation-ptstab-gibbs-delta-relative" title="Permalink to this equation">#</a></span>\[\Delta G = \varepsilon \sum_i x_i (\mu_i(\boldsymbol{x}) - \mu^0_i),\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-ptstab-gibbs-delta-relative" title="Ссылка на это уравнение">#</a></span>\[\Delta G = \varepsilon \sum_i x_i (\mu_i(\boldsymbol{x}) - \mu^0_i),\]</div>
 <p>здесь <span class="math notranslate nohighlight">\(\boldsymbol{x} \equiv \boldsymbol{\varepsilon} / \varepsilon\)</span> – мольный состав фазы-зародыша, а <span class="math notranslate nohighlight">\(\mu^0_i\)</span> – химпотенциал компонентна в однофазном состоянии.</p>
 <p>Поскольку в <a class="reference internal" href="#equation-ptstab-gibbs-delta-relative">(2)</a> <span class="math notranslate nohighlight">\(\varepsilon &gt; 0\)</span>, получаем критерий стабильности фазы</p>
 <div class="math notranslate nohighlight" id="equation-ptstab-tpd">
-<span class="eqno">(3)<a class="headerlink" href="#equation-ptstab-tpd" title="Permalink to this equation">#</a></span>\[F(\boldsymbol{x}) = \sum_i x_i (\mu_i(\boldsymbol{x}) - \mu^0_i) \ge 0.\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-ptstab-tpd" title="Ссылка на это уравнение">#</a></span>\[F(\boldsymbol{x}) = \sum_i x_i (\mu_i(\boldsymbol{x}) - \mu^0_i) \ge 0.\]</div>
 </section>
 <section id="id5">
 <h2>Математическая постановка<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
 <p>Итак, в общем случае, необходимо перебрать всевозможные составы <span class="math notranslate nohighlight">\(\boldsymbol{x}\)</span> и проверить в каждом из них знак функции <span class="math notranslate nohighlight">\(F(\boldsymbol{x})\)</span> <a class="reference internal" href="#equation-ptstab-tpd">(3)</a>. Конечно, можно поступить и проще, найдя глобальный минимум <span class="math notranslate nohighlight">\(F\)</span>, и посмотреть знак <span class="math notranslate nohighlight">\(F\)</span> в нём. Вместо поиска минимума можно проверить знак <span class="math notranslate nohighlight">\(F\)</span> в стационарных точках <span id="id6">[<a class="reference internal" href="../appendix/bibliography.html#id4" title="L. E. Baker, A. C. Pierce, and K. D. Luks. Gibbs energy analysis of phase equilibria. Society of Petroleum Engineers Journal, 22(5):731–742, 1982. doi:10.2118/9806-PA.">BPL82</a>]</span>.</p>
 <p>Условие стационарности <span class="math notranslate nohighlight">\(\nabla F = \boldsymbol{0}\)</span> с учётом <span class="math notranslate nohighlight">\(\sum_i x_i = 1\)</span> приводит к системе уравнений</p>
 <div class="math notranslate nohighlight" id="equation-ptstab-chempot-stationary-system">
-<span class="eqno">(4)<a class="headerlink" href="#equation-ptstab-chempot-stationary-system" title="Permalink to this equation">#</a></span>\[\mu_i(\boldsymbol{x}) -\mu^0_i = \lambda, \quad i=1,\dots,n\]</div>
+<span class="eqno">(4)<a class="headerlink" href="#equation-ptstab-chempot-stationary-system" title="Ссылка на это уравнение">#</a></span>\[\mu_i(\boldsymbol{x}) -\mu^0_i = \lambda, \quad i=1,\dots,n\]</div>
 <p>где <span class="math notranslate nohighlight">\(\lambda\)</span> – константа. Так, в стационарной точке <span class="math notranslate nohighlight">\(F = \lambda\)</span>.</p>
 <span class="target" id="index-0"></span><span class="target" id="index-1"></span><p id="index-2">Как правило, работают не с самим химпотенциалом, а с <strong>летучестью</strong> (фугитивностью) <span class="math notranslate nohighlight">\(f_i\)</span> или <strong>коэффициентом летучести</strong> <span class="math notranslate nohighlight">\(\varphi_i \equiv f_i / (x_i P)\)</span>.</p>
 <p>По определению, летучесть <span class="math notranslate nohighlight">\(f_i\)</span> связана с химпотенциалом <span class="math notranslate nohighlight">\(\mu_i\)</span> так<a class="footnote-reference brackets" href="#fugacity-introduced" id="id7" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a></p>
 <div class="math notranslate nohighlight" id="equation-fugacity-definition">
-<span class="eqno">(5)<a class="headerlink" href="#equation-fugacity-definition" title="Permalink to this equation">#</a></span>\[\mu_i = \hat{\mu}(T) + R T \ln \bigg( \frac{f_i}{[\text{ед. давления}]} \bigg),\]</div>
+<span class="eqno">(5)<a class="headerlink" href="#equation-fugacity-definition" title="Ссылка на это уравнение">#</a></span>\[\mu_i = \hat{\mu}(T) + R T \ln \bigg( \frac{f_i}{[\text{ед. давления}]} \bigg),\]</div>
 <p>здесь <span class="math notranslate nohighlight">\(\hat{\mu}(T)\)</span> – химический потенциал идеального газа при единичном (референсном) давлении.
 Фактически, это поправка, зависящая только от температуры и не влияющая на утверждения о разности химических потенциалов в изотермических состояниях.
 Поскольку летучесть <span class="math notranslate nohighlight">\(f_i\)</span> имеет размерность давления, под знаком логарифма в знаменателе стоит единица давления для обезразмеривания.
@@ -567,10 +568,10 @@ document.write(`
 <p>здесь введены обозначения <span class="math notranslate nohighlight">\(z_i\)</span> – мольная доля компонента <span class="math notranslate nohighlight">\(i\)</span> в исходной смеси, <span class="math notranslate nohighlight">\(h_i \equiv \ln{z_i} + \ln{\varphi_i(\boldsymbol{z})}\)</span> и <span class="math notranslate nohighlight">\(k \equiv \lambda/ R T\)</span>.</p>
 <p>Последним шагом сведём систему к однородной. Для этого введём замену переменных <span class="math notranslate nohighlight">\(x_i = X_i e^k\)</span>, тогда</p>
 <div class="math notranslate nohighlight" id="equation-ptstab-chempot-stationary-system-final">
-<span class="eqno">(6)<a class="headerlink" href="#equation-ptstab-chempot-stationary-system-final" title="Permalink to this equation">#</a></span>\[\ln{X_i} + \ln{\varphi_i(\boldsymbol{x}(\boldsymbol{X}))} - h_i = 0,\quad i = 1,\dots,n\]</div>
+<span class="eqno">(6)<a class="headerlink" href="#equation-ptstab-chempot-stationary-system-final" title="Ссылка на это уравнение">#</a></span>\[\ln{X_i} + \ln{\varphi_i(\boldsymbol{x}(\boldsymbol{X}))} - h_i = 0,\quad i = 1,\dots,n\]</div>
 <p>Формально, новые переменные <span class="math notranslate nohighlight">\(X_i\)</span> можно считать составами, поскольку</p>
 <div class="math notranslate nohighlight" id="equation-ptstab-new-variables-molfrac-property">
-<span class="eqno">(7)<a class="headerlink" href="#equation-ptstab-new-variables-molfrac-property" title="Permalink to this equation">#</a></span>\[x_i = \frac{X_i}{\sum_i X_i}.\]</div>
+<span class="eqno">(7)<a class="headerlink" href="#equation-ptstab-new-variables-molfrac-property" title="Ссылка на это уравнение">#</a></span>\[x_i = \frac{X_i}{\sum_i X_i}.\]</div>
 <p>Итак, проверку термодинамической стабильности однофазного состояния мы свели к</p>
 <ul class="simple">
 <li><p>нахождению решений системы уравнений <a class="reference internal" href="#equation-ptstab-chempot-stationary-system-final">(6)</a> и</p></li>
@@ -588,7 +589,7 @@ document.write(`
 </aside>
 <aside class="footnote brackets" id="fugacity-introduced" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">3</a><span class="fn-bracket">]</span></span>
-<p>Термодинамическая величина “летучесть” (фугитивность, англ. <em>fugactity</em>) введена Г. Льюисом в 1901 году для сохранения простоты связи между изотермическим изменением химпотенциала и способности вещества переходить из одной системы в другую (физико-химические равновесия).</p>
+<p>Термодинамическая величина «летучесть» (фугитивность, англ. <em>fugactity</em>) введена Г. Льюисом в 1901 году для сохранения простоты связи между изотермическим изменением химпотенциала и способности вещества переходить из одной системы в другую (физико-химические равновесия).</p>
 </aside>
 </section>
 </section>
@@ -625,18 +626,18 @@ document.write(`
 <div class="prev-next-area">
     <a class="left-prev"
        href="index.html"
-       title="previous page">
+       title="предыдущая страница">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-subtitle">назад</p>
         <p class="prev-next-title">PT стабильность</p>
       </div>
     </a>
     <a class="right-next"
        href="vanderwaals.html"
-       title="next page">
+       title="следующая страница">
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">вперёд</p>
         <p class="prev-next-title">Уравнение состояния ван дер Ваальса</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
@@ -652,7 +653,7 @@ document.write(`
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+    <i class="fa-solid fa-list"></i> Содержание
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -672,7 +673,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By Степан Захаров и Василий Писарев
+По Степан Захаров и Василий Писарев
 </p>
 
   </div>
@@ -682,7 +683,7 @@ By Степан Захаров и Василий Писарев
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Копирайт 2024.
       <br/>
     
   </p>

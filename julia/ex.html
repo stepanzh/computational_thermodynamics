@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="ru" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -60,6 +60,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -71,12 +72,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "dual": "\\varepsilon", "dualset": "\\mathbb{D}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'julia/ex';</script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
     <link rel="next" title="2. Введение" href="../intro/index.html" />
     <link rel="prev" title="1.10. Модули и пакеты" href="modules.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="ru"/>
   </head>
   
   
@@ -84,7 +85,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#main-content">Перейти к основному содержанию</a>
   
   <div id="pst-scroll-pixel-helper"></div>
 
@@ -334,7 +335,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/stepanzh/computational_thermodynamics" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
+   title="Исходный репозиторий"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -368,7 +369,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fjulia/ex.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
+   title="Открыть вопрос"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -389,7 +390,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Загрузите эту страницу">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -398,7 +399,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/julia/ex.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="Скачать исходный файл"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -416,7 +417,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="Распечатать в PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -436,7 +437,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="Полноэкранный режим"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -451,7 +452,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="светлая/темная" aria-label="светлая/темная" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
@@ -462,7 +463,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Поиск" aria-label="Поиск" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -486,7 +487,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contents </h2>
+                <h2> Содержание </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -573,7 +574,7 @@ document.write(`
 <li><p>Реализация должна расширять стандартные операторы <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code> и <code class="docutils literal notranslate"><span class="pre">\</span></code>.</p></li>
 </ul>
 <p>У точек должны быть операции скалярного произведения и евклидовой нормы. При этом необходимо перегрузить операции стандартного модуля линейной алгебры: <code class="docutils literal notranslate"><span class="pre">LinearAlgebra.dot(p,</span> <span class="pre">q)</span></code> и <code class="docutils literal notranslate"><span class="pre">LinearAlgebra.norm(p)</span></code>.</p>
-<p>Написать функцию <code class="docutils literal notranslate"><span class="pre">center(points)</span></code>, находящую “центр масс” точек.</p>
+<p>Написать функцию <code class="docutils literal notranslate"><span class="pre">center(points)</span></code>, находящую «центр масс» точек.</p>
 <ul class="simple">
 <li><p>Аргумент <code class="docutils literal notranslate"><span class="pre">points</span></code>: коллекция точек, например, вектор из точек;</p></li>
 <li><p>Возвращаемое значение – точка <code class="docutils literal notranslate"><span class="pre">Point</span></code>;</p></li>
@@ -612,7 +613,7 @@ document.write(`
 </ul>
 </li>
 </ul>
-<p>Написать метод <code class="docutils literal notranslate"><span class="pre">center(points,</span> <span class="pre">area)</span></code> для функции <code class="docutils literal notranslate"><span class="pre">center</span></code>, находящий “центр масс” точек, принадлежащих области</p>
+<p>Написать метод <code class="docutils literal notranslate"><span class="pre">center(points,</span> <span class="pre">area)</span></code> для функции <code class="docutils literal notranslate"><span class="pre">center</span></code>, находящий «центр масс» точек, принадлежащих области</p>
 <ul class="simple">
 <li><p>Аргумент <code class="docutils literal notranslate"><span class="pre">points</span></code>: коллекция точек. Гарантируется, что хотя бы одна из точек принадлежит области <code class="docutils literal notranslate"><span class="pre">area</span></code>;</p></li>
 <li><p>Аргумент <code class="docutils literal notranslate"><span class="pre">area</span></code>: <code class="docutils literal notranslate"><span class="pre">Circle</span></code> или <code class="docutils literal notranslate"><span class="pre">Square</span></code> – область,</p></li>
@@ -667,18 +668,18 @@ document.write(`
 <div class="prev-next-area">
     <a class="left-prev"
        href="modules.html"
-       title="previous page">
+       title="предыдущая страница">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-subtitle">назад</p>
         <p class="prev-next-title"><span class="section-number">1.10. </span>Модули и пакеты</p>
       </div>
     </a>
     <a class="right-next"
        href="../intro/index.html"
-       title="next page">
+       title="следующая страница">
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">вперёд</p>
         <p class="prev-next-title"><span class="section-number">2. </span>Введение</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
@@ -694,7 +695,7 @@ document.write(`
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+    <i class="fa-solid fa-list"></i> Содержание
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -717,7 +718,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By Степан Захаров и Василий Писарев
+По Степан Захаров и Василий Писарев
 </p>
 
   </div>
@@ -727,7 +728,7 @@ By Степан Захаров и Василий Писарев
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Копирайт 2024.
       <br/>
     
   </p>

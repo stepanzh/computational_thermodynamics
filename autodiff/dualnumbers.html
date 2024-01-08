@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="ru" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -60,6 +60,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -71,12 +72,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "dual": "\\varepsilon", "dualset": "\\mathbb{D}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'autodiff/dualnumbers';</script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
     <link rel="next" title="8.3. Граф вычислений" href="compgraph.html" />
     <link rel="prev" title="8.1. Метод комплексного шага" href="complexstep.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="ru"/>
   </head>
   
   
@@ -84,7 +85,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#main-content">Перейти к основному содержанию</a>
   
   <div id="pst-scroll-pixel-helper"></div>
 
@@ -334,7 +335,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/stepanzh/computational_thermodynamics" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
+   title="Исходный репозиторий"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -368,7 +369,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fautodiff/dualnumbers.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
+   title="Открыть вопрос"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -389,7 +390,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Загрузите эту страницу">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -398,7 +399,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/autodiff/dualnumbers.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="Скачать исходный файл"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -416,7 +417,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="Распечатать в PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -436,7 +437,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="Полноэкранный режим"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -451,7 +452,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="светлая/темная" aria-label="светлая/темная" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
@@ -462,7 +463,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Поиск" aria-label="Поиск" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -486,7 +487,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contents </h2>
+                <h2> Содержание </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -555,11 +556,11 @@ document.write(`
     </div><div class="proof-content">
 <p>Сложение, вычитание, произведение и деление дуальных чисел определяются следующим образом.</p>
 <div class="math notranslate nohighlight" id="equation-eq-dual-sumsub">
-<span class="eqno">(8.2)<a class="headerlink" href="#equation-eq-dual-sumsub" title="Permalink to this equation">#</a></span>\[(a + b \dual) \pm (c + d \dual) = (a \pm c) + (b \pm d)\dual.\]</div>
+<span class="eqno">(8.2)<a class="headerlink" href="#equation-eq-dual-sumsub" title="Ссылка на это уравнение">#</a></span>\[(a + b \dual) \pm (c + d \dual) = (a \pm c) + (b \pm d)\dual.\]</div>
 <div class="math notranslate nohighlight" id="equation-eq-dual-mul">
-<span class="eqno">(8.3)<a class="headerlink" href="#equation-eq-dual-mul" title="Permalink to this equation">#</a></span>\[(a + b \dual)(c + d \dual) = ac + (a d + b c)\dual.\]</div>
+<span class="eqno">(8.3)<a class="headerlink" href="#equation-eq-dual-mul" title="Ссылка на это уравнение">#</a></span>\[(a + b \dual)(c + d \dual) = ac + (a d + b c)\dual.\]</div>
 <div class="math notranslate nohighlight" id="equation-eq-dual-div">
-<span class="eqno">(8.4)<a class="headerlink" href="#equation-eq-dual-div" title="Permalink to this equation">#</a></span>\[\frac{a + b\dual}{c + d\dual} = \frac{a}{c} + \frac{bc - ad}{c^2}\dual.\]</div>
+<span class="eqno">(8.4)<a class="headerlink" href="#equation-eq-dual-div" title="Ссылка на это уравнение">#</a></span>\[\frac{a + b\dual}{c + d\dual} = \frac{a}{c} + \frac{bc - ad}{c^2}\dual.\]</div>
 </div></div><section id="id3">
 <h2><span class="section-number">8.2.1. </span>Связь с дифференцированием<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>Попробуем вычислить функцию <span class="math notranslate nohighlight">\(f\)</span> от дуального числа <span class="math notranslate nohighlight">\(a + b\dual{}\)</span>.
@@ -587,7 +588,7 @@ f(a + b\dual) &amp;= \sum_{k=0}^{\infty} \frac{f^{(k)}(a)}{k!} (a + b\dual - a)^
         
     </div><div class="proof-content">
 <div class="math notranslate nohighlight" id="equation-eq-funcofdual">
-<span class="eqno">(8.5)<a class="headerlink" href="#equation-eq-funcofdual" title="Permalink to this equation">#</a></span>\[f(a + b\dual) = f(a) + b f'(a)\dual, \quad a, b \in \real.\]</div>
+<span class="eqno">(8.5)<a class="headerlink" href="#equation-eq-funcofdual" title="Ссылка на это уравнение">#</a></span>\[f(a + b\dual) = f(a) + b f'(a)\dual, \quad a, b \in \real.\]</div>
 </div></div><p>Отметим, что соотношение <a class="reference internal" href="#equation-eq-funcofdual">(8.5)</a> выполняется <em>аналитически</em> точно.</p>
 <div class="proof proof-type-example" id="id9">
 
@@ -619,7 +620,7 @@ f(x) &amp;= 4x^3 + x,
 <li><p>Логарифм</p></li>
 </ul>
 <div class="math notranslate nohighlight" id="equation-eq-example-log">
-<span class="eqno">(8.6)<a class="headerlink" href="#equation-eq-example-log" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{split}
+<span class="eqno">(8.6)<a class="headerlink" href="#equation-eq-example-log" title="Ссылка на это уравнение">#</a></span>\[\begin{split}\begin{split}
 f(x) &amp;= \log x,
 \\ f(3 + 2 \dual) &amp;= [\log x](3) + 2 \times [1/x](3) \times \dual
    = \log 3 + \frac{2}{3} \dual.
@@ -795,7 +796,7 @@ f(a + \dual) \times g(a + \dual) &amp;= (f(a) + f'(a) \dual) \times (g(a) + g'(a
 <p>Есть два способа доопредилить сложение.
 Первый состоит в добавлении метода <code class="docutils literal notranslate"><span class="pre">+(::Int,</span> <span class="pre">::Dual)</span></code> и нам бы его хватило для примера.
 Мы же поступим более общим для языка Julia способом.
-Мы уже знакомы с функцией <code class="docutils literal notranslate"><span class="pre">promote(xs...)</span></code>, которая возвращает значения аргументов, приведённых к “общему” типу.</p>
+Мы уже знакомы с функцией <code class="docutils literal notranslate"><span class="pre">promote(xs...)</span></code>, которая возвращает значения аргументов, приведённых к «общему» типу.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">promote</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2.5</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="o">//</span><span class="mi">3</span><span class="p">)</span>
@@ -819,7 +820,7 @@ f(a + \dual) \times g(a + \dual) &amp;= (f(a) + f'(a) \dual) \times (g(a) + g'(a
 </div>
 <p>Однако, мы ещё не определили правила, по которым приводить <code class="docutils literal notranslate"><span class="pre">Real</span></code>-числа к <code class="docutils literal notranslate"><span class="pre">Dual</span></code>-числам.
 Для этого надо знать, как работает функция <code class="docutils literal notranslate"><span class="pre">promote(x::T,</span> <span class="pre">y::S)</span></code>.
-В общих чертах, <code class="docutils literal notranslate"><span class="pre">promote</span></code> выясняет “общий” для <code class="docutils literal notranslate"><span class="pre">T</span></code> и <code class="docutils literal notranslate"><span class="pre">S</span></code> тип <code class="docutils literal notranslate"><span class="pre">U</span></code> с помощью <code class="docutils literal notranslate"><span class="pre">promote_type</span></code>, а затем конвертирует к типу <code class="docutils literal notranslate"><span class="pre">U</span></code> свои аргументы.</p>
+В общих чертах, <code class="docutils literal notranslate"><span class="pre">promote</span></code> выясняет «общий» для <code class="docutils literal notranslate"><span class="pre">T</span></code> и <code class="docutils literal notranslate"><span class="pre">S</span></code> тип <code class="docutils literal notranslate"><span class="pre">U</span></code> с помощью <code class="docutils literal notranslate"><span class="pre">promote_type</span></code>, а затем конвертирует к типу <code class="docutils literal notranslate"><span class="pre">U</span></code> свои аргументы.</p>
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span><span class="w"> </span><span class="n">promote</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">T</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="o">::</span><span class="kt">S</span><span class="p">)</span><span class="w"> </span><span class="k">where</span><span class="w"> </span><span class="p">{</span><span class="kt">T</span><span class="p">,</span><span class="w"> </span><span class="kt">S</span><span class="p">}</span>
 <span class="w">    </span><span class="n">U</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">promote_type</span><span class="p">(</span><span class="n">T</span><span class="p">,</span><span class="w"> </span><span class="n">S</span><span class="p">)</span>
 <span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">(</span><span class="n">convert</span><span class="p">(</span><span class="n">U</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">),</span><span class="w"> </span><span class="n">convert</span><span class="p">(</span><span class="n">U</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">))</span>
@@ -942,7 +943,7 @@ f(a + \dual) \times g(a + \dual) &amp;= (f(a) + f'(a) \dual) \times (g(a) + g'(a
 </div>
 </div>
 <p>Реализованный нами способ дифференцирования называется <em>автоматическим дифференцированием вперёд</em>.
-Смысл слова “вперёд” связан с направленностью цепочки вычислений производной и разъясняется в следующих разделах.</p>
+Смысл слова «вперёд» связан с направленностью цепочки вычислений производной и разъясняется в следующих разделах.</p>
 <hr class="footnotes docutils" />
 <aside class="footnote brackets" id="hypercomplexnumbers" role="note">
 <span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
@@ -983,18 +984,18 @@ f(a + \dual) \times g(a + \dual) &amp;= (f(a) + f'(a) \dual) \times (g(a) + g'(a
 <div class="prev-next-area">
     <a class="left-prev"
        href="complexstep.html"
-       title="previous page">
+       title="предыдущая страница">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-subtitle">назад</p>
         <p class="prev-next-title"><span class="section-number">8.1. </span>Метод комплексного шага</p>
       </div>
     </a>
     <a class="right-next"
        href="compgraph.html"
-       title="next page">
+       title="следующая страница">
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">вперёд</p>
         <p class="prev-next-title"><span class="section-number">8.3. </span>Граф вычислений</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
@@ -1010,7 +1011,7 @@ f(a + \dual) \times g(a + \dual) &amp;= (f(a) + f'(a) \dual) \times (g(a) + g'(a
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+    <i class="fa-solid fa-list"></i> Содержание
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -1031,7 +1032,7 @@ f(a + \dual) \times g(a + \dual) &amp;= (f(a) + f'(a) \dual) \times (g(a) + g'(a
   <div class="footer-item">
     
 <p class="component-author">
-By Степан Захаров и Василий Писарев
+По Степан Захаров и Василий Писарев
 </p>
 
   </div>
@@ -1041,7 +1042,7 @@ By Степан Захаров и Василий Писарев
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Копирайт 2024.
       <br/>
     
   </p>

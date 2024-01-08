@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="ru" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -60,6 +60,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -71,12 +72,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "dual": "\\varepsilon", "dualset": "\\mathbb{D}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'autodiff/index';</script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
     <link rel="next" title="8.1. Метод комплексного шага" href="complexstep.html" />
     <link rel="prev" title="7.3. Задания" href="../sysnonlinear/ex.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="ru"/>
   </head>
   
   
@@ -84,7 +85,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#main-content">Перейти к основному содержанию</a>
   
   <div id="pst-scroll-pixel-helper"></div>
 
@@ -334,7 +335,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/stepanzh/computational_thermodynamics" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
+   title="Исходный репозиторий"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -368,7 +369,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Fautodiff/index.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
+   title="Открыть вопрос"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -389,7 +390,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Загрузите эту страницу">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -398,7 +399,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/autodiff/index.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="Скачать исходный файл"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -416,7 +417,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="Распечатать в PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -436,7 +437,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="Полноэкранный режим"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -451,7 +452,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="светлая/темная" aria-label="светлая/темная" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
@@ -462,7 +463,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Поиск" aria-label="Поиск" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -507,22 +508,22 @@ document.write(`
 <figure class="align-default" id="autodiff-overview">
 <a class="reference internal image-reference" href="../_images/baydin-2018-diff-approaches-overview.png"><img alt="../_images/baydin-2018-diff-approaches-overview.png" src="../_images/baydin-2018-diff-approaches-overview.png" style="width: 640px;" /></a>
 <figcaption>
-<p><span class="caption-number">Fig. 8.1 </span><span class="caption-text">Способы дифференцирования.
+<p><span class="caption-number">Рис. 8.1 </span><span class="caption-text">Способы дифференцирования.
 Символьное вычисление даёт точный результат, но требует преобразования кода <code class="docutils literal notranslate"><span class="pre">f</span></code> к closed-form;
 численное дифференцирование неточно ввиду погрешностей метода и округления;
 автоматическое дифференцирование точно и позволяет использовать управляющие конструкции языка.
-Источник: <span id="id2">[<a class="reference internal" href="../appendix/bibliography.html#id5" title="Atilim Gunes Baydin, Barak A. Pearlmutter, Alexey Andreyevich Radul, and Jeffrey Mark Siskind. Automatic differentiation in machine learning: a survey. Journal of Machine Learning Research, 18:1–43, 2018. URL: https://jmlr.org/papers/v18/17-468.html.">BPRS18</a>]</span>.</span><a class="headerlink" href="#autodiff-overview" title="Permalink to this image">#</a></p>
+Источник: <span id="id2">[<a class="reference internal" href="../appendix/bibliography.html#id5" title="Atilim Gunes Baydin, Barak A. Pearlmutter, Alexey Andreyevich Radul, and Jeffrey Mark Siskind. Automatic differentiation in machine learning: a survey. Journal of Machine Learning Research, 18:1–43, 2018. URL: https://jmlr.org/papers/v18/17-468.html.">BPRS18</a>]</span>.</span><a class="headerlink" href="#autodiff-overview" title="Постоянная ссылка на рисунок">#</a></p>
 </figcaption>
 </figure>
 <div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>С автоматическим дифференцированием связано понятие “дифференцируемого” программирования (differential programming).
+<p class="admonition-title">Примечание</p>
+<p>С автоматическим дифференцированием связано понятие «дифференцируемого» программирования (differential programming).
 Это подход к написанию кода, который учитывает возможность автоматически дифференцировать запрограммированные функции.</p>
 </div>
 <p>В данной главе изложены темы дуальных чисел, графа вычислений, а также автоматического дифференцирования вперёд и назад.
 Чтение главы вы можете начать с <a class="reference internal" href="dualnumbers.html#sec-autodiff-dualnumbers"><span class="std std-numref">Раздела 8.2 (Дуальные числа)</span></a>, пропустив <a class="reference internal" href="complexstep.html#sec-autodiff-complex-step"><span class="std std-numref">Раздел 8.1 (Метод комплексного шага)</span></a>.</p>
 <div class="admonition tip">
-<p class="admonition-title">Tip</p>
+<p class="admonition-title">Совет</p>
 <p>Подробнее с автоматическим дифференцированием вы можете ознакомиться в следующих работах.</p>
 <ul class="simple">
 <li><p><span id="id3">Kochenderfer and Wheeler [<a class="reference internal" href="../appendix/bibliography.html#id16" title="Mykel J. Kochenderfer and Tim A. Wheeler. Algorithms for optimization. The MIT Press, 2019. ISBN 978-0-262-03942-0.">KW19</a>]</span>.</p></li>
@@ -569,18 +570,18 @@ document.write(`
 <div class="prev-next-area">
     <a class="left-prev"
        href="../sysnonlinear/ex.html"
-       title="previous page">
+       title="предыдущая страница">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-subtitle">назад</p>
         <p class="prev-next-title"><span class="section-number">7.3. </span>Задания</p>
       </div>
     </a>
     <a class="right-next"
        href="complexstep.html"
-       title="next page">
+       title="следующая страница">
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">вперёд</p>
         <p class="prev-next-title"><span class="section-number">8.1. </span>Метод комплексного шага</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
@@ -601,7 +602,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By Степан Захаров и Василий Писарев
+По Степан Захаров и Василий Писарев
 </p>
 
   </div>
@@ -611,7 +612,7 @@ By Степан Захаров и Василий Писарев
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Копирайт 2024.
       <br/>
     
   </p>

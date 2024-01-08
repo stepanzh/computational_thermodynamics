@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="ru" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -60,6 +60,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -71,12 +72,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "dual": "\\varepsilon", "dualset": "\\mathbb{D}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'interpolation/polynomial';</script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
     <link rel="next" title="4.2. Кусочно-линейная интерполяция" href="pwlinear.html" />
     <link rel="prev" title="4. Интерполяция" href="index.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="ru"/>
   </head>
   
   
@@ -84,7 +85,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#main-content">Перейти к основному содержанию</a>
   
   <div id="pst-scroll-pixel-helper"></div>
 
@@ -334,7 +335,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/stepanzh/computational_thermodynamics" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
+   title="Исходный репозиторий"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -368,7 +369,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Finterpolation/polynomial.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
+   title="Открыть вопрос"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -389,7 +390,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Загрузите эту страницу">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -398,7 +399,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/interpolation/polynomial.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="Скачать исходный файл"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -416,7 +417,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="Распечатать в PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -436,7 +437,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="Полноэкранный режим"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -451,7 +452,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="светлая/темная" aria-label="светлая/темная" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
@@ -462,7 +463,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Поиск" aria-label="Поиск" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -486,7 +487,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contents </h2>
+                <h2> Содержание </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -515,11 +516,11 @@ document.write(`
     </div><div class="proof-content">
 <p><strong>Полиномиальная интерполяция</strong> по точкам <span class="math notranslate nohighlight">\((t_1, y_1), (t_2,y_2), ..., (t_n, y_n)\)</span>, где все <span class="math notranslate nohighlight">\(t_i\)</span> различны, заключается в построении полинома <span class="math notranslate nohighlight">\(p(x)\)</span> степени не выше <span class="math notranslate nohighlight">\(n\)</span>, проходящего через все данные точки, т.е.</p>
 <div class="math notranslate nohighlight" id="equation-polyinterpcond">
-<span class="eqno">(4.1)<a class="headerlink" href="#equation-polyinterpcond" title="Permalink to this equation">#</a></span>\[p(t_i)=y_i,\quad i=1, ..., n.\]</div>
+<span class="eqno">(4.1)<a class="headerlink" href="#equation-polyinterpcond" title="Ссылка на это уравнение">#</a></span>\[p(t_i)=y_i,\quad i=1, ..., n.\]</div>
 </div></div><p>Такой полином можно получить, рассматривая задачу интерполяции как линейную систему. Однако, существуют и другие способы, например, построение полинома в форме Лагранжа или Ньютона.</p>
 <p>Полинома степени не выше <span class="math notranslate nohighlight">\(n\)</span> имеет вид</p>
 <div class="math notranslate nohighlight" id="equation-polyinterppoly">
-<span class="eqno">(4.2)<a class="headerlink" href="#equation-polyinterppoly" title="Permalink to this equation">#</a></span>\[p(x) = c_1 + c_2 x + c_3 x^2 + ... + c_n x^{n-1}.\]</div>
+<span class="eqno">(4.2)<a class="headerlink" href="#equation-polyinterppoly" title="Ссылка на это уравнение">#</a></span>\[p(x) = c_1 + c_2 x + c_3 x^2 + ... + c_n x^{n-1}.\]</div>
 <p>Воспользуемся условием <a class="reference internal" href="#equation-polyinterpcond">(4.1)</a> и получим систему на коэффициенты <span class="math notranslate nohighlight">\(c_i\)</span></p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{align*}
@@ -532,7 +533,7 @@ c_1 + c_2 t_n + c_3 t^2_n + ... + c_n t^{n-1}_n &amp;= y_n\\
 \end{align*}\end{split}\]</div>
 <p>Данная система записывается в виде <span class="math notranslate nohighlight">\(\mathbf{V}\mathbf{c}=\mathbf{y}\)</span></p>
 <div class="math notranslate nohighlight" id="equation-polyinterpsys">
-<span class="eqno">(4.3)<a class="headerlink" href="#equation-polyinterpsys" title="Permalink to this equation">#</a></span>\[\begin{split}\begin{bmatrix}
+<span class="eqno">(4.3)<a class="headerlink" href="#equation-polyinterpsys" title="Ссылка на это уравнение">#</a></span>\[\begin{split}\begin{bmatrix}
 1 &amp; t_1 &amp; ... &amp; t_1^{n-2} &amp; t_1^{n-1} \\
 1 &amp; t_2 &amp; ... &amp; t_2^{n-2} &amp; t_2^{n-1} \\
 \vdots &amp; \vdots &amp; &amp; \vdots &amp; \vdots   \\
@@ -929,7 +930,7 @@ y_1 \\ y_2 \\ \vdots \\ y_n
 <path clip-path="url(#clip400)" d="M446.79 188.143 L446.79 214.069 L442.554 214.069 L442.554 193.259 L430.054 214.069 L424.591 214.069 L424.591 188.143 L428.827 188.143 L428.827 208.907 L441.304 188.143 L446.79 188.143 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip400)" d="M455.401 188.143 L459.683 188.143 L459.683 198.721 L473.503 198.721 L473.503 188.143 L477.785 188.143 L477.785 214.069 L473.503 214.069 L473.503 202.124 L459.683 202.124 L459.683 214.069 L455.401 214.069 L455.401 188.143 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip400)" d="M483.479 188.143 L508.317 188.143 L508.317 191.546 L497.993 191.546 L497.993 214.069 L493.803 214.069 L493.803 191.546 L483.479 191.546 L483.479 188.143 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip400)" d="M536.349 200.041 L536.349 202.124 L516.766 202.124 Q517.044 206.522 519.405 208.837 Q521.789 211.129 526.025 211.129 Q528.479 211.129 530.771 210.527 Q533.086 209.925 535.354 208.721 L535.354 212.749 Q533.062 213.721 530.655 214.231 Q528.248 214.74 525.771 214.74 Q519.567 214.74 515.933 211.129 Q512.322 207.518 512.322 201.36 Q512.322 194.995 515.748 191.268 Q519.197 187.518 525.03 187.518 Q530.262 187.518 533.294 190.897 Q536.349 194.254 536.349 200.041 M532.09 198.791 Q532.044 195.296 530.123 193.212 Q528.225 191.129 525.076 191.129 Q521.512 191.129 519.359 193.143 Q517.229 195.157 516.905 198.814 L532.09 198.791 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip400)" d="M547.461 210.18 L547.461 223.93 L543.178 223.93 L543.178 188.143 L547.461 188.143 L547.461 192.078 Q548.803 189.763 550.84 188.652 Q552.9 187.518 555.748 187.518 Q560.47 187.518 563.41 191.268 Q566.372 195.018 566.372 201.129 Q566.372 207.24 563.41 210.99 Q560.47 214.74 555.748 214.74 Q552.9 214.74 550.84 213.629 Q548.803 212.495 547.461 210.18 M561.951 201.129 Q561.951 196.43 560.007 193.768 Q558.085 191.083 554.706 191.083 Q551.326 191.083 549.382 193.768 Q547.461 196.43 547.461 201.129 Q547.461 205.828 549.382 208.513 Q551.326 211.175 554.706 211.175 Q558.085 211.175 560.007 208.513 Q561.951 205.828 561.951 201.129 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip400)" d="M595.655 188.143 L595.655 214.069 L591.372 214.069 L591.372 191.546 L577.553 191.546 L577.553 214.069 L573.271 214.069 L573.271 188.143 L595.655 188.143 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip400)" d="M614.474 191.129 Q611.048 191.129 609.057 193.814 Q607.067 196.476 607.067 201.129 Q607.067 205.782 609.034 208.467 Q611.025 211.129 614.474 211.129 Q617.877 211.129 619.868 208.444 Q621.858 205.758 621.858 201.129 Q621.858 196.522 619.868 193.837 Q617.877 191.129 614.474 191.129 M614.474 187.518 Q620.03 187.518 623.201 191.129 Q626.372 194.74 626.372 201.129 Q626.372 207.495 623.201 211.129 Q620.03 214.74 614.474 214.74 Q608.895 214.74 605.724 211.129 Q602.576 207.495 602.576 201.129 Q602.576 194.74 605.724 191.129 Q608.895 187.518 614.474 187.518 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip400)" d="M630.724 214.069 L630.724 210.527 Q634.937 209.879 636.233 206.962 Q637.807 202.865 637.807 192.379 L637.807 188.143 L655.33 188.143 L655.33 214.069 L651.071 214.069 L651.071 191.546 L642.066 191.546 L642.066 194.115 Q642.066 204.115 640.029 208.606 Q637.854 213.397 630.724 214.069 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip400)" d="M668.015 195.62 Q668.015 197.541 669.497 198.629 Q670.978 199.717 673.733 199.717 L679.474 199.717 L679.474 191.546 L673.733 191.546 Q670.978 191.546 669.497 192.61 Q668.015 193.675 668.015 195.62 M661.951 214.069 L669.867 202.703 Q667.182 202.101 665.4 200.527 Q663.617 198.93 663.617 195.62 Q663.617 191.87 666.094 190.018 Q668.594 188.143 673.617 188.143 L683.756 188.143 L683.756 214.069 L679.474 214.069 L679.474 203.12 L674.173 203.12 L666.534 214.069 L661.951 214.069 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip400)" d="M692.089 188.143 L696.372 188.143 L696.372 198.721 L710.191 198.721 L710.191 188.143 L714.474 188.143 L714.474 214.069 L710.191 214.069 L710.191 202.124 L696.372 202.124 L696.372 214.069 L692.089 214.069 L692.089 188.143 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /><path clip-path="url(#clip400)" d="M720.168 188.143 L745.006 188.143 L745.006 191.546 L734.682 191.546 L734.682 214.069 L730.492 214.069 L730.492 191.546 L720.168 191.546 L720.168 188.143 Z" fill="#000000" fill-rule="nonzero" fill-opacity="1" /></svg>
 </div></div>
 </div>
-<p>Что будет, если взять 15 точек? Данные с шумом не сильно изменились: это всё тот же “холм”.</p>
+<p>Что будет, если взять 15 точек? Данные с шумом не сильно изменились: это всё тот же «холм».</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">foo</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">exp</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">))</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mf">0.05</span><span class="o">*</span><span class="n">sin</span><span class="p">(</span><span class="mi">15</span><span class="n">x</span><span class="p">)</span>
@@ -1121,18 +1122,18 @@ y_1 \\ y_2 \\ \vdots \\ y_n
 <div class="prev-next-area">
     <a class="left-prev"
        href="index.html"
-       title="previous page">
+       title="предыдущая страница">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-subtitle">назад</p>
         <p class="prev-next-title"><span class="section-number">4. </span>Интерполяция</p>
       </div>
     </a>
     <a class="right-next"
        href="pwlinear.html"
-       title="next page">
+       title="следующая страница">
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">вперёд</p>
         <p class="prev-next-title"><span class="section-number">4.2. </span>Кусочно-линейная интерполяция</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
@@ -1148,7 +1149,7 @@ y_1 \\ y_2 \\ \vdots \\ y_n
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+    <i class="fa-solid fa-list"></i> Содержание
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -1168,7 +1169,7 @@ y_1 \\ y_2 \\ \vdots \\ y_n
   <div class="footer-item">
     
 <p class="component-author">
-By Степан Захаров и Василий Писарев
+По Степан Захаров и Василий Писарев
 </p>
 
   </div>
@@ -1178,7 +1179,7 @@ By Степан Захаров и Василий Писарев
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Копирайт 2024.
       <br/>
     
   </p>

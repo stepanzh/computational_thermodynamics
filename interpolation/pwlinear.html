@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="ru" data-content_root="" >
 
   <head>
     <meta charset="utf-8" />
@@ -60,6 +60,7 @@
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/translations.js"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script src="../_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
@@ -71,12 +72,12 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"tex": {"macros": {"argmin": "\\operatorname{argmin}", "const": "\\text{const}", "diag": "\\text{diag}", "diff": "\\mathrm{d}", "dual": "\\varepsilon", "dualset": "\\mathbb{D}", "float": "\\text{float}", "floatset": "\\mathbb{F}", "integer": "\\mathbb{Z}", "lto": "\\leftarrow", "macheps": "\\epsilon_{\\text{mach}}", "part": "\\partial", "real": "\\mathbb{R}", "sign": "\\text{sign}", "vapor": "\\text{\u043f\u0430\u0440}", "liquid": "\\text{\u0436\u0438\u0434\u043a.}"}}, "HTML-CSS": {"fonts": ["Latin-Modern"]}, "options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'interpolation/pwlinear';</script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
+    <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
+    <link rel="search" title="Поиск" href="../search.html" />
     <link rel="next" title="4.3. Кубические сплайны" href="cubic_spline.html" />
     <link rel="prev" title="4.1. Полиномиальная интерполяция" href="polynomial.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="ru"/>
   </head>
   
   
@@ -84,7 +85,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a class="skip-link" href="#main-content">Перейти к основному содержанию</a>
   
   <div id="pst-scroll-pixel-helper"></div>
 
@@ -334,7 +335,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/stepanzh/computational_thermodynamics" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
+   title="Исходный репозиторий"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -368,7 +369,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/stepanzh/computational_thermodynamics/issues/new?title=Issue%20on%20page%20%2Finterpolation/pwlinear.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
+   title="Открыть вопрос"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -389,7 +390,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Загрузите эту страницу">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -398,7 +399,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/interpolation/pwlinear.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="Скачать исходный файл"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -416,7 +417,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="Распечатать в PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -436,7 +437,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="Полноэкранный режим"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -451,7 +452,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="светлая/темная" aria-label="светлая/темная" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
     <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
@@ -462,7 +463,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Поиск" aria-label="Поиск" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -486,7 +487,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contents </h2>
+                <h2> Содержание </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -517,14 +518,14 @@ document.write(`
     </div><div class="proof-content">
 <p>На каждом отрезке <span class="math notranslate nohighlight">\([t_k, t_{k+1}]\)</span> <strong>кусочно-линейный интерполянт</strong> является отрезком прямой, соединяющей точки <span class="math notranslate nohighlight">\((t_k, y_k)\)</span> и <span class="math notranslate nohighlight">\((t_{k+1}, y_{k+1})\)</span></p>
 <div class="math notranslate nohighlight" id="equation-pwlin">
-<span class="eqno">(4.4)<a class="headerlink" href="#equation-pwlin" title="Permalink to this equation">#</a></span>\[p(x) = y_k + \frac{y_{k+1} - y_k}{t_{k+1} - t_k} (x - t_k),\quad x \in [t_k, t_{k+1}]\]</div>
+<span class="eqno">(4.4)<a class="headerlink" href="#equation-pwlin" title="Ссылка на это уравнение">#</a></span>\[p(x) = y_k + \frac{y_{k+1} - y_k}{t_{k+1} - t_k} (x - t_k),\quad x \in [t_k, t_{k+1}]\]</div>
 </div></div><p>Простой способ реализации формулы <a class="reference internal" href="#equation-pwlin">(4.4)</a> заключается в поиске отрезка <span class="math notranslate nohighlight">\([t_k, t_{k+1}]\)</span>, которому принадлежит <span class="math notranslate nohighlight">\(x\)</span>, а затем уже в применении <a class="reference internal" href="#equation-pwlin">(4.4)</a>.</p>
 <p>Мы же поступим более общим способом <span id="id2">[<a class="reference internal" href="../appendix/bibliography.html#id19" title="R. J. LeVeque. Finite Volume Methods for Hyperbolic Problems. Cambridge University Press, 2002. doi:10.1017/cbo9780511791253.">LeV02</a>]</span>.</p>
 <section id="hat">
 <h2><span class="section-number">4.2.1. </span>Hat-функции<a class="headerlink" href="#hat" title="Permalink to this heading">#</a></h2>
 <p>Искомый интерполянт лишь одна из <em>непрерывных кусочно-линейных</em> функций, которые образуют <em>линейное пространство</em>. В этом пространстве функция выражается в виде</p>
 <div class="math notranslate nohighlight" id="equation-pwlin-decomp">
-<span class="eqno">(4.5)<a class="headerlink" href="#equation-pwlin-decomp" title="Permalink to this equation">#</a></span>\[p(x) = \sum_{k=1}^n c_k \varphi_k(x),\quad x \in [t_1, t_n].\]</div>
+<span class="eqno">(4.5)<a class="headerlink" href="#equation-pwlin-decomp" title="Ссылка на это уравнение">#</a></span>\[p(x) = \sum_{k=1}^n c_k \varphi_k(x),\quad x \in [t_1, t_n].\]</div>
 <p>Где набор функций <span class="math notranslate nohighlight">\(\{\varphi_k(x)\}_{k=1}^n\)</span> является <em>базисом</em> пространства, а коэффициенты (веса, координаты) <span class="math notranslate nohighlight">\(c_k\)</span> однозначно задают <span class="math notranslate nohighlight">\(p(x)\)</span>. В качестве такого базиса широко используются hat-функции.</p>
 <span class="target" id="index-1"></span><div class="proof proof-type-definition" id="id6">
 <span id="index-2"></span>
@@ -536,14 +537,14 @@ document.write(`
     </div><div class="proof-content">
 <p><strong>Полная hat-функция</strong> <span class="math notranslate nohighlight">\(\varphi_k\)</span> это функция треугольного вида, задающаяся аналитически в виде</p>
 <div class="math notranslate nohighlight" id="equation-hatfunc">
-<span class="eqno">(4.6)<a class="headerlink" href="#equation-hatfunc" title="Permalink to this equation">#</a></span>\[\begin{split}\varphi_k(x) = \begin{cases}
+<span class="eqno">(4.6)<a class="headerlink" href="#equation-hatfunc" title="Ссылка на это уравнение">#</a></span>\[\begin{split}\varphi_k(x) = \begin{cases}
 \dfrac{x-t_{k-1}}{t_k - t_{k-1}},&amp; x \in [t_k, t_{k-1}],\\
 \dfrac{t_{k+1}-x}{t_{k+1} - t_k},&amp; x \in [t_k, t_{k+1}],\\
 0, &amp; иначе.
 \end{cases},\quad k = 2,...,n-1.\end{split}\]</div>
 <p id="index-3"><strong>Половинчатые hat-функции</strong> задаются на краях и имеют вид</p>
 <div class="math notranslate nohighlight" id="equation-hatfunchalf">
-<span class="eqno">(4.7)<a class="headerlink" href="#equation-hatfunchalf" title="Permalink to this equation">#</a></span>\[\begin{split}\varphi_1 = \begin{cases}
+<span class="eqno">(4.7)<a class="headerlink" href="#equation-hatfunchalf" title="Ссылка на это уравнение">#</a></span>\[\begin{split}\varphi_1 = \begin{cases}
 \dfrac{t_2-x}{t_2 - t_1},&amp; x \in [t_1, t_2],\\
 0, &amp; иначе.
 \end{cases}
@@ -734,7 +735,7 @@ document.write(`
 <p>Определение интерполянта <span class="math notranslate nohighlight">\(p(x)\)</span> в виде <a class="reference internal" href="#equation-pwlin-decomp">(4.5)</a> делает нахождение коэффициентов <span class="math notranslate nohighlight">\(c_k\)</span> и базиса <span class="math notranslate nohighlight">\(\varphi_k(x)\)</span> <em>независимыми</em> задачами.</p>
 </div></div><p>Поскольку hat-функции обладают свойством</p>
 <div class="math notranslate nohighlight" id="equation-cardinality">
-<span class="eqno">(4.8)<a class="headerlink" href="#equation-cardinality" title="Permalink to this equation">#</a></span>\[\begin{split}\varphi_k(t_l) = \begin{cases}
+<span class="eqno">(4.8)<a class="headerlink" href="#equation-cardinality" title="Ссылка на это уравнение">#</a></span>\[\begin{split}\varphi_k(t_l) = \begin{cases}
 1, &amp; k = l,\\
 0, &amp; k \ne l.
 \end{cases}\end{split}\]</div>
@@ -1117,18 +1118,18 @@ document.write(`
 <div class="prev-next-area">
     <a class="left-prev"
        href="polynomial.html"
-       title="previous page">
+       title="предыдущая страница">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-subtitle">назад</p>
         <p class="prev-next-title"><span class="section-number">4.1. </span>Полиномиальная интерполяция</p>
       </div>
     </a>
     <a class="right-next"
        href="cubic_spline.html"
-       title="next page">
+       title="следующая страница">
       <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-subtitle">вперёд</p>
         <p class="prev-next-title"><span class="section-number">4.3. </span>Кубические сплайны</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
@@ -1144,7 +1145,7 @@ document.write(`
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+    <i class="fa-solid fa-list"></i> Содержание
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -1165,7 +1166,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By Степан Захаров и Василий Писарев
+По Степан Захаров и Василий Писарев
 </p>
 
   </div>
@@ -1175,7 +1176,7 @@ By Степан Захаров и Василий Писарев
 
   <p class="copyright">
     
-      © Copyright 2022.
+      © Копирайт 2024.
       <br/>
     
   </p>
