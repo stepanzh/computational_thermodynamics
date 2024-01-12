@@ -231,6 +231,7 @@ vГОД.MAJOR.MINOR
 - Проверяете материалы.
 - Делаете commit в репозиторий.
 - Публикуете материалы `make github-pages`.
+- Отключаете контейнер `make docker-container-stop`.
 
 
 ## Вопрос-ответ
