@@ -1,96 +1,22 @@
-[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://stepanzh.github.io/JuliaAndJupyterBook/)
+[![Jupyter Book Badge](https://jupyterbook.org/badge.svg)](https://stepanzh.github.io/computational_thermodynamics/)
 [![Code Style: Blue](https://img.shields.io/badge/code%20style-blue-4495d1.svg)](https://github.com/invenia/BlueStyle)
 
-# Репозиторий курса "Практикум по вычислительной теплофизике"
 
-## Читателям
-Книга расположена здесь https://stepanzh.github.io/computational_thermodynamics/.
+# Практикум по вычислительной теплофизике - Онлайн-книга
 
-## Разработчикам
+**Практикум по вычислительной теплофизике** посвящён вычислительной термодинамике многокомпонентных систем.
+Курс читается для студентов Московского физико-технического института на кафедре физики высокотемпературных процессов (базовая кафедра Объединённого института высоких температур РАН).
 
-Локальное тестирование сайта
+Книга доступна по ссылке: https://stepanzh.github.io/computational_thermodynamics/.
 
-```console
-% git clone https://github.com/stepanzh/computational_thermodynamics.git
-% cd computational_thermodynamics
-%   virtualenv venv           # виртуальное окружение,
-%   source venv/bin/activate  # если необходимо не мусорить в библиотеках python3
-% pip3 install -r requirements.txt   # установка необходимых библиотек
-% make build                         # билд локальной версии
-% open book/_build/html/index.html   # открытие стартовой страницы
-```
+Курс читается с 2021 года и за прошедшее время претерпел ряд изменений.
+Несмотря на то, что некоторые разделы книги подробно не рассматриваются в нынешнем изложении курса, эти разделы оставлены для заинтересованных читателей.
 
-- документация jupyter{book} https://jupyterbook.org/intro.html;
-- мои заметки по использованию https://stepanzh.github.io/JuliaAndJupyterBook/intro.html;
-- утилиты по тестированию и публикации изменений: `make` в корне репозитория. 
+Авторы курса
 
-### Исполняемый код
+- Степан Захаров: [GitHub](https://github.com/stepanzh/), [Google Scholar](https://scholar.google.ru/citations?user=xvp7Z9oAAAAJ);
+- Василий Писарев, [GitHub](https://github.com/vvpisarev/), [Google Scholar](https://scholar.google.ru/citations?user=ZLTxwC8AAAAJ).
 
-Исполняемый код я делю на библиотечный и остальной, который пользуется библиотечным.
+Сообщить об ошибке можно через механизм GitHub-механизм Issues или написав в Telegram https://red_deer.t.me/.
 
-Библиотечный код хранится в `book/src.jl`.
-Там подключаются используемые модули (так не приходится в каждой `{cell-code}` писать `using`) и содержатся функции из книги.
-В отдельный модуль этот код не обёрнут.
-
-Чтобы им воспользоваться, добавьте ячейку кода (`{code-cell}` директива) в страницу книги с содержанием
-
-```
-:tags: [remove-cell]
-
-include("../src.jl")
-```
-
-`"../src.jl"` здесь путь до `src.jl` от исходного файла страницы.
-
-Далее на странице книги в `{code-cell}` ниже всё будет доступно.
-
-Все необходимые зависимости помещены в `book/Project.toml`.
-
-### Графики
-
-Графики генерируются с помощью Plots.jl. В этой библиотеке функции возвращают объект графика, который должен быть результатом вычисления ячейки кода.
-
-Если не получается вызвать функцию построения последней в ячейке, сохраните заранее объект
-
-```julia
-plt = plot(; xlabel="foo", ylabel="bar")
-for i in (10, 100)
-    x = ...
-    y = foo.(x)
-    plot!(x, y; label="$i", ...)
-end
-plt
-```
-
-### Таблицы
-
-Таблицы генерируются с помощью `PrettyTables.jl` с указанием `backend=:html`.
-
-```julia
-pretty_table(data;
-    header=["Вещество", "M, г/моль", "σ, Å", "ε/k, K", "Tmin, K", "Tmax, K", "NIST"],
-    backend=:html,
-    alignment=:c
-)
-```
-
-### Цитирование
-
-1. Добавьте bibtex запись в `book/praktikum.bib`. Поддерживается Unicode (до какой-то степени).
-2. Процитируйте в тексте книги ``` {cite}`CiteLabel2001` ```.
-
-### Указатель
-
-Указатель это страница книги со ссылками на места в книге, объявленные пользователем. Если в печатном случае указатель обычно точен до страницы, то здесь точность до параграфа.
-
-Используйте для этого директиву `{index} entries`.
-
-Например, `{index} функция; Гаусса`, `{index} функция; непрерывная` создаст следующую структуру в указателе
-
-- функция (без ссылки)
-    - Гаусса, ссылка
-    - непрерывная, ссылка
-
-Также можно использовать и роль `{index}`, но её точность указания (строка параграфа), кажется, не нужна.
-
-У `{index}` много полезных модификаторов, упрощающих жизнь, см. [[url]](https://www.sphinx-doc.org/en/1.4.9/markup/misc.html?highlight=index#index-generating-markup).
+Помощь преподавателям и разработчикам располагается в файле `howto.md`.
