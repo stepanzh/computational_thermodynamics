@@ -502,7 +502,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.7.2. Методы и multiple dispatch</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.7.3. Интерфейсы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.7.3. Стабильность по типу</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">1.7.4. Интерфейсы</a></li>
 </ul>
             </nav>
         </div>
@@ -908,19 +909,104 @@ document.write(`
 <span class="go">2.5 + 3.0im</span>
 </pre></div>
 </div>
-<p>При диспетчеризации может возникать коллизия: два или более метода подходят для вызова. В этом случае Julia выдаст ошибку <code class="docutils literal notranslate"><span class="pre">MethodError</span></code>.</p>
-<p><strong>Как создаётся быстрый код?</strong> При запуске функции или метода от данного набора аргументов в первый раз, Julia</p>
-<ul class="simple">
-<li><p>Запоминает типы аргументов при вызове (типы могут быть и абстрактные);</p></li>
-<li><p>Выводит типы переменных в теле функции (<em>type inference</em>), для которых это возможно;</p></li>
-<li><p>Компилирует функцию для данного набора типов аргументов и сохраняет машинный код, если все типы переменных <strong>стабильны</strong>, т.е. не зависят от <em>значений</em> аргументов;</p></li>
-<li><p>При дальнейших вызовах функции с теми же типами аргументов будет использоваться компилированная (быстрая) версия.</p></li>
-</ul>
-<p>Кроме того, до запуска скрипта (<em>compilation time</em>) Julia просматривает методы и некоторые из них может прекомпилировать.</p>
-<p>Методы могут быть параметрическими, и в их теле вам будет доступен тип аргумента на этапе компиляции (<code class="docutils literal notranslate"><span class="pre">typeof(x)</span></code> не нужен).</p>
+<p>При диспетчеризации может возникать коллизия: два или более метода подходят для вызова.
+В этом случае Julia выдаст ошибку <code class="docutils literal notranslate"><span class="pre">MethodError</span></code>.</p>
+<div class="admonition tip">
+<p class="admonition-title">Совет</p>
+<p>Визуализацию диспетчеризации в Julia можно посмотреть в <a class="reference external" href="https://scientificcoder.com/the-art-of-multiple-dispatch">этой статье</a> из блога Matthijs Cox.</p>
+<a class="reference internal image-reference" href="https://cdn.hashnode.com/res/hashnode/image/upload/v1681980418289/8da099db-a243-4908-8a55-b4e2a999fc0d.png"><img alt="https://cdn.hashnode.com/res/hashnode/image/upload/v1681980418289/8da099db-a243-4908-8a55-b4e2a999fc0d.png" class="align-center" src="https://cdn.hashnode.com/res/hashnode/image/upload/v1681980418289/8da099db-a243-4908-8a55-b4e2a999fc0d.png" style="width: 640px;" /></a>
+</div>
 </section>
 <section id="id8">
-<h2><span class="section-number">1.7.3. </span>Интерфейсы<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">1.7.3. </span>Стабильность по типу<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h2>
+<p>Когда Julia исполняет функцию (или метод) в первый раз, компилятор «на лету» создаёт машинный код и запоминает его для последующих вызовов уже без компиляции.
+Получившийся код лишь может быть по-настоящему машинно-эффективным (как в компилирующихся языках, например, в C/C++ или Fortran).
+Например, если в вашей функции содержится переменная, тип которой можно узнать <em>только при исполнении</em> (runtime), то эффективной реализации исходного кода, касающегося работы с этой переменной, не получится.
+В этом случае какую-либо операцию с такой переменной необходимо проверять: существует ли она и, если существует, то где определена.
+С другой стороны, если по типам аргументов <em>при вызове</em> функции компилятору понятно, какие типы у всех остальных переменных, включая возвращаемое значение, то созданный машинный код будет эффективным.</p>
+<p>В итоге, программы на Julia могут быть быстрыми, как в компилируемых языках, но могут быть и медленными, как в интерпретируемых языках.
+Чтобы писать быстродействующие программы, стоит разбивать исходный код на небольшие функции, а в каждой из них поддерживать <em>стабильность типов</em>.</p>
+<div class="proof proof-type-definition" id="id11">
+
+    <div class="proof-title">
+        <span class="proof-type">Определение 1.2</span>
+        
+            <span class="proof-title-name">(Стабильная по типу функция)</span>
+        
+    </div><div class="proof-content">
+<p>Функция, тип возвращаемого значения которой зависит только от типов аргументов, и не зависит от их значений, называют стабильной по типу (type stable function).</p>
+</div></div><p>Рассмотрим для примера функцию <code class="docutils literal notranslate"><span class="pre">f(x,</span> <span class="pre">y)</span> <span class="pre">=</span> <span class="pre">x^2</span> <span class="pre">+</span> <span class="pre">y^2</span></code>.
+При первом вызове от двух <code class="docutils literal notranslate"><span class="pre">Int</span></code> (например, <code class="docutils literal notranslate"><span class="pre">f(3,</span> <span class="pre">4)</span></code>) компилятор удачно выводит типы всех значений внутри функции: <code class="docutils literal notranslate"><span class="pre">x^2</span> <span class="pre">==</span> <span class="pre">9</span></code> и <code class="docutils literal notranslate"><span class="pre">y^2</span> <span class="pre">==</span> <span class="pre">16</span></code> это два <code class="docutils literal notranslate"><span class="pre">Int</span></code>, а их сумма <code class="docutils literal notranslate"><span class="pre">25</span></code> (возвращаемое значение) также <code class="docutils literal notranslate"><span class="pre">Int</span></code>.
+Более того, при любых вызовах вида <code class="docutils literal notranslate"><span class="pre">f(::Int,</span> <span class="pre">::Int)</span></code> промежуточные значения и возвращаемое значение будут типа <code class="docutils literal notranslate"><span class="pre">Int</span></code>.
+Поэтому можно создать машинную реализацию для вызова <code class="docutils literal notranslate"><span class="pre">f(::Int,</span> <span class="pre">::Int)</span></code> и использовать её в дальнейшем.
+Аналогично компилятор поступит для вызовов вида <code class="docutils literal notranslate"><span class="pre">f(::Float64,</span> <span class="pre">::Int)</span></code>, <code class="docutils literal notranslate"><span class="pre">f(::Int,</span> <span class="pre">::Float64)</span></code> и <code class="docutils literal notranslate"><span class="pre">f(::Float64,</span> <span class="pre">::Float64)</span></code>.</p>
+<table class="table" id="id12">
+<caption><span class="caption-number">Таблица 1.4 </span><span class="caption-text">Типы промежуточных значений для функции <code class="docutils literal notranslate"><span class="pre">f(x,</span> <span class="pre">y)</span> <span class="pre">=</span> <span class="pre">x^2</span> <span class="pre">+</span> <span class="pre">y^2</span></code>.</span><a class="headerlink" href="#id12" title="Постоянная ссылка на таблицу">#</a></caption>
+<thead>
+<tr class="row-odd"><th class="head"></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">f(::Int,</span> <span class="pre">::Int)</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">f(::Float64,</span> <span class="pre">::Int)</span></code></p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">f(::Float64,</span> <span class="pre">::Float64)</span></code></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x^2</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Int</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Float64</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Float64</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">y^2</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Int</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Int</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Float64</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x^2</span> <span class="pre">+</span> <span class="pre">y^2</span></code> (return)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Int</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Float64</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Float64</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>В нашем примере стабильные по типу функции это <code class="docutils literal notranslate"><span class="pre">^(x,</span> <span class="pre">y)</span></code>, <code class="docutils literal notranslate"><span class="pre">+(x,</span> <span class="pre">y)</span></code> и сама <code class="docutils literal notranslate"><span class="pre">f</span></code>.
+При этом стабильность по типу функции <code class="docutils literal notranslate"><span class="pre">f</span></code> в нашем случае обеспечивается стабильностью функций <code class="docutils literal notranslate"><span class="pre">+</span></code> и <code class="docutils literal notranslate"><span class="pre">^</span></code>.
+Для таких функций компилятору известно устройство в памяти входных и выходных значений, что позволяет создавать эффективный код.</p>
+<p>Покажем также пример нестабильной по типу функции.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">Real</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span>
+</pre></div>
+</div>
+<p>В этом случае при вызове <code class="docutils literal notranslate"><span class="pre">g(::Int)</span></code> функция стабильна по типу, поскольку для любых <code class="docutils literal notranslate"><span class="pre">x::Int</span></code> возвращется <code class="docutils literal notranslate"><span class="pre">Int</span></code>.
+Однако, вызов вида <code class="docutils literal notranslate"><span class="pre">g(::Float64)</span></code> не стабилен по типу, поскольку для положительных <code class="docutils literal notranslate"><span class="pre">x::Float64</span></code> возвращается число типа <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, а для отрицательных — число типа <code class="docutils literal notranslate"><span class="pre">Int</span></code>.
+Добиться стабильности для вызова <code class="docutils literal notranslate"><span class="pre">g(::Float64)</span></code> можно было бы добавлением метода <code class="docutils literal notranslate"><span class="pre">g(x::Float64)</span> <span class="pre">=</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span> <span class="pre">?</span> <span class="pre">x</span> <span class="pre">:</span> <span class="pre">0.0</span></code>, но тогда подобные методы требовались бы для всех типов действительных чисел <code class="docutils literal notranslate"><span class="pre">T</span> <span class="pre">&lt;:</span> <span class="pre">Real</span></code>.
+Лучшим вариантом является использование функции-утилиты <code class="docutils literal notranslate"><span class="pre">zero(x)</span></code>: она возращает ноль того же типа, что и <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="o">::</span><span class="kt">Real</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">zero</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Также рекомендуется заменить <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> на <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">zero(x)</span></code>, но компилятор, вероятно, сгенерирует идентичный машинный код (проверьте с помощью <code class="docutils literal notranslate"><span class="pre">&#64;code_native</span></code>).</p>
+<p>Показательным примером дизайна стабильной по типу функции в Julia является дизайн функции квадратного корня <code class="docutils literal notranslate"><span class="pre">sqrt(x)</span></code>.
+Если извлекать квадратный корень из натуральных чисел, то только для некоторых из них (полных квадратов) получим натуральное число, а в остальных случаях получим не целые числа.
+Разработчики Julia учли эту особенность, и, ради сохранения стабильности, вызов <code class="docutils literal notranslate"><span class="pre">sqrt(::Int)</span></code> всегда возвращает <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, даже для полных квадратов.
+Кроме того, если извлекать корень из отрицательного числа, то получим число комплексное.
+Поэтому <code class="docutils literal notranslate"><span class="pre">sqrt(x::Real)</span></code> требует неотрицательного числа, чтобы независимо от значения <code class="docutils literal notranslate"><span class="pre">x</span></code> возвращать <code class="docutils literal notranslate"><span class="pre">Float64</span></code>.
+А для извлечения корней из отрицательных чисел требуется использовать метод вида <code class="docutils literal notranslate"><span class="pre">sqrt(x::Complex)</span></code> (например, <code class="docutils literal notranslate"><span class="pre">sqrt(-1</span> <span class="pre">+</span> <span class="pre">0im)</span></code> вместо <code class="docutils literal notranslate"><span class="pre">sqrt(-1)</span></code>).
+В последнем случае всегда возвращается <code class="docutils literal notranslate"><span class="pre">Complex</span></code> число, что сохраняет стабильность по типу функции <code class="docutils literal notranslate"><span class="pre">sqrt</span></code>.</p>
+<p>Для создания стабильных по типу функций Julia предоставляет множество инструментов.
+Например,</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">zero(x)</span></code> и <code class="docutils literal notranslate"><span class="pre">one(x)</span></code> для создания нуля и единицы того же типа, что и <code class="docutils literal notranslate"><span class="pre">x</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">similar(x)</span></code> для создания массива того же типа и размера, что и <code class="docutils literal notranslate"><span class="pre">x</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">iszero(x)</span></code> и <code class="docutils literal notranslate"><span class="pre">isone(x)</span></code> вместо <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">0</span></code> и <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">1</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isodd(x)</span></code> и <code class="docutils literal notranslate"><span class="pre">iseven(x)</span></code> вместо <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">%</span> <span class="pre">2</span> <span class="pre">==</span> <span class="pre">1</span></code> и <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">%</span> <span class="pre">2</span> <span class="pre">==</span> <span class="pre">0</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">isnan(x)</span></code> и <code class="docutils literal notranslate"><span class="pre">isinf(x)</span></code> для проверки на Not-a-Number и бесконечность.</p></li>
+</ul>
+<p>Часто используется функция <code class="docutils literal notranslate"><span class="pre">promote(x...)</span></code>, которая подбирает «общий» тип для своих аргументов и приводит их к нему.</p>
+<div class="highlight-julia-repl notranslate"><div class="highlight"><pre><span></span><span class="gp">julia&gt;</span><span class="w"> </span><span class="n">promote</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mf">2.0</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="o">//</span><span class="mi">4</span><span class="p">)</span>
+<span class="go">(1.0, 2.0, 0.75)</span>
+</pre></div>
+</div>
+<p>А для проверки своего кода на стабильность по типу можно использовать макрос <code class="docutils literal notranslate"><span class="pre">&#64;code_warntype</span></code>.</p>
+</section>
+<section id="id9">
+<h2><span class="section-number">1.7.4. </span>Интерфейсы<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h2>
 <p>На методах основаны интерфейсы в языке.
 Например, для типа точки на декартовой плоскости, рассмотренном выше, вы можете определить оператор сложения.
 Вы также можете создать вектора из точек.
@@ -939,7 +1025,7 @@ document.write(`
 То есть, программисту не нужно аналитически вычислять производную и переносить её в код отдельной функцией: можно воспользоваться дуальным числом.</p>
 <p>Изобретено множество дизайн-паттернов с использованием методов и типов.
 За подробностями по теме методов обращайтесь в мануал <strong><a class="reference external" href="https://docs.julialang.org/en/v1/manual/methods/">[url]</a></strong>.
-Много паттернов описано в книге <span id="id9">[<a class="reference internal" href="../appendix/bibliography.html#id17" title="T. Kwong. Hands-on design patterns and best practices with Julia: proven solutions to common problems in software design for Julia 1.x. Packt Publishing, 2020. ISBN 9781838648817.">Kwo20</a>]</span>.</p>
+Много паттернов описано в книге <span id="id10">[<a class="reference internal" href="../appendix/bibliography.html#id17" title="T. Kwong. Hands-on design patterns and best practices with Julia: proven solutions to common problems in software design for Julia 1.x. Packt Publishing, 2020. ISBN 9781838648817.">Kwo20</a>]</span>.</p>
 </section>
 </section>
 
@@ -1017,7 +1103,8 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.7.2. Методы и multiple dispatch</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.7.3. Интерфейсы</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">1.7.3. Стабильность по типу</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">1.7.4. Интерфейсы</a></li>
 </ul>
   </nav></div>
 

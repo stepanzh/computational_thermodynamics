@@ -495,7 +495,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">7. </span>Нелинейные системы уравнений<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
-<p>В данном разделе рассматривается решение нелинейных систем уравнений</p>
+<p>В данном разделе мы рассмотрим методы решения нелинейных систем уравнений</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{split}
 f_1(x_1, x_2, \ldots, x_n) &amp;= 0,\\
@@ -503,11 +503,22 @@ f_2(x_1, x_2, \ldots, x_n) &amp;= 0,\\
 \vdots\\
 f_n(x_1, x_2, \ldots, x_n) &amp;= 0.
 \end{split}\end{split}\]</div>
-<p>Кратко мы будем записывать системы выше в виде</p>
+<p>Для краткости, мы будем записывать нелинейные системы в виде</p>
 <div class="math notranslate nohighlight" id="equation-sysnonlinear">
 <span class="eqno">(7.1)<a class="headerlink" href="#equation-sysnonlinear" title="Ссылка на это уравнение">#</a></span>\[\mathbf{f}(\mathbf{x}) = \mathbf{0},\]</div>
-<p>где <span class="math notranslate nohighlight">\(\mathbf{f}\)</span> функция вида <span class="math notranslate nohighlight">\(\real^n \to \real^n\)</span>.</p>
-<p>Прежде всего отметим, что у системы <a class="reference internal" href="#equation-sysnonlinear">(7.1)</a> может быть несколько решений, а может не быть ни одного. Поэтому не существует общего метода для решения нелинейных систем, в отличие от решения нелинейного скалярного уравнения.</p>
+<p>где <span class="math notranslate nohighlight">\(\mathbf{x} = [x_1, \dots, x_n]^\top\)</span>, <span class="math notranslate nohighlight">\(\mathbf{0} = [0, \dots, 0]^\top\)</span> (вектор из <span class="math notranslate nohighlight">\(n\)</span> нулей), а функция имеет вид <span class="math notranslate nohighlight">\(\mathbf{f}:\ \real^n \to \real^n\)</span>, т.е. число уравнений совпадает с числом неизвестных.</p>
+<p>Отметим, что у нелинейной системы <a class="reference internal" href="#equation-sysnonlinear">(7.1)</a> может быть несколько решений, а может ни быть ни одного (<a class="reference internal" href="#fig-sysnonlinear-linvsnonlin"><span class="std std-numref">Рисунок 7.1</span></a>).
+В общем случае заранее узнать количество решений в нелинейной системе невозможно, в отличие от линейной <span class="math notranslate nohighlight">\(\mathbf{f}(\mathbf{x}) = \mathbf{A}\mathbf{x} - \mathbf{b} = \mathbf{0}\)</span>.
+По этой причине не существует общего метода решения нелинейных систем, а анализ количества решений возможен лишь в частных случаях.</p>
+<figure class="align-default" id="fig-sysnonlinear-linvsnonlin">
+<a class="reference internal image-reference" href="../_images/linear-vs-nonlinear.svg"><img alt="../_images/linear-vs-nonlinear.svg" src="../_images/linear-vs-nonlinear.svg" width="640px" /></a>
+<figcaption>
+<p><span class="caption-number">Рис. 7.1 </span><span class="caption-text">К неизвестности количества решений в нелинейных системах.
+Показан случай двух уравнений <span class="math notranslate nohighlight">\(f_1(x_1, x_2) = 0\)</span> и <span class="math notranslate nohighlight">\(f_2(x_1, x_2) = 0\)</span>.
+Для линейной системы уравнений (a, b) можно заранее определить число решений: ни одного, одно или бесконечно много (совпадающие прямые).
+Для нелинейной системы (c, d, e) число решений в общем случае заранее узнать нельзя.</span><a class="headerlink" href="#fig-sysnonlinear-linvsnonlin" title="Постоянная ссылка на рисунок">#</a></p>
+</figcaption>
+</figure>
 <div class="toctree-wrapper compound">
 </div>
 </section>
