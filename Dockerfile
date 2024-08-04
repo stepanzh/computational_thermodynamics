@@ -17,31 +17,30 @@ RUN <<EOF
 apt update
 
 # python 3 and wget
-apt install -y python3 wget
+apt install -y python3 curl
 
 # pip
-wget https://bootstrap.pypa.io/get-pip.py
-python3 get-pip.py
-rm get-pip.py
+curl -fsSL https://bootstrap.pypa.io/get-pip.py | python3
 
 # Python packages
 pip install -r python-requirements.txt
 
-# Julia 1.9.4
-wget https://julialang-s3.julialang.org/bin/linux/x64/1.9/julia-1.9.4-linux-x86_64.tar.gz
-tar zxvf julia-1.9.4-linux-x86_64.tar.gz
-rm julia-1.9.4-linux-x86_64.tar.gz
-mv julia-1.9.4 /usr/local/bin/
-## доступ к julia внутри контейнера по `julia`
-ln -s /usr/local/bin/julia-1.9.4/bin/julia /usr/local/bin/julia
 
+# Julia 1.10+
+## Juliaup
+curl -fsSL https://install.julialang.org | sh -s -- --yes --default-channel 1.10
+## Экспорт команд julia и juliaup
+. ~/.bashrc
 # Julia пакеты из Project.toml
 
 ## Инициализация глобального окружения julia (/root/.julia директория).
 julia -e "using Pkg; Pkg.instantiate()"
 ## Проставляем глобальное окружение Julia в контейнере.
-## Не оставляйте `/root/Project.toml`!!! Иначе jupyter-book будет ссылаться на него, а не глобальное окружение.
-cp julia-requirements.toml /root/.julia/environments/v1.9/Project.toml
+## Не оставляйте `/root/Project.toml`!!! Иначе jupyter-book будет (неявно) ссылаться на него, а не на глобальное окружение.
+##  Именно с этой целью файл с зависимостями Julia назван julia-requirements.toml, а не Project.toml.
+
+cp julia-requirements.toml ~/.julia/environments/v1.10/Project.toml
+
 ## Грузим и устанавливаем пакеты, перечисленные в Project.toml.
 julia -e "using Pkg; Pkg.resolve(); Pkg.instantiate(); Pkg.precompile()"
 
