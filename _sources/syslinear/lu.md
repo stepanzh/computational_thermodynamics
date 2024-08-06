@@ -5,11 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.16.0
+    jupytext_version: 1.16.4
 kernelspec:
-  display_name: Julia 1.9.4
+  display_name: Julia 1.10.4
   language: julia
-  name: julia-1.9
+  name: julia-1.10
 ---
 
 ```{eval-rst}
@@ -29,6 +29,8 @@ include("../src.jl")
 На практике оказывается, что проще работать не с самой матрицей, а с представлением её в виде произведения нескольких матриц, которое называется разложением. 
 В данном разделе выводится алгоритм решения системы уравнений, представляющий исходную матрицу в виде произведения $\mathbf{A}=\mathbf{L}\mathbf{U}$, после чего пользующийся прямой и обратной подстановкой.
 
+
+(sec:sysnonlinear:outer_product)=
 ## Внешнее произведение
 
 Вывод алгоритма разложения основывается на внешнем произведении векторов (*outer product*).

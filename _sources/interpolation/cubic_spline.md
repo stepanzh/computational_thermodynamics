@@ -5,11 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.16.0
+    jupytext_version: 1.16.4
 kernelspec:
-  display_name: Julia 1.9.4
+  display_name: Julia 1.10.4
   language: julia
-  name: julia-1.9
+  name: julia-1.10
 ---
 
 ```{eval-rst}

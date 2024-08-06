@@ -17,19 +17,19 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -43,9 +43,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -85,28 +85,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Перейти к основному содержанию</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Перейти к основному содержанию</a></div>
   
   <div id="pst-scroll-pixel-helper"></div>
-
   
   <button type="button" class="btn rounded-pill" id="pst-back-to-top">
-    <i class="fa-solid fa-arrow-up"></i>
-    Back to top
-  </button>
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
 
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -128,12 +123,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -149,6 +152,8 @@ const thebe_selector_output = ".output, .cell_output"
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
 
+  
+    
   
 
 <a class="navbar-brand logo" href="../index.html">
@@ -173,7 +178,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Практикум</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../julia/index.html">1. Основы языка программирования Julia</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../julia/index.html">1. Основы языка программирования Julia</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../julia/install.html">1.1. Установка</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../julia/run.html">1.2. Запуск программ</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../julia/numbers.html">1.3. Числа, переменные, Bool</a></li>
@@ -186,13 +191,13 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../julia/modules.html">1.10. Модули и пакеты</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../julia/ex.html">1.11. Задания</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../intro/index.html">2. Введение</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../intro/index.html">2. Введение</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../intro/float.html">2.1. Числа с плавающей точкой</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../intro/cond.html">2.2. Обусловленность задач</a></li>
 </ul>
-</li>
-<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">3. Линейные системы уравнений</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">3. Линейные системы уравнений</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="triangular.html">3.1. Треугольные системы</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lu.html">3.2. LU-разложение</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plu.html">3.3. PLU-разложение</a></li>
@@ -200,23 +205,23 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">3.5. Обзор других разложений и задач</a></li>
 <li class="toctree-l2"><a class="reference internal" href="ex.html">3.6. Задания</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../interpolation/index.html">4. Интерполяция</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../interpolation/index.html">4. Интерполяция</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../interpolation/polynomial.html">4.1. Полиномиальная интерполяция</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../interpolation/pwlinear.html">4.2. Кусочно-линейная интерполяция</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../interpolation/cubic_spline.html">4.3. Кубические сплайны</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../interpolation/ex.html">4.4. Задания</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../integration/index.html">5. Численное интегрирование</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../integration/index.html">5. Численное интегрирование</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../integration/newton_cotes.html">5.1. Формулы Ньютона-Котса</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../integration/romberg.html">5.2. Метод Ромберга</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../integration/gauss.html">5.3. Формулы Гаусса</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../integration/adaptive.html">5.4. Адаптивное интегрирование</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../integration/ex.html">5.5. Задания</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../nlroot/index.html">6. Нелинейные уравнения</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../nlroot/index.html">6. Нелинейные уравнения</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../nlroot/simpleiter.html">6.1. Метод простой итерации</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../nlroot/newton_secant.html">6.2. Метод Ньютона и секущих</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../nlroot/bisection_regula_falsi.html">6.3. Методы бисекции и regula falsi</a></li>
@@ -224,14 +229,14 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../nlroot/itp.html">6.5. ITP метод</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../nlroot/ex.html">6.6. Задания</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../sysnonlinear/index.html">7. Нелинейные системы уравнений</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../sysnonlinear/index.html">7. Нелинейные системы уравнений</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../sysnonlinear/newton.html">7.1. Метод Ньютона</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sysnonlinear/quasinewton.html">7.2. Метод Бройдена</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../sysnonlinear/ex.html">7.3. Задания</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../autodiff/index.html">8. Автоматическое дифференцирование</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../autodiff/index.html">8. Автоматическое дифференцирование</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../autodiff/complexstep.html">8.1. Метод комплексного шага</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../autodiff/dualnumbers.html">8.2. Дуальные числа</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../autodiff/compgraph.html">8.3. Граф вычислений</a></li>
@@ -240,37 +245,37 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../autodiff/oja_problem.html">8.6. Оптимальное вычисление матрицы Якоби</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../autodiff/ex.html">8.7. Задания</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ode/index.html">9. Обыкновенные дифференциальные уравнения</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ode/index.html">9. Обыкновенные дифференциальные уравнения</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ode/euler.html">9.1. Метод Эйлера</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ode/rungekutta.html">9.2. Методы Рунге-Кутты</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ode/adaptive_rungekutta.html">9.3. Адаптивные методы</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ode/ex.html">9.4. Задания</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../optim/index.html">10. Задача оптимизации</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../optim/index.html">10. Задача оптимизации</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../optim/intro.html">10.1. Предварительные сведения</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../optim/linesearch.html">10.2. Поиск вдоль направления</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../optim/newton.html">10.3. Метод Ньютона</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../optim/bfgs.html">10.4. Метод BFGS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../optim/ex.html">10.5. Задания</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Фазовое равновесие</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ptstability/index.html">PT стабильность</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ptstability/index.html">PT стабильность</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ptstability/problem.html">Постановка задачи</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ptstability/vanderwaals.html">Уравнение состояния ван дер Ваальса</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ptstability/algorithm.html">Алгоритм решения</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ptstability/exercise.html">Задания</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="../ptsplit/index.html">PT расслоение</a><input class="toctree-checkbox" id="toctree-checkbox-12" name="toctree-checkbox-12" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-12"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../ptsplit/index.html">PT расслоение</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../ptsplit/problem.html">Постановка задачи</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../ptsplit/solution.html">Решение задачи</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Приложения</span></p>
 <ul class="nav bd-sidenav">
@@ -294,7 +299,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -303,7 +308,7 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
@@ -452,10 +457,10 @@ const thebe_selector_output = ".output, .cell_output"
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn theme-switch-button" title="светлая/темная" aria-label="светлая/темная" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
-    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="светлая/темная" aria-label="светлая/темная" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
@@ -463,7 +468,7 @@ document.write(`
 
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Поиск" aria-label="Поиск" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Поиск" aria-label="Поиск" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
@@ -495,6 +500,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr">3.5.2. QR-разложение</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syslinear-ch-cholesky">3.5.3. Разложение Холецкого</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.5.4. Спектральное разложение</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.5.5. Сингулярное разложение</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julia">3.5.6. Разложения матриц в Julia</a></li>
 </ul>
             </nav>
         </div>
@@ -504,11 +511,31 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">3.5. </span>Обзор других разложений и задач<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
-<p>В данном разделе приведены некоторые разложения матриц и их применение.</p>
+<p>В данном разделе приведены некоторые разложения матриц и их применение.
+Для углублённого изучения вычислительной линейной алгебры мы можем посоветовать следующие материалы.</p>
+<ul class="simple">
+<li><p>Driscoll, Tobin A., and Richard Braun.
+2018.
+Fundamentals of Numerical Computation.
+Philadelphia: Society for Industrial and Applied Mathematics.
+ISBN 978-1-61197-507-9.</p></li>
+<li><p>Trefethen, Lloyd N., and David Bau.
+1997.
+Numerical Linear Algebra.
+Philadelphia: Society for Industrial and Applied Mathematics.
+ISBN 978-0-89871-361-9.</p></li>
+<li><p>Golub, Gene H., and Charles F. Van Loan.
+2013.
+Matrix Computations.
+Fourth edition.
+Johns Hopkins Studies in the Mathematical Sciences.
+Baltimore: The Johns Hopkins University Press.
+ISBN 978-1-4214-0859-0.</p></li>
+</ul>
 <section id="lu">
 <h2><span class="section-number">3.5.1. </span>LU-разложение<a class="headerlink" href="#lu" title="Permalink to this heading">#</a></h2>
 <p>LU-разложение можно применять не только для решения линейных систем. Зная разложение, несложно вычислить детерминант матрицы.</p>
@@ -531,9 +558,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>prod(diag(L)) * prod(diag(U)) = -3510.0
 p = [2, 3, 4, 1]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>det(A) = 3510.0
+det(A) = 3510.0
 </pre></div>
 </div>
 </div>
@@ -544,34 +569,97 @@ p = [2, 3, 4, 1]
 </section>
 <section id="qr">
 <span id="chapter-syslinear-qr"></span><h2><span class="section-number">3.5.2. </span>QR-разложение<a class="headerlink" href="#qr" title="Permalink to this heading">#</a></h2>
-<p>QR-разложение выводится из ортогонализации по Граму-Шмидту и применяется для прямоугольной матрицы</p>
+<p>QR-разложение можно получить из ортогонализации по Граму-Шмидту.
+Оно применяется для прямоугольной матрицы</p>
 <div class="math notranslate nohighlight">
-\[\mathbf{A}_{m\times n} = \mathbf{Q R},\]</div>
-<p>где <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> – ортогональная матрица, а <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> – верхнетреугольная.</p>
-<p>Данное разложение применятся для переопределённых систем (число уравнений превышает число неизвестных), например, в методе наименьших квадратов. Кроме того, разложение позволяет найти ядро преобразования и пространство столбцов. А в случае квадратной матрицы <span class="math notranslate nohighlight">\(\mathbf{A}_{n\times n}\)</span> разложение применимо для решения линейной системы, как и LU-разложение.</p>
-<p>В одном из вариантов метода Бройдена решения нелинейной системы уравнений эффективней (по времени работы) использовать QR-разложение. Подобная ситуация встречается и в других алгоритмах, где-то одно разложение несёт больше необходимой алгоритму информации, а где-то подходящее разложение экономит время вычислений.</p>
+\[\mathbf{A}_{m\times n} = \mathbf{Q}_{m \times m}\ \mathbf{R}_{m \times n}, \quad (m \ge n)\]</div>
+<p>где <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span> – ортогональная матрица, а <span class="math notranslate nohighlight">\(\mathbf{R}\)</span> – верхнетреугольная (строки <span class="math notranslate nohighlight">\(i &gt; m\)</span> нулевые).
+Это разложение «раскладывает» столбцы матрицы <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> по ортогональному базису из столбцов матрицы <span class="math notranslate nohighlight">\(\mathbf{Q}\)</span>.</p>
+<p>QR-разложение применяется для решения переопределённых систем (число уравнений превышает число неизвестных), например, в методе наименьших квадратов.
+Кроме того, разложение позволяет найти ядро преобразования и пространство столбцов.
+А в случае квадратной матрицы <span class="math notranslate nohighlight">\(\mathbf{A}_{n\times n}\)</span> разложение применимо для решения линейной системы (<span class="math notranslate nohighlight">\(\mathbf{R} \mathbf{x} = \mathbf{Q}^{\top} \mathbf{b}\)</span>), как и LU-разложение.</p>
+<p>В одном из вариантов метода Бройдена решения нелинейной системы уравнений эффективней (по времени работы) использовать QR-разложение вместо LU-разложения.
+Подобная ситуация встречается и в других алгоритмах: иногда одно разложение несёт больше необходимой алгоритму информации, что обычно экономит количество вычислений.</p>
 <p>Вычислительная сложность <span class="math notranslate nohighlight">\(\propto 2mn^2 - \frac{2}{3} n^3\)</span>.</p>
 </section>
 <section id="syslinear-ch-cholesky">
 <span id="id2"></span><h2><span class="section-number">3.5.3. </span>Разложение Холецкого<a class="headerlink" href="#syslinear-ch-cholesky" title="Permalink to this heading">#</a></h2>
-<p>Данное разложение применяется для квадратной симметричной положительно-определённой матрицы <span class="math notranslate nohighlight">\(\mathbf{x}^\top \mathbf{A} \mathbf{x} &gt; 0\)</span></p>
+<p>Разложение Холецкого (Cholesky decomposition) применимо для квадратной симметричной положительно-определённой матрицы <span class="math notranslate nohighlight">\(\mathbf{x}^\top \mathbf{A} \mathbf{x} &gt; 0\)</span></p>
 <div class="math notranslate nohighlight">
-\[\mathbf{A}_{n\times n} = \mathbf{L}\mathbf{L}^\top,\]</div>
+\[\mathbf{A}_{n \times n} = \mathbf{L}_{n \times n}\ \mathbf{L}^\top_{n \times n},\]</div>
 <p>где <span class="math notranslate nohighlight">\(\mathbf{L}\)</span> – нижнетреугольная матрица.</p>
-<p>Подобные матрицы возникают, например, в задаче оптимизации (нахождение минимума функции <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span>), где ноль градиента и положительная определённость гессиана определяют локальный минимум.</p>
+<p>Подобные матрицы возникают, например, при нахождении минимума функции <span class="math notranslate nohighlight">\(f(\mathbf{x})\)</span> (задача оптимизации), где ноль градиента и положительная определённость гессиана <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> определяют локальный минимум.</p>
 <p>Разложение используется для решения линейных систем, проверки матрицы на положительную определённость, нахождение детерминанта и обращении матриц.</p>
 <p>Также часто используется модифицированное разложение Холецкого, которое находит близкую положительно-определённую матрицу к исходной, не обязательно положительно-определённой. Эта матрица может использоваться как приближение гессиана.</p>
 <p>Вычислительная стоимость <span class="math notranslate nohighlight">\(\propto \frac{1}{3} n^3\)</span> флопс.</p>
 </section>
 <section id="id3">
 <h2><span class="section-number">3.5.4. </span>Спектральное разложение<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
-<p>Существует целое семейство разложений, где в качестве множителей присутствуют матрицы из собственных векторов и значений. Одно из них – спектральное.</p>
-<p>Спектральное разложение представляет квадратную матрицу <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> в виде</p>
+<p>Спектральное разложение (eigenvalue или spectral decomposition) представляет квадратную матрицу <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> в виде</p>
 <div class="math notranslate nohighlight">
-\[\mathbf{A}_{n\times n} = \mathbf{VDV}^{-1},\]</div>
-<p>где <span class="math notranslate nohighlight">\(\mathbf{V}\)</span> – матрица, составленная из собственных векторов матрицы <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, а <span class="math notranslate nohighlight">\(\mathbf{D}\)</span> – диагональная матрица из собственных значений <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.</p>
+\[\mathbf{A}_{n \times n} = \mathbf{V}_{n \times n}\ \mathbf{D}_{n \times n}\ \mathbf{V}^{-1}_{n \times n}, \quad (\mathbf{A} \upsilon_{i} = \lambda_{i} \upsilon_{i})\]</div>
+<p>где <span class="math notranslate nohighlight">\(\mathbf{V}\)</span> – матрица, составленная из собственных векторов матрицы <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>, а <span class="math notranslate nohighlight">\(\mathbf{D}\)</span> – диагональная матрица из собственных значений матрицы <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.</p>
 <p>Как следует из определения, разложение применяется для нахождения собственных значений и векторов матрицы. Такая задача может возникнуть, например, при решении системы обыкновенных дифференциальных уравнений.</p>
-<p>Обобщением является сингулярное разложения (<em>SVD</em>-разложение).</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">3.5.5. </span>Сингулярное разложение<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
+<p>Сингулярное разложение (singular value decomposition, SVD) представляет матрицу в виде</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{A}_{m \times n} = \mathbf{U}_{m \times m}\ \mathbf{\Sigma}_{m \times n}\ \mathbf{V}^{\top}_{n \times n}, \quad (m \ge n)\]</div>
+<p>где матрицы <span class="math notranslate nohighlight">\(\mathbf{U}\)</span> и <span class="math notranslate nohighlight">\(\mathbf{V}\)</span> ортогональны, а матрица <span class="math notranslate nohighlight">\(\mathbf{\Sigma}\)</span> диагональна (строки <span class="math notranslate nohighlight">\(m &gt; n\)</span> нулевые).
+Диагональные элементы матрицы <span class="math notranslate nohighlight">\(\mathbf{\Sigma}\)</span> называют сингулярными значениями <span class="math notranslate nohighlight">\(\sigma_i\)</span>, которые упорядочивают по неубыванию.</p>
+<p>SVD-разложение имеет геометрическую интерпретацию.
+Она состоит в том, что всякое линейное преобразование может быть представлено в виде комбинации поворота и растяжений.
+Так, в двумерном случае единичная окружность с ортогональными полуосями <span class="math notranslate nohighlight">\(\mathbf{v}_1\)</span> и <span class="math notranslate nohighlight">\(\mathbf{v}_2\)</span> при преобразовании <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> переходит в эллипс с полуосями <span class="math notranslate nohighlight">\(\mathbf{A} \mathbf{v}_{1,2} = \sigma_{1,2} \mathbf{u}_{1,2}\)</span>.</p>
+<p>SVD-разложение имеет фундаментальную важность для вычислительной линейной алгебры и имеет множество применений.
+Мы упомянем одно из них: приближение матрицы матрицей меньшего ранга (low-rank approximation).
+Матрицу <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> можно записать в виде суммы <a class="reference internal" href="lu.html#sec-sysnonlinear-outer-product"><span class="std std-ref">внешних произведений</span></a></p>
+<div class="math notranslate nohighlight">
+\[\mathbf{A} = \sum^{r}_{j = 1} \sigma_j \mathbf{u}_j \mathbf{v}^{\top}_j,\]</div>
+<p>где <span class="math notranslate nohighlight">\(r = \mathrm{rank}(\mathbf{A})\)</span> это ранг матрицы <span class="math notranslate nohighlight">\(\mathbf{A}\)</span>.
+Определим теперь матрицу <span class="math notranslate nohighlight">\(\mathbf{A}_{\nu}\)</span> как сумму первых <span class="math notranslate nohighlight">\(\nu\)</span> слагаемых из уравнения выше</p>
+<div class="math notranslate nohighlight">
+\[\mathbf{A}_{\nu} = \sum^{\nu}_{j = 1} \sigma_j \mathbf{u}_j \mathbf{v}^{\top}_j. \quad (\nu \le r)\]</div>
+<p>Тогда</p>
+<div class="math notranslate nohighlight">
+\[\| \mathbf{A} - \mathbf{A}_{\nu} \|_2
+= \sigma_{\nu + 1}.\]</div>
+<p>(Для корректности в случае <span class="math notranslate nohighlight">\(\nu = r\)</span>: <span class="math notranslate nohighlight">\(\sigma_{\nu + 1} = 0\)</span>.)</p>
+<p>Таким образом, матрицу <span class="math notranslate nohighlight">\(\mathbf{A}\)</span> можно приближать другими матрицами, меньшего ранга.
+Например, в ситуации матрицы с сильным отличием сингулярных значений <span class="math notranslate nohighlight">\(\sigma_{1 \dots 10} \gg \sigma_{11 \dots 100}\)</span> достаточно использовать лишь одну десятую (<span class="math notranslate nohighlight">\(\nu = 10\)</span>) от всей размерности пространства.
+Это может использоваться в уменьшении количества вычислений (<a class="reference external" href="https://en.wikipedia.org/wiki/Model_order_reduction">model order reduction</a>) или, например, в алгоритмах сжатия данных (<a class="reference external" href="https://dmicz.github.io/machine-learning/svd-image-compression/">пример</a>).</p>
+</section>
+<section id="julia">
+<h2><span class="section-number">3.5.6. </span>Разложения матриц в Julia<a class="headerlink" href="#julia" title="Permalink to this heading">#</a></h2>
+<p>Большинство упомянутых разложений входят в стандартный Julia пакет <a class="reference external" href="https://docs.julialang.org/en/v1/stdlib/LinearAlgebra/">LinearAlgebra</a>.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Разложение</p></th>
+<th class="head"><p>Ссылка</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>LU</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LinearAlgebra.lu</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>QR</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LinearAlgebra.qr</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Холецкого</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LinearAlgebra.cholesky</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Холецкого (модифицированное)</p></td>
+<td><p><a class="reference external" href="https://github.com/timholy/PositiveFactorizations.jl/">PositiveFactorizations.jl</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Спектральное</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LinearAlgebra.eigen</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Сингулярное</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">LinearAlgebra.svd</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </section>
 </section>
 
@@ -584,16 +672,16 @@ p = [2, 3, 4, 1]
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "julia-1.9"
+            mode: "julia-1.10"
         },
         kernelOptions: {
-            name: "julia-1.9",
+            name: "julia-1.10",
             path: "./syslinear"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'julia-1.9'</script>
+    <script>kernelName = 'julia-1.10'</script>
 
                 </article>
               
@@ -602,7 +690,7 @@ p = [2, 3, 4, 1]
               
               
               
-                <footer class="prev-next-footer">
+                <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
     <a class="left-prev"
@@ -632,6 +720,7 @@ p = [2, 3, 4, 1]
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Содержание
@@ -642,6 +731,8 @@ p = [2, 3, 4, 1]
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#qr">3.5.2. QR-разложение</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syslinear-ch-cholesky">3.5.3. Разложение Холецкого</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">3.5.4. Спектральное разложение</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">3.5.5. Сингулярное разложение</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#julia">3.5.6. Разложения матриц в Julia</a></li>
 </ul>
   </nav></div>
 
@@ -690,8 +781,8 @@ p = [2, 3, 4, 1]
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

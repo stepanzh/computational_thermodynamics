@@ -5,14 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.16.0
+    jupytext_version: 1.16.4
 kernelspec:
-  display_name: Julia 1.9.4
+  display_name: Julia 1.10.4
   language: julia
-  name: julia-1.9
-myst:
-  substitutions:
-    julia_logo: "<img src=\"https://raw.githubusercontent.com/JuliaLang/julia-logo-graphics/master/images/julia-dots.svg\" style=\"height: 1em;\">"
+  name: julia-1.10
 ---
 
 ```{eval-rst}

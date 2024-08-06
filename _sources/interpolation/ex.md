@@ -5,15 +5,11 @@ jupytext:
     extension: .md
     format_name: myst
     format_version: 0.13
-    jupytext_version: 1.16.0
+    jupytext_version: 1.16.4
 kernelspec:
-  display_name: Julia 1.9.4
+  display_name: Julia 1.10.4
   language: julia
-  name: julia-1.9
-myst:
-  substitutions:
-    url_omega22_table: "<a href=\"https://raw.githubusercontent.com/stepanzh/computational_thermodynamics/main/book/static/golubev1971_omega22.pdf\" target=\"_blank\">pdf</a>"
-    url_feta_table: "<a href=\"https://raw.githubusercontent.com/stepanzh/computational_thermodynamics/main/book/static/golubev1971_feta.pdf\" target=\"_blank\">pdf</a>"
+  name: julia-1.10
 ---
 
 ```{eval-rst}
