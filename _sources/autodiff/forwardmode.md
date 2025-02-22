@@ -109,8 +109,8 @@ x_7 = x_7(x_3, x_6) = \frac{x_6(x_1)}{x_3(x_1)},
 ```{math}
 \frac{\partial x_7}{\partial x_1}
 = \frac{ (\partial x_6 / \partial x_1 ) \times x_3 - x_6 \times (\partial x_3 / \partial x_1) }{ x^2_3 }
-= \frac{x_1 \times x_3 - x_6 \times 0}{x^2_3}
-= \frac{x_1}{x_3}
+= \frac{x_2 \times x_3 - x_6 \times 0}{x^2_3}
+= \frac{x_2}{x_3}
 , \quad x_3 \neq 0.
 ```
 Здесь мы воспользовались правилом дифференцирования деления функций и значениями производных с шагов 1 и 4.

@@ -69,8 +69,14 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
-    <script>mermaid.initialize({startOnLoad:true});</script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs"></script>
+    <script type="module">import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";import elkLayouts from "https://cdn.jsdelivr.net/npm/@mermaid-js/layout-elk@0.1.4/dist/mermaid-layout-elk.esm.min.mjs";mermaid.registerLayoutLoaders(elkLayouts);mermaid.initialize({startOnLoad:false});</script>
+    <script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+    <script type="module">
+import mermaid from "https://cdn.jsdelivr.net/npm/mermaid@11.2.0/dist/mermaid.esm.min.mjs";
+window.addEventListener("load", () => mermaid.run());
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'julia/types_methods_dispatch';</script>
     <link rel="index" title="Алфавитный указатель" href="../genindex.html" />
     <link rel="search" title="Поиск" href="../search.html" />
@@ -634,8 +640,8 @@ document.write(`
 <li><p>конкретные типы указаны в округлённых рамках;</p></li>
 <li><p>абстрактные в прямоугольных.</p></li>
 </ul>
-<div class="mermaid">
-            flowchart TB
+<pre  class="mermaid">
+        flowchart TB
     Any --&gt; Number --&gt; Real --&gt; Integer
     Any --&gt; AbstractString --&gt; String([String])
             AbstractString --&gt; SubString[/SubString/]
@@ -648,7 +654,7 @@ document.write(`
     Integer --&gt; Int32([Int32])
     Integer --&gt; Int16([Int16])
     Integer --&gt; Int8([Int8])
-        </div><p>Несколько функций для интроспекции системы типов</p>
+    </pre><p>Несколько функций для интроспекции системы типов</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">subtypes(T)</span></code>: подтипы типа <code class="docutils literal notranslate"><span class="pre">T</span></code>;</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">isabstracttype(T)</span></code>: является ли тип <code class="docutils literal notranslate"><span class="pre">T</span></code> абстрактным;</p></li>
