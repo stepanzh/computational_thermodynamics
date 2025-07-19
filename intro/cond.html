@@ -496,8 +496,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.1. Число обусловленности</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.2. Оценка ошибок</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-intro-cond-cond-example">2.2.1. Обусловленность</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.2. Число обусловленности</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.2.3. Оценка ошибок</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.2.4. Как решают плохо обусловленные задачи?</a></li>
 </ul>
             </nav>
         </div>
@@ -511,6 +513,23 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">2.2. </span>Обусловленность задач<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
+<p>Из сборников задач и учебников по математике мы привыкли анализировать задачи по критерию «имеет ли задача решение».
+Однако, даже задачи с однозначным решением могут быть сильно чувствительны к входным данным.
+Зачастую решение таких задач (в их исходной постановке) лишено практического смысла.
+В связи с этим, прежде чем приступать к задаче, следует проверить, является ли она <em>корректной</em>.</p>
+<p>Первые критерии корректности задачи предписываются <a class="reference external" href="https://ru.wikipedia.org/wiki/%D0%90%D0%B4%D0%B0%D0%BC%D0%B0%D1%80,_%D0%96%D0%B0%D0%BA">Жаку Адамару</a> (1865-1963).
+Мы разрешим себе вольность в их пересказе, не вдаваясь в формализацию.</p>
+<ol class="arabic simple">
+<li><p>Решение задачи <strong>существует</strong> для любых допустимых входных данных.</p></li>
+<li><p>Решение задачи <strong>единственно</strong> и содержится в области допустимых решений.</p></li>
+<li><p>Решение задачи <strong>непрерывно</strong> меняется с непрерывным изменением входных данных.</p></li>
+</ol>
+<p>Оказывается, на практике встречаются задачи, которые удовлетворяют всем трём критериям, но при этом они сильно чувствительны к входным данным.
+То есть, критерий непрерывности выполняется, но малые изменения во входных данных (например, от сенсоров) приводят к большим изменениям в выходных данных (например, угол поворота манипулятора).</p>
+<p>Задачи с высокой чувствительностью к входным данным называют <em>плохо обусловленными</em>.
+А чтобы измерить «обусловленность» задачи, используют <em>число обусловленности</em>.</p>
+<section id="sec-intro-cond-cond-example">
+<span id="id2"></span><h2><span class="section-number">2.2.1. </span>Обусловленность<a class="headerlink" href="#sec-intro-cond-cond-example" title="Permalink to this heading">#</a></h2>
 <p>Рассмотрим простую вычислительную задачу.
 Необходимо вычислить значение функции</p>
 <div class="math notranslate nohighlight">
@@ -530,10 +549,11 @@ document.write(`
 <p>Подобные ошибки являются следствием конечной точности используемых чисел <span class="math notranslate nohighlight">\(x \to \float(x)\)</span>. Если вычисления ведутся в таких числах, то этих ошибок не избежать <em>независимо от используемого алгоритма</em>. Поэтому, ещё до его написания можно оценить области входных данных, на которых алгоритм даёт большие ошибки.</p>
 <p>Кроме того, в случае <code class="docutils literal notranslate"><span class="pre">Float64</span></code>, несмотря на точность в 16 десятичных знаков, не все они репрезентативны в конечном результате.</p>
 <p>Таким образом, задачам (и алгоритмам) можно сопоставить их чувствительность к входным данным. У некоторых задач теоретически сильная чувствительность (большая обусловленность), что в паре с вычислительной погрешностью приводит к ошибкам в расчётах. Для оценки чувствительности вводится число обусловленности.</p>
-<section id="id2">
-<h2><span class="section-number">2.2.1. </span>Число обусловленности<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+</section>
+<section id="id3">
+<h2><span class="section-number">2.2.2. </span>Число обусловленности<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
 <p>… <strong>скалярных функций</strong></p>
-<span class="target" id="index-0"></span><div class="proof proof-type-definition" id="id4">
+<span class="target" id="index-0"></span><div class="proof proof-type-definition" id="id6">
 <span id="index-1"></span>
     <div class="proof-title">
         <span class="proof-type">Определение 2.5</span>
@@ -551,7 +571,7 @@ document.write(`
 <div class="math notranslate nohighlight">
 \[\kappa_h(x) = \kappa_f(g(x))\cdot\kappa_g(x),\]</div>
 <p>что показывает, как могут распространяться ошибки в алгоритмах.</p>
-<div class="proof proof-type-example" id="id5">
+<div class="proof proof-type-example" id="id7">
 
     <div class="proof-title">
         <span class="proof-type">Пример 2.6</span>
@@ -575,14 +595,15 @@ document.write(`
 \]</div>
 <p>теоретически должно уменьшать ошибку в вычислениях, однако, на практике <span class="math notranslate nohighlight">\(\text{sqrt}(x)\)</span> реализован программно, и при его вычислении происходят операции, порождающие ошибки. Либо, в конечном итоге, произойдёт ошибка округления входных данных. Поэтому, на практике меньшее единицы число обусловленности <span class="math notranslate nohighlight">\(\kappa_f &lt; 1\)</span> можно «округлять» до единицы.</p>
 </div></div></section>
-<section id="id3">
-<h2><span class="section-number">2.2.2. </span>Оценка ошибок<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
+<section id="id4">
+<h2><span class="section-number">2.2.3. </span>Оценка ошибок<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <p>Из определения числа обусловленности <a class="reference internal" href="#equation-condscalar">(2.4)</a> следует, что при малом <span class="math notranslate nohighlight">\(\delta x\)</span></p>
 <div class="math notranslate nohighlight" id="equation-conderr">
 <span class="eqno">(2.6)<a class="headerlink" href="#equation-conderr" title="Ссылка на это уравнение">#</a></span>\[\frac{ |f(x+\delta x) - f(x)| }{|f(x)|} \approx \kappa_f(x) \frac{|\delta x|}{|x|}.\]</div>
 <p>Другими словами, это соотношение позволяет оценить возмущение в значении функции по возмущению входных данных.</p>
-<p>Например, в случае <span class="math notranslate nohighlight">\(\kappa_f \approx 10^d\)</span> можно ожидать, что <span class="math notranslate nohighlight">\(d\)</span> десятичных знаков (мантиссы) потеряны при вычислении <span class="math notranslate nohighlight">\(f(x)\)</span> из <span class="math notranslate nohighlight">\(x\)</span>. Таким образом, если <span class="math notranslate nohighlight">\(\kappa_f\approx 1/\macheps\)</span>, то вычислить <span class="math notranslate nohighlight">\(f\)</span> в числах с точностью <span class="math notranslate nohighlight">\(\macheps\)</span> не получится.</p>
-<div class="proof proof-type-definition" id="id6">
+<p>Например, в случае <span class="math notranslate nohighlight">\(\kappa_f \approx 10^d\)</span> можно ожидать, что <span class="math notranslate nohighlight">\(d\)</span> десятичных знаков (мантиссы) потеряны при вычислении <span class="math notranslate nohighlight">\(f(x)\)</span> из <span class="math notranslate nohighlight">\(x\)</span>. Таким образом, если <span class="math notranslate nohighlight">\(\kappa_f\approx 1/\macheps\)</span>, то вычислить <span class="math notranslate nohighlight">\(f\)</span> в числах с точностью <span class="math notranslate nohighlight">\(\macheps\)</span> не получится.
+Так, в случае чисел <code class="docutils literal notranslate"><span class="pre">Float64</span></code> расчёты теряют смысл (все цифры в ответе ложные) при <span class="math notranslate nohighlight">\(\kappa_f &gt; 10^{16}\)</span>.</p>
+<div class="proof proof-type-definition" id="id8">
 <span id="index-2"></span>
     <div class="proof-title">
         <span class="proof-type">Определение 2.7</span>
@@ -591,7 +612,7 @@ document.write(`
         
     </div><div class="proof-content">
 <p>Если задача имеет большое число обусловленности при некотором <span class="math notranslate nohighlight">\(x\)</span>, то говорят, что задача <strong>плохо обусловлена</strong> при этом <span class="math notranslate nohighlight">\(x\)</span>. В таких случаях ошибка в получаемом ответе уже <em>превышает ошибку округления</em>.</p>
-</div></div><div class="proof proof-type-demo" id="id7">
+</div></div><div class="proof proof-type-demo" id="id9">
 
     <div class="proof-title">
         <span class="proof-type">Демонстрация 2.8</span>
@@ -657,7 +678,21 @@ det(A) =
 </div>
 </div>
 <p>Видно, что ошибка вычислений <code class="docutils literal notranslate"><span class="pre">err</span></code> совпадает с оценкой ошибки <code class="docutils literal notranslate"><span class="pre">err_estimate</span></code> по выражению <a class="reference internal" href="#equation-conderr">(2.6)</a>.</p>
-</div></section>
+</div><p>Так, число обусловленности является практической метрикой для оценки чувствительности задачи к входным данным и предсказанию ошибки при её решении.</p>
+</section>
+<section id="id5">
+<h2><span class="section-number">2.2.4. </span>Как решают плохо обусловленные задачи?<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>Чтобы решать плохо обусловленные задачи, есть два пути.</p>
+<ol class="arabic simple">
+<li><p>Сменить класс используемых чисел на числа с большей точностью (меньшей <span class="math notranslate nohighlight">\(\macheps\)</span>).</p></li>
+<li><p>Использовать те же числа, но решать (строго говоря) другую, <em>регуляризованную</em> задачу.</p></li>
+</ol>
+<p>Первый путь хорош тем, что задача остаётся исходной, но уже не является плохо обусловленной.
+Практическим недостатком является потеря быстродействия, поскольку арифметика требуемого класса чисел может быть медленной.
+Сделать её по-настоящему быстрой можно только на уровне <a class="reference external" href="https://en.wikipedia.org/wiki/Application-specific_integrated_circuit">аппаратной поддержки</a>, что может быть дорого или недоступно.</p>
+<p>На втором пути применяются методы регуляризации, с некоторыми из них вы можете ознакомится по <a class="reference external" href="https://www.mathnet.ru/php/person.phtml?option_lang=rus&amp;personid=20380">работам Андрея Николаевича Тихонова</a> (1906-1993).
+Методы регуляризации, как правило, подменяют исходную задачу очень похожей, но с низкой чувствительностью к входным данным и допустимой на практике ошибкой в решении.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -724,8 +759,10 @@ det(A) =
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.1. Число обусловленности</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.2. Оценка ошибок</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sec-intro-cond-cond-example">2.2.1. Обусловленность</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.2. Число обусловленности</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.2.3. Оценка ошибок</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.2.4. Как решают плохо обусловленные задачи?</a></li>
 </ul>
   </nav></div>
 

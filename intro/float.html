@@ -500,6 +500,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1.2. Числа двойной точности</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.1.3. Особенности арифметики чисел с плавающей точкой</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#float">2.1.4. Меры предосторожности и практика работы с float-числами</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.1.5. Какие ещё бывают представления дробных чисел?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.1.6. Дополнительные материалы</a></li>
 </ul>
             </nav>
         </div>
@@ -513,10 +515,33 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="section-float-numbers">
 <span id="id1"></span><h1><span class="section-number">2.1. </span>Числа с плавающей точкой<a class="headerlink" href="#section-float-numbers" title="Permalink to this heading">#</a></h1>
-<p>Множество действительных чисел <span class="math notranslate nohighlight">\(\real\)</span> неограничено и непрерывно. Однако, в вычислительной практике используется множество <em>чисел с плавающей точкой</em> <span class="math notranslate nohighlight">\(\floatset\subset\real\)</span>, которое ограничено и дискретно. Это множество имеет арифметику, отличающуюся от арифметики в действительных чисел.</p>
+<p>В математическом анализе мы имеем дело с действительным числами <span class="math notranslate nohighlight">\(\real\)</span>.
+Однако, на практике мы используем <em>числа с плавающей точкой</em> <span class="math notranslate nohighlight">\(\floatset \subset \real\)</span>, которые являются подмножеством рациональных чисел.</p>
+<p>Эти два множества отличаются.</p>
+<ul class="simple">
+<li><p>Множество действительных чисел <em>неограничено и непрерывно</em>.</p></li>
+<li><p>Множество чисел с плавающей точкой <em>ограничено и дискретно</em>.</p></li>
+</ul>
+<p>Существуют разные типы (множества) чисел с плавающей точкой.
+Например,</p>
+<ul class="simple">
+<li><p>binary32 – числа одинарной точности</p></li>
+<li><p>binary64 – числа двойной точности</p></li>
+<li><p>extended precision – 80-битные числа</p></li>
+<li><p>bfloat16 – используются в машинном обучении</p></li>
+</ul>
+<p>Они задокументированы в виде стандартов, а реализованы в floating-point unit (FPU) процессоров или программно.
+Реализация может отличаться от документации, но важно одно.</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Числа с плавающей точкой имеют конечную точность, их арифметика отличается от арифметики действительных чисел.
+Чтобы избежать ошибок при программировании, требуется соблюдать меры предосторожности.</p>
+</div>
+<p>Цель этого раздела: разобраться с тем, что такое float-числа и как с ними работать.</p>
 <section id="id2">
 <h2><span class="section-number">2.1.1. </span>Множество чисел с плавающей точкой<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
-<span class="target" id="index-0"></span><span class="target" id="index-1"></span><div class="proof proof-type-definition" id="id5">
+<p>Все типы чисел с плавающей точкой определяются одинаково.</p>
+<span class="target" id="index-0"></span><span class="target" id="index-1"></span><div class="proof proof-type-definition" id="id8">
 <span id="index-2"></span>
     <div class="proof-title">
         <span class="proof-type">Определение 2.1</span>
@@ -538,7 +563,18 @@ document.write(`
 <p>Отсюда видно, что ближайшие мантисcы отстоят друг от друга на <span class="math notranslate nohighlight">\(2^{-d}\)</span> (последний бит <span class="math notranslate nohighlight">\(b_d\)</span>).
 Поэтому, между числами <span class="math notranslate nohighlight">\(2^n\)</span> и <span class="math notranslate nohighlight">\(2^{n+1}\)</span> находится <span class="math notranslate nohighlight">\(2^d\)</span> равномерно распределённых чисел.
 В свою очередь, отсюда следует, что числа с плавающей точной <em>распределены неравномерно</em> на числовой оси.</p>
-<div class="proof proof-type-example" id="id6">
+<div class="admonition-f admonition">
+<p class="admonition-title">Почему мантисса в виде <span class="math notranslate nohighlight">\(1 + f\)</span>?</p>
+<p>Попробуем задать число <span class="math notranslate nohighlight">\(1/2\)</span> в формате с плавающей точкой.
+Принципиально есть два варианта: <span class="math notranslate nohighlight">\(\overline{1.0}_{2} \times 2^{-1}\)</span> и <span class="math notranslate nohighlight">\(\overline{0.1}_{2} \times 2^{0}\)</span>.
+Первый вариант более разумен – более привычней считать, что <em>первый</em> бит мантиссы по умолчанию равняется 1, а не второй бит.
+В реализации формата этот бит мантиссы вовсе не хранится и диапазон представимых форматом чисел становится шире.</p>
+<p>Float-числа с неявной единицей в мантиссе называют нормализованными.
+Однако вблизи нуля для сохранения «плотности» чисел от правила неявной единицы отказываются, и такие числа называются денормализованными.
+В случае формата binary64 денормализованные числа заполняют интервал <span class="math notranslate nohighlight">\((0, 2^{-1022})\)</span>.
+Но это уже технические детали.</p>
+</div>
+<div class="proof proof-type-example" id="id9">
 
     <div class="proof-title">
         <span class="proof-type">Пример 2.2</span>
@@ -568,6 +604,9 @@ document.write(`
 Пусть <span class="math notranslate nohighlight">\(\float(x)\in\floatset\)</span> ближайшее к действительному <span class="math notranslate nohighlight">\(x\in\real\)</span> число с плавающей точкой. Расстояние для чисел в промежутке <span class="math notranslate nohighlight">\([2^n, 2^{n+1})\)</span> равняется <span class="math notranslate nohighlight">\(2^n \macheps = 2^{n-d}\)</span>. Поэтому число <span class="math notranslate nohighlight">\(x\)</span> находится не далее, чем на <span class="math notranslate nohighlight">\(2^{n-d} / 2 = 2^{n-d-1}\)</span> от <span class="math notranslate nohighlight">\(\float(x)\)</span>. Относительная ошибка приближения тогда</p>
 <div class="math notranslate nohighlight">
 \[\frac{|\float(x)-x|}{|x|} \le \frac{2^{n-d-1}}{2^n} \le \frac{1}{2}\macheps.\]</div>
+<p>В зависимости от того, какая требуется точность арифметики для решения задачи, можно выбирать те или иные мантиссу и экспоненту.
+Например, у стандартов binary16 и bfloat16 одинаковое общее число бит <span class="math notranslate nohighlight">\(n + d + 1\)</span> (один бит на знак), но распределение бит на мантиссу <span class="math notranslate nohighlight">\(d\)</span> и экспоненту <span class="math notranslate nohighlight">\(n\)</span> разные.
+В некоторых задачах хватает точности чисел binary32 и их можно использовать вместо binary64, а это даёт прирост быстродействия примерно в два раза (см. <a class="reference external" href="https://en.wikipedia.org/wiki/Single_instruction,_multiple_data">SIMD</a>).</p>
 </section>
 <section id="id3">
 <h2><span class="section-number">2.1.2. </span>Числа двойной точности<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h2>
@@ -577,7 +616,8 @@ document.write(`
 <p>Поскольку в двоичном представлении первая цифра мантиссы нормализованного числа всегда 1, то её смысла хранить нет.</p>
 </aside>
 <p>Число с плавающей точкой двойной точности <code class="docutils literal notranslate"><span class="pre">Float64</span></code> определил стандарт IEEE 754-1985.
-Для <code class="docutils literal notranslate"><span class="pre">Float64</span></code> всего отводится 64 бита: один под знак числа, 11 под экспоненту и 52 под дробную часть мантиссы <span class="math notranslate nohighlight">\(f\)</span>.</p>
+Официальное название – IEEE 754 binary64.</p>
+<p>Для <code class="docutils literal notranslate"><span class="pre">Float64</span></code> отводится 64 бита: один под знак числа, 11 под экспоненту и 52 под дробную часть мантиссы <span class="math notranslate nohighlight">\(f\)</span>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  s eeeeeeeeeee mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm
   ↑  экспонента                        мантисса
 знак
@@ -594,7 +634,7 @@ document.write(`
 <p>Да, на ноль делить можно.</p>
 </aside>
 <p>Кроме того, существует ещё одно специальное значение <strong>Not a Number</strong>, <code class="docutils literal notranslate"><span class="pre">NaN</span></code>. Оно появляется в результате неопределённых операций: <code class="docutils literal notranslate"><span class="pre">±0/±0</span></code>, <code class="docutils literal notranslate"><span class="pre">±Inf/±Inf</span></code> и операций, в которых участвует <code class="docutils literal notranslate"><span class="pre">NaN</span></code>, что приводит к распространению <code class="docutils literal notranslate"><span class="pre">NaN</span></code> в вычислениях.</p>
-<div class="proof proof-type-demo" id="id7">
+<div class="proof proof-type-demo" id="id10">
 
     <div class="proof-title">
         <span class="proof-type">Демонстрация 2.3</span>
@@ -759,7 +799,7 @@ nextfloat(2.0) = 2.0000000000000004
 <h2><span class="section-number">2.1.3. </span>Особенности арифметики чисел с плавающей точкой<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h2>
 <p>Конечная точность чисел с плавающей точкой приводит к <strong>ошибкам округления</strong>.
 Рассмотрим на примерах ниже.</p>
-<div class="proof proof-type-example" id="id8">
+<div class="proof proof-type-example" id="id11">
 
     <div class="proof-title">
         <span class="proof-type">Пример 2.4</span>
@@ -800,11 +840,12 @@ nextfloat(1.0) = 1.0000000000000002
 </div>
 </div>
 </div>
-<p>Ошибки округления копятся, например, можно вычислить</p>
+<p>Ошибки округления копятся, например, можно вычислить разницу</p>
 <div class="math notranslate nohighlight">
 \[
-\frac{k}{10} - \sum_{i=1}^{k} 0.1
+\frac{k}{10} - \sum_{i=1}^{k} 0.1.
 \]</div>
+<p>При работе с действительными числами ожидался бы ноль, но для float-чисел это не так.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">ks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mf">10.0</span><span class="p">,</span><span class="w"> </span><span class="mf">100.0</span><span class="p">,</span><span class="w"> </span><span class="mf">1000.0</span><span class="p">,</span><span class="w"> </span><span class="mf">10000.0</span><span class="p">]</span>
@@ -837,6 +878,8 @@ exact = 0.1 .* ks = [1.0, 10.0, 100.0, 1000.0]
 </div>
 </div>
 </div>
+<p>Ошибка возникает из-за того, что при сложении переменная-аккумулятор <code class="docutils literal notranslate"><span class="pre">acc</span></code> растёт и меняет «диапазон точности» <span class="math notranslate nohighlight">\([2^{n-1}, 2^{n})\)</span>, а инкремент 0.1 не меняется.
+В какой-то момент можно вовсе прийти к ситуации <code class="docutils literal notranslate"><span class="pre">acc</span> <span class="pre">+</span> <span class="pre">0.1</span> <span class="pre">==</span> <span class="pre">acc</span></code>, это наступит, когда <span class="math notranslate nohighlight">\(0.1/\text{acc} &lt; \macheps/2\)</span>.</p>
 <aside class="margin sidebar">
 <p class="sidebar-title"></p>
 <p>Так и поступают для вычисления рядов, например, <span class="math notranslate nohighlight">\(e^x = \sum_{n=0}^\infty x^n /n!\)</span>.</p>
@@ -860,6 +903,7 @@ exact = 0.1 .* ks = [1.0, 10.0, 100.0, 1000.0]
 </div>
 </div>
 </div>
+<p>Другими словами, сложение для чисел с плавающей точкой неассоциативно.</p>
 <p>Более прикладным примером является работа с числами разных порядков</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -943,6 +987,26 @@ exact = 0.1 .* ks = [1.0, 10.0, 100.0, 1000.0]
 <p><strong>Subtractive cancellation</strong></p>
 <p>Осторожнее с вычитанием чисел близких по значению. Примеры из <a class="reference external" href="https://en.wikipedia.org/wiki/Catastrophic_cancellation#In_numerical_algorithms">Википедии</a>. Операции происходят с конечной точностью, поэтому иногда ошибка вычитания приближений может сильно превышать вычитание точных чисел. Алгебраические преобразования с вычисляемым выражением могут помочь снизить ошибку.</p>
 </section>
+<section id="id5">
+<h2><span class="section-number">2.1.5. </span>Какие ещё бывают представления дробных чисел?<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h2>
+<p>Существует множество представлений дробных чисел, например, числа с фиксированной точкой.
+Их можно использовать в банковской системе, где каждая копейка на счету (мантисса из двух десятичных знаков).</p>
+<p>В случае Julia можете взглянуть на следующие библиотеки чисел.</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.julialang.org/en/v1/manual/integers-and-floating-point-numbers/#Arbitrary-Precision-Arithmetic">BigFloat</a> (стандартная библиотека) – числа с плавающей точкой произвольной точности, обёртка библиотеки <a class="reference external" href="https://www.mpfr.org/">GNU MPFR</a></p></li>
+<li><p><a class="reference external" href="https://github.com/JuliaMath/Quadmath.jl">Quadmath</a> – реализация стандарта IEEE binary12, обёртка библиотеки <a class="reference external" href="https://gcc.gnu.org/onlinedocs/libquadmath/">GCC libquadmath</a></p></li>
+<li><p>Extended precision числа</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/JuliaMath/DoubleFloats.jl">DoubleFloats</a></p></li>
+<li><p><a class="reference external" href="https://github.com/dzhang314/MultiFloats.jl">MultiFloats</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="id6">
+<h2><span class="section-number">2.1.6. </span>Дополнительные материалы<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h2>
+<p>Детальную справку о числах с плавающей точкой можно получить в работе Давида Голдберга (David Goldberg) <span id="id7">[<a class="reference internal" href="../appendix/bibliography.html#id8" title="David Goldberg. What every computer scientist should know about floating-point arithmetic. ACM Computing Surveys, 23(1):5–48, 1991. doi:10.1145/103162.103163.">Gol91</a>]</span>.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1013,6 +1077,8 @@ exact = 0.1 .* ks = [1.0, 10.0, 100.0, 1000.0]
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.1.2. Числа двойной точности</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.1.3. Особенности арифметики чисел с плавающей точкой</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#float">2.1.4. Меры предосторожности и практика работы с float-числами</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.1.5. Какие ещё бывают представления дробных чисел?</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.1.6. Дополнительные материалы</a></li>
 </ul>
   </nav></div>
 

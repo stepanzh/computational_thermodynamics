@@ -510,12 +510,16 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">3.4. </span>Обусловленность линейных систем<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
-<p>По аналогии с обусловленностью вычисления скалярной функции, вводится понятие обусловленности линейной системы</p>
+<p>По аналогии с обусловленностью вычисления скалярной функции <a class="reference internal" href="../intro/cond.html#equation-condscalar">(2.4)</a>, вводится понятие обусловленности линейной системы</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{A} \mathbf{x} = \mathbf{b}.
 \]</div>
-<p>Нас интересует, как относительное изменение правой части повлияет на относительное изменение решения. Т.е. рассмотрим возмущенную систему</p>
+<p>В <a class="reference internal" href="../intro/cond.html#sec-intro-cond-cond-example"><span class="std std-numref">разделе 2.2.1</span></a> мы рассматривали пример для обусловленности вычисления <span class="math notranslate nohighlight">\(y = f(x)\)</span>.
+То был пример <em>прямой</em> задачи.
+Решение же системы линейных уравнений является <em>обратной</em> задачей: нам известен прямой оператор <span class="math notranslate nohighlight">\(f \to \mathbf{A}\)</span> и его значение <span class="math notranslate nohighlight">\(y \to \mathbf{b}\)</span>, а найти нужно аргумент оператора <span class="math notranslate nohighlight">\(x \to \mathbf{x}\)</span>.</p>
+<p>Нас интересует, как относительное изменение правой части повлияет на относительное изменение решения.
+Т.е. рассмотрим возмущенную систему</p>
 <div class="math notranslate nohighlight">
 \[
 \mathbf{A} (\mathbf{x} + \delta\mathbf{x}) = \mathbf{b} + \delta\mathbf{b}.

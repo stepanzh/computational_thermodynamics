@@ -512,7 +512,7 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">8.5. </span>Автоматическое дифференцирование назад<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h1>
 <p id="index-0"><strong>Автоматическое дифференцирование назад</strong> (обратное, backward mode, reverse accumulation) это вид автоматического дифференцирования, в котором вычисления производных распространяются от результата функции к её аргументам.
-С историей открытия и авторства этого метода дифференцирования можно ознакомиться в работе <span id="id2">[<a class="reference internal" href="../appendix/bibliography.html#id9" title="Andreas Griewank. Who invented the reverse mode of differentiation? In Martin Grötschel, editor, Optimization Stories, pages 389–400. EMS Press, 2012. doi:10.4171/dms/6/38.">Gri12</a>]</span>.</p>
+С историей открытия и авторства этого метода дифференцирования можно ознакомиться в работе <span id="id2">[<a class="reference internal" href="../appendix/bibliography.html#id10" title="Andreas Griewank. Who invented the reverse mode of differentiation? In Martin Grötschel, editor, Optimization Stories, pages 389–400. EMS Press, 2012. doi:10.4171/dms/6/38.">Gri12</a>]</span>.</p>
 <p>Мы приведём общий случай позже, а сейчас продемонстрируем алгоритм на примере функции из <a class="reference internal" href="compgraph.html#sec-autodiff-compgraph"><span class="std std-numref">Раздела 8.3</span></a>.</p>
 <div class="math notranslate nohighlight">
 \[f(x_1, x_2, x_3) = \frac{x_1 x_2 + \sin{x_3}}{x_3}\]</div>
@@ -710,7 +710,7 @@ f &amp;= f(x_4(x_1))
 <div class="admonition note">
 <p class="admonition-title">Примечание</p>
 <p>Воспользоваться автоматическим дифференцированием назад в Julia можно, например, с помощью пакетов
-<a class="reference external" href="https://github.com/FluxML/Zygote.jl">Zygote.jl</a> <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id11" title="Michael Innes. Don't unroll adjoint: differentiating ssa-form programs. CoRR, 2018. doi:https://doi.org/10.48550/arXiv.1810.07951.">Inn18</a>]</span>
+<a class="reference external" href="https://github.com/FluxML/Zygote.jl">Zygote.jl</a> <span id="id5">[<a class="reference internal" href="../appendix/bibliography.html#id12" title="Michael Innes. Don't unroll adjoint: differentiating ssa-form programs. CoRR, 2018. doi:https://doi.org/10.48550/arXiv.1810.07951.">Inn18</a>]</span>
 или <a class="reference external" href="https://github.com/JuliaDiff/ReverseDiff.jl">ReverseDiff.jl</a>.</p>
 </div>
 </section>
